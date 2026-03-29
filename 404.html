@@ -11,6 +11,14 @@
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/themes.css">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
 <style>
 .err-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px 24px;position:relative;z-index:1}
 .err-code{font-size:120px;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:16px;font-family:var(--fn-d)}
@@ -69,5 +77,6 @@ function setL(l){
 }
 try{var t=localStorage.getItem('cv-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}
 </script>
+<script src="js/analytics.js" defer></script>
 </body>
 </html>

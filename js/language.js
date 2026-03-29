@@ -39,5 +39,6 @@ function setLang(l) {
   if (window.initHeatmap) window.initHeatmap();
   if (window.reobserveAll) window.reobserveAll();
   if (window.updateNav) window.updateNav();
+  if (window.initVisitorCounter) window.initVisitorCounter();
 }
 window.setLang = setLang;
