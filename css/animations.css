@@ -29,3 +29,141 @@
 
 /* language fill bars */
 .lang-fill{width:0;transition:width 1.2s ease}
+
+/* =============================================
+   1. Cursor trail effect (desktop only)
+   ============================================= */
+.cursor-trail { position: fixed; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); filter: blur(10px); opacity: 0.4; pointer-events: none; z-index: 9998; transition: transform 0.15s ease-out; will-change: transform; }
+@media (hover: hover) { .cursor-trail { display: block; } }
+@media (hover: none) { .cursor-trail { display: none; } }
+
+/* =============================================
+   2. Typing effect styles
+   ============================================= */
+.typing-cursor { display: inline-block; width: 2px; height: 1em; background: var(--accent); margin-left: 2px; vertical-align: text-bottom; animation: typeBlink 0.7s step-end infinite; }
+@keyframes typeBlink { 0%,100%{opacity:1}50%{opacity:0} }
+.typing-cursor.done { animation: typeBlink 0.7s step-end 3; animation-fill-mode: forwards; opacity: 0; }
+
+/* =============================================
+   3. Magnetic button styles (desktop only)
+   ============================================= */
+@media (hover: hover) {
+  .btn-magnetic { transition: transform 0.2s ease-out; }
+}
+
+/* =============================================
+   4. Card tilt effect
+   ============================================= */
+.tilt-card { transform-style: preserve-3d; perspective: 800px; }
+.tilt-card .tilt-shine { position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent 60%); opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+.tilt-card:hover .tilt-shine { opacity: 1; }
+@media (hover: none) { .tilt-card { transform: none !important; } .tilt-shine { display: none; } }
+
+/* =============================================
+   5. Section dividers
+   ============================================= */
+.sec-divider { height: 2px; margin: 0 auto; max-width: 200px; background: linear-gradient(90deg, transparent, var(--accent), transparent); opacity: 0.3; }
+.sec-divider-dots { text-align: center; margin: 24px 0; opacity: 0.25; letter-spacing: 12px; color: var(--accent); font-size: 8px; }
+.sec-divider-wave { height: 20px; margin: 24px 0; background: none; }
+.sec-divider-wave svg { display: block; margin: 0 auto; opacity: 0.15; }
+
+/* =============================================
+   6. Enhanced scroll progress (gradient + glow)
+   ============================================= */
+.scroll-progress { background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc); box-shadow: 0 0 8px rgba(56,189,248,0.4); }
+
+/* =============================================
+   7. Animated background orbs + floating particles
+   ============================================= */
+@keyframes orbFloat1 { 0%,100%{transform:translate(0,0)}50%{transform:translate(30px,-40px)} }
+@keyframes orbFloat2 { 0%,100%{transform:translate(0,0)}50%{transform:translate(-25px,35px)} }
+@keyframes orbFloat3 { 0%,100%{transform:translate(0,0)}50%{transform:translate(20px,30px)} }
+.orb-1 { animation: orbFloat1 45s ease-in-out infinite; }
+.orb-2 { animation: orbFloat2 55s ease-in-out infinite; }
+.orb-3 { animation: orbFloat3 35s ease-in-out infinite; }
+
+.bg-particle { position: fixed; border-radius: 50%; background: var(--accent); pointer-events: none; z-index: 0; will-change: transform; }
+@keyframes particleDrift { 0%{transform:translate(0,0)}25%{transform:translate(30px,-20px)}50%{transform:translate(-15px,-40px)}75%{transform:translate(-30px,10px)}100%{transform:translate(0,0)} }
+
+/* =============================================
+   8. Skill category reveal
+   ============================================= */
+.sk-cat { opacity: 0; transform: translateX(-30px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.sk-cat:nth-child(even) { transform: translateX(30px); }
+.sk-cat.revealed { opacity: 1; transform: translateX(0); }
+
+/* =============================================
+   9. Counter bounce + particle burst
+   ============================================= */
+@keyframes counterBounce { 0%{transform:scale(1)}50%{transform:scale(1.15)}100%{transform:scale(1)} }
+.counter-done { animation: counterBounce 0.4s ease; }
+.counter-particle { position: absolute; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); opacity: 0; pointer-events: none; }
+@keyframes particleBurst { 0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--px),var(--py)) scale(0)} }
+
+/* =============================================
+   10. Glass morphism enhancement
+   ============================================= */
+.navbar.vis { backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); }
+
+@keyframes gradShift { 0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%} }
+.sum-w::after { content:''; position:absolute; inset:0; border-radius:16px; background: linear-gradient(135deg, rgba(56,189,248,0.03), rgba(129,140,248,0.03), rgba(192,132,252,0.03)); background-size: 200% 200%; animation: gradShift 10s ease infinite; pointer-events: none; z-index: 0; }
+.sum-w { position: relative; overflow: hidden; }
+
+/* =============================================
+   11. Better light mode
+   ============================================= */
+html[data-theme="light"] body { background: #f8fafc; }
+html[data-theme="light"] body::after { content:''; position:fixed; inset:0; background: radial-gradient(ellipse at 20% 50%, rgba(37,99,235,0.03), transparent 70%), radial-gradient(ellipse at 80% 20%, rgba(124,58,237,0.03), transparent 70%); pointer-events:none; z-index:0; }
+html[data-theme="light"] .stats { background: linear-gradient(135deg, rgba(37,99,235,0.06), rgba(124,58,237,0.06)); }
+html[data-theme="light"] .test-c { background: #fffbf5; border-color: #f3e8d8; }
+html[data-theme="light"] .svc-c, html[data-theme="light"] .sk-cat, html[data-theme="light"] .tool-c, html[data-theme="light"] .tl-it, html[data-theme="light"] .edu-c, html[data-theme="light"] .val-c, html[data-theme="light"] .plat-c { box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04); }
+html[data-theme="light"] .tc { background: rgba(37,99,235,0.06); color: #1e40af; border-color: rgba(37,99,235,0.12); }
+
+/* =============================================
+   12. Typography improvements
+   ============================================= */
+.nm { text-shadow: 0 0 40px var(--accent-g); }
+.sec-t::after { content:''; display:inline-block; width: 24px; height: 2px; background: var(--grad); margin-left: 8px; vertical-align: middle; border-radius: 1px; }
+.test-txt { font-weight: 300; line-height: 1.8; }
+
+/* =============================================
+   13. Avatar enhancement
+   ============================================= */
+@keyframes avatarBreathe { 0%,100%{box-shadow:0 8px 32px var(--accent-g)}50%{box-shadow:0 12px 40px var(--accent-g)} }
+.avatar { animation: avatarBreathe 4s ease-in-out infinite; transition: transform 0.3s ease; }
+.avatar:hover { transform: translateY(-5px); box-shadow: 0 16px 48px var(--accent-g); }
+
+/* =============================================
+   14. Loading screen styles
+   ============================================= */
+.loading-screen { position: fixed; inset: 0; z-index: 10000; background: var(--bg); display: flex; align-items: center; justify-content: center; transition: opacity 0.4s ease; }
+.loading-screen.fade-out { opacity: 0; pointer-events: none; }
+.loading-avatar { width: 80px; height: 80px; border-radius: 20px; background: var(--grad); display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 700; color: #fff; animation: loadPulse 1.2s ease-in-out infinite; }
+@keyframes loadPulse { 0%,100%{transform:scale(1);opacity:0.8}50%{transform:scale(1.05);opacity:1} }
+
+/* =============================================
+   15. Accessibility
+   ============================================= */
+*:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.skip-link { position: fixed; top: -100px; left: 16px; z-index: 10001; padding: 12px 24px; background: var(--grad); color: #fff; border-radius: 0 0 8px 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: top 0.3s; }
+.skip-link:focus { top: 0; }
+
+/* =============================================
+   16. prefers-reduced-motion
+   ============================================= */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  .orb { animation: none; }
+  .bg-particle { display: none; }
+  .cursor-trail { display: none; }
+  .avatar { animation: none; }
+  .sum-w::after { animation: none; }
+  .scroll-progress { transition: none; }
+}
+
+/* =============================================
+   17. Blog post title hover gradient
+   ============================================= */
+.svc-c .svc-tt { transition: background 0.3s, -webkit-text-fill-color 0.3s; }
+.svc-c:hover .svc-tt { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }

@@ -38,7 +38,28 @@ function animateCounter(el) {
     var v = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
     el.textContent = Math.floor(v * target);
     if (p < 1) requestAnimationFrame(step);
-    else el.textContent = target;
+    else {
+      el.textContent = target;
+      el.classList.add('counter-done');
+      // Particle burst
+      var parent = el.closest('.st-it') || el.parentElement;
+      if (parent) {
+        parent.style.position = 'relative';
+        for (var pi = 0; pi < 4; pi++) {
+          var particle = document.createElement('span');
+          particle.className = 'counter-particle';
+          var angle = (pi / 4) * Math.PI * 2 + Math.random() * 0.5;
+          var dist = 20 + Math.random() * 15;
+          particle.style.setProperty('--px', Math.cos(angle) * dist + 'px');
+          particle.style.setProperty('--py', Math.sin(angle) * dist + 'px');
+          particle.style.left = '50%';
+          particle.style.top = '50%';
+          particle.style.animation = 'particleBurst 0.6s ease-out forwards';
+          parent.appendChild(particle);
+          (function(p) { setTimeout(function() { p.remove(); }, 700); })(particle);
+        }
+      }
+    }
   }
   requestAnimationFrame(step);
 }
@@ -189,4 +210,232 @@ window.reobserveAll = reobserveAll;
       t = 1;
     }
   }, { passive: true });
+})();
+
+// Auto-detect color scheme preference on first visit
+(function() {
+  try {
+    if (localStorage.getItem('cv-theme')) return;
+    if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  } catch(e) {}
+})();
+
+// Loading screen - first visit only
+(function() {
+  if (sessionStorage.getItem('cv-loaded')) return;
+
+  var screen = document.createElement('div');
+  screen.className = 'loading-screen';
+  var isAr = document.documentElement.lang === 'ar';
+  screen.innerHTML = '<div class="loading-avatar">' + (isAr ? 'م ح' : 'MH') + '</div>';
+  document.body.appendChild(screen);
+
+  setTimeout(function() {
+    screen.classList.add('fade-out');
+    setTimeout(function() { screen.remove(); }, 400);
+  }, 500);
+
+  sessionStorage.setItem('cv-loaded', '1');
+})();
+
+// Cursor trail - desktop only
+(function() {
+  if (!window.matchMedia('(hover: hover)').matches) return;
+  var trail = document.createElement('div');
+  trail.className = 'cursor-trail';
+  trail.style.display = 'none';
+  document.body.appendChild(trail);
+  var mx = 0, my = 0, tx = 0, ty = 0;
+  document.addEventListener('mousemove', function(e) {
+    mx = e.clientX; my = e.clientY;
+    trail.style.display = 'block';
+  });
+  function animate() {
+    tx += (mx - tx) * 0.15;
+    ty += (my - ty) * 0.15;
+    trail.style.transform = 'translate(' + (tx - 4) + 'px,' + (ty - 4) + 'px)';
+    requestAnimationFrame(animate);
+  }
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) animate();
+})();
+
+// Typing effect on job title
+(function() {
+  if (sessionStorage.getItem('cv-typed')) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  function typeTitle(el, text, callback) {
+    el.textContent = '';
+    var cursor = document.createElement('span');
+    cursor.className = 'typing-cursor';
+    el.appendChild(cursor);
+    var i = 0;
+    setTimeout(function() {
+      var interval = setInterval(function() {
+        if (i < text.length) {
+          el.insertBefore(document.createTextNode(text[i]), cursor);
+          i++;
+        } else {
+          clearInterval(interval);
+          setTimeout(function() {
+            cursor.classList.add('done');
+            setTimeout(function() { cursor.remove(); }, 2100);
+          }, 500);
+          if (callback) callback();
+        }
+      }, 50);
+    }, 500);
+  }
+
+  function init() {
+    var enTitle = document.querySelector('#en-cv .ttl');
+    var arTitle = document.querySelector('#ar-cv .ttl');
+    if (enTitle) {
+      var enText = enTitle.textContent;
+      var arText = arTitle ? arTitle.textContent : '';
+      var lang = (window.CV && window.CV.lang) || 'en';
+      if (lang === 'ar' && arTitle) {
+        typeTitle(arTitle, arText);
+      } else if (enTitle) {
+        typeTitle(enTitle, enText);
+      }
+    }
+    sessionStorage.setItem('cv-typed', '1');
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+
+// Magnetic buttons - CTA buttons
+(function() {
+  if (!window.matchMedia('(hover: hover)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  function initMagnetic() {
+    document.querySelectorAll('.btn-p, .btn-o').forEach(function(btn) {
+      btn.classList.add('btn-magnetic');
+      btn.addEventListener('mousemove', function(e) {
+        var rect = btn.getBoundingClientRect();
+        var cx = rect.left + rect.width / 2;
+        var cy = rect.top + rect.height / 2;
+        var dx = e.clientX - cx;
+        var dy = e.clientY - cy;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 100) {
+          var pull = (100 - dist) / 100;
+          btn.style.transform = 'translate(' + (dx * pull * 0.08) + 'px,' + (dy * pull * 0.08) + 'px)';
+        }
+      });
+      btn.addEventListener('mouseleave', function() {
+        btn.style.transform = '';
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMagnetic);
+  } else {
+    initMagnetic();
+  }
+})();
+
+// Card tilt effect for service and project cards
+(function() {
+  if (!window.matchMedia('(hover: hover)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  function initTilt() {
+    document.querySelectorAll('.svc-c, .tl-it').forEach(function(card) {
+      card.classList.add('tilt-card');
+      var shine = document.createElement('div');
+      shine.className = 'tilt-shine';
+      card.appendChild(shine);
+
+      card.addEventListener('mousemove', function(e) {
+        var rect = card.getBoundingClientRect();
+        var x = (e.clientX - rect.left) / rect.width;
+        var y = (e.clientY - rect.top) / rect.height;
+        var rotX = (0.5 - y) * 5;
+        var rotY = (x - 0.5) * 5;
+        card.style.transform = 'perspective(800px) rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg)';
+        shine.style.background = 'radial-gradient(circle at ' + (x * 100) + '% ' + (y * 100) + '%, rgba(255,255,255,0.15), transparent 60%)';
+      });
+      card.addEventListener('mouseleave', function() {
+        card.style.transform = '';
+        card.style.transition = 'transform 0.5s ease';
+        setTimeout(function() { card.style.transition = ''; }, 500);
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTilt);
+  } else {
+    initTilt();
+  }
+})();
+
+// Skill category reveal from alternating sides
+(function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  function initSkillReveal() {
+    var skObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting) return;
+        var cards = entry.target.querySelectorAll('.sk-cat');
+        cards.forEach(function(card, i) {
+          setTimeout(function() {
+            card.classList.add('revealed');
+          }, i * 100);
+        });
+        skObs.unobserve(entry.target);
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.sk-g').forEach(function(grid) {
+      var sec = grid.closest('.sec');
+      if (sec) skObs.observe(sec);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSkillReveal);
+  } else {
+    initSkillReveal();
+  }
+})();
+
+// Floating particles
+(function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  function createParticles() {
+    for (var i = 0; i < 6; i++) {
+      var p = document.createElement('div');
+      p.className = 'bg-particle';
+      p.setAttribute('aria-hidden', 'true');
+      var size = 2 + Math.random() * 2;
+      p.style.width = size + 'px';
+      p.style.height = size + 'px';
+      p.style.opacity = (0.1 + Math.random() * 0.05).toFixed(2);
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.top = Math.random() * 100 + 'vh';
+      p.style.animation = 'particleDrift ' + (15 + Math.random() * 25) + 's ease-in-out infinite';
+      p.style.animationDelay = -(Math.random() * 20) + 's';
+      document.body.appendChild(p);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', createParticles);
+  } else {
+    createParticles();
+  }
 })();
