@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Page Not Found</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/themes.css">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<style>
+.err-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px 24px;position:relative;z-index:1}
+.err-code{font-size:120px;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:16px;font-family:var(--fn-d)}
+.err-title{font-size:24px;font-weight:600;margin-bottom:8px;color:var(--txt)}
+.err-desc{font-size:15px;color:var(--txt2);margin-bottom:32px;max-width:400px;margin-left:auto;margin-right:auto}
+.err-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.err-link{padding:12px 28px;border-radius:10px;font-family:var(--fn);font-size:14px;font-weight:600;text-decoration:none;transition:all .3s}
+.err-link-p{background:var(--grad);color:#fff}
+.err-link-p:hover{box-shadow:0 4px 20px var(--accent-g)}
+.err-link-o{border:2px solid var(--accent);color:var(--accent)}
+.err-link-o:hover{background:var(--accent-g)}
+html[dir="rtl"] .err-code{font-family:var(--fn-ar)}
+html[dir="rtl"] .err-title,html[dir="rtl"] .err-desc{font-family:var(--fn-ar-b)}
+html[dir="rtl"] .err-link{font-family:var(--fn-ar-b)}
+.lang-sw{position:fixed;top:20px;right:20px;z-index:100;display:flex;gap:8px}
+.lang-sw button{padding:7px 16px;border:1px solid var(--bdr);border-radius:8px;background:var(--card);color:var(--muted);cursor:pointer;font-family:var(--fn);font-size:12px;font-weight:500;transition:all .3s}
+.lang-sw button.on{background:var(--grad);color:#fff;border-color:transparent}
+</style>
+</head>
+<body class="loaded">
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+<div class="lang-sw">
+  <button class="on" onclick="setL('en')">EN</button>
+  <button onclick="setL('ar')">عربي</button>
+</div>
+<div class="err-wrap">
+  <div>
+    <div class="err-code">404</div>
+    <div class="err-title" id="t-en">Page Not Found</div>
+    <div class="err-title" id="t-ar" style="display:none">الصفحة غير موجودة</div>
+    <div class="err-desc" id="d-en">The page you're looking for doesn't exist or has been moved.</div>
+    <div class="err-desc" id="d-ar" style="display:none">الصفحة اللي بتدور عليها مش موجودة أو اتنقلت.</div>
+    <div class="err-links" id="l-en">
+      <a class="err-link err-link-p" href="./">Back to Portfolio</a>
+      <a class="err-link err-link-o" href="./blog/">Visit Blog</a>
+    </div>
+    <div class="err-links" id="l-ar" style="display:none">
+      <a class="err-link err-link-p" href="./">العودة للبورتفوليو</a>
+      <a class="err-link err-link-o" href="./blog/">زيارة المدونة</a>
+    </div>
+  </div>
+</div>
+<script>
+function setL(l){
+  var h=document.documentElement,b=document.querySelectorAll('.lang-sw button');
+  if(l==='ar'){h.dir='rtl';h.lang='ar';b[0].classList.remove('on');b[1].classList.add('on');
+    document.getElementById('t-en').style.display='none';document.getElementById('t-ar').style.display='';
+    document.getElementById('d-en').style.display='none';document.getElementById('d-ar').style.display='';
+    document.getElementById('l-en').style.display='none';document.getElementById('l-ar').style.display='flex';
+  }else{h.dir='ltr';h.lang='en';b[0].classList.add('on');b[1].classList.remove('on');
+    document.getElementById('t-en').style.display='';document.getElementById('t-ar').style.display='none';
+    document.getElementById('d-en').style.display='';document.getElementById('d-ar').style.display='none';
+    document.getElementById('l-en').style.display='flex';document.getElementById('l-ar').style.display='none';
+  }
+}
+try{var t=localStorage.getItem('cv-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}
+</script>
+</body>
+</html>
