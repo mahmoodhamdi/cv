@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Node.js &amp; TypeScript: Production Best Practices — Mahmoud Hamdy Fathy</title>
+<meta name="description" content="Everything you need to ship a production Node.js + TypeScript service — tsconfig, project structure, JWT auth, error handling, structured logging, Docker, and CI/CD pipelines.">
+<meta name="author" content="Mahmoud Hamdy Fathy">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mahmoodhamdi.github.io/cv/blog/posts/nodejs-typescript-best-practices.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js &amp; TypeScript: Production Best Practices">
+<meta property="og:description" content="Production-grade Node.js + TypeScript: tsconfig, JWT auth, error handling, logging, Docker, CI/CD.">
+<meta property="og:url" content="https://mahmoodhamdi.github.io/cv/blog/posts/nodejs-typescript-best-practices.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Node.js &amp; TypeScript: Production Best Practices">
+<meta name="twitter:description" content="Production-grade Node.js + TypeScript service — tsconfig, auth, logging, Docker, CI/CD.">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="../../css/themes.css">
+<link rel="stylesheet" href="../blog.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Node.js & TypeScript: Production Best Practices",
+  "description": "Everything you need to ship a production Node.js + TypeScript service.",
+  "author": { "@type": "Person", "name": "Mahmoud Hamdy Fathy", "url": "https://mahmoodhamdi.github.io/cv/" },
+  "datePublished": "2026-02-20",
+  "dateModified": "2026-02-20",
+  "url": "https://mahmoodhamdi.github.io/cv/blog/posts/nodejs-typescript-best-practices.html",
+  "publisher": { "@type": "Person", "name": "Mahmoud Hamdy Fathy" }
+}
+</script>
+</head>
+<body>
+
+<div class="read-progress" id="rp" aria-hidden="true"></div>
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+
+<header class="blog-topbar" role="banner">
+  <a href="../" class="back-link" aria-label="Back to blog">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    <span id="back-label">Blog</span>
+  </a>
+  <div class="topbar-right">
+    <button class="t-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg class="ic-light" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="ic-dark" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <div class="lang-tog" role="group" aria-label="Language selection">
+      <button class="l-btn on" onclick="setLang('en')">EN</button>
+      <button class="l-btn" onclick="setLang('ar')">عربي</button>
+    </div>
+  </div>
+</header>
+
+<div class="post-layout">
+
+  <article class="article-main" id="main-article">
+
+    <header class="post-header">
+      <div class="post-header-meta">
+        <span class="post-cat">Tutorial</span>
+        <span class="post-readtime">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          12 min read
+        </span>
+      </div>
+      <h1 id="post-title">Node.js &amp; TypeScript: Production Best Practices</h1>
+      <div class="author-card">
+        <div class="author-avatar" aria-hidden="true">MH</div>
+        <div class="author-info">
+          <div class="author-name">Mahmoud Hamdy Fathy</div>
+          <div class="post-publish-date">February 20, 2026</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- EN Content -->
+    <div id="en-content">
+      <div class="post-body">
+
+        <p>Running Node.js + TypeScript in production is more than just <code>tsc &amp;&amp; node dist/index.js</code>. Over three years of shipping backend services, I've settled on a set of practices that consistently produce stable, maintainable, and observable services. This is the guide I wish existed when I started.</p>
+
+        <h2 id="tsconfig">tsconfig.json — Get it Right First</h2>
+        <p>Most tutorials show a bare-minimum tsconfig. In production you want stricter settings:</p>
+
+        <pre><code>{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "CommonJS",
+    "lib": ["ES2022"],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts"]
+}</code></pre>
+
+        <p>The two settings that catch the most bugs: <code>noUncheckedIndexedAccess</code> (array and object access returns <code>T | undefined</code>, not just <code>T</code>) and <code>exactOptionalPropertyTypes</code> (prevents accidentally assigning <code>undefined</code> to optional properties).</p>
+
+        <h2 id="project-structure">Project Structure</h2>
+        <p>I use a feature-based structure, similar to what I described in the Flutter clean architecture post. The key is separating routing, business logic, and data access from day one:</p>
+
+        <pre><code>src/
+├── config/
+│   ├── env.ts             # Validated env vars (zod)
+│   └── database.ts
+├── middleware/
+│   ├── auth.ts            # JWT verification
+│   ├── errorHandler.ts    # Global error handler
+│   ├── validate.ts        # express-validator wrapper
+│   └── rateLimiter.ts
+├── features/
+│   └── users/
+│       ├── users.router.ts
+│       ├── users.controller.ts
+│       ├── users.service.ts
+│       ├── users.repository.ts
+│       └── users.schema.ts    # Zod/validation schemas
+├── shared/
+│   ├── errors.ts          # Custom error classes
+│   ├── logger.ts          # Pino logger
+│   └── httpClient.ts      # Axios wrapper
+├── types/
+│   └── express.d.ts       # Augmented Express types
+└── app.ts</code></pre>
+
+        <h2 id="env-validation">Environment Variable Validation</h2>
+        <p>Never use <code>process.env.FOO</code> directly throughout your codebase. Validate all env vars at startup using Zod so your service fails fast with a clear error message, not a cryptic runtime crash three hours after deployment.</p>
+
+        <pre><code>// src/config/env.ts
+import { z } from 'zod';
+
+const envSchema = z.object({
+  NODE_ENV: z.enum(['development', 'production', 'test']),
+  PORT: z.coerce.number().default(3000),
+  DATABASE_URL: z.string().url(),
+  JWT_SECRET: z.string().min(32),
+  JWT_EXPIRES_IN: z.string().default('7d'),
+  REDIS_URL: z.string().url().optional(),
+});
+
+const result = envSchema.safeParse(process.env);
+if (!result.success) {
+  console.error('Invalid environment variables:');
+  console.error(result.error.flatten().fieldErrors);
+  process.exit(1);
+}
+
+export const env = result.data;</code></pre>
+
+        <h2 id="error-handling">Global Error Handling</h2>
+        <p>All errors flow to a single Express error-handling middleware. Custom error classes carry an HTTP status code and a <code>isOperational</code> flag — operational errors (bad input, not found) return JSON; programming errors crash the process so PM2/Docker restarts it cleanly.</p>
+
+        <pre><code>// src/shared/errors.ts
+export class AppError extends Error {
+  constructor(
+    public readonly statusCode: number,
+    message: string,
+    public readonly isOperational = true
+  ) {
+    super(message);
+    Object.setPrototypeOf(this, AppError.prototype);
+  }
+}
+
+export class NotFoundError extends AppError {
+  constructor(resource = 'Resource') {
+    super(404, `${resource} not found`);
+  }
+}
+
+export class UnauthorizedError extends AppError {
+  constructor(message = 'Unauthorized') {
+    super(401, message);
+  }
+}
+
+export class ValidationError extends AppError {
+  constructor(public readonly errors: object) {
+    super(422, 'Validation failed');
+  }
+}</code></pre>
+
+        <pre><code>// src/middleware/errorHandler.ts
+import { Request, Response, NextFunction } from 'express';
+import { AppError } from '../shared/errors';
+import { logger } from '../shared/logger';
+
+export function errorHandler(
+  err: Error,
+  req: Request,
+  res: Response,
+  _next: NextFunction
+) {
+  if (err instanceof AppError) {
+    if (!err.isOperational) {
+      logger.fatal({ err }, 'Programming error — restarting');
+      process.exit(1);
+    }
+    return res.status(err.statusCode).json({
+      status: 'error',
+      message: err.message,
+      ...(err instanceof ValidationError ? { errors: err.errors } : {}),
+    });
+  }
+
+  logger.error({ err }, 'Unhandled error');
+  res.status(500).json({ status: 'error', message: 'Internal server error' });
+}</code></pre>
+
+        <h2 id="jwt-auth">JWT Authentication Pattern</h2>
+        <p>I keep JWT logic in a single module and use a typed augmented Express <code>Request</code> so TypeScript knows about <code>req.user</code> everywhere.</p>
+
+        <pre><code>// src/types/express.d.ts
+declare namespace Express {
+  interface Request {
+    user?: { id: string; email: string; role: string };
+  }
+}
+
+// src/middleware/auth.ts
+import { Request, Response, NextFunction } from 'express';
+import jwt from 'jsonwebtoken';
+import { env } from '../config/env';
+import { UnauthorizedError } from '../shared/errors';
+
+export function authenticate(req: Request, _res: Response, next: NextFunction) {
+  const header = req.headers.authorization;
+  if (!header?.startsWith('Bearer ')) throw new UnauthorizedError();
+
+  const token = header.slice(7);
+  try {
+    const payload = jwt.verify(token, env.JWT_SECRET) as Express.Request['user'];
+    req.user = payload;
+    next();
+  } catch {
+    throw new UnauthorizedError('Token invalid or expired');
+  }
+}</code></pre>
+
+        <h2 id="validation">Request Validation with express-validator</h2>
+        <p>I contributed to express-validator, so I know it well. Always centralize your validation chains and run them before the controller:</p>
+
+        <pre><code>// src/features/users/users.schema.ts
+import { body } from 'express-validator';
+
+export const registerSchema = [
+  body('email').isEmail().normalizeEmail(),
+  body('password').isLength({ min: 8 }).withMessage('Password must be at least 8 characters'),
+  body('name').trim().notEmpty().isLength({ max: 100 }),
+];
+
+// src/middleware/validate.ts
+import { validationResult } from 'express-validator';
+import { Request, Response, NextFunction } from 'express';
+import { ValidationError } from '../shared/errors';
+
+export function validate(req: Request, _res: Response, next: NextFunction) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    throw new ValidationError(errors.array());
+  }
+  next();
+}
+
+// src/features/users/users.router.ts
+router.post('/register', registerSchema, validate, usersController.register);</code></pre>
+
+        <h2 id="logging">Structured JSON Logging with Pino</h2>
+        <p>Console.log is for scripts. Production services need structured logs that a log aggregator (Loki, CloudWatch, Datadog) can query. Pino is the fastest Node.js logger and produces newline-delimited JSON:</p>
+
+        <pre><code>// src/shared/logger.ts
+import pino from 'pino';
+import { env } from '../config/env';
+
+export const logger = pino({
+  level: env.NODE_ENV === 'production' ? 'info' : 'debug',
+  transport: env.NODE_ENV !== 'production'
+    ? { target: 'pino-pretty', options: { colorize: true } }
+    : undefined,
+  base: { service: 'api' },
+  timestamp: pino.stdTimeFunctions.isoTime,
+  redact: ['req.headers.authorization', 'body.password'],
+});</code></pre>
+
+        <h2 id="docker">Docker for Production</h2>
+        <p>Use a multi-stage Dockerfile to keep the production image lean. The builder stage compiles TypeScript; the runner stage copies only the compiled output and production node_modules.</p>
+
+        <pre><code># Dockerfile
+FROM node:20-alpine AS builder
+WORKDIR /app
+COPY package*.json tsconfig.json ./
+RUN npm ci
+COPY src/ ./src/
+RUN npm run build
+
+FROM node:20-alpine AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+COPY package*.json ./
+RUN npm ci --omit=dev
+COPY --from=builder /app/dist ./dist
+EXPOSE 3000
+USER node
+CMD ["node", "dist/app.js"]</code></pre>
+
+        <h2 id="cicd">CI/CD with GitHub Actions</h2>
+        <p>A minimal pipeline: lint, type-check, test, build Docker image, push to registry, deploy. The key is running type-check (<code>tsc --noEmit</code>) separately from the build so errors surface with readable output.</p>
+
+        <pre><code># .github/workflows/deploy.yml
+name: Deploy
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20', cache: 'npm' }
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run type-check
+      - run: npm test
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and push Docker image
+        run: |
+          docker build -t ghcr.io/${{ github.repository }}:${{ github.sha }} .
+          docker push ghcr.io/${{ github.repository }}:${{ github.sha }}</code></pre>
+
+        <h2 id="prisma">Prisma vs Mongoose — When to Use Which</h2>
+        <p>This comes up constantly. My rule: use Prisma with PostgreSQL for anything that has relational data or requires transactions. Use Mongoose with MongoDB when you need flexible schemas, full-text search, or are already on a Mongo stack. Never mix ORMs in the same service — pick one and commit.</p>
+
+        <blockquote>
+          <p>TypeScript's value multiplies with a typed ORM. A Prisma schema gives you end-to-end type safety from database to API response with zero extra effort.</p>
+        </blockquote>
+
+        <h2 id="checklist">Production Readiness Checklist</h2>
+        <ul>
+          <li>All env vars validated at startup with Zod</li>
+          <li>Global error handler catches all unhandled errors</li>
+          <li>All routes have authentication + rate limiting middleware</li>
+          <li>All user inputs validated with express-validator</li>
+          <li>Structured JSON logs with correlation IDs per request</li>
+          <li>Graceful shutdown: drain connections before exiting on SIGTERM</li>
+          <li>Health check endpoint at <code>GET /health</code> for load balancers</li>
+          <li>Dockerfile uses non-root user (<code>USER node</code>)</li>
+          <li>Secrets stored in environment variables, never in code</li>
+          <li>Dependencies pinned in <code>package-lock.json</code>, npm ci in CI</li>
+        </ul>
+
+      </div>
+    </div>
+
+    <!-- AR Content -->
+    <div id="ar-content" style="display:none" dir="rtl">
+      <div class="post-body ar-content">
+
+        <p>تشغيل Node.js + TypeScript في الإنتاج أكثر بكثير من مجرد <code>tsc &amp;&amp; node dist/index.js</code>. على مدار ثلاث سنوات من إطلاق خدمات الباك إند، استقررت على مجموعة من الممارسات التي تنتج باستمرار خدمات مستقرة وقابلة للصيانة ومراقبة. هذا هو الدليل الذي كنت أتمنى أن يكون موجودًا عندما بدأت.</p>
+
+        <h2 id="tsconfig-ar">tsconfig.json — اضبطه بشكل صحيح أولاً</h2>
+        <p>معظم الدروس تُظهر tsconfig بحد أدنى. في الإنتاج تريد إعدادات أصرم. أهم إعدادَين لالتقاط أكثر الأخطاء: <code>noUncheckedIndexedAccess</code> (الوصول إلى المصفوفات والكائنات يُرجع <code>T | undefined</code> وليس <code>T</code> فقط) و<code>exactOptionalPropertyTypes</code> (يمنع تعيين <code>undefined</code> للخصائص الاختيارية عن طريق الخطأ).</p>
+
+        <pre><code>{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "CommonJS",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitReturns": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "esModuleInterop": true,
+    "sourceMap": true
+  }
+}</code></pre>
+
+        <h2 id="structure-ar">هيكل المشروع</h2>
+        <p>أستخدم هيكلًا قائمًا على الميزات. المفتاح هو فصل التوجيه ومنطق الأعمال وصول البيانات من اليوم الأول:</p>
+
+        <pre><code>src/
+├── config/
+│   └── env.ts             # متغيرات البيئة المُتحقق منها
+├── middleware/
+│   ├── auth.ts            # التحقق من JWT
+│   ├── errorHandler.ts    # معالج الأخطاء العام
+│   └── validate.ts        # غلاف express-validator
+├── features/
+│   └── users/
+│       ├── users.router.ts
+│       ├── users.controller.ts
+│       ├── users.service.ts
+│       └── users.repository.ts
+└── app.ts</code></pre>
+
+        <h2 id="env-ar">التحقق من متغيرات البيئة</h2>
+        <p>لا تستخدم <code>process.env.FOO</code> مباشرة في قاعدة الكود. تحقق من جميع متغيرات البيئة عند البدء باستخدام Zod حتى تفشل خدمتك بسرعة برسالة خطأ واضحة، لا بعطل غامض بعد ساعات من النشر.</p>
+
+        <pre><code>// src/config/env.ts
+import { z } from 'zod';
+
+const envSchema = z.object({
+  NODE_ENV: z.enum(['development', 'production', 'test']),
+  PORT: z.coerce.number().default(3000),
+  DATABASE_URL: z.string().url(),
+  JWT_SECRET: z.string().min(32),
+});
+
+const result = envSchema.safeParse(process.env);
+if (!result.success) {
+  console.error('متغيرات البيئة غير صالحة:');
+  console.error(result.error.flatten().fieldErrors);
+  process.exit(1);
+}
+
+export const env = result.data;</code></pre>
+
+        <h2 id="errors-ar">معالجة الأخطاء العامة</h2>
+        <p>جميع الأخطاء تتدفق إلى middleware معالجة خطأ واحدة في Express. فئات الخطأ المخصصة تحمل كود HTTP وعلامة <code>isOperational</code> — الأخطاء التشغيلية (مدخلات سيئة، غير موجود) تُرجع JSON؛ أخطاء البرمجة تُوقف العملية حتى يعيد PM2/Docker تشغيلها بشكل نظيف.</p>
+
+        <pre><code>// الأخطاء المخصصة
+export class AppError extends Error {
+  constructor(
+    public readonly statusCode: number,
+    message: string,
+    public readonly isOperational = true
+  ) {
+    super(message);
+  }
+}
+
+export class NotFoundError extends AppError {
+  constructor(resource = 'المورد') {
+    super(404, `${resource} غير موجود`);
+  }
+}
+
+export class UnauthorizedError extends AppError {
+  constructor() { super(401, 'غير مصرح'); }
+}</code></pre>
+
+        <h2 id="jwt-ar">نمط مصادقة JWT</h2>
+        <p>أحتفظ بمنطق JWT في وحدة واحدة وأستخدم نوع Express <code>Request</code> الموسّع بالـ TypeScript حتى يعرف TypeScript عن <code>req.user</code> في كل مكان. هذا يمنع أخطاء التشغيل الناتجة عن الوصول إلى معلومات المستخدم في مسارات غير محمية.</p>
+
+        <h2 id="validation-ar">التحقق من الطلبات مع express-validator</h2>
+        <p>ساهمت في express-validator، لذا أعرفه جيدًا. احرص دائمًا على مركزة chains التحقق وتشغيلها قبل الـ controller:</p>
+
+        <pre><code>// schemas التحقق
+export const registerSchema = [
+  body('email').isEmail().normalizeEmail(),
+  body('password').isLength({ min: 8 })
+    .withMessage('كلمة المرور يجب أن تكون 8 أحرف على الأقل'),
+  body('name').trim().notEmpty().isLength({ max: 100 }),
+];
+
+// middleware التحقق
+export function validate(req, _res, next) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    throw new ValidationError(errors.array());
+  }
+  next();
+}</code></pre>
+
+        <h2 id="logging-ar">تسجيل JSON منظم مع Pino</h2>
+        <p>console.log للسكريبتات. الخدمات الإنتاجية تحتاج سجلات منظمة يمكن لأداة تجميع السجلات (Loki أو CloudWatch أو Datadog) الاستعلام عنها. Pino هو أسرع logger في Node.js وينتج JSON محدد بسطر جديد:</p>
+
+        <pre><code>export const logger = pino({
+  level: env.NODE_ENV === 'production' ? 'info' : 'debug',
+  base: { service: 'api' },
+  timestamp: pino.stdTimeFunctions.isoTime,
+  redact: ['req.headers.authorization', 'body.password'],
+});</code></pre>
+
+        <h2 id="docker-ar">Docker للإنتاج</h2>
+        <p>استخدم Dockerfile متعدد المراحل للحفاظ على صورة الإنتاج صغيرة. مرحلة البناء تُجمّع TypeScript؛ مرحلة التشغيل تنسخ فقط المُخرَج المُجمَّع وnode_modules للإنتاج.</p>
+
+        <pre><code># Dockerfile
+FROM node:20-alpine AS builder
+WORKDIR /app
+COPY package*.json tsconfig.json ./
+RUN npm ci
+COPY src/ ./src/
+RUN npm run build
+
+FROM node:20-alpine AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+COPY package*.json ./
+RUN npm ci --omit=dev
+COPY --from=builder /app/dist ./dist
+EXPOSE 3000
+USER node
+CMD ["node", "dist/app.js"]</code></pre>
+
+        <h2 id="prisma-ar">Prisma مقابل Mongoose</h2>
+        <p>هذا السؤال يطرح دائمًا. قاعدتي: استخدم Prisma مع PostgreSQL لأي شيء له بيانات علائقية أو يتطلب transactions. استخدم Mongoose مع MongoDB عندما تحتاج schemas مرنة أو بحث نصي كامل أو تعمل بالفعل على Mongo stack. لا تخلط أبدًا بين ORMs في نفس الخدمة.</p>
+
+        <blockquote>
+          <p>قيمة TypeScript تتضاعف مع ORM بأنواع. مخطط Prisma يمنحك type safety من نهاية إلى نهاية — من قاعدة البيانات إلى استجابة API — بجهد صفري إضافي.</p>
+        </blockquote>
+
+        <h2 id="checklist-ar">قائمة التحقق من جاهزية الإنتاج</h2>
+        <ul>
+          <li>جميع متغيرات البيئة مُتحقق منها عند البدء بـ Zod</li>
+          <li>معالج خطأ عام يلتقط جميع الأخطاء غير المعالجة</li>
+          <li>جميع المسارات لها middleware مصادقة + تحديد معدل</li>
+          <li>جميع مدخلات المستخدم مُتحقق منها بـ express-validator</li>
+          <li>سجلات JSON منظمة مع معرّفات ارتباط لكل طلب</li>
+          <li>إيقاف تشغيل لطيف: استنزاف الاتصالات قبل الخروج عند SIGTERM</li>
+          <li>نقطة فحص صحة على <code>GET /health</code> لموازنات التحميل</li>
+          <li>Dockerfile يستخدم مستخدمًا غير جذر (<code>USER node</code>)</li>
+          <li>الأسرار مخزنة في متغيرات البيئة، ليس في الكود أبدًا</li>
+        </ul>
+
+      </div>
+    </div>
+
+    <!-- Share -->
+    <div class="share-section">
+      <span class="share-label" id="share-label">Share</span>
+      <div class="share-btns">
+        <a class="share-btn" href="https://twitter.com/intent/tweet?text=Node.js%20%26%20TypeScript%3A%20Production%20Best%20Practices&url=https%3A%2F%2Fmahmoodhamdi.github.io%2Fcv%2Fblog%2Fposts%2Fnodejs-typescript-best-practices.html" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Twitter
+        </a>
+        <a class="share-btn" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fmahmoodhamdi.github.io%2Fcv%2Fblog%2Fposts%2Fnodejs-typescript-best-practices.html" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <button class="share-btn copy-btn" onclick="copyLink(this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          <span id="copy-label">Copy Link</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Related Posts -->
+    <div class="related-section">
+      <h3 id="related-title">Related Articles</h3>
+      <div class="related-grid">
+        <a href="flutter-clean-architecture.html" class="related-card">
+          <span class="post-cat">Tutorial</span>
+          <h4>Flutter Clean Architecture: A Practical Guide</h4>
+          <span>10 min read &middot; Feb 3, 2026</span>
+        </a>
+        <a href="building-salla-bot.html" class="related-card">
+          <span class="post-cat">Tutorial</span>
+          <h4>Building an AI-Powered Salla Bot</h4>
+          <span>8 min read &middot; Jan 15, 2026</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Post Nav -->
+    <nav class="post-nav" aria-label="Post navigation">
+      <a href="flutter-clean-architecture.html" class="post-nav-btn prev">
+        <span>Previous Post</span>
+        <strong>Flutter Clean Architecture: A Practical Guide</strong>
+      </a>
+      <a href="open-source-contributions-journey.html" class="post-nav-btn next">
+        <span>Next Post</span>
+        <strong>My Open Source Journey</strong>
+      </a>
+    </nav>
+
+  </article>
+
+  <!-- TOC Sidebar -->
+  <aside class="toc-sidebar" aria-label="Table of contents">
+    <div class="toc-box">
+      <h4 id="toc-title">On This Page</h4>
+      <ul class="toc-list" id="toc-en">
+        <li><a href="#tsconfig">tsconfig.json</a></li>
+        <li><a href="#project-structure">Project Structure</a></li>
+        <li><a href="#env-validation">Env Validation</a></li>
+        <li><a href="#error-handling">Error Handling</a></li>
+        <li><a href="#jwt-auth">JWT Auth</a></li>
+        <li><a href="#validation">Request Validation</a></li>
+        <li><a href="#logging">Structured Logging</a></li>
+        <li><a href="#docker">Docker</a></li>
+        <li><a href="#cicd">CI/CD</a></li>
+        <li><a href="#prisma">Prisma vs Mongoose</a></li>
+        <li><a href="#checklist">Checklist</a></li>
+      </ul>
+      <ul class="toc-list" id="toc-ar" style="display:none">
+        <li><a href="#tsconfig-ar">tsconfig.json</a></li>
+        <li><a href="#structure-ar">هيكل المشروع</a></li>
+        <li><a href="#env-ar">التحقق من متغيرات البيئة</a></li>
+        <li><a href="#errors-ar">معالجة الأخطاء</a></li>
+        <li><a href="#jwt-ar">مصادقة JWT</a></li>
+        <li><a href="#validation-ar">التحقق من الطلبات</a></li>
+        <li><a href="#logging-ar">التسجيل المنظم</a></li>
+        <li><a href="#docker-ar">Docker</a></li>
+        <li><a href="#prisma-ar">Prisma مقابل Mongoose</a></li>
+        <li><a href="#checklist-ar">قائمة التحقق</a></li>
+      </ul>
+    </div>
+  </aside>
+
+</div>
+
+<footer class="blog-footer" role="contentinfo">
+  <p>&copy; 2026 <a href="../../">Mahmoud Hamdy Fathy</a> &middot; <a href="../">Blog</a></p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  function toggleTheme(){
+    const h=document.documentElement;
+    const next=h.getAttribute('data-theme')==='dark'?'light':'dark';
+    h.setAttribute('data-theme',next);
+    localStorage.setItem('theme',next);
+  }
+  window.toggleTheme=toggleTheme;
+  const saved=localStorage.getItem('theme');
+  if(saved) document.documentElement.setAttribute('data-theme',saved);
+
+  const rp=document.getElementById('rp');
+  window.addEventListener('scroll',()=>{
+    const max=document.documentElement.scrollHeight-window.innerHeight;
+    rp.style.width=(window.scrollY/max*100)+'%';
+  },{passive:true});
+
+  function setLang(lang){
+    const isAr=lang==='ar';
+    document.documentElement.setAttribute('lang',lang);
+    document.documentElement.setAttribute('dir',isAr?'rtl':'ltr');
+    document.getElementById('en-content').style.display=isAr?'none':'block';
+    document.getElementById('ar-content').style.display=isAr?'block':'none';
+    document.getElementById('toc-en').style.display=isAr?'none':'block';
+    document.getElementById('toc-ar').style.display=isAr?'block':'none';
+    document.getElementById('post-title').textContent=isAr?'أفضل ممارسات Node.js و TypeScript للإنتاج':'Node.js & TypeScript: Production Best Practices';
+    document.getElementById('back-label').textContent=isAr?'المدونة':'Blog';
+    document.getElementById('share-label').textContent=isAr?'مشاركة':'Share';
+    document.getElementById('related-title').textContent=isAr?'مقالات ذات صلة':'Related Articles';
+    document.getElementById('copy-label').textContent=isAr?'نسخ الرابط':'Copy Link';
+    document.getElementById('toc-title').textContent=isAr?'في هذه الصفحة':'On This Page';
+    document.querySelectorAll('.l-btn').forEach(b=>{
+      b.classList.remove('on');
+      if((lang==='en'&&b.textContent.trim()==='EN')||(lang==='ar'&&b.textContent.trim()==='عربي')) b.classList.add('on');
+    });
+    localStorage.setItem('lang',lang);
+  }
+  window.setLang=setLang;
+  const savedLang=localStorage.getItem('lang');
+  if(savedLang) setLang(savedLang);
+
+  function copyLink(btn){
+    navigator.clipboard.writeText(window.location.href).then(()=>{
+      btn.classList.add('copied');
+      document.getElementById('copy-label').textContent='Copied!';
+      setTimeout(()=>{ btn.classList.remove('copied'); document.getElementById('copy-label').textContent='Copy Link'; },2000);
+    });
+  }
+  window.copyLink=copyLink;
+
+  document.body.classList.add('loaded');
+})();
+</script>
+</body>
+</html>

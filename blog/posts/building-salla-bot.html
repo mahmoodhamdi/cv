@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building an AI-Powered Salla Bot — Mahmoud Hamdy Fathy</title>
+<meta name="description" content="A deep dive into integrating with Salla e-commerce platform using Node.js, building a Telegram bot for customer support, handling webhooks, and automating order tracking.">
+<meta name="author" content="Mahmoud Hamdy Fathy">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mahmoodhamdi.github.io/cv/blog/posts/building-salla-bot.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Building an AI-Powered Salla Bot">
+<meta property="og:description" content="Node.js + Telegram integration with the Salla e-commerce platform — webhooks, order tracking, and product recommendations.">
+<meta property="og:url" content="https://mahmoodhamdi.github.io/cv/blog/posts/building-salla-bot.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Building an AI-Powered Salla Bot">
+<meta name="twitter:description" content="Node.js + Telegram integration with the Salla e-commerce platform.">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="../../css/themes.css">
+<link rel="stylesheet" href="../blog.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Building an AI-Powered Salla Bot",
+  "description": "A deep dive into integrating with Salla e-commerce platform using Node.js and building a Telegram bot for automated customer support.",
+  "author": { "@type": "Person", "name": "Mahmoud Hamdy Fathy", "url": "https://mahmoodhamdi.github.io/cv/" },
+  "datePublished": "2026-01-15",
+  "dateModified": "2026-01-15",
+  "url": "https://mahmoodhamdi.github.io/cv/blog/posts/building-salla-bot.html",
+  "publisher": { "@type": "Person", "name": "Mahmoud Hamdy Fathy" }
+}
+</script>
+</head>
+<body>
+
+<div class="read-progress" id="rp" aria-hidden="true"></div>
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+
+<!-- Top Bar -->
+<header class="blog-topbar" role="banner">
+  <a href="../" class="back-link" aria-label="Back to blog">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    <span id="back-label">Blog</span>
+  </a>
+  <div class="topbar-right">
+    <button class="t-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg class="ic-light" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="ic-dark" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <div class="lang-tog" role="group" aria-label="Language selection">
+      <button class="l-btn on" onclick="setLang('en')">EN</button>
+      <button class="l-btn" onclick="setLang('ar')">عربي</button>
+    </div>
+  </div>
+</header>
+
+<div class="post-layout">
+
+  <!-- Article -->
+  <article class="article-main" id="main-article">
+
+    <header class="post-header">
+      <div class="post-header-meta">
+        <span class="post-cat">Tutorial</span>
+        <span class="post-readtime">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          8 min read
+        </span>
+      </div>
+      <h1 id="post-title">Building an AI-Powered Salla Bot</h1>
+      <div class="author-card">
+        <div class="author-avatar" aria-hidden="true">MH</div>
+        <div class="author-info">
+          <div class="author-name">Mahmoud Hamdy Fathy</div>
+          <div class="post-publish-date">January 15, 2026</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- EN Content -->
+    <div id="en-content">
+      <div class="post-body">
+
+        <p>Salla is the dominant e-commerce platform in Saudi Arabia and the wider Gulf region. When a client came to me needing a smart Telegram bot that could respond to customer inquiries, track orders in real time, and push personalized product recommendations — I knew I was in for an interesting build. This article walks through the architecture, the Salla API integration, and the Telegram bot logic that ties it all together.</p>
+
+        <h2 id="why-salla">Why Salla?</h2>
+        <p>Salla provides a robust REST API and a webhook system that covers the full order lifecycle: order creation, payment confirmation, shipment updates, and delivery. It also exposes a product catalog API that you can query for recommendations. The platform is deeply embedded in Gulf e-commerce culture, and merchants there expect automation that speaks Arabic naturally.</p>
+
+        <h2 id="project-setup">Project Setup</h2>
+        <p>The stack is intentionally minimal: Node.js 20 with TypeScript, <code>telegraf</code> for the Telegram bot, <code>axios</code> for HTTP calls to Salla, and <code>express</code> to receive webhooks. Here is the project skeleton:</p>
+
+        <pre><code>salla-bot/
+├── src/
+│   ├── bot/
+│   │   ├── commands.ts       # /start, /order, /track
+│   │   ├── scenes.ts         # Conversation flows
+│   │   └── middleware.ts     # Auth, rate-limit
+│   ├── salla/
+│   │   ├── api.ts            # Salla REST client
+│   │   ├── webhooks.ts       # Webhook handlers
+│   │   └── types.ts          # Salla response types
+│   ├── recommendations/
+│   │   └── engine.ts         # Product scoring logic
+│   ├── webhook-server.ts     # Express app for Salla webhooks
+│   └── index.ts              # Entry point
+├── tsconfig.json
+└── package.json</code></pre>
+
+        <h2 id="salla-api-client">Building the Salla API Client</h2>
+        <p>Salla uses OAuth 2.0. Once you have your access token, every call goes through their base URL. The important thing is to cache tokens in Redis or a simple in-memory store and refresh before expiry.</p>
+
+        <pre><code>// src/salla/api.ts
+import axios, { AxiosInstance } from 'axios';
+
+const BASE = 'https://api.salla.dev/admin/v2';
+
+export class SallaClient {
+  private http: AxiosInstance;
+
+  constructor(private accessToken: string) {
+    this.http = axios.create({
+      baseURL: BASE,
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
+  }
+
+  async getOrder(orderId: string) {
+    const { data } = await this.http.get(`/orders/${orderId}`);
+    return data.data;
+  }
+
+  async getProducts(query?: string, limit = 10) {
+    const params = { per_page: limit, ...(query ? { keyword: query } : {}) };
+    const { data } = await this.http.get('/products', { params });
+    return data.data as SallaProduct[];
+  }
+
+  async getCustomerOrders(customerId: string) {
+    const { data } = await this.http.get(`/customers/${customerId}/orders`);
+    return data.data as SallaOrder[];
+  }
+}</code></pre>
+
+        <h2 id="webhook-handling">Handling Webhooks</h2>
+        <p>Salla sends webhook events to a URL you register in your app dashboard. The events include <code>order.created</code>, <code>order.status.updated</code>, and <code>order.shipped</code>. The key rule: always respond with <code>200 OK</code> within 3 seconds, then process asynchronously.</p>
+
+        <pre><code>// src/webhook-server.ts
+import express from 'express';
+import crypto from 'crypto';
+import { handleOrderCreated, handleOrderShipped } from './salla/webhooks';
+
+const app = express();
+app.use(express.json());
+
+function verifySignature(payload: string, signature: string, secret: string) {
+  const expected = crypto
+    .createHmac('sha256', secret)
+    .update(payload)
+    .digest('hex');
+  return crypto.timingSafeEqual(
+    Buffer.from(expected),
+    Buffer.from(signature)
+  );
+}
+
+app.post('/webhooks/salla', express.raw({ type: 'application/json' }), (req, res) => {
+  const sig = req.headers['x-salla-signature'] as string;
+  const rawBody = req.body.toString();
+
+  if (!verifySignature(rawBody, sig, process.env.SALLA_WEBHOOK_SECRET!)) {
+    return res.status(401).send('Invalid signature');
+  }
+
+  // Respond immediately
+  res.status(200).send('OK');
+
+  // Process asynchronously
+  const event = JSON.parse(rawBody);
+  setImmediate(() => routeWebhookEvent(event));
+});
+
+async function routeWebhookEvent(event: SallaWebhookEvent) {
+  switch (event.event) {
+    case 'order.created':    await handleOrderCreated(event.data);  break;
+    case 'order.shipped':    await handleOrderShipped(event.data);  break;
+  }
+}</code></pre>
+
+        <h2 id="telegram-bot">Building the Telegram Bot</h2>
+        <p>I use <code>telegraf</code> with TypeScript. The bot uses scenes (wizard flows) to guide users through multi-step conversations, like entering an order number for tracking. The key is persisting the user's Salla customer ID alongside their Telegram chat ID so we can fetch their data without re-authentication every time.</p>
+
+        <pre><code>// src/bot/commands.ts
+import { Telegraf, Markup } from 'telegraf';
+import { SallaClient } from '../salla/api';
+import { getLinkedCustomer } from '../store';
+
+export function registerCommands(bot: Telegraf) {
+  bot.command('start', ctx => {
+    ctx.reply(
+      'Welcome! I can help you track your Salla orders and discover products.\n\n' +
+      'Use /track to check an order or /recommend to get product suggestions.',
+      Markup.keyboard([['/track', '/recommend'], ['/orders', '/help']])
+        .resize()
+        .oneTime()
+    );
+  });
+
+  bot.command('track', async ctx => {
+    await ctx.reply('Please enter your order number:');
+    ctx.scene.enter('ORDER_TRACK_SCENE');
+  });
+
+  bot.command('orders', async ctx => {
+    const customer = await getLinkedCustomer(ctx.from!.id);
+    if (!customer) {
+      return ctx.reply('Link your account first with /link');
+    }
+    const salla = new SallaClient(customer.accessToken);
+    const orders = await salla.getCustomerOrders(customer.sallaId);
+    if (!orders.length) return ctx.reply('No orders found.');
+
+    const msg = orders.slice(0, 5).map(o =>
+      `Order #${o.reference_id} — ${o.status.name} — ${o.amounts.total.amount} ${o.currency}`
+    ).join('\n');
+
+    ctx.reply(msg);
+  });
+}</code></pre>
+
+        <h2 id="order-tracking">Real-Time Order Tracking</h2>
+        <p>When Salla fires an <code>order.status.updated</code> webhook, the handler looks up which Telegram user is linked to that order and sends them a proactive update. This is the core loop that makes the bot feel genuinely intelligent — customers get push notifications without polling.</p>
+
+        <pre><code>// src/salla/webhooks.ts
+import { bot } from '../bot';
+import { getLinkedChatId } from '../store';
+
+export async function handleOrderShipped(order: SallaOrder) {
+  const chatId = await getLinkedChatId(order.customer.id);
+  if (!chatId) return;
+
+  await bot.telegram.sendMessage(chatId,
+    `Your order #${order.reference_id} has been shipped!\n` +
+    `Estimated delivery: ${order.shipments?.[0]?.estimated_delivery ?? 'N/A'}`
+  );
+}</code></pre>
+
+        <h2 id="recommendations">Product Recommendation Engine</h2>
+        <p>The recommendation logic is intentionally simple — no ML model. It scores products based on three signals: category match with the customer's purchase history, price proximity to their average order value, and recency (newer products score higher). This works well for small-to-medium Salla stores and avoids the cold-start problem.</p>
+
+        <pre><code>// src/recommendations/engine.ts
+export function scoreProduct(product: SallaProduct, profile: CustomerProfile): number {
+  let score = 0;
+
+  // Category match
+  if (profile.topCategories.includes(product.category.id)) score += 40;
+
+  // Price proximity (within 20% of avg order value)
+  const priceDiff = Math.abs(product.price - profile.avgOrderValue);
+  if (priceDiff / profile.avgOrderValue < 0.2) score += 30;
+
+  // Recency — products added in last 30 days
+  const ageDays = (Date.now() - new Date(product.created_at).getTime()) / 86400000;
+  if (ageDays < 30) score += 20;
+
+  // Stock availability
+  if (product.quantity > 0) score += 10;
+
+  return score;
+}
+
+export function getTopRecommendations(
+  products: SallaProduct[],
+  profile: CustomerProfile,
+  limit = 5
+): SallaProduct[] {
+  return products
+    .map(p => ({ product: p, score: scoreProduct(p, profile) }))
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map(r => r.product);
+}</code></pre>
+
+        <h2 id="deployment">Deployment Notes</h2>
+        <p>I deploy this on a small VPS using PM2 with a Nginx reverse proxy. The webhook endpoint must be HTTPS, which means a valid SSL cert — I use Let's Encrypt via Certbot. One subtle issue: Salla requires your webhook URL to return HTTP 200 within 3 seconds, so never do synchronous database writes in the handler. Push everything to a queue or use <code>setImmediate</code>.</p>
+        <p>The bot runs 24/7 using long polling in development and webhooks in production. Telegraf handles both modes with a single config switch.</p>
+
+        <h2 id="lessons">Lessons Learned</h2>
+        <p>The biggest challenge was handling Arabic product names correctly. Some Salla merchants store product data with mixed LTR/RTL content, so Telegram's message rendering can look odd. The fix is to always wrap Arabic text in RTL Unicode marks (<code>\u202B</code>) before sending to Telegram.</p>
+        <p>Another lesson: always cache Salla API responses with a short TTL (60–120 seconds). The API has rate limits, and during a high-traffic flash sale the bot can receive dozens of tracking requests per minute from a single customer.</p>
+        <p>Overall, building on Salla's platform is a genuinely pleasant experience — their documentation is clear, the webhook events are granular, and the OAuth flow is standard. If you are building automation for Gulf e-commerce, Salla is the right starting point.</p>
+
+      </div>
+    </div>
+
+    <!-- AR Content -->
+    <div id="ar-content" style="display:none" dir="rtl">
+      <div class="post-body ar-content">
+
+        <p>سلة هي منصة التجارة الإلكترونية الأكثر انتشارًا في المملكة العربية السعودية ومنطقة الخليج بشكل عام. حين طلب مني أحد العملاء بناء بوت تيليجرام ذكي يستطيع الرد على استفسارات العملاء وتتبع الطلبات في الوقت الفعلي وإرسال توصيات مخصصة بالمنتجات، عرفت أن المشروع سيكون ممتعًا ومثيرًا للتحدي. هذا المقال يأخذك عبر المعمارية الكاملة، والتكامل مع API سلة، ومنطق البوت الذي يربط كل شيء معًا.</p>
+
+        <h2 id="why-salla-ar">لماذا سلة؟</h2>
+        <p>توفر سلة REST API قوية ونظام ويب هوك يغطي دورة حياة الطلب بالكامل: إنشاء الطلب، تأكيد الدفع، تحديثات الشحن، والتسليم. كما تتيح API الكتالوج لاستعلام المنتجات وعمل التوصيات. المنصة متجذرة عميقًا في ثقافة التجارة الإلكترونية الخليجية، والتجار هناك يتوقعون أتمتة تتكلم العربية بشكل طبيعي.</p>
+
+        <h2 id="project-setup-ar">إعداد المشروع</h2>
+        <p>المكدس التقني بسيط ومقصود: Node.js 20 مع TypeScript، و<code>telegraf</code> للبوت، و<code>axios</code> لاستدعاءات HTTP إلى سلة، و<code>express</code> لاستقبال الويب هوك. هيكل المشروع كالتالي:</p>
+
+        <pre><code>salla-bot/
+├── src/
+│   ├── bot/
+│   │   ├── commands.ts       # الأوامر /start, /order, /track
+│   │   ├── scenes.ts         # تدفقات المحادثة
+│   │   └── middleware.ts     # المصادقة والحد من المعدل
+│   ├── salla/
+│   │   ├── api.ts            # عميل REST لسلة
+│   │   ├── webhooks.ts       # معالجات الويب هوك
+│   │   └── types.ts          # أنواع TypeScript لردود سلة
+│   ├── recommendations/
+│   │   └── engine.ts         # منطق تسجيل المنتجات
+│   ├── webhook-server.ts     # تطبيق Express للويب هوك
+│   └── index.ts              # نقطة الدخول
+├── tsconfig.json
+└── package.json</code></pre>
+
+        <h2 id="salla-client-ar">بناء عميل سلة API</h2>
+        <p>تستخدم سلة نظام OAuth 2.0. بمجرد حصولك على access token، كل الاستدعاءات تمر عبر URL الأساسي. الشيء المهم هو تخزين التوكن في Redis أو ذاكرة مؤقتة وتجديده قبل انتهاء صلاحيته.</p>
+
+        <pre><code>// src/salla/api.ts
+import axios, { AxiosInstance } from 'axios';
+
+const BASE = 'https://api.salla.dev/admin/v2';
+
+export class SallaClient {
+  private http: AxiosInstance;
+
+  constructor(private accessToken: string) {
+    this.http = axios.create({
+      baseURL: BASE,
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
+  }
+
+  async getOrder(orderId: string) {
+    const { data } = await this.http.get(`/orders/${orderId}`);
+    return data.data;
+  }
+
+  async getProducts(query?: string, limit = 10) {
+    const params = { per_page: limit, ...(query ? { keyword: query } : {}) };
+    const { data } = await this.http.get('/products', { params });
+    return data.data;
+  }
+}</code></pre>
+
+        <h2 id="webhooks-ar">معالجة الويب هوك</h2>
+        <p>ترسل سلة أحداث الويب هوك إلى عنوان URL تسجله في لوحة التحكم. الأحداث تشمل <code>order.created</code> و<code>order.status.updated</code> و<code>order.shipped</code>. القاعدة الأساسية: رد دائمًا بـ <code>200 OK</code> خلال 3 ثوانٍ، ثم اعالج الحدث بشكل غير متزامن.</p>
+
+        <h2 id="telegram-ar">بناء بوت تيليجرام</h2>
+        <p>أستخدم <code>telegraf</code> مع TypeScript. البوت يستخدم scenes (تدفقات محادثة) لتوجيه المستخدمين خلال محادثات متعددة الخطوات، مثل إدخال رقم الطلب للتتبع. المفتاح هو تخزين معرّف عميل سلة بجانب معرّف محادثة تيليجرام حتى نتمكن من جلب بياناتهم دون إعادة المصادقة في كل مرة.</p>
+
+        <pre><code>// src/bot/commands.ts
+bot.command('orders', async ctx => {
+  const customer = await getLinkedCustomer(ctx.from!.id);
+  if (!customer) {
+    return ctx.reply('ربط حسابك أولاً باستخدام /link');
+  }
+  const salla = new SallaClient(customer.accessToken);
+  const orders = await salla.getCustomerOrders(customer.sallaId);
+  if (!orders.length) return ctx.reply('لا توجد طلبات.');
+
+  const msg = orders.slice(0, 5).map(o =>
+    `طلب #${o.reference_id} — ${o.status.name} — ${o.amounts.total.amount} ${o.currency}`
+  ).join('\n');
+
+  ctx.reply(msg);
+});</code></pre>
+
+        <h2 id="tracking-ar">تتبع الطلبات في الوقت الفعلي</h2>
+        <p>عندما تُطلق سلة حدث <code>order.status.updated</code>، يبحث المعالج عن مستخدم تيليجرام المرتبط بذلك الطلب ويرسل له إشعارًا فوريًا. هذه هي الحلقة الأساسية التي تجعل البوت يبدو ذكيًا حقًا — يحصل العملاء على إشعارات دون الحاجة للاستعلام المتكرر.</p>
+
+        <h2 id="recommendations-ar">محرك توصيات المنتجات</h2>
+        <p>منطق التوصيات بسيط ومقصود — لا يوجد نموذج تعلم آلي. يسجّل المنتجات بناءً على ثلاثة إشارات: تطابق الفئة مع تاريخ مشتريات العميل، وتقارب السعر من متوسط قيمة طلباته، والحداثة (المنتجات الأحدث تحصل على درجة أعلى).</p>
+
+        <h2 id="deployment-ar">ملاحظات النشر</h2>
+        <p>أنشر هذا على VPS صغير باستخدام PM2 مع Nginx كـ reverse proxy. عنوان URL للويب هوك يجب أن يكون HTTPS، وهذا يعني شهادة SSL صالحة — أستخدم Let's Encrypt عبر Certbot. نقطة دقيقة: تتطلب سلة أن يعيد URL الويب هوك الخاص بك HTTP 200 خلال 3 ثوانٍ، لذا لا تقم أبدًا بكتابات قاعدة بيانات متزامنة في المعالج. ادفع كل شيء إلى طابور انتظار أو استخدم <code>setImmediate</code>.</p>
+
+        <h2 id="lessons-ar">الدروس المستفادة</h2>
+        <p>أكبر تحدٍ واجهته كان التعامل مع أسماء المنتجات العربية بشكل صحيح. بعض تجار سلة يخزنون بيانات المنتجات بمحتوى مختلط LTR/RTL، مما يجعل عرض الرسائل في تيليجرام يبدو غريبًا. الحل هو تغليف النص العربي دائمًا بعلامات Unicode للـ RTL (<code>\u202B</code>) قبل الإرسال إلى تيليجرام.</p>
+        <p>درس آخر: خزّن دائمًا ردود Salla API مع TTL قصير (60-120 ثانية). الـ API لها حدود معدل، وأثناء تخفيضات المبيعات الكبيرة يمكن أن يتلقى البوت عشرات طلبات التتبع في الدقيقة من عميل واحد.</p>
+        <p>بشكل عام، البناء على منصة سلة تجربة ممتعة فعلًا — التوثيق واضح، أحداث الويب هوك دقيقة ومفصّلة، وتدفق OAuth قياسي. إذا كنت تبني أتمتة للتجارة الإلكترونية الخليجية، فسلة هي نقطة البداية الصحيحة.</p>
+
+      </div>
+    </div>
+
+    <!-- Share -->
+    <div class="share-section">
+      <span class="share-label" id="share-label">Share</span>
+      <div class="share-btns">
+        <a class="share-btn" id="tw-btn" href="https://twitter.com/intent/tweet?text=Building%20an%20AI-Powered%20Salla%20Bot&url=https%3A%2F%2Fmahmoodhamdi.github.io%2Fcv%2Fblog%2Fposts%2Fbuilding-salla-bot.html" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Twitter
+        </a>
+        <a class="share-btn" id="li-btn" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fmahmoodhamdi.github.io%2Fcv%2Fblog%2Fposts%2Fbuilding-salla-bot.html&title=Building%20an%20AI-Powered%20Salla%20Bot" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <button class="share-btn copy-btn" onclick="copyLink(this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          <span id="copy-label">Copy Link</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Related Posts -->
+    <div class="related-section">
+      <h3 id="related-title">Related Articles</h3>
+      <div class="related-grid">
+        <a href="nodejs-typescript-best-practices.html" class="related-card">
+          <span class="post-cat">Tutorial</span>
+          <h4>Node.js &amp; TypeScript: Production Best Practices</h4>
+          <span>12 min read &middot; Feb 20, 2026</span>
+        </a>
+        <a href="open-source-contributions-journey.html" class="related-card">
+          <span class="post-cat" style="background:rgba(129,140,248,.1);color:var(--accent2);border-color:rgba(129,140,248,.2)">Experience</span>
+          <h4>My Open Source Journey</h4>
+          <span>7 min read &middot; Mar 5, 2026</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Post Nav -->
+    <nav class="post-nav" aria-label="Post navigation">
+      <span></span>
+      <a href="flutter-clean-architecture.html" class="post-nav-btn next">
+        <span>Next Post</span>
+        <strong>Flutter Clean Architecture: A Practical Guide</strong>
+      </a>
+    </nav>
+
+  </article>
+
+  <!-- TOC Sidebar -->
+  <aside class="toc-sidebar" aria-label="Table of contents">
+    <div class="toc-box">
+      <h4 id="toc-title">On This Page</h4>
+      <ul class="toc-list" id="toc-en">
+        <li><a href="#why-salla">Why Salla?</a></li>
+        <li><a href="#project-setup">Project Setup</a></li>
+        <li><a href="#salla-api-client">Salla API Client</a></li>
+        <li><a href="#webhook-handling">Handling Webhooks</a></li>
+        <li><a href="#telegram-bot">Telegram Bot</a></li>
+        <li><a href="#order-tracking">Order Tracking</a></li>
+        <li><a href="#recommendations">Recommendations</a></li>
+        <li><a href="#deployment">Deployment</a></li>
+        <li><a href="#lessons">Lessons Learned</a></li>
+      </ul>
+      <ul class="toc-list" id="toc-ar" style="display:none">
+        <li><a href="#why-salla-ar">لماذا سلة؟</a></li>
+        <li><a href="#project-setup-ar">إعداد المشروع</a></li>
+        <li><a href="#salla-client-ar">عميل سلة API</a></li>
+        <li><a href="#webhooks-ar">معالجة الويب هوك</a></li>
+        <li><a href="#telegram-ar">بوت تيليجرام</a></li>
+        <li><a href="#tracking-ar">تتبع الطلبات</a></li>
+        <li><a href="#recommendations-ar">توصيات المنتجات</a></li>
+        <li><a href="#deployment-ar">النشر</a></li>
+        <li><a href="#lessons-ar">الدروس المستفادة</a></li>
+      </ul>
+    </div>
+  </aside>
+
+</div>
+
+<footer class="blog-footer" role="contentinfo">
+  <p>&copy; 2026 <a href="../../">Mahmoud Hamdy Fathy</a> &middot; <a href="../">Blog</a></p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  // Theme
+  function toggleTheme(){
+    const h=document.documentElement;
+    const next=h.getAttribute('data-theme')==='dark'?'light':'dark';
+    h.setAttribute('data-theme',next);
+    localStorage.setItem('theme',next);
+  }
+  window.toggleTheme=toggleTheme;
+  const saved=localStorage.getItem('theme');
+  if(saved) document.documentElement.setAttribute('data-theme',saved);
+
+  // Reading progress
+  const rp=document.getElementById('rp');
+  window.addEventListener('scroll',()=>{
+    const max=document.documentElement.scrollHeight-window.innerHeight;
+    rp.style.width=(window.scrollY/max*100)+'%';
+  },{passive:true});
+
+  // Lang
+  function setLang(lang){
+    const isAr=lang==='ar';
+    document.documentElement.setAttribute('lang',lang);
+    document.documentElement.setAttribute('dir',isAr?'rtl':'ltr');
+    document.getElementById('en-content').style.display=isAr?'none':'block';
+    document.getElementById('ar-content').style.display=isAr?'block':'none';
+    document.getElementById('toc-en').style.display=isAr?'none':'block';
+    document.getElementById('toc-ar').style.display=isAr?'block':'none';
+    document.getElementById('post-title').textContent=isAr?'بناء بوت ذكي لمنصة سلة':'Building an AI-Powered Salla Bot';
+    document.getElementById('back-label').textContent=isAr?'المدونة':'Blog';
+    document.getElementById('share-label').textContent=isAr?'مشاركة':'Share';
+    document.getElementById('related-title').textContent=isAr?'مقالات ذات صلة':'Related Articles';
+    document.getElementById('copy-label').textContent=isAr?'نسخ الرابط':'Copy Link';
+    document.getElementById('toc-title').textContent=isAr?'في هذه الصفحة':'On This Page';
+    document.querySelectorAll('.l-btn').forEach(b=>{
+      b.classList.remove('on');
+      if((lang==='en'&&b.textContent.trim()==='EN')||(lang==='ar'&&b.textContent.trim()==='عربي')) b.classList.add('on');
+    });
+    localStorage.setItem('lang',lang);
+  }
+  window.setLang=setLang;
+  const savedLang=localStorage.getItem('lang');
+  if(savedLang) setLang(savedLang);
+
+  // Copy link
+  function copyLink(btn){
+    navigator.clipboard.writeText(window.location.href).then(()=>{
+      btn.classList.add('copied');
+      document.getElementById('copy-label').textContent='Copied!';
+      setTimeout(()=>{
+        btn.classList.remove('copied');
+        document.getElementById('copy-label').textContent='Copy Link';
+      },2000);
+    });
+  }
+  window.copyLink=copyLink;
+
+  document.body.classList.add('loaded');
+})();
+</script>
+</body>
+</html>

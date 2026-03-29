@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Mahmoud Hamdy Fathy</title>
+<meta name="description" content="Technical articles on Node.js, Flutter, TypeScript, open source, and freelancing in MENA by Mahmoud Hamdy Fathy.">
+<meta name="author" content="Mahmoud Hamdy Fathy">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0a0f1a">
+<link rel="canonical" href="https://mahmoodhamdi.github.io/cv/blog/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blog — Mahmoud Hamdy Fathy">
+<meta property="og:description" content="Technical articles on Node.js, Flutter, TypeScript, open source, and freelancing in MENA.">
+<meta property="og:url" content="https://mahmoodhamdi.github.io/cv/blog/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Blog — Mahmoud Hamdy Fathy">
+<meta name="twitter:description" content="Technical articles on Node.js, Flutter, TypeScript, open source, and freelancing in MENA.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../css/themes.css">
+<link rel="stylesheet" href="blog.css">
+</head>
+<body>
+
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+<div class="orb orb-3" aria-hidden="true"></div>
+
+<!-- Top Bar -->
+<header class="blog-topbar" role="banner">
+  <a href="../" class="back-link" aria-label="Back to portfolio">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    <span id="back-label">Portfolio</span>
+  </a>
+  <div class="topbar-right">
+    <button class="t-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg class="ic-light" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="ic-dark" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <div class="lang-tog" role="group" aria-label="Language selection">
+      <button class="l-btn on" onclick="setLang('en')">EN</button>
+      <button class="l-btn" onclick="setLang('ar')">عربي</button>
+    </div>
+  </div>
+</header>
+
+<main class="blog-wrap">
+
+  <!-- EN Hero -->
+  <div id="hero-en" class="blog-hero">
+    <h1>Blog</h1>
+    <p>Thoughts on Node.js, Flutter, TypeScript, open source, and building software in the MENA region.</p>
+  </div>
+
+  <!-- AR Hero -->
+  <div id="hero-ar" class="blog-hero" style="display:none" dir="rtl">
+    <h1>المدونة</h1>
+    <p>مقالات تقنية في Node.js و Flutter و TypeScript والمصادر المفتوحة والعمل الحر في المنطقة العربية.</p>
+  </div>
+
+  <!-- Category Filters -->
+  <div class="cat-filters" role="group" aria-label="Filter posts by category">
+    <button class="cat-btn active" onclick="filterPosts('all')" data-cat="all">
+      <span class="en-txt">All</span><span class="ar-txt" style="display:none">الكل</span>
+    </button>
+    <button class="cat-btn" onclick="filterPosts('tutorial')" data-cat="tutorial">
+      <span class="en-txt">Tutorial</span><span class="ar-txt" style="display:none">شرح</span>
+    </button>
+    <button class="cat-btn" onclick="filterPosts('experience')" data-cat="experience">
+      <span class="en-txt">Experience</span><span class="ar-txt" style="display:none">تجربة</span>
+    </button>
+    <button class="cat-btn" onclick="filterPosts('guide')" data-cat="guide">
+      <span class="en-txt">Guide</span><span class="ar-txt" style="display:none">دليل</span>
+    </button>
+  </div>
+
+  <!-- Posts Grid -->
+  <div class="posts-grid" id="posts-grid" role="list">
+
+    <!-- Post 1 -->
+    <article class="post-card" data-category="tutorial" role="listitem">
+      <div class="post-card-meta">
+        <span class="post-cat">
+          <span class="en-txt">Tutorial</span>
+          <span class="ar-txt" style="display:none">شرح</span>
+        </span>
+        <span class="post-readtime">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          8 min read
+        </span>
+      </div>
+      <h2>
+        <span class="en-txt">Building an AI-Powered Salla Bot</span>
+        <span class="ar-txt" style="display:none">بناء بوت ذكي لمنصة سلة</span>
+      </h2>
+      <p class="post-excerpt">
+        <span class="en-txt">A deep dive into integrating with the Salla e-commerce platform using Node.js, building a Telegram bot for customer support, and automating order management with webhook-driven architecture.</span>
+        <span class="ar-txt" style="display:none">دليل تفصيلي للتكامل مع منصة سلة للتجارة الإلكترونية باستخدام Node.js وبناء بوت تيليجرام لدعم العملاء وأتمتة إدارة الطلبات.</span>
+      </p>
+      <div class="post-card-footer">
+        <span class="post-date">January 15, 2026</span>
+        <a href="posts/building-salla-bot.html" class="read-more">
+          <span class="en-txt">Read More →</span>
+          <span class="ar-txt" style="display:none">اقرأ المزيد ←</span>
+        </a>
+      </div>
+    </article>
+
+    <!-- Post 2 -->
+    <article class="post-card" data-category="tutorial" role="listitem">
+      <div class="post-card-meta">
+        <span class="post-cat">
+          <span class="en-txt">Tutorial</span>
+          <span class="ar-txt" style="display:none">شرح</span>
+        </span>
+        <span class="post-readtime">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          10 min read
+        </span>
+      </div>
+      <h2>
+        <span class="en-txt">Flutter Clean Architecture: A Practical Guide</span>
+        <span class="ar-txt" style="display:none">بنية Flutter النظيفة: دليل عملي</span>
+      </h2>
+      <p class="post-excerpt">
+        <span class="en-txt">Implement clean architecture in Flutter with domain, data, and presentation layers. Covers use cases, repository patterns, Bloc/Cubit, and dependency injection for scalable mobile apps.</span>
+        <span class="ar-txt" style="display:none">تطبيق البنية النظيفة في Flutter مع طبقات domain وdata وpresentation. يغطي use cases ونمط repository و Bloc/Cubit وحقن التبعيات.</span>
+      </p>
+      <div class="post-card-footer">
+        <span class="post-date">February 3, 2026</span>
+        <a href="posts/flutter-clean-architecture.html" class="read-more">
+          <span class="en-txt">Read More →</span>
+          <span class="ar-txt" style="display:none">اقرأ المزيد ←</span>
+        </a>
+      </div>
+    </article>
+
+    <!-- Post 3 -->
+    <article class="post-card" data-category="tutorial" role="listitem">
+      <div class="post-card-meta">
+        <span class="post-cat">
+          <span class="en-txt">Tutorial</span>
+          <span class="ar-txt" style="display:none">شرح</span>
+        </span>
+        <span class="post-readtime">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          12 min read
+        </span>
+      </div>
+      <h2>
+        <span class="en-txt">Node.js &amp; TypeScript: Production Best Practices</span>
+        <span class="ar-txt" style="display:none">أفضل ممارسات Node.js و TypeScript للإنتاج</span>
+      </h2>
+      <p class="post-excerpt">
+        <span class="en-txt">Everything you need to ship a production Node.js + TypeScript service — tsconfig, project structure, JWT auth, error handling, logging, Docker, and CI/CD.</span>
+        <span class="ar-txt" style="display:none">كل ما تحتاجه لإطلاق خدمة Node.js + TypeScript في الإنتاج: إعداد tsconfig والبنية والمصادقة ومعالجة الأخطاء والـ Docker.</span>
+      </p>
+      <div class="post-card-footer">
+        <span class="post-date">February 20, 2026</span>
+        <a href="posts/nodejs-typescript-best-practices.html" class="read-more">
+          <span class="en-txt">Read More →</span>
+          <span class="ar-txt" style="display:none">اقرأ المزيد ←</span>
+        </a>
+      </div>
+    </article>
+
+    <!-- Post 4 -->
+    <article class="post-card" data-category="experience" role="listitem">
+      <div class="post-card-meta">
+        <span class="post-cat" style="background:rgba(129,140,248,.1);color:var(--accent2);border-color:rgba(129,140,248,.2)">
+          <span class="en-txt">Experience</span>
+          <span class="ar-txt" style="display:none">تجربة</span>
+        </span>
+        <span class="post-readtime">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          7 min read
+        </span>
+      </div>
+      <h2>
+        <span class="en-txt">My Open Source Journey</span>
+        <span class="ar-txt" style="display:none">رحلتي في المصادر المفتوحة</span>
+      </h2>
+      <p class="post-excerpt">
+        <span class="en-txt">How I went from reading open source code to merging PRs into express-validator and Helmet.js. A personal story with practical tips for Arab developers who want to contribute.</span>
+        <span class="ar-txt" style="display:none">كيف انتقلت من قراءة كود المصادر المفتوحة إلى دمج PRs في express-validator و Helmet.js. قصة شخصية مع نصائح عملية للمطورين العرب.</span>
+      </p>
+      <div class="post-card-footer">
+        <span class="post-date">March 5, 2026</span>
+        <a href="posts/open-source-contributions-journey.html" class="read-more">
+          <span class="en-txt">Read More →</span>
+          <span class="ar-txt" style="display:none">اقرأ المزيد ←</span>
+        </a>
+      </div>
+    </article>
+
+    <!-- Post 5 -->
+    <article class="post-card" data-category="guide" role="listitem" style="grid-column: 1 / -1; max-width: 600px; margin: 0 auto; width: 100%;">
+      <div class="post-card-meta">
+        <span class="post-cat" style="background:rgba(52,211,153,.1);color:#34d399;border-color:rgba(52,211,153,.2)">
+          <span class="en-txt">Guide</span>
+          <span class="ar-txt" style="display:none">دليل</span>
+        </span>
+        <span class="post-readtime">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          9 min read
+        </span>
+      </div>
+      <h2>
+        <span class="en-txt">Freelancing in MENA: A Developer's Guide</span>
+        <span class="ar-txt" style="display:none">دليل العمل الحر للمطورين في المنطقة العربية</span>
+      </h2>
+      <p class="post-excerpt">
+        <span class="en-txt">Compare Mostaql, Khamsat, and Upwork for MENA developers. Pricing strategies, Arabic business communication, payment methods, and scaling from freelancer to agency.</span>
+        <span class="ar-txt" style="display:none">مقارنة مستقل وخمسات وUpwork للمطورين في المنطقة العربية. استراتيجيات التسعير والتواصل التجاري وطرق الدفع والتطور من فريلانسر إلى وكالة.</span>
+      </p>
+      <div class="post-card-footer">
+        <span class="post-date">March 20, 2026</span>
+        <a href="posts/mena-freelance-guide.html" class="read-more">
+          <span class="en-txt">Read More →</span>
+          <span class="ar-txt" style="display:none">اقرأ المزيد ←</span>
+        </a>
+      </div>
+    </article>
+
+  </div><!-- /posts-grid -->
+</main>
+
+<footer class="blog-footer" role="contentinfo">
+  <p>
+    <span class="en-txt">&copy; 2026 <a href="../">Mahmoud Hamdy Fathy</a>. All rights reserved.</span>
+    <span class="ar-txt" style="display:none">© 2026 <a href="../">محمود حمدي فتحي</a>. جميع الحقوق محفوظة.</span>
+  </p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  // Theme
+  function toggleTheme(){
+    const h=document.documentElement;
+    const next=h.getAttribute('data-theme')==='dark'?'light':'dark';
+    h.setAttribute('data-theme',next);
+    localStorage.setItem('theme',next);
+  }
+  function initTheme(){
+    const saved=localStorage.getItem('theme');
+    if(saved) document.documentElement.setAttribute('data-theme',saved);
+  }
+  window.toggleTheme=toggleTheme;
+  initTheme();
+
+  // Lang
+  let currentLang='en';
+  function setLang(lang){
+    currentLang=lang;
+    const isAr=lang==='ar';
+    document.documentElement.setAttribute('lang',lang);
+    document.documentElement.setAttribute('dir',isAr?'rtl':'ltr');
+
+    // hero
+    document.getElementById('hero-en').style.display=isAr?'none':'block';
+    document.getElementById('hero-ar').style.display=isAr?'block':'none';
+
+    // back label
+    document.getElementById('back-label').textContent=isAr?'البورتفوليو':'Portfolio';
+
+    // toggle buttons
+    document.querySelectorAll('.l-btn').forEach(b=>{
+      b.classList.remove('on');
+      if((lang==='en'&&b.textContent.trim()==='EN')||(lang==='ar'&&b.textContent.trim()==='عربي')) b.classList.add('on');
+    });
+
+    // en/ar text spans
+    document.querySelectorAll('.en-txt').forEach(el=>el.style.display=isAr?'none':'inline');
+    document.querySelectorAll('.ar-txt').forEach(el=>el.style.display=isAr?'inline':'none');
+
+    localStorage.setItem('lang',lang);
+  }
+  window.setLang=setLang;
+
+  const savedLang=localStorage.getItem('lang');
+  if(savedLang) setLang(savedLang);
+
+  // Category filter
+  function filterPosts(cat){
+    document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelector('[data-cat="'+cat+'"]').classList.add('active');
+    document.querySelectorAll('.post-card').forEach(card=>{
+      if(cat==='all'||card.getAttribute('data-category')===cat){
+        card.style.display='flex';
+      } else {
+        card.style.display='none';
+      }
+    });
+    // reset 5th card full-width only when visible
+    const fifth=document.querySelector('[data-category="guide"]');
+    if(fifth){
+      if(cat==='all'||cat==='guide'){
+        fifth.style.gridColumn='1 / -1';
+        fifth.style.maxWidth='600px';
+        fifth.style.margin='0 auto';
+        fifth.style.width='100%';
+      }
+    }
+  }
+  window.filterPosts=filterPosts;
+
+  document.body.classList.add('loaded');
+})();
+</script>
+</body>
+</html>

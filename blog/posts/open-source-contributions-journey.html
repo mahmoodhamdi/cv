@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Open Source Journey — Mahmoud Hamdy Fathy</title>
+<meta name="description" content="How I went from reading open source code to merging PRs into express-validator and Helmet.js. A personal story with practical tips for Arab developers who want to contribute.">
+<meta name="author" content="Mahmoud Hamdy Fathy">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mahmoodhamdi.github.io/cv/blog/posts/open-source-contributions-journey.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="My Open Source Journey">
+<meta property="og:description" content="How I went from reading open source code to merging PRs into express-validator and Helmet.js.">
+<meta property="og:url" content="https://mahmoodhamdi.github.io/cv/blog/posts/open-source-contributions-journey.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="My Open Source Journey">
+<meta name="twitter:description" content="From reading OSS code to merging PRs in express-validator and Helmet.js.">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="../../css/themes.css">
+<link rel="stylesheet" href="../blog.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "My Open Source Journey",
+  "description": "How I went from reading open source code to merging PRs into express-validator and Helmet.js.",
+  "author": { "@type": "Person", "name": "Mahmoud Hamdy Fathy", "url": "https://mahmoodhamdi.github.io/cv/" },
+  "datePublished": "2026-03-05",
+  "dateModified": "2026-03-05",
+  "url": "https://mahmoodhamdi.github.io/cv/blog/posts/open-source-contributions-journey.html",
+  "publisher": { "@type": "Person", "name": "Mahmoud Hamdy Fathy" }
+}
+</script>
+</head>
+<body>
+
+<div class="read-progress" id="rp" aria-hidden="true"></div>
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+
+<header class="blog-topbar" role="banner">
+  <a href="../" class="back-link" aria-label="Back to blog">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    <span id="back-label">Blog</span>
+  </a>
+  <div class="topbar-right">
+    <button class="t-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg class="ic-light" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="ic-dark" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <div class="lang-tog" role="group" aria-label="Language selection">
+      <button class="l-btn on" onclick="setLang('en')">EN</button>
+      <button class="l-btn" onclick="setLang('ar')">عربي</button>
+    </div>
+  </div>
+</header>
+
+<div class="post-layout">
+
+  <article class="article-main" id="main-article">
+
+    <header class="post-header">
+      <div class="post-header-meta">
+        <span class="post-cat" style="background:rgba(129,140,248,.1);color:var(--accent2);border-color:rgba(129,140,248,.2)">Experience</span>
+        <span class="post-readtime">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          7 min read
+        </span>
+      </div>
+      <h1 id="post-title">My Open Source Journey</h1>
+      <div class="author-card">
+        <div class="author-avatar" aria-hidden="true">MH</div>
+        <div class="author-info">
+          <div class="author-name">Mahmoud Hamdy Fathy</div>
+          <div class="post-publish-date">March 5, 2026</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- EN Content -->
+    <div id="en-content">
+      <div class="post-body">
+
+        <p>Two years ago, the idea of contributing to open source felt like something reserved for senior engineers at big companies. The code was already written. The smart people already worked there. What could I possibly add? It turned out the answer was: quite a lot. This is the story of how I went from passively consuming open source to actively shaping it — and what I learned along the way.</p>
+
+        <h2 id="the-starting-point">The Starting Point: Reading Code</h2>
+        <p>My open source involvement began the same way for most developers: I had a bug I couldn't solve by reading the docs. The library was express-validator. I was trying to understand why a specific custom validator wasn't receiving the right context, so I cloned the repo and started reading the source code.</p>
+        <p>That was the turning point. Reading the source code of a library you use daily changes how you think about it. You stop seeing it as a magic black box and start seeing it as a collection of decisions made by humans who had the same constraints and trade-offs you face every day. Some decisions are brilliant. Some have known limitations. And occasionally you spot something that could genuinely be better.</p>
+
+        <h2 id="first-pr">The First Pull Request</h2>
+        <p>My first contribution was not glamorous. It was a documentation fix — a misleading example in the README that had sent me down the wrong path for an afternoon. I corrected it, wrote a clear explanation in the PR description, and submitted. It got merged within 48 hours.</p>
+        <p>That small green "Merged" label had an outsized psychological impact. Something I wrote was now part of a package downloaded by millions of developers every week. The feedback from the maintainer was polite and encouraging. I was hooked.</p>
+
+        <h2 id="express-validator">Contributing to express-validator</h2>
+        <p>After the documentation fix, I started looking more carefully at the issue tracker. I noticed a pattern: many issues were filed about edge cases in the validation chain that were actually documented behavior, but the error messages were confusing. I opened a series of PRs over several months that improved error messages, added TypeScript type safety in a few under-typed spots, and fixed edge cases in custom validator context handling.</p>
+        <p>The maintainers were responsive and constructive. Even when they declined a change, they explained why clearly. One of the most valuable lessons I learned from this period: a PR is a conversation, not a delivery. You propose, they review, you refine. That feedback loop made me a better programmer faster than anything else I've done.</p>
+
+        <blockquote>
+          <p>Reading how experienced maintainers think about backward compatibility, API design, and edge cases taught me more about software engineering than any course I've taken.</p>
+        </blockquote>
+
+        <h2 id="helmet">The Helmet.js Chapter: 8 PRs</h2>
+        <p>Helmet.js is a popular Express middleware that sets security-related HTTP headers. I started using it on a production service and noticed that the TypeScript types for a few middleware options were either missing or inaccurate. Some options accepted values that the documentation said were valid but that TypeScript rejected. Others accepted values that should have been rejected.</p>
+        <p>I fixed the first one and submitted a PR. The maintainer appreciated it and asked if I could look at other similar cases. That single conversation turned into eight merged pull requests over two months. The work was unglamorous — careful reading of MDN documentation for each HTTP header, cross-referencing with the Helmet source, writing precise TypeScript types, and writing tests. But the compound effect of eight small improvements is real. Those type fixes prevent actual bugs in real applications.</p>
+
+        <h2 id="finding-projects">How to Find Projects to Contribute To</h2>
+        <p>The best projects to contribute to are the ones you already use and have a real opinion about. You have context that random contributors don't. Here is a practical workflow:</p>
+        <ol>
+          <li>Pick a library you use every week.</li>
+          <li>Clone its repo and read the source code — just the parts relevant to your use case.</li>
+          <li>Browse the issue tracker. Filter by <code>good first issue</code> or <code>help wanted</code>.</li>
+          <li>Look for issues with low engagement — fewer comments usually means fewer people competing to fix it.</li>
+          <li>Read the contributing guide before writing a single line of code. Some projects require an issue discussion before a PR.</li>
+        </ol>
+
+        <h2 id="the-barrier">The Language Barrier Is Smaller Than You Think</h2>
+        <p>For Arab developers, there is often an unspoken anxiety about contributing to international projects — the assumption that your English needs to be perfect, that you need to be articulate in code reviews, that your accent (in voice calls) will mark you as an outsider. The reality of async text-based code collaboration is that none of that matters much.</p>
+        <p>What matters in a PR: clear title, clear description of the problem and solution, tests, and clean code. I have never had a PR rejected because of grammar. I have had PRs declined because the change was unnecessary or because there was a better approach — and those were fair declines that I learned from.</p>
+
+        <h2 id="impact">The Practical Impact on Your Career</h2>
+        <p>Open source contributions are resume signal that is hard to fake. When a potential client or employer sees that you have merged code into packages they use daily, the credibility is immediate. It signals several things at once: you can read unfamiliar code, you can navigate review processes, you care about quality beyond the bare minimum, and you think about how your code affects others.</p>
+        <p>More concretely: three of my freelance clients found me because they saw my GitHub contributions in a related ecosystem. One client specifically mentioned that my Helmet.js contributions were why they chose me for a Node.js security audit project.</p>
+
+        <h2 id="tips">Practical Tips for Arab Developers</h2>
+        <ul>
+          <li><strong>Start with documentation</strong> — docs improvements have the highest acceptance rate and the lowest barrier. They also force you to deeply understand the library.</li>
+          <li><strong>Fix TypeScript types</strong> — many Node.js libraries have incomplete or inaccurate TypeScript definitions. This is often low-hanging fruit that maintainers appreciate.</li>
+          <li><strong>Be specific in your PR description</strong> — "fix bug" is not a description. Link to the issue, explain the root cause, show a before/after behavior example.</li>
+          <li><strong>Don't be discouraged by rejections</strong> — a closed PR is not a personal rejection. Ask for feedback if none is given.</li>
+          <li><strong>Contribute in Arabic-related contexts too</strong> — Arabic developer tools, RTL libraries, i18n improvements. This is an underserved area where your unique perspective is a genuine advantage.</li>
+          <li><strong>Consistency over volume</strong> — one quality PR per month over a year is worth more than ten rushed PRs in a week.</li>
+        </ul>
+
+        <h2 id="whats-next">What's Next</h2>
+        <p>I am currently working on more substantial contributions — I want to move from fixing existing behavior to proposing and implementing new features. That is a different level of collaboration: it requires getting alignment from maintainers before writing code, understanding the project roadmap, and building trust over time. The skills are the same, but the scale of the conversation is larger.</p>
+        <p>If you are an Arab developer sitting on the sidelines of open source, the entry point is genuinely accessible. Clone a repo you use. Read it. Find something that could be better. Make it better. Submit the PR. The rest follows.</p>
+
+      </div>
+    </div>
+
+    <!-- AR Content -->
+    <div id="ar-content" style="display:none" dir="rtl">
+      <div class="post-body ar-content">
+
+        <p>قبل سنتين، كانت فكرة المساهمة في المصادر المفتوحة تبدو كشيء محجوز للمهندسين الكبار في الشركات الضخمة. الكود مكتوب بالفعل. الأذكياء موجودون هناك بالفعل. ماذا يمكنني أنا أن أضيف؟ اتضح أن الإجابة: الكثير. هذه هي قصة كيف انتقلت من استهلاك المصادر المفتوحة بشكل سلبي إلى تشكيلها بشكل فعال — وما تعلمته على طول الطريق.</p>
+
+        <h2 id="start-ar">نقطة البداية: قراءة الكود</h2>
+        <p>مشاركتي في المصادر المفتوحة بدأت كما تبدأ لمعظم المطورين: كان لدي باج لم أستطع حله بقراءة التوثيق. كانت المكتبة هي express-validator. كنت أحاول أن أفهم لماذا custom validator معين لا يتلقى السياق الصحيح، فاستنسخت الـ repo وبدأت في قراءة الكود المصدري.</p>
+        <p>كانت تلك نقطة التحول. قراءة الكود المصدري لمكتبة تستخدمها يوميًا يغير طريقة تفكيرك فيها. تتوقف عن رؤيتها كصندوق أسود سحري وتبدأ في رؤيتها كمجموعة من القرارات اتخذها بشر واجهوا نفس القيود والمقايضات التي تواجهها كل يوم.</p>
+
+        <h2 id="first-pr-ar">أول Pull Request</h2>
+        <p>مساهمتي الأولى لم تكن مبهرة. كانت إصلاح توثيق — مثال مضلل في الـ README أضاع مني بعد ظهر كامل. صححته، كتبت شرحًا واضحًا في وصف الـ PR، وأرسلته. تم دمجه خلال 48 ساعة.</p>
+        <p>ذلك العلامة الخضراء الصغيرة "Merged" كان لها تأثير نفسي كبير بشكل غير متناسب. شيء كتبته الآن جزء من حزمة يُنزّلها ملايين المطورين كل أسبوع. كنت مُدمنًا على الفور.</p>
+
+        <h2 id="express-validator-ar">المساهمة في express-validator</h2>
+        <p>بعد إصلاح التوثيق، بدأت أنظر بعناية أكبر في متتبع المشكلات. لاحظت نمطًا: كثير من المشكلات كانت تتعلق بحالات حافة في validation chain كانت سلوكًا موثقًا فعلًا، لكن رسائل الخطأ كانت محيرة. فتحت سلسلة من الـ PRs على مدار عدة أشهر حسّنت رسائل الخطأ وأضافت type safety في TypeScript وأصلحت حالات حافة في التعامل مع سياق custom validator.</p>
+        <p>المشرفون كانوا متجاوبين وبنّاءين. حتى عندما رفضوا تغييرًا، شرحوا السبب بوضوح. أحد أثمن الدروس التي تعلمتها: الـ PR محادثة، ليس تسليمًا. تقترح، يراجعون، تُحسّن. هذا التكرار جعلني مبرمجًا أفضل بسرعة أكبر من أي شيء آخر فعلته.</p>
+
+        <blockquote>
+          <p>قراءة كيف يفكر المشرفون ذوو الخبرة في التوافق مع الإصدارات السابقة وتصميم API والحالات الحافة علمتني عن هندسة البرمجيات أكثر من أي دورة حضرتها.</p>
+        </blockquote>
+
+        <h2 id="helmet-ar">فصل Helmet.js: 8 PRs</h2>
+        <p>Helmet.js هي middleware Express شهيرة تضبط headers HTTP المتعلقة بالأمان. بدأت باستخدامها على خدمة إنتاجية ولاحظت أن أنواع TypeScript لبعض خيارات middleware كانت إما مفقودة أو غير دقيقة. بعض الخيارات قبلت قيمًا قال التوثيق أنها صالحة لكن TypeScript رفضها. وأخرى قبلت قيمًا كان يجب رفضها.</p>
+        <p>أصلحت الأول وأرسلت PR. قدّر المشرف ذلك وطلب مني النظر في حالات مماثلة أخرى. تلك المحادثة الواحدة تحولت إلى ثمانية pull requests مُدمجة على مدار شهرين. العمل لم يكن مبهرًا — قراءة دقيقة لتوثيق MDN لكل header HTTP، مقارنة مع كود Helmet، كتابة أنواع TypeScript دقيقة، وكتابة اختبارات. لكن الأثر المتراكم لثمانية تحسينات صغيرة حقيقي. تلك الإصلاحات في الأنواع تمنع أخطاء فعلية في تطبيقات حقيقية.</p>
+
+        <h2 id="find-ar">كيف تجد المشاريع للمساهمة فيها</h2>
+        <p>أفضل المشاريع للمساهمة فيها هي التي تستخدمها بالفعل ولديك رأي حقيقي بشأنها. لديك سياق لا يمتلكه المساهمون العشوائيون. إليك سير عمل عملي:</p>
+        <ol>
+          <li>اختر مكتبة تستخدمها كل أسبوع.</li>
+          <li>استنسخ الـ repo واقرأ الكود المصدري — فقط الأجزاء ذات الصلة بحالة استخدامك.</li>
+          <li>تصفح متتبع المشكلات. فلتر بـ <code>good first issue</code> أو <code>help wanted</code>.</li>
+          <li>ابحث عن مشكلات ذات تفاعل منخفض — عدد تعليقات أقل يعني عادةً منافسة أقل.</li>
+          <li>اقرأ دليل المساهمة قبل كتابة سطر واحد من الكود.</li>
+        </ol>
+
+        <h2 id="barrier-ar">حاجز اللغة أصغر مما تعتقد</h2>
+        <p>بالنسبة للمطورين العرب، غالبًا ما يكون هناك قلق غير معلن من المساهمة في المشاريع الدولية — الافتراض بأن لغتك الإنجليزية يجب أن تكون مثالية، وأنك بحاجة إلى أن تكون بليغًا في مراجعات الكود. واقع التعاون النصي غير المتزامن هو أن كل ذلك لا يهم كثيرًا.</p>
+        <p>ما يهم في PR: عنوان واضح، وصف واضح للمشكلة والحل، اختبارات، وكود نظيف. لم يُرفض لي PR قط بسبب قواعد اللغة. رُفضت PRs لأن التغيير كان غير ضروري أو لأن هناك مقاربة أفضل — وكانت رفضات عادلة تعلمت منها.</p>
+
+        <h2 id="impact-ar">التأثير العملي على مسيرتك المهنية</h2>
+        <p>مساهمات المصادر المفتوحة إشارة في السيرة الذاتية يصعب تزويرها. عندما يرى عميل أو صاحب عمل محتمل أنك دمجت كودًا في حزم يستخدمها يوميًا، المصداقية فورية. ثلاثة من عملاء الفريلانس الحاليين وجدوني لأنهم رأوا مساهماتي على GitHub. عميل واحد ذكر تحديدًا أن مساهماتي في Helmet.js هي سبب اختياره لي لمشروع تدقيق أمان Node.js.</p>
+
+        <h2 id="tips-ar">نصائح عملية للمطورين العرب</h2>
+        <ul>
+          <li><strong>ابدأ بالتوثيق</strong> — تحسينات التوثيق لها أعلى معدل قبول وأدنى حاجز. وتجبرك على فهم المكتبة بعمق.</li>
+          <li><strong>أصلح أنواع TypeScript</strong> — كثير من مكتبات Node.js لها تعريفات TypeScript ناقصة أو غير دقيقة. هذا غالبًا ما يقدّره المشرفون.</li>
+          <li><strong>كن محددًا في وصف PR</strong> — "fix bug" ليس وصفًا. اربط بالمشكلة، اشرح السبب الجذري، أظهر مثالًا على السلوك قبل وبعد.</li>
+          <li><strong>لا تثبّطك الرفضات</strong> — PR مغلق ليس رفضًا شخصيًا. اطلب ملاحظات إن لم تُعطَ.</li>
+          <li><strong>ساهم في السياقات العربية أيضًا</strong> — أدوات المطورين العرب، مكتبات RTL، تحسينات i18n. هذه منطقة غير مخدومة حيث منظورك الفريد ميزة حقيقية.</li>
+          <li><strong>الاتساق أهم من الحجم</strong> — PR جودي واحد كل شهر على مدار سنة أفضل من عشرة PRs متسرعة في أسبوع.</li>
+        </ul>
+
+        <h2 id="next-ar">ما التالي</h2>
+        <p>أعمل حاليًا على مساهمات أكثر جوهرية — أريد الانتقال من إصلاح السلوك الموجود إلى اقتراح وتنفيذ ميزات جديدة. هذا مستوى مختلف من التعاون: يتطلب الحصول على موافقة المشرفين قبل كتابة الكود وفهم خارطة طريق المشروع وبناء الثقة بمرور الوقت.</p>
+        <p>إذا كنت مطورًا عربيًا جالسًا على الهامش من المصادر المفتوحة، نقطة الدخول في متناول اليد فعلًا. استنسخ repo تستخدمه. اقرأه. ابحث عن شيء يمكن أن يكون أفضل. اجعله أفضل. أرسل الـ PR. الباقي يتبع من تلقاء نفسه.</p>
+
+      </div>
+    </div>
+
+    <!-- Share -->
+    <div class="share-section">
+      <span class="share-label" id="share-label">Share</span>
+      <div class="share-btns">
+        <a class="share-btn" href="https://twitter.com/intent/tweet?text=My%20Open%20Source%20Journey&url=https%3A%2F%2Fmahmoodhamdi.github.io%2Fcv%2Fblog%2Fposts%2Fopen-source-contributions-journey.html" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Twitter
+        </a>
+        <a class="share-btn" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fmahmoodhamdi.github.io%2Fcv%2Fblog%2Fposts%2Fopen-source-contributions-journey.html" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <button class="share-btn copy-btn" onclick="copyLink(this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          <span id="copy-label">Copy Link</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Related Posts -->
+    <div class="related-section">
+      <h3 id="related-title">Related Articles</h3>
+      <div class="related-grid">
+        <a href="nodejs-typescript-best-practices.html" class="related-card">
+          <span class="post-cat">Tutorial</span>
+          <h4>Node.js &amp; TypeScript: Production Best Practices</h4>
+          <span>12 min read &middot; Feb 20, 2026</span>
+        </a>
+        <a href="mena-freelance-guide.html" class="related-card">
+          <span class="post-cat" style="background:rgba(52,211,153,.1);color:#34d399;border-color:rgba(52,211,153,.2)">Guide</span>
+          <h4>Freelancing in MENA: A Developer's Guide</h4>
+          <span>9 min read &middot; Mar 20, 2026</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Post Nav -->
+    <nav class="post-nav" aria-label="Post navigation">
+      <a href="nodejs-typescript-best-practices.html" class="post-nav-btn prev">
+        <span>Previous Post</span>
+        <strong>Node.js &amp; TypeScript: Production Best Practices</strong>
+      </a>
+      <a href="mena-freelance-guide.html" class="post-nav-btn next">
+        <span>Next Post</span>
+        <strong>Freelancing in MENA: A Developer's Guide</strong>
+      </a>
+    </nav>
+
+  </article>
+
+  <!-- TOC Sidebar -->
+  <aside class="toc-sidebar" aria-label="Table of contents">
+    <div class="toc-box">
+      <h4 id="toc-title">On This Page</h4>
+      <ul class="toc-list" id="toc-en">
+        <li><a href="#the-starting-point">The Starting Point</a></li>
+        <li><a href="#first-pr">The First PR</a></li>
+        <li><a href="#express-validator">express-validator</a></li>
+        <li><a href="#helmet">Helmet.js: 8 PRs</a></li>
+        <li><a href="#finding-projects">Finding Projects</a></li>
+        <li><a href="#the-barrier">Language Barrier</a></li>
+        <li><a href="#impact">Career Impact</a></li>
+        <li><a href="#tips">Tips for Arab Devs</a></li>
+        <li><a href="#whats-next">What's Next</a></li>
+      </ul>
+      <ul class="toc-list" id="toc-ar" style="display:none">
+        <li><a href="#start-ar">نقطة البداية</a></li>
+        <li><a href="#first-pr-ar">أول Pull Request</a></li>
+        <li><a href="#express-validator-ar">express-validator</a></li>
+        <li><a href="#helmet-ar">Helmet.js: 8 PRs</a></li>
+        <li><a href="#find-ar">إيجاد المشاريع</a></li>
+        <li><a href="#barrier-ar">حاجز اللغة</a></li>
+        <li><a href="#impact-ar">التأثير المهني</a></li>
+        <li><a href="#tips-ar">نصائح للمطورين العرب</a></li>
+        <li><a href="#next-ar">ما التالي</a></li>
+      </ul>
+    </div>
+  </aside>
+
+</div>
+
+<footer class="blog-footer" role="contentinfo">
+  <p>&copy; 2026 <a href="../../">Mahmoud Hamdy Fathy</a> &middot; <a href="../">Blog</a></p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  function toggleTheme(){
+    const h=document.documentElement;
+    const next=h.getAttribute('data-theme')==='dark'?'light':'dark';
+    h.setAttribute('data-theme',next);
+    localStorage.setItem('theme',next);
+  }
+  window.toggleTheme=toggleTheme;
+  const saved=localStorage.getItem('theme');
+  if(saved) document.documentElement.setAttribute('data-theme',saved);
+
+  const rp=document.getElementById('rp');
+  window.addEventListener('scroll',()=>{
+    const max=document.documentElement.scrollHeight-window.innerHeight;
+    rp.style.width=(window.scrollY/max*100)+'%';
+  },{passive:true});
+
+  function setLang(lang){
+    const isAr=lang==='ar';
+    document.documentElement.setAttribute('lang',lang);
+    document.documentElement.setAttribute('dir',isAr?'rtl':'ltr');
+    document.getElementById('en-content').style.display=isAr?'none':'block';
+    document.getElementById('ar-content').style.display=isAr?'block':'none';
+    document.getElementById('toc-en').style.display=isAr?'none':'block';
+    document.getElementById('toc-ar').style.display=isAr?'block':'none';
+    document.getElementById('post-title').textContent=isAr?'رحلتي في المصادر المفتوحة':'My Open Source Journey';
+    document.getElementById('back-label').textContent=isAr?'المدونة':'Blog';
+    document.getElementById('share-label').textContent=isAr?'مشاركة':'Share';
+    document.getElementById('related-title').textContent=isAr?'مقالات ذات صلة':'Related Articles';
+    document.getElementById('copy-label').textContent=isAr?'نسخ الرابط':'Copy Link';
+    document.getElementById('toc-title').textContent=isAr?'في هذه الصفحة':'On This Page';
+    document.querySelectorAll('.l-btn').forEach(b=>{
+      b.classList.remove('on');
+      if((lang==='en'&&b.textContent.trim()==='EN')||(lang==='ar'&&b.textContent.trim()==='عربي')) b.classList.add('on');
+    });
+    localStorage.setItem('lang',lang);
+  }
+  window.setLang=setLang;
+  const savedLang=localStorage.getItem('lang');
+  if(savedLang) setLang(savedLang);
+
+  function copyLink(btn){
+    navigator.clipboard.writeText(window.location.href).then(()=>{
+      btn.classList.add('copied');
+      document.getElementById('copy-label').textContent='Copied!';
+      setTimeout(()=>{ btn.classList.remove('copied'); document.getElementById('copy-label').textContent='Copy Link'; },2000);
+    });
+  }
+  window.copyLink=copyLink;
+
+  document.body.classList.add('loaded');
+})();
+</script>
+</body>
+</html>
