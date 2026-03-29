@@ -1,12 +1,32 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mahmoud Hamdy Fathy — Full-Stack Developer</title>
+<meta name="description" content="Full-Stack Developer specializing in Node.js, Flutter, Next.js. Building production-ready web and mobile applications across the MENA region.">
+<meta name="author" content="Mahmoud Hamdy Fathy">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mahmoud Hamdy Fathy — Full-Stack Developer">
+<meta property="og:description" content="Full-Stack Developer specializing in Node.js, Flutter, Next.js. Building production-ready web and mobile applications across the MENA region.">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ar_EG">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mahmoud Hamdy Fathy — Full-Stack Developer">
+<meta name="twitter:description" content="Full-Stack Developer specializing in Node.js, Flutter, Next.js. Building production-ready web and mobile applications.">
+
+<!-- Inline SVG Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2338bdf8'/%3E%3Cstop offset='100%25' stop-color='%23818cf8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='20' fill='url(%23g)'/%3E%3Ctext x='50' y='68' font-family='sans-serif' font-size='50' font-weight='bold' fill='white' text-anchor='middle'%3EMH%3C/text%3E%3C/svg%3E">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Kufi+Arabic:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 <style>
+  /* ===== Theme Variables ===== */
   :root {
     --bg-primary: #0a0f1a;
     --bg-secondary: #111827;
@@ -27,9 +47,31 @@
     --font-mono: 'JetBrains Mono', monospace;
     --font-ar-display: 'Amiri', serif;
     --font-ar-body: 'Noto Kufi Arabic', sans-serif;
+    --nav-bg: rgba(10, 15, 26, 0.85);
+    --toast-bg: #1a2236;
+  }
+
+  html[data-theme="light"] {
+    --bg-primary: #f8fafc;
+    --bg-secondary: #f1f5f9;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f1f5f9;
+    --accent: #2563eb;
+    --accent-glow: rgba(37, 99, 235, 0.12);
+    --accent-secondary: #6366f1;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+    --border: rgba(15, 23, 42, 0.08);
+    --gradient-1: linear-gradient(135deg, #2563eb, #6366f1);
+    --gradient-2: linear-gradient(135deg, #6366f1, #a855f7);
+    --nav-bg: rgba(248, 250, 252, 0.85);
+    --toast-bg: #0f172a;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
 
   body {
     font-family: var(--font-body);
@@ -37,6 +79,7 @@
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
+    transition: background 0.4s ease, color 0.4s ease;
   }
 
   html[dir="rtl"] body {
@@ -52,8 +95,9 @@
     pointer-events: none;
     z-index: 0;
   }
+  html[data-theme="light"] body::before { opacity: 0.5; }
 
-  /* Floating orbs */
+  /* Floating orbs with parallax */
   .orb {
     position: fixed;
     border-radius: 50%;
@@ -61,25 +105,76 @@
     opacity: 0.12;
     pointer-events: none;
     z-index: 0;
+    will-change: transform;
+    transition: transform 0.3s ease-out;
   }
+  html[data-theme="light"] .orb { opacity: 0.08; }
   .orb-1 { width: 500px; height: 500px; background: var(--accent); top: -150px; right: -100px; }
   .orb-2 { width: 400px; height: 400px; background: var(--accent-secondary); bottom: 10%; left: -100px; }
   .orb-3 { width: 300px; height: 300px; background: #c084fc; top: 50%; right: 20%; }
 
-  .container {
+  /* ===== Navigation Bar ===== */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 90;
+    background: var(--nav-bg);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transform: translateY(-100%);
+    transition: transform 0.3s ease, background 0.4s ease;
+    will-change: transform;
+  }
+  .navbar.visible { transform: translateY(0); }
+  .navbar-inner {
     max-width: 900px;
     margin: 0 auto;
-    padding: 40px 24px;
-    position: relative;
-    z-index: 1;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    height: 48px;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .navbar-inner::-webkit-scrollbar { display: none; }
+  .nav-link {
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: var(--font-body);
+  }
+  html[dir="rtl"] .nav-link { font-family: var(--font-ar-body); }
+  .nav-link:hover { color: var(--text-primary); }
+  .nav-link.active {
+    color: var(--accent);
+    background: var(--accent-glow);
   }
 
-  /* Language Toggle */
-  .lang-toggle {
+  /* ===== Top Controls ===== */
+  .top-controls {
     position: fixed;
     top: 24px;
     right: 24px;
     z-index: 100;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  html[dir="rtl"] .top-controls { right: auto; left: 24px; }
+  .navbar.visible ~ .top-controls { top: 60px; }
+
+  .lang-toggle {
     display: flex;
     gap: 4px;
     background: var(--bg-card);
@@ -87,8 +182,8 @@
     border-radius: 12px;
     padding: 4px;
     backdrop-filter: blur(20px);
+    transition: background 0.4s ease, border-color 0.4s ease;
   }
-  html[dir="rtl"] .lang-toggle { right: auto; left: 24px; }
 
   .lang-btn {
     padding: 8px 18px;
@@ -107,6 +202,28 @@
     color: #fff;
     box-shadow: 0 2px 12px var(--accent-glow);
   }
+
+  .theme-btn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    cursor: pointer;
+    backdrop-filter: blur(20px);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .theme-btn:hover { color: var(--accent); border-color: var(--accent); }
+  .theme-btn svg { width: 18px; height: 18px; transition: transform 0.3s ease; }
+  .theme-btn:hover svg { transform: rotate(30deg); }
+  .theme-icon-dark, .theme-icon-light { display: none; }
+  html[data-theme="dark"] .theme-icon-light { display: block; }
+  html[data-theme="light"] .theme-icon-dark { display: block; }
 
   /* Print button */
   .print-btn {
@@ -130,10 +247,19 @@
     gap: 6px;
   }
   html[dir="rtl"] .print-btn { left: auto; right: 24px; }
-  html[dir="rtl"] .lang-toggle { left: 24px; right: auto; }
+  html[dir="rtl"] .top-controls { left: 24px; right: auto; }
   .print-btn:hover { color: var(--accent); border-color: var(--accent); }
+  .navbar.visible ~ .print-btn { top: 60px; }
 
-  /* Header */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ===== Header ===== */
   .header {
     text-align: center;
     padding: 50px 0 40px;
@@ -151,6 +277,7 @@
     border-radius: 1px;
   }
 
+  /* Avatar with rotating gradient border */
   .avatar {
     width: 110px;
     height: 110px;
@@ -166,12 +293,34 @@
     position: relative;
     box-shadow: 0 8px 32px var(--accent-glow);
   }
+  .avatar::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 27px;
+    background: conic-gradient(from var(--avatar-angle, 0deg), #38bdf8, #818cf8, #c084fc, #38bdf8);
+    z-index: -1;
+    animation: avatarRotate 4s linear infinite;
+  }
   .avatar::after {
     content: '';
     position: absolute;
-    inset: -3px;
+    inset: -4px;
     border-radius: 27px;
-    border: 2px solid rgba(56, 189, 248, 0.3);
+    background: conic-gradient(from var(--avatar-angle, 0deg), #38bdf8, #818cf8, #c084fc, #38bdf8);
+    z-index: -1;
+    filter: blur(12px);
+    opacity: 0.5;
+    animation: avatarRotate 4s linear infinite;
+  }
+
+  @keyframes avatarRotate {
+    to { --avatar-angle: 360deg; }
+  }
+  @property --avatar-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
   }
 
   .name {
@@ -218,23 +367,23 @@
     color: var(--text-muted);
     text-decoration: none;
     transition: color 0.2s;
+    cursor: pointer;
   }
   .contact-item:hover { color: var(--accent); }
   .contact-item svg { width: 14px; height: 14px; opacity: 0.7; }
+  .contact-item[data-copy] { position: relative; }
 
-  /* Sections */
+  /* ===== Scroll Reveal ===== */
   .section {
     margin-top: 48px;
-    animation: fadeUp 0.6s ease both;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    will-change: opacity, transform;
   }
-  .section:nth-child(2) { animation-delay: 0.1s; }
-  .section:nth-child(3) { animation-delay: 0.2s; }
-  .section:nth-child(4) { animation-delay: 0.3s; }
-  .section:nth-child(5) { animation-delay: 0.4s; }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+  .section.revealed {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .section-title {
@@ -257,10 +406,9 @@
     flex-shrink: 0;
   }
 
-  /* Summary */
+  /* ===== Summary with animated gradient border ===== */
   .summary {
     background: var(--bg-card);
-    border: 1px solid var(--border);
     border-radius: 16px;
     padding: 24px 28px;
     font-size: 15px;
@@ -268,17 +416,23 @@
     color: var(--text-secondary);
     position: relative;
     overflow: hidden;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    transition: background 0.4s ease;
   }
-  .summary::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--gradient-1);
+  .summary-wrapper {
+    position: relative;
+    border-radius: 16px;
+    padding: 2px;
+    background: linear-gradient(var(--avatar-angle, 0deg), #38bdf8, #818cf8, #c084fc, #38bdf8);
+    animation: avatarRotate 6s linear infinite;
+  }
+  .summary-wrapper .summary {
+    border: none;
+    border-radius: 14px;
   }
 
-  /* Skills */
+  /* ===== Skills ===== */
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -305,7 +459,7 @@
     margin-bottom: 12px;
   }
   html[dir="rtl"] .skill-cat-title { text-transform: none; letter-spacing: 0.02em; }
-  
+
   .skill-tags {
     display: flex;
     flex-wrap: wrap;
@@ -320,10 +474,95 @@
     color: var(--text-secondary);
     border: 1px solid rgba(56, 189, 248, 0.1);
     font-family: var(--font-mono);
+    transition: all 0.25s ease;
+    will-change: transform;
+    cursor: default;
+  }
+  .skill-tag:hover {
+    transform: scale(1.08);
+    background: rgba(56, 189, 248, 0.15);
+    border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: 0 0 12px var(--accent-glow);
+    color: var(--text-primary);
   }
   html[dir="rtl"] .skill-tag { font-family: var(--font-mono); direction: ltr; }
 
-  /* Experience / Projects */
+  /* ===== Services ===== */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .service-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card:hover {
+    border-color: rgba(56, 189, 248, 0.2);
+    background: var(--bg-card-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px var(--accent-glow);
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gradient-1);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .service-card:hover::before { opacity: 1; }
+  .service-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--accent-glow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    font-size: 22px;
+    color: var(--accent);
+  }
+  .service-icon svg { width: 22px; height: 22px; stroke: var(--accent); fill: none; stroke-width: 1.8; }
+  .service-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+  .service-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ===== Timeline with left accent line ===== */
+  .timeline {
+    position: relative;
+    padding-left: 20px;
+  }
+  html[dir="rtl"] .timeline { padding-left: 0; padding-right: 20px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent), var(--accent-secondary), transparent);
+    border-radius: 1px;
+  }
+  html[dir="rtl"] .timeline::before { left: auto; right: 0; }
+
   .timeline-item {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -333,10 +572,26 @@
     transition: all 0.3s ease;
     position: relative;
   }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 28px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent-glow);
+  }
+  html[dir="rtl"] .timeline-item::before { left: auto; right: -24px; }
   .timeline-item:hover {
     border-color: rgba(56, 189, 248, 0.2);
     background: var(--bg-card-hover);
   }
+
+  /* Timeline items outside .timeline wrapper (OSS section) */
+  .section > .timeline-item { margin-left: 0; }
+  .section > .timeline-item::before { display: none; }
 
   .timeline-header {
     display: flex;
@@ -381,13 +636,13 @@
   }
   html[dir="rtl"] .timeline-desc li { padding-left: 0; padding-right: 16px; }
   .timeline-desc li::before {
-    content: '▸';
+    content: '\25B8';
     position: absolute;
     left: 0;
     color: var(--accent);
     font-size: 12px;
   }
-  html[dir="rtl"] .timeline-desc li::before { left: auto; right: 0; content: '◂'; }
+  html[dir="rtl"] .timeline-desc li::before { left: auto; right: 0; content: '\25C2'; }
 
   .tech-used {
     display: flex;
@@ -455,6 +710,7 @@
     border-radius: 12px;
     padding: 16px;
     text-align: center;
+    transition: background 0.4s ease;
   }
   .oss-stat-value {
     font-size: 28px;
@@ -480,22 +736,83 @@
     color: var(--text-muted);
   }
 
-  /* Print */
+  /* ===== Scroll to Top ===== */
+  .scroll-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 100;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--gradient-1);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    box-shadow: 0 4px 20px var(--accent-glow);
+    will-change: opacity, transform;
+  }
+  html[dir="rtl"] .scroll-top { right: auto; left: 32px; }
+  .scroll-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .scroll-top:hover { box-shadow: 0 6px 28px rgba(56, 189, 248, 0.3); }
+  .scroll-top svg { width: 20px; height: 20px; }
+
+  /* ===== Toast Notification ===== */
+  .toast {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    z-index: 200;
+    background: var(--toast-bg);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    white-space: nowrap;
+  }
+  html[data-theme="light"] .toast { color: #f1f5f9; }
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* ===== Print Styles ===== */
   @media print {
     body { background: #fff; color: #1a1a1a; }
-    .orb, body::before, .lang-toggle, .print-btn { display: none; }
+    .orb, body::before, .top-controls, .print-btn, .navbar, .scroll-top, .toast, .theme-btn { display: none; }
     .container { max-width: 100%; padding: 0; }
     .name { -webkit-text-fill-color: #1a1a1a; color: #1a1a1a; }
     .section-title::before { background: #333; }
-    .summary, .skill-category, .timeline-item, .platform-card, .oss-stat {
+    .section { opacity: 1; transform: none; }
+    .summary-wrapper { background: none; padding: 0; }
+    .summary, .skill-category, .timeline-item, .platform-card, .oss-stat, .service-card {
       background: #f8fafc; border: 1px solid #e2e8f0; color: #334155;
       box-shadow: none;
     }
     .summary::before { background: #333; }
     .skill-tag, .tech-chip { background: #f1f5f9; color: #475569; border-color: #e2e8f0; }
     .oss-stat-value { -webkit-text-fill-color: #1e40af; }
-    .accent, .timeline-company, .skill-cat-title { color: #2563eb; }
-    .section { animation: none; }
+    .accent, .timeline-company, .skill-cat-title, .service-icon { color: #2563eb; }
+    .timeline::before { background: #cbd5e1; }
+    .timeline-item::before { background: #2563eb; box-shadow: none; }
+    .avatar::before, .avatar::after { display: none; }
   }
 
   @media (max-width: 600px) {
@@ -503,39 +820,83 @@
     .header { padding: 30px 0 30px; }
     .contact-row { gap: 10px; }
     .skills-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
     .platforms-grid { grid-template-columns: 1fr; }
     .oss-highlights { grid-template-columns: repeat(2, 1fr); }
-    .lang-toggle { top: 12px; right: 12px; }
+    .top-controls { top: 12px; right: 12px; }
     .print-btn { top: 12px; left: 12px; }
+    html[dir="rtl"] .top-controls { left: 12px; right: auto; }
+    html[dir="rtl"] .print-btn { left: auto; right: 12px; }
+    .scroll-top { bottom: 20px; right: 20px; }
+    html[dir="rtl"] .scroll-top { right: auto; left: 20px; }
+    .navbar.visible ~ .top-controls { top: 56px; }
+    .navbar.visible ~ .print-btn { top: 56px; }
   }
 </style>
 </head>
 <body>
 
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
-<div class="orb orb-3"></div>
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+<div class="orb orb-3" aria-hidden="true"></div>
 
-<div class="lang-toggle">
-  <button class="lang-btn active" onclick="setLang('en')">EN</button>
-  <button class="lang-btn" onclick="setLang('ar')">عربي</button>
+<!-- Navigation Bar -->
+<nav class="navbar" id="navbar" role="navigation" aria-label="Section navigation">
+  <div class="navbar-inner" id="nav-links-en">
+    <button class="nav-link" data-target="about-en">About</button>
+    <button class="nav-link" data-target="services-en">Services</button>
+    <button class="nav-link" data-target="skills-en">Skills</button>
+    <button class="nav-link" data-target="experience-en">Experience</button>
+    <button class="nav-link" data-target="oss-en">Open Source</button>
+    <button class="nav-link" data-target="projects-en">Projects</button>
+    <button class="nav-link" data-target="platforms-en">Links</button>
+  </div>
+  <div class="navbar-inner" id="nav-links-ar" style="display:none;">
+    <button class="nav-link" data-target="about-ar">نبذة عني</button>
+    <button class="nav-link" data-target="services-ar">الخدمات</button>
+    <button class="nav-link" data-target="skills-ar">المهارات</button>
+    <button class="nav-link" data-target="experience-ar">الخبرة</button>
+    <button class="nav-link" data-target="oss-ar">المصادر المفتوحة</button>
+    <button class="nav-link" data-target="projects-ar">المشاريع</button>
+    <button class="nav-link" data-target="platforms-ar">الروابط</button>
+  </div>
+</nav>
+
+<!-- Top Controls -->
+<div class="top-controls">
+  <button class="theme-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+    <svg class="theme-icon-light" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    <svg class="theme-icon-dark" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+  </button>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('ar')">عربي</button>
+  </div>
 </div>
 
-<button class="print-btn" onclick="window.print()">
+<button class="print-btn" onclick="window.print()" aria-label="Print CV">
   <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
   Print
 </button>
 
-<div class="container">
+<!-- Scroll to Top -->
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0})" aria-label="Scroll to top">
+  <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<main class="container">
 
   <!-- ============ ENGLISH VERSION ============ -->
   <div id="en-cv">
     <header class="header">
-      <div class="avatar">MH</div>
+      <div class="avatar" role="img" aria-label="Mahmoud Hamdy initials">MH</div>
       <h1 class="name">Mahmoud Hamdy Fathy</h1>
       <p class="title">Full-Stack Developer · Freelancer</p>
       <div class="contact-row">
-        <a class="contact-item" href="mailto:hmdy7486@gmail.com">
+        <a class="contact-item" href="mailto:hmdy7486@gmail.com" data-copy="hmdy7486@gmail.com" title="Click to copy email">
           <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           hmdy7486@gmail.com
         </a>
@@ -550,14 +911,57 @@
       </div>
     </header>
 
-    <div class="section">
+    <section class="section" id="about-en">
       <h2 class="section-title">About</h2>
-      <div class="summary">
-        Full-Stack Developer with hands-on experience building production-ready web and mobile applications across the MENA region. Specialized in Node.js/TypeScript backends, Flutter/Dart mobile apps, and Next.js frontends. Active open source contributor to major projects including express-validator, Helmet.js, and others across the Node.js ecosystem. Delivering end-to-end freelance solutions — from SaaS platforms, AI-powered chatbots, and e-commerce automation to admin dashboards and real-time systems. Experienced in building intelligent bots integrated with platforms like Salla and Telegram to automate customer support and boost sales for e-commerce businesses.
+      <div class="summary-wrapper">
+        <div class="summary">
+          Full-Stack Developer with hands-on experience building production-ready web and mobile applications across the MENA region. Specialized in Node.js/TypeScript backends, Flutter/Dart mobile apps, and Next.js frontends. Active open source contributor to major projects including express-validator, Helmet.js, and others across the Node.js ecosystem. Delivering end-to-end freelance solutions — from SaaS platforms, AI-powered chatbots, and e-commerce automation to admin dashboards and real-time systems. Experienced in building intelligent bots integrated with platforms like Salla and Telegram to automate customer support and boost sales for e-commerce businesses.
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="section">
+    <section class="section" id="services-en">
+      <h2 class="section-title">Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+          </div>
+          <div class="service-title">Full-Stack Development</div>
+          <div class="service-desc">End-to-end web applications with Node.js/TypeScript backends, Next.js/React frontends, and robust database architecture.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+          </div>
+          <div class="service-title">Mobile App Development</div>
+          <div class="service-desc">Cross-platform mobile apps with Flutter/Dart using clean architecture, state management, and native performance.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+          </div>
+          <div class="service-title">E-Commerce Automation</div>
+          <div class="service-desc">Salla platform integration, automated order management, customer engagement bots, and analytics dashboards.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <div class="service-title">AI Chatbot Development</div>
+          <div class="service-desc">Intelligent conversational bots for Telegram, WhatsApp, and web — with NLP, auto-responses, and platform integrations.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+          </div>
+          <div class="service-title">API Development & Integration</div>
+          <div class="service-desc">RESTful APIs, third-party integrations, payment gateways, real-time WebSocket systems, and microservices architecture.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills-en">
       <h2 class="section-title">Technical Skills</h2>
       <div class="skills-grid">
         <div class="skill-category">
@@ -625,54 +1029,56 @@
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="section">
+    <section class="section" id="experience-en">
       <h2 class="section-title">Experience</h2>
-      <div class="timeline-item">
-        <div class="timeline-header">
-          <div>
-            <div class="timeline-role">Full-Stack Developer</div>
-            <div class="timeline-company">ROV GROUP</div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">Full-Stack Developer</div>
+              <div class="timeline-company">ROV GROUP</div>
+            </div>
+            <span class="timeline-date">2023 — Present</span>
           </div>
-          <span class="timeline-date">2023 — Present</span>
+          <div class="timeline-desc">
+            <ul>
+              <li>Built the Escore esports platform — a comprehensive 16-module backend (Node.js/Express/TypeScript) with tournament brackets, match management, rankings, real-time features, and RBAC</li>
+              <li>Developed Next.js admin dashboard and Flutter mobile app targeting the MENA esports market</li>
+              <li>Researched and integrated esports data APIs (PandaScore, GRID, Abios)</li>
+              <li>Worked on Daleel (tour guide marketplace) and Saudi Host (tourism platform) for Gulf markets</li>
+            </ul>
+            <div class="tech-used">
+              <span class="tech-chip">Node.js</span><span class="tech-chip">TypeScript</span><span class="tech-chip">Express</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">MongoDB</span>
+            </div>
+          </div>
         </div>
-        <div class="timeline-desc">
-          <ul>
-            <li>Built the Escore esports platform — a comprehensive 16-module backend (Node.js/Express/TypeScript) with tournament brackets, match management, rankings, real-time features, and RBAC</li>
-            <li>Developed Next.js admin dashboard and Flutter mobile app targeting the MENA esports market</li>
-            <li>Researched and integrated esports data APIs (PandaScore, GRID, Abios)</li>
-            <li>Worked on Daleel (tour guide marketplace) and Saudi Host (tourism platform) for Gulf markets</li>
-          </ul>
-          <div class="tech-used">
-            <span class="tech-chip">Node.js</span><span class="tech-chip">TypeScript</span><span class="tech-chip">Express</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">MongoDB</span>
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">Freelance Full-Stack Developer</div>
+              <div class="timeline-company">Mostaql · Khamsat · Upwork</div>
+            </div>
+            <span class="timeline-date">2022 — Present</span>
+          </div>
+          <div class="timeline-desc">
+            <ul>
+              <li>Delivered production-ready projects including WhatsApp Auto-Reply Bot SaaS, Clinic Booking System (Laravel + Next.js), and ride-sharing platform (Wasalni)</li>
+              <li>Built a complete AI-powered e-commerce assistant integrated with Salla platform — featuring automated customer support via Telegram bot, real-time order tracking, product recommendations, and a full admin dashboard with analytics</li>
+              <li>Created multiple utility tools: Screenshot API, Bulk Email Sender, CSV-Excel Converter, Localhost Tunnel</li>
+              <li>Developed Bagour Delivery and Sana3y — full-stack mobile apps with Node.js backends</li>
+            </ul>
+            <div class="tech-used">
+              <span class="tech-chip">Node.js</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">Laravel</span><span class="tech-chip">Python</span><span class="tech-chip">PostgreSQL</span>
+            </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="timeline-item">
-        <div class="timeline-header">
-          <div>
-            <div class="timeline-role">Freelance Full-Stack Developer</div>
-            <div class="timeline-company">Mostaql · Khamsat · Upwork</div>
-          </div>
-          <span class="timeline-date">2022 — Present</span>
-        </div>
-        <div class="timeline-desc">
-          <ul>
-            <li>Delivered production-ready projects including WhatsApp Auto-Reply Bot SaaS, Clinic Booking System (Laravel + Next.js), and ride-sharing platform (Wasalni)</li>
-            <li>Built a complete AI-powered e-commerce assistant integrated with Salla platform — featuring automated customer support via Telegram bot, real-time order tracking, product recommendations, and a full admin dashboard with analytics</li>
-            <li>Created multiple utility tools: Screenshot API, Bulk Email Sender, CSV-Excel Converter, Localhost Tunnel</li>
-            <li>Developed Bagour Delivery and Sana3y — full-stack mobile apps with Node.js backends</li>
-          </ul>
-          <div class="tech-used">
-            <span class="tech-chip">Node.js</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">Laravel</span><span class="tech-chip">Python</span><span class="tech-chip">PostgreSQL</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
+    <section class="section" id="oss-en">
       <h2 class="section-title">Open Source Contributions</h2>
       <div class="oss-highlights">
         <div class="oss-stat">
@@ -698,57 +1104,59 @@
           </ul>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="section">
+    <section class="section" id="projects-en">
       <h2 class="section-title">Featured Projects</h2>
-      <div class="timeline-item">
-        <div class="timeline-header">
-          <div class="timeline-role">Escore — Esports Platform</div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="timeline-role">Escore — Esports Platform</div>
+          </div>
+          <div class="timeline-desc">
+            Full-stack esports platform for MENA region with tournament management, live match tracking, team/player rankings, news, and transfers module.
+            <div class="tech-used">
+              <span class="tech-chip">Node.js</span><span class="tech-chip">TypeScript</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">MongoDB</span><span class="tech-chip">WebSocket</span>
+            </div>
+          </div>
         </div>
-        <div class="timeline-desc">
-          Full-stack esports platform for MENA region with tournament management, live match tracking, team/player rankings, news, and transfers module.
-          <div class="tech-used">
-            <span class="tech-chip">Node.js</span><span class="tech-chip">TypeScript</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">MongoDB</span><span class="tech-chip">WebSocket</span>
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="timeline-role">IAI — AI-Powered E-Commerce Assistant</div>
+          </div>
+          <div class="timeline-desc">
+            End-to-end intelligent assistant system built for a Saudi e-commerce client. The bot integrates directly with the Salla e-commerce platform to automate customer interactions — handling product inquiries, order tracking, FAQs, and personalized recommendations 24/7. Features include a Telegram bot for instant customer support, AI-driven auto-responses, real-time order status sync via Salla API, and a full admin dashboard for managing conversations, analytics, and bot configuration. Monorepo architecture for scalability and maintainability.
+            <div class="tech-used">
+              <span class="tech-chip">Node.js</span><span class="tech-chip">Next.js</span><span class="tech-chip">Salla API</span><span class="tech-chip">Telegram Bot API</span><span class="tech-chip">AI/NLP</span><span class="tech-chip">Monorepo</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="timeline-role">Wasalni — Ride-Sharing Platform</div>
+          </div>
+          <div class="timeline-desc">
+            Complete ride-sharing solution with Node.js backend, Next.js dashboard, and two Flutter apps (rider + driver). Real-time tracking and payment integration.
+            <div class="tech-used">
+              <span class="tech-chip">Node.js</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">PostgreSQL</span><span class="tech-chip">WebSocket</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="timeline-role">الأربعون النووية — Islamic Hadith App</div>
+          </div>
+          <div class="timeline-desc">
+            Published mobile app on Google Play featuring Nawawi's 40 Hadith with audio narration, Arabic UI with RTL support.
+            <div class="tech-used">
+              <span class="tech-chip">Flutter</span><span class="tech-chip">Dart</span><span class="tech-chip">Google Play</span>
+            </div>
           </div>
         </div>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-header">
-          <div class="timeline-role">IAI — AI-Powered E-Commerce Assistant</div>
-        </div>
-        <div class="timeline-desc">
-          End-to-end intelligent assistant system built for a Saudi e-commerce client. The bot integrates directly with the Salla e-commerce platform to automate customer interactions — handling product inquiries, order tracking, FAQs, and personalized recommendations 24/7. Features include a Telegram bot for instant customer support, AI-driven auto-responses, real-time order status sync via Salla API, and a full admin dashboard for managing conversations, analytics, and bot configuration. Monorepo architecture for scalability and maintainability.
-          <div class="tech-used">
-            <span class="tech-chip">Node.js</span><span class="tech-chip">Next.js</span><span class="tech-chip">Salla API</span><span class="tech-chip">Telegram Bot API</span><span class="tech-chip">AI/NLP</span><span class="tech-chip">Monorepo</span>
-          </div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-header">
-          <div class="timeline-role">Wasalni — Ride-Sharing Platform</div>
-        </div>
-        <div class="timeline-desc">
-          Complete ride-sharing solution with Node.js backend, Next.js dashboard, and two Flutter apps (rider + driver). Real-time tracking and payment integration.
-          <div class="tech-used">
-            <span class="tech-chip">Node.js</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">PostgreSQL</span><span class="tech-chip">WebSocket</span>
-          </div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-header">
-          <div class="timeline-role">الأربعون النووية — Islamic Hadith App</div>
-        </div>
-        <div class="timeline-desc">
-          Published mobile app on Google Play featuring Nawawi's 40 Hadith with audio narration, Arabic UI with RTL support.
-          <div class="tech-used">
-            <span class="tech-chip">Flutter</span><span class="tech-chip">Dart</span><span class="tech-chip">Google Play</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    </section>
 
-    <div class="section">
+    <section class="section" id="platforms-en">
       <h2 class="section-title">Platforms & Links</h2>
       <div class="platforms-grid">
         <a class="platform-card" href="https://github.com/mahmoodhamdi" target="_blank">
@@ -768,21 +1176,21 @@
           <div><div class="platform-name">Upwork</div><div class="platform-handle">Global Freelance</div></div>
         </a>
       </div>
-    </div>
+    </section>
 
-    <div class="footer">
+    <footer class="footer">
       Built with passion — Mahmoud Hamdy Fathy © 2026
-    </div>
+    </footer>
   </div>
 
   <!-- ============ ARABIC VERSION ============ -->
   <div id="ar-cv" style="display:none;">
     <header class="header">
-      <div class="avatar">م ح</div>
+      <div class="avatar" role="img" aria-label="محمود حمدي الأحرف الأولى">م ح</div>
       <h1 class="name">محمود حمدي فتحي</h1>
       <p class="title">مطور تطبيقات متكامل · مستقل</p>
       <div class="contact-row">
-        <a class="contact-item" href="mailto:hmdy7486@gmail.com">
+        <a class="contact-item" href="mailto:hmdy7486@gmail.com" data-copy="hmdy7486@gmail.com" title="انقر للنسخ">
           <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           hmdy7486@gmail.com
         </a>
@@ -797,14 +1205,57 @@
       </div>
     </header>
 
-    <div class="section">
+    <section class="section" id="about-ar">
       <h2 class="section-title">نبذة عني</h2>
-      <div class="summary">
-        مطور تطبيقات متكامل (Full-Stack) متخصص في بناء تطبيقات الويب والموبايل الجاهزة للإنتاج في منطقة الشرق الأوسط وشمال إفريقيا. أتقن تقنيات Node.js/TypeScript في الباك إند، Flutter/Dart لتطبيقات الموبايل، وNext.js للفرونت إند. مساهم نشط في مشاريع مفتوحة المصدر كبيرة مثل express-validator وHelmet.js. أقدم حلولاً متكاملة للعملاء — من منصات SaaS وبوتات ذكية وأتمتة التجارة الإلكترونية إلى لوحات تحكم وأنظمة لحظية. خبرة في بناء بوتات ذكية مربوطة بمنصات مثل سلة وتيليجرام لأتمتة خدمة العملاء وزيادة المبيعات لمتاجر التجارة الإلكترونية.
+      <div class="summary-wrapper">
+        <div class="summary">
+          مطور تطبيقات متكامل (Full-Stack) متخصص في بناء تطبيقات الويب والموبايل الجاهزة للإنتاج في منطقة الشرق الأوسط وشمال إفريقيا. أتقن تقنيات Node.js/TypeScript في الباك إند، Flutter/Dart لتطبيقات الموبايل، وNext.js للفرونت إند. مساهم نشط في مشاريع مفتوحة المصدر كبيرة مثل express-validator وHelmet.js. أقدم حلولاً متكاملة للعملاء — من منصات SaaS وبوتات ذكية وأتمتة التجارة الإلكترونية إلى لوحات تحكم وأنظمة لحظية. خبرة في بناء بوتات ذكية مربوطة بمنصات مثل سلة وتيليجرام لأتمتة خدمة العملاء وزيادة المبيعات لمتاجر التجارة الإلكترونية.
+        </div>
       </div>
-    </div>
+    </section>
 
-    <div class="section">
+    <section class="section" id="services-ar">
+      <h2 class="section-title">الخدمات</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+          </div>
+          <div class="service-title">تطوير تطبيقات الويب المتكاملة</div>
+          <div class="service-desc">تطبيقات ويب شاملة مع باك إند Node.js/TypeScript وفرونت إند Next.js/React وبنية قواعد بيانات متينة.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+          </div>
+          <div class="service-title">تطوير تطبيقات الموبايل</div>
+          <div class="service-desc">تطبيقات موبايل متعددة المنصات باستخدام Flutter/Dart مع بنية نظيفة وإدارة حالة وأداء عالي.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+          </div>
+          <div class="service-title">أتمتة التجارة الإلكترونية وتكامل سلة</div>
+          <div class="service-desc">تكامل مع منصة سلة، إدارة طلبات تلقائية، بوتات تفاعل مع العملاء، ولوحات تحكم تحليلية.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <div class="service-title">تطوير بوتات الذكاء الاصطناعي</div>
+          <div class="service-desc">بوتات محادثة ذكية لتيليجرام وواتساب والويب — مع معالجة لغة طبيعية وردود تلقائية وتكاملات.</div>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+          </div>
+          <div class="service-title">تطوير وتكامل الـ APIs</div>
+          <div class="service-desc">واجهات RESTful، تكاملات طرف ثالث، بوابات دفع، أنظمة WebSocket لحظية، وبنية خدمات مصغرة.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills-ar">
       <h2 class="section-title">المهارات التقنية</h2>
       <div class="skills-grid">
         <div class="skill-category">
@@ -872,53 +1323,55 @@
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="section">
+    <section class="section" id="experience-ar">
       <h2 class="section-title">الخبرة العملية</h2>
-      <div class="timeline-item">
-        <div class="timeline-header">
-          <div>
-            <div class="timeline-role">مطور تطبيقات متكامل</div>
-            <div class="timeline-company">ROV GROUP</div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">مطور تطبيقات متكامل</div>
+              <div class="timeline-company">ROV GROUP</div>
+            </div>
+            <span class="timeline-date">2023 — الحالي</span>
           </div>
-          <span class="timeline-date">2023 — الحالي</span>
+          <div class="timeline-desc">
+            <ul>
+              <li>بناء منصة Escore للرياضات الإلكترونية — باك إند شامل من 16 وحدة (Node.js/Express/TypeScript) يتضمن إدارة البطولات والمباريات والتصنيفات والميزات اللحظية</li>
+              <li>تطوير لوحة تحكم Next.js وتطبيق Flutter للموبايل تستهدف سوق الشرق الأوسط</li>
+              <li>العمل على مشاريع Daleel (سوق المرشدين السياحيين) وSaudi Host (منصة سياحية) لأسواق الخليج</li>
+            </ul>
+            <div class="tech-used">
+              <span class="tech-chip">Node.js</span><span class="tech-chip">TypeScript</span><span class="tech-chip">Express</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">MongoDB</span>
+            </div>
+          </div>
         </div>
-        <div class="timeline-desc">
-          <ul>
-            <li>بناء منصة Escore للرياضات الإلكترونية — باك إند شامل من 16 وحدة (Node.js/Express/TypeScript) يتضمن إدارة البطولات والمباريات والتصنيفات والميزات اللحظية</li>
-            <li>تطوير لوحة تحكم Next.js وتطبيق Flutter للموبايل تستهدف سوق الشرق الأوسط</li>
-            <li>العمل على مشاريع Daleel (سوق المرشدين السياحيين) وSaudi Host (منصة سياحية) لأسواق الخليج</li>
-          </ul>
-          <div class="tech-used">
-            <span class="tech-chip">Node.js</span><span class="tech-chip">TypeScript</span><span class="tech-chip">Express</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">MongoDB</span>
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">مطور مستقل Full-Stack</div>
+              <div class="timeline-company">مستقل · خمسات · Upwork</div>
+            </div>
+            <span class="timeline-date">2022 — الحالي</span>
+          </div>
+          <div class="timeline-desc">
+            <ul>
+              <li>تسليم مشاريع جاهزة للإنتاج تشمل بوت واتساب SaaS، ونظام حجز عيادات (Laravel + Next.js)، ومنصة توصيل (وصلني)</li>
+              <li>بناء مساعد ذكي متكامل للتجارة الإلكترونية مربوط بمنصة سلة — يتضمن دعم عملاء تلقائي عبر بوت تيليجرام، تتبع طلبات لحظي، توصيات منتجات، ولوحة تحكم كاملة مع تحليلات</li>
+              <li>تطوير أدوات متعددة: Screenshot API، أداة إرسال إيميلات جماعية، محول CSV-Excel</li>
+              <li>تطوير تطبيقات باجور ديليفري وصنايعي — تطبيقات موبايل كاملة مع باك إند Node.js</li>
+            </ul>
+            <div class="tech-used">
+              <span class="tech-chip">Node.js</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">Laravel</span><span class="tech-chip">Python</span><span class="tech-chip">PostgreSQL</span>
+            </div>
           </div>
         </div>
       </div>
+    </section>
 
-      <div class="timeline-item">
-        <div class="timeline-header">
-          <div>
-            <div class="timeline-role">مطور مستقل Full-Stack</div>
-            <div class="timeline-company">مستقل · خمسات · Upwork</div>
-          </div>
-          <span class="timeline-date">2022 — الحالي</span>
-        </div>
-        <div class="timeline-desc">
-          <ul>
-            <li>تسليم مشاريع جاهزة للإنتاج تشمل بوت واتساب SaaS، ونظام حجز عيادات (Laravel + Next.js)، ومنصة توصيل (وصلني)</li>
-            <li>بناء مساعد ذكي متكامل للتجارة الإلكترونية مربوط بمنصة سلة — يتضمن دعم عملاء تلقائي عبر بوت تيليجرام، تتبع طلبات لحظي، توصيات منتجات، ولوحة تحكم كاملة مع تحليلات</li>
-            <li>تطوير أدوات متعددة: Screenshot API، أداة إرسال إيميلات جماعية، محول CSV-Excel</li>
-            <li>تطوير تطبيقات باجور ديليفري وصنايعي — تطبيقات موبايل كاملة مع باك إند Node.js</li>
-          </ul>
-          <div class="tech-used">
-            <span class="tech-chip">Node.js</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">Laravel</span><span class="tech-chip">Python</span><span class="tech-chip">PostgreSQL</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
+    <section class="section" id="oss-ar">
       <h2 class="section-title">المساهمات في المصادر المفتوحة</h2>
       <div class="oss-highlights">
         <div class="oss-stat">
@@ -944,57 +1397,59 @@
           </ul>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="section">
+    <section class="section" id="projects-ar">
       <h2 class="section-title">مشاريع مميزة</h2>
-      <div class="timeline-item">
-        <div class="timeline-header">
-          <div class="timeline-role">Escore — منصة الرياضات الإلكترونية</div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="timeline-role">Escore — منصة الرياضات الإلكترونية</div>
+          </div>
+          <div class="timeline-desc">
+            منصة رياضات إلكترونية متكاملة لمنطقة الشرق الأوسط تتضمن إدارة البطولات، متابعة المباريات اللحظية، تصنيفات الفرق واللاعبين، الأخبار، ووحدة الانتقالات.
+            <div class="tech-used">
+              <span class="tech-chip">Node.js</span><span class="tech-chip">TypeScript</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">MongoDB</span><span class="tech-chip">WebSocket</span>
+            </div>
+          </div>
         </div>
-        <div class="timeline-desc">
-          منصة رياضات إلكترونية متكاملة لمنطقة الشرق الأوسط تتضمن إدارة البطولات، متابعة المباريات اللحظية، تصنيفات الفرق واللاعبين، الأخبار، ووحدة الانتقالات.
-          <div class="tech-used">
-            <span class="tech-chip">Node.js</span><span class="tech-chip">TypeScript</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">MongoDB</span><span class="tech-chip">WebSocket</span>
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="timeline-role">IAI — مساعد ذكي للتجارة الإلكترونية</div>
+          </div>
+          <div class="timeline-desc">
+            نظام مساعد ذكي متكامل لعميل سعودي في التجارة الإلكترونية. البوت مربوط مباشرة بمنصة سلة لأتمتة التواصل مع العملاء — يتعامل مع استفسارات المنتجات، تتبع الطلبات، الأسئلة الشائعة، والتوصيات الشخصية على مدار الساعة. يتضمن بوت تيليجرام للدعم الفوري، ردود تلقائية ذكية، مزامنة لحظية لحالة الطلبات عبر Salla API، ولوحة تحكم كاملة لإدارة المحادثات والتحليلات وإعدادات البوت. بنية Monorepo لضمان القابلية للتوسع والصيانة.
+            <div class="tech-used">
+              <span class="tech-chip">Node.js</span><span class="tech-chip">Next.js</span><span class="tech-chip">Salla API</span><span class="tech-chip">Telegram Bot API</span><span class="tech-chip">AI/NLP</span><span class="tech-chip">Monorepo</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="timeline-role">وصلني — منصة توصيل</div>
+          </div>
+          <div class="timeline-desc">
+            حل توصيل متكامل مع باك إند Node.js ولوحة تحكم Next.js وتطبيقين Flutter (راكب + سائق). تتبع لحظي وتكامل دفع.
+            <div class="tech-used">
+              <span class="tech-chip">Node.js</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">PostgreSQL</span><span class="tech-chip">WebSocket</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="timeline-role">الأربعون النووية — تطبيق أحاديث</div>
+          </div>
+          <div class="timeline-desc">
+            تطبيق موبايل منشور على Google Play يضم الأربعين النووية بصوت الشيخ النفيس، واجهة عربية مع دعم RTL.
+            <div class="tech-used">
+              <span class="tech-chip">Flutter</span><span class="tech-chip">Dart</span><span class="tech-chip">Google Play</span>
+            </div>
           </div>
         </div>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-header">
-          <div class="timeline-role">IAI — مساعد ذكي للتجارة الإلكترونية</div>
-        </div>
-        <div class="timeline-desc">
-          نظام مساعد ذكي متكامل لعميل سعودي في التجارة الإلكترونية. البوت مربوط مباشرة بمنصة سلة لأتمتة التواصل مع العملاء — يتعامل مع استفسارات المنتجات، تتبع الطلبات، الأسئلة الشائعة، والتوصيات الشخصية على مدار الساعة. يتضمن بوت تيليجرام للدعم الفوري، ردود تلقائية ذكية، مزامنة لحظية لحالة الطلبات عبر Salla API، ولوحة تحكم كاملة لإدارة المحادثات والتحليلات وإعدادات البوت. بنية Monorepo لضمان القابلية للتوسع والصيانة.
-          <div class="tech-used">
-            <span class="tech-chip">Node.js</span><span class="tech-chip">Next.js</span><span class="tech-chip">Salla API</span><span class="tech-chip">Telegram Bot API</span><span class="tech-chip">AI/NLP</span><span class="tech-chip">Monorepo</span>
-          </div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-header">
-          <div class="timeline-role">وصلني — منصة توصيل</div>
-        </div>
-        <div class="timeline-desc">
-          حل توصيل متكامل مع باك إند Node.js ولوحة تحكم Next.js وتطبيقين Flutter (راكب + سائق). تتبع لحظي وتكامل دفع.
-          <div class="tech-used">
-            <span class="tech-chip">Node.js</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">PostgreSQL</span><span class="tech-chip">WebSocket</span>
-          </div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-header">
-          <div class="timeline-role">الأربعون النووية — تطبيق أحاديث</div>
-        </div>
-        <div class="timeline-desc">
-          تطبيق موبايل منشور على Google Play يضم الأربعين النووية بصوت الشيخ النفيس، واجهة عربية مع دعم RTL.
-          <div class="tech-used">
-            <span class="tech-chip">Flutter</span><span class="tech-chip">Dart</span><span class="tech-chip">Google Play</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    </section>
 
-    <div class="section">
+    <section class="section" id="platforms-ar">
       <h2 class="section-title">المنصات والروابط</h2>
       <div class="platforms-grid">
         <a class="platform-card" href="https://github.com/mahmoodhamdi" target="_blank">
@@ -1014,26 +1469,34 @@
           <div><div class="platform-name">Upwork</div><div class="platform-handle">عمل حر دولي</div></div>
         </a>
       </div>
-    </div>
+    </section>
 
-    <div class="footer">
+    <footer class="footer">
       صُنع بشغف — محمود حمدي فتحي © ٢٠٢٦
-    </div>
+    </footer>
   </div>
-</div>
+</main>
 
 <script>
+  // ===== Language Toggle =====
+  let currentLang = 'en';
+
   function setLang(lang) {
+    currentLang = lang;
     const html = document.documentElement;
     const enCV = document.getElementById('en-cv');
     const arCV = document.getElementById('ar-cv');
     const buttons = document.querySelectorAll('.lang-btn');
+    const navEn = document.getElementById('nav-links-en');
+    const navAr = document.getElementById('nav-links-ar');
 
     if (lang === 'ar') {
       html.setAttribute('dir', 'rtl');
       html.setAttribute('lang', 'ar');
       enCV.style.display = 'none';
       arCV.style.display = 'block';
+      navEn.style.display = 'none';
+      navAr.style.display = 'flex';
       buttons[0].classList.remove('active');
       buttons[1].classList.add('active');
     } else {
@@ -1041,17 +1504,153 @@
       html.setAttribute('lang', 'en');
       enCV.style.display = 'block';
       arCV.style.display = 'none';
+      navEn.style.display = 'flex';
+      navAr.style.display = 'none';
       buttons[0].classList.add('active');
       buttons[1].classList.remove('active');
     }
 
-    // Re-trigger animations
-    document.querySelectorAll('.section').forEach((s, i) => {
-      s.style.animation = 'none';
-      s.offsetHeight;
-      s.style.animation = `fadeUp 0.6s ease ${i * 0.1}s both`;
+    // Re-observe sections for scroll reveal
+    observeSections();
+    updateActiveNav();
+  }
+
+  // ===== Theme Toggle =====
+  function toggleTheme() {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    try { localStorage.setItem('cv-theme', next); } catch(e) {}
+  }
+
+  // Restore saved theme
+  try {
+    const saved = localStorage.getItem('cv-theme');
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
+  } catch(e) {}
+
+  // ===== Scroll Reveal (Intersection Observer) =====
+  function observeSections() {
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    sections.forEach(function(s) {
+      s.classList.remove('revealed');
+      observer.observe(s);
     });
   }
+
+  // ===== Parallax Orbs =====
+  (function() {
+    var orbs = document.querySelectorAll('.orb');
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          var scrollY = window.scrollY;
+          orbs[0].style.transform = 'translateY(' + (scrollY * 0.08) + 'px)';
+          orbs[1].style.transform = 'translateY(' + (scrollY * -0.05) + 'px)';
+          orbs[2].style.transform = 'translateY(' + (scrollY * 0.12) + 'px)';
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  })();
+
+  // ===== Scroll to Top Button =====
+  (function() {
+    var btn = document.getElementById('scrollTop');
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          if (window.scrollY > 400) {
+            btn.classList.add('visible');
+          } else {
+            btn.classList.remove('visible');
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  })();
+
+  // ===== Navbar visibility + active section =====
+  (function() {
+    var navbar = document.getElementById('navbar');
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          if (window.scrollY > 300) {
+            navbar.classList.add('visible');
+          } else {
+            navbar.classList.remove('visible');
+          }
+          updateActiveNav();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  })();
+
+  function updateActiveNav() {
+    var suffix = currentLang === 'ar' ? '-ar' : '-en';
+    var navContainer = document.getElementById('nav-links' + (currentLang === 'ar' ? '-ar' : '-en'));
+    var links = navContainer.querySelectorAll('.nav-link');
+    var scrollY = window.scrollY + 120;
+    var active = null;
+
+    links.forEach(function(link) {
+      var target = document.getElementById(link.getAttribute('data-target'));
+      if (target && target.offsetTop <= scrollY) {
+        active = link;
+      }
+      link.classList.remove('active');
+    });
+    if (active) active.classList.add('active');
+  }
+
+  // Nav link click scrolling
+  document.querySelectorAll('.nav-link').forEach(function(link) {
+    link.addEventListener('click', function() {
+      var target = document.getElementById(this.getAttribute('data-target'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // ===== Copy to Clipboard =====
+  document.querySelectorAll('[data-copy]').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.preventDefault();
+      var text = this.getAttribute('data-copy');
+      navigator.clipboard.writeText(text).then(function() {
+        showToast(currentLang === 'ar' ? 'تم النسخ!' : 'Copied to clipboard!');
+      });
+    });
+  });
+
+  function showToast(msg) {
+    var toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(function() { toast.classList.remove('show'); }, 2000);
+  }
+
+  // ===== Init =====
+  observeSections();
 </script>
 
 </body>
