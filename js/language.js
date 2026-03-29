@@ -37,6 +37,7 @@ function setLang(l) {
   window.CV.cFlag = {};
   if (window.initObs) window.initObs();
   if (window.initHeatmap) window.initHeatmap();
+  if (window.reobserveAll) window.reobserveAll();
   if (window.updateNav) window.updateNav();
 }
 window.setLang = setLang;

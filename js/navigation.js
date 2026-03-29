@@ -22,7 +22,10 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.nav-a').forEach(function(l) {
     l.addEventListener('click', function() {
       var t = document.getElementById(this.getAttribute('data-t'));
-      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (t) {
+        var offset = t.getBoundingClientRect().top + window.scrollY - 60;
+        window.scrollTo({ top: offset, behavior: 'smooth' });
+      }
     });
   });
 });

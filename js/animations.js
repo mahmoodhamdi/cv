@@ -44,11 +44,14 @@ var cntObs = new IntersectionObserver(function(en) {
   });
 }, { threshold: .3 });
 
-document.addEventListener('DOMContentLoaded', function() {
+function observeCounters() {
   document.querySelectorAll('.stats').forEach(function(s) {
-    cntObs.observe(s.closest('.sec'));
+    var sec = s.closest('.sec');
+    if (sec) cntObs.observe(sec);
   });
-});
+}
+window.observeCounters = observeCounters;
+document.addEventListener('DOMContentLoaded', observeCounters);
 
 // skill dots observer
 var dObs = new IntersectionObserver(function(en) {
@@ -61,11 +64,13 @@ var dObs = new IntersectionObserver(function(en) {
   });
 }, { threshold: .2 });
 
-document.addEventListener('DOMContentLoaded', function() {
+function observeDots() {
   document.querySelectorAll('.sk-g').forEach(function(g) {
-    dObs.observe(g.closest('.sec'));
+    var sec = g.closest('.sec');
+    if (sec) dObs.observe(sec);
   });
-});
+}
+document.addEventListener('DOMContentLoaded', observeDots);
 
 // lang bars observer
 var lObs = new IntersectionObserver(function(en) {
@@ -77,11 +82,13 @@ var lObs = new IntersectionObserver(function(en) {
   });
 }, { threshold: .3 });
 
-document.addEventListener('DOMContentLoaded', function() {
+function observeLangBars() {
   document.querySelectorAll('.lang-bar').forEach(function(b) {
-    lObs.observe(b.closest('.sec'));
+    var sec = b.closest('.sec');
+    if (sec) lObs.observe(sec);
   });
-});
+}
+document.addEventListener('DOMContentLoaded', observeLangBars);
 
 // value props observer
 var vObs = new IntersectionObserver(function(en) {
@@ -93,11 +100,13 @@ var vObs = new IntersectionObserver(function(en) {
   });
 }, { threshold: .2 });
 
-document.addEventListener('DOMContentLoaded', function() {
+function observeValProps() {
   document.querySelectorAll('.val-g').forEach(function(g) {
-    vObs.observe(g.closest('.sec'));
+    var sec = g.closest('.sec');
+    if (sec) vObs.observe(sec);
   });
-});
+}
+document.addEventListener('DOMContentLoaded', observeValProps);
 
 // testimonials observer
 var tObs = new IntersectionObserver(function(en) {
@@ -109,11 +118,13 @@ var tObs = new IntersectionObserver(function(en) {
   });
 }, { threshold: .15 });
 
-document.addEventListener('DOMContentLoaded', function() {
+function observeTestimonials() {
   document.querySelectorAll('.test-g').forEach(function(g) {
-    tObs.observe(g.closest('.sec'));
+    var sec = g.closest('.sec');
+    if (sec) tObs.observe(sec);
   });
-});
+}
+document.addEventListener('DOMContentLoaded', observeTestimonials);
 
 // heatmap
 function initHeatmap() {
@@ -140,6 +151,16 @@ function initHeatmap() {
   });
 }
 window.initHeatmap = initHeatmap;
+
+// re-observe all animated sections (called after language switch)
+function reobserveAll() {
+  observeCounters();
+  observeDots();
+  observeLangBars();
+  observeValProps();
+  observeTestimonials();
+}
+window.reobserveAll = reobserveAll;
 
 // parallax orbs
 (function() {
