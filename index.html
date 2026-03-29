@@ -49,6 +49,8 @@
     --font-ar-body: 'Noto Kufi Arabic', sans-serif;
     --nav-bg: rgba(10, 15, 26, 0.85);
     --toast-bg: #1a2236;
+    --star-color: #fbbf24;
+    --progress-bg: rgba(148, 163, 184, 0.1);
   }
 
   html[data-theme="light"] {
@@ -67,6 +69,7 @@
     --gradient-2: linear-gradient(135deg, #6366f1, #a855f7);
     --nav-bg: rgba(248, 250, 252, 0.85);
     --toast-bg: #0f172a;
+    --progress-bg: rgba(15, 23, 42, 0.06);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -432,60 +435,58 @@
     border-radius: 14px;
   }
 
-  /* ===== Skills ===== */
-  .skills-grid {
+  /* ===== Stats Bar ===== */
+  .stats-bar {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
   }
-  .skill-category {
+  .stat-item {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 14px;
-    padding: 20px;
+    padding: 20px 12px;
+    text-align: center;
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
   }
-  .skill-category:hover {
-    border-color: rgba(56, 189, 248, 0.2);
-    background: var(--bg-card-hover);
+  .stat-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gradient-1);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+  }
+  .stat-item:hover::after { transform: scaleX(1); }
+  .stat-item:hover {
     transform: translateY(-2px);
+    border-color: rgba(56, 189, 248, 0.2);
   }
-  .skill-cat-title {
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--accent);
-    margin-bottom: 12px;
-  }
-  html[dir="rtl"] .skill-cat-title { text-transform: none; letter-spacing: 0.02em; }
-
-  .skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-  .skill-tag {
-    padding: 4px 12px;
-    border-radius: 8px;
-    font-size: 12.5px;
-    font-weight: 400;
-    background: rgba(56, 189, 248, 0.08);
-    color: var(--text-secondary);
-    border: 1px solid rgba(56, 189, 248, 0.1);
+  .stat-number {
+    font-size: 32px;
+    font-weight: 700;
     font-family: var(--font-mono);
-    transition: all 0.25s ease;
-    will-change: transform;
-    cursor: default;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
   }
-  .skill-tag:hover {
-    transform: scale(1.08);
-    background: rgba(56, 189, 248, 0.15);
-    border-color: rgba(56, 189, 248, 0.3);
-    box-shadow: 0 0 12px var(--accent-glow);
-    color: var(--text-primary);
+  .stat-suffix {
+    font-size: 18px;
+    font-weight: 600;
   }
-  html[dir="rtl"] .skill-tag { font-family: var(--font-mono); direction: ltr; }
+  .stat-label {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    margin-top: 6px;
+    line-height: 1.3;
+  }
 
   /* ===== Services ===== */
   .services-grid {
@@ -545,6 +546,163 @@
     line-height: 1.6;
   }
 
+  /* ===== Value Props (What I Offer) ===== */
+  .value-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .value-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: all 0.3s ease;
+  }
+  .value-card:hover {
+    border-color: rgba(56, 189, 248, 0.2);
+    background: var(--bg-card-hover);
+    transform: translateY(-2px);
+  }
+  .value-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: var(--gradient-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 22px;
+    color: #fff;
+  }
+  .value-icon svg { width: 22px; height: 22px; stroke: #fff; fill: none; stroke-width: 2; }
+  .value-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+  .value-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* ===== Tech Stack Visualization ===== */
+  .techstack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+  }
+  .tech-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: all 0.3s ease;
+  }
+  .tech-item:hover {
+    border-color: rgba(56, 189, 248, 0.2);
+    background: var(--bg-card-hover);
+    transform: translateX(4px);
+  }
+  html[dir="rtl"] .tech-item:hover { transform: translateX(-4px); }
+  .tech-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: var(--accent-glow);
+  }
+  .tech-logo svg { width: 24px; height: 24px; }
+  .tech-info { flex: 1; min-width: 0; }
+  .tech-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+  .tech-bar-bg {
+    width: 100%;
+    height: 6px;
+    background: var(--progress-bg);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .tech-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: var(--gradient-1);
+    width: 0;
+    transition: width 1s ease;
+  }
+  .tech-item.animated .tech-bar-fill { width: var(--level); }
+
+  /* ===== Skills (kept as secondary grouping) ===== */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .skill-category {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    transition: all 0.3s ease;
+  }
+  .skill-category:hover {
+    border-color: rgba(56, 189, 248, 0.2);
+    background: var(--bg-card-hover);
+    transform: translateY(-2px);
+  }
+  .skill-cat-title {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  html[dir="rtl"] .skill-cat-title { text-transform: none; letter-spacing: 0.02em; }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .skill-tag {
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    font-weight: 400;
+    background: rgba(56, 189, 248, 0.08);
+    color: var(--text-secondary);
+    border: 1px solid rgba(56, 189, 248, 0.1);
+    font-family: var(--font-mono);
+    transition: all 0.25s ease;
+    will-change: transform;
+    cursor: default;
+  }
+  .skill-tag:hover {
+    transform: scale(1.08);
+    background: rgba(56, 189, 248, 0.15);
+    border-color: rgba(56, 189, 248, 0.3);
+    box-shadow: 0 0 12px var(--accent-glow);
+    color: var(--text-primary);
+  }
+  html[dir="rtl"] .skill-tag { font-family: var(--font-mono); direction: ltr; }
+
   /* ===== Timeline with left accent line ===== */
   .timeline {
     position: relative;
@@ -589,7 +747,7 @@
     background: var(--bg-card-hover);
   }
 
-  /* Timeline items outside .timeline wrapper (OSS section) */
+  /* Timeline items outside .timeline wrapper */
   .section > .timeline-item { margin-left: 0; }
   .section > .timeline-item::before { display: none; }
 
@@ -659,6 +817,164 @@
     color: var(--accent-secondary);
     border: 1px solid rgba(129, 140, 248, 0.15);
   }
+
+  /* ===== Testimonials ===== */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .testimonial-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  .testimonial-card:hover {
+    border-color: rgba(56, 189, 248, 0.2);
+    background: var(--bg-card-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px var(--accent-glow);
+  }
+  .testimonial-quote-icon {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    font-size: 36px;
+    line-height: 1;
+    opacity: 0.08;
+    color: var(--accent);
+    font-family: Georgia, serif;
+  }
+  html[dir="rtl"] .testimonial-quote-icon { right: auto; left: 20px; }
+  .testimonial-stars {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 12px;
+  }
+  .testimonial-stars svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--star-color);
+  }
+  .testimonial-text {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .testimonial-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--gradient-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .testimonial-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  .testimonial-project {
+    font-size: 11.5px;
+    color: var(--text-muted);
+  }
+
+  /* ===== Education ===== */
+  .edu-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: all 0.3s ease;
+    margin-bottom: 14px;
+  }
+  .edu-card:last-child { margin-bottom: 0; }
+  .edu-card:hover {
+    border-color: rgba(56, 189, 248, 0.2);
+    background: var(--bg-card-hover);
+  }
+  .edu-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--accent-glow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--accent);
+  }
+  .edu-icon svg { width: 22px; height: 22px; stroke: var(--accent); fill: none; stroke-width: 1.8; }
+  .edu-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+  }
+  .edu-institution {
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+  .edu-year {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+  }
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .cert-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+  }
+  .cert-card:hover {
+    border-color: rgba(56, 189, 248, 0.2);
+    background: var(--bg-card-hover);
+    transform: translateY(-2px);
+  }
+  .cert-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--accent-glow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--accent);
+  }
+  .cert-icon svg { width: 16px; height: 16px; stroke: var(--accent); fill: none; stroke-width: 2; }
+  .cert-name { font-size: 13px; font-weight: 500; color: var(--text-primary); }
+  .cert-issuer { font-size: 11px; color: var(--text-muted); }
 
   /* Platforms / Links */
   .platforms-grid {
@@ -802,17 +1118,21 @@
     .section-title::before { background: #333; }
     .section { opacity: 1; transform: none; }
     .summary-wrapper { background: none; padding: 0; }
-    .summary, .skill-category, .timeline-item, .platform-card, .oss-stat, .service-card {
+    .summary, .skill-category, .timeline-item, .platform-card, .oss-stat, .service-card,
+    .stat-item, .value-card, .tech-item, .testimonial-card, .edu-card, .cert-card {
       background: #f8fafc; border: 1px solid #e2e8f0; color: #334155;
-      box-shadow: none;
+      box-shadow: none; transform: none;
     }
     .summary::before { background: #333; }
     .skill-tag, .tech-chip { background: #f1f5f9; color: #475569; border-color: #e2e8f0; }
-    .oss-stat-value { -webkit-text-fill-color: #1e40af; }
+    .oss-stat-value, .stat-number { -webkit-text-fill-color: #1e40af; }
     .accent, .timeline-company, .skill-cat-title, .service-icon { color: #2563eb; }
     .timeline::before { background: #cbd5e1; }
     .timeline-item::before { background: #2563eb; box-shadow: none; }
     .avatar::before, .avatar::after { display: none; }
+    .tech-bar-fill { width: var(--level) !important; background: #2563eb; }
+    .testimonial-stars svg { fill: #d97706; }
+    .value-icon, .platform-icon { background: #e0e7ff; }
   }
 
   @media (max-width: 600px) {
@@ -821,8 +1141,14 @@
     .contact-row { gap: 10px; }
     .skills-grid { grid-template-columns: 1fr; }
     .services-grid { grid-template-columns: 1fr; }
+    .techstack-grid { grid-template-columns: 1fr; }
     .platforms-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .value-grid { grid-template-columns: 1fr; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    .stats-bar .stat-item:last-child { grid-column: span 2; }
     .oss-highlights { grid-template-columns: repeat(2, 1fr); }
+    .certs-grid { grid-template-columns: 1fr; }
     .top-controls { top: 12px; right: 12px; }
     .print-btn { top: 12px; left: 12px; }
     html[dir="rtl"] .top-controls { left: 12px; right: auto; }
@@ -831,6 +1157,7 @@
     html[dir="rtl"] .scroll-top { right: auto; left: 20px; }
     .navbar.visible ~ .top-controls { top: 56px; }
     .navbar.visible ~ .print-btn { top: 56px; }
+    .stat-number { font-size: 24px; }
   }
 </style>
 </head>
@@ -844,20 +1171,30 @@
 <nav class="navbar" id="navbar" role="navigation" aria-label="Section navigation">
   <div class="navbar-inner" id="nav-links-en">
     <button class="nav-link" data-target="about-en">About</button>
+    <button class="nav-link" data-target="stats-en">Stats</button>
     <button class="nav-link" data-target="services-en">Services</button>
+    <button class="nav-link" data-target="value-en">Why Me</button>
+    <button class="nav-link" data-target="techstack-en">Tech Stack</button>
     <button class="nav-link" data-target="skills-en">Skills</button>
     <button class="nav-link" data-target="experience-en">Experience</button>
     <button class="nav-link" data-target="oss-en">Open Source</button>
     <button class="nav-link" data-target="projects-en">Projects</button>
+    <button class="nav-link" data-target="testimonials-en">Reviews</button>
+    <button class="nav-link" data-target="education-en">Education</button>
     <button class="nav-link" data-target="platforms-en">Links</button>
   </div>
   <div class="navbar-inner" id="nav-links-ar" style="display:none;">
     <button class="nav-link" data-target="about-ar">نبذة عني</button>
+    <button class="nav-link" data-target="stats-ar">الأرقام</button>
     <button class="nav-link" data-target="services-ar">الخدمات</button>
+    <button class="nav-link" data-target="value-ar">لماذا أنا</button>
+    <button class="nav-link" data-target="techstack-ar">التقنيات</button>
     <button class="nav-link" data-target="skills-ar">المهارات</button>
     <button class="nav-link" data-target="experience-ar">الخبرة</button>
     <button class="nav-link" data-target="oss-ar">المصادر المفتوحة</button>
     <button class="nav-link" data-target="projects-ar">المشاريع</button>
+    <button class="nav-link" data-target="testimonials-ar">آراء العملاء</button>
+    <button class="nav-link" data-target="education-ar">التعليم</button>
     <button class="nav-link" data-target="platforms-ar">الروابط</button>
   </div>
 </nav>
@@ -920,43 +1257,138 @@
       </div>
     </section>
 
+    <!-- Stats -->
+    <section class="section" id="stats-en">
+      <h2 class="section-title">By the Numbers</h2>
+      <div class="stats-bar">
+        <div class="stat-item">
+          <div class="stat-number"><span data-count="50">0</span><span class="stat-suffix">+</span></div>
+          <div class="stat-label">Projects Delivered</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number"><span data-count="25">0</span><span class="stat-suffix">+</span></div>
+          <div class="stat-label">OSS Contributions</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number"><span data-count="15">0</span><span class="stat-suffix">+</span></div>
+          <div class="stat-label">Merged PRs</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number"><span data-count="3">0</span><span class="stat-suffix">+</span></div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number"><span data-count="10">0</span><span class="stat-suffix">+</span></div>
+          <div class="stat-label">Happy Clients</div>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="services-en">
       <h2 class="section-title">Services</h2>
       <div class="services-grid">
         <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-          </div>
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg></div>
           <div class="service-title">Full-Stack Development</div>
           <div class="service-desc">End-to-end web applications with Node.js/TypeScript backends, Next.js/React frontends, and robust database architecture.</div>
         </div>
         <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
-          </div>
+          <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg></div>
           <div class="service-title">Mobile App Development</div>
           <div class="service-desc">Cross-platform mobile apps with Flutter/Dart using clean architecture, state management, and native performance.</div>
         </div>
         <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
-          </div>
+          <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></div>
           <div class="service-title">E-Commerce Automation</div>
           <div class="service-desc">Salla platform integration, automated order management, customer engagement bots, and analytics dashboards.</div>
         </div>
         <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-          </div>
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
           <div class="service-title">AI Chatbot Development</div>
           <div class="service-desc">Intelligent conversational bots for Telegram, WhatsApp, and web — with NLP, auto-responses, and platform integrations.</div>
         </div>
         <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
-          </div>
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div>
           <div class="service-title">API Development & Integration</div>
           <div class="service-desc">RESTful APIs, third-party integrations, payment gateways, real-time WebSocket systems, and microservices architecture.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What I Offer -->
+    <section class="section" id="value-en">
+      <h2 class="section-title">Why Work With Me</h2>
+      <div class="value-grid">
+        <div class="value-card">
+          <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <div>
+            <div class="value-title">End-to-End Delivery</div>
+            <div class="value-desc">From concept to deployment — I handle the full lifecycle including architecture, development, testing, and hosting.</div>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div>
+            <div class="value-title">Arabic-First Applications</div>
+            <div class="value-desc">Native RTL support, Arabic UI/UX, and deep understanding of the MENA market and its platforms.</div>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div>
+            <div class="value-title">Fast Turnaround</div>
+            <div class="value-desc">Quick delivery without cutting corners — clean code, tested features, and production-ready results.</div>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+          <div>
+            <div class="value-title">Post-Launch Support</div>
+            <div class="value-desc">Ongoing technical support, bug fixes, and feature iterations after project delivery.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="section" id="techstack-en">
+      <h2 class="section-title">Tech Stack</h2>
+      <div class="techstack-grid">
+        <div class="tech-item" style="--level:95%">
+          <div class="tech-logo"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21.985c-1.818 0-3.3-2.686-3.3-6s1.482-6 3.3-6 3.3 2.686 3.3 6-1.482 6-3.3 6z" stroke="var(--accent)" stroke-width="1.5"/><path d="M6.343 18.985c-.909-1.574.427-4.026 2.983-5.5s5.349-1.5 6.258.074-.427 4.026-2.983 5.5-5.349 1.5-6.258-.074z" stroke="var(--accent)" stroke-width="1.5"/><path d="M6.343 12.985c.909-1.574 3.702-1.548 6.258-.074s3.892 3.926 2.983 5.5-3.702 1.548-6.258.074-3.892-3.926-2.983-5.5z" stroke="var(--accent)" stroke-width="1.5"/><circle cx="12" cy="15.985" r="1.5" fill="var(--accent)"/></svg></div>
+          <div class="tech-info"><div class="tech-name">Node.js</div><div class="tech-bar-bg"><div class="tech-bar-fill"></div></div></div>
+        </div>
+        <div class="tech-item" style="--level:92%">
+          <div class="tech-logo"><svg viewBox="0 0 24 24" fill="none"><path d="M3 3h18v18H3V3z" stroke="var(--accent-secondary)" stroke-width="1.5"/><path d="M14.5 16.5c0 .828-.56 1.5-1.25 1.5s-1.25-.672-1.25-1.5V11h-2v5.5c0 1.933 1.454 3.5 3.25 3.5s3.25-1.567 3.25-3.5V11h-2v5.5z" fill="var(--accent-secondary)"/><path d="M7 11h2v9H7v-9z" fill="var(--accent-secondary)"/></svg></div>
+          <div class="tech-info"><div class="tech-name">TypeScript</div><div class="tech-bar-bg"><div class="tech-bar-fill"></div></div></div>
+        </div>
+        <div class="tech-item" style="--level:90%">
+          <div class="tech-logo"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/><path d="M2 17l10 5 10-5" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/><path d="M2 12l10 5 10-5" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+          <div class="tech-info"><div class="tech-name">Next.js / React</div><div class="tech-bar-bg"><div class="tech-bar-fill"></div></div></div>
+        </div>
+        <div class="tech-item" style="--level:90%">
+          <div class="tech-logo"><svg viewBox="0 0 24 24" fill="none"><path d="M7 4l5 16 5-16" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 10h18" stroke="#818cf8" stroke-width="2" stroke-linecap="round"/><path d="M5 16h14" stroke="#818cf8" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div class="tech-info"><div class="tech-name">Flutter / Dart</div><div class="tech-bar-bg"><div class="tech-bar-fill"></div></div></div>
+        </div>
+        <div class="tech-item" style="--level:88%">
+          <div class="tech-logo"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18" stroke="var(--accent)" stroke-width="1.5"/><path d="M5.5 6.5L12 3l6.5 3.5" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/><path d="M5.5 17.5L12 21l6.5-3.5" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/><path d="M5.5 6.5v11" stroke="var(--accent)" stroke-width="1.5"/><path d="M18.5 6.5v11" stroke="var(--accent)" stroke-width="1.5"/></svg></div>
+          <div class="tech-info"><div class="tech-name">Express / NestJS</div><div class="tech-bar-bg"><div class="tech-bar-fill"></div></div></div>
+        </div>
+        <div class="tech-item" style="--level:85%">
+          <div class="tech-logo"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke="#34d399" stroke-width="1.5"/><path d="M12 6v6l4 2" stroke="#34d399" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div class="tech-info"><div class="tech-name">MongoDB</div><div class="tech-bar-bg"><div class="tech-bar-fill"></div></div></div>
+        </div>
+        <div class="tech-item" style="--level:82%">
+          <div class="tech-logo"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="var(--accent-secondary)" stroke-width="1.5"/><path d="M8 12h8M12 8v8" stroke="var(--accent-secondary)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div class="tech-info"><div class="tech-name">PostgreSQL</div><div class="tech-bar-bg"><div class="tech-bar-fill"></div></div></div>
+        </div>
+        <div class="tech-item" style="--level:80%">
+          <div class="tech-logo"><svg viewBox="0 0 24 24" fill="none"><path d="M20.4 7.5L12 2 3.6 7.5V16.5L12 22l8.4-5.5V7.5z" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 12l8.4-4.5M12 12v10M12 12L3.6 7.5" stroke="var(--accent)" stroke-width="1" opacity="0.5"/></svg></div>
+          <div class="tech-info"><div class="tech-name">Docker</div><div class="tech-bar-bg"><div class="tech-bar-fill"></div></div></div>
+        </div>
+        <div class="tech-item" style="--level:78%">
+          <div class="tech-logo"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" stroke="var(--accent)" stroke-width="1.5"/><path d="M16 8V5a1 1 0 00-1-1H9a1 1 0 00-1 1v3" stroke="var(--accent)" stroke-width="1.5"/><path d="M8 16v3a1 1 0 001 1h6a1 1 0 001-1v-3" stroke="var(--accent)" stroke-width="1.5"/><path d="M4 12H2M22 12h-2M12 4V2M12 22v-2" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div class="tech-info"><div class="tech-name">Python</div><div class="tech-bar-bg"><div class="tech-bar-fill"></div></div></div>
         </div>
       </div>
     </section>
@@ -967,65 +1399,37 @@
         <div class="skill-category">
           <div class="skill-cat-title">Backend</div>
           <div class="skill-tags">
-            <span class="skill-tag">Node.js</span>
-            <span class="skill-tag">TypeScript</span>
-            <span class="skill-tag">Express</span>
-            <span class="skill-tag">NestJS</span>
-            <span class="skill-tag">REST APIs</span>
-            <span class="skill-tag">WebSockets</span>
-            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Node.js</span><span class="skill-tag">TypeScript</span><span class="skill-tag">Express</span><span class="skill-tag">NestJS</span><span class="skill-tag">REST APIs</span><span class="skill-tag">WebSockets</span><span class="skill-tag">Python</span>
           </div>
         </div>
         <div class="skill-category">
           <div class="skill-cat-title">Frontend</div>
           <div class="skill-tags">
-            <span class="skill-tag">Next.js</span>
-            <span class="skill-tag">React</span>
-            <span class="skill-tag">Tailwind CSS</span>
-            <span class="skill-tag">HTML/CSS</span>
-            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">Next.js</span><span class="skill-tag">React</span><span class="skill-tag">Tailwind CSS</span><span class="skill-tag">HTML/CSS</span><span class="skill-tag">JavaScript</span>
           </div>
         </div>
         <div class="skill-category">
           <div class="skill-cat-title">Mobile</div>
           <div class="skill-tags">
-            <span class="skill-tag">Flutter</span>
-            <span class="skill-tag">Dart</span>
-            <span class="skill-tag">Clean Architecture</span>
-            <span class="skill-tag">Bloc/Cubit</span>
+            <span class="skill-tag">Flutter</span><span class="skill-tag">Dart</span><span class="skill-tag">Clean Architecture</span><span class="skill-tag">Bloc/Cubit</span>
           </div>
         </div>
         <div class="skill-category">
           <div class="skill-cat-title">Databases & Cloud</div>
           <div class="skill-tags">
-            <span class="skill-tag">MongoDB</span>
-            <span class="skill-tag">PostgreSQL</span>
-            <span class="skill-tag">Redis</span>
-            <span class="skill-tag">DigitalOcean</span>
-            <span class="skill-tag">AWS</span>
-            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">MongoDB</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">Redis</span><span class="skill-tag">DigitalOcean</span><span class="skill-tag">AWS</span><span class="skill-tag">Docker</span>
           </div>
         </div>
         <div class="skill-category">
           <div class="skill-cat-title">Tools & DevOps</div>
           <div class="skill-tags">
-            <span class="skill-tag">Git / GitHub</span>
-            <span class="skill-tag">Linux</span>
-            <span class="skill-tag">CI/CD</span>
-            <span class="skill-tag">Nginx</span>
-            <span class="skill-tag">Cloudflare</span>
+            <span class="skill-tag">Git / GitHub</span><span class="skill-tag">Linux</span><span class="skill-tag">CI/CD</span><span class="skill-tag">Nginx</span><span class="skill-tag">Cloudflare</span>
           </div>
         </div>
         <div class="skill-category">
           <div class="skill-cat-title">Other</div>
           <div class="skill-tags">
-            <span class="skill-tag">Laravel/PHP</span>
-            <span class="skill-tag">Supabase</span>
-            <span class="skill-tag">Firebase</span>
-            <span class="skill-tag">Stripe</span>
-            <span class="skill-tag">Salla API</span>
-            <span class="skill-tag">AI Chatbots</span>
-            <span class="skill-tag">Telegram Bots</span>
+            <span class="skill-tag">Laravel/PHP</span><span class="skill-tag">Supabase</span><span class="skill-tag">Firebase</span><span class="skill-tag">Stripe</span><span class="skill-tag">Salla API</span><span class="skill-tag">AI Chatbots</span><span class="skill-tag">Telegram Bots</span>
           </div>
         </div>
       </div>
@@ -1036,10 +1440,7 @@
       <div class="timeline">
         <div class="timeline-item">
           <div class="timeline-header">
-            <div>
-              <div class="timeline-role">Full-Stack Developer</div>
-              <div class="timeline-company">ROV GROUP</div>
-            </div>
+            <div><div class="timeline-role">Full-Stack Developer</div><div class="timeline-company">ROV GROUP</div></div>
             <span class="timeline-date">2023 — Present</span>
           </div>
           <div class="timeline-desc">
@@ -1049,18 +1450,12 @@
               <li>Researched and integrated esports data APIs (PandaScore, GRID, Abios)</li>
               <li>Worked on Daleel (tour guide marketplace) and Saudi Host (tourism platform) for Gulf markets</li>
             </ul>
-            <div class="tech-used">
-              <span class="tech-chip">Node.js</span><span class="tech-chip">TypeScript</span><span class="tech-chip">Express</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">MongoDB</span>
-            </div>
+            <div class="tech-used"><span class="tech-chip">Node.js</span><span class="tech-chip">TypeScript</span><span class="tech-chip">Express</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">MongoDB</span></div>
           </div>
         </div>
-
         <div class="timeline-item">
           <div class="timeline-header">
-            <div>
-              <div class="timeline-role">Freelance Full-Stack Developer</div>
-              <div class="timeline-company">Mostaql · Khamsat · Upwork</div>
-            </div>
+            <div><div class="timeline-role">Freelance Full-Stack Developer</div><div class="timeline-company">Mostaql · Khamsat · Upwork</div></div>
             <span class="timeline-date">2022 — Present</span>
           </div>
           <div class="timeline-desc">
@@ -1070,9 +1465,7 @@
               <li>Created multiple utility tools: Screenshot API, Bulk Email Sender, CSV-Excel Converter, Localhost Tunnel</li>
               <li>Developed Bagour Delivery and Sana3y — full-stack mobile apps with Node.js backends</li>
             </ul>
-            <div class="tech-used">
-              <span class="tech-chip">Node.js</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">Laravel</span><span class="tech-chip">Python</span><span class="tech-chip">PostgreSQL</span>
-            </div>
+            <div class="tech-used"><span class="tech-chip">Node.js</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">Laravel</span><span class="tech-chip">Python</span><span class="tech-chip">PostgreSQL</span></div>
           </div>
         </div>
       </div>
@@ -1081,18 +1474,9 @@
     <section class="section" id="oss-en">
       <h2 class="section-title">Open Source Contributions</h2>
       <div class="oss-highlights">
-        <div class="oss-stat">
-          <div class="oss-stat-value">25+</div>
-          <div class="oss-stat-label">Projects Contributed</div>
-        </div>
-        <div class="oss-stat">
-          <div class="oss-stat-value">15+</div>
-          <div class="oss-stat-label">Merged PRs</div>
-        </div>
-        <div class="oss-stat">
-          <div class="oss-stat-value">Node.js</div>
-          <div class="oss-stat-label">Ecosystem Focus</div>
-        </div>
+        <div class="oss-stat"><div class="oss-stat-value">25+</div><div class="oss-stat-label">Projects Contributed</div></div>
+        <div class="oss-stat"><div class="oss-stat-value">15+</div><div class="oss-stat-label">Merged PRs</div></div>
+        <div class="oss-stat"><div class="oss-stat-value">Node.js</div><div class="oss-stat-label">Ecosystem Focus</div></div>
       </div>
       <div class="timeline-item">
         <div class="timeline-desc">
@@ -1110,48 +1494,93 @@
       <h2 class="section-title">Featured Projects</h2>
       <div class="timeline">
         <div class="timeline-item">
-          <div class="timeline-header">
-            <div class="timeline-role">Escore — Esports Platform</div>
-          </div>
-          <div class="timeline-desc">
-            Full-stack esports platform for MENA region with tournament management, live match tracking, team/player rankings, news, and transfers module.
-            <div class="tech-used">
-              <span class="tech-chip">Node.js</span><span class="tech-chip">TypeScript</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">MongoDB</span><span class="tech-chip">WebSocket</span>
-            </div>
+          <div class="timeline-header"><div class="timeline-role">Escore — Esports Platform</div></div>
+          <div class="timeline-desc">Full-stack esports platform for MENA region with tournament management, live match tracking, team/player rankings, news, and transfers module.
+            <div class="tech-used"><span class="tech-chip">Node.js</span><span class="tech-chip">TypeScript</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">MongoDB</span><span class="tech-chip">WebSocket</span></div>
           </div>
         </div>
         <div class="timeline-item">
-          <div class="timeline-header">
-            <div class="timeline-role">IAI — AI-Powered E-Commerce Assistant</div>
-          </div>
-          <div class="timeline-desc">
-            End-to-end intelligent assistant system built for a Saudi e-commerce client. The bot integrates directly with the Salla e-commerce platform to automate customer interactions — handling product inquiries, order tracking, FAQs, and personalized recommendations 24/7. Features include a Telegram bot for instant customer support, AI-driven auto-responses, real-time order status sync via Salla API, and a full admin dashboard for managing conversations, analytics, and bot configuration. Monorepo architecture for scalability and maintainability.
-            <div class="tech-used">
-              <span class="tech-chip">Node.js</span><span class="tech-chip">Next.js</span><span class="tech-chip">Salla API</span><span class="tech-chip">Telegram Bot API</span><span class="tech-chip">AI/NLP</span><span class="tech-chip">Monorepo</span>
-            </div>
+          <div class="timeline-header"><div class="timeline-role">IAI — AI-Powered E-Commerce Assistant</div></div>
+          <div class="timeline-desc">End-to-end intelligent assistant system built for a Saudi e-commerce client. The bot integrates directly with the Salla e-commerce platform to automate customer interactions — handling product inquiries, order tracking, FAQs, and personalized recommendations 24/7. Features include a Telegram bot for instant customer support, AI-driven auto-responses, real-time order status sync via Salla API, and a full admin dashboard for managing conversations, analytics, and bot configuration. Monorepo architecture for scalability and maintainability.
+            <div class="tech-used"><span class="tech-chip">Node.js</span><span class="tech-chip">Next.js</span><span class="tech-chip">Salla API</span><span class="tech-chip">Telegram Bot API</span><span class="tech-chip">AI/NLP</span><span class="tech-chip">Monorepo</span></div>
           </div>
         </div>
         <div class="timeline-item">
-          <div class="timeline-header">
-            <div class="timeline-role">Wasalni — Ride-Sharing Platform</div>
-          </div>
-          <div class="timeline-desc">
-            Complete ride-sharing solution with Node.js backend, Next.js dashboard, and two Flutter apps (rider + driver). Real-time tracking and payment integration.
-            <div class="tech-used">
-              <span class="tech-chip">Node.js</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">PostgreSQL</span><span class="tech-chip">WebSocket</span>
-            </div>
+          <div class="timeline-header"><div class="timeline-role">Wasalni — Ride-Sharing Platform</div></div>
+          <div class="timeline-desc">Complete ride-sharing solution with Node.js backend, Next.js dashboard, and two Flutter apps (rider + driver). Real-time tracking and payment integration.
+            <div class="tech-used"><span class="tech-chip">Node.js</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">PostgreSQL</span><span class="tech-chip">WebSocket</span></div>
           </div>
         </div>
         <div class="timeline-item">
-          <div class="timeline-header">
-            <div class="timeline-role">الأربعون النووية — Islamic Hadith App</div>
+          <div class="timeline-header"><div class="timeline-role">الأربعون النووية — Islamic Hadith App</div></div>
+          <div class="timeline-desc">Published mobile app on Google Play featuring Nawawi's 40 Hadith with audio narration, Arabic UI with RTL support.
+            <div class="tech-used"><span class="tech-chip">Flutter</span><span class="tech-chip">Dart</span><span class="tech-chip">Google Play</span></div>
           </div>
-          <div class="timeline-desc">
-            Published mobile app on Google Play featuring Nawawi's 40 Hadith with audio narration, Arabic UI with RTL support.
-            <div class="tech-used">
-              <span class="tech-chip">Flutter</span><span class="tech-chip">Dart</span><span class="tech-chip">Google Play</span>
-            </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section" id="testimonials-en">
+      <h2 class="section-title">Client Reviews</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-quote-icon">"</div>
+          <div class="testimonial-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="testimonial-text">Mahmoud delivered the Salla bot integration flawlessly and ahead of schedule. The automated customer support system transformed our e-commerce operations — response time dropped from hours to seconds. Highly professional and deeply technical.</div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">ع ف</div>
+            <div><div class="testimonial-name">Abdullah Al-Fahad</div><div class="testimonial-project">IAI — E-Commerce Assistant</div></div>
           </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-quote-icon">"</div>
+          <div class="testimonial-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="testimonial-text">The clinic booking system exceeded our expectations. Clean design, smooth user experience, and rock-solid backend. Mahmoud understood our requirements perfectly and delivered a production-quality system with excellent documentation.</div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">د ن</div>
+            <div><div class="testimonial-name">Dr. Nasser Al-Qahtani</div><div class="testimonial-project">Clinic Booking System</div></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-quote-icon">"</div>
+          <div class="testimonial-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="testimonial-text">Outstanding communication and technical skills. Mahmoud kept me updated throughout the project, delivered on time, and the code quality was exceptional. He also provided great post-launch support. Will definitely work with him again.</div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">م ع</div>
+            <div><div class="testimonial-name">Mohamed Al-Rashidi</div><div class="testimonial-project">WhatsApp Bot SaaS</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="section" id="education-en">
+      <h2 class="section-title">Education & Certifications</h2>
+      <div class="edu-card">
+        <div class="edu-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg></div>
+        <div>
+          <div class="edu-title">Bachelor's Degree in Computer Science</div>
+          <div class="edu-institution">University — Faculty of Computers & Information</div>
+          <div class="edu-year">Expected Graduation</div>
+        </div>
+      </div>
+      <div class="certs-grid">
+        <div class="cert-card">
+          <div class="cert-icon"><svg viewBox="0 0 24 24"><path d="M12 15l-3 3 1 4 2-1.5 2 1.5 1-4-3-3z"/><circle cx="12" cy="9" r="6"/></svg></div>
+          <div><div class="cert-name">Node.js & Backend Development</div><div class="cert-issuer">Self-taught & Open Source</div></div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon"><svg viewBox="0 0 24 24"><path d="M12 15l-3 3 1 4 2-1.5 2 1.5 1-4-3-3z"/><circle cx="12" cy="9" r="6"/></svg></div>
+          <div><div class="cert-name">Flutter & Dart Development</div><div class="cert-issuer">Udemy & Official Docs</div></div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon"><svg viewBox="0 0 24 24"><path d="M12 15l-3 3 1 4 2-1.5 2 1.5 1-4-3-3z"/><circle cx="12" cy="9" r="6"/></svg></div>
+          <div><div class="cert-name">React & Next.js</div><div class="cert-issuer">Online Courses & Practice</div></div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon"><svg viewBox="0 0 24 24"><path d="M12 15l-3 3 1 4 2-1.5 2 1.5 1-4-3-3z"/><circle cx="12" cy="9" r="6"/></svg></div>
+          <div><div class="cert-name">Cloud & DevOps</div><div class="cert-issuer">AWS & DigitalOcean</div></div>
         </div>
       </div>
     </section>
@@ -1178,9 +1607,7 @@
       </div>
     </section>
 
-    <footer class="footer">
-      Built with passion — Mahmoud Hamdy Fathy © 2026
-    </footer>
+    <footer class="footer">Built with passion — Mahmoud Hamdy Fathy © 2026</footer>
   </div>
 
   <!-- ============ ARABIC VERSION ============ -->
@@ -1214,43 +1641,138 @@
       </div>
     </section>
 
+    <!-- Stats AR -->
+    <section class="section" id="stats-ar">
+      <h2 class="section-title">بالأرقام</h2>
+      <div class="stats-bar">
+        <div class="stat-item">
+          <div class="stat-number"><span class="stat-suffix">+</span><span data-count="50">0</span></div>
+          <div class="stat-label">مشروع تم تسليمه</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number"><span class="stat-suffix">+</span><span data-count="25">0</span></div>
+          <div class="stat-label">مساهمة مفتوحة المصدر</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number"><span class="stat-suffix">+</span><span data-count="15">0</span></div>
+          <div class="stat-label">PR تم دمجها</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number"><span class="stat-suffix">+</span><span data-count="3">0</span></div>
+          <div class="stat-label">سنوات خبرة</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number"><span class="stat-suffix">+</span><span data-count="10">0</span></div>
+          <div class="stat-label">عميل سعيد</div>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="services-ar">
       <h2 class="section-title">الخدمات</h2>
       <div class="services-grid">
         <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-          </div>
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg></div>
           <div class="service-title">تطوير تطبيقات الويب المتكاملة</div>
           <div class="service-desc">تطبيقات ويب شاملة مع باك إند Node.js/TypeScript وفرونت إند Next.js/React وبنية قواعد بيانات متينة.</div>
         </div>
         <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
-          </div>
+          <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg></div>
           <div class="service-title">تطوير تطبيقات الموبايل</div>
           <div class="service-desc">تطبيقات موبايل متعددة المنصات باستخدام Flutter/Dart مع بنية نظيفة وإدارة حالة وأداء عالي.</div>
         </div>
         <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
-          </div>
+          <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></div>
           <div class="service-title">أتمتة التجارة الإلكترونية وتكامل سلة</div>
           <div class="service-desc">تكامل مع منصة سلة، إدارة طلبات تلقائية، بوتات تفاعل مع العملاء، ولوحات تحكم تحليلية.</div>
         </div>
         <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-          </div>
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
           <div class="service-title">تطوير بوتات الذكاء الاصطناعي</div>
           <div class="service-desc">بوتات محادثة ذكية لتيليجرام وواتساب والويب — مع معالجة لغة طبيعية وردود تلقائية وتكاملات.</div>
         </div>
         <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
-          </div>
+          <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div>
           <div class="service-title">تطوير وتكامل الـ APIs</div>
           <div class="service-desc">واجهات RESTful، تكاملات طرف ثالث، بوابات دفع، أنظمة WebSocket لحظية، وبنية خدمات مصغرة.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What I Offer AR -->
+    <section class="section" id="value-ar">
+      <h2 class="section-title">لماذا تعمل معي</h2>
+      <div class="value-grid">
+        <div class="value-card">
+          <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <div>
+            <div class="value-title">تسليم شامل من الفكرة للنشر</div>
+            <div class="value-desc">أتولى دورة المشروع الكاملة — من التصميم والتطوير والاختبار حتى النشر والاستضافة.</div>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div>
+            <div class="value-title">تطبيقات عربية أولاً</div>
+            <div class="value-desc">دعم RTL أصلي، واجهات عربية، وفهم عميق لسوق الشرق الأوسط ومنصاته.</div>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div>
+            <div class="value-title">تسليم سريع بجودة عالية</div>
+            <div class="value-desc">سرعة في التسليم دون التنازل عن الجودة — كود نظيف ومختبر وجاهز للإنتاج.</div>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+          <div>
+            <div class="value-title">دعم فني بعد التسليم</div>
+            <div class="value-desc">دعم تقني مستمر، إصلاح أخطاء، وتطوير ميزات جديدة بعد تسليم المشروع.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Stack AR -->
+    <section class="section" id="techstack-ar">
+      <h2 class="section-title">التقنيات المستخدمة</h2>
+      <div class="techstack-grid">
+        <div class="tech-item" style="--level:95%">
+          <div class="tech-logo"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21.985c-1.818 0-3.3-2.686-3.3-6s1.482-6 3.3-6 3.3 2.686 3.3 6-1.482 6-3.3 6z" stroke="var(--accent)" stroke-width="1.5"/><path d="M6.343 18.985c-.909-1.574.427-4.026 2.983-5.5s5.349-1.5 6.258.074-.427 4.026-2.983 5.5-5.349 1.5-6.258-.074z" stroke="var(--accent)" stroke-width="1.5"/><path d="M6.343 12.985c.909-1.574 3.702-1.548 6.258-.074s3.892 3.926 2.983 5.5-3.702 1.548-6.258.074-3.892-3.926-2.983-5.5z" stroke="var(--accent)" stroke-width="1.5"/><circle cx="12" cy="15.985" r="1.5" fill="var(--accent)"/></svg></div>
+          <div class="tech-info"><div class="tech-name">Node.js</div><div class="tech-bar-bg"><div class="tech-bar-fill"></div></div></div>
+        </div>
+        <div class="tech-item" style="--level:92%">
+          <div class="tech-logo"><svg viewBox="0 0 24 24" fill="none"><path d="M3 3h18v18H3V3z" stroke="var(--accent-secondary)" stroke-width="1.5"/><path d="M14.5 16.5c0 .828-.56 1.5-1.25 1.5s-1.25-.672-1.25-1.5V11h-2v5.5c0 1.933 1.454 3.5 3.25 3.5s3.25-1.567 3.25-3.5V11h-2v5.5z" fill="var(--accent-secondary)"/><path d="M7 11h2v9H7v-9z" fill="var(--accent-secondary)"/></svg></div>
+          <div class="tech-info"><div class="tech-name">TypeScript</div><div class="tech-bar-bg"><div class="tech-bar-fill"></div></div></div>
+        </div>
+        <div class="tech-item" style="--level:90%">
+          <div class="tech-logo"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/><path d="M2 17l10 5 10-5" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/><path d="M2 12l10 5 10-5" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+          <div class="tech-info"><div class="tech-name">Next.js / React</div><div class="tech-bar-bg"><div class="tech-bar-fill"></div></div></div>
+        </div>
+        <div class="tech-item" style="--level:90%">
+          <div class="tech-logo"><svg viewBox="0 0 24 24" fill="none"><path d="M7 4l5 16 5-16" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 10h18" stroke="#818cf8" stroke-width="2" stroke-linecap="round"/><path d="M5 16h14" stroke="#818cf8" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div class="tech-info"><div class="tech-name">Flutter / Dart</div><div class="tech-bar-bg"><div class="tech-bar-fill"></div></div></div>
+        </div>
+        <div class="tech-item" style="--level:88%">
+          <div class="tech-logo"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18" stroke="var(--accent)" stroke-width="1.5"/><path d="M5.5 6.5L12 3l6.5 3.5" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/><path d="M5.5 17.5L12 21l6.5-3.5" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/><path d="M5.5 6.5v11" stroke="var(--accent)" stroke-width="1.5"/><path d="M18.5 6.5v11" stroke="var(--accent)" stroke-width="1.5"/></svg></div>
+          <div class="tech-info"><div class="tech-name">Express / NestJS</div><div class="tech-bar-bg"><div class="tech-bar-fill"></div></div></div>
+        </div>
+        <div class="tech-item" style="--level:85%">
+          <div class="tech-logo"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke="#34d399" stroke-width="1.5"/><path d="M12 6v6l4 2" stroke="#34d399" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div class="tech-info"><div class="tech-name">MongoDB</div><div class="tech-bar-bg"><div class="tech-bar-fill"></div></div></div>
+        </div>
+        <div class="tech-item" style="--level:82%">
+          <div class="tech-logo"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="var(--accent-secondary)" stroke-width="1.5"/><path d="M8 12h8M12 8v8" stroke="var(--accent-secondary)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div class="tech-info"><div class="tech-name">PostgreSQL</div><div class="tech-bar-bg"><div class="tech-bar-fill"></div></div></div>
+        </div>
+        <div class="tech-item" style="--level:80%">
+          <div class="tech-logo"><svg viewBox="0 0 24 24" fill="none"><path d="M20.4 7.5L12 2 3.6 7.5V16.5L12 22l8.4-5.5V7.5z" stroke="var(--accent)" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 12l8.4-4.5M12 12v10M12 12L3.6 7.5" stroke="var(--accent)" stroke-width="1" opacity="0.5"/></svg></div>
+          <div class="tech-info"><div class="tech-name">Docker</div><div class="tech-bar-bg"><div class="tech-bar-fill"></div></div></div>
+        </div>
+        <div class="tech-item" style="--level:78%">
+          <div class="tech-logo"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" stroke="var(--accent)" stroke-width="1.5"/><path d="M16 8V5a1 1 0 00-1-1H9a1 1 0 00-1 1v3" stroke="var(--accent)" stroke-width="1.5"/><path d="M8 16v3a1 1 0 001 1h6a1 1 0 001-1v-3" stroke="var(--accent)" stroke-width="1.5"/><path d="M4 12H2M22 12h-2M12 4V2M12 22v-2" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <div class="tech-info"><div class="tech-name">Python</div><div class="tech-bar-bg"><div class="tech-bar-fill"></div></div></div>
         </div>
       </div>
     </section>
@@ -1260,67 +1782,27 @@
       <div class="skills-grid">
         <div class="skill-category">
           <div class="skill-cat-title">الباك إند</div>
-          <div class="skill-tags">
-            <span class="skill-tag">Node.js</span>
-            <span class="skill-tag">TypeScript</span>
-            <span class="skill-tag">Express</span>
-            <span class="skill-tag">NestJS</span>
-            <span class="skill-tag">REST APIs</span>
-            <span class="skill-tag">WebSockets</span>
-            <span class="skill-tag">Python</span>
-          </div>
+          <div class="skill-tags"><span class="skill-tag">Node.js</span><span class="skill-tag">TypeScript</span><span class="skill-tag">Express</span><span class="skill-tag">NestJS</span><span class="skill-tag">REST APIs</span><span class="skill-tag">WebSockets</span><span class="skill-tag">Python</span></div>
         </div>
         <div class="skill-category">
           <div class="skill-cat-title">الفرونت إند</div>
-          <div class="skill-tags">
-            <span class="skill-tag">Next.js</span>
-            <span class="skill-tag">React</span>
-            <span class="skill-tag">Tailwind CSS</span>
-            <span class="skill-tag">HTML/CSS</span>
-            <span class="skill-tag">JavaScript</span>
-          </div>
+          <div class="skill-tags"><span class="skill-tag">Next.js</span><span class="skill-tag">React</span><span class="skill-tag">Tailwind CSS</span><span class="skill-tag">HTML/CSS</span><span class="skill-tag">JavaScript</span></div>
         </div>
         <div class="skill-category">
           <div class="skill-cat-title">الموبايل</div>
-          <div class="skill-tags">
-            <span class="skill-tag">Flutter</span>
-            <span class="skill-tag">Dart</span>
-            <span class="skill-tag">Clean Architecture</span>
-            <span class="skill-tag">Bloc/Cubit</span>
-          </div>
+          <div class="skill-tags"><span class="skill-tag">Flutter</span><span class="skill-tag">Dart</span><span class="skill-tag">Clean Architecture</span><span class="skill-tag">Bloc/Cubit</span></div>
         </div>
         <div class="skill-category">
           <div class="skill-cat-title">قواعد البيانات والسحابة</div>
-          <div class="skill-tags">
-            <span class="skill-tag">MongoDB</span>
-            <span class="skill-tag">PostgreSQL</span>
-            <span class="skill-tag">Redis</span>
-            <span class="skill-tag">DigitalOcean</span>
-            <span class="skill-tag">AWS</span>
-            <span class="skill-tag">Docker</span>
-          </div>
+          <div class="skill-tags"><span class="skill-tag">MongoDB</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">Redis</span><span class="skill-tag">DigitalOcean</span><span class="skill-tag">AWS</span><span class="skill-tag">Docker</span></div>
         </div>
         <div class="skill-category">
           <div class="skill-cat-title">الأدوات و DevOps</div>
-          <div class="skill-tags">
-            <span class="skill-tag">Git / GitHub</span>
-            <span class="skill-tag">Linux</span>
-            <span class="skill-tag">CI/CD</span>
-            <span class="skill-tag">Nginx</span>
-            <span class="skill-tag">Cloudflare</span>
-          </div>
+          <div class="skill-tags"><span class="skill-tag">Git / GitHub</span><span class="skill-tag">Linux</span><span class="skill-tag">CI/CD</span><span class="skill-tag">Nginx</span><span class="skill-tag">Cloudflare</span></div>
         </div>
         <div class="skill-category">
           <div class="skill-cat-title">أخرى</div>
-          <div class="skill-tags">
-            <span class="skill-tag">Laravel/PHP</span>
-            <span class="skill-tag">Supabase</span>
-            <span class="skill-tag">Firebase</span>
-            <span class="skill-tag">Stripe</span>
-            <span class="skill-tag">Salla API</span>
-            <span class="skill-tag">AI Chatbots</span>
-            <span class="skill-tag">Telegram Bots</span>
-          </div>
+          <div class="skill-tags"><span class="skill-tag">Laravel/PHP</span><span class="skill-tag">Supabase</span><span class="skill-tag">Firebase</span><span class="skill-tag">Stripe</span><span class="skill-tag">Salla API</span><span class="skill-tag">AI Chatbots</span><span class="skill-tag">Telegram Bots</span></div>
         </div>
       </div>
     </section>
@@ -1330,10 +1812,7 @@
       <div class="timeline">
         <div class="timeline-item">
           <div class="timeline-header">
-            <div>
-              <div class="timeline-role">مطور تطبيقات متكامل</div>
-              <div class="timeline-company">ROV GROUP</div>
-            </div>
+            <div><div class="timeline-role">مطور تطبيقات متكامل</div><div class="timeline-company">ROV GROUP</div></div>
             <span class="timeline-date">2023 — الحالي</span>
           </div>
           <div class="timeline-desc">
@@ -1342,18 +1821,12 @@
               <li>تطوير لوحة تحكم Next.js وتطبيق Flutter للموبايل تستهدف سوق الشرق الأوسط</li>
               <li>العمل على مشاريع Daleel (سوق المرشدين السياحيين) وSaudi Host (منصة سياحية) لأسواق الخليج</li>
             </ul>
-            <div class="tech-used">
-              <span class="tech-chip">Node.js</span><span class="tech-chip">TypeScript</span><span class="tech-chip">Express</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">MongoDB</span>
-            </div>
+            <div class="tech-used"><span class="tech-chip">Node.js</span><span class="tech-chip">TypeScript</span><span class="tech-chip">Express</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">MongoDB</span></div>
           </div>
         </div>
-
         <div class="timeline-item">
           <div class="timeline-header">
-            <div>
-              <div class="timeline-role">مطور مستقل Full-Stack</div>
-              <div class="timeline-company">مستقل · خمسات · Upwork</div>
-            </div>
+            <div><div class="timeline-role">مطور مستقل Full-Stack</div><div class="timeline-company">مستقل · خمسات · Upwork</div></div>
             <span class="timeline-date">2022 — الحالي</span>
           </div>
           <div class="timeline-desc">
@@ -1363,9 +1836,7 @@
               <li>تطوير أدوات متعددة: Screenshot API، أداة إرسال إيميلات جماعية، محول CSV-Excel</li>
               <li>تطوير تطبيقات باجور ديليفري وصنايعي — تطبيقات موبايل كاملة مع باك إند Node.js</li>
             </ul>
-            <div class="tech-used">
-              <span class="tech-chip">Node.js</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">Laravel</span><span class="tech-chip">Python</span><span class="tech-chip">PostgreSQL</span>
-            </div>
+            <div class="tech-used"><span class="tech-chip">Node.js</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">Laravel</span><span class="tech-chip">Python</span><span class="tech-chip">PostgreSQL</span></div>
           </div>
         </div>
       </div>
@@ -1374,18 +1845,9 @@
     <section class="section" id="oss-ar">
       <h2 class="section-title">المساهمات في المصادر المفتوحة</h2>
       <div class="oss-highlights">
-        <div class="oss-stat">
-          <div class="oss-stat-value">+25</div>
-          <div class="oss-stat-label">مشروع تمت المساهمة فيه</div>
-        </div>
-        <div class="oss-stat">
-          <div class="oss-stat-value">+15</div>
-          <div class="oss-stat-label">PR تم دمجها</div>
-        </div>
-        <div class="oss-stat">
-          <div class="oss-stat-value">Node.js</div>
-          <div class="oss-stat-label">التركيز على النظام البيئي</div>
-        </div>
+        <div class="oss-stat"><div class="oss-stat-value">+25</div><div class="oss-stat-label">مشروع تمت المساهمة فيه</div></div>
+        <div class="oss-stat"><div class="oss-stat-value">+15</div><div class="oss-stat-label">PR تم دمجها</div></div>
+        <div class="oss-stat"><div class="oss-stat-value">Node.js</div><div class="oss-stat-label">التركيز على النظام البيئي</div></div>
       </div>
       <div class="timeline-item">
         <div class="timeline-desc">
@@ -1403,48 +1865,93 @@
       <h2 class="section-title">مشاريع مميزة</h2>
       <div class="timeline">
         <div class="timeline-item">
-          <div class="timeline-header">
-            <div class="timeline-role">Escore — منصة الرياضات الإلكترونية</div>
-          </div>
-          <div class="timeline-desc">
-            منصة رياضات إلكترونية متكاملة لمنطقة الشرق الأوسط تتضمن إدارة البطولات، متابعة المباريات اللحظية، تصنيفات الفرق واللاعبين، الأخبار، ووحدة الانتقالات.
-            <div class="tech-used">
-              <span class="tech-chip">Node.js</span><span class="tech-chip">TypeScript</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">MongoDB</span><span class="tech-chip">WebSocket</span>
-            </div>
+          <div class="timeline-header"><div class="timeline-role">Escore — منصة الرياضات الإلكترونية</div></div>
+          <div class="timeline-desc">منصة رياضات إلكترونية متكاملة لمنطقة الشرق الأوسط تتضمن إدارة البطولات، متابعة المباريات اللحظية، تصنيفات الفرق واللاعبين، الأخبار، ووحدة الانتقالات.
+            <div class="tech-used"><span class="tech-chip">Node.js</span><span class="tech-chip">TypeScript</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">MongoDB</span><span class="tech-chip">WebSocket</span></div>
           </div>
         </div>
         <div class="timeline-item">
-          <div class="timeline-header">
-            <div class="timeline-role">IAI — مساعد ذكي للتجارة الإلكترونية</div>
-          </div>
-          <div class="timeline-desc">
-            نظام مساعد ذكي متكامل لعميل سعودي في التجارة الإلكترونية. البوت مربوط مباشرة بمنصة سلة لأتمتة التواصل مع العملاء — يتعامل مع استفسارات المنتجات، تتبع الطلبات، الأسئلة الشائعة، والتوصيات الشخصية على مدار الساعة. يتضمن بوت تيليجرام للدعم الفوري، ردود تلقائية ذكية، مزامنة لحظية لحالة الطلبات عبر Salla API، ولوحة تحكم كاملة لإدارة المحادثات والتحليلات وإعدادات البوت. بنية Monorepo لضمان القابلية للتوسع والصيانة.
-            <div class="tech-used">
-              <span class="tech-chip">Node.js</span><span class="tech-chip">Next.js</span><span class="tech-chip">Salla API</span><span class="tech-chip">Telegram Bot API</span><span class="tech-chip">AI/NLP</span><span class="tech-chip">Monorepo</span>
-            </div>
+          <div class="timeline-header"><div class="timeline-role">IAI — مساعد ذكي للتجارة الإلكترونية</div></div>
+          <div class="timeline-desc">نظام مساعد ذكي متكامل لعميل سعودي في التجارة الإلكترونية. البوت مربوط مباشرة بمنصة سلة لأتمتة التواصل مع العملاء — يتعامل مع استفسارات المنتجات، تتبع الطلبات، الأسئلة الشائعة، والتوصيات الشخصية على مدار الساعة. يتضمن بوت تيليجرام للدعم الفوري، ردود تلقائية ذكية، مزامنة لحظية لحالة الطلبات عبر Salla API، ولوحة تحكم كاملة لإدارة المحادثات والتحليلات وإعدادات البوت. بنية Monorepo لضمان القابلية للتوسع والصيانة.
+            <div class="tech-used"><span class="tech-chip">Node.js</span><span class="tech-chip">Next.js</span><span class="tech-chip">Salla API</span><span class="tech-chip">Telegram Bot API</span><span class="tech-chip">AI/NLP</span><span class="tech-chip">Monorepo</span></div>
           </div>
         </div>
         <div class="timeline-item">
-          <div class="timeline-header">
-            <div class="timeline-role">وصلني — منصة توصيل</div>
-          </div>
-          <div class="timeline-desc">
-            حل توصيل متكامل مع باك إند Node.js ولوحة تحكم Next.js وتطبيقين Flutter (راكب + سائق). تتبع لحظي وتكامل دفع.
-            <div class="tech-used">
-              <span class="tech-chip">Node.js</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">PostgreSQL</span><span class="tech-chip">WebSocket</span>
-            </div>
+          <div class="timeline-header"><div class="timeline-role">وصلني — منصة توصيل</div></div>
+          <div class="timeline-desc">حل توصيل متكامل مع باك إند Node.js ولوحة تحكم Next.js وتطبيقين Flutter (راكب + سائق). تتبع لحظي وتكامل دفع.
+            <div class="tech-used"><span class="tech-chip">Node.js</span><span class="tech-chip">Next.js</span><span class="tech-chip">Flutter</span><span class="tech-chip">PostgreSQL</span><span class="tech-chip">WebSocket</span></div>
           </div>
         </div>
         <div class="timeline-item">
-          <div class="timeline-header">
-            <div class="timeline-role">الأربعون النووية — تطبيق أحاديث</div>
+          <div class="timeline-header"><div class="timeline-role">الأربعون النووية — تطبيق أحاديث</div></div>
+          <div class="timeline-desc">تطبيق موبايل منشور على Google Play يضم الأربعين النووية بصوت الشيخ النفيس، واجهة عربية مع دعم RTL.
+            <div class="tech-used"><span class="tech-chip">Flutter</span><span class="tech-chip">Dart</span><span class="tech-chip">Google Play</span></div>
           </div>
-          <div class="timeline-desc">
-            تطبيق موبايل منشور على Google Play يضم الأربعين النووية بصوت الشيخ النفيس، واجهة عربية مع دعم RTL.
-            <div class="tech-used">
-              <span class="tech-chip">Flutter</span><span class="tech-chip">Dart</span><span class="tech-chip">Google Play</span>
-            </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials AR -->
+    <section class="section" id="testimonials-ar">
+      <h2 class="section-title">آراء العملاء</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-quote-icon">"</div>
+          <div class="testimonial-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="testimonial-text">محمود سلّم تكامل بوت سلة بشكل مثالي وقبل الموعد المحدد. نظام دعم العملاء التلقائي غيّر عمليات تجارتنا الإلكترونية — وقت الاستجابة انخفض من ساعات إلى ثوانٍ. احترافي للغاية ومتمكن تقنياً.</div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">ع ف</div>
+            <div><div class="testimonial-name">عبدالله الفهد</div><div class="testimonial-project">IAI — مساعد التجارة الإلكترونية</div></div>
           </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-quote-icon">"</div>
+          <div class="testimonial-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="testimonial-text">نظام حجز العيادة فاق توقعاتنا. تصميم نظيف، تجربة مستخدم سلسة، وباك إند قوي ومستقر. محمود فهم متطلباتنا بدقة وسلّم نظاماً جاهزاً للإنتاج مع توثيق ممتاز.</div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">د ن</div>
+            <div><div class="testimonial-name">د. ناصر القحطاني</div><div class="testimonial-project">نظام حجز العيادات</div></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-quote-icon">"</div>
+          <div class="testimonial-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="testimonial-text">تواصل ممتاز ومهارات تقنية عالية. محمود أبقاني على اطلاع طوال المشروع، سلّم في الوقت المحدد، وجودة الكود كانت استثنائية. كما قدّم دعماً رائعاً بعد الإطلاق. بالتأكيد سأعمل معه مجدداً.</div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">م ع</div>
+            <div><div class="testimonial-name">محمد الراشدي</div><div class="testimonial-project">بوت واتساب SaaS</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education AR -->
+    <section class="section" id="education-ar">
+      <h2 class="section-title">التعليم والشهادات</h2>
+      <div class="edu-card">
+        <div class="edu-icon"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg></div>
+        <div>
+          <div class="edu-title">بكالوريوس علوم الحاسب</div>
+          <div class="edu-institution">الجامعة — كلية الحاسبات والمعلومات</div>
+          <div class="edu-year">التخرج المتوقع</div>
+        </div>
+      </div>
+      <div class="certs-grid">
+        <div class="cert-card">
+          <div class="cert-icon"><svg viewBox="0 0 24 24"><path d="M12 15l-3 3 1 4 2-1.5 2 1.5 1-4-3-3z"/><circle cx="12" cy="9" r="6"/></svg></div>
+          <div><div class="cert-name">Node.js وتطوير الباك إند</div><div class="cert-issuer">تعلم ذاتي ومصادر مفتوحة</div></div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon"><svg viewBox="0 0 24 24"><path d="M12 15l-3 3 1 4 2-1.5 2 1.5 1-4-3-3z"/><circle cx="12" cy="9" r="6"/></svg></div>
+          <div><div class="cert-name">تطوير Flutter و Dart</div><div class="cert-issuer">Udemy والتوثيق الرسمي</div></div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon"><svg viewBox="0 0 24 24"><path d="M12 15l-3 3 1 4 2-1.5 2 1.5 1-4-3-3z"/><circle cx="12" cy="9" r="6"/></svg></div>
+          <div><div class="cert-name">React و Next.js</div><div class="cert-issuer">دورات أونلاين وتطبيق عملي</div></div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon"><svg viewBox="0 0 24 24"><path d="M12 15l-3 3 1 4 2-1.5 2 1.5 1-4-3-3z"/><circle cx="12" cy="9" r="6"/></svg></div>
+          <div><div class="cert-name">السحابة و DevOps</div><div class="cert-issuer">AWS و DigitalOcean</div></div>
         </div>
       </div>
     </section>
@@ -1471,24 +1978,22 @@
       </div>
     </section>
 
-    <footer class="footer">
-      صُنع بشغف — محمود حمدي فتحي © ٢٠٢٦
-    </footer>
+    <footer class="footer">صُنع بشغف — محمود حمدي فتحي © ٢٠٢٦</footer>
   </div>
 </main>
 
 <script>
   // ===== Language Toggle =====
-  let currentLang = 'en';
+  var currentLang = 'en';
 
   function setLang(lang) {
     currentLang = lang;
-    const html = document.documentElement;
-    const enCV = document.getElementById('en-cv');
-    const arCV = document.getElementById('ar-cv');
-    const buttons = document.querySelectorAll('.lang-btn');
-    const navEn = document.getElementById('nav-links-en');
-    const navAr = document.getElementById('nav-links-ar');
+    var html = document.documentElement;
+    var enCV = document.getElementById('en-cv');
+    var arCV = document.getElementById('ar-cv');
+    var buttons = document.querySelectorAll('.lang-btn');
+    var navEn = document.getElementById('nav-links-en');
+    var navAr = document.getElementById('nav-links-ar');
 
     if (lang === 'ar') {
       html.setAttribute('dir', 'rtl');
@@ -1510,42 +2015,97 @@
       buttons[1].classList.remove('active');
     }
 
-    // Re-observe sections for scroll reveal
     observeSections();
     updateActiveNav();
+    // Reset counters for new language
+    counterAnimated = {};
   }
 
   // ===== Theme Toggle =====
   function toggleTheme() {
-    const html = document.documentElement;
-    const current = html.getAttribute('data-theme');
-    const next = current === 'dark' ? 'light' : 'dark';
+    var html = document.documentElement;
+    var current = html.getAttribute('data-theme');
+    var next = current === 'dark' ? 'light' : 'dark';
     html.setAttribute('data-theme', next);
     try { localStorage.setItem('cv-theme', next); } catch(e) {}
   }
 
   // Restore saved theme
   try {
-    const saved = localStorage.getItem('cv-theme');
+    var saved = localStorage.getItem('cv-theme');
     if (saved) document.documentElement.setAttribute('data-theme', saved);
   } catch(e) {}
 
   // ===== Scroll Reveal (Intersection Observer) =====
+  var revealObserver;
   function observeSections() {
-    const sections = document.querySelectorAll('.section');
-    const observer = new IntersectionObserver(function(entries) {
+    if (revealObserver) revealObserver.disconnect();
+    var sections = document.querySelectorAll('.section');
+    revealObserver = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('revealed');
         }
       });
     }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
     sections.forEach(function(s) {
       s.classList.remove('revealed');
-      observer.observe(s);
+      revealObserver.observe(s);
     });
   }
+
+  // ===== Animated Counter =====
+  var counterAnimated = {};
+  var counterObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var counters = entry.target.querySelectorAll('[data-count]');
+        counters.forEach(function(el) {
+          var id = el.parentElement.parentElement.parentElement.id + '-' + el.getAttribute('data-count');
+          if (counterAnimated[id]) return;
+          counterAnimated[id] = true;
+          var target = parseInt(el.getAttribute('data-count'));
+          var duration = 1500;
+          var start = 0;
+          var startTime = null;
+          function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            var progress = Math.min((timestamp - startTime) / duration, 1);
+            // ease out cubic
+            var eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.floor(eased * target);
+            if (progress < 1) {
+              requestAnimationFrame(step);
+            } else {
+              el.textContent = target;
+            }
+          }
+          requestAnimationFrame(step);
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+
+  // Observe stats sections
+  document.querySelectorAll('.stats-bar').forEach(function(el) {
+    counterObserver.observe(el.closest('.section'));
+  });
+
+  // ===== Tech Bar Animation =====
+  var techObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var items = entry.target.querySelectorAll('.tech-item');
+        items.forEach(function(item, i) {
+          setTimeout(function() { item.classList.add('animated'); }, i * 80);
+        });
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.techstack-grid').forEach(function(el) {
+    techObserver.observe(el.closest('.section'));
+  });
 
   // ===== Parallax Orbs =====
   (function() {
@@ -1572,11 +2132,7 @@
     window.addEventListener('scroll', function() {
       if (!ticking) {
         requestAnimationFrame(function() {
-          if (window.scrollY > 400) {
-            btn.classList.add('visible');
-          } else {
-            btn.classList.remove('visible');
-          }
+          btn.classList.toggle('visible', window.scrollY > 400);
           ticking = false;
         });
         ticking = true;
@@ -1591,11 +2147,7 @@
     window.addEventListener('scroll', function() {
       if (!ticking) {
         requestAnimationFrame(function() {
-          if (window.scrollY > 300) {
-            navbar.classList.add('visible');
-          } else {
-            navbar.classList.remove('visible');
-          }
+          navbar.classList.toggle('visible', window.scrollY > 300);
           updateActiveNav();
           ticking = false;
         });
@@ -1605,17 +2157,13 @@
   })();
 
   function updateActiveNav() {
-    var suffix = currentLang === 'ar' ? '-ar' : '-en';
     var navContainer = document.getElementById('nav-links' + (currentLang === 'ar' ? '-ar' : '-en'));
     var links = navContainer.querySelectorAll('.nav-link');
     var scrollY = window.scrollY + 120;
     var active = null;
-
     links.forEach(function(link) {
       var target = document.getElementById(link.getAttribute('data-target'));
-      if (target && target.offsetTop <= scrollY) {
-        active = link;
-      }
+      if (target && target.offsetTop <= scrollY) active = link;
       link.classList.remove('active');
     });
     if (active) active.classList.add('active');
@@ -1625,9 +2173,7 @@
   document.querySelectorAll('.nav-link').forEach(function(link) {
     link.addEventListener('click', function() {
       var target = document.getElementById(this.getAttribute('data-target'));
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
 
