@@ -7,9 +7,11 @@ window.CV.lang = window.CV.lang || 'en';
 window.CV.cFlag = window.CV.cFlag || {};
 
 // page load fade-in
-window.addEventListener('DOMContentLoaded', function() {
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function() { document.body.classList.add('loaded'); });
+} else {
   document.body.classList.add('loaded');
-});
+}
 
 // scroll progress bar + scroll-to-top + navbar visibility
 (function() {
@@ -34,7 +36,12 @@ window.addEventListener('DOMContentLoaded', function() {
 })();
 
 // initialize on DOM ready
-window.addEventListener('DOMContentLoaded', function() {
+function initAll() {
   if (window.initObs) window.initObs();
   if (window.initHeatmap) window.initHeatmap();
-});
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAll);
+} else {
+  initAll();
+}

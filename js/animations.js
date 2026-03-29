@@ -22,36 +22,48 @@ function initObs() {
 }
 window.initObs = initObs;
 
-// counter observer
-var cntObs = new IntersectionObserver(function(en) {
-  en.forEach(function(e) {
-    if (!e.isIntersecting) return;
-    e.target.querySelectorAll('[data-count]').forEach(function(el) {
-      var id = e.target.id + el.getAttribute('data-count');
-      if (window.CV.cFlag[id]) return;
-      window.CV.cFlag[id] = 1;
-      var t = +el.getAttribute('data-count'), st = null;
-      function step(ts) {
-        if (!st) st = ts;
-        var p = Math.min((ts - st) / 2000, 1);
-        var v = 1 - Math.pow(1 - p, 3);
-        el.textContent = Math.floor(v * t);
-        if (p < 1) requestAnimationFrame(step);
-        else el.textContent = t;
-      }
-      requestAnimationFrame(step);
-    });
+// counter — animate numbers from 0 to data-count
+function animateCounter(el) {
+  var key = (el.closest('.sec') ? el.closest('.sec').id : 'x') + '-' + el.getAttribute('data-count');
+  if (window.CV.cFlag[key]) return;
+  window.CV.cFlag[key] = 1;
+  var target = parseInt(el.getAttribute('data-count'), 10);
+  if (isNaN(target) || target <= 0) { el.textContent = target; return; }
+  var start = null;
+  var duration = 2000;
+  function step(ts) {
+    if (!start) start = ts;
+    var p = Math.min((ts - start) / duration, 1);
+    // easeOutExpo
+    var v = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
+    el.textContent = Math.floor(v * target);
+    if (p < 1) requestAnimationFrame(step);
+    else el.textContent = target;
+  }
+  requestAnimationFrame(step);
+}
+
+// observe the .stats div directly (not .sec which has opacity:0)
+var cntObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (!entry.isIntersecting) return;
+    entry.target.querySelectorAll('[data-count]').forEach(animateCounter);
   });
-}, { threshold: .3 });
+}, { threshold: 0.2 });
 
 function observeCounters() {
-  document.querySelectorAll('.stats').forEach(function(s) {
-    var sec = s.closest('.sec');
-    if (sec) cntObs.observe(sec);
+  document.querySelectorAll('.stats').forEach(function(el) {
+    cntObs.observe(el);
   });
 }
 window.observeCounters = observeCounters;
-document.addEventListener('DOMContentLoaded', observeCounters);
+
+// run immediately if DOM is ready, otherwise on DOMContentLoaded
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', observeCounters);
+} else {
+  observeCounters();
+}
 
 // skill dots observer
 var dObs = new IntersectionObserver(function(en) {
@@ -70,7 +82,7 @@ function observeDots() {
     if (sec) dObs.observe(sec);
   });
 }
-document.addEventListener('DOMContentLoaded', observeDots);
+if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', observeDots); } else { observeDots(); }
 
 // lang bars observer
 var lObs = new IntersectionObserver(function(en) {
@@ -88,7 +100,7 @@ function observeLangBars() {
     if (sec) lObs.observe(sec);
   });
 }
-document.addEventListener('DOMContentLoaded', observeLangBars);
+if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', observeLangBars); } else { observeLangBars(); }
 
 // value props observer
 var vObs = new IntersectionObserver(function(en) {
@@ -106,7 +118,7 @@ function observeValProps() {
     if (sec) vObs.observe(sec);
   });
 }
-document.addEventListener('DOMContentLoaded', observeValProps);
+if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', observeValProps); } else { observeValProps(); }
 
 // testimonials observer
 var tObs = new IntersectionObserver(function(en) {
@@ -124,7 +136,7 @@ function observeTestimonials() {
     if (sec) tObs.observe(sec);
   });
 }
-document.addEventListener('DOMContentLoaded', observeTestimonials);
+if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', observeTestimonials); } else { observeTestimonials(); }
 
 // heatmap
 function initHeatmap() {
