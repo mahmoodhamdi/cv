@@ -1,0 +1,35 @@
+/* =============================================
+   themes.css — Light theme overrides
+   ============================================= */
+
+html[data-theme="light"]{
+  --bg:#ffffff;--bg-alt:#f8fafc;--card:#ffffff;--card-h:#f8fafc;
+  --accent:#2563eb;--accent-g:rgba(37,99,235,.08);--accent2:#7c3aed;
+  --txt:#1e293b;--txt2:#475569;--muted:#94a3b8;
+  --bdr:#e5e7eb;
+  --grad:linear-gradient(135deg,#2563eb,#7c3aed);
+  --grad2:linear-gradient(135deg,#7c3aed,#a855f7);
+  --nav-bg:rgba(255,255,255,.92);--prog-bg:rgba(15,23,42,.06);
+  --tag-bg:#eff6ff;--tag-c:#1e40af;--tag-bdr:#bfdbfe;
+  --chip-bg:#f5f3ff;--chip-c:#5b21b6;--chip-bdr:#ddd6fe;
+  --cta-bg:linear-gradient(135deg,rgba(37,99,235,.06),rgba(124,58,237,.06));
+}
+
+html[data-theme="light"] body::before{opacity:.3}
+html[data-theme="light"] .orb{opacity:.06}
+html[data-theme="light"] .lang-tog{box-shadow:0 1px 4px rgba(0,0,0,.06)}
+html[data-theme="light"] .t-btn{box-shadow:0 1px 4px rgba(0,0,0,.06)}
+html[data-theme="light"] .pr-btn{box-shadow:0 1px 4px rgba(0,0,0,.06)}
+html[data-theme="light"] .tl::before{background:linear-gradient(to bottom,#3b82f6,#7c3aed,transparent)}
+html[data-theme="light"] .sum-w{box-shadow:0 2px 8px rgba(0,0,0,.06)}
+html[data-theme="light"] .svc-c{box-shadow:0 1px 4px rgba(0,0,0,.06)}
+html[data-theme="light"] .sk-cat{box-shadow:0 1px 4px rgba(0,0,0,.06)}
+html[data-theme="light"] .tool-c{box-shadow:0 1px 4px rgba(0,0,0,.06)}
+html[data-theme="light"] .tl-it{box-shadow:0 1px 4px rgba(0,0,0,.06)}
+html[data-theme="light"] .edu-c{box-shadow:0 1px 4px rgba(0,0,0,.06)}
+html[data-theme="light"] .oss-st{box-shadow:0 1px 4px rgba(0,0,0,.06)}
+html[data-theme="light"] .test-c{box-shadow:0 1px 4px rgba(0,0,0,.06)}
+html[data-theme="light"] .plat-c{box-shadow:0 1px 4px rgba(0,0,0,.06)}
+
+html[data-theme="dark"] .ic-light{display:block}
+html[data-theme="light"] .ic-dark{display:block}

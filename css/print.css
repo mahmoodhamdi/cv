@@ -1,0 +1,23 @@
+/* =============================================
+   print.css — Print styles
+   ============================================= */
+
+@media print{
+  body{background:#fff;color:#1a1a1a}
+  body::before,.orb,.top-ctrl,.pr-btn,.navbar,.s-top,.toast,.scroll-progress,.cta,.ftr-wave,.heatmap{display:none}
+  .wrap{max-width:100%;padding:0}
+  .nm{-webkit-text-fill-color:#1a1a1a;color:#1a1a1a}
+  .sec{opacity:1;transform:none;margin-top:24px}
+  .sum-w{background:none;padding:0;box-shadow:none;animation:none}
+  .sum,.sk-cat,.tl-it,.plat-c,.oss-st,.svc-c,.val-c,.test-c,.edu-c,.tool-c,.stat-item{background:#f8fafc;border:1px solid #e2e8f0;color:#334155;box-shadow:none;transform:none;opacity:1}
+  .oss-v,.st-n{-webkit-text-fill-color:#1e40af}
+  .tl::before{background:#cbd5e1}
+  .tl-it::before{background:#2563eb;box-shadow:none}
+  .avatar::before,.avatar::after{display:none}
+  .stats{background:none}
+  .tc{background:#f1f5f9;color:#475569;border-color:#e2e8f0}
+  .test-c,.val-c{border-color:#e2e8f0}
+  .btn-p,.btn-o{display:none}
+  .sk-dot.on{background:#2563eb}
+  .lang-fill{width:var(--w)!important;background:#2563eb}
+}

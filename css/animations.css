@@ -1,0 +1,31 @@
+/* =============================================
+   animations.css — Keyframes, @property, scroll-reveal, animation states
+   ============================================= */
+
+@property --aa{syntax:'<angle>';initial-value:0deg;inherits:false}
+
+@keyframes ar{to{--aa:360deg}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 var(--accent-g)}50%{box-shadow:0 0 0 8px transparent}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* scroll reveal */
+.sec{opacity:0;transform:translateY(28px);transition:opacity .6s,transform .6s;will-change:opacity,transform}
+.sec.rev{opacity:1;transform:translateY(0)}
+
+/* value props animation states */
+.val-c{transform:scale(.95);opacity:0;transition:all .4s}
+.val-c.anim{transform:scale(1);opacity:1}
+
+/* testimonials animation states */
+.test-c{opacity:0;transform:translateY(20px)}
+.test-c.anim{opacity:1;transform:translateY(0)}
+
+/* heatmap squares */
+.hm-sq{opacity:0;transition:opacity .3s}
+.hm-sq.vis{opacity:1}
+
+/* skill dots */
+.sk-dot{transition:background .4s}
+
+/* language fill bars */
+.lang-fill{width:0;transition:width 1.2s ease}

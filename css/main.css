@@ -1,0 +1,39 @@
+/* =============================================
+   main.css — Core variables, resets, base styles
+   ============================================= */
+
+:root{
+  --bg:#0a0f1a;--bg-alt:#111827;--card:#1a2236;--card-h:#1f2a42;
+  --accent:#38bdf8;--accent-g:rgba(56,189,248,.15);--accent2:#818cf8;
+  --txt:#f1f5f9;--txt2:#94a3b8;--muted:#64748b;
+  --bdr:rgba(148,163,184,.1);
+  --grad:linear-gradient(135deg,#38bdf8,#818cf8);
+  --grad2:linear-gradient(135deg,#818cf8,#c084fc);
+  --green:#34d399;--star:#fbbf24;
+  --fn-d:'DM Serif Display',serif;--fn:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;
+  --fn-ar:'IBM Plex Sans Arabic',sans-serif;--fn-ar-b:'Tajawal',sans-serif;
+  --nav-bg:rgba(10,15,26,.88);--prog-bg:rgba(148,163,184,.1);
+  --tag-bg:rgba(56,189,248,.08);--tag-c:var(--txt2);--tag-bdr:rgba(56,189,248,.1);
+  --chip-bg:rgba(129,140,248,.1);--chip-c:var(--accent2);--chip-bdr:rgba(129,140,248,.15);
+  --cta-bg:linear-gradient(135deg,rgba(56,189,248,.08),rgba(129,140,248,.08));
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;opacity:0;transition:opacity .5s ease,background .4s,color .4s}
+body.loaded{opacity:1}
+
+/* grain */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0}
+
+/* scroll progress */
+.scroll-progress{position:fixed;top:0;left:0;height:3px;background:var(--grad);z-index:999;width:0;transition:none}
+
+/* orbs */
+.orb{position:fixed;border-radius:50%;filter:blur(100px);opacity:.1;pointer-events:none;z-index:0;will-change:transform}
+.orb-1{width:500px;height:500px;background:var(--accent);top:-150px;right:-100px}
+.orb-2{width:400px;height:400px;background:var(--accent2);bottom:10%;left:-100px}
+.orb-3{width:300px;height:300px;background:#c084fc;top:50%;right:20%}
+
+/* container */
+.wrap{max-width:1100px;margin:0 auto;padding:40px 24px;position:relative;z-index:1}

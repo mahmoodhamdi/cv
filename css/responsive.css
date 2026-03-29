@@ -1,0 +1,51 @@
+/* =============================================
+   responsive.css — Media queries for all breakpoints
+   ============================================= */
+
+@media(max-width:1199px){
+  .val-g{grid-template-columns:repeat(2,1fr)}
+  .tool-g{grid-template-columns:repeat(3,1fr)}
+  .test-g{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(3,1fr)}
+  .sk-g{grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:767px){
+  .nm{font-size:28px}
+  html[dir="rtl"] .nm{font-size:30px}
+  .hdr{padding:30px 0}
+  .avatar{width:80px;height:80px;font-size:30px;border-radius:18px}
+  .avatar::before,.avatar::after{border-radius:21px;inset:-3px}
+  .ttl{font-size:14px}
+  .sec-t{font-size:18px}
+  html[dir="rtl"] .sec-t{font-size:22px}
+  .c-row{gap:10px}
+  .svc-g,.sk-g,.plat-g,.oss-hl{grid-template-columns:1fr}
+  .val-g{grid-template-columns:1fr}
+  .tool-g{grid-template-columns:repeat(2,1fr)}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .st-n{font-size:28px}
+  .test-g{grid-template-columns:1fr}
+  .top-ctrl{top:12px;right:12px}
+  .pr-btn{top:12px;left:12px}
+  html[dir="rtl"] .top-ctrl{left:12px;right:auto}
+  html[dir="rtl"] .pr-btn{left:auto;right:12px}
+  .s-top{bottom:16px;right:16px}
+  html[dir="rtl"] .s-top{right:auto;left:16px}
+  .navbar.vis~.top-ctrl,.navbar.vis~.pr-btn{top:54px}
+  .cta{padding:32px 20px}
+  .cta-t{font-size:22px}
+  html[dir="rtl"] .cta-t{font-size:24px}
+}
+
+@media(max-width:479px){
+  .wrap{padding:24px 16px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .st-n{font-size:24px}
+  .tool-g{grid-template-columns:repeat(2,1fr)}
+  .l-btn{padding:6px 12px;font-size:11px}
+  .t-btn{width:34px;height:34px}
+  .pr-btn span{display:none}
+  .sec{margin-top:32px}
+  .ftr-soc svg{width:18px;height:18px}
+}

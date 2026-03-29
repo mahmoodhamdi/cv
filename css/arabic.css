@@ -1,0 +1,26 @@
+/* =============================================
+   arabic.css — RTL / Arabic direction rules
+   ============================================= */
+
+html[dir="rtl"] body{font-family:var(--fn-ar-b);line-height:2;letter-spacing:.01em}
+html[dir="rtl"] .nav-a{font-family:var(--fn-ar-b)}
+html[dir="rtl"] .top-ctrl{right:auto;left:20px}
+html[dir="rtl"] .pr-btn{left:auto;right:20px}
+html[dir="rtl"] .s-top{right:auto;left:28px}
+html[dir="rtl"] .nm{font-family:var(--fn-ar);font-size:40px;font-weight:700}
+html[dir="rtl"] .ttl{letter-spacing:0;text-transform:none;font-size:17px}
+html[dir="rtl"] .sec-t{font-family:var(--fn-ar);font-size:26px;font-weight:700}
+html[dir="rtl"] .sk-h{text-transform:none;letter-spacing:.01em}
+html[dir="rtl"] .tl{padding-left:0;padding-right:20px}
+html[dir="rtl"] .tl::before{left:auto;right:0}
+html[dir="rtl"] .tl-it::before{left:auto;right:-24px}
+html[dir="rtl"] .tl-d li{padding-left:0;padding-right:16px}
+html[dir="rtl"] .tl-d li::before{left:auto;right:0;content:'\25C2'}
+html[dir="rtl"] .badge{margin-left:0;margin-right:8px}
+html[dir="rtl"] .test-c{border-left:none;border-right:3px solid var(--accent)}
+html[dir="rtl"] .cta-t{font-family:var(--fn-ar);font-weight:700;font-size:30px}
+html[dir="rtl"] .proj-blue,.proj-purple,.proj-green,.proj-amber{border-left:none}
+html[dir="rtl"] .proj-blue{border-right:3px solid #3b82f6}
+html[dir="rtl"] .proj-purple{border-right:3px solid #8b5cf6}
+html[dir="rtl"] .proj-green{border-right:3px solid #34d399}
+html[dir="rtl"] .proj-amber{border-right:3px solid #f59e0b}

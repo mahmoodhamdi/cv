@@ -1,0 +1,75 @@
+/* =============================================
+   components.css — Cards, tags, badges, buttons, toast, scroll-top
+   ============================================= */
+
+/* service cards */
+.svc-c{background:var(--card);border:1px solid var(--bdr);border-radius:14px;padding:24px;transition:all .3s;position:relative;overflow:hidden}
+.svc-c:hover{border-color:rgba(56,189,248,.2);background:var(--card-h);transform:perspective(500px) rotateY(2deg);box-shadow:0 8px 30px var(--accent-g)}
+.svc-c::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);opacity:0;transition:opacity .3s}
+.svc-c:hover::before{opacity:1}
+
+/* value prop cards */
+.val-c{background:transparent;border:1px solid var(--bdr);border-radius:14px;padding:24px;text-align:center;transition:all .4s;transform:scale(.95);opacity:0}
+.val-c.anim{transform:scale(1);opacity:1}
+.val-c:nth-child(1){border-top:3px solid #38bdf8}
+.val-c:nth-child(2){border-top:3px solid #34d399}
+.val-c:nth-child(3){border-top:3px solid #fbbf24}
+.val-c:nth-child(4){border-top:3px solid #818cf8}
+.val-c:hover{background:var(--card);transform:translateY(-3px);box-shadow:0 8px 24px var(--accent-g)}
+
+/* testimonial cards */
+.test-c{background:var(--card);border:1px solid var(--bdr);border-radius:14px;padding:24px;transition:all .3s;position:relative;border-left:3px solid var(--accent);opacity:0;transform:translateY(20px)}
+.test-c.anim{opacity:1;transform:translateY(0)}
+.test-c:hover{transform:translateY(-3px);box-shadow:0 8px 24px var(--accent-g)}
+
+/* education cards */
+.edu-c{background:var(--card);border:1px solid var(--bdr);border-radius:14px;padding:24px;display:flex;gap:16px;align-items:flex-start;margin-bottom:14px;transition:all .3s}
+.edu-c:hover{border-color:rgba(56,189,248,.2);background:var(--card-h)}
+
+/* tool cards */
+.tool-c{background:var(--card);border:1px solid var(--bdr);border-radius:12px;padding:14px;text-align:center;transition:all .3s}
+.tool-c:hover{border-color:rgba(56,189,248,.2);transform:translateY(-2px)}
+
+/* platform cards */
+.plat-c{background:var(--card);border:1px solid var(--bdr);border-radius:12px;padding:16px 20px;text-decoration:none;color:var(--txt);transition:all .3s;display:flex;align-items:center;gap:12px}
+.plat-c:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 4px 20px var(--accent-g)}
+
+/* tags / chips */
+.tc{font-size:11px;font-family:var(--mono);padding:2px 8px;border-radius:5px;background:var(--chip-bg);color:var(--chip-c);border:1px solid var(--chip-bdr)}
+
+/* skill dots */
+.sk-dot{width:8px;height:8px;border-radius:50%;background:var(--prog-bg);transition:background .4s}
+.sk-dot.on{background:var(--accent)}
+
+/* badges */
+.badge{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:4px;margin-left:8px}
+.badge-ok{background:rgba(52,211,153,.15);color:var(--green);border:1px solid rgba(52,211,153,.3)}
+.badge-type{background:var(--accent-g);color:var(--accent);border:1px solid rgba(56,189,248,.2)}
+
+/* buttons */
+.btn-p{padding:12px 28px;border-radius:10px;background:var(--grad);color:#fff;font-family:var(--fn);font-size:14px;font-weight:600;border:none;cursor:pointer;text-decoration:none;transition:all .3s;animation:pulse 3s infinite}
+.btn-p:hover{box-shadow:0 4px 20px var(--accent-g);transform:translateY(-1px)}
+.btn-o{padding:12px 28px;border-radius:10px;background:transparent;color:var(--accent);font-family:var(--fn);font-size:14px;font-weight:600;border:2px solid var(--accent);cursor:pointer;text-decoration:none;transition:all .3s}
+.btn-o:hover{background:var(--accent-g)}
+
+.l-btn{padding:7px 16px;border:none;border-radius:7px;cursor:pointer;font-family:var(--fn);font-size:12px;font-weight:500;background:transparent;color:var(--muted);transition:all .3s}
+.l-btn.on{background:var(--grad);color:#fff;box-shadow:0 2px 12px var(--accent-g)}
+
+.t-btn{width:38px;height:38px;border:1px solid var(--bdr);border-radius:10px;background:var(--card);color:var(--txt2);cursor:pointer;backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s}
+.t-btn:hover{color:var(--accent);border-color:var(--accent)}
+.t-btn svg{width:18px;height:18px;transition:transform .3s}
+.t-btn:hover svg{transform:rotate(30deg)}
+.ic-dark,.ic-light{display:none}
+
+.pr-btn{position:fixed;top:20px;left:20px;z-index:100;padding:7px 16px;border:1px solid var(--bdr);border-radius:10px;background:var(--card);color:var(--txt2);font-family:var(--fn);font-size:12px;font-weight:500;cursor:pointer;backdrop-filter:blur(20px);display:flex;align-items:center;gap:6px;transition:all .3s}
+.pr-btn:hover{color:var(--accent);border-color:var(--accent)}
+.navbar.vis~.pr-btn{top:58px}
+
+/* toast */
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(16px);z-index:200;background:var(--card);color:var(--txt);padding:10px 22px;border-radius:10px;font-size:13px;font-weight:500;opacity:0;transition:all .3s;pointer-events:none;box-shadow:0 8px 32px rgba(0,0,0,.3);border:1px solid var(--bdr)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* scroll to top */
+.s-top{position:fixed;bottom:28px;right:28px;z-index:100;width:42px;height:42px;border-radius:10px;background:var(--grad);border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(16px);transition:opacity .3s,transform .3s;pointer-events:none;box-shadow:0 4px 16px var(--accent-g)}
+.s-top.vis{opacity:1;transform:translateY(0);pointer-events:auto}
+.s-top svg{width:18px;height:18px}
