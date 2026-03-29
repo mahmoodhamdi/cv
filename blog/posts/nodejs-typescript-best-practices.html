@@ -16,6 +16,8 @@
 <meta name="twitter:title" content="Node.js &amp; TypeScript: Production Best Practices">
 <meta name="twitter:description" content="Production-grade Node.js + TypeScript service — tsconfig, auth, logging, Docker, CI/CD.">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="alternate" type="application/rss+xml" title="Mahmoud Hamdy Fathy — Blog" href="/cv/blog/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="محمود حمدي فتحي — المدونة" href="/cv/blog/feed-ar.xml" hreflang="ar">
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>
@@ -654,10 +656,33 @@ CMD ["node", "dist/app.js"]</code></pre>
   if(saved) document.documentElement.setAttribute('data-theme',saved);
 
   const rp=document.getElementById('rp');
+  const pctEl=document.createElement('div');
+  pctEl.className='read-pct';
+  document.body.appendChild(pctEl);
   window.addEventListener('scroll',()=>{
     const max=document.documentElement.scrollHeight-window.innerHeight;
-    rp.style.width=(window.scrollY/max*100)+'%';
+    const pct=Math.round(window.scrollY/max*100);
+    rp.style.width=pct+'%';
+    pctEl.textContent=pct+'% read';
+    pctEl.classList.toggle('vis',window.scrollY>200);
   },{passive:true});
+
+  // Copy code buttons
+  document.querySelectorAll('.post-body pre').forEach(pre=>{
+    pre.style.position='relative';
+    const btn=document.createElement('button');
+    btn.className='code-copy-btn';
+    btn.textContent='Copy';
+    btn.addEventListener('click',()=>{
+      const code=pre.querySelector('code');
+      navigator.clipboard.writeText(code?code.textContent:pre.textContent).then(()=>{
+        btn.textContent='Copied!';
+        btn.classList.add('copied');
+        setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},2000);
+      });
+    });
+    pre.appendChild(btn);
+  });
 
   function setLang(lang){
     const isAr=lang==='ar';

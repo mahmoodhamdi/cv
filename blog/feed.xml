@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Mahmoud Hamdy Fathy — Blog</title>
+    <link>https://mahmoodhamdi.github.io/cv/blog/</link>
+    <description>Technical articles about Full-Stack Development, Flutter, Node.js, and freelancing in the MENA region.</description>
+    <language>en</language>
+    <lastBuildDate>Mon, 30 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mahmoodhamdi.github.io/cv/blog/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>Freelancing in MENA: A Developer's Guide</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/mena-freelance-guide.html</link>
+      <description>Compare Mostaql, Khamsat, and Upwork for MENA developers. Pricing strategies, Arabic business communication, payment methods, and scaling from freelancer to agency.</description>
+      <pubDate>Fri, 20 Mar 2026 00:00:00 +0000</pubDate>
+      <category>Guide</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/mena-freelance-guide.html</guid>
+    </item>
+
+    <item>
+      <title>My Open Source Journey</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/open-source-contributions-journey.html</link>
+      <description>How I went from reading open source code to merging PRs into express-validator and Helmet.js. A personal story with practical tips for Arab developers.</description>
+      <pubDate>Thu, 05 Mar 2026 00:00:00 +0000</pubDate>
+      <category>Experience</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/open-source-contributions-journey.html</guid>
+    </item>
+
+    <item>
+      <title>Node.js &amp; TypeScript: Production Best Practices</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/nodejs-typescript-best-practices.html</link>
+      <description>Everything you need to ship a production Node.js + TypeScript service — tsconfig, project structure, JWT auth, error handling, logging, Docker, and CI/CD.</description>
+      <pubDate>Fri, 20 Feb 2026 00:00:00 +0000</pubDate>
+      <category>Tutorial</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/nodejs-typescript-best-practices.html</guid>
+    </item>
+
+    <item>
+      <title>Flutter Clean Architecture: A Practical Guide</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/flutter-clean-architecture.html</link>
+      <description>Implement clean architecture in Flutter with domain, data, and presentation layers. Covers use cases, repository patterns, Bloc/Cubit, and dependency injection.</description>
+      <pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate>
+      <category>Tutorial</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/flutter-clean-architecture.html</guid>
+    </item>
+
+    <item>
+      <title>Building an AI-Powered Salla Bot</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/building-salla-bot.html</link>
+      <description>A deep dive into integrating with Salla e-commerce platform using Node.js, building a Telegram bot for customer support, and automating order management.</description>
+      <pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate>
+      <category>Tutorial</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/building-salla-bot.html</guid>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>محمود حمدي فتحي — المدونة</title>
+    <link>https://mahmoodhamdi.github.io/cv/blog/</link>
+    <description>مقالات تقنية عن تطوير البرمجيات، Flutter، Node.js، والعمل الحر في المنطقة العربية.</description>
+    <language>ar</language>
+    <lastBuildDate>Mon, 30 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://mahmoodhamdi.github.io/cv/blog/feed-ar.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>دليل العمل الحر للمطورين في المنطقة العربية</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/mena-freelance-guide.html</link>
+      <description>مقارنة مستقل وخمسات وUpwork للمطورين في المنطقة العربية. استراتيجيات التسعير والتواصل التجاري وطرق الدفع.</description>
+      <pubDate>Fri, 20 Mar 2026 00:00:00 +0000</pubDate>
+      <category>دليل</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/mena-freelance-guide.html</guid>
+    </item>
+
+    <item>
+      <title>رحلتي في المصادر المفتوحة</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/open-source-contributions-journey.html</link>
+      <description>كيف انتقلت من قراءة كود المصادر المفتوحة إلى دمج PRs في express-validator و Helmet.js.</description>
+      <pubDate>Thu, 05 Mar 2026 00:00:00 +0000</pubDate>
+      <category>تجربة</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/open-source-contributions-journey.html</guid>
+    </item>
+
+    <item>
+      <title>أفضل ممارسات Node.js و TypeScript للإنتاج</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/nodejs-typescript-best-practices.html</link>
+      <description>كل ما تحتاجه لإطلاق خدمة Node.js + TypeScript في الإنتاج: إعداد tsconfig والبنية والمصادقة ومعالجة الأخطاء والـ Docker.</description>
+      <pubDate>Fri, 20 Feb 2026 00:00:00 +0000</pubDate>
+      <category>شرح</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/nodejs-typescript-best-practices.html</guid>
+    </item>
+
+    <item>
+      <title>بنية Flutter النظيفة: دليل عملي</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/flutter-clean-architecture.html</link>
+      <description>تطبيق البنية النظيفة في Flutter مع طبقات domain وdata وpresentation. يغطي use cases ونمط repository و Bloc/Cubit.</description>
+      <pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate>
+      <category>شرح</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/flutter-clean-architecture.html</guid>
+    </item>
+
+    <item>
+      <title>بناء بوت ذكي لمنصة سلة</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/building-salla-bot.html</link>
+      <description>دليل تفصيلي للتكامل مع منصة سلة للتجارة الإلكترونية باستخدام Node.js وبناء بوت تيليجرام لدعم العملاء.</description>
+      <pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate>
+      <category>شرح</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/building-salla-bot.html</guid>
+    </item>
+  </channel>
+</rss>
