@@ -5,7 +5,7 @@
 @property --aa{syntax:'<angle>';initial-value:0deg;inherits:false}
 
 @keyframes ar{to{--aa:360deg}}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 var(--accent-g)}50%{box-shadow:0 0 0 8px transparent}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
 
 /* scroll reveal */
@@ -13,7 +13,7 @@
 .sec.rev{opacity:1;transform:translateY(0)}
 
 /* value props animation states */
-.val-c{transform:scale(.95);opacity:0;transition:all .4s}
+.val-c{transform:scale(.95);opacity:0;transition:transform .4s,opacity .4s}
 .val-c.anim{transform:scale(1);opacity:1}
 
 /* testimonials animation states */
@@ -25,7 +25,7 @@
 .hm-sq.vis{opacity:1}
 
 /* skill dots */
-.sk-dot{transition:background .4s}
+.sk-dot{transition:opacity .4s}
 
 /* language fill bars */
 .lang-fill{width:0;transition:width 1.2s ease}
@@ -68,9 +68,9 @@
 .sec-divider-wave svg { display: block; margin: 0 auto; opacity: 0.15; }
 
 /* =============================================
-   6. Enhanced scroll progress (gradient + glow)
+   6. Enhanced scroll progress (gradient only, no box-shadow)
    ============================================= */
-.scroll-progress { background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc); box-shadow: 0 0 8px rgba(56,189,248,0.4); }
+.scroll-progress { background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc); }
 
 /* =============================================
    7. Animated background orbs + floating particles
@@ -105,8 +105,7 @@
    ============================================= */
 .navbar.vis { backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); }
 
-@keyframes gradShift { 0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%} }
-.sum-w::after { content:''; position:absolute; inset:0; border-radius:16px; background: linear-gradient(135deg, rgba(56,189,248,0.03), rgba(129,140,248,0.03), rgba(192,132,252,0.03)); background-size: 200% 200%; animation: gradShift 10s ease infinite; pointer-events: none; z-index: 0; }
+.sum-w::after { content:''; position:absolute; inset:0; border-radius:16px; background: linear-gradient(135deg, rgba(56,189,248,0.03), rgba(129,140,248,0.03), rgba(192,132,252,0.03)); pointer-events: none; z-index: 0; }
 .sum-w { position: relative; overflow: hidden; }
 
 /* =============================================
@@ -129,9 +128,9 @@ html[data-theme="light"] .tc { background: rgba(37,99,235,0.06); color: #1e40af;
 /* =============================================
    13. Avatar enhancement
    ============================================= */
-@keyframes avatarBreathe { 0%,100%{box-shadow:0 8px 32px var(--accent-g)}50%{box-shadow:0 12px 40px var(--accent-g)} }
-.avatar { animation: avatarBreathe 4s ease-in-out infinite; transition: transform 0.3s ease; }
-.avatar:hover { transform: translateY(-5px); box-shadow: 0 16px 48px var(--accent-g); }
+@keyframes avatarBreathe { 0%,100%{transform:scale(1)}50%{transform:scale(1.02)} }
+.avatar { animation: avatarBreathe 4s ease-in-out infinite; }
+.avatar:hover { transform: translateY(-5px) scale(1.02); }
 
 /* =============================================
    14. Loading screen styles
@@ -165,5 +164,5 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
 /* =============================================
    17. Blog post title hover gradient
    ============================================= */
-.svc-c .svc-tt { transition: background 0.3s, -webkit-text-fill-color 0.3s; }
+.svc-c .svc-tt { transition: opacity 0.3s; }
 .svc-c:hover .svc-tt { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }

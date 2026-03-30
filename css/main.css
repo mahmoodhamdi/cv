@@ -5,7 +5,7 @@
 :root{
   --bg:#0a0f1a;--bg-alt:#111827;--card:#1a2236;--card-h:#1f2a42;
   --accent:#38bdf8;--accent-g:rgba(56,189,248,.15);--accent2:#818cf8;
-  --txt:#f1f5f9;--txt2:#94a3b8;--muted:#64748b;
+  --txt:#f1f5f9;--txt2:#94a3b8;--muted:#8b95a8;
   --bdr:rgba(148,163,184,.1);
   --grad:linear-gradient(135deg,#38bdf8,#818cf8);
   --grad2:linear-gradient(135deg,#818cf8,#c084fc);
@@ -20,7 +20,7 @@
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;opacity:0;transition:opacity .5s ease,background .4s,color .4s}
+body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;opacity:0;transition:opacity .5s ease}
 body.loaded{opacity:1}
 
 /* grain */

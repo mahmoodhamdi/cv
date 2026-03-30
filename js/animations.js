@@ -222,9 +222,10 @@ window.reobserveAll = reobserveAll;
   } catch(e) {}
 })();
 
-// Loading screen - first visit only
+// Loading screen - first visit only (instant dismiss to avoid blocking FCP)
 (function() {
   if (sessionStorage.getItem('cv-loaded')) return;
+  sessionStorage.setItem('cv-loaded', '1');
 
   var screen = document.createElement('div');
   screen.className = 'loading-screen';
@@ -232,12 +233,10 @@ window.reobserveAll = reobserveAll;
   screen.innerHTML = '<div class="loading-avatar">' + (isAr ? 'م ح' : 'MH') + '</div>';
   document.body.appendChild(screen);
 
-  setTimeout(function() {
+  requestAnimationFrame(function() {
     screen.classList.add('fade-out');
     setTimeout(function() { screen.remove(); }, 400);
-  }, 500);
-
-  sessionStorage.setItem('cv-loaded', '1');
+  });
 })();
 
 // Cursor trail - desktop only
@@ -417,7 +416,7 @@ window.reobserveAll = reobserveAll;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   function createParticles() {
-    for (var i = 0; i < 6; i++) {
+    for (var i = 0; i < 4; i++) {
       var p = document.createElement('div');
       p.className = 'bg-particle';
       p.setAttribute('aria-hidden', 'true');

@@ -27,8 +27,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Mahmoud CV">
 <link rel="apple-touch-icon" href="./assets/icon-192.svg">
-<link rel="alternate" type="application/rss+xml" title="Mahmoud Hamdy Fathy — Blog" href="/cv/blog/feed.xml">
-<link rel="alternate" type="application/rss+xml" title="محمود حمدي فتحي — المدونة" href="/cv/blog/feed-ar.xml" hreflang="ar">
+<link rel="alternate" type="application/rss+xml" title="Mahmoud Hamdy Fathy — Blog" href="https://mahmoodhamdi.github.io/cv/blog/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="محمود حمدي فتحي — المدونة" href="https://mahmoodhamdi.github.io/cv/blog/feed-ar.xml" hreflang="ar">
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-D0H1J8BSKJ"></script>
 <script>
@@ -38,8 +38,45 @@
   gtag('config', 'G-D0H1J8BSKJ');
 </script>
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+:root{--bg:#0a0f1a;--bg-alt:#111827;--card:#1a2236;--card-h:#1f2a42;--accent:#38bdf8;--accent-g:rgba(56,189,248,.15);--accent2:#818cf8;--txt:#f1f5f9;--txt2:#94a3b8;--muted:#8b95a8;--bdr:rgba(148,163,184,.1);--grad:linear-gradient(135deg,#38bdf8,#818cf8);--green:#34d399;--fn-d:'DM Serif Display',serif;--fn:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;--fn-ar:'IBM Plex Sans Arabic',sans-serif;--fn-ar-b:'Tajawal',sans-serif;--nav-bg:rgba(10,15,26,.88);--prog-bg:rgba(148,163,184,.1);--chip-bg:rgba(129,140,248,.1);--chip-c:var(--accent2);--chip-bdr:rgba(129,140,248,.15);--cta-bg:linear-gradient(135deg,rgba(56,189,248,.08),rgba(129,140,248,.08))}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;opacity:0;transition:opacity .5s ease}body.loaded{opacity:1}
+.scroll-progress{position:fixed;top:0;left:0;height:3px;background:var(--grad);z-index:999;width:0}
+.orb{position:fixed;border-radius:50%;filter:blur(100px);opacity:.1;pointer-events:none;z-index:0;will-change:transform}
+.orb-1{width:500px;height:500px;background:var(--accent);top:-150px;right:-100px}
+.orb-2{width:400px;height:400px;background:var(--accent2);bottom:10%;left:-100px}
+.orb-3{width:300px;height:300px;background:#c084fc;top:50%;right:20%}
+.wrap{max-width:1100px;margin:0 auto;padding:40px 24px;position:relative;z-index:1}
+.hdr{text-align:center;padding:50px 0 40px;position:relative}
+.avatar{width:110px;height:110px;border-radius:24px;background:var(--grad);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:42px;font-weight:700;color:#fff;position:relative;box-shadow:0 8px 32px var(--accent-g)}
+.nm{font-family:var(--fn-d);font-size:38px;font-weight:400;letter-spacing:-.02em;margin-bottom:8px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ttl{font-size:16px;font-weight:400;color:var(--txt2);letter-spacing:.05em;text-transform:uppercase;margin-bottom:20px}
+.c-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.c-it{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);text-decoration:none;cursor:pointer}
+.c-it svg{width:14px;height:14px;opacity:.7}
+.navbar{position:fixed;top:3px;left:0;right:0;z-index:90;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--bdr);transform:translateY(-110%);transition:transform .3s;will-change:transform}
+.navbar.vis{transform:translateY(0)}
+.nav-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:48px;gap:2px;overflow-x:auto;scrollbar-width:none}
+.nav-in::-webkit-scrollbar{display:none}
+.nav-a{padding:6px 12px;border-radius:8px;font-size:12px;font-weight:500;color:var(--muted);white-space:nowrap;cursor:pointer;border:none;background:none;font-family:var(--fn)}
+.top-ctrl{position:fixed;top:20px;right:20px;z-index:100;display:flex;gap:8px;align-items:center}
+.lang-tog{display:flex;gap:3px;background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:3px;backdrop-filter:blur(20px)}
+.skip-link{position:fixed;top:-100px;left:16px;z-index:10001;padding:12px 24px;background:var(--grad);color:#fff;border-radius:0 0 8px 8px;font-size:14px;font-weight:600;text-decoration:none;transition:top .3s}.skip-link:focus{top:0}
+</style>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="preload" href="css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="css/themes.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="css/components.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="css/sections.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="css/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="css/arabic.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="css/responsive.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/themes.css">
 <link rel="stylesheet" href="css/components.css">
@@ -47,6 +84,7 @@
 <link rel="stylesheet" href="css/animations.css">
 <link rel="stylesheet" href="css/arabic.css">
 <link rel="stylesheet" href="css/responsive.css">
+</noscript>
 <link rel="stylesheet" href="css/print.css" media="print">
 <script type="application/ld+json">
 {
@@ -69,7 +107,7 @@
 }
 </script>
 </head>
-<body>
+<body id="top">
 <a class="skip-link" href="#en-cv">Skip to main content</a>
 <div class="scroll-progress" id="sp" aria-hidden="true"></div>
 <div class="orb orb-1" aria-hidden="true"></div>
@@ -111,8 +149,8 @@
 
 <div class="top-ctrl">
   <button class="t-btn" onclick="toggleTheme()" aria-label="Toggle theme">
-    <svg class="ic-light" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-    <svg class="ic-dark" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    <svg class="ic-light" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    <svg class="ic-dark" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
   </button>
   <div class="lang-tog">
     <button class="l-btn on" onclick="setLang('en')">EN</button>
@@ -121,12 +159,12 @@
 </div>
 
 <button class="pr-btn" onclick="window.print()" aria-label="Print CV">
-  <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+  <svg width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
   <span>Print</span>
 </button>
 
 <button class="s-top" id="sTop" onclick="window.scrollTo({top:0})" aria-label="Scroll to top">
-  <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+  <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
 </button>
 <div class="toast" id="toast"></div>
 
@@ -161,11 +199,11 @@
 
 <section class="sec" id="svc-en"><h2 class="sec-t">Services</h2>
   <div class="svc-g">
-    <div class="svc-c"><div class="svc-i"><svg viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg></div><div class="svc-tt">Full-Stack Development</div><div class="svc-d">End-to-end web applications with Node.js/TypeScript backends, Next.js/React frontends, and robust database architecture.</div></div>
-    <div class="svc-c"><div class="svc-i"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg></div><div class="svc-tt">Mobile App Development</div><div class="svc-d">Cross-platform mobile apps with Flutter/Dart using clean architecture, state management, and native performance.</div></div>
-    <div class="svc-c"><div class="svc-i"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></div><div class="svc-tt">E-Commerce Automation</div><div class="svc-d">Salla platform integration, automated order management, customer engagement bots, and analytics dashboards.</div></div>
-    <div class="svc-c"><div class="svc-i"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div class="svc-tt">AI Chatbot Development</div><div class="svc-d">Intelligent conversational bots for Telegram, WhatsApp, and web — with NLP, auto-responses, and platform integrations.</div></div>
-    <div class="svc-c"><div class="svc-i"><svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div><div class="svc-tt">API Development & Integration</div><div class="svc-d">RESTful APIs, third-party integrations, payment gateways, real-time WebSocket systems, and microservices architecture.</div></div>
+    <div class="svc-c"><div class="svc-i"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg></div><div class="svc-tt">Full-Stack Development</div><div class="svc-d">End-to-end web applications with Node.js/TypeScript backends, Next.js/React frontends, and robust database architecture.</div></div>
+    <div class="svc-c"><div class="svc-i"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg></div><div class="svc-tt">Mobile App Development</div><div class="svc-d">Cross-platform mobile apps with Flutter/Dart using clean architecture, state management, and native performance.</div></div>
+    <div class="svc-c"><div class="svc-i"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></div><div class="svc-tt">E-Commerce Automation</div><div class="svc-d">Salla platform integration, automated order management, customer engagement bots, and analytics dashboards.</div></div>
+    <div class="svc-c"><div class="svc-i"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div class="svc-tt">AI Chatbot Development</div><div class="svc-d">Intelligent conversational bots for Telegram, WhatsApp, and web — with NLP, auto-responses, and platform integrations.</div></div>
+    <div class="svc-c"><div class="svc-i"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div><div class="svc-tt">API Development & Integration</div><div class="svc-d">RESTful APIs, third-party integrations, payment gateways, real-time WebSocket systems, and microservices architecture.</div></div>
   </div>
 </section>
 
@@ -242,8 +280,8 @@
 </section>
 
 <section class="sec" id="edu-en"><h2 class="sec-t">Education & Languages</h2>
-  <div class="edu-c"><div class="edu-i"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg></div><div><div class="edu-t">Bachelor's Degree in Computer Science</div><div class="edu-inst">University — Faculty of Computers & Information</div><div class="edu-yr">2019 — 2023</div></div></div>
-  <div class="edu-c"><div class="edu-i"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div><div><div class="edu-t">Continuous Learning & Professional Development</div><div class="tl-d"><ul><li>Advanced Node.js & TypeScript</li><li>Flutter & Dart Mobile Development</li><li>System Design & Architecture</li><li>Cloud Infrastructure & DevOps</li><li>Open Source Best Practices</li></ul></div></div></div>
+  <div class="edu-c"><div class="edu-i"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg></div><div><div class="edu-t">Bachelor's Degree in Computer Science</div><div class="edu-inst">University — Faculty of Computers & Information</div><div class="edu-yr">2019 — 2023</div></div></div>
+  <div class="edu-c"><div class="edu-i"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div><div><div class="edu-t">Continuous Learning & Professional Development</div><div class="tl-d"><ul><li>Advanced Node.js & TypeScript</li><li>Flutter & Dart Mobile Development</li><li>System Design & Architecture</li><li>Cloud Infrastructure & DevOps</li><li>Open Source Best Practices</li></ul></div></div></div>
   <div style="margin-top:20px">
     <div class="lang-it"><div class="lang-hd"><span class="lang-nm">Arabic</span><span class="lang-lv">Native</span></div><div class="lang-bar"><div class="lang-fill" style="--w:100%"></div></div></div>
     <div class="lang-it"><div class="lang-hd"><span class="lang-nm">English</span><span class="lang-lv">Professional Working</span></div><div class="lang-bar"><div class="lang-fill" style="--w:80%"></div></div></div>
@@ -317,15 +355,15 @@
 <div class="ftr-wave"></div>
 <footer class="ftr">
   <div class="ftr-soc">
-    <a href="https://github.com/mahmoodhamdi" target="_blank" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>
-    <a href="mailto:hmdy7486@gmail.com" aria-label="Email"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
-    <a href="https://upwork.com" target="_blank" aria-label="Upwork"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg></a>
+    <a href="https://github.com/mahmoodhamdi" target="_blank" aria-label="GitHub"><svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>
+    <a href="mailto:hmdy7486@gmail.com" aria-label="Email"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+    <a href="https://upwork.com" target="_blank" aria-label="Upwork"><svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg></a>
   </div>
   <div class="ftr-avail">Available for Hire</div>
   <div class="ftr-txt">© 2026 Mahmoud Hamdy Fathy — Built with passion</div>
   <div class="visitor-count" style="font-size:11px;color:var(--muted);margin-top:8px;opacity:.7"></div>
   <button class="pwa-install-btn" style="display:none">Install as App</button>
-  <a class="ftr-top" onclick="window.scrollTo({top:0})">↑ Back to top</a>
+  <a class="ftr-top" href="#top" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'})">↑ Back to top</a>
 </footer>
 </div>
 
@@ -359,11 +397,11 @@
 
 <section class="sec" id="svc-ar"><h2 class="sec-t">الخدمات</h2>
   <div class="svc-g">
-    <div class="svc-c"><div class="svc-i"><svg viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg></div><div class="svc-tt">تطوير تطبيقات الويب المتكاملة</div><div class="svc-d">تطبيقات ويب شاملة مع باك إند Node.js/TypeScript وفرونت إند Next.js/React وبنية قواعد بيانات متينة.</div></div>
-    <div class="svc-c"><div class="svc-i"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg></div><div class="svc-tt">تطوير تطبيقات الموبايل</div><div class="svc-d">تطبيقات موبايل متعددة المنصات باستخدام Flutter/Dart مع بنية نظيفة وإدارة حالة وأداء عالي.</div></div>
-    <div class="svc-c"><div class="svc-i"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></div><div class="svc-tt">أتمتة التجارة الإلكترونية وتكامل سلة</div><div class="svc-d">تكامل مع منصة سلة، إدارة طلبات تلقائية، بوتات تفاعل مع العملاء، ولوحات تحكم تحليلية.</div></div>
-    <div class="svc-c"><div class="svc-i"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div class="svc-tt">تطوير بوتات الذكاء الاصطناعي</div><div class="svc-d">بوتات محادثة ذكية لتيليجرام وواتساب والويب — مع معالجة لغة طبيعية وردود تلقائية وتكاملات.</div></div>
-    <div class="svc-c"><div class="svc-i"><svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div><div class="svc-tt">تطوير وتكامل الـ APIs</div><div class="svc-d">واجهات RESTful، تكاملات طرف ثالث، بوابات دفع، أنظمة WebSocket لحظية، وبنية خدمات مصغرة.</div></div>
+    <div class="svc-c"><div class="svc-i"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg></div><div class="svc-tt">تطوير تطبيقات الويب المتكاملة</div><div class="svc-d">تطبيقات ويب شاملة مع باك إند Node.js/TypeScript وفرونت إند Next.js/React وبنية قواعد بيانات متينة.</div></div>
+    <div class="svc-c"><div class="svc-i"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg></div><div class="svc-tt">تطوير تطبيقات الموبايل</div><div class="svc-d">تطبيقات موبايل متعددة المنصات باستخدام Flutter/Dart مع بنية نظيفة وإدارة حالة وأداء عالي.</div></div>
+    <div class="svc-c"><div class="svc-i"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></div><div class="svc-tt">أتمتة التجارة الإلكترونية وتكامل سلة</div><div class="svc-d">تكامل مع منصة سلة، إدارة طلبات تلقائية، بوتات تفاعل مع العملاء، ولوحات تحكم تحليلية.</div></div>
+    <div class="svc-c"><div class="svc-i"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div class="svc-tt">تطوير بوتات الذكاء الاصطناعي</div><div class="svc-d">بوتات محادثة ذكية لتيليجرام وواتساب والويب — مع معالجة لغة طبيعية وردود تلقائية وتكاملات.</div></div>
+    <div class="svc-c"><div class="svc-i"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div><div class="svc-tt">تطوير وتكامل الـ APIs</div><div class="svc-d">واجهات RESTful، تكاملات طرف ثالث، بوابات دفع، أنظمة WebSocket لحظية، وبنية خدمات مصغرة.</div></div>
   </div>
 </section>
 
@@ -440,8 +478,8 @@
 </section>
 
 <section class="sec" id="edu-ar"><h2 class="sec-t">التعليم واللغات</h2>
-  <div class="edu-c"><div class="edu-i"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg></div><div><div class="edu-t">بكالوريوس علوم الحاسب</div><div class="edu-inst">الجامعة — كلية الحاسبات والمعلومات</div><div class="edu-yr">2019 — 2023</div></div></div>
-  <div class="edu-c"><div class="edu-i"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div><div><div class="edu-t">تعلم مستمر وتطوير مهني</div><div class="tl-d"><ul><li>Node.js & TypeScript متقدم</li><li>تطوير موبايل Flutter & Dart</li><li>تصميم الأنظمة والبنية</li><li>البنية السحابية و DevOps</li><li>أفضل ممارسات المصادر المفتوحة</li></ul></div></div></div>
+  <div class="edu-c"><div class="edu-i"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg></div><div><div class="edu-t">بكالوريوس علوم الحاسب</div><div class="edu-inst">الجامعة — كلية الحاسبات والمعلومات</div><div class="edu-yr">2019 — 2023</div></div></div>
+  <div class="edu-c"><div class="edu-i"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div><div><div class="edu-t">تعلم مستمر وتطوير مهني</div><div class="tl-d"><ul><li>Node.js & TypeScript متقدم</li><li>تطوير موبايل Flutter & Dart</li><li>تصميم الأنظمة والبنية</li><li>البنية السحابية و DevOps</li><li>أفضل ممارسات المصادر المفتوحة</li></ul></div></div></div>
   <div style="margin-top:20px">
     <div class="lang-it"><div class="lang-hd"><span class="lang-nm">العربية</span><span class="lang-lv">اللغة الأم</span></div><div class="lang-bar"><div class="lang-fill" style="--w:100%"></div></div></div>
     <div class="lang-it"><div class="lang-hd"><span class="lang-nm">الإنجليزية</span><span class="lang-lv">مستوى مهني</span></div><div class="lang-bar"><div class="lang-fill" style="--w:80%"></div></div></div>
@@ -515,15 +553,15 @@
 <div class="ftr-wave"></div>
 <footer class="ftr">
   <div class="ftr-soc">
-    <a href="https://github.com/mahmoodhamdi" target="_blank" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>
-    <a href="mailto:hmdy7486@gmail.com" aria-label="Email"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
-    <a href="https://upwork.com" target="_blank" aria-label="Upwork"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg></a>
+    <a href="https://github.com/mahmoodhamdi" target="_blank" aria-label="GitHub"><svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>
+    <a href="mailto:hmdy7486@gmail.com" aria-label="Email"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+    <a href="https://upwork.com" target="_blank" aria-label="Upwork"><svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg></a>
   </div>
   <div class="ftr-avail">متاح للتوظيف</div>
   <div class="ftr-txt">© ٢٠٢٦ محمود حمدي فتحي — صُنع بشغف</div>
   <div class="visitor-count" style="font-size:11px;color:var(--muted);margin-top:8px;opacity:.7"></div>
   <button class="pwa-install-btn" style="display:none">تثبيت كتطبيق</button>
-  <a class="ftr-top" onclick="window.scrollTo({top:0})">↑ العودة للأعلى</a>
+  <a class="ftr-top" href="#top" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'})">↑ العودة للأعلى</a>
 </footer>
 </div>
 </main>
