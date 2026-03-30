@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>محمود حمدي فتحي — المدونة</title>
+    <title>محمود حمدي — المدونة</title>
     <link>https://mahmoodhamdi.github.io/cv/blog/</link>
     <description>مقالات تقنية عن تطوير البرمجيات، Flutter، Node.js، والعمل الحر في المنطقة العربية.</description>
     <language>ar</language>

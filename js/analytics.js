@@ -26,23 +26,43 @@
     var els = document.querySelectorAll('.visitor-count');
     if (!els.length) return;
 
-    var launch = new Date('2026-01-01T00:00:00Z');
+    var launch = new Date('2026-03-30T00:00:00');
     var now = new Date();
-    var daysSince = Math.max(0, Math.floor((now - launch) / 86400000));
+    var days = Math.max(0, Math.floor((now - launch) / 86400000));
     var hour = now.getHours();
-    var count = 500 + (daysSince * 3) + (hour * 2);
+    var target = 1000 + (days * 7) + (hour * 3) + Math.floor(Math.random() * 5);
 
-    var isAr = document.documentElement.lang === 'ar';
-    var formatted = count.toLocaleString('en-US');
-
-    var display, label;
-    if (isAr) {
-      label = 'أنت الزائر رقم ' + toArabicNumerals(formatted);
-    } else {
-      label = "You're visitor #" + formatted;
+    function formatNum(n, isAr) {
+      var s = n.toLocaleString('en-US');
+      if (isAr) s = toArabicNumerals(s);
+      return s;
     }
 
-    els.forEach(function(el) { el.textContent = label; });
+    function animateCount(el, from, to, isAr, duration) {
+      var start = performance.now();
+      function step(ts) {
+        var p = Math.min((ts - start) / duration, 1);
+        var ease = 1 - Math.pow(1 - p, 3);
+        var current = Math.round(from + (to - from) * ease);
+        el.textContent = formatNum(current, isAr);
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    var vcObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting && !entry.target.dataset.counted) {
+          entry.target.dataset.counted = '1';
+          var el = entry.target;
+          var isAr = el.closest('[id*="ar"]') !== null || document.documentElement.lang === 'ar';
+          animateCount(el, target - 15, target, isAr, 1500);
+          vcObs.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    els.forEach(function(c) { vcObs.observe(c); });
   }
 
   window.initVisitorCounter = initVisitorCounter;

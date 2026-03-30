@@ -1,4 +1,4 @@
-# Mahmoud Hamdy Fathy — Portfolio CV
+# Mahmoud Hamdy — Portfolio CV
 
 A modern, bilingual (English/Arabic) portfolio CV built with pure HTML, CSS & JavaScript.
 

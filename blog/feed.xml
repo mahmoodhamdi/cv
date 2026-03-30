@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Mahmoud Hamdy Fathy — Blog</title>
+    <title>Mahmoud Hamdy — Blog</title>
     <link>https://mahmoodhamdi.github.io/cv/blog/</link>
     <description>Technical articles about Full-Stack Development, Flutter, Node.js, and freelancing in the MENA region.</description>
     <language>en</language>

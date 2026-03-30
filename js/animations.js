@@ -242,7 +242,7 @@ if (document.readyState === 'loading') {
   var screen = document.createElement('div');
   screen.className = 'loading-screen';
   var isAr = document.documentElement.lang === 'ar';
-  screen.innerHTML = '<div class="loading-avatar">' + (isAr ? 'م ح' : 'MH') + '</div>';
+  screen.innerHTML = '<div class="loading-avatar"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="50" height="50"><path d="M30 82L45 38L60 65L75 38L90 82" stroke="url(#lg)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><line x1="38" y1="68" x2="82" y2="68" stroke="rgba(56,189,248,0.5)" stroke-width="1.5"/><defs><linearGradient id="lg" x1="30" y1="38" x2="90" y2="82"><stop offset="0%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#818cf8"/></linearGradient></defs></svg></div>';
   document.body.appendChild(screen);
   requestAnimationFrame(function() {
     screen.classList.add('fade-out');
