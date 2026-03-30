@@ -11,8 +11,8 @@
   --grad:linear-gradient(135deg,#38bdf8,#818cf8);
   --grad2:linear-gradient(135deg,#818cf8,#c084fc);
   --green:#34d399;--star:#fbbf24;
-  --fn-d:'DM Serif Display',serif;--fn:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;
-  --fn-ar:'IBM Plex Sans Arabic',sans-serif;--fn-ar-b:'Tajawal',sans-serif;
+  --fn:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;
+  --fn-ar:'Tajawal',sans-serif;
   --nav-bg:rgba(10,15,26,.88);--prog-bg:rgba(148,163,184,.1);
   --tag-bg:rgba(56,189,248,.08);--tag-c:var(--txt2);--tag-bdr:rgba(56,189,248,.1);
   --chip-bg:rgba(129,140,248,.1);--chip-c:var(--accent2);--chip-bdr:rgba(129,140,248,.15);

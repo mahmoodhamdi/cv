@@ -29,32 +29,18 @@
 <link rel="apple-touch-icon" href="./assets/icon-192.svg">
 <link rel="alternate" type="application/rss+xml" title="Mahmoud Hamdy Fathy — Blog" href="https://mahmoodhamdi.github.io/cv/blog/feed.xml">
 <link rel="alternate" type="application/rss+xml" title="محمود حمدي فتحي — المدونة" href="https://mahmoodhamdi.github.io/cv/blog/feed-ar.xml" hreflang="ar">
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-D0H1J8BSKJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-D0H1J8BSKJ');
-</script>
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-<link rel="dns-prefetch" href="https://www.googletagmanager.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style>
-:root{--bg:#0a0f1a;--bg-alt:#111827;--card:#1a2236;--card-h:#1f2a42;--accent:#38bdf8;--accent-g:rgba(56,189,248,.15);--accent2:#818cf8;--txt:#f1f5f9;--txt2:#94a3b8;--muted:#8e99ad;--bdr:rgba(148,163,184,.1);--grad:linear-gradient(135deg,#38bdf8,#818cf8);--green:#34d399;--fn-d:'DM Serif Display',serif;--fn:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;--fn-ar:'IBM Plex Sans Arabic',sans-serif;--fn-ar-b:'Tajawal',sans-serif;--nav-bg:rgba(10,15,26,.88);--prog-bg:rgba(148,163,184,.1);--chip-bg:rgba(129,140,248,.1);--chip-c:var(--accent2);--chip-bdr:rgba(129,140,248,.15);--cta-bg:linear-gradient(135deg,rgba(56,189,248,.08),rgba(129,140,248,.08))}
+:root{--bg:#0a0f1a;--bg-alt:#111827;--card:#1a2236;--card-h:#1f2a42;--accent:#38bdf8;--accent-g:rgba(56,189,248,.15);--accent2:#818cf8;--txt:#f1f5f9;--txt2:#94a3b8;--muted:#8e99ad;--bdr:rgba(148,163,184,.1);--grad:linear-gradient(135deg,#38bdf8,#818cf8);--green:#34d399;--fn:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;--fn-ar:'Tajawal',sans-serif;--nav-bg:rgba(10,15,26,.88);--prog-bg:rgba(148,163,184,.1);--chip-bg:rgba(129,140,248,.1);--chip-c:var(--accent2);--chip-bdr:rgba(129,140,248,.15);--cta-bg:linear-gradient(135deg,rgba(56,189,248,.08),rgba(129,140,248,.08))}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
 body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;opacity:0;transition:opacity .5s ease;padding-top:52px}body.loaded{opacity:1}
-.scroll-progress{position:fixed;top:0;left:0;height:3px;background:var(--grad);z-index:999;width:0}
-.orb{position:fixed;border-radius:50%;filter:blur(100px);opacity:.1;pointer-events:none;z-index:0;will-change:transform}
-.orb-1{width:500px;height:500px;background:var(--accent);top:-150px;right:-100px}
-.orb-2{width:400px;height:400px;background:var(--accent2);bottom:10%;left:-100px}
-.orb-3{width:300px;height:300px;background:#c084fc;top:50%;right:20%}
 .wrap{max-width:1100px;margin:0 auto;padding:40px 24px;position:relative;z-index:1}
 .hdr{text-align:center;padding:50px 0 40px;position:relative}
-.avatar{width:110px;height:110px;border-radius:24px;background:var(--grad);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:42px;font-weight:700;color:#fff;position:relative;box-shadow:0 8px 32px var(--accent-g)}
-.nm{font-family:var(--fn-d);font-size:38px;font-weight:400;letter-spacing:-.02em;margin-bottom:8px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.avatar{width:110px;height:110px;border-radius:24px;background:var(--grad);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:42px;font-weight:700;color:#fff;position:relative}
+.nm{font-family:var(--fn);font-size:38px;font-weight:600;letter-spacing:-.02em;margin-bottom:8px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .ttl{font-size:16px;font-weight:400;color:var(--txt2);letter-spacing:.05em;text-transform:uppercase;margin-bottom:20px}
 .c-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 .c-it{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);text-decoration:none;cursor:pointer}
@@ -66,13 +52,14 @@ body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6
 .top-ctrl{position:fixed;top:58px;right:20px;z-index:100;display:flex;gap:8px;align-items:center}
 .lang-tog{display:flex;gap:3px;background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:3px;backdrop-filter:blur(20px)}
 .skip-link{position:fixed;top:0;left:16px;z-index:10001;padding:12px 24px;background:var(--grad);color:#fff;border-radius:0 0 8px 8px;font-size:14px;font-weight:600;text-decoration:none;transform:translateY(-100%);transition:transform .3s}.skip-link:focus{transform:translateY(0)}
+#ar-cv[style*="none"],#en-cv[style*="none"]{content-visibility:auto;contain-intrinsic-size:auto 5000px}
 </style>
-<link rel="preload" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@600;700&family=Tajawal:wght@300;400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=JetBrains+Mono&family=Tajawal:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <link rel="preload" href="css/bundle.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <link rel="preload" href="css/sections.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <link rel="preload" href="css/utilities.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=JetBrains+Mono&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/bundle.css">
 <link rel="stylesheet" href="css/sections.css">
 <link rel="stylesheet" href="css/utilities.css">
@@ -566,5 +553,8 @@ body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6
 <script src="js/analytics.js" defer></script>
 <script src="js/pwa.js" defer></script>
 <script src="js/main.js" defer></script>
+<script>
+window.addEventListener('load',function(){setTimeout(function(){var s=document.createElement('script');s.src='https://www.googletagmanager.com/gtag/js?id=G-D0H1J8BSKJ';s.async=true;document.head.appendChild(s);s.onload=function(){window.dataLayer=window.dataLayer||[];function g(){dataLayer.push(arguments)}g('js',new Date());g('config','G-D0H1J8BSKJ');window.gtag=g}},2000)});
+</script>
 </body>
 </html>

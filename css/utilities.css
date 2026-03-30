@@ -99,7 +99,6 @@ html[data-theme="light"] .svc-c, html[data-theme="light"] .sk-cat, html[data-the
 html[data-theme="light"] .tc { background: rgba(37,99,235,0.06); color: #1e40af; border-color: rgba(37,99,235,0.12); }
 
 /* 12. Typography improvements */
-.nm { text-shadow: 0 0 40px var(--accent-g); }
 .sec-t::after { content:''; display:inline-block; width: 24px; height: 2px; background: var(--grad); margin-left: 8px; vertical-align: middle; border-radius: 1px; }
 .test-txt { font-weight: 300; line-height: 1.8; }
 
@@ -136,12 +135,12 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
 .svc-c:hover .svc-tt { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
 /* === arabic.css === */
-html[dir="rtl"] body{font-family:var(--fn-ar-b);line-height:2;letter-spacing:.01em}
-html[dir="rtl"] .nav-a{font-family:var(--fn-ar-b)}
+html[dir="rtl"] body{font-family:var(--fn-ar);line-height:2;letter-spacing:.01em}
+html[dir="rtl"] .nav-a{font-family:var(--fn-ar)}
 html[dir="rtl"] .top-ctrl{right:auto;left:20px}
 html[dir="rtl"] .pr-btn{left:auto;right:20px}
 html[dir="rtl"] .s-top{right:auto;left:28px}
-html[dir="rtl"] .nm{font-family:var(--fn-ar);font-size:40px;font-weight:700}
+html[dir="rtl"] .nm{font-family:var(--fn-ar);font-size:38px;font-weight:700}
 html[dir="rtl"] .ttl{letter-spacing:0;text-transform:none;font-size:17px}
 html[dir="rtl"] .sec-t{font-family:var(--fn-ar);font-size:26px;font-weight:700}
 html[dir="rtl"] .sk-h{text-transform:none;letter-spacing:.01em}
@@ -184,7 +183,7 @@ html[dir="rtl"] .proj-amber{border-right:3px solid #f59e0b}
   .stats{grid-template-columns:repeat(2,1fr)}
   .st-n{font-size:28px}
   .test-g{grid-template-columns:1fr}
-  .top-ctrl{top:12px;right:12px}
+  .top-ctrl{top:54px;right:12px}
   .pr-btn{top:54px;left:12px}
   html[dir="rtl"] .top-ctrl{left:12px;right:auto}
   html[dir="rtl"] .pr-btn{left:auto;right:12px}

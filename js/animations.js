@@ -34,14 +34,12 @@ function animateCounter(el) {
   function step(ts) {
     if (!start) start = ts;
     var p = Math.min((ts - start) / duration, 1);
-    // easeOutExpo
     var v = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
     el.textContent = Math.floor(v * target);
     if (p < 1) requestAnimationFrame(step);
     else {
       el.textContent = target;
       el.classList.add('counter-done');
-      // Particle burst
       var parent = el.closest('.st-it') || el.parentElement;
       if (parent) {
         parent.style.position = 'relative';
@@ -64,7 +62,6 @@ function animateCounter(el) {
   requestAnimationFrame(step);
 }
 
-// observe the .stats div directly (not .sec which has opacity:0)
 var cntObs = new IntersectionObserver(function(entries) {
   entries.forEach(function(entry) {
     if (!entry.isIntersecting) return;
@@ -78,13 +75,6 @@ function observeCounters() {
   });
 }
 window.observeCounters = observeCounters;
-
-// run immediately if DOM is ready, otherwise on DOMContentLoaded
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', observeCounters);
-} else {
-  observeCounters();
-}
 
 // skill dots observer
 var dObs = new IntersectionObserver(function(en) {
@@ -103,7 +93,6 @@ function observeDots() {
     if (sec) dObs.observe(sec);
   });
 }
-if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', observeDots); } else { observeDots(); }
 
 // lang bars observer
 var lObs = new IntersectionObserver(function(en) {
@@ -123,7 +112,6 @@ function observeLangBars() {
     if (sec) lObs.observe(sec);
   });
 }
-if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', observeLangBars); } else { observeLangBars(); }
 
 // value props observer
 var vObs = new IntersectionObserver(function(en) {
@@ -141,7 +129,6 @@ function observeValProps() {
     if (sec) vObs.observe(sec);
   });
 }
-if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', observeValProps); } else { observeValProps(); }
 
 // testimonials observer
 var tObs = new IntersectionObserver(function(en) {
@@ -159,7 +146,6 @@ function observeTestimonials() {
     if (sec) tObs.observe(sec);
   });
 }
-if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', observeTestimonials); } else { observeTestimonials(); }
 
 // heatmap
 function initHeatmap() {
@@ -197,16 +183,41 @@ function reobserveAll() {
 }
 window.reobserveAll = reobserveAll;
 
-// parallax orbs
+// Defer all observer setup to idle time to avoid long tasks on mobile
+function initAllObservers() {
+  observeCounters();
+  observeDots();
+  observeLangBars();
+  observeValProps();
+  observeTestimonials();
+}
+
+function scheduleInit(fn) {
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(fn);
+  } else {
+    setTimeout(fn, 80);
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function() {
+    scheduleInit(initAllObservers);
+  });
+} else {
+  scheduleInit(initAllObservers);
+}
+
+// parallax orbs — use translate3d for GPU compositing
 (function() {
   var o = document.querySelectorAll('.orb'), t = 0;
   window.addEventListener('scroll', function() {
     if (!t) {
       requestAnimationFrame(function() {
         var y = window.scrollY;
-        if (o[0]) o[0].style.transform = 'translateY(' + y * .08 + 'px)';
-        if (o[1]) o[1].style.transform = 'translateY(' + y * -.05 + 'px)';
-        if (o[2]) o[2].style.transform = 'translateY(' + y * .12 + 'px)';
+        if (o[0]) o[0].style.transform = 'translate3d(0,' + y * .08 + 'px,0)';
+        if (o[1]) o[1].style.transform = 'translate3d(0,' + y * -.05 + 'px,0)';
+        if (o[2]) o[2].style.transform = 'translate3d(0,' + y * .12 + 'px,0)';
         t = 0;
       });
       t = 1;
@@ -224,17 +235,15 @@ window.reobserveAll = reobserveAll;
   } catch(e) {}
 })();
 
-// Loading screen - first visit only (instant dismiss to avoid blocking FCP)
+// Loading screen - first visit only (instant dismiss)
 (function() {
   if (sessionStorage.getItem('cv-loaded')) return;
   sessionStorage.setItem('cv-loaded', '1');
-
   var screen = document.createElement('div');
   screen.className = 'loading-screen';
   var isAr = document.documentElement.lang === 'ar';
   screen.innerHTML = '<div class="loading-avatar">' + (isAr ? 'م ح' : 'MH') + '</div>';
   document.body.appendChild(screen);
-
   requestAnimationFrame(function() {
     screen.classList.add('fade-out');
     setTimeout(function() { screen.remove(); }, 400);
@@ -256,7 +265,7 @@ window.reobserveAll = reobserveAll;
   function animate() {
     tx += (mx - tx) * 0.15;
     ty += (my - ty) * 0.15;
-    trail.style.transform = 'translate(' + (tx - 4) + 'px,' + (ty - 4) + 'px)';
+    trail.style.transform = 'translate3d(' + (tx - 4) + 'px,' + (ty - 4) + 'px,0)';
     requestAnimationFrame(animate);
   }
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) animate();
@@ -267,7 +276,7 @@ window.reobserveAll = reobserveAll;
   if (sessionStorage.getItem('cv-typed')) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  function typeTitle(el, text, callback) {
+  function typeTitle(el, text) {
     el.textContent = '';
     var cursor = document.createElement('span');
     cursor.className = 'typing-cursor';
@@ -284,7 +293,6 @@ window.reobserveAll = reobserveAll;
             cursor.classList.add('done');
             setTimeout(function() { cursor.remove(); }, 2100);
           }, 500);
-          if (callback) callback();
         }
       }, 50);
     }, 500);
@@ -299,7 +307,7 @@ window.reobserveAll = reobserveAll;
       var lang = (window.CV && window.CV.lang) || 'en';
       if (lang === 'ar' && arTitle) {
         typeTitle(arTitle, arText);
-      } else if (enTitle) {
+      } else {
         typeTitle(enTitle, enText);
       }
     }
@@ -313,7 +321,7 @@ window.reobserveAll = reobserveAll;
   }
 })();
 
-// Magnetic buttons - CTA buttons
+// Magnetic buttons - CTA buttons (desktop only)
 (function() {
   if (!window.matchMedia('(hover: hover)').matches) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -346,7 +354,7 @@ window.reobserveAll = reobserveAll;
   }
 })();
 
-// Card tilt effect for service and project cards
+// Card tilt effect (desktop only)
 (function() {
   if (!window.matchMedia('(hover: hover)').matches) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -357,7 +365,6 @@ window.reobserveAll = reobserveAll;
       var shine = document.createElement('div');
       shine.className = 'tilt-shine';
       card.appendChild(shine);
-
       card.addEventListener('mousemove', function(e) {
         var rect = card.getBoundingClientRect();
         var x = (e.clientX - rect.left) / rect.width;
@@ -382,7 +389,7 @@ window.reobserveAll = reobserveAll;
   }
 })();
 
-// Skill category reveal from alternating sides
+// Skill category reveal
 (function() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
@@ -392,9 +399,7 @@ window.reobserveAll = reobserveAll;
         if (!entry.isIntersecting) return;
         var cards = entry.target.querySelectorAll('.sk-cat');
         cards.forEach(function(card, i) {
-          setTimeout(function() {
-            card.classList.add('revealed');
-          }, i * 100);
+          setTimeout(function() { card.classList.add('revealed'); }, i * 100);
         });
         skObs.unobserve(entry.target);
       });
@@ -413,7 +418,7 @@ window.reobserveAll = reobserveAll;
   }
 })();
 
-// Floating particles
+// Floating particles (desktop only, deferred)
 (function() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
@@ -434,9 +439,10 @@ window.reobserveAll = reobserveAll;
     }
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', createParticles);
+  // Defer particle creation to avoid blocking
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(createParticles);
   } else {
-    createParticles();
+    setTimeout(createParticles, 200);
   }
 })();
