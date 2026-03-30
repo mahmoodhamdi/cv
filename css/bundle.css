@@ -1,6 +1,79 @@
 /* =============================================
-   components.css — Cards, tags, badges, buttons, toast, scroll-top
+   bundle.css — Core variables, resets, themes, components
    ============================================= */
+
+/* === main.css === */
+:root{
+  --bg:#0a0f1a;--bg-alt:#111827;--card:#1a2236;--card-h:#1f2a42;
+  --accent:#38bdf8;--accent-g:rgba(56,189,248,.15);--accent2:#818cf8;
+  --txt:#f1f5f9;--txt2:#94a3b8;--muted:#8e99ad;
+  --bdr:rgba(148,163,184,.1);
+  --grad:linear-gradient(135deg,#38bdf8,#818cf8);
+  --grad2:linear-gradient(135deg,#818cf8,#c084fc);
+  --green:#34d399;--star:#fbbf24;
+  --fn-d:'DM Serif Display',serif;--fn:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;
+  --fn-ar:'IBM Plex Sans Arabic',sans-serif;--fn-ar-b:'Tajawal',sans-serif;
+  --nav-bg:rgba(10,15,26,.88);--prog-bg:rgba(148,163,184,.1);
+  --tag-bg:rgba(56,189,248,.08);--tag-c:var(--txt2);--tag-bdr:rgba(56,189,248,.1);
+  --chip-bg:rgba(129,140,248,.1);--chip-c:var(--accent2);--chip-bdr:rgba(129,140,248,.15);
+  --cta-bg:linear-gradient(135deg,rgba(56,189,248,.08),rgba(129,140,248,.08));
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;opacity:0;transition:opacity .5s ease;padding-top:52px}
+body.loaded{opacity:1}
+
+/* grain */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0}
+
+/* scroll progress */
+.scroll-progress{position:fixed;top:0;left:0;height:3px;background:var(--grad);z-index:999;width:0;transition:none}
+
+/* orbs */
+.orb{position:fixed;border-radius:50%;filter:blur(100px);opacity:.1;pointer-events:none;z-index:0;will-change:transform}
+.orb-1{width:500px;height:500px;background:var(--accent);top:-150px;right:-100px}
+.orb-2{width:400px;height:400px;background:var(--accent2);bottom:10%;left:-100px}
+.orb-3{width:300px;height:300px;background:#c084fc;top:50%;right:20%}
+
+/* container */
+.wrap{max-width:1100px;margin:0 auto;padding:40px 24px;position:relative;z-index:1}
+
+/* === themes.css === */
+html[data-theme="light"]{
+  --bg:#ffffff;--bg-alt:#f8fafc;--card:#ffffff;--card-h:#f8fafc;
+  --accent:#2563eb;--accent-g:rgba(37,99,235,.08);--accent2:#7c3aed;
+  --txt:#1e293b;--txt2:#475569;--muted:#5c6c7f;
+  --green:#047857;
+  --bdr:#e5e7eb;
+  --grad:linear-gradient(135deg,#2563eb,#7c3aed);
+  --grad2:linear-gradient(135deg,#7c3aed,#a855f7);
+  --nav-bg:rgba(255,255,255,.92);--prog-bg:rgba(15,23,42,.06);
+  --tag-bg:#eff6ff;--tag-c:#1e40af;--tag-bdr:#bfdbfe;
+  --chip-bg:#f5f3ff;--chip-c:#5b21b6;--chip-bdr:#ddd6fe;
+  --cta-bg:linear-gradient(135deg,rgba(37,99,235,.06),rgba(124,58,237,.06));
+}
+
+html[data-theme="light"] body::before{opacity:.3}
+html[data-theme="light"] .orb{opacity:.06}
+html[data-theme="light"] .lang-tog{box-shadow:0 1px 4px rgba(0,0,0,.06)}
+html[data-theme="light"] .t-btn{box-shadow:0 1px 4px rgba(0,0,0,.06)}
+html[data-theme="light"] .pr-btn{box-shadow:0 1px 4px rgba(0,0,0,.06)}
+html[data-theme="light"] .tl::before{background:linear-gradient(to bottom,#3b82f6,#7c3aed,transparent)}
+html[data-theme="light"] .sum-w{box-shadow:0 2px 8px rgba(0,0,0,.06)}
+html[data-theme="light"] .svc-c{box-shadow:0 1px 4px rgba(0,0,0,.06)}
+html[data-theme="light"] .sk-cat{box-shadow:0 1px 4px rgba(0,0,0,.06)}
+html[data-theme="light"] .tool-c{box-shadow:0 1px 4px rgba(0,0,0,.06)}
+html[data-theme="light"] .tl-it{box-shadow:0 1px 4px rgba(0,0,0,.06)}
+html[data-theme="light"] .edu-c{box-shadow:0 1px 4px rgba(0,0,0,.06)}
+html[data-theme="light"] .oss-st{box-shadow:0 1px 4px rgba(0,0,0,.06)}
+html[data-theme="light"] .test-c{box-shadow:0 1px 4px rgba(0,0,0,.06)}
+html[data-theme="light"] .plat-c{box-shadow:0 1px 4px rgba(0,0,0,.06)}
+
+html[data-theme="dark"] .ic-light{display:block}
+html[data-theme="light"] .ic-dark{display:block}
+
+/* === components.css === */
 
 /* service cards */
 .svc-c{background:var(--card);border:1px solid var(--bdr);border-radius:14px;padding:24px;transition:transform .3s,opacity .3s;position:relative;overflow:hidden}

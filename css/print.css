@@ -3,7 +3,7 @@
    ============================================= */
 
 @media print{
-  body{background:#fff;color:#1a1a1a}
+  body{background:#fff;color:#1a1a1a;padding-top:0}
   body::before,.orb,.top-ctrl,.pr-btn,.navbar,.s-top,.toast,.scroll-progress,.cta,.ftr-wave,.heatmap{display:none}
   .wrap{max-width:100%;padding:0}
   .nm{-webkit-text-fill-color:#1a1a1a;color:#1a1a1a}
@@ -19,5 +19,5 @@
   .test-c,.val-c{border-color:#e2e8f0}
   .btn-p,.btn-o{display:none}
   .sk-dot.on{background:#2563eb}
-  .lang-fill{width:var(--w)!important;background:#2563eb}
+  .lang-fill{transform:scaleX(1)!important;background:#2563eb}
 }

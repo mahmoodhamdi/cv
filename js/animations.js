@@ -110,7 +110,9 @@ var lObs = new IntersectionObserver(function(en) {
   en.forEach(function(e) {
     if (!e.isIntersecting) return;
     e.target.querySelectorAll('.lang-fill').forEach(function(b) {
-      b.style.width = b.style.getPropertyValue('--w');
+      var w = b.style.getPropertyValue('--w');
+      var pct = parseFloat(w) / 100;
+      b.style.transform = 'scaleX(' + pct + ')';
     });
   });
 }, { threshold: .3 });

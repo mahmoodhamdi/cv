@@ -13,11 +13,10 @@ if (document.readyState === 'loading') {
   document.body.classList.add('loaded');
 }
 
-// scroll progress bar + scroll-to-top + navbar visibility
+// scroll progress bar + scroll-to-top + scroll-spy
 (function() {
   var sp = document.getElementById('sp');
   var st = document.getElementById('sTop');
-  var nb = document.getElementById('navbar');
   var t = 0;
   window.addEventListener('scroll', function() {
     if (!t) {
@@ -26,7 +25,6 @@ if (document.readyState === 'loading') {
         var h = document.documentElement.scrollHeight - window.innerHeight;
         if (sp) sp.style.width = (y / h * 100) + '%';
         if (st) st.classList.toggle('vis', y > 400);
-        if (nb) nb.classList.toggle('vis', y > 300);
         if (window.updateNav) window.updateNav();
         t = 0;
       });

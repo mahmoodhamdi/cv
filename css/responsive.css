@@ -26,13 +26,12 @@
   .stats{grid-template-columns:repeat(2,1fr)}
   .st-n{font-size:28px}
   .test-g{grid-template-columns:1fr}
-  .top-ctrl{top:12px;right:12px}
-  .pr-btn{top:12px;left:12px}
+  .top-ctrl{top:54px;right:12px}
+  .pr-btn{top:54px;left:12px}
   html[dir="rtl"] .top-ctrl{left:12px;right:auto}
   html[dir="rtl"] .pr-btn{left:auto;right:12px}
   .s-top{bottom:16px;right:16px}
   html[dir="rtl"] .s-top{right:auto;left:16px}
-  .navbar.vis~.top-ctrl,.navbar.vis~.pr-btn{top:54px}
   .cta{padding:32px 20px}
   .cta-t{font-size:22px}
   html[dir="rtl"] .cta-t{font-size:24px}

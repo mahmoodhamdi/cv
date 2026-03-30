@@ -5,7 +5,8 @@
 html[data-theme="light"]{
   --bg:#ffffff;--bg-alt:#f8fafc;--card:#ffffff;--card-h:#f8fafc;
   --accent:#2563eb;--accent-g:rgba(37,99,235,.08);--accent2:#7c3aed;
-  --txt:#1e293b;--txt2:#475569;--muted:#64748b;
+  --txt:#1e293b;--txt2:#475569;--muted:#5c6c7f;
+  --green:#047857;
   --bdr:#e5e7eb;
   --grad:linear-gradient(135deg,#2563eb,#7c3aed);
   --grad2:linear-gradient(135deg,#7c3aed,#a855f7);
