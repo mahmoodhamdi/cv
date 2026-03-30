@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building a SaaS MVP — From Idea to Launch — Mahmoud Hamdy</title>
+<meta name="description" content="A complete guide to building a SaaS MVP from idea validation to launch — covering tech stack, auth, Stripe billing, multi-tenancy, deployment, timeline, and common mistakes.">
+<meta name="author" content="Mahmoud Hamdy">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mahmoodhamdi.github.io/cv/blog/posts/saas-mvp-build-guide.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Building a SaaS MVP — From Idea to Launch">
+<meta property="og:description" content="Complete guide to building a SaaS MVP from idea validation to launch — tech stack, auth, Stripe billing, deployment, and 4–6 week timeline.">
+<meta property="og:url" content="https://mahmoodhamdi.github.io/cv/blog/posts/saas-mvp-build-guide.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Building a SaaS MVP — From Idea to Launch">
+<meta name="twitter:description" content="Complete guide to building a SaaS MVP — validation, tech stack, auth, Stripe, multi-tenancy, deployment, and real examples.">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="manifest" href="../../manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mahmoud CV">
+<link rel="apple-touch-icon" href="../../assets/icon-192.svg">
+<link rel="alternate" type="application/rss+xml" title="Mahmoud Hamdy — Blog" href="https://mahmoodhamdi.github.io/cv/blog/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="محمود حمدي — المدونة" href="https://mahmoodhamdi.github.io/cv/blog/feed-ar.xml" hreflang="ar">
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D0H1J8BSKJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-D0H1J8BSKJ');
+</script>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="../../css/themes.css">
+<link rel="stylesheet" href="../blog.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Building a SaaS MVP — From Idea to Launch",
+  "description": "A complete guide to building a SaaS MVP from idea validation to launch — covering tech stack, auth, Stripe billing, multi-tenancy, deployment, timeline, and common mistakes.",
+  "author": { "@type": "Person", "name": "Mahmoud Hamdy", "url": "https://mahmoodhamdi.github.io/cv/" },
+  "datePublished": "2026-01-22",
+  "dateModified": "2026-01-22",
+  "url": "https://mahmoodhamdi.github.io/cv/blog/posts/saas-mvp-build-guide.html",
+  "publisher": { "@type": "Person", "name": "Mahmoud Hamdy" }
+}
+</script>
+</head>
+<body>
+
+<div class="read-progress" id="rp" aria-hidden="true"></div>
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+
+<!-- Top Bar -->
+<header class="blog-topbar" role="banner">
+  <a href="../" class="back-link" aria-label="Back to blog">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    <span id="back-label">Blog</span>
+  </a>
+  <div class="topbar-right">
+    <button class="t-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg class="ic-light" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="ic-dark" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <div class="lang-tog" role="group" aria-label="Language selection">
+      <button class="l-btn on" onclick="setLang('en')">EN</button>
+      <button class="l-btn" onclick="setLang('ar')">عربي</button>
+    </div>
+  </div>
+</header>
+
+<div class="post-layout">
+
+  <!-- Article -->
+  <article class="article-main" id="main-article">
+
+    <header class="post-header">
+      <div class="post-header-meta">
+        <span class="post-cat" style="background:rgba(129,140,248,.1);color:var(--accent2);border-color:rgba(129,140,248,.2)">Guide</span>
+        <span class="post-readtime">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          15 min read
+        </span>
+      </div>
+      <h1 id="post-title">Building a SaaS MVP — From Idea to Launch</h1>
+      <div class="author-card">
+        <div class="author-avatar" aria-hidden="true"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path d="M30 82L45 38L60 65L75 38L90 82" stroke="url(#blg)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><line x1="38" y1="68" x2="82" y2="68" stroke="rgba(56,189,248,0.5)" stroke-width="1.5"/><defs><linearGradient id="blg" x1="30" y1="38" x2="90" y2="82"><stop offset="0%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#818cf8"/></linearGradient></defs></svg></div>
+        <div class="author-info">
+          <div class="author-name">Mahmoud Hamdy</div>
+          <div class="post-publish-date">January 22, 2026</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- EN Content -->
+    <div id="en-content">
+      <div class="post-body">
+
+        <p>Most SaaS products fail not because of bad code but because of bad sequencing. Founders spend months building features that nobody asked for, polishing a dashboard before they have a single paying customer, or architecting for scale at a stage where they do not yet know if the product has any users at all. An MVP — Minimum Viable Product — is the antidote. This guide is everything I have learned from building SaaS products for clients and for myself: how to validate the idea, choose the right stack, wire up the essential components, and ship something real in four to six weeks.</p>
+
+        <h2 id="what-is-mvp">What Is an MVP?</h2>
+        <p>An MVP is the smallest version of your product that can deliver the core value to a specific group of users and generate meaningful feedback. It is not a prototype, a mockup, or a landing page. It is a working product — one that real people can pay for, use, and complain about. The goal of an MVP is not to build something perfect; it is to find out as quickly and cheaply as possible whether you are solving a problem that enough people will pay to have solved.</p>
+        <p>The key word is "minimum." Every feature that is not essential to the core value is a feature that delays your launch and burns your runway. Ask for each proposed feature: "Can users get value without this?" If the answer is yes, cut it.</p>
+
+        <h2 id="validating-idea">Validating the Idea Before Writing Code</h2>
+        <p>The biggest mistake is starting with code. Before you write a single line, answer these questions with evidence — not assumptions.</p>
+        <p>Does the problem exist? Talk to at least ten potential users. Not friends and family — people who would actually pay for the solution. Ask about their current workflow, what tools they use, what frustrates them. Listen more than you talk.</p>
+        <p>Is anyone already solving it? Research competitors. Competition is not a red flag — it validates the market. No competition is actually a bigger risk: it might mean the problem is not worth solving, or that others have tried and failed for non-obvious reasons.</p>
+        <p>Will they pay? The most important validation question. A pre-sale page, a waitlist with a price mentioned, or a letter of intent from one prospective customer is worth more than 100 survey responses.</p>
+
+        <h2 id="tech-stack">The Tech Stack</h2>
+        <p>For most SaaS MVPs in 2026, this stack is hard to beat: Next.js for the frontend and API routes, Node.js (via Next.js API routes or a separate Express/Fastify server) for backend logic, PostgreSQL for the primary database, and Redis for sessions and caching. For hosting: Vercel for the Next.js app, Railway or Supabase for the database, and Cloudflare for CDN and DNS.</p>
+
+        <pre><code>saas-mvp/
+├── app/
+│   ├── (auth)/
+│   │   ├── login/page.tsx
+│   │   └── register/page.tsx
+│   ├── (dashboard)/
+│   │   ├── dashboard/page.tsx
+│   │   └── settings/page.tsx
+│   ├── api/
+│   │   ├── auth/[...nextauth]/route.ts
+│   │   ├── billing/webhook/route.ts
+│   │   └── v1/
+│   └── layout.tsx
+├── lib/
+│   ├── db.ts          # Prisma client
+│   ├── stripe.ts      # Stripe client
+│   └── auth.ts        # NextAuth config
+├── prisma/
+│   └── schema.prisma
+└── middleware.ts      # Auth protection</code></pre>
+
+        <p>Why this stack? Next.js removes the need for a separate frontend server. TypeScript catches mistakes before they reach production. PostgreSQL with Prisma gives you type-safe database access with migrations. This combination lets a single developer move fast without sacrificing maintainability.</p>
+
+        <h2 id="authentication">Authentication</h2>
+        <p>Authentication is where most MVPs waste time. Do not build it yourself. Use NextAuth.js (now Auth.js) — it handles email/password, OAuth (Google, GitHub), magic links, and session management out of the box.</p>
+
+        <pre><code>// lib/auth.ts
+import NextAuth from 'next-auth';
+import GoogleProvider from 'next-auth/providers/google';
+import EmailProvider from 'next-auth/providers/email';
+import { PrismaAdapter } from '@auth/prisma-adapter';
+import { prisma } from './db';
+
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  adapter: PrismaAdapter(prisma),
+  providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    }),
+    EmailProvider({
+      server: process.env.EMAIL_SERVER,
+      from: process.env.EMAIL_FROM,
+    }),
+  ],
+  callbacks: {
+    session({ session, user }) {
+      session.user.id = user.id;
+      return session;
+    },
+  },
+});</code></pre>
+
+        <p>Magic links (passwordless email sign-in) convert better than password flows for B2B SaaS. Users do not have to remember another password, and you avoid storing passwords altogether. For MVP stage, offer Google OAuth + magic link and skip password registration entirely.</p>
+
+        <h2 id="stripe-billing">Stripe Billing</h2>
+        <p>Billing is non-negotiable from day one — even if your MVP is "free for the first month." Set up Stripe Checkout and Billing before you launch. The Stripe dashboard will be the first thing you check every morning once you have paying customers.</p>
+
+        <pre><code>// app/api/billing/create-checkout/route.ts
+import Stripe from 'stripe';
+import { auth } from '@/lib/auth';
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+
+export async function POST(req: Request) {
+  const session = await auth();
+  if (!session?.user) return new Response('Unauthorized', { status: 401 });
+
+  const { priceId } = await req.json();
+
+  const checkoutSession = await stripe.checkout.sessions.create({
+    customer_email: session.user.email!,
+    line_items: [{ price: priceId, quantity: 1 }],
+    mode: 'subscription',
+    success_url: `${process.env.NEXT_PUBLIC_URL}/dashboard?upgraded=true`,
+    cancel_url: `${process.env.NEXT_PUBLIC_URL}/pricing`,
+    metadata: { userId: session.user.id },
+  });
+
+  return Response.json({ url: checkoutSession.url });
+}</code></pre>
+
+        <p>Handle the <code>checkout.session.completed</code> webhook to update the user's subscription status in your database. Also handle <code>customer.subscription.deleted</code> and <code>invoice.payment_failed</code>. These three events cover 95% of billing scenarios at MVP stage.</p>
+
+        <h2 id="multi-tenancy">Multi-Tenancy</h2>
+        <p>Most B2B SaaS products are multi-tenant: multiple organizations (tenants) share the same application and database, with strict data isolation between them. For an MVP, the simplest multi-tenancy model is shared database with a <code>tenant_id</code> (or <code>organization_id</code>) column on every table. Add a database-level row security policy if using Supabase for an extra layer of isolation.</p>
+
+        <pre><code>// prisma/schema.prisma
+model Organization {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String   @unique
+  plan      String   @default("free")
+  members   Member[]
+  projects  Project[]
+  createdAt DateTime @default(now())
+}
+
+model Project {
+  id             String       @id @default(cuid())
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  name           String
+  createdAt      DateTime     @default(now())
+}</code></pre>
+
+        <p>Every query must filter by the current user's organization. Create a helper that retrieves the organization from the session and apply it consistently. One missing <code>WHERE organizationId = ?</code> clause is a data leak.</p>
+
+        <h2 id="landing-page">The Landing Page</h2>
+        <p>Your landing page is your sales page. It should answer five questions above the fold: what does the product do, who is it for, what is the main benefit, how much does it cost, and how do I start. A landing page that requires scrolling to answer these questions will leak signups.</p>
+        <p>For conversion, lead with the outcome, not the feature. "Cut your invoice processing time by 80%" converts better than "AI-powered invoice automation." Include one real testimonial, even if it is from a beta user. Add a pricing table with a clear free trial or money-back guarantee.</p>
+
+        <h2 id="email-system">Email System</h2>
+        <p>Every SaaS needs transactional email from day one: welcome emails, billing receipts, password reset, and trial expiry warnings. Use Resend or Postmark for transactional email. React Email lets you write email templates as React components, which is significantly more maintainable than raw HTML strings.</p>
+
+        <h2 id="analytics">Product Analytics</h2>
+        <p>Add PostHog or Mixpanel from the first day of beta. You need to know which features are being used, where users drop off in onboarding, and how quickly they reach their "aha moment." This data is the compass for your post-launch roadmap. Without it, you are building blind.</p>
+
+        <h2 id="deployment">Deployment Strategy</h2>
+        <p>For the MVP, keep infrastructure simple. Deploy the Next.js app to Vercel (zero-config, automatic preview deployments, edge caching). Use Railway for PostgreSQL and Redis — it handles backups and point-in-time recovery automatically. Set up a staging environment that mirrors production. Use GitHub Actions for CI: run tests and type-check on every pull request, deploy automatically on merge to main.</p>
+
+        <h2 id="timeline">4–6 Week Timeline</h2>
+        <p>Week 1: foundation — project setup, auth, database schema, CI/CD. Week 2: core feature — the one thing your product does that no spreadsheet can replace. Week 3: billing and onboarding — Stripe integration, welcome flow, email system. Week 4: landing page, SEO basics, error monitoring (Sentry), analytics. Week 5: closed beta with 10–20 real users, feedback collection. Week 6: bug fixes, performance, public launch.</p>
+        <p>This timeline assumes one developer working full-time. With two developers, compress to four weeks. Do not let "polishing" extend the timeline beyond six weeks — ship and iterate.</p>
+
+        <h2 id="common-mistakes">Common Mistakes</h2>
+        <p>Building without talking to users first. Spending week one on logo and color palette instead of core features. Adding "nice to have" features before the core value is proven. Not charging from day one — free users give worse feedback than paying users. Skipping error monitoring — you will not know your app is broken until a user tweets about it. Over-engineering the database schema before you know what data you actually need.</p>
+
+        <h2 id="scaling-after-mvp">Scaling After MVP</h2>
+        <p>Once you have paying customers, the architecture evolves. Move heavy processing to background queues (BullMQ + Redis). Add a read replica for analytics queries. Introduce CDN caching for API responses. Consider moving from shared multi-tenancy to isolated schemas per tenant if data privacy requirements demand it. But none of this before you have users — premature scaling is the most expensive form of waste in software.</p>
+
+      </div>
+    </div>
+
+    <!-- AR Content -->
+    <div id="ar-content" style="display:none" dir="rtl">
+      <div class="post-body ar-content">
+
+        <p>معظم منتجات SaaS تفشل ليس بسبب كود سيئ بل بسبب ترتيب خاطئ للأولويات. يقضي المؤسسون أشهرًا في بناء ميزات لم يطلبها أحد، أو يصقلون لوحة التحكم قبل أن يكون لديهم عميل واحد يدفع، أو يصمّمون بنية قابلة للتوسع في مرحلة لا يعرفون فيها بعد ما إذا كان المنتج لديه مستخدمون أصلًا. الـ MVP — المنتج الأدنى قابلية للتطبيق — هو الحل. هذا المقال هو كل ما تعلمته من بناء منتجات SaaS للعملاء ولنفسي: كيف تتحقق من الفكرة، وتختار المكدس الصحيح، وتُوصّل المكونات الأساسية، وتُطلق شيئًا حقيقيًا في أربعة إلى ستة أسابيع.</p>
+
+        <h2 id="what-is-mvp-ar">ما هو الـ MVP؟</h2>
+        <p>الـ MVP هو أصغر نسخة من منتجك يمكنها تقديم القيمة الجوهرية لمجموعة محددة من المستخدمين وتوليد تغذية راجعة ذات معنى. ليس نموذجًا أوليًا، ولا رسمًا توضيحيًا، ولا صفحة هبوط. بل منتج يعمل — يمكن لأشخاص حقيقيين أن يدفعوا مقابله ويستخدموه ويشتكوا منه. هدف الـ MVP ليس بناء شيء مثالي؛ بل معرفة ما إذا كنت تحل مشكلة يرغب عدد كافٍ من الناس في دفع المال لحلها، بأسرع وأرخص طريقة ممكنة.</p>
+        <p>الكلمة المفتاحية هي "أدنى". كل ميزة ليست ضرورية للقيمة الجوهرية هي ميزة تؤخر إطلاقك وتستنزف مواردك. اسأل عن كل ميزة مقترحة: "هل يستطيع المستخدمون الحصول على القيمة بدونها؟" إذا كانت الإجابة نعم، احذفها.</p>
+
+        <h2 id="validating-idea-ar">التحقق من الفكرة قبل كتابة الكود</h2>
+        <p>أكبر خطأ هو البدء بالكود. قبل أن تكتب سطرًا واحدًا، أجب عن هذه الأسئلة بالأدلة — لا بالافتراضات. هل المشكلة موجودة فعلًا؟ تحدث إلى عشرة مستخدمين محتملين على الأقل — ليس أصدقاء وعائلة، بل أشخاص سيدفعون فعلًا مقابل الحل. هل يعالجها أحد بالفعل؟ ابحث عن المنافسين. الوجود في السوق ليس مشكلة — غيابهم هو الخطر الأكبر. هل سيدفعون؟ صفحة بيع مسبق أو قائمة انتظار مع سعر مذكور تساوي أكثر من 100 استجابة استبيان.</p>
+
+        <h2 id="tech-stack-ar">المكدس التقني</h2>
+        <p>لمعظم MVPs الـ SaaS في 2026، هذا المكدس يصعب التغلب عليه: Next.js للواجهة الأمامية ومسارات API، وNode.js لمنطق الخادم، وPostgreSQL كقاعدة بيانات أساسية، وRedis للجلسات والتخزين المؤقت. للاستضافة: Vercel لتطبيق Next.js، وRailway أو Supabase لقاعدة البيانات، وCloudflare للـ CDN.</p>
+        <p>لماذا هذا المكدس؟ Next.js يلغي الحاجة لخادم واجهة أمامية منفصل. TypeScript يكتشف الأخطاء قبل وصولها للإنتاج. PostgreSQL مع Prisma يعطيك وصولًا آمنًا لقاعدة البيانات مع الهجرات. هذه التركيبة تتيح لمطوّر واحد التحرك بسرعة دون التضحية بقابلية الصيانة.</p>
+
+        <h2 id="authentication-ar">المصادقة</h2>
+        <p>المصادقة هي المكان الذي تضيع فيه معظم الـ MVPs وقتها. لا تبنها بنفسك. استخدم NextAuth.js — يتعامل مع البريد الإلكتروني/كلمة المرور، وOAuth (Google, GitHub)، والروابط السحرية، وإدارة الجلسات جاهزًا. الروابط السحرية (تسجيل الدخول بدون كلمة مرور عبر البريد) تحقق معدل تحويل أفضل من تدفقات كلمة المرور لـ B2B SaaS. للمرحلة الأولى، قدّم Google OAuth + رابط سحري وتخطَّ تسجيل كلمة المرور تمامًا.</p>
+
+        <h2 id="stripe-billing-ar">الفوترة مع Stripe</h2>
+        <p>الفوترة غير قابلة للتفاوض من اليوم الأول — حتى لو كان الـ MVP "مجانيًا للشهر الأول." أعدد Stripe Checkout وBilling قبل الإطلاق. لوحة تحكم Stripe ستكون أول شيء تفحصه كل صباح بمجرد أن يكون لديك عملاء يدفعون.</p>
+        <p>عالج webhook الـ <code>checkout.session.completed</code> لتحديث حالة اشتراك المستخدم في قاعدة بياناتك. عالج أيضًا <code>customer.subscription.deleted</code> و<code>invoice.payment_failed</code>. هذه الثلاثة أحداث تغطي 95% من سيناريوهات الفوترة في مرحلة الـ MVP.</p>
+
+        <h2 id="multi-tenancy-ar">تعدد المستأجرين (Multi-Tenancy)</h2>
+        <p>معظم منتجات B2B SaaS متعددة المستأجرين: منظمات متعددة تشارك نفس التطبيق وقاعدة البيانات مع عزل صارم للبيانات بينها. للـ MVP، أبسط نموذج هو قاعدة بيانات مشتركة مع عمود <code>organization_id</code> على كل جدول. كل استعلام يجب أن يُصفَّى بمنظمة المستخدم الحالي. استعلام واحد بدون <code>WHERE organizationId = ?</code> يعني تسرب بيانات.</p>
+
+        <h2 id="landing-page-ar">صفحة الهبوط</h2>
+        <p>صفحة الهبوط هي صفحة المبيعات. يجب أن تجيب عن خمسة أسئلة فوق الطيّة: ماذا يفعل المنتج، ولمن، وما الفائدة الرئيسية، وكم يكلف، وكيف أبدأ. قدّم النتيجة لا الميزة — "قلّص وقت معالجة فواتيرك بنسبة 80%" يحقق تحويلًا أفضل من "أتمتة فواتير مدعومة بالذكاء الاصطناعي."</p>
+
+        <h2 id="email-system-ar">نظام البريد الإلكتروني</h2>
+        <p>كل SaaS يحتاج بريدًا إلكترونيًا للمعاملات من اليوم الأول: رسائل الترحيب، وإيصالات الفوترة، وإعادة تعيين كلمة المرور، وتحذيرات انتهاء الفترة التجريبية. استخدم Resend أو Postmark للبريد التعاملي. React Email يتيح كتابة قوالب البريد كمكونات React، وهو أسهل في الصيانة بكثير من سلاسل HTML الخام.</p>
+
+        <h2 id="analytics-ar">تحليلات المنتج</h2>
+        <p>أضف PostHog أو Mixpanel من اليوم الأول للبيتا. تحتاج إلى معرفة الميزات المستخدمة، وأين يتراجع المستخدمون في الإعداد، وكيف يصلون إلى لحظة "آها". هذه البيانات هي البوصلة لخارطة طريق ما بعد الإطلاق. بدونها أنت تبني في الظلام.</p>
+
+        <h2 id="deployment-ar">استراتيجية النشر</h2>
+        <p>للـ MVP، أبقِ البنية التحتية بسيطة. انشر تطبيق Next.js على Vercel (بدون تكوين، نشر تلقائي للمعاينة، تخزين مؤقت في الحافة). استخدم Railway لـ PostgreSQL وRedis — يتعامل مع النسخ الاحتياطية والاستعادة عبر الزمن تلقائيًا. أعدد بيئة تجريبية تعكس الإنتاج. استخدم GitHub Actions للـ CI: شغّل الاختبارات وفحص الأنواع على كل طلب سحب، وانشر تلقائيًا عند الدمج في الفرع الرئيسي.</p>
+
+        <h2 id="timeline-ar">الجدول الزمني: 4–6 أسابيع</h2>
+        <p>الأسبوع الأول: الأساس — إعداد المشروع، المصادقة، مخطط قاعدة البيانات، CI/CD. الأسبوع الثاني: الميزة الجوهرية — الشيء الوحيد الذي يفعله منتجك ولا يمكن لجدول بيانات استبداله. الأسبوع الثالث: الفوترة والإعداد — تكامل Stripe، تدفق الترحيب، نظام البريد. الأسبوع الرابع: صفحة الهبوط، SEO الأساسي، مراقبة الأخطاء (Sentry)، التحليلات. الأسبوع الخامس: بيتا مغلق مع 10–20 مستخدم حقيقي. الأسبوع السادس: إصلاح الأخطاء، الأداء، الإطلاق العلني.</p>
+
+        <h2 id="common-mistakes-ar">الأخطاء الشائعة</h2>
+        <p>البناء دون التحدث مع المستخدمين أولًا. قضاء الأسبوع الأول في الشعار ولوحة الألوان بدلًا من الميزات الجوهرية. إضافة ميزات "جميل أن تكون موجودة" قبل إثبات القيمة الجوهرية. عدم الفوترة من اليوم الأول — المستخدمون المجانيون يعطون تغذية راجعة أسوأ من المستخدمين الذين يدفعون. تجاهل مراقبة الأخطاء — لن تعرف أن تطبيقك معطّل حتى يُغرّد مستخدم عن ذلك. تصميم مخطط قاعدة البيانات بتعقيد زائد قبل معرفة البيانات التي تحتاجها فعلًا.</p>
+
+        <h2 id="scaling-after-mvp-ar">التوسع بعد الـ MVP</h2>
+        <p>بمجرد أن يكون لديك عملاء يدفعون، تتطور المعمارية. انقل المعالجة الثقيلة إلى طوابير خلفية (BullMQ + Redis). أضف نسخة قراءة لاستعلامات التحليلات. ادرس الانتقال من تعدد المستأجرين المشترك إلى مخططات معزولة لكل مستأجر إذا تطلبت متطلبات الخصوصية ذلك. لكن لا شيء من هذا قبل أن يكون لديك مستخدمون — التوسع المبكر هو أغلى أشكال الهدر في البرمجيات.</p>
+        <p>البناء الصحيح لـ SaaS MVP يعني التركيز المتواصل على السؤال: "ما أقل شيء يمكنني بناؤه لاختبار هذه الفرضية؟" كل مرة تجيب عن هذا السؤال بصدق، تُسرّع إطلاقك وتزيد فرص نجاحك.</p>
+
+      </div>
+    </div>
+
+    <!-- Share -->
+    <div class="share-section">
+      <span class="share-label" id="share-label">Share</span>
+      <div class="share-btns">
+        <a class="share-btn" id="tw-btn" href="https://twitter.com/intent/tweet?text=Building%20a%20SaaS%20MVP%20%E2%80%94%20From%20Idea%20to%20Launch&url=https%3A%2F%2Fmahmoodhamdi.github.io%2Fcv%2Fblog%2Fposts%2Fsaas-mvp-build-guide.html" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Twitter
+        </a>
+        <a class="share-btn" id="li-btn" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fmahmoodhamdi.github.io%2Fcv%2Fblog%2Fposts%2Fsaas-mvp-build-guide.html&title=Building%20a%20SaaS%20MVP%20%E2%80%94%20From%20Idea%20to%20Launch" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <button class="share-btn copy-btn" onclick="copyLink(this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          <span id="copy-label">Copy Link</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Related Posts -->
+    <div class="related-section">
+      <h3 id="related-title">Related Articles</h3>
+      <div class="related-grid">
+        <a href="nodejs-rest-api-complete-guide.html" class="related-card">
+          <span class="post-cat">Tutorial</span>
+          <h4>Node.js REST API — Complete Guide</h4>
+          <span>14 min read &middot; Feb 25, 2026</span>
+        </a>
+        <a href="react-dashboard-tutorial.html" class="related-card">
+          <span class="post-cat">Tutorial</span>
+          <h4>React Dashboard Tutorial</h4>
+          <span>11 min read &middot; Feb 18, 2026</span>
+        </a>
+        <a href="docker-deployment-guide.html" class="related-card">
+          <span class="post-cat">Tutorial</span>
+          <h4>Docker Deployment Guide for Node.js Apps</h4>
+          <span>11 min read &middot; Feb 15, 2026</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Post Nav -->
+    <nav class="post-nav" aria-label="Post navigation">
+      <a href="api-integration-beginners.html" class="post-nav-btn next">
+        <span>Next Post</span>
+        <strong>API Integration for Beginners — Everything You Need to Know</strong>
+      </a>
+      <a href="github-portfolio-developer.html" class="post-nav-btn prev">
+        <span>Previous Post</span>
+        <strong>How to Build a Professional Developer Portfolio on GitHub</strong>
+      </a>
+    </nav>
+
+  </article>
+
+  <!-- TOC Sidebar -->
+  <aside class="toc-sidebar" aria-label="Table of contents">
+    <div class="toc-box">
+      <h4 id="toc-title">On This Page</h4>
+      <ul class="toc-list" id="toc-en">
+        <li><a href="#what-is-mvp">What Is an MVP?</a></li>
+        <li><a href="#validating-idea">Validating the Idea</a></li>
+        <li><a href="#tech-stack">Tech Stack</a></li>
+        <li><a href="#authentication">Authentication</a></li>
+        <li><a href="#stripe-billing">Stripe Billing</a></li>
+        <li><a href="#multi-tenancy">Multi-Tenancy</a></li>
+        <li><a href="#landing-page">Landing Page</a></li>
+        <li><a href="#email-system">Email System</a></li>
+        <li><a href="#analytics">Product Analytics</a></li>
+        <li><a href="#deployment">Deployment</a></li>
+        <li><a href="#timeline">4–6 Week Timeline</a></li>
+        <li><a href="#common-mistakes">Common Mistakes</a></li>
+        <li><a href="#scaling-after-mvp">Scaling After MVP</a></li>
+      </ul>
+      <ul class="toc-list" id="toc-ar" style="display:none">
+        <li><a href="#what-is-mvp-ar">ما هو الـ MVP؟</a></li>
+        <li><a href="#validating-idea-ar">التحقق من الفكرة</a></li>
+        <li><a href="#tech-stack-ar">المكدس التقني</a></li>
+        <li><a href="#authentication-ar">المصادقة</a></li>
+        <li><a href="#stripe-billing-ar">الفوترة مع Stripe</a></li>
+        <li><a href="#multi-tenancy-ar">تعدد المستأجرين</a></li>
+        <li><a href="#landing-page-ar">صفحة الهبوط</a></li>
+        <li><a href="#email-system-ar">نظام البريد</a></li>
+        <li><a href="#analytics-ar">تحليلات المنتج</a></li>
+        <li><a href="#deployment-ar">النشر</a></li>
+        <li><a href="#timeline-ar">الجدول الزمني</a></li>
+        <li><a href="#common-mistakes-ar">الأخطاء الشائعة</a></li>
+        <li><a href="#scaling-after-mvp-ar">التوسع بعد الـ MVP</a></li>
+      </ul>
+    </div>
+  </aside>
+
+</div>
+
+<footer class="blog-footer" role="contentinfo">
+  <p>&copy; 2026 <a href="../../">Mahmoud Hamdy</a> &middot; <a href="../">Blog</a></p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  function toggleTheme(){
+    const h=document.documentElement;
+    const next=h.getAttribute('data-theme')==='dark'?'light':'dark';
+    h.setAttribute('data-theme',next);
+    localStorage.setItem('theme',next);
+  }
+  window.toggleTheme=toggleTheme;
+  const saved=localStorage.getItem('theme');
+  if(saved) document.documentElement.setAttribute('data-theme',saved);
+
+  const rp=document.getElementById('rp');
+  const pctEl=document.createElement('div');
+  pctEl.className='read-pct';
+  document.body.appendChild(pctEl);
+  window.addEventListener('scroll',()=>{
+    const max=document.documentElement.scrollHeight-window.innerHeight;
+    const pct=Math.round(window.scrollY/max*100);
+    rp.style.width=pct+'%';
+    pctEl.textContent=pct+'% read';
+    pctEl.classList.toggle('vis',window.scrollY>200);
+  },{passive:true});
+
+  document.querySelectorAll('.post-body pre').forEach(pre=>{
+    pre.style.position='relative';
+    const btn=document.createElement('button');
+    btn.className='code-copy-btn';
+    btn.textContent='Copy';
+    btn.addEventListener('click',()=>{
+      const code=pre.querySelector('code');
+      navigator.clipboard.writeText(code?code.textContent:pre.textContent).then(()=>{
+        btn.textContent='Copied!';
+        btn.classList.add('copied');
+        setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},2000);
+      });
+    });
+    pre.appendChild(btn);
+  });
+
+  function setLang(lang){
+    const isAr=lang==='ar';
+    document.documentElement.setAttribute('lang',lang);
+    document.documentElement.setAttribute('dir',isAr?'rtl':'ltr');
+    document.getElementById('en-content').style.display=isAr?'none':'block';
+    document.getElementById('ar-content').style.display=isAr?'block':'none';
+    document.getElementById('toc-en').style.display=isAr?'none':'block';
+    document.getElementById('toc-ar').style.display=isAr?'block':'none';
+    document.getElementById('post-title').textContent=isAr?'بناء MVP لمشروع SaaS — من الفكرة للإطلاق':'Building a SaaS MVP — From Idea to Launch';
+    document.getElementById('back-label').textContent=isAr?'المدونة':'Blog';
+    document.getElementById('share-label').textContent=isAr?'مشاركة':'Share';
+    document.getElementById('related-title').textContent=isAr?'مقالات ذات صلة':'Related Articles';
+    document.getElementById('copy-label').textContent=isAr?'نسخ الرابط':'Copy Link';
+    document.getElementById('toc-title').textContent=isAr?'في هذه الصفحة':'On This Page';
+    document.querySelectorAll('.l-btn').forEach(b=>{
+      b.classList.remove('on');
+      if((lang==='en'&&b.textContent.trim()==='EN')||(lang==='ar'&&b.textContent.trim()==='عربي')) b.classList.add('on');
+    });
+    localStorage.setItem('lang',lang);
+  }
+  window.setLang=setLang;
+  const savedLang=localStorage.getItem('lang');
+  if(savedLang) setLang(savedLang);
+
+  function copyLink(btn){
+    navigator.clipboard.writeText(window.location.href).then(()=>{
+      btn.classList.add('copied');
+      document.getElementById('copy-label').textContent='Copied!';
+      setTimeout(()=>{
+        btn.classList.remove('copied');
+        document.getElementById('copy-label').textContent='Copy Link';
+      },2000);
+    });
+  }
+  window.copyLink=copyLink;
+
+  document.body.classList.add('loaded');
+})();
+</script>
+<script src="../../js/analytics.js" defer></script>
+<script src="../../js/pwa.js" defer></script>
+</body>
+</html>

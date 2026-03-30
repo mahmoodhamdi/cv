@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Speed Up Your Website to 100% PageSpeed Score — Mahmoud Hamdy</title>
+<meta name="description" content="A practical guide to achieving a 100% PageSpeed score — covering Core Web Vitals, image optimization, critical CSS, JS deferral, server caching, CDN, and more.">
+<meta name="author" content="Mahmoud Hamdy">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mahmoodhamdi.github.io/cv/blog/posts/website-speed-optimization.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Speed Up Your Website to 100% PageSpeed Score — Practical Guide">
+<meta property="og:description" content="A practical guide to achieving a 100% PageSpeed score covering Core Web Vitals, image optimization, critical CSS, JS deferral, and more.">
+<meta property="og:url" content="https://mahmoodhamdi.github.io/cv/blog/posts/website-speed-optimization.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Speed Up Your Website to 100% PageSpeed Score — Practical Guide">
+<meta name="twitter:description" content="Practical guide to achieving a 100% PageSpeed score — Core Web Vitals, image optimization, CSS, JS, and server-side tricks.">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="manifest" href="../../manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mahmoud CV">
+<link rel="apple-touch-icon" href="../../assets/icon-192.svg">
+<link rel="alternate" type="application/rss+xml" title="Mahmoud Hamdy — Blog" href="https://mahmoodhamdi.github.io/cv/blog/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="محمود حمدي — المدونة" href="https://mahmoodhamdi.github.io/cv/blog/feed-ar.xml" hreflang="ar">
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D0H1J8BSKJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-D0H1J8BSKJ');
+</script>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="../../css/themes.css">
+<link rel="stylesheet" href="../blog.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Speed Up Your Website to 100% PageSpeed Score — Practical Guide",
+  "description": "A practical guide to achieving a 100% PageSpeed score covering Core Web Vitals, image optimization, critical CSS, JS deferral, and more.",
+  "author": { "@type": "Person", "name": "Mahmoud Hamdy", "url": "https://mahmoodhamdi.github.io/cv/" },
+  "datePublished": "2026-02-01",
+  "dateModified": "2026-02-01",
+  "url": "https://mahmoodhamdi.github.io/cv/blog/posts/website-speed-optimization.html",
+  "publisher": { "@type": "Person", "name": "Mahmoud Hamdy" }
+}
+</script>
+</head>
+<body>
+
+<div class="read-progress" id="rp" aria-hidden="true"></div>
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+
+<!-- Top Bar -->
+<header class="blog-topbar" role="banner">
+  <a href="../" class="back-link" aria-label="Back to blog">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    <span id="back-label">Blog</span>
+  </a>
+  <div class="topbar-right">
+    <button class="t-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg class="ic-light" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="ic-dark" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <div class="lang-tog" role="group" aria-label="Language selection">
+      <button class="l-btn on" onclick="setLang('en')">EN</button>
+      <button class="l-btn" onclick="setLang('ar')">عربي</button>
+    </div>
+  </div>
+</header>
+
+<div class="post-layout">
+
+  <!-- Article -->
+  <article class="article-main" id="main-article">
+
+    <header class="post-header">
+      <div class="post-header-meta">
+        <span class="post-cat">Tutorial</span>
+        <span class="post-readtime">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          12 min read
+        </span>
+      </div>
+      <h1 id="post-title">Speed Up Your Website to 100% PageSpeed Score — Practical Guide</h1>
+      <div class="author-card">
+        <div class="author-avatar" aria-hidden="true"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path d="M30 82L45 38L60 65L75 38L90 82" stroke="url(#blg)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><line x1="38" y1="68" x2="82" y2="68" stroke="rgba(56,189,248,0.5)" stroke-width="1.5"/><defs><linearGradient id="blg" x1="30" y1="38" x2="90" y2="82"><stop offset="0%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#818cf8"/></linearGradient></defs></svg></div>
+        <div class="author-info">
+          <div class="author-name">Mahmoud Hamdy</div>
+          <div class="post-publish-date">February 1, 2026</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- EN Content -->
+    <div id="en-content">
+      <div class="post-body">
+
+        <p>Website speed is not a vanity metric — it directly affects your search ranking, user retention, and conversion rate. Google's own research shows that a one-second delay in mobile load time can reduce conversions by up to 20%. When I first ran this portfolio through PageSpeed Insights, it scored 75. After applying the techniques in this guide, it now holds a consistent 99–100. This article is a complete walkthrough of everything I did and why it worked.</p>
+
+        <h2 id="why-speed-matters">Why Speed Matters</h2>
+        <p>Speed matters on three fronts. First, SEO: Google uses Core Web Vitals as a ranking signal. A slow site loses ground to faster competitors even when the content is better. Second, user experience: studies show 53% of mobile users abandon a page that takes more than three seconds to load. Third, conversion: e-commerce sites see a direct correlation between load time and checkout completion. Every 100ms you shave off can meaningfully move revenue numbers.</p>
+        <p>The good news is that most speed problems have well-understood fixes. You do not need a rewrite. You need to apply a checklist methodically.</p>
+
+        <h2 id="pagespeed-insights">Understanding PageSpeed Insights</h2>
+        <p>PageSpeed Insights (PSI) runs two analyses: a lab test using Lighthouse in a controlled environment, and field data sourced from the Chrome User Experience Report (CrUX) — real-world measurements from Chrome users. The lab score is what you can control directly. The field data is what actually matters for ranking. Both should be green.</p>
+        <p>Run PSI on both mobile and desktop. Mobile is always harder to optimize because the test simulates a mid-tier Android device on a 4G connection. Passing mobile automatically means desktop is fine.</p>
+
+        <h2 id="core-web-vitals">Core Web Vitals Explained</h2>
+        <p>There are four metrics you need to understand deeply:</p>
+        <p><strong>LCP (Largest Contentful Paint)</strong> — measures when the largest visible element (usually a hero image or heading) finishes rendering. Target: under 2.5 seconds. The most common culprit is a large unoptimized hero image or a render-blocking resource before it.</p>
+        <p><strong>FID / INP (Interaction to Next Paint)</strong> — measures the delay between user input and the browser's response. FID was replaced by INP in March 2024. Target: under 200ms. The usual cause is heavy JavaScript executing on the main thread at page load.</p>
+        <p><strong>CLS (Cumulative Layout Shift)</strong> — measures visual stability. Every time an element shifts unexpectedly (ads loading in, fonts swapping, images without dimensions), the score rises. Target: under 0.1. The fix is almost always declaring explicit width and height on images and reserving space for dynamic content.</p>
+        <p><strong>FCP (First Contentful Paint)</strong> — the moment the first text or image appears. Target: under 1.8 seconds. Improving FCP is about reducing server response time and eliminating render-blocking resources.</p>
+
+        <h2 id="image-optimization">Image Optimization</h2>
+        <p>Images are almost always the single biggest opportunity. The rules are simple but few developers follow all of them consistently.</p>
+        <p>Always serve images in WebP or AVIF format. AVIF is 50% smaller than JPEG at equivalent quality; WebP is 25–35% smaller. Use the HTML <code>picture</code> element to provide fallbacks:</p>
+
+        <pre><code>&lt;picture&gt;
+  &lt;source srcset="hero.avif" type="image/avif"&gt;
+  &lt;source srcset="hero.webp" type="image/webp"&gt;
+  &lt;img src="hero.jpg" alt="Hero image" width="1200" height="630"
+       loading="lazy" decoding="async"&gt;
+&lt;/picture&gt;</code></pre>
+
+        <p>Always declare explicit <code>width</code> and <code>height</code> attributes — this prevents CLS. Use <code>loading="lazy"</code> for below-the-fold images. For the LCP image (your hero), use <code>loading="eager"</code> and add a <code>&lt;link rel="preload"&gt;</code> in the head. Use <code>decoding="async"</code> on non-critical images to unblock the main thread.</p>
+        <p>Compress aggressively: for photos, quality 75–80 in WebP is indistinguishable from 100. Use Squoosh, ImageOptim, or Sharp in your build pipeline.</p>
+
+        <h2 id="css-optimization">CSS Optimization</h2>
+        <p>Render-blocking CSS is one of the most overlooked causes of poor FCP. The browser cannot paint anything until it has downloaded and parsed all stylesheets in the <code>&lt;head&gt;</code>. The fix has two parts.</p>
+        <p>First, inline your critical CSS — the styles needed to render above-the-fold content — directly in a <code>&lt;style&gt;</code> tag in the <code>&lt;head&gt;</code>. Tools like Critical, Penthouse, or Astro's built-in critical CSS extraction automate this. The critical CSS block is usually 5–15 KB.</p>
+        <p>Second, load the rest of your CSS asynchronously using the media trick:</p>
+
+        <pre><code>&lt;link rel="preload" href="styles.css" as="style"
+      onload="this.onload=null;this.rel='stylesheet'"&gt;
+&lt;noscript&gt;&lt;link rel="stylesheet" href="styles.css"&gt;&lt;/noscript&gt;</code></pre>
+
+        <p>Also audit your CSS for unused rules. PurgeCSS can remove unused Tailwind classes and custom styles automatically during the build. On this portfolio, PurgeCSS reduced the CSS bundle from 48 KB to 11 KB.</p>
+
+        <h2 id="js-optimization">JavaScript Optimization</h2>
+        <p>JavaScript is the heaviest resource type relative to its byte size because it requires parsing, compilation, and execution — all on the main thread. There are several powerful techniques to minimize its impact.</p>
+        <p><strong>Defer and async:</strong> every <code>&lt;script&gt;</code> tag that is not critical to the initial render should carry <code>defer</code>. Use <code>async</code> only for completely independent scripts like analytics. Never put synchronous scripts in the <code>&lt;head&gt;</code> without <code>defer</code> or <code>async</code>.</p>
+        <p><strong>Code splitting:</strong> in frameworks like Next.js or Vite, route-based code splitting is automatic. Ensure you are not importing large libraries into your main bundle that are only needed on one page.</p>
+        <p><strong>Tree shaking:</strong> import only what you use. Instead of <code>import _ from 'lodash'</code>, write <code>import { debounce } from 'lodash-es'</code>. Lodash-es is the ES module version that supports tree shaking; lodash is not.</p>
+        <p><strong>Third-party scripts:</strong> analytics, chat widgets, and ad scripts are often the worst offenders. Load them after the page is interactive using <code>requestIdleCallback</code> or a facade pattern.</p>
+
+        <h2 id="font-optimization">Font Optimization</h2>
+        <p>Custom fonts are a subtle but significant source of layout shift and render blocking. The three key techniques are:</p>
+        <p>Preload your primary font files in the head so the browser fetches them early:</p>
+
+        <pre><code>&lt;link rel="preload" href="/fonts/outfit-var.woff2"
+      as="font" type="font/woff2" crossorigin&gt;</code></pre>
+
+        <p>Use <code>font-display: swap</code> (or <code>optional</code> for less critical fonts) in your <code>@font-face</code> declarations. <code>swap</code> shows a fallback font immediately and swaps once the custom font loads, avoiding invisible text. <code>optional</code> only uses the custom font if it loads within a very short window — great for non-essential decorative fonts.</p>
+        <p>Subset your fonts. If your site is English-only, there is no reason to load the full Unicode range. The Google Fonts API supports subsetting with the <code>text=</code> parameter for static strings, or use <code>glyphhanger</code> for full control.</p>
+
+        <h2 id="server-side">Server-Side Optimizations</h2>
+        <p>Client-side work can only get you so far. The server must also be fast. The most impactful server-side changes are:</p>
+        <p><strong>Caching headers:</strong> serve static assets with <code>Cache-Control: public, max-age=31536000, immutable</code>. For HTML, use <code>Cache-Control: no-cache</code> combined with ETags so browsers revalidate cheaply. This is the single most powerful optimization for repeat visitors.</p>
+        <p><strong>Compression:</strong> enable Brotli compression (not just gzip). Brotli achieves 15–25% better compression on text assets. Nginx supports it with the <code>ngx_brotli</code> module; Cloudflare enables it automatically.</p>
+        <p><strong>HTTP/2 or HTTP/3:</strong> enables multiplexing, eliminating the connection overhead of HTTP/1.1. All major hosting platforms support HTTP/2 by default today.</p>
+        <p><strong>CDN:</strong> serve static assets from a CDN close to your users. Cloudflare's free tier is sufficient for most personal and small business sites.</p>
+        <p><strong>TTFB (Time to First Byte):</strong> if your TTFB is above 600ms, look at your server response time. For static sites, a CDN edge cache should bring TTFB under 100ms globally.</p>
+
+        <h2 id="lazy-loading">Lazy Loading and Intersection Observer</h2>
+        <p>Lazy loading is not just for images. Any resource that is only needed when the user scrolls to a particular section can be deferred. Use the native <code>loading="lazy"</code> attribute for images and iframes. For JavaScript modules, use dynamic <code>import()</code>:</p>
+
+        <pre><code>const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      import('./heavy-chart-module.js').then(m => m.init(entry.target));
+      observer.unobserve(entry.target);
+    }
+  });
+}, { rootMargin: '200px' });
+
+document.querySelectorAll('.chart-container').forEach(el => observer.observe(el));</code></pre>
+
+        <p>The <code>rootMargin: '200px'</code> triggers the import 200px before the element enters the viewport, giving the browser time to fetch and parse the module before it is needed.</p>
+
+        <h2 id="compositor-animations">Compositor-Only Animations</h2>
+        <p>CSS animations that trigger layout recalculation (anything that changes width, height, margin, padding, or top/left) are expensive. They force the browser to recalculate the layout of the entire document on every frame. Stick to properties that the browser can animate on the compositor thread without touching the main thread: <code>transform</code> and <code>opacity</code>. Add <code>will-change: transform</code> to elements with heavy animations, but use it sparingly — it allocates a separate GPU layer for each element.</p>
+
+        <h2 id="service-workers">Service Workers for Repeat Visits</h2>
+        <p>A service worker can serve your entire shell from cache on repeat visits, achieving near-instant load times. The Workbox library from Google simplifies this considerably:</p>
+
+        <pre><code>import { precacheAndRoute, cleanupOutdatedCaches } from 'workbox-precaching';
+import { registerRoute } from 'workbox-routing';
+import { CacheFirst, StaleWhileRevalidate } from 'workbox-strategies';
+
+cleanupOutdatedCaches();
+precacheAndRoute(self.__WB_MANIFEST);
+
+// Images: cache first
+registerRoute(({ request }) => request.destination === 'image',
+  new CacheFirst({ cacheName: 'images', plugins: [/* ExpirationPlugin */] }));
+
+// JS/CSS: stale-while-revalidate
+registerRoute(({ request }) =>
+  request.destination === 'script' || request.destination === 'style',
+  new StaleWhileRevalidate({ cacheName: 'static-resources' }));</code></pre>
+
+        <h2 id="measuring-tools">Measuring Tools</h2>
+        <p>The essential toolset: <strong>PageSpeed Insights</strong> for the combined lab + field view. <strong>WebPageTest</strong> for waterfall analysis and multi-location testing. <strong>Chrome DevTools Performance tab</strong> for deep main-thread profiling. <strong>Lighthouse CLI</strong> for CI integration — fail the build if the score drops below 90. <strong>web-vitals</strong> npm package to report real-user CWV to your analytics.</p>
+
+        <h2 id="personal-journey">My Personal Journey: 75 to 99</h2>
+        <p>When I first measured this portfolio, the score was 75. The main culprits were an unoptimized hero image (loaded as JPEG, 340 KB), two render-blocking Google Fonts requests, and several large Tailwind classes that were never used in production. The JavaScript was also loaded synchronously without defer on three third-party scripts.</p>
+        <p>After converting the hero to WebP, implementing critical CSS inline, adding PurgeCSS to the build, and deferring all non-critical scripts, the score jumped to 94. The final push to 99 came from adding a preload hint for the hero image, setting immutable cache headers on all static assets, and switching to Brotli compression on the server. The result: LCP dropped from 3.1s to 0.9s, CLS went from 0.14 to 0.02, and FCP improved from 2.4s to 0.7s.</p>
+
+      </div>
+    </div>
+
+    <!-- AR Content -->
+    <div id="ar-content" style="display:none" dir="rtl">
+      <div class="post-body ar-content">
+
+        <p>سرعة الموقع ليست مجرد رقم جميل — إنها تؤثر مباشرة على ترتيبك في محركات البحث، ومعدل الاحتفاظ بالزوار، ونسبة التحويل. أبحاث جوجل نفسها تثبت أن تأخيرًا بثانية واحدة في تحميل الصفحة على الجوال قد يخفض التحويلات بنسبة تصل إلى 20%. حين قست هذا الموقع الشخصي على PageSpeed Insights لأول مرة، كانت النتيجة 75. بعد تطبيق الأساليب التي ستقرؤها في هذا المقال، وصلت النتيجة إلى 99–100 بشكل ثابت. هذا المقال هو جولة كاملة في كل ما فعلته ولماذا نجح.</p>
+
+        <h2 id="why-speed-matters-ar">لماذا تهم السرعة؟</h2>
+        <p>السرعة مهمة على ثلاثة مستويات. أولًا، تحسين محركات البحث (SEO): تستخدم جوجل مؤشرات Core Web Vitals كإشارة ترتيب. الموقع البطيء يخسر مواقعه أمام المنافسين الأسرع حتى لو كان المحتوى أفضل. ثانيًا، تجربة المستخدم: تُظهر الدراسات أن 53% من مستخدمي الجوال يتركون الصفحة إذا استغرق تحميلها أكثر من ثلاث ثوانٍ. ثالثًا، التحويل: مواقع التجارة الإلكترونية ترى ارتباطًا مباشرًا بين وقت التحميل واكتمال عمليات الدفع. كل 100 ميلي ثانية تقلصها قد تُحدث فارقًا ملموسًا في الإيرادات.</p>
+        <p>الخبر الجيد أن معظم مشاكل السرعة لها حلول معروفة. لا تحتاج إلى إعادة كتابة كل شيء. تحتاج إلى تطبيق قائمة تحقق بشكل منهجي.</p>
+
+        <h2 id="pagespeed-insights-ar">فهم PageSpeed Insights</h2>
+        <p>يجري PageSpeed Insights تحليلَين: اختبارًا مخبريًا باستخدام Lighthouse في بيئة محكومة، وبيانات ميدانية مصدرها Chrome User Experience Report — قياسات حقيقية من مستخدمي Chrome. نتيجة الاختبار المخبري هي ما يمكنك التحكم فيه مباشرة. البيانات الميدانية هي ما يهم فعلًا للترتيب. كلاهما يجب أن يكون أخضر.</p>
+        <p>شغّل PSI على الجوال وسطح المكتب معًا. الجوال أصعب دائمًا لأن الاختبار يحاكي جهاز Android متوسط المستوى على اتصال 4G. النجاح على الجوال يعني تلقائيًا أن سطح المكتب بخير.</p>
+
+        <h2 id="core-web-vitals-ar">شرح Core Web Vitals</h2>
+        <p>هناك أربعة مؤشرات تحتاج إلى فهمها بعمق:</p>
+        <p><strong>LCP (Largest Contentful Paint)</strong> — يقيس متى تنتهي أكبر عنصر مرئي (عادة صورة الهيرو أو العنوان الرئيسي) من الرسم. الهدف: أقل من 2.5 ثانية. أكثر الأسباب شيوعًا هو صورة هيرو كبيرة غير محسّنة أو مورد يمنع الرسم قبلها.</p>
+        <p><strong>INP (Interaction to Next Paint)</strong> — يقيس التأخير بين إدخال المستخدم واستجابة المتصفح. الهدف: أقل من 200 ميلي ثانية. السبب المعتاد هو JavaScript ثقيل يُنفَّذ على الخيط الرئيسي عند تحميل الصفحة.</p>
+        <p><strong>CLS (Cumulative Layout Shift)</strong> — يقيس الاستقرار البصري. كلما انزلق عنصر بشكل غير متوقع (إعلانات تُحمَّل، خطوط تتبدل، صور بدون أبعاد)، ارتفع المؤشر. الهدف: أقل من 0.1. الحل دائمًا تقريبًا هو تحديد عرض وارتفاع صريح للصور وحجز مساحة للمحتوى الديناميكي.</p>
+        <p><strong>FCP (First Contentful Paint)</strong> — اللحظة التي يظهر فيها أول نص أو صورة. الهدف: أقل من 1.8 ثانية. تحسين FCP يعني تقليل وقت استجابة الخادم والقضاء على الموارد التي تمنع الرسم.</p>
+
+        <h2 id="image-optimization-ar">تحسين الصور</h2>
+        <p>الصور هي دائمًا تقريبًا الفرصة الأكبر للتحسين. القواعد بسيطة لكن قليلًا من المطورين يطبقونها جميعًا بانتظام.</p>
+        <p>استخدم دائمًا صيغ WebP أو AVIF. AVIF أصغر بنسبة 50% من JPEG بجودة مماثلة؛ WebP أصغر بنسبة 25–35%. استخدم عنصر HTML <code>picture</code> لتوفير بدائل عند الحاجة. دائمًا حدد أبعاد الصور لمنع CLS. استخدم <code>loading="lazy"</code> للصور خارج نطاق الرؤية، و<code>loading="eager"</code> مع <code>preload</code> لصورة الـ LCP.</p>
+        <p>اضغط بقوة: لصور الـ photos، جودة 75–80 في WebP لا يمكن تمييزها عن الجودة الكاملة. استخدم Squoosh أو Sharp في خط بناء مشروعك.</p>
+
+        <h2 id="css-optimization-ar">تحسين CSS</h2>
+        <p>CSS التي تمنع الرسم هي من أكثر أسباب ضعف FCP إهمالًا. المتصفح لا يستطيع رسم أي شيء حتى يحمّل ويُحلّل جميع الـ stylesheets في <code>&lt;head&gt;</code>. الحل له جزءان.</p>
+        <p>أولًا، ضع Critical CSS — الأنماط اللازمة لرسم المحتوى فوق الطيّة — مباشرة في وسم <code>&lt;style&gt;</code> في الـ <code>&lt;head&gt;</code>. أدوات مثل Critical أو Penthouse تُحوّل هذا إلى عملية تلقائية. كتلة Critical CSS عادة 5–15 كيلوبايت.</p>
+        <p>ثانيًا، احذف الأنماط غير المستخدمة. PurgeCSS تزيل تلقائيًا كلاسات Tailwind غير المستخدمة. على هذا الموقع، قلّصت PurgeCSS حجم CSS من 48 كيلوبايت إلى 11 كيلوبايت.</p>
+
+        <h2 id="js-optimization-ar">تحسين JavaScript</h2>
+        <p>JavaScript هو أثقل نوع من الموارد نسبةً لحجمه لأنه يتطلب تحليلًا وتجميعًا وتنفيذًا — كلها على الخيط الرئيسي. هناك أساليب قوية لتقليل تأثيره.</p>
+        <p><strong>defer وasync:</strong> كل وسم <code>&lt;script&gt;</code> غير ضروري للرسم الأولي يجب أن يحمل <code>defer</code>. استخدم <code>async</code> فقط للسكريبتات المستقلة تمامًا كالتحليلات.</p>
+        <p><strong>تقسيم الكود (Code Splitting):</strong> في إطارات مثل Next.js أو Vite، تقسيم الكود بناءً على المسار تلقائي. تأكد من عدم استيراد مكتبات ضخمة في الحزمة الرئيسية إذا كانت مطلوبة فقط في صفحة واحدة.</p>
+        <p><strong>Tree Shaking:</strong> استورد فقط ما تستخدمه. بدلًا من <code>import _ from 'lodash'</code>، اكتب <code>import { debounce } from 'lodash-es'</code>.</p>
+        <p><strong>سكريبتات الطرف الثالث:</strong> التحليلات وأدوات الدردشة والإعلانات غالبًا الأسوأ. حمّلها بعد أن تصبح الصفحة تفاعلية باستخدام <code>requestIdleCallback</code>.</p>
+
+        <h2 id="font-optimization-ar">تحسين الخطوط</h2>
+        <p>الخطوط المخصصة مصدر خفي لكنه مهم لتحريك التصميم وتقليل الأداء. الثلاثة تقنيات الأساسية: استخدم <code>preload</code> لملفات الخطوط الرئيسية في الـ head، واستخدم <code>font-display: swap</code> لإظهار خط بديل فورًا، وقلّص الخطوط (Subset) لتحميل الحروف المطلوبة فقط بدلًا من النطاق الكامل.</p>
+
+        <h2 id="server-side-ar">تحسينات جانب الخادم</h2>
+        <p>الأعمال من جانب العميل لها حدود. الخادم أيضًا يجب أن يكون سريعًا. أهم التغييرات: <strong>ترويسات التخزين المؤقت</strong> — خدّم الأصول الثابتة مع <code>Cache-Control: public, max-age=31536000, immutable</code>. <strong>الضغط</strong> — فعّل Brotli بدلًا من gzip فقط؛ يحقق 15–25% ضغطًا أفضل. <strong>HTTP/2</strong> — يتيح التشغيل المتوازي. <strong>CDN</strong> — خدّم الأصول الثابتة من شبكة توزيع المحتوى قريبًا من المستخدمين.</p>
+
+        <h2 id="service-workers-ar">Service Workers للزيارات المتكررة</h2>
+        <p>Service Worker يمكنه خدمة الصفحة بالكامل من الكاش في الزيارات المتكررة، مما يحقق أوقات تحميل شبه فورية. مكتبة Workbox من جوجل تبسّط هذا الأمر بشكل كبير. استخدم استراتيجية CacheFirst للصور وStaleWhileRevalidate لملفات JS وCSS.</p>
+
+        <h2 id="measuring-tools-ar">أدوات القياس</h2>
+        <p>الأدوات الأساسية: <strong>PageSpeed Insights</strong> للمشهد الكامل. <strong>WebPageTest</strong> لتحليل الشلال ومقارنة المواقع الجغرافية. <strong>Chrome DevTools</strong> لتحليل الخيط الرئيسي بعمق. <strong>Lighthouse CLI</strong> للتكامل مع CI وإخفاق البناء إذا انخفضت النتيجة. <strong>مكتبة web-vitals</strong> لإرسال قياسات المستخدمين الحقيقيين إلى تحليلاتك.</p>
+
+        <h2 id="personal-journey-ar">رحلتي الشخصية: من 75 إلى 99</h2>
+        <p>حين قست هذا الموقع لأول مرة، كانت النتيجة 75. الأسباب الرئيسية: صورة هيرو JPEG بحجم 340 كيلوبايت، طلبَا Google Fonts يمنعان الرسم، وكلاسات Tailwind كثيرة غير مستخدمة في الإنتاج. كانت ثلاثة سكريبتات من طرف ثالث تُحمَّل بشكل متزامن أيضًا.</p>
+        <p>بعد تحويل الصورة إلى WebP، وتضمين Critical CSS مباشرة، وإضافة PurgeCSS، وتأجيل السكريبتات غير الضرورية، قفزت النتيجة إلى 94. الدفعة الأخيرة إلى 99 جاءت بإضافة تلميح preload لصورة الـ LCP، وضبط ترويسات التخزين immutable على جميع الأصول الثابتة، والتبديل إلى Brotli على الخادم. النتيجة: انخفض LCP من 3.1 ثانية إلى 0.9 ثانية، وتحسّن CLS من 0.14 إلى 0.02، وتحسّن FCP من 2.4 ثانية إلى 0.7 ثانية.</p>
+        <p>السرعة ليست هدفًا يُحقَّق مرة واحدة — إنها ممارسة مستمرة. مع كل ميزة جديدة أو مكتبة تضيفها، قس من جديد وتأكد من عدم التراجع. اجعل Lighthouse جزءًا من خط CI الخاص بك، وستحافظ على نتيجتك تلقائيًا.</p>
+
+      </div>
+    </div>
+
+    <!-- Share -->
+    <div class="share-section">
+      <span class="share-label" id="share-label">Share</span>
+      <div class="share-btns">
+        <a class="share-btn" id="tw-btn" href="https://twitter.com/intent/tweet?text=Speed%20Up%20Your%20Website%20to%20100%25%20PageSpeed%20Score&url=https%3A%2F%2Fmahmoodhamdi.github.io%2Fcv%2Fblog%2Fposts%2Fwebsite-speed-optimization.html" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Twitter
+        </a>
+        <a class="share-btn" id="li-btn" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fmahmoodhamdi.github.io%2Fcv%2Fblog%2Fposts%2Fwebsite-speed-optimization.html&title=Speed%20Up%20Your%20Website%20to%20100%25%20PageSpeed%20Score" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <button class="share-btn copy-btn" onclick="copyLink(this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          <span id="copy-label">Copy Link</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Related Posts -->
+    <div class="related-section">
+      <h3 id="related-title">Related Articles</h3>
+      <div class="related-grid">
+        <a href="nextjs-arabic-website.html" class="related-card">
+          <span class="post-cat">Tutorial</span>
+          <h4>Building an Arabic Website with Next.js</h4>
+          <span>10 min read &middot; Feb 10, 2026</span>
+        </a>
+        <a href="github-portfolio-developer.html" class="related-card">
+          <span class="post-cat" style="background:rgba(129,140,248,.1);color:var(--accent2);border-color:rgba(129,140,248,.2)">Guide</span>
+          <h4>How to Build a Professional Developer Portfolio on GitHub</h4>
+          <span>10 min read &middot; Jan 28, 2026</span>
+        </a>
+        <a href="docker-deployment-guide.html" class="related-card">
+          <span class="post-cat">Tutorial</span>
+          <h4>Docker Deployment Guide for Node.js Apps</h4>
+          <span>11 min read &middot; Feb 15, 2026</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Post Nav -->
+    <nav class="post-nav" aria-label="Post navigation">
+      <a href="github-portfolio-developer.html" class="post-nav-btn next">
+        <span>Next Post</span>
+        <strong>How to Build a Professional Developer Portfolio on GitHub</strong>
+      </a>
+      <span></span>
+    </nav>
+
+  </article>
+
+  <!-- TOC Sidebar -->
+  <aside class="toc-sidebar" aria-label="Table of contents">
+    <div class="toc-box">
+      <h4 id="toc-title">On This Page</h4>
+      <ul class="toc-list" id="toc-en">
+        <li><a href="#why-speed-matters">Why Speed Matters</a></li>
+        <li><a href="#pagespeed-insights">PageSpeed Insights</a></li>
+        <li><a href="#core-web-vitals">Core Web Vitals</a></li>
+        <li><a href="#image-optimization">Image Optimization</a></li>
+        <li><a href="#css-optimization">CSS Optimization</a></li>
+        <li><a href="#js-optimization">JS Optimization</a></li>
+        <li><a href="#font-optimization">Font Optimization</a></li>
+        <li><a href="#server-side">Server-Side</a></li>
+        <li><a href="#lazy-loading">Lazy Loading</a></li>
+        <li><a href="#compositor-animations">Compositor Animations</a></li>
+        <li><a href="#service-workers">Service Workers</a></li>
+        <li><a href="#measuring-tools">Measuring Tools</a></li>
+        <li><a href="#personal-journey">My Journey: 75 to 99</a></li>
+      </ul>
+      <ul class="toc-list" id="toc-ar" style="display:none">
+        <li><a href="#why-speed-matters-ar">لماذا تهم السرعة؟</a></li>
+        <li><a href="#pagespeed-insights-ar">فهم PageSpeed Insights</a></li>
+        <li><a href="#core-web-vitals-ar">Core Web Vitals</a></li>
+        <li><a href="#image-optimization-ar">تحسين الصور</a></li>
+        <li><a href="#css-optimization-ar">تحسين CSS</a></li>
+        <li><a href="#js-optimization-ar">تحسين JavaScript</a></li>
+        <li><a href="#font-optimization-ar">تحسين الخطوط</a></li>
+        <li><a href="#server-side-ar">تحسينات الخادم</a></li>
+        <li><a href="#service-workers-ar">Service Workers</a></li>
+        <li><a href="#measuring-tools-ar">أدوات القياس</a></li>
+        <li><a href="#personal-journey-ar">رحلتي: من 75 إلى 99</a></li>
+      </ul>
+    </div>
+  </aside>
+
+</div>
+
+<footer class="blog-footer" role="contentinfo">
+  <p>&copy; 2026 <a href="../../">Mahmoud Hamdy</a> &middot; <a href="../">Blog</a></p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  function toggleTheme(){
+    const h=document.documentElement;
+    const next=h.getAttribute('data-theme')==='dark'?'light':'dark';
+    h.setAttribute('data-theme',next);
+    localStorage.setItem('theme',next);
+  }
+  window.toggleTheme=toggleTheme;
+  const saved=localStorage.getItem('theme');
+  if(saved) document.documentElement.setAttribute('data-theme',saved);
+
+  const rp=document.getElementById('rp');
+  const pctEl=document.createElement('div');
+  pctEl.className='read-pct';
+  document.body.appendChild(pctEl);
+  window.addEventListener('scroll',()=>{
+    const max=document.documentElement.scrollHeight-window.innerHeight;
+    const pct=Math.round(window.scrollY/max*100);
+    rp.style.width=pct+'%';
+    pctEl.textContent=pct+'% read';
+    pctEl.classList.toggle('vis',window.scrollY>200);
+  },{passive:true});
+
+  document.querySelectorAll('.post-body pre').forEach(pre=>{
+    pre.style.position='relative';
+    const btn=document.createElement('button');
+    btn.className='code-copy-btn';
+    btn.textContent='Copy';
+    btn.addEventListener('click',()=>{
+      const code=pre.querySelector('code');
+      navigator.clipboard.writeText(code?code.textContent:pre.textContent).then(()=>{
+        btn.textContent='Copied!';
+        btn.classList.add('copied');
+        setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},2000);
+      });
+    });
+    pre.appendChild(btn);
+  });
+
+  function setLang(lang){
+    const isAr=lang==='ar';
+    document.documentElement.setAttribute('lang',lang);
+    document.documentElement.setAttribute('dir',isAr?'rtl':'ltr');
+    document.getElementById('en-content').style.display=isAr?'none':'block';
+    document.getElementById('ar-content').style.display=isAr?'block':'none';
+    document.getElementById('toc-en').style.display=isAr?'none':'block';
+    document.getElementById('toc-ar').style.display=isAr?'block':'none';
+    document.getElementById('post-title').textContent=isAr?'تسريع موقعك لـ 100% سكور PageSpeed — دليل عملي':'Speed Up Your Website to 100% PageSpeed Score — Practical Guide';
+    document.getElementById('back-label').textContent=isAr?'المدونة':'Blog';
+    document.getElementById('share-label').textContent=isAr?'مشاركة':'Share';
+    document.getElementById('related-title').textContent=isAr?'مقالات ذات صلة':'Related Articles';
+    document.getElementById('copy-label').textContent=isAr?'نسخ الرابط':'Copy Link';
+    document.getElementById('toc-title').textContent=isAr?'في هذه الصفحة':'On This Page';
+    document.querySelectorAll('.l-btn').forEach(b=>{
+      b.classList.remove('on');
+      if((lang==='en'&&b.textContent.trim()==='EN')||(lang==='ar'&&b.textContent.trim()==='عربي')) b.classList.add('on');
+    });
+    localStorage.setItem('lang',lang);
+  }
+  window.setLang=setLang;
+  const savedLang=localStorage.getItem('lang');
+  if(savedLang) setLang(savedLang);
+
+  function copyLink(btn){
+    navigator.clipboard.writeText(window.location.href).then(()=>{
+      btn.classList.add('copied');
+      document.getElementById('copy-label').textContent='Copied!';
+      setTimeout(()=>{
+        btn.classList.remove('copied');
+        document.getElementById('copy-label').textContent='Copy Link';
+      },2000);
+    });
+  }
+  window.copyLink=copyLink;
+
+  document.body.classList.add('loaded');
+})();
+</script>
+<script src="../../js/analytics.js" defer></script>
+<script src="../../js/pwa.js" defer></script>
+</body>
+</html>

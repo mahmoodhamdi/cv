@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cybersecurity Basics for Developers — Protecting Your Apps — Mahmoud Hamdy</title>
+<meta name="description" content="A practical cybersecurity guide for developers — OWASP Top 10, SQL injection, XSS, CSRF, secure auth, HTTPS, security headers, input validation, secrets management, and security testing.">
+<meta name="author" content="Mahmoud Hamdy">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mahmoodhamdi.github.io/cv/blog/posts/cybersecurity-basics-arabic.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cybersecurity Basics for Developers — Protecting Your Apps">
+<meta property="og:description" content="Practical cybersecurity for developers — OWASP Top 10, SQL injection, XSS, CSRF, secure auth, HTTPS headers, secrets, and security testing.">
+<meta property="og:url" content="https://mahmoodhamdi.github.io/cv/blog/posts/cybersecurity-basics-arabic.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cybersecurity Basics for Developers — Protecting Your Apps">
+<meta name="twitter:description" content="Practical security guide for developers — OWASP Top 10, injection, XSS, CSRF, auth security, headers, and real Node.js examples.">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="manifest" href="../../manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mahmoud CV">
+<link rel="apple-touch-icon" href="../../assets/icon-192.svg">
+<link rel="alternate" type="application/rss+xml" title="Mahmoud Hamdy — Blog" href="https://mahmoodhamdi.github.io/cv/blog/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="محمود حمدي — المدونة" href="https://mahmoodhamdi.github.io/cv/blog/feed-ar.xml" hreflang="ar">
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D0H1J8BSKJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-D0H1J8BSKJ');
+</script>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="../../css/themes.css">
+<link rel="stylesheet" href="../blog.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Cybersecurity Basics for Developers — Protecting Your Apps",
+  "description": "A practical cybersecurity guide for developers — OWASP Top 10, SQL injection, XSS, CSRF, secure auth, HTTPS, security headers, input validation, secrets management, and security testing.",
+  "author": { "@type": "Person", "name": "Mahmoud Hamdy", "url": "https://mahmoodhamdi.github.io/cv/" },
+  "datePublished": "2026-01-08",
+  "dateModified": "2026-01-08",
+  "url": "https://mahmoodhamdi.github.io/cv/blog/posts/cybersecurity-basics-arabic.html",
+  "publisher": { "@type": "Person", "name": "Mahmoud Hamdy" }
+}
+</script>
+</head>
+<body>
+
+<div class="read-progress" id="rp" aria-hidden="true"></div>
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+
+<!-- Top Bar -->
+<header class="blog-topbar" role="banner">
+  <a href="../" class="back-link" aria-label="Back to blog">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    <span id="back-label">Blog</span>
+  </a>
+  <div class="topbar-right">
+    <button class="t-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg class="ic-light" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="ic-dark" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <div class="lang-tog" role="group" aria-label="Language selection">
+      <button class="l-btn on" onclick="setLang('en')">EN</button>
+      <button class="l-btn" onclick="setLang('ar')">عربي</button>
+    </div>
+  </div>
+</header>
+
+<div class="post-layout">
+
+  <!-- Article -->
+  <article class="article-main" id="main-article">
+
+    <header class="post-header">
+      <div class="post-header-meta">
+        <span class="post-cat" style="background:rgba(129,140,248,.1);color:var(--accent2);border-color:rgba(129,140,248,.2)">Guide</span>
+        <span class="post-readtime">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          12 min read
+        </span>
+      </div>
+      <h1 id="post-title">Cybersecurity Basics for Developers — Protecting Your Apps</h1>
+      <div class="author-card">
+        <div class="author-avatar" aria-hidden="true"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path d="M30 82L45 38L60 65L75 38L90 82" stroke="url(#blg)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><line x1="38" y1="68" x2="82" y2="68" stroke="rgba(56,189,248,0.5)" stroke-width="1.5"/><defs><linearGradient id="blg" x1="30" y1="38" x2="90" y2="82"><stop offset="0%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#818cf8"/></linearGradient></defs></svg></div>
+        <div class="author-info">
+          <div class="author-name">Mahmoud Hamdy</div>
+          <div class="post-publish-date">January 8, 2026</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- EN Content -->
+    <div id="en-content">
+      <div class="post-body">
+
+        <p>Security is not a feature you add at the end of a project. It is a discipline woven into every line of code you write. The uncomfortable truth: most web application vulnerabilities are not exotic zero-day exploits — they are beginner-level mistakes that developers have been making since the early days of the web. SQL injection, XSS, insecure direct object references, hardcoded credentials — these consistently top the charts in breach reports year after year. This guide gives you the practical knowledge to avoid the most common ones, written specifically for developers who build apps with Node.js and similar stacks.</p>
+
+        <h2 id="security-responsibility">Security Is Every Developer's Responsibility</h2>
+        <p>There is a persistent myth that security is "the security team's job." In organizations large enough to have dedicated security teams, those teams set policy and do audits — they do not review every pull request. The developer who writes the code is the first and most important line of defense.</p>
+        <p>More importantly: most developers today build APIs, SaaS products, and side projects without any security team at all. If you ship a vulnerable product, there is no safety net. The only protection is your own knowledge.</p>
+
+        <h2 id="owasp-top-10">OWASP Top 10 Explained Simply</h2>
+        <p>The Open Web Application Security Project (OWASP) publishes a list of the ten most critical web application security risks. The 2021 edition (still current) is the standard reference. Here is what each entry means in plain language:</p>
+        <p><strong>A01 Broken Access Control:</strong> users can access data or perform actions they should not be able to. Example: a user changes the ID in a URL from <code>/orders/123</code> to <code>/orders/124</code> and sees someone else's order.</p>
+        <p><strong>A02 Cryptographic Failures:</strong> sensitive data transmitted or stored without proper encryption. Storing passwords in plain text. Using MD5 for password hashing. Using HTTP instead of HTTPS.</p>
+        <p><strong>A03 Injection:</strong> user input is interpreted as code. SQL injection, command injection, LDAP injection. The root cause is always the same: user data mixed with code without sanitization.</p>
+        <p><strong>A04 Insecure Design:</strong> security flaws baked into the architecture, not just the implementation. No threat modelling done during design. "Admin mode" accessible to any user who knows the URL.</p>
+        <p><strong>A05 Security Misconfiguration:</strong> default credentials left unchanged, verbose error messages exposing stack traces, debug mode enabled in production, open S3 buckets.</p>
+        <p><strong>A06 Vulnerable and Outdated Components:</strong> using npm packages with known vulnerabilities. Not running <code>npm audit</code>.</p>
+        <p><strong>A07 Identification and Authentication Failures:</strong> weak passwords allowed, no brute-force protection, session tokens not invalidated on logout.</p>
+        <p><strong>A08 Software and Data Integrity Failures:</strong> not verifying the integrity of software updates or CI/CD pipeline artifacts.</p>
+        <p><strong>A09 Security Logging and Monitoring Failures:</strong> no logging of failed login attempts, no alerts for suspicious activity.</p>
+        <p><strong>A10 Server-Side Request Forgery (SSRF):</strong> the server fetches a URL provided by the user, allowing attackers to reach internal services.</p>
+
+        <h2 id="sql-injection">SQL Injection Prevention</h2>
+        <p>SQL injection is over 25 years old and still in the top three vulnerabilities in every major breach report. The attack works by inserting SQL syntax into user input that gets interpreted by the database. The classic example:</p>
+
+        <pre><code>// VULNERABLE - never do this
+const query = `SELECT * FROM users WHERE email = '${userEmail}'`;
+// If userEmail = "' OR '1'='1", this returns all users
+
+// SAFE - use parameterized queries
+const { rows } = await pool.query(
+  'SELECT * FROM users WHERE email = $1',
+  [userEmail]
+);
+
+// SAFE with Prisma (parameterized automatically)
+const user = await prisma.user.findUnique({
+  where: { email: userEmail }
+});
+
+// SAFE with Knex
+const user = await db('users').where({ email: userEmail }).first();</code></pre>
+
+        <p>The rule is simple: never concatenate user input into SQL strings. Always use parameterized queries or an ORM. This applies equally to MongoDB: never pass unsanitized user input directly as query operators.</p>
+
+        <h2 id="xss-prevention">XSS Prevention</h2>
+        <p>Cross-Site Scripting (XSS) allows attackers to inject malicious JavaScript into pages viewed by other users. Stored XSS is the most dangerous: the attacker saves malicious script in your database (e.g., in a comment), and it executes for every user who views that comment.</p>
+
+        <pre><code>// VULNERABLE - rendering unsanitized HTML
+element.innerHTML = userProvidedContent;
+
+// SAFE - use textContent for plain text
+element.textContent = userProvidedContent;
+
+// SAFE - sanitize when HTML rendering is required
+import DOMPurify from 'dompurify';
+element.innerHTML = DOMPurify.sanitize(userProvidedContent);
+
+// Server-side: escape HTML entities before storing/rendering
+import { escape } from 'html-escaper';
+const safe = escape(userInput);</code></pre>
+
+        <p>React and most modern frameworks auto-escape by default when you use JSX — <code>{variable}</code> is safe. Only <code>dangerouslySetInnerHTML</code> bypasses this, and you must sanitize before using it.</p>
+
+        <h2 id="csrf-protection">CSRF Protection</h2>
+        <p>Cross-Site Request Forgery tricks a logged-in user's browser into making unintended requests to your app. If a user is logged in to your banking app and visits a malicious site, that site can silently submit a form to <code>bank.com/transfer</code>. The browser automatically includes the session cookie.</p>
+        <p>The standard protection is CSRF tokens — a unique, unpredictable value included in every state-changing form that the server validates. For APIs using <code>Authorization: Bearer</code> headers (not cookies), CSRF is not a concern because browsers do not automatically attach custom headers to cross-origin requests.</p>
+
+        <pre><code>// Express with csurf middleware
+import csrf from 'csurf';
+const csrfProtection = csrf({ cookie: true });
+
+app.get('/form', csrfProtection, (req, res) => {
+  res.render('form', { csrfToken: req.csrfToken() });
+});
+
+app.post('/submit', csrfProtection, (req, res) => {
+  // CSRF token validated automatically
+  // Process the request
+});</code></pre>
+
+        <h2 id="auth-security">Authentication Security</h2>
+        <p>Authentication is the most targeted layer of any web app. The key practices:</p>
+        <p><strong>Password hashing:</strong> never store passwords in plain text or with reversible encryption. Use bcrypt with a work factor of 12+. The work factor makes brute-force attacks exponentially more expensive:</p>
+
+        <pre><code>import bcrypt from 'bcrypt';
+
+// Hashing (on registration/password change)
+const SALT_ROUNDS = 12;
+const hashedPassword = await bcrypt.hash(plainPassword, SALT_ROUNDS);
+
+// Verifying (on login)
+const isValid = await bcrypt.compare(plainPassword, hashedPassword);
+if (!isValid) throw new Error('Invalid credentials');</code></pre>
+
+        <p><strong>JWT best practices:</strong> use short expiry times (15–60 minutes for access tokens), use a separate long-lived refresh token stored in an httpOnly cookie, sign with RS256 (asymmetric) in production, never put sensitive data in the payload (it is base64-encoded, not encrypted), and rotate signing secrets periodically.</p>
+        <p><strong>Rate limiting on auth endpoints:</strong> limit login attempts to 5 per IP per 15 minutes. This stops brute-force attacks cold without significantly impacting legitimate users.</p>
+
+        <h2 id="https-ssl">HTTPS and TLS</h2>
+        <p>Never ship a production app over HTTP. HTTPS encrypts all data in transit, preventing man-in-the-middle attacks. In 2026, there is no excuse not to have HTTPS — Let's Encrypt provides free SSL certificates, Certbot automates renewal, and hosting platforms like Vercel, Netlify, and Railway provision certificates automatically.</p>
+        <p>Enable HSTS (HTTP Strict Transport Security) to tell browsers to always use HTTPS for your domain, even if the user types HTTP. Set a long max-age (at least 1 year) and include subdomains once your entire domain is HTTPS.</p>
+
+        <h2 id="security-headers">Security Headers</h2>
+        <p>HTTP security headers are free, easy to implement, and provide significant protection against a range of attacks. Use the Helmet.js middleware in Express to set them all at once:</p>
+
+        <pre><code>import helmet from 'helmet';
+
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "https://www.googletagmanager.com"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
+      imgSrc: ["'self'", "data:", "https:"],
+      connectSrc: ["'self'", "https://api.example.com"],
+    },
+  },
+  hsts: { maxAge: 31536000, includeSubDomains: true, preload: true },
+  referrerPolicy: { policy: 'strict-origin-when-cross-origin' },
+}));</code></pre>
+
+        <p>The most important headers: <strong>Content-Security-Policy (CSP)</strong> prevents XSS by whitelisting trusted sources. <strong>X-Frame-Options</strong> (or CSP's <code>frame-ancestors</code>) prevents clickjacking. <strong>X-Content-Type-Options: nosniff</strong> stops MIME-type sniffing attacks.</p>
+
+        <h2 id="input-validation">Input Validation and Sanitization</h2>
+        <p>Validate all user input on the server side — never trust client-side validation alone. The client can be bypassed trivially with browser DevTools or curl. Use a validation library like Zod or Joi:</p>
+
+        <pre><code>import { z } from 'zod';
+
+const CreateUserSchema = z.object({
+  email: z.string().email().max(255),
+  username: z.string().min(3).max(50).regex(/^[a-zA-Z0-9_]+$/),
+  age: z.number().int().min(13).max(120),
+});
+
+app.post('/users', async (req, res) => {
+  const result = CreateUserSchema.safeParse(req.body);
+  if (!result.success) {
+    return res.status(400).json({ errors: result.error.flatten() });
+  }
+  // result.data is now type-safe and validated
+  const user = await createUser(result.data);
+  res.status(201).json(user);
+});</code></pre>
+
+        <h2 id="secrets-management">Environment Variables and Secrets</h2>
+        <p>Hardcoding secrets in source code is one of the most common and costliest mistakes in software. API keys, database passwords, JWT secrets — none of these should ever appear in your codebase. Store them in environment variables and use a <code>.env</code> file locally (listed in <code>.gitignore</code>). In production, use your hosting platform's secrets manager (Vercel environment variables, Railway's secrets, AWS Secrets Manager).</p>
+        <p>Audit your git history if you have accidentally committed secrets. Use <code>git-secrets</code> as a pre-commit hook to prevent future accidents. Rotate any key that was ever committed immediately — assume it is compromised.</p>
+
+        <h2 id="dependency-security">Dependency Security</h2>
+        <p>The npm ecosystem is enormous and not every package is maintained or trustworthy. Run <code>npm audit</code> regularly and before every deployment. High-severity vulnerabilities in direct dependencies should be updated immediately. For transitive dependencies, use <code>npm audit fix</code> or a tool like Snyk for automated pull requests.</p>
+        <p>Be suspicious of packages with very low download counts, no README, or a name that looks like a typo of a popular package (typosquatting). Check when the package was last published — abandoned packages accumulate unpatched vulnerabilities.</p>
+
+        <h2 id="security-testing">Security Testing</h2>
+        <p>Integrate security into your development process, not as an afterthought. Tools to use: <strong>OWASP ZAP</strong> for automated scanning of your running app. <strong>Semgrep</strong> for static analysis — catches patterns like SQL concatenation in your source code. <strong>npm audit</strong> in your CI pipeline — fail the build on high-severity vulnerabilities. <strong>Burp Suite Community Edition</strong> for manual testing of authentication flows and API endpoints.</p>
+        <p>If you maintain a public-facing app, consider setting up a responsible disclosure policy — a <code>security.txt</code> file at <code>/.well-known/security.txt</code> tells security researchers how to report vulnerabilities to you privately.</p>
+
+        <h2 id="incident-response">Incident Response</h2>
+        <p>When (not if) a security incident occurs, having a plan makes the difference between a managed response and a panic. The basics: detect (monitoring, alerts, user reports), contain (take affected systems offline or revoke compromised credentials), assess (understand what was accessed), notify (inform affected users if required by law), remediate (fix the vulnerability), and post-mortem (document what happened and what you changed). Most small teams skip the post-mortem — do not. It is where you prevent recurrence.</p>
+
+      </div>
+    </div>
+
+    <!-- AR Content -->
+    <div id="ar-content" style="display:none" dir="rtl">
+      <div class="post-body ar-content">
+
+        <p>الأمن ليس ميزة تضيفها في نهاية المشروع — إنه انضباط يُنسج في كل سطر كود تكتبه. الحقيقة المزعجة: معظم ثغرات تطبيقات الويب ليست استغلالات خفية متطورة — بل أخطاء مبتدئة يرتكبها المطورون منذ الأيام الأولى للويب. SQL injection، وXSS، والمراجع المباشرة غير الآمنة للكائنات، والبيانات السرية المضمّنة في الكود — هذه تتصدر قوائم الاختراقات عامًا بعد عام. هذا المقال يعطيك المعرفة العملية لتجنب أكثرها شيوعًا، مكتوبًا خصيصًا للمطورين الذين يبنون التطبيقات بـ Node.js والأكوام المشابهة.</p>
+
+        <h2 id="security-responsibility-ar">الأمن مسؤولية كل مطوّر</h2>
+        <p>ثمة خرافة سائدة بأن الأمن "عمل فريق الأمن". في المنظمات الكبيرة التي تملك فرق أمن متخصصة، تلك الفرق تضع السياسات وتجري التدقيقات — لا تراجع كل طلب سحب. المطوّر الذي يكتب الكود هو خط الدفاع الأول والأهم.</p>
+        <p>الأهم من ذلك: معظم المطورين اليوم يبنون APIs ومنتجات SaaS ومشاريع جانبية دون أي فريق أمن على الإطلاق. إذا أطلقت منتجًا فيه ثغرات، لا شبكة أمان. الحماية الوحيدة هي معرفتك أنت.</p>
+
+        <h2 id="owasp-top-10-ar">OWASP Top 10 بشرح مبسط</h2>
+        <p>تنشر منظمة OWASP قائمة بأهم عشرة مخاطر أمنية لتطبيقات الويب. إليك معنى كل بند بلغة عادية:</p>
+        <p><strong>A01 كسر التحكم في الوصول:</strong> مستخدمون يصلون لبيانات أو يؤدون أفعالًا لا يجب أن يستطيعوها. مثال: مستخدم يغير الـ ID في الرابط من <code>/orders/123</code> إلى <code>/orders/124</code> ويرى طلب شخص آخر.</p>
+        <p><strong>A02 فشل التشفير:</strong> بيانات حساسة تُنقل أو تُخزَّن بدون تشفير مناسب. تخزين كلمات المرور بنص واضح. استخدام MD5 للتجزئة. استخدام HTTP بدلًا من HTTPS.</p>
+        <p><strong>A03 الحقن (Injection):</strong> مدخلات المستخدم تُفسَّر ككود. SQL injection، Command injection. السبب الجذري دائمًا: بيانات المستخدم مختلطة مع الكود دون تنظيف.</p>
+        <p><strong>A05 الإعداد الأمني الخاطئ:</strong> بيانات اعتماد افتراضية دون تغيير، رسائل خطأ مفصّلة تكشف تتبع المكدس، وضع التصحيح مفعّل في الإنتاج.</p>
+        <p><strong>A06 المكونات الضعيفة والقديمة:</strong> استخدام حزم npm بثغرات معروفة. عدم تشغيل <code>npm audit</code>.</p>
+        <p><strong>A07 فشل التعريف والمصادقة:</strong> كلمات مرور ضعيفة مسموح بها، لا حماية من القوة العمياء، توكنات الجلسة لا تُلغى عند تسجيل الخروج.</p>
+
+        <h2 id="sql-injection-ar">منع SQL Injection</h2>
+        <p>SQL injection يمر على أكثر من 25 عامًا وما زال في المراكز الثلاثة الأولى في كل تقرير اختراق رئيسي. الهجوم يعمل بإدراج صياغة SQL في مدخلات المستخدم التي تُفسَّر بعدها من قاعدة البيانات. القاعدة بسيطة: لا تجمع مدخلات المستخدم مطلقًا في سلاسل SQL. استخدم دائمًا الاستعلامات ذات المعاملات (Parameterized Queries) أو ORM.</p>
+
+        <pre><code>// خاطئ - لا تفعل هذا أبدًا
+const query = `SELECT * FROM users WHERE email = '${userEmail}'`;
+
+// صحيح - استعلامات ذات معاملات
+const { rows } = await pool.query(
+  'SELECT * FROM users WHERE email = $1',
+  [userEmail]
+);
+
+// صحيح مع Prisma (معاملات تلقائية)
+const user = await prisma.user.findUnique({
+  where: { email: userEmail }
+});</code></pre>
+
+        <h2 id="xss-prevention-ar">منع XSS</h2>
+        <p>Cross-Site Scripting يتيح للمهاجمين حقن JavaScript ضار في صفحات يراها مستخدمون آخرون. XSS المخزَّن هو الأخطر: يحفظ المهاجم سكريبت ضار في قاعدة بياناتك (مثلًا في تعليق)، وينفَّذ لكل مستخدم يرى ذلك التعليق.</p>
+        <p>React وأغلب الأطر الحديثة تهرب التعابير تلقائيًا حين تستخدم JSX — <code>{variable}</code> آمن. فقط <code>dangerouslySetInnerHTML</code> يتجاوز هذا، ويجب التنظيف قبل استخدامه. من جانب الخادم، استخدم DOMPurify للتنظيف عند الحاجة لعرض HTML.</p>
+
+        <h2 id="csrf-protection-ar">حماية CSRF</h2>
+        <p>Cross-Site Request Forgery يخدع متصفح مستخدم مسجّل الدخول ليرسل طلبات غير مقصودة لتطبيقك. الحماية المعيارية هي توكنات CSRF — قيمة فريدة وغير متوقعة مضمّنة في كل نموذج يغير الحالة، يتحقق منها الخادم. للـ APIs التي تستخدم <code>Authorization: Bearer</code> headers (لا cookies)، CSRF ليس مخاوفًا لأن المتصفحات لا تُلحق headers مخصصة تلقائيًا بالطلبات العابرة للأصل.</p>
+
+        <h2 id="auth-security-ar">أمان المصادقة</h2>
+        <p>المصادقة هي الطبقة الأكثر استهدافًا في أي تطبيق ويب. الممارسات الرئيسية:</p>
+        <p><strong>تجزئة كلمة المرور:</strong> لا تخزن كلمات المرور بنص واضح أو تشفير قابل للعكس. استخدم bcrypt بعامل عمل 12+. عامل العمل يجعل هجمات القوة العمياء أكثر تكلفة بشكل أسي:</p>
+
+        <pre><code>import bcrypt from 'bcrypt';
+
+// التجزئة (عند التسجيل)
+const SALT_ROUNDS = 12;
+const hashedPassword = await bcrypt.hash(plainPassword, SALT_ROUNDS);
+
+// التحقق (عند تسجيل الدخول)
+const isValid = await bcrypt.compare(plainPassword, hashedPassword);
+if (!isValid) throw new Error('بيانات اعتماد غير صالحة');</code></pre>
+
+        <p><strong>أفضل ممارسات JWT:</strong> استخدم أوقات انتهاء قصيرة (15–60 دقيقة للـ access tokens)، استخدم refresh token منفصل طويل الأمد مخزّن في httpOnly cookie، وقّع بـ RS256 في الإنتاج، لا تضع بيانات حساسة في الحمولة (هي Base64 مُشفَّرة وليست مُشفَّرة تشفيرًا حقيقيًا).</p>
+        <p><strong>تحديد المعدل على نقاط المصادقة:</strong> حدّد محاولات تسجيل الدخول بـ 5 لكل IP كل 15 دقيقة. يوقف هجمات القوة العمياء تمامًا دون التأثير الملحوظ على المستخدمين الشرعيين.</p>
+
+        <h2 id="https-ssl-ar">HTTPS وTLS</h2>
+        <p>لا تطلق أبدًا تطبيقًا إنتاجيًا عبر HTTP. HTTPS يشفّر جميع البيانات أثناء النقل، مانعًا هجمات man-in-the-middle. في 2026، لا عذر لعدم وجود HTTPS — Let's Encrypt يوفر شهادات SSL مجانية، وCertbot يؤتمت التجديد، ومنصات الاستضافة كـ Vercel وNetlify وRailway توفّر الشهادات تلقائيًا.</p>
+        <p>فعّل HSTS (HTTP Strict Transport Security) لإخبار المتصفحات باستخدام HTTPS دائمًا لنطاقك. اضبط max-age طويلًا (سنة على الأقل) وضمّن النطاقات الفرعية بمجرد أن يكون نطاقك بالكامل على HTTPS.</p>
+
+        <h2 id="security-headers-ar">ترويسات الأمان</h2>
+        <p>ترويسات أمان HTTP مجانية وسهلة التطبيق وتوفر حماية كبيرة ضد مجموعة من الهجمات. استخدم Helmet.js في Express لضبطها دفعة واحدة. أهم الترويسات: <strong>Content-Security-Policy</strong> تمنع XSS بإدراج المصادر الموثوقة في القائمة البيضاء. <strong>X-Frame-Options</strong> تمنع Clickjacking. <strong>X-Content-Type-Options: nosniff</strong> تمنع هجمات MIME-type sniffing.</p>
+
+        <h2 id="input-validation-ar">التحقق من صحة المدخلات وتنظيفها</h2>
+        <p>تحقق من جميع مدخلات المستخدم من جانب الخادم — لا تثق بالتحقق من جانب العميل وحده. يمكن تجاوز العميل ببساطة بأدوات المطوّر في المتصفح أو curl. استخدم مكتبة تحقق مثل Zod أو Joi وطبّق مخططات صارمة على جميع نقاط نهاية الـ API. كل حقل يجب أن يحدد النوع المتوقع، وأقصى طول، والتنسيق المسموح به.</p>
+
+        <h2 id="secrets-management-ar">متغيرات البيئة وإدارة الأسرار</h2>
+        <p>تضمين الأسرار في كود المصدر هو من أكثر الأخطاء شيوعًا وأكثرها تكلفةً في البرمجيات. مفاتيح API، وكلمات مرور قواعد البيانات، وأسرار JWT — لا يجب أن يظهر أي منها في قاعدة الكود. خزّنها في متغيرات البيئة واستخدم ملف <code>.env</code> محليًا (مدرج في <code>.gitignore</code>).</p>
+        <p>دقّق تاريخ git إذا أضفت أسرارًا عن طريق الخطأ. استخدم <code>git-secrets</code> كـ pre-commit hook لمنع الحوادث المستقبلية. ادوّر أي مفتاح تم إيداعه فورًا — افترض أنه مخترق.</p>
+
+        <h2 id="dependency-security-ar">أمان التبعيات</h2>
+        <p>نظام بيئة npm ضخم وليس كل حزمة مُصانة أو جديرة بالثقة. شغّل <code>npm audit</code> بانتظام وقبل كل عملية نشر. الثغرات عالية الخطورة في التبعيات المباشرة يجب تحديثها فورًا. استخدم Snyk للطلبات التلقائية للتحديث.</p>
+        <p>كن حذرًا من الحزم ذات عدد التنزيلات المنخفض جدًا، أو بدون README، أو باسم يبدو كخطأ مطبعي في حزمة شهيرة (typosquatting). تحقق من آخر تاريخ نشر — الحزم المتروكة تتراكم فيها ثغرات غير مُرقَّعة.</p>
+
+        <h2 id="security-testing-ar">اختبار الأمان</h2>
+        <p>ادمج الأمان في عملية التطوير، لا كفكر لاحق. الأدوات المهمة: <strong>OWASP ZAP</strong> للفحص التلقائي لتطبيقك الجاري. <strong>Semgrep</strong> للتحليل الثابت — يكتشف أنماطًا كـ SQL concatenation في كود المصدر. <strong>npm audit</strong> في خط CI — أخفق في البناء عند وجود ثغرات عالية الخطورة. <strong>Burp Suite Community Edition</strong> للاختبار اليدوي لتدفقات المصادقة ونقاط نهاية الـ API.</p>
+        <p>إذا كنت تملك تطبيقًا عامًا، فكر في إعداد سياسة الإفصاح المسؤول — ملف <code>security.txt</code> على <code>/.well-known/security.txt</code> يخبر الباحثين الأمنيين بكيفية الإبلاغ عن الثغرات لك بشكل خاص.</p>
+
+        <h2 id="incident-response-ar">الاستجابة للحوادث</h2>
+        <p>حين يحدث حادث أمني — وهو حتمًا سيحدث وليس "ربما" — وجود خطة يجعل الفرق بين استجابة محكومة وفوضى. الأساسيات: الاكتشاف (المراقبة، التنبيهات، تقارير المستخدمين)، الاحتواء (إيقاف الأنظمة المتأثرة أو إلغاء البيانات السرية المخترقة)، التقييم (فهم ما تم الوصول إليه)، الإخطار (إبلاغ المستخدمين المتأثرين إذا ألزم القانون)، المعالجة (إصلاح الثغرة)، وأخيرًا توثيق ما حدث وما غيّرته. معظم الفرق الصغيرة تتخطى التوثيق الختامي — لا تفعل ذلك. هنا تمنع التكرار.</p>
+
+      </div>
+    </div>
+
+    <!-- Share -->
+    <div class="share-section">
+      <span class="share-label" id="share-label">Share</span>
+      <div class="share-btns">
+        <a class="share-btn" id="tw-btn" href="https://twitter.com/intent/tweet?text=Cybersecurity%20Basics%20for%20Developers%20%E2%80%94%20Protecting%20Your%20Apps&url=https%3A%2F%2Fmahmoodhamdi.github.io%2Fcv%2Fblog%2Fposts%2Fcybersecurity-basics-arabic.html" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Twitter
+        </a>
+        <a class="share-btn" id="li-btn" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fmahmoodhamdi.github.io%2Fcv%2Fblog%2Fposts%2Fcybersecurity-basics-arabic.html&title=Cybersecurity%20Basics%20for%20Developers" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <button class="share-btn copy-btn" onclick="copyLink(this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          <span id="copy-label">Copy Link</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Related Posts -->
+    <div class="related-section">
+      <h3 id="related-title">Related Articles</h3>
+      <div class="related-grid">
+        <a href="nodejs-rest-api-complete-guide.html" class="related-card">
+          <span class="post-cat">Tutorial</span>
+          <h4>Node.js REST API — Complete Guide</h4>
+          <span>14 min read &middot; Feb 25, 2026</span>
+        </a>
+        <a href="website-speed-optimization.html" class="related-card">
+          <span class="post-cat">Tutorial</span>
+          <h4>Speed Up Your Website to 100% PageSpeed Score</h4>
+          <span>12 min read &middot; Feb 1, 2026</span>
+        </a>
+        <a href="docker-deployment-guide.html" class="related-card">
+          <span class="post-cat">Tutorial</span>
+          <h4>Docker Deployment Guide for Node.js Apps</h4>
+          <span>11 min read &middot; Feb 15, 2026</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Post Nav -->
+    <nav class="post-nav" aria-label="Post navigation">
+      <span></span>
+      <a href="api-integration-beginners.html" class="post-nav-btn prev">
+        <span>Previous Post</span>
+        <strong>API Integration for Beginners — Everything You Need to Know</strong>
+      </a>
+    </nav>
+
+  </article>
+
+  <!-- TOC Sidebar -->
+  <aside class="toc-sidebar" aria-label="Table of contents">
+    <div class="toc-box">
+      <h4 id="toc-title">On This Page</h4>
+      <ul class="toc-list" id="toc-en">
+        <li><a href="#security-responsibility">Security Is Your Responsibility</a></li>
+        <li><a href="#owasp-top-10">OWASP Top 10</a></li>
+        <li><a href="#sql-injection">SQL Injection</a></li>
+        <li><a href="#xss-prevention">XSS Prevention</a></li>
+        <li><a href="#csrf-protection">CSRF Protection</a></li>
+        <li><a href="#auth-security">Auth Security</a></li>
+        <li><a href="#https-ssl">HTTPS and TLS</a></li>
+        <li><a href="#security-headers">Security Headers</a></li>
+        <li><a href="#input-validation">Input Validation</a></li>
+        <li><a href="#secrets-management">Secrets Management</a></li>
+        <li><a href="#dependency-security">Dependency Security</a></li>
+        <li><a href="#security-testing">Security Testing</a></li>
+        <li><a href="#incident-response">Incident Response</a></li>
+      </ul>
+      <ul class="toc-list" id="toc-ar" style="display:none">
+        <li><a href="#security-responsibility-ar">الأمن مسؤوليتك</a></li>
+        <li><a href="#owasp-top-10-ar">OWASP Top 10</a></li>
+        <li><a href="#sql-injection-ar">منع SQL Injection</a></li>
+        <li><a href="#xss-prevention-ar">منع XSS</a></li>
+        <li><a href="#csrf-protection-ar">حماية CSRF</a></li>
+        <li><a href="#auth-security-ar">أمان المصادقة</a></li>
+        <li><a href="#https-ssl-ar">HTTPS وTLS</a></li>
+        <li><a href="#security-headers-ar">ترويسات الأمان</a></li>
+        <li><a href="#input-validation-ar">التحقق من المدخلات</a></li>
+        <li><a href="#secrets-management-ar">إدارة الأسرار</a></li>
+        <li><a href="#dependency-security-ar">أمان التبعيات</a></li>
+        <li><a href="#security-testing-ar">اختبار الأمان</a></li>
+        <li><a href="#incident-response-ar">الاستجابة للحوادث</a></li>
+      </ul>
+    </div>
+  </aside>
+
+</div>
+
+<footer class="blog-footer" role="contentinfo">
+  <p>&copy; 2026 <a href="../../">Mahmoud Hamdy</a> &middot; <a href="../">Blog</a></p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  function toggleTheme(){
+    const h=document.documentElement;
+    const next=h.getAttribute('data-theme')==='dark'?'light':'dark';
+    h.setAttribute('data-theme',next);
+    localStorage.setItem('theme',next);
+  }
+  window.toggleTheme=toggleTheme;
+  const saved=localStorage.getItem('theme');
+  if(saved) document.documentElement.setAttribute('data-theme',saved);
+
+  const rp=document.getElementById('rp');
+  const pctEl=document.createElement('div');
+  pctEl.className='read-pct';
+  document.body.appendChild(pctEl);
+  window.addEventListener('scroll',()=>{
+    const max=document.documentElement.scrollHeight-window.innerHeight;
+    const pct=Math.round(window.scrollY/max*100);
+    rp.style.width=pct+'%';
+    pctEl.textContent=pct+'% read';
+    pctEl.classList.toggle('vis',window.scrollY>200);
+  },{passive:true});
+
+  document.querySelectorAll('.post-body pre').forEach(pre=>{
+    pre.style.position='relative';
+    const btn=document.createElement('button');
+    btn.className='code-copy-btn';
+    btn.textContent='Copy';
+    btn.addEventListener('click',()=>{
+      const code=pre.querySelector('code');
+      navigator.clipboard.writeText(code?code.textContent:pre.textContent).then(()=>{
+        btn.textContent='Copied!';
+        btn.classList.add('copied');
+        setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},2000);
+      });
+    });
+    pre.appendChild(btn);
+  });
+
+  function setLang(lang){
+    const isAr=lang==='ar';
+    document.documentElement.setAttribute('lang',lang);
+    document.documentElement.setAttribute('dir',isAr?'rtl':'ltr');
+    document.getElementById('en-content').style.display=isAr?'none':'block';
+    document.getElementById('ar-content').style.display=isAr?'block':'none';
+    document.getElementById('toc-en').style.display=isAr?'none':'block';
+    document.getElementById('toc-ar').style.display=isAr?'block':'none';
+    document.getElementById('post-title').textContent=isAr?'أساسيات الأمن السيبراني للمطورين — حماية تطبيقاتك':'Cybersecurity Basics for Developers — Protecting Your Apps';
+    document.getElementById('back-label').textContent=isAr?'المدونة':'Blog';
+    document.getElementById('share-label').textContent=isAr?'مشاركة':'Share';
+    document.getElementById('related-title').textContent=isAr?'مقالات ذات صلة':'Related Articles';
+    document.getElementById('copy-label').textContent=isAr?'نسخ الرابط':'Copy Link';
+    document.getElementById('toc-title').textContent=isAr?'في هذه الصفحة':'On This Page';
+    document.querySelectorAll('.l-btn').forEach(b=>{
+      b.classList.remove('on');
+      if((lang==='en'&&b.textContent.trim()==='EN')||(lang==='ar'&&b.textContent.trim()==='عربي')) b.classList.add('on');
+    });
+    localStorage.setItem('lang',lang);
+  }
+  window.setLang=setLang;
+  const savedLang=localStorage.getItem('lang');
+  if(savedLang) setLang(savedLang);
+
+  function copyLink(btn){
+    navigator.clipboard.writeText(window.location.href).then(()=>{
+      btn.classList.add('copied');
+      document.getElementById('copy-label').textContent='Copied!';
+      setTimeout(()=>{
+        btn.classList.remove('copied');
+        document.getElementById('copy-label').textContent='Copy Link';
+      },2000);
+    });
+  }
+  window.copyLink=copyLink;
+
+  document.body.classList.add('loaded');
+})();
+</script>
+<script src="../../js/analytics.js" defer></script>
+<script src="../../js/pwa.js" defer></script>
+</body>
+</html>
