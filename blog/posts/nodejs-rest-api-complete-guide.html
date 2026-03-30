@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building a Complete REST API with Node.js &amp; TypeScript — Mahmoud Hamdy</title>
+<meta name="description" content="A comprehensive guide to building a production-ready REST API with Node.js and TypeScript — JWT auth, RBAC, error handling, Swagger, Jest, Docker, and CI/CD with GitHub Actions.">
+<meta name="author" content="Mahmoud Hamdy">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mahmoodhamdi.github.io/cv/blog/posts/nodejs-rest-api-complete-guide.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Building a Complete REST API with Node.js &amp; TypeScript">
+<meta property="og:description" content="Step-by-step guide to a production REST API: Express, TypeScript, JWT, RBAC, MongoDB, Swagger docs, Jest tests, Docker, and GitHub Actions CI/CD.">
+<meta property="og:url" content="https://mahmoodhamdi.github.io/cv/blog/posts/nodejs-rest-api-complete-guide.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Building a Complete REST API with Node.js &amp; TypeScript">
+<meta name="twitter:description" content="Complete Node.js + TypeScript REST API guide with JWT, Docker, and CI/CD.">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="manifest" href="../../manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mahmoud CV">
+<link rel="apple-touch-icon" href="../../assets/icon-192.svg">
+<link rel="alternate" type="application/rss+xml" title="Mahmoud Hamdy — Blog" href="https://mahmoodhamdi.github.io/cv/blog/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="محمود حمدي — المدونة" href="https://mahmoodhamdi.github.io/cv/blog/feed-ar.xml" hreflang="ar">
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D0H1J8BSKJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-D0H1J8BSKJ');
+</script>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="../../css/themes.css">
+<link rel="stylesheet" href="../blog.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Building a Complete REST API with Node.js & TypeScript",
+  "description": "A comprehensive guide to building a production-ready REST API with Node.js and TypeScript including JWT auth, RBAC, error handling, Swagger, Jest, Docker, and CI/CD.",
+  "author": { "@type": "Person", "name": "Mahmoud Hamdy", "url": "https://mahmoodhamdi.github.io/cv/" },
+  "datePublished": "2026-03-08",
+  "dateModified": "2026-03-08",
+  "url": "https://mahmoodhamdi.github.io/cv/blog/posts/nodejs-rest-api-complete-guide.html",
+  "publisher": { "@type": "Person", "name": "Mahmoud Hamdy" }
+}
+</script>
+</head>
+<body>
+
+<div class="read-progress" id="rp" aria-hidden="true"></div>
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+
+<!-- Top Bar -->
+<header class="blog-topbar" role="banner">
+  <a href="../" class="back-link" aria-label="Back to blog">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    <span id="back-label">Blog</span>
+  </a>
+  <div class="topbar-right">
+    <button class="t-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg class="ic-light" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="ic-dark" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <div class="lang-tog" role="group" aria-label="Language selection">
+      <button class="l-btn on" onclick="setLang('en')">EN</button>
+      <button class="l-btn" onclick="setLang('ar')">عربي</button>
+    </div>
+  </div>
+</header>
+
+<div class="post-layout">
+
+  <!-- Article -->
+  <article class="article-main" id="main-article">
+
+    <header class="post-header">
+      <div class="post-header-meta">
+        <span class="post-cat">Tutorial</span>
+        <span class="post-readtime">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          18 min read
+        </span>
+      </div>
+      <h1 id="post-title">Building a Complete REST API with Node.js &amp; TypeScript</h1>
+      <div class="author-card">
+        <div class="author-avatar" aria-hidden="true"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path d="M30 82L45 38L60 65L75 38L90 82" stroke="url(#blg)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><line x1="38" y1="68" x2="82" y2="68" stroke="rgba(56,189,248,0.5)" stroke-width="1.5"/><defs><linearGradient id="blg" x1="30" y1="38" x2="90" y2="82"><stop offset="0%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#818cf8"/></linearGradient></defs></svg></div>
+        <div class="author-info">
+          <div class="author-name">Mahmoud Hamdy</div>
+          <div class="post-publish-date">March 8, 2026</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- EN Content -->
+    <div id="en-content">
+      <div class="post-body">
+
+        <p>Node.js combined with TypeScript has become the dominant backend choice for modern web APIs. The developer experience is excellent: fast iteration, a massive npm ecosystem, full-stack JavaScript, and TypeScript's type safety catching entire categories of bugs before they reach production. In this guide I will walk through building a production-quality REST API from an empty folder to a deployed, tested, documented service — with code for every section.</p>
+
+        <h2 id="why-node-ts">Why Node.js + TypeScript?</h2>
+        <p>Node.js excels at I/O-bound workloads — exactly what an API server does. Its non-blocking event loop handles thousands of concurrent connections on modest hardware. TypeScript adds static typing on top, which pays dividends when a codebase grows beyond a few hundred lines. Autocomplete, refactoring safety, and explicit interfaces make large APIs manageable. Combined with tools like <code>ts-node-dev</code> for hot reload and <code>tsc</code> for production builds, the workflow is fast and reliable.</p>
+
+        <h2 id="project-setup">Express + TypeScript Setup</h2>
+        <p>Start from scratch with a clean project structure:</p>
+
+        <pre><code>mkdir my-api && cd my-api
+npm init -y
+npm install express cors helmet morgan dotenv
+npm install -D typescript ts-node-dev @types/express @types/node @types/cors
+
+# Init TypeScript config
+npx tsc --init</code></pre>
+
+        <p>Configure <code>tsconfig.json</code> with strict mode and sensible output settings:</p>
+
+        <pre><code>{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "commonjs",
+    "lib": ["ES2022"],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}</code></pre>
+
+        <h2 id="folder-structure">Scalable Folder Structure</h2>
+        <p>Feature-based organization scales better than role-based (controllers/, models/, services/ at the root). Group everything for a feature in one folder:</p>
+
+        <pre><code>src/
+├── config/
+│   ├── database.ts      # DB connection
+│   ├── env.ts           # Validated env vars
+│   └── swagger.ts       # Swagger setup
+├── features/
+│   ├── auth/
+│   │   ├── auth.controller.ts
+│   │   ├── auth.service.ts
+│   │   ├── auth.routes.ts
+│   │   ├── auth.middleware.ts
+│   │   └── auth.schema.ts   # Validation schemas
+│   └── users/
+│       ├── user.controller.ts
+│       ├── user.service.ts
+│       ├── user.model.ts
+│       ├── user.routes.ts
+│       └── user.schema.ts
+├── shared/
+│   ├── middleware/
+│   │   ├── error.middleware.ts
+│   │   ├── rateLimiter.ts
+│   │   └── upload.ts
+│   ├── types/
+│   │   └── express.d.ts     # Augment Request type
+│   └── utils/
+│       ├── apiResponse.ts
+│       └── logger.ts
+├── app.ts
+└── server.ts</code></pre>
+
+        <h2 id="env-config">Environment Configuration</h2>
+        <p>Never trust <code>process.env</code> directly. Validate and type environment variables at startup using a schema — if a required variable is missing, the process should crash immediately with a clear error rather than silently misbehaving later:</p>
+
+        <pre><code>// src/config/env.ts
+import { z } from 'zod';
+
+const envSchema = z.object({
+  NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
+  PORT: z.coerce.number().default(3000),
+  DATABASE_URL: z.string().url(),
+  JWT_SECRET: z.string().min(32),
+  JWT_REFRESH_SECRET: z.string().min(32),
+  JWT_EXPIRES_IN: z.string().default('15m'),
+  JWT_REFRESH_EXPIRES_IN: z.string().default('7d'),
+});
+
+export const env = envSchema.parse(process.env);
+export type Env = z.infer&lt;typeof envSchema&gt;;</code></pre>
+
+        <h2 id="database-setup">Database Setup — MongoDB with Mongoose</h2>
+        <p>Connect to MongoDB with proper error handling and connection event listeners. For PostgreSQL, swap Mongoose for Prisma or TypeORM — the structure is identical, only the client changes.</p>
+
+        <pre><code>// src/config/database.ts
+import mongoose from 'mongoose';
+import { env } from './env';
+import { logger } from '../shared/utils/logger';
+
+export async function connectDB(): Promise&lt;void&gt; {
+  try {
+    await mongoose.connect(env.DATABASE_URL);
+    logger.info('MongoDB connected');
+  } catch (err) {
+    logger.error('MongoDB connection error', err);
+    process.exit(1);
+  }
+}
+
+mongoose.connection.on('disconnected', () => {
+  logger.warn('MongoDB disconnected. Retrying...');
+});
+
+// User model
+import { Schema, model, Document } from 'mongoose';
+
+export interface IUser extends Document {
+  email: string;
+  passwordHash: string;
+  role: 'user' | 'admin';
+  refreshTokens: string[];
+  createdAt: Date;
+}
+
+const UserSchema = new Schema&lt;IUser&gt;({
+  email: { type: String, required: true, unique: true, lowercase: true },
+  passwordHash: { type: String, required: true },
+  role: { type: String, enum: ['user', 'admin'], default: 'user' },
+  refreshTokens: [String],
+}, { timestamps: true });
+
+export const User = model&lt;IUser&gt;('User', UserSchema);</code></pre>
+
+        <h2 id="jwt-auth">JWT Auth with Refresh Tokens</h2>
+        <p>Short-lived access tokens (15 minutes) with long-lived refresh tokens (7 days) is the industry standard. Store refresh tokens in the database so you can revoke them server-side:</p>
+
+        <pre><code>// src/features/auth/auth.service.ts
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
+import { env } from '../../config/env';
+import { User } from '../users/user.model';
+
+export async function register(email: string, password: string) {
+  const passwordHash = await bcrypt.hash(password, 12);
+  const user = await User.create({ email, passwordHash });
+  return generateTokenPair(user);
+}
+
+export async function login(email: string, password: string) {
+  const user = await User.findOne({ email });
+  if (!user || !await bcrypt.compare(password, user.passwordHash)) {
+    throw new Error('Invalid credentials');
+  }
+  return generateTokenPair(user);
+}
+
+function generateTokenPair(user: IUser) {
+  const payload = { sub: user._id.toString(), role: user.role };
+
+  const accessToken = jwt.sign(payload, env.JWT_SECRET, {
+    expiresIn: env.JWT_EXPIRES_IN,
+  });
+  const refreshToken = jwt.sign(payload, env.JWT_REFRESH_SECRET, {
+    expiresIn: env.JWT_REFRESH_EXPIRES_IN,
+  });
+
+  // Persist refresh token
+  User.findByIdAndUpdate(user._id, {
+    $push: { refreshTokens: refreshToken },
+  }).exec();
+
+  return { accessToken, refreshToken };
+}
+
+export async function refresh(token: string) {
+  const payload = jwt.verify(token, env.JWT_REFRESH_SECRET) as jwt.JwtPayload;
+  const user = await User.findById(payload.sub);
+  if (!user || !user.refreshTokens.includes(token)) {
+    throw new Error('Invalid refresh token');
+  }
+  // Rotate: remove old, issue new
+  await User.findByIdAndUpdate(user._id, {
+    $pull: { refreshTokens: token },
+  });
+  return generateTokenPair(user);
+}</code></pre>
+
+        <h2 id="rbac">Role-Based Access Control (RBAC)</h2>
+        <p>Implement RBAC as Express middleware. Decorate routes with <code>authorize('admin')</code> to restrict access:</p>
+
+        <pre><code>// src/features/auth/auth.middleware.ts
+import { Request, Response, NextFunction } from 'express';
+import jwt from 'jsonwebtoken';
+import { env } from '../../config/env';
+
+export function authenticate(req: Request, res: Response, next: NextFunction) {
+  const token = req.headers.authorization?.split(' ')[1];
+  if (!token) return res.status(401).json({ message: 'No token provided' });
+
+  try {
+    const payload = jwt.verify(token, env.JWT_SECRET) as jwt.JwtPayload;
+    req.user = { id: payload.sub!, role: payload.role };
+    next();
+  } catch {
+    res.status(401).json({ message: 'Invalid token' });
+  }
+}
+
+export function authorize(...roles: string[]) {
+  return (req: Request, res: Response, next: NextFunction) => {
+    if (!req.user || !roles.includes(req.user.role)) {
+      return res.status(403).json({ message: 'Forbidden' });
+    }
+    next();
+  };
+}
+
+// Usage in routes:
+// router.delete('/:id', authenticate, authorize('admin'), deleteUser);</code></pre>
+
+        <h2 id="validation">Input Validation with express-validator</h2>
+        <p>Validate all incoming data at the route level before it reaches the controller. Use <code>express-validator</code> or Zod middleware:</p>
+
+        <pre><code>// src/features/auth/auth.schema.ts
+import { body } from 'express-validator';
+
+export const registerSchema = [
+  body('email').isEmail().normalizeEmail(),
+  body('password').isLength({ min: 8 }).withMessage('Min 8 characters'),
+];
+
+// src/shared/middleware/validate.ts
+import { validationResult } from 'express-validator';
+export function validate(req: Request, res: Response, next: NextFunction) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }
+  next();
+}</code></pre>
+
+        <h2 id="error-handling">Centralized Error Handling</h2>
+        <p>All errors should flow to a single Express error handler. Create a custom <code>AppError</code> class to distinguish operational errors (400/404/422) from programming bugs (500):</p>
+
+        <pre><code>// src/shared/middleware/error.middleware.ts
+export class AppError extends Error {
+  constructor(
+    public message: string,
+    public statusCode: number = 500,
+    public isOperational = true,
+  ) {
+    super(message);
+    Object.setPrototypeOf(this, new.target.prototype);
+  }
+}
+
+export function errorHandler(
+  err: Error,
+  req: Request,
+  res: Response,
+  _next: NextFunction,
+) {
+  if (err instanceof AppError) {
+    return res.status(err.statusCode).json({
+      status: 'error',
+      message: err.message,
+    });
+  }
+  // Unknown error — log and return 500
+  logger.error(err);
+  res.status(500).json({ status: 'error', message: 'Internal server error' });
+}</code></pre>
+
+        <h2 id="rate-limiting">Rate Limiting and Helmet.js</h2>
+        <p>Apply <code>helmet</code> for security headers and <code>express-rate-limit</code> to prevent abuse. Put stricter limits on auth endpoints:</p>
+
+        <pre><code>import rateLimit from 'express-rate-limit';
+import helmet from 'helmet';
+
+app.use(helmet());
+
+const globalLimiter = rateLimit({ windowMs: 15*60*1000, max: 100 });
+const authLimiter = rateLimit({ windowMs: 15*60*1000, max: 10,
+  message: 'Too many auth attempts, try again in 15 minutes' });
+
+app.use('/api', globalLimiter);
+app.use('/api/auth', authLimiter);</code></pre>
+
+        <h2 id="swagger">Swagger API Documentation</h2>
+        <p>Auto-generate documentation from JSDoc comments using <code>swagger-jsdoc</code> and serve it with <code>swagger-ui-express</code>. Document every endpoint and model — this becomes your API contract with frontend developers:</p>
+
+        <pre><code>/**
+ * @swagger
+ * /api/auth/login:
+ *   post:
+ *     summary: Login with email and password
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [email, password]
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 format: email
+ *               password:
+ *                 type: string
+ *                 minLength: 8
+ *     responses:
+ *       200:
+ *         description: Returns access and refresh tokens
+ *       401:
+ *         description: Invalid credentials
+ */</code></pre>
+
+        <h2 id="testing">Testing with Jest</h2>
+        <p>Use Jest with <code>supertest</code> for integration tests and <code>mongodb-memory-server</code> to spin up an in-memory MongoDB for each test suite — no external dependencies, fast and deterministic:</p>
+
+        <pre><code>// src/features/auth/__tests__/auth.test.ts
+import request from 'supertest';
+import { app } from '../../../app';
+import { connectTestDB, closeTestDB } from '../../../test/db';
+
+beforeAll(async () => { await connectTestDB(); });
+afterAll(async () => { await closeTestDB(); });
+
+describe('POST /api/auth/register', () => {
+  it('should register a new user and return tokens', async () => {
+    const res = await request(app)
+      .post('/api/auth/register')
+      .send({ email: 'test@example.com', password: 'Password1!' });
+
+    expect(res.status).toBe(201);
+    expect(res.body).toHaveProperty('accessToken');
+    expect(res.body).toHaveProperty('refreshToken');
+  });
+
+  it('should reject duplicate email', async () => {
+    await request(app).post('/api/auth/register')
+      .send({ email: 'dup@example.com', password: 'Password1!' });
+    const res = await request(app).post('/api/auth/register')
+      .send({ email: 'dup@example.com', password: 'Password1!' });
+    expect(res.status).toBe(409);
+  });
+});</code></pre>
+
+        <h2 id="logging">Structured Logging with Pino</h2>
+        <p>Use Pino for structured JSON logging — it is the fastest Node.js logger and integrates with log aggregation services like Datadog and Loki. In production, pipe logs to a file or use <code>pino-pretty</code> only in development:</p>
+
+        <pre><code>// src/shared/utils/logger.ts
+import pino from 'pino';
+import { env } from '../../config/env';
+
+export const logger = pino({
+  level: env.NODE_ENV === 'production' ? 'info' : 'debug',
+  transport: env.NODE_ENV !== 'production'
+    ? { target: 'pino-pretty', options: { colorize: true } }
+    : undefined,
+});</code></pre>
+
+        <h2 id="docker">Dockerizing the API</h2>
+        <p>A multi-stage Dockerfile keeps the production image small by separating the build from the runtime:</p>
+
+        <pre><code># Dockerfile
+FROM node:22-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+FROM node:22-alpine AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+COPY package*.json ./
+RUN npm ci --omit=dev
+COPY --from=builder /app/dist ./dist
+EXPOSE 3000
+CMD ["node", "dist/server.js"]</code></pre>
+
+        <h2 id="cicd">CI/CD with GitHub Actions</h2>
+        <p>Automate testing and deployment on every push to main. The pipeline runs lint, tests, builds the Docker image, and pushes to Docker Hub:</p>
+
+        <pre><code># .github/workflows/ci.yml
+name: CI/CD
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '22', cache: 'npm' }
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test -- --coverage
+
+  deploy:
+    needs: test
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - uses: docker/build-push-action@v5
+        with:
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-api:latest</code></pre>
+
+        <p>With this pipeline in place, every merged PR automatically ships a tested, containerized build. Pair this with a DigitalOcean droplet or a Railway deployment that pulls the latest image on push, and you have a fully automated delivery pipeline.</p>
+
+      </div>
+    </div>
+
+    <!-- AR Content -->
+    <div id="ar-content" style="display:none" dir="rtl">
+      <div class="post-body ar-content">
+
+        <p>أصبح Node.js مع TypeScript الخيار البكند المسيطر للـ APIs الحديثة. تجربة المطور ممتازة: تطوير سريع، نظام npm ضخم، JavaScript للفرونت والباك، وأمان الأنواع في TypeScript الذي يكتشف فئات كاملة من الأخطاء قبل أن تصل للإنتاج. في هذا الدليل سأرشدك لبناء REST API بجودة إنتاجية من مجلد فارغ حتى خدمة منشورة ومختبرة وموثقة — مع الكود لكل قسم.</p>
+
+        <h2 id="why-node-ts-ar">لماذا Node.js + TypeScript؟</h2>
+        <p>يتفوق Node.js في أعباء العمل المرتبطة بالإدخال/الإخراج — وهو بالضبط ما يفعله خادم API. حلقة الأحداث غير المحجوبة تتعامل مع آلاف الاتصالات المتزامنة على أجهزة متواضعة. يضيف TypeScript الكتابة الساكنة فوق ذلك، وهو ما يُؤتي ثماره حين تكبر قاعدة الكود فوق بضع مئات من السطور. الإكمال التلقائي، وأمان إعادة البناء، والواجهات الصريحة تجعل الـ APIs الكبيرة قابلة للإدارة.</p>
+
+        <h2 id="project-setup-ar">إعداد Express + TypeScript</h2>
+        <p>ابدأ من الصفر بهيكل مشروع نظيف:</p>
+
+        <pre><code>mkdir my-api && cd my-api
+npm init -y
+npm install express cors helmet morgan dotenv
+npm install -D typescript ts-node-dev @types/express @types/node @types/cors
+
+# تهيئة إعداد TypeScript
+npx tsc --init</code></pre>
+
+        <p>اضبط <code>tsconfig.json</code> بوضع strict وإعدادات إخراج معقولة. استخدم <code>target: "ES2022"</code> و<code>strict: true</code> دائمًا.</p>
+
+        <h2 id="folder-structure-ar">هيكل المجلدات القابل للتوسع</h2>
+        <p>التنظيم القائم على الميزات يتوسع بشكل أفضل من التنظيم القائم على الأدوار (controllers/ وmodels/ وservices/ في الجذر). اجمع كل شيء لميزة ما في مجلد واحد:</p>
+
+        <pre><code>src/
+├── config/
+│   ├── database.ts      # اتصال قاعدة البيانات
+│   ├── env.ts           # متغيرات البيئة المُتحقق منها
+│   └── swagger.ts       # إعداد Swagger
+├── features/
+│   ├── auth/            # المصادقة
+│   └── users/           # المستخدمون
+├── shared/
+│   ├── middleware/      # وسيطات مشتركة
+│   ├── types/           # أنواع TypeScript
+│   └── utils/           # أدوات مساعدة
+├── app.ts
+└── server.ts</code></pre>
+
+        <h2 id="env-config-ar">إعداد متغيرات البيئة</h2>
+        <p>لا تثق أبدًا بـ <code>process.env</code> مباشرة. تحقق من صحة متغيرات البيئة وأنوعها عند بدء التشغيل باستخدام مخطط — إذا كان متغير مطلوب مفقودًا، يجب أن تتوقف العملية فورًا بخطأ واضح بدلًا من الفشل الصامت لاحقًا.</p>
+
+        <pre><code>// src/config/env.ts
+import { z } from 'zod';
+
+const envSchema = z.object({
+  NODE_ENV: z.enum(['development', 'test', 'production']),
+  PORT: z.coerce.number().default(3000),
+  DATABASE_URL: z.string().url(),
+  JWT_SECRET: z.string().min(32),
+  JWT_REFRESH_SECRET: z.string().min(32),
+});
+
+export const env = envSchema.parse(process.env);</code></pre>
+
+        <h2 id="database-setup-ar">إعداد قاعدة البيانات — MongoDB مع Mongoose</h2>
+        <p>اتصل بـ MongoDB مع معالجة صحيحة للأخطاء ومستمعي أحداث الاتصال. لـ PostgreSQL، استبدل Mongoose بـ Prisma أو TypeORM — الهيكل متطابق، فقط العميل يتغير.</p>
+
+        <h2 id="jwt-auth-ar">مصادقة JWT مع Refresh Tokens</h2>
+        <p>Access tokens قصيرة العمر (15 دقيقة) مع refresh tokens طويلة العمر (7 أيام) هو المعيار الصناعي. خزّن refresh tokens في قاعدة البيانات حتى تتمكن من إلغائها من جانب الخادم. عند التحديث، دوّر التوكن: احذف القديم وأصدر جديدًا — هذا يمنع إعادة استخدام refresh tokens المسروقة.</p>
+
+        <h2 id="rbac-ar">التحكم في الوصول المبني على الأدوار (RBAC)</h2>
+        <p>نفّذ RBAC كوسيط Express. زيّن المسارات بـ <code>authorize('admin')</code> لتقييد الوصول:</p>
+
+        <pre><code>export function authorize(...roles: string[]) {
+  return (req: Request, res: Response, next: NextFunction) => {
+    if (!req.user || !roles.includes(req.user.role)) {
+      return res.status(403).json({ message: 'Forbidden' });
+    }
+    next();
+  };
+}
+
+// الاستخدام في المسارات:
+router.delete('/:id', authenticate, authorize('admin'), deleteUser);</code></pre>
+
+        <h2 id="validation-ar">التحقق من صحة المدخلات</h2>
+        <p>تحقق من صحة جميع البيانات الواردة على مستوى المسار قبل أن تصل للمتحكم. استخدم <code>express-validator</code> أو وسيط Zod. الفائدة المزدوجة: تحمي من الإدخال الخبيث وتعطي رسائل خطأ واضحة للعميل.</p>
+
+        <h2 id="error-handling-ar">معالجة الأخطاء المركزية</h2>
+        <p>يجب أن تتدفق جميع الأخطاء إلى معالج خطأ Express واحد. أنشئ كلاس <code>AppError</code> مخصصًا للتمييز بين الأخطاء التشغيلية (400/404/422) والأخطاء البرمجية (500). هذا يمنع تسريب تفاصيل الخطأ الداخلية للمستخدمين.</p>
+
+        <h2 id="rate-limiting-ar">تحديد المعدل وHelmet.js</h2>
+        <p>طبّق <code>helmet</code> لرؤوس الأمان و<code>express-rate-limit</code> لمنع الإساءة. ضع حدودًا أكثر صرامة على نقاط نهاية المصادقة — 10 محاولات كل 15 دقيقة كافية لمنع هجمات القوة الغاشمة.</p>
+
+        <h2 id="swagger-ar">توثيق Swagger</h2>
+        <p>أنشئ التوثيق تلقائيًا من تعليقات JSDoc باستخدام <code>swagger-jsdoc</code> وقدّمه بـ <code>swagger-ui-express</code>. وثّق كل نقطة نهاية ونموذج — يصبح هذا عقدك مع مطوري الفرونت. اجعل التوثيق يعمل على <code>/api/docs</code> في بيئة التطوير فقط.</p>
+
+        <h2 id="testing-ar">الاختبار بـ Jest</h2>
+        <p>استخدم Jest مع <code>supertest</code> للاختبارات التكاملية و<code>mongodb-memory-server</code> لإطلاق MongoDB في الذاكرة لكل مجموعة اختبار — لا تبعيات خارجية، سريع وحتمي. استهدف تغطية 80%+ على الخدمات والمتحكمات.</p>
+
+        <h2 id="logging-ar">التسجيل الهيكلي بـ Pino</h2>
+        <p>استخدم Pino للتسجيل المنظم بصيغة JSON — إنه أسرع logger في Node.js ويتكامل مع خدمات تجميع السجلات مثل Datadog وLoki. في الإنتاج، أرسل السجلات لملف أو استخدم <code>pino-pretty</code> فقط في التطوير.</p>
+
+        <h2 id="docker-ar">حاوية Docker للـ API</h2>
+        <p>Dockerfile متعدد المراحل يجعل صورة الإنتاج صغيرة من خلال فصل البناء عن وقت التشغيل. تبلغ صور Node.js Alpine عادةً أقل من 150 ميجابايت مقارنةً بـ 900 ميجابايت+ للصور الكاملة.</p>
+
+        <pre><code>FROM node:22-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+FROM node:22-alpine AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+COPY package*.json ./
+RUN npm ci --omit=dev
+COPY --from=builder /app/dist ./dist
+EXPOSE 3000
+CMD ["node", "dist/server.js"]</code></pre>
+
+        <h2 id="cicd-ar">CI/CD بـ GitHub Actions</h2>
+        <p>أتمت الاختبار والنشر عند كل push للـ main. يُشغّل الـ pipeline الفحص (lint) والاختبارات ويبني صورة Docker ويدفعها إلى Docker Hub. مع هذا الـ pipeline، كل PR مُدمج يشحن تلقائيًا بناءً مختبرًا في حاوية. اقرن هذا بـ DigitalOcean droplet أو نشر Railway يسحب أحدث صورة عند الدفع، ولديك pipeline تسليم مؤتمت بالكامل.</p>
+
+      </div>
+    </div>
+
+    <!-- Share -->
+    <div class="share-section">
+      <span class="share-label" id="share-label">Share</span>
+      <div class="share-btns">
+        <a class="share-btn" id="tw-btn" href="https://twitter.com/intent/tweet?text=Building%20a%20Complete%20REST%20API%20with%20Node.js%20%26%20TypeScript&url=https%3A%2F%2Fmahmoodhamdi.github.io%2Fcv%2Fblog%2Fposts%2Fnodejs-rest-api-complete-guide.html" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Twitter
+        </a>
+        <a class="share-btn" id="li-btn" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fmahmoodhamdi.github.io%2Fcv%2Fblog%2Fposts%2Fnodejs-rest-api-complete-guide.html&title=Building%20a%20Complete%20REST%20API%20with%20Node.js%20%26%20TypeScript" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <button class="share-btn copy-btn" onclick="copyLink(this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          <span id="copy-label">Copy Link</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Related Posts -->
+    <div class="related-section">
+      <h3 id="related-title">Related Articles</h3>
+      <div class="related-grid">
+        <a href="docker-deployment-guide.html" class="related-card">
+          <span class="post-cat">Tutorial</span>
+          <h4>Deploying Your App with Docker — Beginner's Guide</h4>
+          <span>10 min read &middot; Feb 28, 2026</span>
+        </a>
+        <a href="mongodb-vs-postgresql.html" class="related-card">
+          <span class="post-cat">Guide</span>
+          <h4>MongoDB vs PostgreSQL — Which Should You Choose?</h4>
+          <span>11 min read &middot; Mar 2, 2026</span>
+        </a>
+        <a href="api-integration-beginners.html" class="related-card">
+          <span class="post-cat">Tutorial</span>
+          <h4>API Integration for Beginners</h4>
+          <span>9 min read &middot; Feb 10, 2026</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Post Nav -->
+    <nav class="post-nav" aria-label="Post navigation">
+      <a href="react-dashboard-tutorial.html" class="post-nav-btn prev">
+        <span>Previous Post</span>
+        <strong>Building an Admin Dashboard with React</strong>
+      </a>
+      <a href="flutter-app-from-scratch.html" class="post-nav-btn next">
+        <span>Next Post</span>
+        <strong>Building a Mobile App with Flutter</strong>
+      </a>
+    </nav>
+
+  </article>
+
+  <!-- TOC Sidebar -->
+  <aside class="toc-sidebar" aria-label="Table of contents">
+    <div class="toc-box">
+      <h4 id="toc-title">On This Page</h4>
+      <ul class="toc-list" id="toc-en">
+        <li><a href="#why-node-ts">Why Node.js + TypeScript?</a></li>
+        <li><a href="#project-setup">Express + TS Setup</a></li>
+        <li><a href="#folder-structure">Folder Structure</a></li>
+        <li><a href="#env-config">Env Configuration</a></li>
+        <li><a href="#database-setup">Database Setup</a></li>
+        <li><a href="#jwt-auth">JWT Auth</a></li>
+        <li><a href="#rbac">RBAC</a></li>
+        <li><a href="#validation">Input Validation</a></li>
+        <li><a href="#error-handling">Error Handling</a></li>
+        <li><a href="#rate-limiting">Rate Limiting</a></li>
+        <li><a href="#swagger">Swagger Docs</a></li>
+        <li><a href="#testing">Testing with Jest</a></li>
+        <li><a href="#logging">Pino Logging</a></li>
+        <li><a href="#docker">Docker</a></li>
+        <li><a href="#cicd">CI/CD</a></li>
+      </ul>
+      <ul class="toc-list" id="toc-ar" style="display:none">
+        <li><a href="#why-node-ts-ar">لماذا Node.js + TypeScript؟</a></li>
+        <li><a href="#project-setup-ar">إعداد Express + TS</a></li>
+        <li><a href="#folder-structure-ar">هيكل المجلدات</a></li>
+        <li><a href="#env-config-ar">إعداد البيئة</a></li>
+        <li><a href="#database-setup-ar">إعداد قاعدة البيانات</a></li>
+        <li><a href="#jwt-auth-ar">مصادقة JWT</a></li>
+        <li><a href="#rbac-ar">التحكم في الوصول</a></li>
+        <li><a href="#validation-ar">التحقق من المدخلات</a></li>
+        <li><a href="#error-handling-ar">معالجة الأخطاء</a></li>
+        <li><a href="#rate-limiting-ar">تحديد المعدل</a></li>
+        <li><a href="#swagger-ar">توثيق Swagger</a></li>
+        <li><a href="#testing-ar">الاختبار بـ Jest</a></li>
+        <li><a href="#logging-ar">التسجيل بـ Pino</a></li>
+        <li><a href="#docker-ar">Docker</a></li>
+        <li><a href="#cicd-ar">CI/CD</a></li>
+      </ul>
+    </div>
+  </aside>
+
+</div>
+
+<footer class="blog-footer" role="contentinfo">
+  <p>&copy; 2026 <a href="../../">Mahmoud Hamdy</a> &middot; <a href="../">Blog</a></p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  function toggleTheme(){
+    const h=document.documentElement;
+    const next=h.getAttribute('data-theme')==='dark'?'light':'dark';
+    h.setAttribute('data-theme',next);
+    localStorage.setItem('theme',next);
+  }
+  window.toggleTheme=toggleTheme;
+  const saved=localStorage.getItem('theme');
+  if(saved) document.documentElement.setAttribute('data-theme',saved);
+
+  const rp=document.getElementById('rp');
+  const pctEl=document.createElement('div');
+  pctEl.className='read-pct';
+  document.body.appendChild(pctEl);
+  window.addEventListener('scroll',()=>{
+    const max=document.documentElement.scrollHeight-window.innerHeight;
+    const pct=Math.round(window.scrollY/max*100);
+    rp.style.width=pct+'%';
+    pctEl.textContent=pct+'% read';
+    pctEl.classList.toggle('vis',window.scrollY>200);
+  },{passive:true});
+
+  document.querySelectorAll('.post-body pre').forEach(pre=>{
+    pre.style.position='relative';
+    const btn=document.createElement('button');
+    btn.className='code-copy-btn';
+    btn.textContent='Copy';
+    btn.addEventListener('click',()=>{
+      const code=pre.querySelector('code');
+      navigator.clipboard.writeText(code?code.textContent:pre.textContent).then(()=>{
+        btn.textContent='Copied!';
+        btn.classList.add('copied');
+        setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},2000);
+      });
+    });
+    pre.appendChild(btn);
+  });
+
+  function setLang(lang){
+    const isAr=lang==='ar';
+    document.documentElement.setAttribute('lang',lang);
+    document.documentElement.setAttribute('dir',isAr?'rtl':'ltr');
+    document.getElementById('en-content').style.display=isAr?'none':'block';
+    document.getElementById('ar-content').style.display=isAr?'block':'none';
+    document.getElementById('toc-en').style.display=isAr?'none':'block';
+    document.getElementById('toc-ar').style.display=isAr?'block':'none';
+    document.getElementById('post-title').textContent=isAr?'بناء REST API كامل بـ Node.js و TypeScript — الدليل الشامل':'Building a Complete REST API with Node.js & TypeScript';
+    document.getElementById('back-label').textContent=isAr?'المدونة':'Blog';
+    document.getElementById('share-label').textContent=isAr?'مشاركة':'Share';
+    document.getElementById('related-title').textContent=isAr?'مقالات ذات صلة':'Related Articles';
+    document.getElementById('copy-label').textContent=isAr?'نسخ الرابط':'Copy Link';
+    document.getElementById('toc-title').textContent=isAr?'في هذه الصفحة':'On This Page';
+    document.querySelectorAll('.l-btn').forEach(b=>{
+      b.classList.remove('on');
+      if((lang==='en'&&b.textContent.trim()==='EN')||(lang==='ar'&&b.textContent.trim()==='عربي')) b.classList.add('on');
+    });
+    localStorage.setItem('lang',lang);
+  }
+  window.setLang=setLang;
+  const savedLang=localStorage.getItem('lang');
+  if(savedLang) setLang(savedLang);
+
+  function copyLink(btn){
+    navigator.clipboard.writeText(window.location.href).then(()=>{
+      btn.classList.add('copied');
+      document.getElementById('copy-label').textContent='Copied!';
+      setTimeout(()=>{
+        btn.classList.remove('copied');
+        document.getElementById('copy-label').textContent='Copy Link';
+      },2000);
+    });
+  }
+  window.copyLink=copyLink;
+
+  document.body.classList.add('loaded');
+})();
+</script>
+<script src="../../js/analytics.js" defer></script>
+<script src="../../js/pwa.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building a Telegram Bot with Node.js — Zero to Production — Mahmoud Hamdy</title>
+<meta name="description" content="A complete tutorial on building a Telegram bot with Node.js from scratch: BotFather setup, commands, inline keyboards, menus, webhooks, and deploying a store notification bot to production.">
+<meta name="author" content="Mahmoud Hamdy">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mahmoodhamdi.github.io/cv/blog/posts/telegram-bot-nodejs-tutorial.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Building a Telegram Bot with Node.js — Zero to Production">
+<meta property="og:description" content="Complete Node.js Telegram bot tutorial: setup, commands, keyboards, webhooks, and deploying to a VPS.">
+<meta property="og:url" content="https://mahmoodhamdi.github.io/cv/blog/posts/telegram-bot-nodejs-tutorial.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Telegram Bot with Node.js — Zero to Production">
+<meta name="twitter:description" content="Build and deploy a production Telegram bot with Node.js and Telegraf.">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="manifest" href="../../manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mahmoud CV">
+<link rel="apple-touch-icon" href="../../assets/icon-192.svg">
+<link rel="alternate" type="application/rss+xml" title="Mahmoud Hamdy — Blog" href="https://mahmoodhamdi.github.io/cv/blog/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="محمود حمدي — المدونة" href="https://mahmoodhamdi.github.io/cv/blog/feed-ar.xml" hreflang="ar">
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D0H1J8BSKJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-D0H1J8BSKJ');
+</script>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="../../css/themes.css">
+<link rel="stylesheet" href="../blog.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Building a Telegram Bot with Node.js — Zero to Production",
+  "description": "A complete tutorial on building a Telegram bot with Node.js from BotFather setup through commands, keyboards, webhooks, and deploying a store notification bot to production.",
+  "author": { "@type": "Person", "name": "Mahmoud Hamdy", "url": "https://mahmoodhamdi.github.io/cv/" },
+  "datePublished": "2026-03-18",
+  "dateModified": "2026-03-18",
+  "url": "https://mahmoodhamdi.github.io/cv/blog/posts/telegram-bot-nodejs-tutorial.html",
+  "publisher": { "@type": "Person", "name": "Mahmoud Hamdy" }
+}
+</script>
+</head>
+<body>
+
+<div class="read-progress" id="rp" aria-hidden="true"></div>
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+
+<!-- Top Bar -->
+<header class="blog-topbar" role="banner">
+  <a href="../" class="back-link" aria-label="Back to blog">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    <span id="back-label">Blog</span>
+  </a>
+  <div class="topbar-right">
+    <button class="t-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg class="ic-light" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="ic-dark" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <div class="lang-tog" role="group" aria-label="Language selection">
+      <button class="l-btn on" onclick="setLang('en')">EN</button>
+      <button class="l-btn" onclick="setLang('ar')">عربي</button>
+    </div>
+  </div>
+</header>
+
+<div class="post-layout">
+
+  <article class="article-main" id="main-article">
+
+    <header class="post-header">
+      <div class="post-header-meta">
+        <span class="post-cat">Tutorial</span>
+        <span class="post-readtime">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          11 min read
+        </span>
+      </div>
+      <h1 id="post-title">Building a Telegram Bot with Node.js — Zero to Production</h1>
+      <div class="author-card">
+        <div class="author-avatar" aria-hidden="true"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path d="M30 82L45 38L60 65L75 38L90 82" stroke="url(#blg)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><line x1="38" y1="68" x2="82" y2="68" stroke="rgba(56,189,248,0.5)" stroke-width="1.5"/><defs><linearGradient id="blg" x1="30" y1="38" x2="90" y2="82"><stop offset="0%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#818cf8"/></linearGradient></defs></svg></div>
+        <div class="author-info">
+          <div class="author-name">Mahmoud Hamdy</div>
+          <div class="post-publish-date">March 18, 2026</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- EN Content -->
+    <div id="en-content">
+      <div class="post-body">
+
+        <p>Telegram bots are one of the most developer-friendly automation tools available today. No approval process, no template reviews, no per-conversation fees. You create a bot in seconds through @BotFather, write your Node.js code, and you are live. I have built over a dozen Telegram bots — notification systems for e-commerce stores, admin panels for internal operations, customer-facing support bots — and the pattern is always the same: fast to build, easy to deploy, and incredibly reliable. This tutorial takes you from zero to a deployed production bot.</p>
+
+        <h2 id="why-telegram">Why Telegram for Bots?</h2>
+        <p>Telegram's bot API is free, has no rate limits on incoming messages (only outgoing: 30 messages/second per bot), supports rich media out of the box, and has 900 million monthly active users as of 2026. In the MENA region, Telegram has surged in popularity — particularly in Egypt, Saudi Arabia, and the UAE — making it a natural choice for customer-facing automation. The API is also significantly more developer-friendly than WhatsApp's: no approval needed, no templates required, and you can test locally without a public HTTPS endpoint (long polling works in development).</p>
+
+        <h2 id="botfather-setup">BotFather Setup</h2>
+        <p>Creating a bot takes two minutes. Open Telegram, search for <strong>@BotFather</strong>, and send <code>/newbot</code>. You will be prompted for a name and a username (must end in "bot"). BotFather instantly returns your bot token — a string like <code>7234567890:AAHdqTcvCH1vGWJxfSeofSh0riPEiYZ5-OY</code>. Store this in your <code>.env</code> file as <code>TELEGRAM_BOT_TOKEN</code> and never commit it to version control.</p>
+
+        <pre><code># .env
+TELEGRAM_BOT_TOKEN=7234567890:AAHdqTcvCH1vGWJxfSeofSh0riPEiYZ5-OY
+NODE_ENV=development</code></pre>
+
+        <h2 id="project-setup">Project Setup with Telegraf</h2>
+        <p><code>telegraf</code> is the de-facto standard Node.js library for Telegram bots. It is well-maintained, TypeScript-native, and supports all Telegram Bot API features including scenes, sessions, and middleware. Install it alongside TypeScript:</p>
+
+        <pre><code>npm init -y
+npm install telegraf dotenv
+npm install -D typescript ts-node @types/node nodemon
+npx tsc --init</code></pre>
+
+        <pre><code>// src/index.ts
+import { Telegraf } from 'telegraf';
+import * as dotenv from 'dotenv';
+dotenv.config();
+
+const bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN!);
+
+bot.start(ctx => ctx.reply('Welcome! Send /help to see what I can do.'));
+bot.help(ctx => ctx.reply('Commands:\n/start — Introduction\n/status — Bot status\n/menu — Main menu'));
+
+bot.launch();
+console.log('Bot is running...');
+
+// Graceful shutdown
+process.once('SIGINT', () => bot.stop('SIGINT'));
+process.once('SIGTERM', () => bot.stop('SIGTERM'));</code></pre>
+
+        <h2 id="commands">Registering Commands</h2>
+        <p>Registering commands in @BotFather (via <code>/setcommands</code>) enables the blue "/" autocomplete menu in Telegram's interface. Your bot should register the same commands programmatically via the API for consistency:</p>
+
+        <pre><code>// src/commands.ts
+import { Telegraf } from 'telegraf';
+
+export function registerCommands(bot: Telegraf) {
+  bot.command('start', async ctx => {
+    const name = ctx.from.first_name;
+    await ctx.reply(
+      `Hello ${name}! I am your store assistant.\n\n` +
+      `Use /track to check an order\n` +
+      `Use /menu for all options\n` +
+      `Use /help if you need assistance`
+    );
+  });
+
+  bot.command('status', async ctx => {
+    await ctx.reply('All systems operational. Response time: < 1s.');
+  });
+
+  // Handle plain text (non-command) messages
+  bot.on('text', async ctx => {
+    const text = ctx.message.text.toLowerCase();
+    if (text.includes('order') || text.includes('طلب')) {
+      await ctx.reply('To track your order, please send /track followed by your order number.');
+    } else {
+      await ctx.reply('I did not understand that. Send /help for available commands.');
+    }
+  });
+}</code></pre>
+
+        <h2 id="inline-keyboards">Inline Keyboards and Callbacks</h2>
+        <p>Inline keyboards are buttons attached to a specific message. They are the most powerful UX tool in the Telegram bot toolkit. When a user taps a button, Telegram sends a <code>callback_query</code> event with the button's data string. You handle it with <code>bot.action()</code>:</p>
+
+        <pre><code>// src/menus.ts
+import { Markup } from 'telegraf';
+
+export function mainMenuKeyboard() {
+  return Markup.inlineKeyboard([
+    [
+      Markup.button.callback('Track Order', 'track_order'),
+      Markup.button.callback('My Orders', 'my_orders'),
+    ],
+    [
+      Markup.button.callback('Browse Products', 'browse_products'),
+      Markup.button.callback('Contact Support', 'contact_support'),
+    ],
+  ]);
+}
+
+export function registerCallbacks(bot: Telegraf) {
+  bot.command('menu', async ctx => {
+    await ctx.reply('What would you like to do?', mainMenuKeyboard());
+  });
+
+  bot.action('track_order', async ctx => {
+    await ctx.answerCbQuery(); // Remove "loading" spinner
+    await ctx.reply('Please enter your order reference number (e.g. ORD-1234):');
+    // Set session state — handled in next message
+  });
+
+  bot.action('contact_support', async ctx => {
+    await ctx.answerCbQuery();
+    await ctx.reply(
+      'Our support team is available 9AM–9PM (AST).\n' +
+      'You can also email us at support@store.com',
+      Markup.inlineKeyboard([
+        [Markup.button.url('Send Email', 'mailto:support@store.com')],
+        [Markup.button.callback('Back to Menu', 'main_menu')],
+      ])
+    );
+  });
+
+  bot.action('main_menu', async ctx => {
+    await ctx.answerCbQuery();
+    await ctx.editMessageReplyMarkup(mainMenuKeyboard().reply_markup);
+  });
+}</code></pre>
+
+        <h2 id="sessions">Session State with Telegraf Scenes</h2>
+        <p>For multi-step conversations (like an order tracking flow that asks for an order number then shows the result), Telegraf's scene system is the cleanest approach. A scene is a self-contained conversation state that captures user input across multiple messages:</p>
+
+        <pre><code>// src/scenes/track-order.ts
+import { Scenes, Markup } from 'telegraf';
+import { SallaClient } from '../salla/client';
+
+export const trackOrderScene = new Scenes.WizardScene<Scenes.WizardContext>(
+  'TRACK_ORDER',
+
+  // Step 1: Ask for order number
+  async ctx => {
+    await ctx.reply('Enter your order number:');
+    return ctx.wizard.next();
+  },
+
+  // Step 2: Fetch and display order
+  async ctx => {
+    if (!ctx.message || !('text' in ctx.message)) {
+      await ctx.reply('Please enter a text order number.');
+      return;
+    }
+    const orderId = ctx.message.text.trim();
+    try {
+      const salla = new SallaClient(process.env.SALLA_TOKEN!);
+      const order = await salla.getOrderByReference(orderId);
+      await ctx.reply(
+        `Order #${order.reference_id}\n` +
+        `Status: ${order.status.name}\n` +
+        `Total: ${order.amounts.total.amount} SAR\n` +
+        `Placed: ${new Date(order.date.date).toLocaleDateString('en-SA')}`
+      );
+    } catch {
+      await ctx.reply('Order not found. Double-check the number and try again.');
+    }
+    return ctx.scene.leave();
+  }
+);
+
+// Register in bot setup:
+// const stage = new Scenes.Stage([trackOrderScene]);
+// bot.use(session());
+// bot.use(stage.middleware());</code></pre>
+
+        <h2 id="external-api">Integrating External APIs</h2>
+        <p>Telegram bots become genuinely powerful when connected to external data sources. I have used this pattern to connect bots to Salla order APIs, weather services, database queries, and internal admin APIs. The key principle is to always handle API errors gracefully — if an external call fails, the bot should send a meaningful message, not crash silently:</p>
+
+        <pre><code>// src/lib/safe-api-call.ts
+export async function safeApiCall<T>(
+  fn: () => Promise<T>,
+  fallbackMessage: string
+): Promise<T | null> {
+  try {
+    return await fn();
+  } catch (error) {
+    console.error('[API Error]', error instanceof Error ? error.message : error);
+    return null;
+  }
+}
+
+// Usage in a command handler:
+bot.command('stats', async ctx => {
+  const stats = await safeApiCall(
+    () => analyticsClient.getDailyStats(),
+    'Could not load stats right now.'
+  );
+
+  if (!stats) {
+    await ctx.reply('Stats are unavailable at the moment. Try again in a minute.');
+    return;
+  }
+
+  await ctx.reply(
+    `Today's stats:\n` +
+    `Orders: ${stats.orderCount}\n` +
+    `Revenue: SAR ${stats.revenue.toFixed(2)}\n` +
+    `New customers: ${stats.newCustomers}`
+  );
+});</code></pre>
+
+        <h2 id="webhook-vs-polling">Webhook vs. Long Polling</h2>
+        <p>Telegraf supports two modes. Long polling (<code>bot.launch()</code>) works out of the box for local development — the bot polls Telegram's servers for new updates every few seconds. It requires no public URL and is perfect for development. For production, webhooks are better: Telegram pushes updates to your server instantly, there is no polling overhead, and the bot is more responsive. Switch with one config change:</p>
+
+        <pre><code>// src/index.ts
+if (process.env.NODE_ENV === 'production') {
+  const WEBHOOK_URL = process.env.WEBHOOK_URL!; // e.g. https://yourdomain.com/webhook
+  bot.launch({
+    webhook: {
+      domain: WEBHOOK_URL,
+      port: parseInt(process.env.PORT ?? '3000'),
+    },
+  });
+} else {
+  bot.launch(); // Long polling for local dev
+}</code></pre>
+
+        <h2 id="store-notification-bot">Building a Store Notification Bot</h2>
+        <p>This is the practical end-goal I build most often: a bot that notifies a merchant's Telegram channel every time a new order comes in from their Salla store. The bot runs alongside the webhook server. When a new order is received, it formats a rich message with order details and sends it to the merchant's private group or channel:</p>
+
+        <pre><code>// src/notifications/store-alerts.ts
+import { Telegraf } from 'telegraf';
+import type { SallaOrder } from '../salla/types';
+
+const ALERT_CHANNEL_ID = process.env.TELEGRAM_ALERT_CHANNEL!;
+
+export async function sendNewOrderAlert(bot: Telegraf, order: SallaOrder): Promise<void> {
+  const itemLines = order.items
+    .map(item => `  • ${item.name} × ${item.quantity} — SAR ${item.total}`)
+    .join('\n');
+
+  const message =
+    `<b>New Order Received</b>\n\n` +
+    `Order: <code>#${order.reference_id}</code>\n` +
+    `Customer: ${order.customer.first_name} ${order.customer.last_name}\n` +
+    `Phone: ${order.customer.mobile ?? 'N/A'}\n` +
+    `Total: <b>SAR ${order.amounts.total.amount}</b>\n\n` +
+    `Items:\n${itemLines}\n\n` +
+    `Payment: ${order.payment_method}\n` +
+    `Placed: ${new Date(order.date.date).toLocaleString('en-SA', { timeZone: 'Asia/Riyadh' })}`;
+
+  await bot.telegram.sendMessage(ALERT_CHANNEL_ID, message, {
+    parse_mode: 'HTML',
+  });
+}</code></pre>
+
+        <h2 id="error-handling">Error Handling and Reliability</h2>
+        <p>Telegram bots in production face two reliability challenges: Telegram API timeouts (rare but they happen) and unhandled promise rejections that crash the process. Telegraf has a built-in error handler:</p>
+
+        <pre><code>bot.catch((err, ctx) => {
+  console.error(`[Bot Error] User: ${ctx.from?.id}`, err);
+  // Only reply if we are not already in an error handler to avoid loops
+  ctx.reply('An error occurred. Please try again.').catch(() => {});
+});</code></pre>
+
+        <p>For deployment, I always use PM2 with <code>--max-restarts 10</code> and a <code>--restart-delay 3000</code>. This handles transient errors without hammering the server. Log the restart events to catch patterns — if a bot restarts 10 times in an hour, something structural is wrong and needs investigation.</p>
+
+        <h2 id="deployment-vps">Deploying to a VPS</h2>
+        <p>The full deployment on a fresh Ubuntu 22.04 VPS takes about 15 minutes:</p>
+
+        <pre><code># On the server
+# 1. Install Node.js 20 via nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+source ~/.bashrc && nvm install 20
+
+# 2. Clone your project
+git clone https://github.com/yourname/telegram-bot.git && cd telegram-bot
+npm install && npm run build
+
+# 3. Create .env with production values
+cp .env.example .env && nano .env
+
+# 4. Install PM2 and start
+npm install -g pm2
+pm2 start dist/index.js --name telegram-bot
+pm2 save && pm2 startup
+
+# 5. If using webhooks — set up Nginx + Certbot for HTTPS
+sudo apt install nginx certbot python3-certbot-nginx -y
+sudo certbot --nginx -d yourdomain.com</code></pre>
+
+      </div>
+    </div>
+
+    <!-- AR Content -->
+    <div id="ar-content" style="display:none" dir="rtl">
+      <div class="post-body ar-content">
+
+        <p>بوتات تيليجرام هي من أكثر أدوات الأتمتة سهولةً للمطورين اليوم. لا يوجد عملية موافقة، ولا مراجعة قوالب، ولا رسوم لكل محادثة. تنشئ بوتًا في ثوانٍ عبر @BotFather، وتكتب كود Node.js، وتكون جاهزًا. لقد بنيت أكثر من اثني عشر بوت تيليجرام — أنظمة إشعار لمتاجر إلكترونية، ولوحات إدارية للعمليات الداخلية، وبوتات دعم موجهة للعملاء — والنمط دائمًا نفسه: سريع البناء، سهل النشر، وموثوقية عالية. هذا الدليل يأخذك من الصفر إلى بوت إنتاجي منشور فعلًا.</p>
+
+        <h2 id="why-telegram-ar">لماذا تيليجرام للبوتات؟</h2>
+        <p>تيليجرام Bot API مجاني، وليس له حدود معدل على الرسائل الواردة (فقط الصادرة: 30 رسالة/ثانية لكل بوت)، ويدعم الوسائط الغنية من الصندوق. في منطقة الشرق الأوسط وشمال أفريقيا، شهد تيليجرام طفرة كبيرة — لا سيما في مصر والسعودية والإمارات — مما يجعله خيارًا طبيعيًا للأتمتة الموجهة للعملاء. الـ API أيضًا أكثر مرونة للمطورين من واتساب: لا موافقة مطلوبة، ولا قوالب إلزامية، ويمكنك الاختبار محليًا بدون عنوان HTTPS عام (Long Polling يعمل في التطوير).</p>
+
+        <h2 id="botfather-setup-ar">إعداد BotFather</h2>
+        <p>إنشاء بوت يستغرق دقيقتين. افتح تيليجرام وابحث عن <strong>@BotFather</strong> وأرسل <code>/newbot</code>. ستُطلب منك الاسم ثم اسم المستخدم (يجب أن ينتهي بـ "bot"). يعود BotFather فورًا بتوكن البوت — سلسلة مثل <code>7234567890:AAHdqTcvCH1vGWJxfSeofSh0riPEiYZ5-OY</code>. خزّنه في ملف <code>.env</code> باسم <code>TELEGRAM_BOT_TOKEN</code> ولا ترفعه أبدًا إلى أي مستودع.</p>
+
+        <h2 id="project-setup-ar">إعداد المشروع مع Telegraf</h2>
+        <p><code>telegraf</code> هو المكتبة القياسية de-facto لبوتات تيليجرام في Node.js. محافظ عليها جيدًا، دعم TypeScript أصلي، وتدعم جميع ميزات Telegram Bot API بما في ذلك الـ Scenes والـ Sessions والـ Middleware. قم بتثبيتها:</p>
+
+        <pre><code>npm install telegraf dotenv
+npm install -D typescript ts-node @types/node nodemon</code></pre>
+
+        <pre><code>// src/index.ts
+import { Telegraf } from 'telegraf';
+import * as dotenv from 'dotenv';
+dotenv.config();
+
+const bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN!);
+
+bot.start(ctx => ctx.reply('أهلًا! أرسل /help لترى ما أستطيع فعله.'));
+bot.help(ctx => ctx.reply('الأوامر:\n/start — مقدمة\n/status — حالة البوت\n/menu — القائمة الرئيسية'));
+
+bot.launch();
+console.log('البوت يعمل...');
+
+process.once('SIGINT', () => bot.stop('SIGINT'));
+process.once('SIGTERM', () => bot.stop('SIGTERM'));</code></pre>
+
+        <h2 id="commands-ar">تسجيل الأوامر</h2>
+        <p>تسجيل الأوامر في @BotFather يتيح قائمة الإكمال التلقائي للرمز "/" في واجهة تيليجرام. بوتك يجب أن يتعامل مع نفس الأوامر برمجيًا:</p>
+
+        <pre><code>// src/commands.ts
+export function registerCommands(bot: Telegraf) {
+  bot.command('start', async ctx => {
+    const name = ctx.from.first_name;
+    await ctx.reply(
+      `مرحبًا ${name}! أنا مساعد متجرك.\n\n` +
+      `/track — تتبع طلب\n` +
+      `/menu — جميع الخيارات\n` +
+      `/help — المساعدة`
+    );
+  });
+
+  // التعامل مع الرسائل النصية العادية
+  bot.on('text', async ctx => {
+    const text = ctx.message.text.toLowerCase();
+    if (text.includes('order') || text.includes('طلب')) {
+      await ctx.reply('لتتبع طلبك، أرسل /track متبوعًا برقم الطلب.');
+    } else {
+      await ctx.reply('لم أفهم ذلك. أرسل /help للأوامر المتاحة.');
+    }
+  });
+}</code></pre>
+
+        <h2 id="inline-keyboards-ar">لوحات المفاتيح المضمنة والـ Callbacks</h2>
+        <p>لوحات المفاتيح المضمنة (Inline Keyboards) هي أزرار مرفقة برسالة بعينها. وهي أقوى أداة UX في ترسانة بوتات تيليجرام. عندما يضغط المستخدم على زر، يرسل تيليجرام حدث <code>callback_query</code> مع سلسلة بيانات الزر. تتعامل معه عبر <code>bot.action()</code>:</p>
+
+        <pre><code>// src/menus.ts
+import { Markup } from 'telegraf';
+
+export function mainMenuKeyboard() {
+  return Markup.inlineKeyboard([
+    [
+      Markup.button.callback('تتبع طلب', 'track_order'),
+      Markup.button.callback('طلباتي', 'my_orders'),
+    ],
+    [
+      Markup.button.callback('تصفح المنتجات', 'browse_products'),
+      Markup.button.callback('التواصل مع الدعم', 'contact_support'),
+    ],
+  ]);
+}
+
+export function registerCallbacks(bot: Telegraf) {
+  bot.command('menu', async ctx => {
+    await ctx.reply('ماذا تريد أن تفعل؟', mainMenuKeyboard());
+  });
+
+  bot.action('track_order', async ctx => {
+    await ctx.answerCbQuery();
+    await ctx.reply('أدخل رقم مرجع طلبك (مثلًا: ORD-1234):');
+  });
+
+  bot.action('contact_support', async ctx => {
+    await ctx.answerCbQuery();
+    await ctx.reply(
+      'فريق الدعم متاح من 9 صباحًا حتى 9 مساءً.\n' +
+      'يمكنك أيضًا مراسلتنا على support@store.com',
+      Markup.inlineKeyboard([
+        [Markup.button.url('إرسال بريد', 'mailto:support@store.com')],
+        [Markup.button.callback('العودة للقائمة', 'main_menu')],
+      ])
+    );
+  });
+}</code></pre>
+
+        <h2 id="sessions-ar">إدارة الحالة مع Telegraf Scenes</h2>
+        <p>للمحادثات متعددة الخطوات كتدفق تتبع الطلب الذي يطلب رقمًا ثم يعرض النتيجة، نظام Scenes في Telegraf هو النهج الأنظف. الـ Scene هي حالة محادثة مستقلة تلتقط مدخلات المستخدم عبر رسائل متعددة:</p>
+
+        <pre><code>// src/scenes/track-order.ts
+import { Scenes } from 'telegraf';
+
+export const trackOrderScene = new Scenes.WizardScene<Scenes.WizardContext>(
+  'TRACK_ORDER',
+
+  // الخطوة 1: طلب رقم الطلب
+  async ctx => {
+    await ctx.reply('أدخل رقم طلبك:');
+    return ctx.wizard.next();
+  },
+
+  // الخطوة 2: جلب الطلب وعرضه
+  async ctx => {
+    if (!ctx.message || !('text' in ctx.message)) {
+      await ctx.reply('رجاءً أدخل رقمًا نصيًا.');
+      return;
+    }
+    const orderId = ctx.message.text.trim();
+    try {
+      const salla = new SallaClient(process.env.SALLA_TOKEN!);
+      const order = await salla.getOrderByReference(orderId);
+      await ctx.reply(
+        `طلب #${order.reference_id}\n` +
+        `الحالة: ${order.status.name}\n` +
+        `الإجمالي: ${order.amounts.total.amount} ريال`
+      );
+    } catch {
+      await ctx.reply('لم يُعثر على الطلب. تحقق من الرقم وأعد المحاولة.');
+    }
+    return ctx.scene.leave();
+  }
+);</code></pre>
+
+        <h2 id="store-notification-bot-ar">بناء بوت إشعارات المتجر</h2>
+        <p>هذا هو الهدف العملي الذي أبنيه في أغلب الأحيان: بوت يُشعر قناة تيليجرام الخاصة بالتاجر في كل مرة يرد طلب جديد من متجر سلة. البوت يعمل بجانب خادم الويب هوك. حين يصل طلب جديد، يُنسّق رسالة غنية بتفاصيل الطلب ويرسلها للمجموعة أو القناة الخاصة بالتاجر:</p>
+
+        <pre><code>// src/notifications/store-alerts.ts
+export async function sendNewOrderAlert(bot: Telegraf, order: SallaOrder): Promise<void> {
+  const itemLines = order.items
+    .map(item => `  • ${item.name} × ${item.quantity} — ${item.total} ريال`)
+    .join('\n');
+
+  const message =
+    `<b>طلب جديد وارد</b>\n\n` +
+    `الطلب: <code>#${order.reference_id}</code>\n` +
+    `العميل: ${order.customer.first_name} ${order.customer.last_name}\n` +
+    `الجوال: ${order.customer.mobile ?? 'غير متوفر'}\n` +
+    `الإجمالي: <b>${order.amounts.total.amount} ريال</b>\n\n` +
+    `المنتجات:\n${itemLines}\n\n` +
+    `طريقة الدفع: ${order.payment_method}`;
+
+  await bot.telegram.sendMessage(ALERT_CHANNEL_ID, message, {
+    parse_mode: 'HTML',
+  });
+}</code></pre>
+
+        <h2 id="webhook-vs-polling-ar">Webhook مقابل Long Polling</h2>
+        <p>Telegraf يدعم وضعين. Long Polling يعمل من الصندوق في التطوير المحلي — البوت يستعلم خوادم تيليجرام عن التحديثات الجديدة كل ثوانٍ قليلة. لا يحتاج عنوانًا عامًا ومثالي للتطوير. في الإنتاج، الويب هوك أفضل: تيليجرام يدفع التحديثات لخادمك فورًا دون أي تأخر.</p>
+
+        <h2 id="error-handling-ar">معالجة الأخطاء والموثوقية</h2>
+        <p>Telegraf لديه معالج أخطاء مدمج. دائمًا استخدمه — لا تتركه للـ Node.js process uncaughtException:</p>
+
+        <pre><code>bot.catch((err, ctx) => {
+  console.error(`[Bot Error] المستخدم: ${ctx.from?.id}`, err);
+  ctx.reply('حدث خطأ. الرجاء المحاولة مرة أخرى.').catch(() => {});
+});</code></pre>
+
+        <p>للنشر، أستخدم دائمًا PM2 مع <code>--max-restarts 10</code> و<code>--restart-delay 3000</code>. هذا يتعامل مع الأخطاء العابرة دون إرهاق الخادم. سجّل أحداث إعادة التشغيل لرصد الأنماط — إن أعاد البوت التشغيل 10 مرات في ساعة، فهناك شيء بنيوي يحتاج تحقيقًا.</p>
+
+      </div>
+    </div>
+
+    <!-- Share -->
+    <div class="share-section">
+      <span class="share-label" id="share-label">Share</span>
+      <div class="share-btns">
+        <a class="share-btn" id="tw-btn" href="https://twitter.com/intent/tweet?text=Building%20a%20Telegram%20Bot%20with%20Node.js&url=https%3A%2F%2Fmahmoodhamdi.github.io%2Fcv%2Fblog%2Fposts%2Ftelegram-bot-nodejs-tutorial.html" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Twitter
+        </a>
+        <a class="share-btn" id="li-btn" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fmahmoodhamdi.github.io%2Fcv%2Fblog%2Fposts%2Ftelegram-bot-nodejs-tutorial.html&title=Building%20a%20Telegram%20Bot%20with%20Node.js" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <button class="share-btn copy-btn" onclick="copyLink(this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          <span id="copy-label">Copy Link</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Related Posts -->
+    <div class="related-section">
+      <h3 id="related-title">Related Articles</h3>
+      <div class="related-grid">
+        <a href="whatsapp-business-bot-guide.html" class="related-card">
+          <span class="post-cat">Tutorial</span>
+          <h4>Building a WhatsApp Business Bot</h4>
+          <span>14 min read &middot; Mar 22, 2026</span>
+        </a>
+        <a href="building-salla-bot.html" class="related-card">
+          <span class="post-cat">Tutorial</span>
+          <h4>Building an AI-Powered Salla Bot</h4>
+          <span>8 min read &middot; Jan 15, 2026</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Post Nav -->
+    <nav class="post-nav" aria-label="Post navigation">
+      <a href="nextjs-arabic-website.html" class="post-nav-btn prev">
+        <span>Previous Post</span>
+        <strong>Building a Professional Arabic Website with Next.js</strong>
+      </a>
+      <a href="whatsapp-business-bot-guide.html" class="post-nav-btn next">
+        <span>Next Post</span>
+        <strong>Building a WhatsApp Business Bot</strong>
+      </a>
+    </nav>
+
+  </article>
+
+  <!-- TOC Sidebar -->
+  <aside class="toc-sidebar" aria-label="Table of contents">
+    <div class="toc-box">
+      <h4 id="toc-title">On This Page</h4>
+      <ul class="toc-list" id="toc-en">
+        <li><a href="#why-telegram">Why Telegram?</a></li>
+        <li><a href="#botfather-setup">BotFather Setup</a></li>
+        <li><a href="#project-setup">Project Setup</a></li>
+        <li><a href="#commands">Registering Commands</a></li>
+        <li><a href="#inline-keyboards">Inline Keyboards</a></li>
+        <li><a href="#sessions">Session &amp; Scenes</a></li>
+        <li><a href="#external-api">External API Integration</a></li>
+        <li><a href="#webhook-vs-polling">Webhook vs. Polling</a></li>
+        <li><a href="#store-notification-bot">Store Notification Bot</a></li>
+        <li><a href="#error-handling">Error Handling</a></li>
+        <li><a href="#deployment-vps">Deploying to VPS</a></li>
+      </ul>
+      <ul class="toc-list" id="toc-ar" style="display:none">
+        <li><a href="#why-telegram-ar">لماذا تيليجرام؟</a></li>
+        <li><a href="#botfather-setup-ar">إعداد BotFather</a></li>
+        <li><a href="#project-setup-ar">إعداد المشروع</a></li>
+        <li><a href="#commands-ar">تسجيل الأوامر</a></li>
+        <li><a href="#inline-keyboards-ar">لوحات المفاتيح</a></li>
+        <li><a href="#sessions-ar">الجلسات والـ Scenes</a></li>
+        <li><a href="#store-notification-bot-ar">بوت إشعارات المتجر</a></li>
+        <li><a href="#webhook-vs-polling-ar">Webhook مقابل Polling</a></li>
+        <li><a href="#error-handling-ar">معالجة الأخطاء</a></li>
+      </ul>
+    </div>
+  </aside>
+
+</div>
+
+<footer class="blog-footer" role="contentinfo">
+  <p>&copy; 2026 <a href="../../">Mahmoud Hamdy</a> &middot; <a href="../">Blog</a></p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  function toggleTheme(){
+    const h=document.documentElement;
+    const next=h.getAttribute('data-theme')==='dark'?'light':'dark';
+    h.setAttribute('data-theme',next);
+    localStorage.setItem('theme',next);
+  }
+  window.toggleTheme=toggleTheme;
+  const saved=localStorage.getItem('theme');
+  if(saved) document.documentElement.setAttribute('data-theme',saved);
+
+  const rp=document.getElementById('rp');
+  const pctEl=document.createElement('div');
+  pctEl.className='read-pct';
+  document.body.appendChild(pctEl);
+  window.addEventListener('scroll',()=>{
+    const max=document.documentElement.scrollHeight-window.innerHeight;
+    const pct=Math.round(window.scrollY/max*100);
+    rp.style.width=pct+'%';
+    pctEl.textContent=pct+'% read';
+    pctEl.classList.toggle('vis',window.scrollY>200);
+  },{passive:true});
+
+  document.querySelectorAll('.post-body pre').forEach(pre=>{
+    pre.style.position='relative';
+    const btn=document.createElement('button');
+    btn.className='code-copy-btn';
+    btn.textContent='Copy';
+    btn.addEventListener('click',()=>{
+      const code=pre.querySelector('code');
+      navigator.clipboard.writeText(code?code.textContent:pre.textContent).then(()=>{
+        btn.textContent='Copied!';
+        btn.classList.add('copied');
+        setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},2000);
+      });
+    });
+    pre.appendChild(btn);
+  });
+
+  function setLang(lang){
+    const isAr=lang==='ar';
+    document.documentElement.setAttribute('lang',lang);
+    document.documentElement.setAttribute('dir',isAr?'rtl':'ltr');
+    document.getElementById('en-content').style.display=isAr?'none':'block';
+    document.getElementById('ar-content').style.display=isAr?'block':'none';
+    document.getElementById('toc-en').style.display=isAr?'none':'block';
+    document.getElementById('toc-ar').style.display=isAr?'block':'none';
+    document.getElementById('post-title').textContent=isAr?'بناء بوت تيليجرام بـ Node.js — من الصفر للاحتراف':'Building a Telegram Bot with Node.js — Zero to Production';
+    document.getElementById('back-label').textContent=isAr?'المدونة':'Blog';
+    document.getElementById('share-label').textContent=isAr?'مشاركة':'Share';
+    document.getElementById('related-title').textContent=isAr?'مقالات ذات صلة':'Related Articles';
+    document.getElementById('copy-label').textContent=isAr?'نسخ الرابط':'Copy Link';
+    document.getElementById('toc-title').textContent=isAr?'في هذه الصفحة':'On This Page';
+    document.querySelectorAll('.l-btn').forEach(b=>{
+      b.classList.remove('on');
+      if((lang==='en'&&b.textContent.trim()==='EN')||(lang==='ar'&&b.textContent.trim()==='عربي')) b.classList.add('on');
+    });
+    localStorage.setItem('lang',lang);
+  }
+  window.setLang=setLang;
+  const savedLang=localStorage.getItem('lang');
+  if(savedLang) setLang(savedLang);
+
+  function copyLink(btn){
+    navigator.clipboard.writeText(window.location.href).then(()=>{
+      btn.classList.add('copied');
+      document.getElementById('copy-label').textContent='Copied!';
+      setTimeout(()=>{
+        btn.classList.remove('copied');
+        document.getElementById('copy-label').textContent='Copy Link';
+      },2000);
+    });
+  }
+  window.copyLink=copyLink;
+
+  document.body.classList.add('loaded');
+})();
+</script>
+<script src="../../js/analytics.js" defer></script>
+<script src="../../js/pwa.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building a Mobile App with Flutter — From Idea to Play Store — Mahmoud Hamdy</title>
+<meta name="description" content="A complete step-by-step guide to building and publishing a Flutter mobile app in 2026 — Clean Architecture, Bloc state management, FCM push notifications, Arabic RTL support, and Google Play publishing.">
+<meta name="author" content="Mahmoud Hamdy">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mahmoodhamdi.github.io/cv/blog/posts/flutter-app-from-scratch.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Building a Mobile App with Flutter — From Idea to Play Store">
+<meta property="og:description" content="Complete Flutter 2026 guide: Clean Architecture, Bloc, FCM, Arabic RTL, testing, and publishing to Google Play and App Store.">
+<meta property="og:url" content="https://mahmoodhamdi.github.io/cv/blog/posts/flutter-app-from-scratch.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Building a Mobile App with Flutter — From Idea to Play Store">
+<meta name="twitter:description" content="Complete Flutter 2026 guide from setup to Google Play publishing.">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="manifest" href="../../manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mahmoud CV">
+<link rel="apple-touch-icon" href="../../assets/icon-192.svg">
+<link rel="alternate" type="application/rss+xml" title="Mahmoud Hamdy — Blog" href="https://mahmoodhamdi.github.io/cv/blog/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="محمود حمدي — المدونة" href="https://mahmoodhamdi.github.io/cv/blog/feed-ar.xml" hreflang="ar">
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D0H1J8BSKJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-D0H1J8BSKJ');
+</script>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="../../css/themes.css">
+<link rel="stylesheet" href="../blog.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Building a Mobile App with Flutter — From Idea to Play Store",
+  "description": "A complete step-by-step guide to building and publishing a Flutter mobile app in 2026, covering Clean Architecture, Bloc state management, FCM, Arabic RTL, and Google Play publishing.",
+  "author": { "@type": "Person", "name": "Mahmoud Hamdy", "url": "https://mahmoodhamdi.github.io/cv/" },
+  "datePublished": "2026-03-12",
+  "dateModified": "2026-03-12",
+  "url": "https://mahmoodhamdi.github.io/cv/blog/posts/flutter-app-from-scratch.html",
+  "publisher": { "@type": "Person", "name": "Mahmoud Hamdy" }
+}
+</script>
+</head>
+<body>
+
+<div class="read-progress" id="rp" aria-hidden="true"></div>
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+
+<!-- Top Bar -->
+<header class="blog-topbar" role="banner">
+  <a href="../" class="back-link" aria-label="Back to blog">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    <span id="back-label">Blog</span>
+  </a>
+  <div class="topbar-right">
+    <button class="t-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg class="ic-light" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="ic-dark" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <div class="lang-tog" role="group" aria-label="Language selection">
+      <button class="l-btn on" onclick="setLang('en')">EN</button>
+      <button class="l-btn" onclick="setLang('ar')">عربي</button>
+    </div>
+  </div>
+</header>
+
+<div class="post-layout">
+
+  <!-- Article -->
+  <article class="article-main" id="main-article">
+
+    <header class="post-header">
+      <div class="post-header-meta">
+        <span class="post-cat">Tutorial</span>
+        <span class="post-readtime">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          16 min read
+        </span>
+      </div>
+      <h1 id="post-title">Building a Mobile App with Flutter — From Idea to Play Store</h1>
+      <div class="author-card">
+        <div class="author-avatar" aria-hidden="true"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path d="M30 82L45 38L60 65L75 38L90 82" stroke="url(#blg)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><line x1="38" y1="68" x2="82" y2="68" stroke="rgba(56,189,248,0.5)" stroke-width="1.5"/><defs><linearGradient id="blg" x1="30" y1="38" x2="90" y2="82"><stop offset="0%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#818cf8"/></linearGradient></defs></svg></div>
+        <div class="author-info">
+          <div class="author-name">Mahmoud Hamdy</div>
+          <div class="post-publish-date">March 12, 2026</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- EN Content -->
+    <div id="en-content">
+      <div class="post-body">
+
+        <p>Flutter has cemented itself as the top cross-platform mobile framework heading into 2026. With a single codebase you can target Android, iOS, web, and desktop — and the Dart language has matured into a genuinely productive tool. I have shipped three production apps with Flutter: Escore (a sports scoring app), Wasalni (a ride-hailing app for a regional client), and a Hadith reference app with full offline support. This guide distils everything I learned across those projects into one end-to-end walkthrough.</p>
+
+        <h2 id="why-flutter-2026">Why Flutter in 2026?</h2>
+        <p>React Native is still a strong contender, but Flutter's main advantages are consistent rendering (it draws its own pixels via Skia/Impeller), near-native performance, and a mature ecosystem. The Impeller rendering engine, now the default on both iOS and Android, eliminated most of the jank issues that plagued early Flutter apps. Google's investment in the framework shows no signs of slowing: Flutter 3.x ships new features every quarter, and the community package ecosystem on pub.dev has over 40,000 packages.</p>
+        <p>For Arabic-speaking markets specifically, Flutter's built-in RTL support is far easier to configure than React Native's. You declare <code>Directionality.rtl</code> once, and the entire widget tree mirrors correctly — including navigation drawer positions, icon alignment, and text flow.</p>
+
+        <h2 id="setup">Environment Setup</h2>
+        <p>Install Flutter via the official installer or via FVM (Flutter Version Manager) if you need to switch versions across projects. FVM is strongly recommended for teams:</p>
+
+        <pre><code># Install FVM
+dart pub global activate fvm
+
+# Install and use a specific Flutter version
+fvm install 3.29.0
+fvm use 3.29.0
+
+# Verify
+fvm flutter --version</code></pre>
+
+        <p>For Android, you need Android Studio with the SDK Platform for API 34+. For iOS, Xcode 16+ on macOS is required. Run <code>flutter doctor</code> to check your setup — fix every red item before writing any code. The most common issues are missing Android licenses (<code>flutter doctor --android-licenses</code>) and Xcode Command Line Tools.</p>
+
+        <h2 id="clean-architecture">Clean Architecture in Flutter</h2>
+        <p>Clean Architecture splits your app into three layers: Data, Domain, and Presentation. This might feel over-engineered for a small app, but it pays off immediately when you need to swap an API, add offline caching, or write unit tests without mocking the entire world.</p>
+
+        <pre><code>lib/
+├── core/
+│   ├── error/           # Failures, exceptions
+│   ├── network/         # Dio client, interceptors
+│   └── utils/           # Constants, extensions
+├── features/
+│   └── auth/
+│       ├── data/
+│       │   ├── datasources/    # Remote & local data sources
+│       │   ├── models/         # JSON models (extends entities)
+│       │   └── repositories/   # Repository implementations
+│       ├── domain/
+│       │   ├── entities/       # Pure Dart classes
+│       │   ├── repositories/   # Abstract interfaces
+│       │   └── usecases/       # Single-responsibility use cases
+│       └── presentation/
+│           ├── bloc/           # Bloc/Cubit
+│           ├── pages/          # Screens
+│           └── widgets/        # Feature-specific widgets
+└── injection_container.dart    # GetIt service locator</code></pre>
+
+        <p>The <strong>Domain layer</strong> has zero Flutter dependencies — only pure Dart. This means your use cases and entities are fully testable without a device or emulator. The <strong>Data layer</strong> implements the domain repository interfaces and handles JSON parsing, Dio calls, and Hive/SQLite caching. The <strong>Presentation layer</strong> owns the UI and Bloc logic.</p>
+
+        <h2 id="widgets-navigation">Widgets, Layouts, and Navigation</h2>
+        <p>Flutter's widget system is compositional — every UI element, from padding to a full screen, is a widget. The most important layout widgets to master are <code>Column</code>, <code>Row</code>, <code>Stack</code>, <code>Expanded</code>, <code>Flexible</code>, and <code>SliverList</code> for long scrolling content. For responsive layouts, use <code>LayoutBuilder</code> and <code>MediaQuery</code>.</p>
+        <p>For navigation, GoRouter is the community standard in 2026. It supports deep linking, nested navigation, and redirect guards for auth flows:</p>
+
+        <pre><code>final router = GoRouter(
+  initialLocation: '/home',
+  redirect: (context, state) {
+    final isLoggedIn = context.read&lt;AuthBloc&gt;().state is AuthAuthenticated;
+    final isOnAuth = state.matchedLocation.startsWith('/auth');
+    if (!isLoggedIn && !isOnAuth) return '/auth/login';
+    if (isLoggedIn && isOnAuth) return '/home';
+    return null;
+  },
+  routes: [
+    GoRoute(path: '/home', builder: (_, __) => const HomeScreen()),
+    GoRoute(
+      path: '/auth',
+      routes: [
+        GoRoute(path: 'login', builder: (_, __) => const LoginScreen()),
+        GoRoute(path: 'register', builder: (_, __) => const RegisterScreen()),
+      ],
+    ),
+  ],
+);</code></pre>
+
+        <h2 id="bloc-state">Bloc and Cubit State Management</h2>
+        <p>The Bloc library is the most popular state management solution for production Flutter apps. Cubit is a simplified version of Bloc — use Cubit when you have simple state transitions, Bloc when you need event-driven logic with history or complex transformations.</p>
+
+        <pre><code>// Simple Cubit example
+class CounterCubit extends Cubit&lt;int&gt; {
+  CounterCubit() : super(0);
+  void increment() =&gt; emit(state + 1);
+  void decrement() =&gt; emit(state - 1);
+}
+
+// Full Bloc example for auth
+sealed class AuthEvent {}
+class AuthLoginRequested extends AuthEvent {
+  final String email, password;
+  AuthLoginRequested(this.email, this.password);
+}
+
+sealed class AuthState {}
+class AuthInitial extends AuthState {}
+class AuthLoading extends AuthState {}
+class AuthAuthenticated extends AuthState { final User user; AuthAuthenticated(this.user); }
+class AuthError extends AuthState { final String message; AuthError(this.message); }
+
+class AuthBloc extends Bloc&lt;AuthEvent, AuthState&gt; {
+  final LoginUseCase loginUseCase;
+  AuthBloc(this.loginUseCase) : super(AuthInitial()) {
+    on&lt;AuthLoginRequested&gt;(_onLogin);
+  }
+
+  Future&lt;void&gt; _onLogin(AuthLoginRequested event, Emitter&lt;AuthState&gt; emit) async {
+    emit(AuthLoading());
+    final result = await loginUseCase(LoginParams(event.email, event.password));
+    result.fold(
+      (failure) =&gt; emit(AuthError(failure.message)),
+      (user) =&gt; emit(AuthAuthenticated(user)),
+    );
+  }
+}</code></pre>
+
+        <h2 id="api-integration">API Integration with Dio</h2>
+        <p>Dio is the HTTP client of choice for Flutter. Set up interceptors for auth token injection, error handling, and logging in one place rather than spreading that logic across every repository:</p>
+
+        <pre><code>class AppDio {
+  static Dio getInstance() {
+    final dio = Dio(BaseOptions(baseUrl: AppConstants.baseUrl));
+    dio.interceptors.addAll([
+      AuthInterceptor(),
+      LogInterceptor(responseBody: true),
+      RetryInterceptor(dio: dio, retries: 2),
+    ]);
+    return dio;
+  }
+}
+
+class AuthInterceptor extends Interceptor {
+  @override
+  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
+    final token = SecureStorage.getToken();
+    if (token != null) options.headers['Authorization'] = 'Bearer $token';
+    handler.next(options);
+  }
+
+  @override
+  void onError(DioException err, ErrorInterceptorHandler handler) async {
+    if (err.response?.statusCode == 401) {
+      final refreshed = await AuthService.refresh();
+      if (refreshed) return handler.resolve(await _retry(err.requestOptions));
+    }
+    handler.next(err);
+  }
+}</code></pre>
+
+        <h2 id="offline-storage">Local Storage and Offline Support</h2>
+        <p>For the Hadith app, offline-first was not optional — users in areas with poor connectivity needed full functionality. The strategy: cache API responses in Hive (a fast NoSQL box for Flutter) and expose a repository that tries the network first and falls back to cache.</p>
+        <p>Use <code>flutter_secure_storage</code> for tokens, <code>shared_preferences</code> for simple key-value settings, <code>hive</code> or <code>isar</code> for structured offline data, and <code>sqflite</code> if you need relational queries.</p>
+
+        <h2 id="push-notifications">Push Notifications with FCM</h2>
+        <p>Firebase Cloud Messaging (FCM) is the standard for Flutter push notifications. After adding the <code>firebase_messaging</code> package and initializing Firebase, handle three scenarios: foreground messages (show a local notification), background messages (handle in a top-level Dart function), and notification taps (navigate to the correct screen).</p>
+
+        <pre><code>Future&lt;void&gt; _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  print('Background message: ${message.messageId}');
+}
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  runApp(const MyApp());
+}
+
+// In your notification setup
+FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+  // Show local notification via flutter_local_notifications
+  localNotifications.show(
+    message.hashCode,
+    message.notification?.title,
+    message.notification?.body,
+    const NotificationDetails(/* ... */),
+  );
+});</code></pre>
+
+        <h2 id="rtl-arabic">Arabic RTL Support</h2>
+        <p>Flutter handles RTL beautifully when you follow the right patterns. Wrap your <code>MaterialApp</code> with the supported locales and delegate, and avoid hardcoded <code>EdgeInsets.only(left: ...)&nbsp;</code> — use <code>EdgeInsetsDirectional</code> instead:</p>
+
+        <pre><code>MaterialApp(
+  supportedLocales: const [Locale('en'), Locale('ar')],
+  localizationsDelegates: const [
+    AppLocalizations.delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+  ],
+  // ...
+)
+
+// Use directional padding, not fixed left/right
+Padding(
+  padding: const EdgeInsetsDirectional.only(start: 16, end: 8),
+  child: Text(label),
+)</code></pre>
+
+        <p>In the Wasalni app, we supported both Arabic and English with <code>easy_localization</code> and stored the user's locale preference in SharedPreferences. The navigation drawer, back buttons, and icon alignment all flipped automatically.</p>
+
+        <h2 id="testing">Testing</h2>
+        <p>Flutter supports three test types: unit tests (fast, no device needed), widget tests (render a widget in isolation), and integration tests (full app on a device/emulator). Aim for high coverage on use cases and repositories — those are the critical business logic layers.</p>
+
+        <pre><code>// Unit test for a use case
+void main() {
+  late LoginUseCase useCase;
+  late MockAuthRepository mockRepo;
+
+  setUp(() {
+    mockRepo = MockAuthRepository();
+    useCase = LoginUseCase(mockRepo);
+  });
+
+  test('should return User when login succeeds', () async {
+    when(mockRepo.login(any, any)).thenAnswer((_) async =&gt; Right(tUser));
+    final result = await useCase(LoginParams('test@test.com', 'password'));
+    expect(result, Right(tUser));
+    verify(mockRepo.login('test@test.com', 'password'));
+    verifyNoMoreInteractions(mockRepo);
+  });
+}</code></pre>
+
+        <h2 id="release-build">Building a Release</h2>
+        <p>Before building, update your <code>pubspec.yaml</code> version (<code>version: 1.0.0+1</code>) and sign your Android app. Generate a keystore once and never commit it to git:</p>
+
+        <pre><code># Generate keystore
+keytool -genkey -v -keystore ~/upload-keystore.jks \
+  -keyalg RSA -keysize 2048 -validity 10000 \
+  -alias upload
+
+# Build Android App Bundle (preferred over APK for Play Store)
+flutter build appbundle --release
+
+# Build APK for direct distribution
+flutter build apk --release --split-per-abi
+
+# Build iOS (macOS only)
+flutter build ipa --release</code></pre>
+
+        <h2 id="play-store">Google Play Publishing Step-by-Step</h2>
+        <p>Publishing to Google Play involves several steps. First, create a Google Play Console account ($25 one-time fee). Then:</p>
+        <ol>
+          <li>Create a new app in the Console and fill in the store listing: title, short description (80 chars max), full description, screenshots (at least 2 per form factor), feature graphic (1024x500), and app icon (512x512 PNG).</li>
+          <li>Set up content rating by completing the questionnaire — this is mandatory before any release.</li>
+          <li>Configure pricing and distribution (countries, free/paid).</li>
+          <li>Upload your AAB to the Internal Testing track first. Share with testers via email and verify the app installs and runs correctly.</li>
+          <li>Promote to Closed Testing (beta) and gather feedback.</li>
+          <li>Submit to Production review. Google's review typically takes 1–3 days for new apps, faster for updates.</li>
+        </ol>
+        <p>The most common rejection reason is incomplete store listing content or policy violations (especially around permissions). Only request permissions you actually use, and add a privacy policy URL — it is required for any app that accesses personal data.</p>
+
+        <h2 id="app-store-overview">Apple App Store Overview</h2>
+        <p>App Store submission requires an Apple Developer account ($99/year). The process is similar but stricter: use Xcode to archive the IPA, upload via Xcode Organizer or Transporter, then submit via App Store Connect. Apple's review is more thorough and typically takes 24–48 hours but can extend to a week for new apps. Common rejection reasons: crashes on review device, broken links in the app, incomplete metadata, and not following Human Interface Guidelines.</p>
+
+        <h2 id="common-mistakes">Common Mistakes to Avoid</h2>
+        <p>After three shipped Flutter apps, these are the mistakes that cost me the most time. First, do not nest <code>Column</code> inside an unbounded height container — this causes "RenderFlex children have non-zero flex but incoming height constraints are unbounded" errors. Use <code>Expanded</code> or set explicit heights. Second, never call <code>setState</code> from within <code>initState</code> synchronously. Third, always dispose controllers (<code>TextEditingController</code>, <code>AnimationController</code>, <code>ScrollController</code>) in the <code>dispose</code> method to avoid memory leaks. Fourth, avoid rebuilding expensive widgets unnecessarily — use <code>const</code> constructors wherever possible. Fifth, test on a real low-end device before release. An app that runs smoothly on a flagship phone can be unusable on a mid-range device.</p>
+
+      </div>
+    </div>
+
+    <!-- AR Content -->
+    <div id="ar-content" style="display:none" dir="rtl">
+      <div class="post-body ar-content">
+
+        <p>رسّخ Flutter مكانته كأفضل إطار عمل للتطوير متعدد المنصات مع دخولنا عام 2026. بقاعدة كود واحدة يمكنك استهداف أندرويد وiOS والويب وسطح المكتب — وقد نضجت لغة Dart لتصبح أداة إنتاجية حقيقية. لقد أطلقت ثلاثة تطبيقات إنتاجية بـ Flutter: Escore (تطبيق لنتائج المباريات الرياضية)، وWasalni (تطبيق توصيل لعميل إقليمي)، وتطبيق مرجع حديث بدعم كامل للعمل بدون إنترنت. هذا الدليل يُقطّر كل ما تعلمته عبر هذه المشاريع في عرض شامل من البداية للنهاية.</p>
+
+        <h2 id="why-flutter-2026-ar">لماذا Flutter في 2026؟</h2>
+        <p>لا يزال React Native منافسًا قويًا، لكن مزايا Flutter الرئيسية هي الرسم المتسق (يرسم البكسلات بنفسه عبر Skia/Impeller)، والأداء شبه الأصلي، ونظام بيئي ناضج. محرك Impeller، الذي أصبح افتراضيًا على iOS وأندرويد، أزال معظم مشكلات التقطع التي أثقلت التطبيقات المبكرة. استثمار Google في الإطار لا تبدو عليه علامات التباطؤ: Flutter 3.x يُطلق ميزات جديدة كل ربع، ونظام الحزم على pub.dev تجاوز 40,000 حزمة.</p>
+        <p>بالنسبة للأسواق الناطقة بالعربية تحديدًا، دعم RTL المدمج في Flutter أسهل بكثير في الإعداد مقارنةً بـ React Native. تُعلن <code>Directionality.rtl</code> مرة واحدة، ويُعكس شجرة الودجت بالكامل بشكل صحيح — بما في ذلك مواضع الأدراج التنقلية، ومحاذاة الأيقونات، وتدفق النص.</p>
+
+        <h2 id="setup-ar">إعداد البيئة</h2>
+        <p>ثبّت Flutter عبر المثبت الرسمي أو عبر FVM (مدير إصدارات Flutter) إذا احتجت للتبديل بين الإصدارات عبر المشاريع. FVM موصى به بشدة للفرق:</p>
+
+        <pre><code># تثبيت FVM
+dart pub global activate fvm
+
+# تثبيت واستخدام إصدار محدد من Flutter
+fvm install 3.29.0
+fvm use 3.29.0
+
+# التحقق
+fvm flutter --version</code></pre>
+
+        <p>لأندرويد، تحتاج Android Studio مع SDK Platform لـ API 34+. لـ iOS، Xcode 16+ على macOS مطلوب. شغّل <code>flutter doctor</code> للتحقق من إعدادك — أصلح كل عنصر أحمر قبل كتابة أي كود. المشكلات الأكثر شيوعًا هي تراخيص أندرويد المفقودة (<code>flutter doctor --android-licenses</code>) وأدوات سطر أوامر Xcode.</p>
+
+        <h2 id="clean-architecture-ar">Clean Architecture في Flutter</h2>
+        <p>تقسّم Clean Architecture تطبيقك إلى ثلاث طبقات: البيانات (Data)، والنطاق (Domain)، والعرض (Presentation). قد يبدو هذا مبالغًا في التعقيد للتطبيقات الصغيرة، لكنه يعود بالنفع فورًا عندما تحتاج لاستبدال API، أو إضافة تخزين مؤقت بدون إنترنت، أو كتابة اختبارات وحدة دون محاكاة العالم بأكمله.</p>
+
+        <pre><code>lib/
+├── core/
+│   ├── error/           # الأخطاء والاستثناءات
+│   ├── network/         # عميل Dio والمعترضات
+│   └── utils/           # الثوابت والامتدادات
+├── features/
+│   └── auth/
+│       ├── data/
+│       │   ├── datasources/    # مصادر البيانات البعيدة والمحلية
+│       │   ├── models/         # نماذج JSON
+│       │   └── repositories/   # تطبيقات المستودع
+│       ├── domain/
+│       │   ├── entities/       # كلاسات Dart نقية
+│       │   ├── repositories/   # واجهات مجردة
+│       │   └── usecases/       # حالات الاستخدام
+│       └── presentation/
+│           ├── bloc/           # Bloc/Cubit
+│           ├── pages/          # الشاشات
+│           └── widgets/        # الودجت الخاصة بالميزة
+└── injection_container.dart    # حاقن GetIt</code></pre>
+
+        <p>طبقة <strong>Domain</strong> لا تحتوي أي تبعيات Flutter — فقط Dart نقي. هذا يعني أن حالات الاستخدام والكيانات قابلة للاختبار الكامل دون جهاز أو محاكي. طبقة <strong>Data</strong> تُطبّق واجهات المستودع وتتعامل مع JSON وDio والتخزين المؤقت. طبقة <strong>Presentation</strong> تمتلك واجهة المستخدم ومنطق Bloc.</p>
+
+        <h2 id="widgets-navigation-ar">الودجت والتخطيطات والتنقل</h2>
+        <p>نظام الودجت في Flutter تركيبي — كل عنصر واجهة مستخدم، من الحشو حتى الشاشة الكاملة، هو ودجت. أهم ودجت التخطيط التي يجب إتقانها هي <code>Column</code> و<code>Row</code> و<code>Stack</code> و<code>Expanded</code> و<code>Flexible</code> و<code>SliverList</code> للمحتوى الطويل. للتخطيطات المتجاوبة، استخدم <code>LayoutBuilder</code> و<code>MediaQuery</code>.</p>
+        <p>للتنقل، GoRouter هو المعيار المجتمعي في 2026. يدعم الروابط العميقة والتنقل المتداخل وحراسة إعادة التوجيه لتدفقات المصادقة.</p>
+
+        <h2 id="bloc-state-ar">إدارة الحالة بـ Bloc وCubit</h2>
+        <p>مكتبة Bloc هي الحل الأكثر شيوعًا لإدارة الحالة في تطبيقات Flutter الإنتاجية. Cubit هو نسخة مبسطة من Bloc — استخدم Cubit عندما تكون تحولات الحالة بسيطة، وBloc عندما تحتاج منطقًا مدفوعًا بالأحداث مع سجل أو تحويلات معقدة.</p>
+
+        <pre><code>// مثال Bloc كامل للمصادقة
+class AuthBloc extends Bloc&lt;AuthEvent, AuthState&gt; {
+  final LoginUseCase loginUseCase;
+  AuthBloc(this.loginUseCase) : super(AuthInitial()) {
+    on&lt;AuthLoginRequested&gt;(_onLogin);
+  }
+
+  Future&lt;void&gt; _onLogin(
+    AuthLoginRequested event,
+    Emitter&lt;AuthState&gt; emit,
+  ) async {
+    emit(AuthLoading());
+    final result = await loginUseCase(
+      LoginParams(event.email, event.password),
+    );
+    result.fold(
+      (failure) =&gt; emit(AuthError(failure.message)),
+      (user) =&gt; emit(AuthAuthenticated(user)),
+    );
+  }
+}</code></pre>
+
+        <h2 id="api-integration-ar">التكامل مع API عبر Dio</h2>
+        <p>Dio هو عميل HTTP المفضل في Flutter. أنشئ معترضات للمصادقة ومعالجة الأخطاء والتسجيل في مكان واحد بدلًا من نشر هذا المنطق عبر كل مستودع. قم بإعداد AuthInterceptor يُضيف التوكن تلقائيًا لكل طلب، ويجدد التوكن عند انتهاء صلاحيته (خطأ 401).</p>
+
+        <h2 id="offline-storage-ar">التخزين المحلي والعمل بدون إنترنت</h2>
+        <p>في تطبيق الحديث، لم يكن الدعم بدون إنترنت اختياريًا — المستخدمون في مناطق ذات اتصال ضعيف يحتاجون وظائف كاملة. الاستراتيجية: تخزين مؤقت لردود API في Hive (صندوق NoSQL سريع لـ Flutter) وعرض مستودع يجرب الشبكة أولًا ثم يرجع للذاكرة المؤقتة.</p>
+        <p>استخدم <code>flutter_secure_storage</code> للتوكنات، و<code>shared_preferences</code> للإعدادات البسيطة، و<code>hive</code> أو <code>isar</code> للبيانات الهيكلية بدون إنترنت، و<code>sqflite</code> إذا احتجت استعلامات علائقية.</p>
+
+        <h2 id="push-notifications-ar">الإشعارات الفورية عبر FCM</h2>
+        <p>Firebase Cloud Messaging (FCM) هو المعيار للإشعارات الفورية في Flutter. بعد إضافة حزمة <code>firebase_messaging</code> وتهيئة Firebase، تعامل مع ثلاثة سيناريوهات: رسائل المقدمة (اعرض إشعارًا محليًا)، ورسائل الخلفية (تعامل معها في دالة Dart على المستوى الأعلى)، ونقرات الإشعار (انتقل للشاشة الصحيحة).</p>
+
+        <pre><code>Future&lt;void&gt; _firebaseMessagingBackgroundHandler(
+  RemoteMessage message,
+) async {
+  await Firebase.initializeApp();
+  // معالجة رسالة الخلفية
+}
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  FirebaseMessaging.onBackgroundMessage(
+    _firebaseMessagingBackgroundHandler,
+  );
+  runApp(const MyApp());
+}</code></pre>
+
+        <h2 id="rtl-arabic-ar">دعم العربية وRTL</h2>
+        <p>Flutter يتعامل مع RTL بشكل رائع عند اتباع الأنماط الصحيحة. غلّف <code>MaterialApp</code> بالمواطن المدعومة والمفوّض، وتجنب <code>EdgeInsets.only(left: ...)&nbsp;</code> المُحدد بدلًا من ذلك استخدم <code>EdgeInsetsDirectional</code>. في تطبيق Wasalni، دعمنا العربية والإنجليزية بـ <code>easy_localization</code> وخزّنا تفضيل المستخدم في SharedPreferences. درج التنقل وأزرار الرجوع ومحاذاة الأيقونات تعكست تلقائيًا.</p>
+
+        <h2 id="testing-ar">الاختبار</h2>
+        <p>Flutter يدعم ثلاثة أنواع من الاختبارات: اختبارات الوحدة (سريعة، لا تحتاج جهازًا)، واختبارات الودجت (تُصيّر ودجتًا بشكل معزول)، واختبارات التكامل (التطبيق بالكامل على جهاز/محاكٍ). استهدف تغطية عالية على حالات الاستخدام والمستودعات — تلك هي طبقات منطق الأعمال الحرجة.</p>
+
+        <h2 id="release-build-ar">بناء إصدار النشر</h2>
+        <p>قبل البناء، حدّث إصدار <code>pubspec.yaml</code> ووقّع تطبيق أندرويد. أنشئ keystore مرة واحدة ولا تُدرجها أبدًا في git:</p>
+
+        <pre><code># توليد keystore
+keytool -genkey -v -keystore ~/upload-keystore.jks \
+  -keyalg RSA -keysize 2048 -validity 10000 \
+  -alias upload
+
+# بناء Android App Bundle (مُفضّل على APK لـ Play Store)
+flutter build appbundle --release
+
+# بناء APK للتوزيع المباشر
+flutter build apk --release --split-per-abi</code></pre>
+
+        <h2 id="play-store-ar">نشر Google Play خطوة بخطوة</h2>
+        <p>النشر على Google Play يتضمن عدة خطوات. أولًا، أنشئ حساب Google Play Console (رسوم لمرة واحدة 25$). ثم:</p>
+        <ol>
+          <li>أنشئ تطبيقًا جديدًا في Console واملأ قائمة المتجر: العنوان، الوصف القصير (80 حرفًا كحد أقصى)، الوصف الكامل، لقطات الشاشة، الرسومات المميزة، وأيقونة التطبيق.</li>
+          <li>أعدد تصنيف المحتوى بإكمال الاستبيان — هذا إلزامي قبل أي إصدار.</li>
+          <li>اضبط التسعير والتوزيع (الدول، مجاني/مدفوع).</li>
+          <li>ارفع AAB إلى مسار الاختبار الداخلي أولًا. شارك مع المختبرين عبر البريد الإلكتروني وتحقق من أن التطبيق يُثبَّت ويعمل بشكل صحيح.</li>
+          <li>رقّ إلى Closed Testing (بيتا) واجمع التعليقات.</li>
+          <li>أرسل للمراجعة في الإنتاج. مراجعة Google تستغرق عادةً 1-3 أيام للتطبيقات الجديدة، وأسرع للتحديثات.</li>
+        </ol>
+
+        <h2 id="app-store-overview-ar">نظرة عامة على App Store</h2>
+        <p>تقديم App Store يتطلب حساب Apple Developer (99$/سنة). العملية مشابهة لكنها أكثر صرامة: استخدم Xcode لأرشفة IPA، ارفع عبر Xcode Organizer أو Transporter، ثم أرسل عبر App Store Connect. مراجعة Apple أكثر شمولًا وتستغرق عادةً 24-48 ساعة لكنها قد تمتد لأسبوع للتطبيقات الجديدة. أسباب الرفض الشائعة: الأعطال على جهاز المراجعة، الروابط المعطلة، البيانات الوصفية غير المكتملة، وعدم اتباع Human Interface Guidelines.</p>
+
+        <h2 id="common-mistakes-ar">الأخطاء الشائعة التي يجب تجنبها</h2>
+        <p>بعد ثلاثة تطبيقات Flutter منشورة، هذه هي الأخطاء التي كلفتني أكثر وقت. أولًا، لا تُدرج <code>Column</code> داخل حاوية ذات ارتفاع غير محدود. ثانيًا، لا تستدع <code>setState</code> من داخل <code>initState</code> بشكل متزامن. ثالثًا، تخلص دائمًا من المتحكمات في <code>dispose</code> لتجنب تسريبات الذاكرة. رابعًا، تجنب إعادة بناء الودجت المكلفة غير الضرورية — استخدم مُنشئات <code>const</code> حيثما أمكن. خامسًا، اختبر على جهاز حقيقي منخفض المستوى قبل النشر.</p>
+
+      </div>
+    </div>
+
+    <!-- Share -->
+    <div class="share-section">
+      <span class="share-label" id="share-label">Share</span>
+      <div class="share-btns">
+        <a class="share-btn" id="tw-btn" href="https://twitter.com/intent/tweet?text=Building%20a%20Mobile%20App%20with%20Flutter%20%E2%80%94%20From%20Idea%20to%20Play%20Store&url=https%3A%2F%2Fmahmoodhamdi.github.io%2Fcv%2Fblog%2Fposts%2Fflutter-app-from-scratch.html" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Twitter
+        </a>
+        <a class="share-btn" id="li-btn" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fmahmoodhamdi.github.io%2Fcv%2Fblog%2Fposts%2Fflutter-app-from-scratch.html&title=Building%20a%20Mobile%20App%20with%20Flutter" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <button class="share-btn copy-btn" onclick="copyLink(this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          <span id="copy-label">Copy Link</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Related Posts -->
+    <div class="related-section">
+      <h3 id="related-title">Related Articles</h3>
+      <div class="related-grid">
+        <a href="mobile-app-cost-guide.html" class="related-card">
+          <span class="post-cat">Guide</span>
+          <h4>How Much Does a Mobile App Cost?</h4>
+          <span>10 min read &middot; Feb 15, 2026</span>
+        </a>
+        <a href="nodejs-rest-api-complete-guide.html" class="related-card">
+          <span class="post-cat">Tutorial</span>
+          <h4>Building a Complete REST API with Node.js &amp; TypeScript</h4>
+          <span>18 min read &middot; Mar 8, 2026</span>
+        </a>
+        <a href="flutter-clean-architecture.html" class="related-card">
+          <span class="post-cat">Tutorial</span>
+          <h4>Flutter Clean Architecture: A Practical Guide</h4>
+          <span>14 min read &middot; Jan 22, 2026</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Post Nav -->
+    <nav class="post-nav" aria-label="Post navigation">
+      <a href="react-dashboard-tutorial.html" class="post-nav-btn prev">
+        <span>Previous Post</span>
+        <strong>Building an Admin Dashboard with React</strong>
+      </a>
+      <a href="nodejs-rest-api-complete-guide.html" class="post-nav-btn next">
+        <span>Next Post</span>
+        <strong>Building a Complete REST API with Node.js &amp; TypeScript</strong>
+      </a>
+    </nav>
+
+  </article>
+
+  <!-- TOC Sidebar -->
+  <aside class="toc-sidebar" aria-label="Table of contents">
+    <div class="toc-box">
+      <h4 id="toc-title">On This Page</h4>
+      <ul class="toc-list" id="toc-en">
+        <li><a href="#why-flutter-2026">Why Flutter in 2026?</a></li>
+        <li><a href="#setup">Environment Setup</a></li>
+        <li><a href="#clean-architecture">Clean Architecture</a></li>
+        <li><a href="#widgets-navigation">Widgets &amp; Navigation</a></li>
+        <li><a href="#bloc-state">Bloc &amp; Cubit State</a></li>
+        <li><a href="#api-integration">API Integration</a></li>
+        <li><a href="#offline-storage">Offline Storage</a></li>
+        <li><a href="#push-notifications">Push Notifications</a></li>
+        <li><a href="#rtl-arabic">Arabic RTL Support</a></li>
+        <li><a href="#testing">Testing</a></li>
+        <li><a href="#release-build">Release Build</a></li>
+        <li><a href="#play-store">Google Play Publishing</a></li>
+        <li><a href="#app-store-overview">App Store Overview</a></li>
+        <li><a href="#common-mistakes">Common Mistakes</a></li>
+      </ul>
+      <ul class="toc-list" id="toc-ar" style="display:none">
+        <li><a href="#why-flutter-2026-ar">لماذا Flutter في 2026؟</a></li>
+        <li><a href="#setup-ar">إعداد البيئة</a></li>
+        <li><a href="#clean-architecture-ar">Clean Architecture</a></li>
+        <li><a href="#widgets-navigation-ar">الودجت والتنقل</a></li>
+        <li><a href="#bloc-state-ar">إدارة الحالة بـ Bloc</a></li>
+        <li><a href="#api-integration-ar">التكامل مع API</a></li>
+        <li><a href="#offline-storage-ar">التخزين المحلي</a></li>
+        <li><a href="#push-notifications-ar">الإشعارات الفورية</a></li>
+        <li><a href="#rtl-arabic-ar">دعم العربية وRTL</a></li>
+        <li><a href="#testing-ar">الاختبار</a></li>
+        <li><a href="#release-build-ar">بناء إصدار النشر</a></li>
+        <li><a href="#play-store-ar">نشر Google Play</a></li>
+        <li><a href="#app-store-overview-ar">نظرة على App Store</a></li>
+        <li><a href="#common-mistakes-ar">الأخطاء الشائعة</a></li>
+      </ul>
+    </div>
+  </aside>
+
+</div>
+
+<footer class="blog-footer" role="contentinfo">
+  <p>&copy; 2026 <a href="../../">Mahmoud Hamdy</a> &middot; <a href="../">Blog</a></p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  function toggleTheme(){
+    const h=document.documentElement;
+    const next=h.getAttribute('data-theme')==='dark'?'light':'dark';
+    h.setAttribute('data-theme',next);
+    localStorage.setItem('theme',next);
+  }
+  window.toggleTheme=toggleTheme;
+  const saved=localStorage.getItem('theme');
+  if(saved) document.documentElement.setAttribute('data-theme',saved);
+
+  const rp=document.getElementById('rp');
+  const pctEl=document.createElement('div');
+  pctEl.className='read-pct';
+  document.body.appendChild(pctEl);
+  window.addEventListener('scroll',()=>{
+    const max=document.documentElement.scrollHeight-window.innerHeight;
+    const pct=Math.round(window.scrollY/max*100);
+    rp.style.width=pct+'%';
+    pctEl.textContent=pct+'% read';
+    pctEl.classList.toggle('vis',window.scrollY>200);
+  },{passive:true});
+
+  document.querySelectorAll('.post-body pre').forEach(pre=>{
+    pre.style.position='relative';
+    const btn=document.createElement('button');
+    btn.className='code-copy-btn';
+    btn.textContent='Copy';
+    btn.addEventListener('click',()=>{
+      const code=pre.querySelector('code');
+      navigator.clipboard.writeText(code?code.textContent:pre.textContent).then(()=>{
+        btn.textContent='Copied!';
+        btn.classList.add('copied');
+        setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},2000);
+      });
+    });
+    pre.appendChild(btn);
+  });
+
+  function setLang(lang){
+    const isAr=lang==='ar';
+    document.documentElement.setAttribute('lang',lang);
+    document.documentElement.setAttribute('dir',isAr?'rtl':'ltr');
+    document.getElementById('en-content').style.display=isAr?'none':'block';
+    document.getElementById('ar-content').style.display=isAr?'block':'none';
+    document.getElementById('toc-en').style.display=isAr?'none':'block';
+    document.getElementById('toc-ar').style.display=isAr?'block':'none';
+    document.getElementById('post-title').textContent=isAr?'بناء تطبيق موبايل بـ Flutter — من الفكرة للنشر':'Building a Mobile App with Flutter — From Idea to Play Store';
+    document.getElementById('back-label').textContent=isAr?'المدونة':'Blog';
+    document.getElementById('share-label').textContent=isAr?'مشاركة':'Share';
+    document.getElementById('related-title').textContent=isAr?'مقالات ذات صلة':'Related Articles';
+    document.getElementById('copy-label').textContent=isAr?'نسخ الرابط':'Copy Link';
+    document.getElementById('toc-title').textContent=isAr?'في هذه الصفحة':'On This Page';
+    document.querySelectorAll('.l-btn').forEach(b=>{
+      b.classList.remove('on');
+      if((lang==='en'&&b.textContent.trim()==='EN')||(lang==='ar'&&b.textContent.trim()==='عربي')) b.classList.add('on');
+    });
+    localStorage.setItem('lang',lang);
+  }
+  window.setLang=setLang;
+  const savedLang=localStorage.getItem('lang');
+  if(savedLang) setLang(savedLang);
+
+  function copyLink(btn){
+    navigator.clipboard.writeText(window.location.href).then(()=>{
+      btn.classList.add('copied');
+      document.getElementById('copy-label').textContent='Copied!';
+      setTimeout(()=>{
+        btn.classList.remove('copied');
+        document.getElementById('copy-label').textContent='Copy Link';
+      },2000);
+    });
+  }
+  window.copyLink=copyLink;
+
+  document.body.classList.add('loaded');
+})();
+</script>
+<script src="../../js/analytics.js" defer></script>
+<script src="../../js/pwa.js" defer></script>
+</body>
+</html>

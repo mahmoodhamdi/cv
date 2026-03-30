@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deploying Your App with Docker — Beginner's Guide — Mahmoud Hamdy</title>
+<meta name="description" content="A beginner's guide to deploying web apps with Docker — Dockerfile basics, Docker Compose, Dockerizing Node.js and Next.js apps, Nginx reverse proxy, SSL with Let's Encrypt, and DigitalOcean deployment.">
+<meta name="author" content="Mahmoud Hamdy">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mahmoodhamdi.github.io/cv/blog/posts/docker-deployment-guide.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deploying Your App with Docker — Beginner's Guide">
+<meta property="og:description" content="Step-by-step Docker guide: Dockerfile, Docker Compose, Nginx reverse proxy, SSL, DigitalOcean deployment, and monitoring for beginners.">
+<meta property="og:url" content="https://mahmoodhamdi.github.io/cv/blog/posts/docker-deployment-guide.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Deploying Your App with Docker — Beginner's Guide">
+<meta name="twitter:description" content="Complete beginner's guide to Docker deployment with Nginx and SSL.">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="manifest" href="../../manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mahmoud CV">
+<link rel="apple-touch-icon" href="../../assets/icon-192.svg">
+<link rel="alternate" type="application/rss+xml" title="Mahmoud Hamdy — Blog" href="https://mahmoodhamdi.github.io/cv/blog/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="محمود حمدي — المدونة" href="https://mahmoodhamdi.github.io/cv/blog/feed-ar.xml" hreflang="ar">
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D0H1J8BSKJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-D0H1J8BSKJ');
+</script>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="../../css/themes.css">
+<link rel="stylesheet" href="../blog.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Deploying Your App with Docker — Beginner's Guide",
+  "description": "A beginner's guide to deploying web apps with Docker, covering Dockerfile basics, Docker Compose, Dockerizing Node.js and Next.js, Nginx, SSL with Let's Encrypt, and DigitalOcean deployment.",
+  "author": { "@type": "Person", "name": "Mahmoud Hamdy", "url": "https://mahmoodhamdi.github.io/cv/" },
+  "datePublished": "2026-02-28",
+  "dateModified": "2026-02-28",
+  "url": "https://mahmoodhamdi.github.io/cv/blog/posts/docker-deployment-guide.html",
+  "publisher": { "@type": "Person", "name": "Mahmoud Hamdy" }
+}
+</script>
+</head>
+<body>
+
+<div class="read-progress" id="rp" aria-hidden="true"></div>
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+
+<!-- Top Bar -->
+<header class="blog-topbar" role="banner">
+  <a href="../" class="back-link" aria-label="Back to blog">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    <span id="back-label">Blog</span>
+  </a>
+  <div class="topbar-right">
+    <button class="t-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg class="ic-light" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="ic-dark" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <div class="lang-tog" role="group" aria-label="Language selection">
+      <button class="l-btn on" onclick="setLang('en')">EN</button>
+      <button class="l-btn" onclick="setLang('ar')">عربي</button>
+    </div>
+  </div>
+</header>
+
+<div class="post-layout">
+
+  <!-- Article -->
+  <article class="article-main" id="main-article">
+
+    <header class="post-header">
+      <div class="post-header-meta">
+        <span class="post-cat">Tutorial</span>
+        <span class="post-readtime">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          10 min read
+        </span>
+      </div>
+      <h1 id="post-title">Deploying Your App with Docker — Beginner's Guide</h1>
+      <div class="author-card">
+        <div class="author-avatar" aria-hidden="true"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path d="M30 82L45 38L60 65L75 38L90 82" stroke="url(#blg)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><line x1="38" y1="68" x2="82" y2="68" stroke="rgba(56,189,248,0.5)" stroke-width="1.5"/><defs><linearGradient id="blg" x1="30" y1="38" x2="90" y2="82"><stop offset="0%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#818cf8"/></linearGradient></defs></svg></div>
+        <div class="author-info">
+          <div class="author-name">Mahmoud Hamdy</div>
+          <div class="post-publish-date">February 28, 2026</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- EN Content -->
+    <div id="en-content">
+      <div class="post-body">
+
+        <p>Before Docker, deploying a web application meant wrestling with server configuration — installing the right Node version, setting up environment variables, managing process restarts, and hoping the production server matched your local setup. Docker solves all of this by packaging your application and everything it needs into a portable container that runs identically everywhere. This guide takes you from zero Docker knowledge to a live, HTTPS-secured application on a real server.</p>
+
+        <h2 id="what-is-docker">What Is Docker?</h2>
+        <p>Docker is a containerization platform. A <em>container</em> is a lightweight, isolated process that includes the application code, runtime, libraries, and configuration. Unlike a virtual machine, it does not include a full OS — it shares the host kernel. This makes containers start in milliseconds and use far less memory than VMs.</p>
+        <p>The key concepts: a <strong>Dockerfile</strong> is a recipe for building an image. An <strong>image</strong> is a read-only snapshot (like a template). A <strong>container</strong> is a running instance of an image. <strong>Docker Compose</strong> orchestrates multiple containers (app + database + Nginx) with a single configuration file.</p>
+
+        <h2 id="installation">Installation</h2>
+        <p>On Ubuntu (the most common server OS), install Docker Engine and Docker Compose v2 in one step:</p>
+
+        <pre><code># Install using the convenience script
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+
+# Add your user to the docker group (avoid using sudo every time)
+sudo usermod -aG docker $USER
+newgrp docker
+
+# Verify
+docker --version
+docker compose version</code></pre>
+
+        <p>On macOS or Windows, install <strong>Docker Desktop</strong> from the official Docker website — it includes everything you need, including a GUI for managing containers.</p>
+
+        <h2 id="dockerfile-basics">Dockerfile Basics</h2>
+        <p>A Dockerfile is a text file with instructions. Each instruction creates a layer in the image. The most important instructions are:</p>
+        <ul>
+          <li><code>FROM</code> — base image to build from (e.g., <code>node:22-alpine</code>)</li>
+          <li><code>WORKDIR</code> — set the working directory inside the container</li>
+          <li><code>COPY</code> — copy files from your machine into the image</li>
+          <li><code>RUN</code> — execute a shell command during the build</li>
+          <li><code>ENV</code> — set environment variables</li>
+          <li><code>EXPOSE</code> — declare which port the container listens on (documentation only, does not open ports)</li>
+          <li><code>CMD</code> — the default command to run when the container starts</li>
+        </ul>
+
+        <pre><code># A minimal Node.js Dockerfile
+FROM node:22-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --omit=dev
+COPY . .
+EXPOSE 3000
+CMD ["node", "server.js"]</code></pre>
+
+        <p>Build the image with <code>docker build -t my-app:latest .</code> and run it with <code>docker run -p 3000:3000 my-app:latest</code>. The <code>-p 3000:3000</code> flag maps port 3000 on your machine to port 3000 inside the container.</p>
+
+        <h2 id="building-images">Building Images Efficiently</h2>
+        <p>Docker builds images layer by layer, and layers are cached. If a layer has not changed since the last build, Docker reuses the cached layer. This means the order of instructions matters: put things that change rarely (installing dependencies) before things that change often (your source code).</p>
+        <p>Always add a <code>.dockerignore</code> file to exclude <code>node_modules</code>, <code>.env</code>, and build artifacts from being copied into the image:</p>
+
+        <pre><code># .dockerignore
+node_modules
+.env
+.env.local
+dist
+.git
+*.log
+coverage</code></pre>
+
+        <h2 id="docker-compose">Docker Compose — Multi-Service Setup</h2>
+        <p>Most real applications need more than one container: the app, a database, maybe a Redis cache. Docker Compose defines all these services in a single <code>docker-compose.yml</code> file:</p>
+
+        <pre><code># docker-compose.yml
+version: '3.9'
+
+services:
+  api:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=mongodb://mongo:27017/mydb
+    depends_on:
+      - mongo
+    networks:
+      - app-network
+
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - app-network
+
+volumes:
+  mongo-data:
+
+networks:
+  app-network:</code></pre>
+
+        <p>Start everything with <code>docker compose up -d</code> (the <code>-d</code> flag runs in the background). Stop with <code>docker compose down</code>. View logs with <code>docker compose logs -f api</code>.</p>
+
+        <h2 id="dockerizing-nodejs">Dockerizing a Node.js API</h2>
+        <p>For a production Node.js API, use a multi-stage build to keep the final image small. The builder stage compiles TypeScript; the runner stage only includes the compiled JavaScript and production dependencies:</p>
+
+        <pre><code># Multi-stage Dockerfile for Node.js + TypeScript
+FROM node:22-alpine AS builder
+WORKDIR /app
+COPY package*.json tsconfig.json ./
+RUN npm ci
+COPY src ./src
+RUN npm run build
+
+FROM node:22-alpine AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+COPY package*.json ./
+RUN npm ci --omit=dev && npm cache clean --force
+COPY --from=builder /app/dist ./dist
+EXPOSE 3000
+USER node
+CMD ["node", "dist/server.js"]</code></pre>
+
+        <p>Notice <code>USER node</code> — never run Node.js as root inside a container. The <code>node</code> user is built into the official Node.js images for this purpose.</p>
+
+        <h2 id="dockerizing-nextjs">Dockerizing a Next.js App</h2>
+        <p>Next.js requires a slightly different approach because of its standalone output mode. Enable standalone output in <code>next.config.js</code> to create a self-contained build that does not need <code>node_modules</code> at runtime:</p>
+
+        <pre><code>// next.config.js
+module.exports = {
+  output: 'standalone',
+};
+
+# Dockerfile for Next.js
+FROM node:22-alpine AS deps
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+
+FROM node:22-alpine AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+RUN npm run build
+
+FROM node:22-alpine AS runner
+WORKDIR /app
+ENV NODE_ENV=production PORT=3000
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/public ./public
+EXPOSE 3000
+USER node
+CMD ["node", "server.js"]</code></pre>
+
+        <h2 id="env-secrets">Environment Variables and Secrets</h2>
+        <p>Never bake secrets into a Docker image. Instead, pass them at runtime. In production, use a <code>.env</code> file that lives only on the server (never in your git repository) and reference it in your Compose file:</p>
+
+        <pre><code># docker-compose.yml (production)
+services:
+  api:
+    env_file: .env.production   # on the server only, never in git
+    # OR pass individual vars:
+    environment:
+      - NODE_ENV=production
+      - JWT_SECRET=${JWT_SECRET}   # from the host environment</code></pre>
+
+        <h2 id="digitalocean">Deploying to DigitalOcean</h2>
+        <p>A $12/month DigitalOcean Droplet (2 vCPU, 2GB RAM) handles most small-to-medium web applications comfortably. Here is the deployment workflow:</p>
+        <ol>
+          <li>Create a Droplet with Ubuntu 24.04 LTS and enable SSH key authentication.</li>
+          <li>SSH in and install Docker: <code>curl -fsSL https://get.docker.com | sh</code></li>
+          <li>Point your domain's A record to the Droplet's IP address.</li>
+          <li>Copy your project files to the server using <code>scp</code> or clone from GitHub.</li>
+          <li>Create your <code>.env.production</code> file with all secrets on the server.</li>
+          <li>Run <code>docker compose up -d</code> to start the app.</li>
+          <li>Set up Nginx as a reverse proxy (see next section).</li>
+        </ol>
+
+        <h2 id="nginx">Nginx Reverse Proxy</h2>
+        <p>Nginx sits in front of your containers, handles HTTPS termination, and routes traffic. Add an Nginx service to your Compose file:</p>
+
+        <pre><code># nginx/conf.d/app.conf
+server {
+  listen 80;
+  server_name yourdomain.com www.yourdomain.com;
+
+  location / {
+    proxy_pass http://api:3000;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_cache_bypass $http_upgrade;
+  }
+}</code></pre>
+
+        <h2 id="ssl">SSL with Let's Encrypt</h2>
+        <p>The easiest way to add free HTTPS is with Certbot inside an Nginx container. A simpler approach for beginners is <code>nginx-proxy</code> + <code>acme-companion</code> — they auto-provision and renew certificates for any container with the right environment variables:</p>
+
+        <pre><code># docker-compose.yml with auto-SSL
+services:
+  nginx-proxy:
+    image: nginxproxy/nginx-proxy
+    ports: ["80:80", "443:443"]
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - certs:/etc/nginx/certs
+      - html:/usr/share/nginx/html
+      - vhost:/etc/nginx/vhost.d
+
+  acme-companion:
+    image: nginxproxy/acme-companion
+    volumes_from: [nginx-proxy]
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - acme:/etc/acme.sh
+
+  api:
+    build: .
+    environment:
+      - VIRTUAL_HOST=yourdomain.com
+      - LETSENCRYPT_HOST=yourdomain.com
+      - LETSENCRYPT_EMAIL=you@example.com
+
+volumes:
+  certs:
+  html:
+  vhost:
+  acme:</code></pre>
+
+        <h2 id="monitoring-logging">Monitoring and Logging</h2>
+        <p>Check running containers with <code>docker ps</code>. View logs with <code>docker compose logs -f --tail=100</code>. For resource usage, <code>docker stats</code> shows CPU, memory, and network in real time. For persistent log aggregation, add a Loki + Promtail + Grafana stack (all available as Docker images) — this gives you a searchable, visualized log dashboard at no extra cost beyond the server resources.</p>
+
+        <h2 id="common-mistakes">Common Mistakes</h2>
+        <p>The mistakes I see most often from developers new to Docker: running containers as root (always use a non-root user), copying <code>node_modules</code> into the image from the host (always run <code>npm ci</code> inside the Dockerfile), exposing database ports to the public internet (keep databases on an internal network), storing secrets in environment variables baked into the image (use runtime env files or Docker Secrets), and not setting <code>restart: unless-stopped</code> (containers stop after a reboot without this). Avoid these five and most deployments will go smoothly.</p>
+
+      </div>
+    </div>
+
+    <!-- AR Content -->
+    <div id="ar-content" style="display:none" dir="rtl">
+      <div class="post-body ar-content">
+
+        <p>قبل Docker، كان نشر تطبيق ويب يعني الصراع مع إعداد الخادم — تثبيت إصدار Node الصحيح، وإعداد متغيرات البيئة، وإدارة إعادة تشغيل العمليات، وأمل بأن يطابق خادم الإنتاج إعدادك المحلي. Docker يحل كل هذا بتعبئة تطبيقك وكل ما يحتاجه في حاوية محمولة تعمل بشكل متطابق في كل مكان. هذا الدليل يأخذك من صفر معرفة بـ Docker إلى تطبيق حي مؤمّن بـ HTTPS على خادم حقيقي.</p>
+
+        <h2 id="what-is-docker-ar">ما هو Docker؟</h2>
+        <p>Docker منصة لحاويات التطبيقات. <em>الحاوية</em> هي عملية خفيفة ومعزولة تتضمن كود التطبيق ووقت التشغيل والمكتبات والإعداد. على خلاف الجهاز الافتراضي، لا تتضمن نظام تشغيل كامل — تشترك في نواة المضيف. هذا يجعل الحاويات تبدأ في أجزاء من الثانية وتستهلك ذاكرة أقل بكثير من الأجهزة الافتراضية.</p>
+        <p>المفاهيم الأساسية: <strong>Dockerfile</strong> هو وصفة لبناء صورة. <strong>الصورة</strong> لقطة للقراءة فقط (كقالب). <strong>الحاوية</strong> نسخة تعمل من صورة. <strong>Docker Compose</strong> ينسّق حاويات متعددة (تطبيق + قاعدة بيانات + Nginx) بملف إعداد واحد.</p>
+
+        <h2 id="installation-ar">التثبيت</h2>
+        <p>على Ubuntu (نظام التشغيل الأكثر شيوعًا للخوادم)، ثبّت Docker Engine وDocker Compose v2 في خطوة واحدة:</p>
+
+        <pre><code># التثبيت باستخدام سكريبت الراحة
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+
+# أضف مستخدمك لمجموعة docker (تجنب sudo في كل مرة)
+sudo usermod -aG docker $USER
+newgrp docker
+
+# التحقق
+docker --version
+docker compose version</code></pre>
+
+        <h2 id="dockerfile-basics-ar">أساسيات Dockerfile</h2>
+        <p>Dockerfile ملف نصي بتعليمات. كل تعليمة تنشئ طبقة في الصورة. أهم التعليمات:</p>
+        <ul>
+          <li><code>FROM</code> — الصورة الأساسية للبناء منها (مثل <code>node:22-alpine</code>)</li>
+          <li><code>WORKDIR</code> — ضبط مجلد العمل داخل الحاوية</li>
+          <li><code>COPY</code> — نسخ ملفات من جهازك إلى الصورة</li>
+          <li><code>RUN</code> — تنفيذ أمر shell أثناء البناء</li>
+          <li><code>EXPOSE</code> — الإعلان عن المنفذ الذي تستمع إليه الحاوية</li>
+          <li><code>CMD</code> — الأمر الافتراضي للتشغيل عند بدء الحاوية</li>
+        </ul>
+
+        <pre><code>FROM node:22-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --omit=dev
+COPY . .
+EXPOSE 3000
+CMD ["node", "server.js"]</code></pre>
+
+        <h2 id="building-images-ar">بناء الصور بكفاءة</h2>
+        <p>Docker يبني الصور طبقة بطبقة، والطبقات مُخزَّنة في ذاكرة مؤقتة. إذا لم تتغير طبقة منذ آخر بناء، يُعيد Docker استخدامها من الذاكرة المؤقتة. هذا يعني أن ترتيب التعليمات مهم: ضع الأشياء التي نادرًا ما تتغير (تثبيت التبعيات) قبل الأشياء التي تتغير كثيرًا (الكود المصدري). أضف دائمًا ملف <code>.dockerignore</code> لاستبعاد <code>node_modules</code> والـ <code>.env</code> من النسخ.</p>
+
+        <h2 id="docker-compose-ar">Docker Compose — إعداد متعدد الخدمات</h2>
+        <p>معظم التطبيقات الحقيقية تحتاج أكثر من حاوية واحدة: التطبيق، وقاعدة البيانات، وربما ذاكرة Redis المؤقتة. Docker Compose يعرّف كل هذه الخدمات في ملف <code>docker-compose.yml</code> واحد. ابدأ كل شيء بـ <code>docker compose up -d</code> وأوقف بـ <code>docker compose down</code>.</p>
+
+        <pre><code>version: '3.9'
+
+services:
+  api:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=mongodb://mongo:27017/mydb
+    depends_on:
+      - mongo
+    networks:
+      - app-network
+
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - app-network
+
+volumes:
+  mongo-data:
+
+networks:
+  app-network:</code></pre>
+
+        <h2 id="dockerizing-nodejs-ar">حاوية Node.js API</h2>
+        <p>لـ Node.js API الإنتاجي، استخدم بناءً متعدد المراحل للحفاظ على صغر حجم الصورة النهائية. مرحلة البناء تُجمّع TypeScript؛ مرحلة التشغيل تتضمن فقط JavaScript المُجمَّع وتبعيات الإنتاج. لاحظ <code>USER node</code> — لا تشغّل Node.js كـ root داخل حاوية أبدًا.</p>
+
+        <h2 id="dockerizing-nextjs-ar">حاوية تطبيق Next.js</h2>
+        <p>Next.js يتطلب نهجًا مختلفًا قليلًا بسبب وضع الإخراج المستقل. فعّل الإخراج المستقل في <code>next.config.js</code> (<code>output: 'standalone'</code>) لإنشاء بناء مكتفٍ بذاته لا يحتاج <code>node_modules</code> في وقت التشغيل. هذا يقلل حجم صورة Next.js بشكل كبير.</p>
+
+        <h2 id="env-secrets-ar">متغيرات البيئة والأسرار</h2>
+        <p>لا تُضمّن الأسرار أبدًا في صورة Docker. بدلًا من ذلك، مررها في وقت التشغيل. في الإنتاج، استخدم ملف <code>.env</code> يعيش فقط على الخادم (لا في مستودع git أبدًا) وأشر إليه في ملف Compose. متغيرات البيئة المدمجة في الصورة تظهر في <code>docker inspect</code> وتتسرب في سجلات الـ CI/CD.</p>
+
+        <h2 id="digitalocean-ar">النشر على DigitalOcean</h2>
+        <p>Droplet بـ 12$/شهر (2 vCPU، 2GB RAM) يتعامل مع معظم تطبيقات الويب الصغيرة والمتوسطة بشكل مريح. سير عمل النشر:</p>
+        <ol>
+          <li>أنشئ Droplet بـ Ubuntu 24.04 LTS وفعّل مصادقة مفتاح SSH.</li>
+          <li>أدخل عبر SSH وثبّت Docker.</li>
+          <li>وجّه سجل A لنطاقك إلى عنوان IP الخاص بـ Droplet.</li>
+          <li>انسخ ملفات مشروعك للخادم أو استنسخها من GitHub.</li>
+          <li>أنشئ ملف <code>.env.production</code> بجميع الأسرار على الخادم.</li>
+          <li>شغّل <code>docker compose up -d</code>.</li>
+          <li>أعدّ Nginx كـ reverse proxy.</li>
+        </ol>
+
+        <h2 id="nginx-ar">Nginx كـ Reverse Proxy</h2>
+        <p>Nginx يجلس أمام حاوياتك، ويتعامل مع إنهاء HTTPS، ويوجّه حركة المرور. أضف خدمة Nginx لملف Compose الخاص بك. إعداد nginx يُوكّل الطلبات لخدمة API عبر الشبكة الداخلية في Docker — قاعدة البيانات لا تتعرض أبدًا للإنترنت العام.</p>
+
+        <h2 id="ssl-ar">SSL مع Let's Encrypt</h2>
+        <p>أسهل طريقة لإضافة HTTPS مجاني هي <code>nginx-proxy</code> + <code>acme-companion</code> — يُصدران شهادات ويجددانها تلقائيًا لأي حاوية بمتغيرات البيئة الصحيحة. فقط أضف <code>VIRTUAL_HOST</code> و<code>LETSENCRYPT_HOST</code> لحاوية تطبيقك وستتعامل الصور مع الباقي. الشهادات تتجدد تلقائيًا كل 90 يومًا.</p>
+
+        <h2 id="monitoring-logging-ar">المراقبة والتسجيل</h2>
+        <p>تحقق من الحاويات العاملة بـ <code>docker ps</code>. اعرض السجلات بـ <code>docker compose logs -f --tail=100</code>. لاستخدام الموارد، <code>docker stats</code> يعرض CPU والذاكرة والشبكة في الوقت الفعلي. لتجميع السجلات المستمرة، أضف Loki + Promtail + Grafana (كلها متاحة كصور Docker) — يعطيك لوحة سجلات قابلة للبحث والتصور بدون تكلفة إضافية فيما يتجاوز موارد الخادم.</p>
+
+        <h2 id="common-mistakes-ar">الأخطاء الشائعة</h2>
+        <p>الأخطاء التي أراها كثيرًا من المطورين الجدد على Docker: تشغيل الحاويات كـ root (استخدم دائمًا مستخدمًا غير root)، نسخ <code>node_modules</code> إلى الصورة من المضيف (شغّل دائمًا <code>npm ci</code> داخل Dockerfile)، كشف منافذ قواعد البيانات للإنترنت العام (احتفظ بقواعد البيانات على شبكة داخلية)، تخزين الأسرار في متغيرات بيئة مدمجة في الصورة (استخدم ملفات env في وقت التشغيل)، وعدم ضبط <code>restart: unless-stopped</code> (الحاويات تتوقف بعد إعادة التشغيل بدون هذا). تجنّب هذه الخمسة وستسير معظم عمليات النشر بسلاسة.</p>
+
+      </div>
+    </div>
+
+    <!-- Share -->
+    <div class="share-section">
+      <span class="share-label" id="share-label">Share</span>
+      <div class="share-btns">
+        <a class="share-btn" id="tw-btn" href="https://twitter.com/intent/tweet?text=Deploying%20Your%20App%20with%20Docker%20%E2%80%94%20Beginner%27s%20Guide&url=https%3A%2F%2Fmahmoodhamdi.github.io%2Fcv%2Fblog%2Fposts%2Fdocker-deployment-guide.html" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Twitter
+        </a>
+        <a class="share-btn" id="li-btn" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fmahmoodhamdi.github.io%2Fcv%2Fblog%2Fposts%2Fdocker-deployment-guide.html&title=Deploying%20Your%20App%20with%20Docker" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <button class="share-btn copy-btn" onclick="copyLink(this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          <span id="copy-label">Copy Link</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Related Posts -->
+    <div class="related-section">
+      <h3 id="related-title">Related Articles</h3>
+      <div class="related-grid">
+        <a href="nodejs-rest-api-complete-guide.html" class="related-card">
+          <span class="post-cat">Tutorial</span>
+          <h4>Building a Complete REST API with Node.js &amp; TypeScript</h4>
+          <span>18 min read &middot; Mar 8, 2026</span>
+        </a>
+        <a href="website-speed-optimization.html" class="related-card">
+          <span class="post-cat">Guide</span>
+          <h4>Website Speed Optimization Guide</h4>
+          <span>12 min read &middot; Feb 18, 2026</span>
+        </a>
+        <a href="saas-mvp-build-guide.html" class="related-card">
+          <span class="post-cat">Guide</span>
+          <h4>How to Build a SaaS MVP Fast</h4>
+          <span>13 min read &middot; Feb 5, 2026</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Post Nav -->
+    <nav class="post-nav" aria-label="Post navigation">
+      <span></span>
+      <a href="mongodb-vs-postgresql.html" class="post-nav-btn next">
+        <span>Next Post</span>
+        <strong>MongoDB vs PostgreSQL — Which Should You Choose?</strong>
+      </a>
+    </nav>
+
+  </article>
+
+  <!-- TOC Sidebar -->
+  <aside class="toc-sidebar" aria-label="Table of contents">
+    <div class="toc-box">
+      <h4 id="toc-title">On This Page</h4>
+      <ul class="toc-list" id="toc-en">
+        <li><a href="#what-is-docker">What Is Docker?</a></li>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#dockerfile-basics">Dockerfile Basics</a></li>
+        <li><a href="#building-images">Building Images</a></li>
+        <li><a href="#docker-compose">Docker Compose</a></li>
+        <li><a href="#dockerizing-nodejs">Dockerizing Node.js</a></li>
+        <li><a href="#dockerizing-nextjs">Dockerizing Next.js</a></li>
+        <li><a href="#env-secrets">Env Vars &amp; Secrets</a></li>
+        <li><a href="#digitalocean">DigitalOcean Deployment</a></li>
+        <li><a href="#nginx">Nginx Reverse Proxy</a></li>
+        <li><a href="#ssl">SSL with Let's Encrypt</a></li>
+        <li><a href="#monitoring-logging">Monitoring &amp; Logging</a></li>
+        <li><a href="#common-mistakes">Common Mistakes</a></li>
+      </ul>
+      <ul class="toc-list" id="toc-ar" style="display:none">
+        <li><a href="#what-is-docker-ar">ما هو Docker؟</a></li>
+        <li><a href="#installation-ar">التثبيت</a></li>
+        <li><a href="#dockerfile-basics-ar">أساسيات Dockerfile</a></li>
+        <li><a href="#building-images-ar">بناء الصور بكفاءة</a></li>
+        <li><a href="#docker-compose-ar">Docker Compose</a></li>
+        <li><a href="#dockerizing-nodejs-ar">حاوية Node.js</a></li>
+        <li><a href="#dockerizing-nextjs-ar">حاوية Next.js</a></li>
+        <li><a href="#env-secrets-ar">متغيرات البيئة</a></li>
+        <li><a href="#digitalocean-ar">النشر على DigitalOcean</a></li>
+        <li><a href="#nginx-ar">Nginx Reverse Proxy</a></li>
+        <li><a href="#ssl-ar">SSL مع Let's Encrypt</a></li>
+        <li><a href="#monitoring-logging-ar">المراقبة والتسجيل</a></li>
+        <li><a href="#common-mistakes-ar">الأخطاء الشائعة</a></li>
+      </ul>
+    </div>
+  </aside>
+
+</div>
+
+<footer class="blog-footer" role="contentinfo">
+  <p>&copy; 2026 <a href="../../">Mahmoud Hamdy</a> &middot; <a href="../">Blog</a></p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  function toggleTheme(){
+    const h=document.documentElement;
+    const next=h.getAttribute('data-theme')==='dark'?'light':'dark';
+    h.setAttribute('data-theme',next);
+    localStorage.setItem('theme',next);
+  }
+  window.toggleTheme=toggleTheme;
+  const saved=localStorage.getItem('theme');
+  if(saved) document.documentElement.setAttribute('data-theme',saved);
+
+  const rp=document.getElementById('rp');
+  const pctEl=document.createElement('div');
+  pctEl.className='read-pct';
+  document.body.appendChild(pctEl);
+  window.addEventListener('scroll',()=>{
+    const max=document.documentElement.scrollHeight-window.innerHeight;
+    const pct=Math.round(window.scrollY/max*100);
+    rp.style.width=pct+'%';
+    pctEl.textContent=pct+'% read';
+    pctEl.classList.toggle('vis',window.scrollY>200);
+  },{passive:true});
+
+  document.querySelectorAll('.post-body pre').forEach(pre=>{
+    pre.style.position='relative';
+    const btn=document.createElement('button');
+    btn.className='code-copy-btn';
+    btn.textContent='Copy';
+    btn.addEventListener('click',()=>{
+      const code=pre.querySelector('code');
+      navigator.clipboard.writeText(code?code.textContent:pre.textContent).then(()=>{
+        btn.textContent='Copied!';
+        btn.classList.add('copied');
+        setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},2000);
+      });
+    });
+    pre.appendChild(btn);
+  });
+
+  function setLang(lang){
+    const isAr=lang==='ar';
+    document.documentElement.setAttribute('lang',lang);
+    document.documentElement.setAttribute('dir',isAr?'rtl':'ltr');
+    document.getElementById('en-content').style.display=isAr?'none':'block';
+    document.getElementById('ar-content').style.display=isAr?'block':'none';
+    document.getElementById('toc-en').style.display=isAr?'none':'block';
+    document.getElementById('toc-ar').style.display=isAr?'block':'none';
+    document.getElementById('post-title').textContent=isAr?'نشر تطبيقك على الإنترنت بـ Docker — دليل المبتدئين':'Deploying Your App with Docker — Beginner\'s Guide';
+    document.getElementById('back-label').textContent=isAr?'المدونة':'Blog';
+    document.getElementById('share-label').textContent=isAr?'مشاركة':'Share';
+    document.getElementById('related-title').textContent=isAr?'مقالات ذات صلة':'Related Articles';
+    document.getElementById('copy-label').textContent=isAr?'نسخ الرابط':'Copy Link';
+    document.getElementById('toc-title').textContent=isAr?'في هذه الصفحة':'On This Page';
+    document.querySelectorAll('.l-btn').forEach(b=>{
+      b.classList.remove('on');
+      if((lang==='en'&&b.textContent.trim()==='EN')||(lang==='ar'&&b.textContent.trim()==='عربي')) b.classList.add('on');
+    });
+    localStorage.setItem('lang',lang);
+  }
+  window.setLang=setLang;
+  const savedLang=localStorage.getItem('lang');
+  if(savedLang) setLang(savedLang);
+
+  function copyLink(btn){
+    navigator.clipboard.writeText(window.location.href).then(()=>{
+      btn.classList.add('copied');
+      document.getElementById('copy-label').textContent='Copied!';
+      setTimeout(()=>{
+        btn.classList.remove('copied');
+        document.getElementById('copy-label').textContent='Copy Link';
+      },2000);
+    });
+  }
+  window.copyLink=copyLink;
+
+  document.body.classList.add('loaded');
+})();
+</script>
+<script src="../../js/analytics.js" defer></script>
+<script src="../../js/pwa.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building a Professional Arabic Website with Next.js — Complete RTL Guide — Mahmoud Hamdy</title>
+<meta name="description" content="Complete guide to building a professional Arabic website with Next.js. Covers RTL setup, i18n configuration, CSS logical properties, Arabic typography, bidirectional text, SEO, and performance for MENA.">
+<meta name="author" content="Mahmoud Hamdy">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mahmoodhamdi.github.io/cv/blog/posts/nextjs-arabic-website.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Building a Professional Arabic Website with Next.js — Complete RTL Guide">
+<meta property="og:description" content="Everything you need to build a great Arabic website with Next.js: RTL, i18n, Arabic fonts, SEO, and performance for MENA audiences.">
+<meta property="og:url" content="https://mahmoodhamdi.github.io/cv/blog/posts/nextjs-arabic-website.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Next.js Arabic Website — Complete RTL Guide">
+<meta name="twitter:description" content="Build a professional Arabic website with Next.js — RTL, i18n, fonts, and SEO.">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="manifest" href="../../manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mahmoud CV">
+<link rel="apple-touch-icon" href="../../assets/icon-192.svg">
+<link rel="alternate" type="application/rss+xml" title="Mahmoud Hamdy — Blog" href="https://mahmoodhamdi.github.io/cv/blog/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="محمود حمدي — المدونة" href="https://mahmoodhamdi.github.io/cv/blog/feed-ar.xml" hreflang="ar">
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D0H1J8BSKJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-D0H1J8BSKJ');
+</script>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="../../css/themes.css">
+<link rel="stylesheet" href="../blog.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Building a Professional Arabic Website with Next.js — Complete RTL Guide",
+  "description": "Complete guide to building a professional Arabic website with Next.js, covering RTL, i18n, Arabic typography, bidirectional text, SEO for Arabic, and performance for MENA audiences.",
+  "author": { "@type": "Person", "name": "Mahmoud Hamdy", "url": "https://mahmoodhamdi.github.io/cv/" },
+  "datePublished": "2026-03-15",
+  "dateModified": "2026-03-15",
+  "url": "https://mahmoodhamdi.github.io/cv/blog/posts/nextjs-arabic-website.html",
+  "publisher": { "@type": "Person", "name": "Mahmoud Hamdy" }
+}
+</script>
+</head>
+<body>
+
+<div class="read-progress" id="rp" aria-hidden="true"></div>
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+
+<!-- Top Bar -->
+<header class="blog-topbar" role="banner">
+  <a href="../" class="back-link" aria-label="Back to blog">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    <span id="back-label">Blog</span>
+  </a>
+  <div class="topbar-right">
+    <button class="t-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg class="ic-light" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="ic-dark" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <div class="lang-tog" role="group" aria-label="Language selection">
+      <button class="l-btn on" onclick="setLang('en')">EN</button>
+      <button class="l-btn" onclick="setLang('ar')">عربي</button>
+    </div>
+  </div>
+</header>
+
+<div class="post-layout">
+
+  <article class="article-main" id="main-article">
+
+    <header class="post-header">
+      <div class="post-header-meta">
+        <span class="post-cat">Tutorial</span>
+        <span class="post-readtime">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          13 min read
+        </span>
+      </div>
+      <h1 id="post-title">Building a Professional Arabic Website with Next.js — Complete RTL Guide</h1>
+      <div class="author-card">
+        <div class="author-avatar" aria-hidden="true"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path d="M30 82L45 38L60 65L75 38L90 82" stroke="url(#blg)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><line x1="38" y1="68" x2="82" y2="68" stroke="rgba(56,189,248,0.5)" stroke-width="1.5"/><defs><linearGradient id="blg" x1="30" y1="38" x2="90" y2="82"><stop offset="0%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#818cf8"/></linearGradient></defs></svg></div>
+        <div class="author-info">
+          <div class="author-name">Mahmoud Hamdy</div>
+          <div class="post-publish-date">March 15, 2026</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- EN Content -->
+    <div id="en-content">
+      <div class="post-body">
+
+        <p>Building an Arabic website that feels truly professional is harder than it looks. It is not just about setting <code>dir="rtl"</code> on the HTML element and calling it done. Arabic typography has its own rules, bidirectional text is a genuine engineering challenge, SEO for Arabic-language audiences requires specific considerations, and performance matters even more when your users are on mobile networks in Cairo, Riyadh, or Dubai. I have built several Arabic-first websites with Next.js and each one taught me something new. This guide covers everything I know.</p>
+
+        <h2 id="why-nextjs">Why Next.js for Arabic Sites?</h2>
+        <p>Next.js is the right choice for Arabic websites for several reasons beyond the usual React benefits. Its built-in i18n routing handles <code>/ar</code> and <code>/en</code> route prefixes automatically. Server-side rendering ensures Arabic content is in the initial HTML — critical for SEO since Arabic search engines (and Google's Arabic crawlers) need to read your content without executing JavaScript. The App Router's layout system makes it clean to wrap different language routes in different <code>&lt;html lang&gt;</code> and <code>dir</code> attributes. And <code>next/font</code> handles Arabic font loading efficiently without layout shifts.</p>
+
+        <h2 id="rtl-setup">RTL Setup: The Right Way</h2>
+        <p>The wrong way is to add a global <code>dir="rtl"</code> and then override everything with margin and padding hacks. The right way is to use CSS logical properties from the start, and to control <code>dir</code> at the <code>&lt;html&gt;</code> level per locale:</p>
+
+        <pre><code>// app/[locale]/layout.tsx
+import { notFound } from 'next/navigation';
+
+const locales = ['en', 'ar'] as const;
+type Locale = typeof locales[number];
+
+export default function LocaleLayout({
+  children,
+  params: { locale },
+}: {
+  children: React.ReactNode;
+  params: { locale: Locale };
+}) {
+  if (!locales.includes(locale)) notFound();
+
+  const isRTL = locale === 'ar';
+
+  return (
+    <html lang={locale} dir={isRTL ? 'rtl' : 'ltr'}>
+      <body>{children}</body>
+    </html>
+  );
+}</code></pre>
+
+        <h2 id="i18n-configuration">i18n Configuration</h2>
+        <p>Next.js 15's App Router handles i18n without a plugin. Create a <code>next.config.ts</code> with your locales, then use the <code>[locale]</code> dynamic segment in your app directory. For translation strings, I prefer a simple JSON file approach with a typed <code>useTranslation</code> hook over bringing in a full library like <code>next-intl</code> for smaller sites:</p>
+
+        <pre><code>// next.config.ts
+import type { NextConfig } from 'next';
+
+const config: NextConfig = {
+  // App Router handles i18n via the [locale] segment
+  // No next.config i18n block needed with App Router
+};
+
+export default config;
+
+// middleware.ts — redirect / to /en or /ar based on Accept-Language
+import { NextRequest, NextResponse } from 'next/server';
+
+const PUBLIC_FILE = /\.(.*)$/;
+
+export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+  if (PUBLIC_FILE.test(pathname) || pathname.includes('/_next')) return;
+
+  const hasLocale = ['en', 'ar'].some(
+    locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+  );
+  if (hasLocale) return;
+
+  const acceptLanguage = request.headers.get('accept-language') ?? '';
+  const preferArabic = acceptLanguage.startsWith('ar');
+
+  return NextResponse.redirect(
+    new URL(`/${preferArabic ? 'ar' : 'en'}${pathname}`, request.url)
+  );
+}</code></pre>
+
+        <pre><code>// lib/translations.ts
+import en from '@/messages/en.json';
+import ar from '@/messages/ar.json';
+
+const messages = { en, ar } as const;
+type Locale = keyof typeof messages;
+
+export function getTranslations(locale: Locale) {
+  return messages[locale];
+}
+
+// Usage in a Server Component:
+// const t = getTranslations(locale);
+// &lt;h1&gt;{t.hero.title}&lt;/h1&gt;</code></pre>
+
+        <h2 id="css-logical-properties">CSS Logical Properties — The Foundation</h2>
+        <p>This is the single most important technical decision for an RTL site. Physical CSS properties like <code>margin-left</code>, <code>padding-right</code>, <code>border-left</code>, and <code>text-align: left</code> are direction-specific and break in RTL. Logical properties map to "start" and "end" relative to the current text direction:</p>
+
+        <pre><code>/* WRONG — breaks in RTL */
+.card {
+  margin-left: 1rem;
+  padding-right: 1.5rem;
+  border-left: 3px solid var(--accent);
+  text-align: left;
+}
+
+/* RIGHT — works in both LTR and RTL */
+.card {
+  margin-inline-start: 1rem;
+  padding-inline-end: 1.5rem;
+  border-inline-start: 3px solid var(--accent);
+  text-align: start;
+}
+
+/* Tailwind CSS v3.3+ has logical property utilities */
+/* ms-4 = margin-inline-start: 1rem */
+/* pe-6 = padding-inline-end: 1.5rem */
+/* border-s-2 = border-inline-start-width: 2px */
+/* text-start = text-align: start */</code></pre>
+
+        <p>When using Tailwind, adopt the logical property utilities (<code>ms-</code>, <code>me-</code>, <code>ps-</code>, <code>pe-</code>, <code>border-s-</code>, <code>border-e-</code>, <code>start-</code>, <code>end-</code>) everywhere instead of <code>l-</code> and <code>r-</code>. This is a convention your whole team needs to agree on at the start of the project — retrofitting it later is painful.</p>
+
+        <h2 id="arabic-typography">Arabic Typography</h2>
+        <p>Choosing the right Arabic font is not a minor decision. System Arabic fonts (like the default on iOS and Android) are functional but not beautiful at display sizes. For professional sites, load a custom Arabic font. My recommendations based on use case:</p>
+        <ul>
+          <li><strong>Tajawal</strong> — Clean, modern, excellent for body text and UI elements. Used on this portfolio.</li>
+          <li><strong>Cairo</strong> — Slightly more personality, great for headings and marketing copy.</li>
+          <li><strong>IBM Plex Sans Arabic</strong> — Professional and technical feel, excellent for developer tools and SaaS dashboards.</li>
+          <li><strong>Noto Naskh Arabic</strong> — Traditional and high-readability for long-form content.</li>
+        </ul>
+
+        <pre><code>// app/[locale]/layout.tsx
+import { Tajawal, Cairo } from 'next/font/google';
+
+const tajawal = Tajawal({
+  subsets: ['arabic'],
+  weight: ['300', '400', '500', '700'],
+  variable: '--font-arabic',
+  display: 'swap',   // Important: prevents invisible text during font load
+});
+
+const cairo = Cairo({
+  subsets: ['arabic', 'latin'],
+  weight: ['400', '600', '700'],
+  variable: '--font-heading-ar',
+  display: 'swap',
+});
+
+export default function Layout({ children, params: { locale } }) {
+  const isRTL = locale === 'ar';
+  return (
+    &lt;html
+      lang={locale}
+      dir={isRTL ? 'rtl' : 'ltr'}
+      className={`${tajawal.variable} ${cairo.variable}`}
+    &gt;
+      &lt;body className={isRTL ? 'font-arabic' : 'font-sans'}&gt;
+        {children}
+      &lt;/body&gt;
+    &lt;/html&gt;
+  );
+}</code></pre>
+
+        <pre><code>/* globals.css */
+:root {
+  --font-sans: 'Outfit', system-ui, sans-serif;
+  --font-arabic: var(--font-arabic), 'Tajawal', 'Arial Unicode MS', sans-serif;
+}
+
+[dir="rtl"] {
+  font-family: var(--font-arabic);
+  font-size: 1.05em; /* Arabic text often benefits from slightly larger size */
+  line-height: 1.8;  /* Arabic glyphs are taller, need more line spacing */
+  letter-spacing: 0; /* Never apply positive letter-spacing to Arabic */
+}</code></pre>
+
+        <h2 id="bidirectional-text">Handling Bidirectional Text</h2>
+        <p>The trickiest scenario is mixed-language content: an Arabic product description with an English brand name, or an Arabic article with English code snippets. The Unicode Bidirectional Algorithm handles most of this automatically, but numbers, punctuation, and inline formatting can still cause visual glitches.</p>
+
+        <pre><code>// components/BidiText.tsx
+// Wraps text that might contain mixed-direction content
+export function BidiText({ children }: { children: React.ReactNode }) {
+  return (
+    &lt;span
+      style={{ unicodeBidi: 'plaintext' }}
+      dir="auto"
+    &gt;
+      {children}
+    &lt;/span&gt;
+  );
+}
+
+// For numbers in an Arabic context — always use LTR
+export function NumericValue({ value }: { value: string | number }) {
+  return (
+    &lt;span dir="ltr" style={{ display: 'inline-block' }}&gt;
+      {value}
+    &lt;/span&gt;
+  );
+}
+
+// Usage:
+// &lt;p&gt;المنتج: &lt;BidiText&gt;iPhone 16 Pro Max&lt;/BidiText&gt;&lt;/p&gt;
+// &lt;p&gt;السعر: &lt;NumericValue value="SAR 5,299" /&gt;&lt;/p&gt;</code></pre>
+
+        <h2 id="arabic-forms">Arabic Form Validation</h2>
+        <p>Arabic form inputs need special attention. Phone number formats differ by country (Egypt: 01X-XXXX-XXXX, Saudi: 05X-XXXX-XXXX). Arabic names can include titles and particles that confuse simple regex validators. And the direction of input fields needs to switch based on what the user is typing:</p>
+
+        <pre><code>// lib/validations-ar.ts
+import { z } from 'zod';
+
+export const arabicNameSchema = z
+  .string()
+  .min(2, 'الاسم يجب أن يكون حرفين على الأقل')
+  .max(60, 'الاسم طويل جدًا')
+  .regex(/^[\u0600-\u06FF\s\u064B-\u065F']+$/, 'الاسم يجب أن يحتوي على أحرف عربية فقط');
+
+export const saudiPhoneSchema = z
+  .string()
+  .regex(/^(05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$/, 'رقم الهاتف السعودي غير صحيح');
+
+export const egyptianPhoneSchema = z
+  .string()
+  .regex(/^(01)[0-9]{9}$/, 'رقم الهاتف المصري غير صحيح');
+
+// Auto-detect text direction for inputs
+export function useInputDirection() {
+  const detectDir = (value: string): 'rtl' | 'ltr' | 'auto' => {
+    if (!value) return 'auto';
+    const firstChar = value.trim()[0];
+    const arabicRange = /[\u0600-\u06FF]/;
+    return arabicRange.test(firstChar) ? 'rtl' : 'ltr';
+  };
+  return detectDir;
+}</code></pre>
+
+        <h2 id="arabic-seo">SEO for Arabic Websites</h2>
+        <p>Arabic SEO has specific requirements. The most critical: use <code>hreflang</code> alternate links for every page, and ensure your Arabic content is served as real text (not images of text). Arabic Google searches have different keyword patterns — Arabic users often use Modern Standard Arabic (MSA) for searches even if they speak dialect. Use Google Keyword Planner with Arabic language selected to research properly.</p>
+
+        <pre><code>// app/[locale]/page.tsx
+import type { Metadata } from 'next';
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const isAr = locale === 'ar';
+  return {
+    title: isAr
+      ? 'متجر الإلكترونيات — أفضل الأسعار في السعودية'
+      : 'Electronics Store — Best Prices in Saudi Arabia',
+    description: isAr
+      ? 'اكتشف أحدث الأجهزة الإلكترونية بأسعار تنافسية مع توصيل سريع لجميع مناطق المملكة'
+      : 'Discover the latest electronics at competitive prices with fast delivery across Saudi Arabia',
+    alternates: {
+      canonical: `https://example.com/${locale}`,
+      languages: {
+        'ar-SA': 'https://example.com/ar',
+        'en-US': 'https://example.com/en',
+      },
+    },
+    openGraph: {
+      locale: isAr ? 'ar_SA' : 'en_US',
+      alternateLocale: isAr ? 'en_US' : 'ar_SA',
+    },
+  };
+}</code></pre>
+
+        <h2 id="performance-mena">Performance for MENA Audiences</h2>
+        <p>Mobile internet in Saudi Arabia and Egypt is fast (4G/5G coverage is high), but users are sensitive to Core Web Vitals because they compare experiences across global apps. Arabic fonts are typically larger than Latin fonts because the character set is richer. Two specific optimizations matter here:</p>
+        <p>First, subset your Arabic fonts to include only the Unicode blocks you need. The full Arabic Unicode range (U+0600–U+06FF) covers Modern Arabic, plus extended blocks for Persian and Urdu. If you only support Arabic, you can subset to U+0600–U+06FF which saves 30–50KB. The <code>next/font</code> Google Fonts integration handles this automatically with <code>subsets: ['arabic']</code>.</p>
+        <p>Second, preload your Arabic font for Arabic locale pages. A Largest Contentful Paint caused by a late-loading Arabic font is a common issue:</p>
+
+        <pre><code>// app/ar/layout.tsx — preload Arabic font
+export default function ArabicLayout({ children }) {
+  return (
+    &lt;&gt;
+      &lt;link
+        rel="preload"
+        href="/fonts/tajawal-v28-arabic-400.woff2"
+        as="font"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      /&gt;
+      {children}
+    &lt;/&gt;
+  );
+}</code></pre>
+
+        <h2 id="common-mistakes">Common Mistakes to Avoid</h2>
+        <p>After building multiple Arabic sites, here are the mistakes I see repeatedly:</p>
+        <ul>
+          <li><strong>Applying <code>letter-spacing</code> to Arabic text.</strong> Arabic script is cursive — letters connect. Letter spacing breaks the connections and makes text look broken. Always set <code>letter-spacing: 0</code> for Arabic.</li>
+          <li><strong>Using CSS transforms to flip icons.</strong> Directional icons (arrows, chevrons) should flip in RTL. Use CSS logical transforms: <code>transform: scaleX(-1)</code> conditionally, or better, use directionally appropriate SVG icons.</li>
+          <li><strong>Forgetting to flip flex/grid ordering.</strong> Flexbox and grid respect the <code>dir</code> attribute, but only if you use <code>flex-start</code>/<code>flex-end</code> not <code>left</code>/<code>right</code>.</li>
+          <li><strong>Using absolute positioning with left/right.</strong> Switch to <code>inset-inline-start</code> and <code>inset-inline-end</code>.</li>
+          <li><strong>Not testing on actual Arabic content.</strong> English placeholder text does not reveal RTL layout bugs. Use real Arabic content in your development from day one.</li>
+        </ul>
+
+        <h2 id="hosting-mena">Hosting for MENA</h2>
+        <p>For Arabic websites targeting Saudi Arabia and Egypt, edge network proximity matters. Vercel's edge network has nodes in the region and is my default recommendation for Next.js deployments. Cloudflare Pages is a strong alternative. If you need more control, AWS has data centers in Bahrain (me-south-1) and UAE (me-central-1), which gives you sub-50ms latency to most Gulf users. For Egypt-heavy traffic, Cloudflare's network typically performs better than AWS since they have multiple PoPs across North Africa.</p>
+
+      </div>
+    </div>
+
+    <!-- AR Content -->
+    <div id="ar-content" style="display:none" dir="rtl">
+      <div class="post-body ar-content">
+
+        <p>بناء موقع عربي يبدو احترافيًا حقًا أصعب مما يبدو في الظاهر. الأمر لا يتوقف على وضع <code>dir="rtl"</code> على عنصر HTML والانتهاء. الطباعة العربية لها قواعدها الخاصة، والنص ثنائي الاتجاه تحدٍّ هندسي حقيقي، وتحسين محركات البحث للجمهور الناطق بالعربية يستلزم اعتبارات خاصة، والأداء مهم بشكل أكبر حين يكون مستخدموك على شبكات محمولة في القاهرة أو الرياض أو دبي. لقد بنيت عدة مواقع عربية الأولوية بـ Next.js وكل واحدة علّمتني شيئًا جديدًا. هذا الدليل يجمع كل ما أعرفه.</p>
+
+        <h2 id="why-nextjs-ar">لماذا Next.js للمواقع العربية؟</h2>
+        <p>Next.js هو الاختيار الصحيح للمواقع العربية لأسباب تتجاوز مزايا React المعتادة. التوجيه i18n المدمج يتعامل مع بادئات المسار <code>/ar</code> و<code>/en</code> تلقائيًا. التصيير من جانب الخادم (SSR) يضمن أن المحتوى العربي موجود في HTML الأولي — وهذا حيوي لـ SEO لأن محركات البحث العربية (ومزحفات جوجل العربية) تحتاج قراءة محتواك بدون تنفيذ JavaScript. نظام التخطيط في App Router يجعل من السهل تغليف مسارات اللغات المختلفة في سمات <code>lang</code> و<code>dir</code> مختلفة.</p>
+
+        <h2 id="rtl-setup-ar">إعداد RTL: الطريقة الصحيحة</h2>
+        <p>الطريقة الخاطئة هي إضافة <code>dir="rtl"</code> عامًا ثم تجاوز كل شيء بحلول margin وpadding. الطريقة الصحيحة هي استخدام CSS Logical Properties من البداية، والتحكم بـ <code>dir</code> على مستوى <code>&lt;html&gt;</code> لكل locale:</p>
+
+        <pre><code>// app/[locale]/layout.tsx
+export default function LocaleLayout({
+  children,
+  params: { locale },
+}: {
+  children: React.ReactNode;
+  params: { locale: 'en' | 'ar' };
+}) {
+  const isRTL = locale === 'ar';
+  return (
+    &lt;html lang={locale} dir={isRTL ? 'rtl' : 'ltr'}&gt;
+      &lt;body&gt;{children}&lt;/body&gt;
+    &lt;/html&gt;
+  );
+}</code></pre>
+
+        <h2 id="i18n-configuration-ar">إعداد i18n</h2>
+        <p>App Router في Next.js 15 يتعامل مع i18n بدون مكوّن إضافي. للترجمات، أفضّل نهج ملفات JSON البسيط مع hook <code>useTranslation</code> مكتوب بالنوع على جلب مكتبة كاملة مثل <code>next-intl</code> للمواقع الصغيرة:</p>
+
+        <pre><code>// middleware.ts — إعادة توجيه / إلى /ar أو /en بناءً على Accept-Language
+import { NextRequest, NextResponse } from 'next/server';
+
+export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+  const hasLocale = ['en', 'ar'].some(
+    locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+  );
+  if (hasLocale) return;
+
+  const acceptLanguage = request.headers.get('accept-language') ?? '';
+  const preferArabic = acceptLanguage.startsWith('ar');
+
+  return NextResponse.redirect(
+    new URL(`/${preferArabic ? 'ar' : 'en'}${pathname}`, request.url)
+  );
+}
+
+// lib/translations.ts
+import ar from '@/messages/ar.json';
+import en from '@/messages/en.json';
+
+const messages = { en, ar } as const;
+type Locale = keyof typeof messages;
+
+export function getTranslations(locale: Locale) {
+  return messages[locale];
+}</code></pre>
+
+        <h2 id="css-logical-properties-ar">CSS Logical Properties — الأساس</h2>
+        <p>هذا هو أهم قرار تقني في موقع RTL. الخصائص المادية في CSS مثل <code>margin-left</code> و<code>padding-right</code> و<code>border-left</code> مرتبطة باتجاه معين وتنهار في RTL. الخصائص المنطقية تُعيَّن إلى "start" و"end" بالنسبة لاتجاه النص الحالي:</p>
+
+        <pre><code>/* خطأ — ينهار في RTL */
+.card {
+  margin-left: 1rem;
+  padding-right: 1.5rem;
+  text-align: left;
+}
+
+/* صحيح — يعمل في LTR وRTL معًا */
+.card {
+  margin-inline-start: 1rem;
+  padding-inline-end: 1.5rem;
+  text-align: start;
+}
+
+/* في Tailwind CSS v3.3+ */
+/* ms-4 = margin-inline-start: 1rem */
+/* pe-6 = padding-inline-end: 1.5rem */
+/* border-s-2 = border-inline-start-width: 2px */
+/* text-start = text-align: start */</code></pre>
+
+        <h2 id="arabic-typography-ar">الطباعة العربية</h2>
+        <p>اختيار الخط العربي المناسب ليس قرارًا هامشيًا. خطوط العربية النظامية (كالافتراضي على iOS وAndroid) وظيفية لكنها ليست جميلة بالأحجام الكبيرة. للمواقع الاحترافية، حمّل خطًا عربيًا مخصصًا. توصياتي بحسب الاستخدام:</p>
+        <ul>
+          <li><strong>Tajawal</strong> — نظيف وعصري، ممتاز للنص الأساسي وعناصر الواجهة. يستخدمه هذا الموقع.</li>
+          <li><strong>Cairo</strong> — أكثر شخصية قليلًا، رائع للعناوين والنسخ التسويقية.</li>
+          <li><strong>IBM Plex Sans Arabic</strong> — مظهر احترافي وتقني، ممتاز للأدوات التطويرية ولوحات SaaS.</li>
+          <li><strong>Noto Naskh Arabic</strong> — تقليدي وعالي القراءة للمحتوى الطويل.</li>
+        </ul>
+
+        <pre><code>// app/[locale]/layout.tsx
+import { Tajawal } from 'next/font/google';
+
+const tajawal = Tajawal({
+  subsets: ['arabic'],
+  weight: ['300', '400', '500', '700'],
+  variable: '--font-arabic',
+  display: 'swap',
+});
+
+/* globals.css */
+[dir="rtl"] {
+  font-family: var(--font-arabic);
+  font-size: 1.05em;   /* النص العربي يستفيد من حجم أكبر قليلًا */
+  line-height: 1.8;    /* الحروف العربية أطول، تحتاج مسافة سطر أكبر */
+  letter-spacing: 0;   /* لا تضع letter-spacing موجبًا على النص العربي أبدًا */
+}</code></pre>
+
+        <h2 id="bidirectional-text-ar">التعامل مع النص ثنائي الاتجاه</h2>
+        <p>أصعب سيناريو هو المحتوى ثنائي اللغة: وصف منتج عربي مع اسم علامة تجارية إنجليزية، أو مقال عربي مع مقتطفات كود إنجليزية. خوارزمية Unicode Bidirectional تتعامل مع معظم هذا تلقائيًا، لكن الأرقام وعلامات الترقيم والتنسيق المضمّن قد تسبب تشوهات بصرية:</p>
+
+        <pre><code>// components/BidiText.tsx
+export function BidiText({ children }: { children: React.ReactNode }) {
+  return (
+    &lt;span style={{ unicodeBidi: 'plaintext' }} dir="auto"&gt;
+      {children}
+    &lt;/span&gt;
+  );
+}
+
+// للأرقام في السياق العربي — استخدم LTR دائمًا
+export function NumericValue({ value }: { value: string | number }) {
+  return (
+    &lt;span dir="ltr" style={{ display: 'inline-block' }}&gt;
+      {value}
+    &lt;/span&gt;
+  );
+}
+
+// الاستخدام:
+// &lt;p&gt;المنتج: &lt;BidiText&gt;iPhone 16 Pro Max&lt;/BidiText&gt;&lt;/p&gt;
+// &lt;p&gt;السعر: &lt;NumericValue value="٥٬٢٩٩ ريال" /&gt;&lt;/p&gt;</code></pre>
+
+        <h2 id="arabic-forms-ar">التحقق من صحة النماذج العربية</h2>
+        <p>نماذج الإدخال العربية تحتاج اهتمامًا خاصًا. تنسيقات أرقام الهواتف تختلف بالدولة (مصر: 01X-XXXX-XXXX، السعودية: 05X-XXXX-XXXX). الأسماء العربية قد تتضمن ألقابًا وأدوات تربك محققات Regex البسيطة. واتجاه حقول الإدخال يحتاج التبديل بناءً على ما يكتبه المستخدم:</p>
+
+        <pre><code>// lib/validations-ar.ts
+import { z } from 'zod';
+
+export const arabicNameSchema = z
+  .string()
+  .min(2, 'الاسم يجب أن يكون حرفين على الأقل')
+  .regex(/^[\u0600-\u06FF\s\u064B-\u065F']+$/, 'الاسم يجب أن يحتوي على أحرف عربية فقط');
+
+export const saudiPhoneSchema = z
+  .string()
+  .regex(/^(05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$/, 'رقم الهاتف السعودي غير صحيح');
+
+export const egyptianPhoneSchema = z
+  .string()
+  .regex(/^(01)[0-9]{9}$/, 'رقم الهاتف المصري غير صحيح');</code></pre>
+
+        <h2 id="arabic-seo-ar">تحسين محركات البحث للمواقع العربية</h2>
+        <p>لـ SEO العربي متطلبات خاصة. الأهم: استخدم روابط <code>hreflang</code> البديلة لكل صفحة، وتأكد أن محتواك العربي مقدَّم كنص حقيقي (لا صور للنص). عمليات البحث العربية على جوجل لها أنماط كلمات مفتاحية مختلفة — المستخدمون العرب غالبًا يستخدمون الفصحى أو العامية الجزئية في البحث. استخدم Google Keyword Planner مع تحديد اللغة العربية للبحث بشكل صحيح.</p>
+
+        <pre><code>// app/[locale]/page.tsx
+export async function generateMetadata({ params: { locale } }): Promise&lt;Metadata&gt; {
+  const isAr = locale === 'ar';
+  return {
+    title: isAr
+      ? 'متجر الإلكترونيات — أفضل الأسعار في السعودية'
+      : 'Electronics Store — Best Prices in Saudi Arabia',
+    description: isAr
+      ? 'اكتشف أحدث الأجهزة بأسعار تنافسية مع توصيل سريع لجميع مناطق المملكة'
+      : 'Discover the latest electronics with fast delivery across Saudi Arabia',
+    alternates: {
+      canonical: `https://example.com/${locale}`,
+      languages: {
+        'ar-SA': 'https://example.com/ar',
+        'en-US': 'https://example.com/en',
+      },
+    },
+    openGraph: {
+      locale: isAr ? 'ar_SA' : 'en_US',
+      alternateLocale: isAr ? 'en_US' : 'ar_SA',
+    },
+  };
+}</code></pre>
+
+        <h2 id="common-mistakes-ar">الأخطاء الشائعة التي يجب تجنبها</h2>
+        <p>بعد بناء عدة مواقع عربية، هذه هي الأخطاء التي أراها مرارًا:</p>
+        <ul>
+          <li><strong>تطبيق <code>letter-spacing</code> على النص العربي.</strong> الخط العربي مكتوب بشكل متصل — الحروف تتصل ببعضها. المسافة بين الحروف تكسر هذه الاتصالات وتجعل النص يبدو مكسورًا. اضبط دائمًا <code>letter-spacing: 0</code> للعربية.</li>
+          <li><strong>استخدام CSS transforms لقلب الأيقونات.</strong> الأيقونات ذات الاتجاه (أسهم، chevrons) يجب أن تنقلب في RTL. استخدم: <code>transform: scaleX(-1)</code> بشكل شرطي.</li>
+          <li><strong>نسيان قلب ترتيب flex/grid.</strong> Flexbox وGrid يحترمان سمة <code>dir</code>، لكن فقط إن استخدمت <code>flex-start</code>/<code>flex-end</code> لا <code>left</code>/<code>right</code>.</li>
+          <li><strong>عدم الاختبار بمحتوى عربي فعلي.</strong> النص الإنجليزي التجريبي لا يكشف أخطاء تخطيط RTL. استخدم محتوى عربيًا حقيقيًا في التطوير منذ اليوم الأول.</li>
+        </ul>
+
+        <h2 id="performance-mena-ar">الأداء لجمهور منطقة الشرق الأوسط وشمال أفريقيا</h2>
+        <p>الإنترنت المحمول في السعودية ومصر سريع (تغطية 4G/5G عالية)، لكن المستخدمين حساسون لمؤشرات Core Web Vitals لأنهم يقارنون التجارب عبر التطبيقات العالمية. الخطوط العربية أكبر عادةً من اللاتينية لغنى مجموعة الأحرف. تحسينان بعينهما مهمان هنا:</p>
+        <p>أولًا، قسّم (subset) خطوطك العربية لتشمل فقط كتل Unicode التي تحتاجها. تكامل <code>next/font</code> مع Google Fonts يتعامل مع هذا تلقائيًا عند استخدام <code>subsets: ['arabic']</code>.</p>
+        <p>ثانيًا، قم بـ preload لخطك العربي لصفحات اللغة العربية. LCP ناتج عن تحميل متأخر للخط العربي مشكلة شائعة.</p>
+
+        <h2 id="hosting-mena-ar">الاستضافة لمنطقة الشرق الأوسط وشمال أفريقيا</h2>
+        <p>للمواقع العربية التي تستهدف السعودية ومصر، قرب شبكة الحافة مهم. شبكة Vercel Edge لديها نقاط في المنطقة وهي توصيتي الافتراضية لنشر Next.js. Cloudflare Pages بديل قوي. إن احتجت تحكمًا أكبر، AWS لديها مراكز بيانات في البحرين (me-south-1) والإمارات (me-central-1) مما يعطيك زمن استجابة أقل من 50ms لمعظم مستخدمي الخليج. لحركة المرور المصرية، شبكة Cloudflare أداؤها عادةً أفضل من AWS بسبب وجود نقاط اتصال متعددة عبر شمال أفريقيا.</p>
+
+      </div>
+    </div>
+
+    <!-- Share -->
+    <div class="share-section">
+      <span class="share-label" id="share-label">Share</span>
+      <div class="share-btns">
+        <a class="share-btn" id="tw-btn" href="https://twitter.com/intent/tweet?text=Building%20a%20Professional%20Arabic%20Website%20with%20Next.js&url=https%3A%2F%2Fmahmoodhamdi.github.io%2Fcv%2Fblog%2Fposts%2Fnextjs-arabic-website.html" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Twitter
+        </a>
+        <a class="share-btn" id="li-btn" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fmahmoodhamdi.github.io%2Fcv%2Fblog%2Fposts%2Fnextjs-arabic-website.html&title=Building%20a%20Professional%20Arabic%20Website%20with%20Next.js" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <button class="share-btn copy-btn" onclick="copyLink(this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          <span id="copy-label">Copy Link</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Related Posts -->
+    <div class="related-section">
+      <h3 id="related-title">Related Articles</h3>
+      <div class="related-grid">
+        <a href="telegram-bot-nodejs-tutorial.html" class="related-card">
+          <span class="post-cat">Tutorial</span>
+          <h4>Building a Telegram Bot with Node.js</h4>
+          <span>11 min read &middot; Mar 18, 2026</span>
+        </a>
+        <a href="salla-store-automation.html" class="related-card">
+          <span class="post-cat">Tutorial</span>
+          <h4>Complete Guide to Salla Store Automation</h4>
+          <span>12 min read &middot; Mar 28, 2026</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Post Nav -->
+    <nav class="post-nav" aria-label="Post navigation">
+      <span></span>
+      <a href="telegram-bot-nodejs-tutorial.html" class="post-nav-btn next">
+        <span>Next Post</span>
+        <strong>Building a Telegram Bot with Node.js</strong>
+      </a>
+    </nav>
+
+  </article>
+
+  <!-- TOC Sidebar -->
+  <aside class="toc-sidebar" aria-label="Table of contents">
+    <div class="toc-box">
+      <h4 id="toc-title">On This Page</h4>
+      <ul class="toc-list" id="toc-en">
+        <li><a href="#why-nextjs">Why Next.js?</a></li>
+        <li><a href="#rtl-setup">RTL Setup</a></li>
+        <li><a href="#i18n-configuration">i18n Configuration</a></li>
+        <li><a href="#css-logical-properties">CSS Logical Properties</a></li>
+        <li><a href="#arabic-typography">Arabic Typography</a></li>
+        <li><a href="#bidirectional-text">Bidirectional Text</a></li>
+        <li><a href="#arabic-forms">Arabic Form Validation</a></li>
+        <li><a href="#arabic-seo">SEO for Arabic</a></li>
+        <li><a href="#performance-mena">Performance for MENA</a></li>
+        <li><a href="#common-mistakes">Common Mistakes</a></li>
+        <li><a href="#hosting-mena">Hosting for MENA</a></li>
+      </ul>
+      <ul class="toc-list" id="toc-ar" style="display:none">
+        <li><a href="#why-nextjs-ar">لماذا Next.js؟</a></li>
+        <li><a href="#rtl-setup-ar">إعداد RTL</a></li>
+        <li><a href="#i18n-configuration-ar">إعداد i18n</a></li>
+        <li><a href="#css-logical-properties-ar">CSS Logical Properties</a></li>
+        <li><a href="#arabic-typography-ar">الطباعة العربية</a></li>
+        <li><a href="#bidirectional-text-ar">النص ثنائي الاتجاه</a></li>
+        <li><a href="#arabic-forms-ar">النماذج العربية</a></li>
+        <li><a href="#arabic-seo-ar">SEO للعربية</a></li>
+        <li><a href="#common-mistakes-ar">الأخطاء الشائعة</a></li>
+        <li><a href="#performance-mena-ar">الأداء للمنطقة</a></li>
+        <li><a href="#hosting-mena-ar">الاستضافة</a></li>
+      </ul>
+    </div>
+  </aside>
+
+</div>
+
+<footer class="blog-footer" role="contentinfo">
+  <p>&copy; 2026 <a href="../../">Mahmoud Hamdy</a> &middot; <a href="../">Blog</a></p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  function toggleTheme(){
+    const h=document.documentElement;
+    const next=h.getAttribute('data-theme')==='dark'?'light':'dark';
+    h.setAttribute('data-theme',next);
+    localStorage.setItem('theme',next);
+  }
+  window.toggleTheme=toggleTheme;
+  const saved=localStorage.getItem('theme');
+  if(saved) document.documentElement.setAttribute('data-theme',saved);
+
+  const rp=document.getElementById('rp');
+  const pctEl=document.createElement('div');
+  pctEl.className='read-pct';
+  document.body.appendChild(pctEl);
+  window.addEventListener('scroll',()=>{
+    const max=document.documentElement.scrollHeight-window.innerHeight;
+    const pct=Math.round(window.scrollY/max*100);
+    rp.style.width=pct+'%';
+    pctEl.textContent=pct+'% read';
+    pctEl.classList.toggle('vis',window.scrollY>200);
+  },{passive:true});
+
+  document.querySelectorAll('.post-body pre').forEach(pre=>{
+    pre.style.position='relative';
+    const btn=document.createElement('button');
+    btn.className='code-copy-btn';
+    btn.textContent='Copy';
+    btn.addEventListener('click',()=>{
+      const code=pre.querySelector('code');
+      navigator.clipboard.writeText(code?code.textContent:pre.textContent).then(()=>{
+        btn.textContent='Copied!';
+        btn.classList.add('copied');
+        setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},2000);
+      });
+    });
+    pre.appendChild(btn);
+  });
+
+  function setLang(lang){
+    const isAr=lang==='ar';
+    document.documentElement.setAttribute('lang',lang);
+    document.documentElement.setAttribute('dir',isAr?'rtl':'ltr');
+    document.getElementById('en-content').style.display=isAr?'none':'block';
+    document.getElementById('ar-content').style.display=isAr?'block':'none';
+    document.getElementById('toc-en').style.display=isAr?'none':'block';
+    document.getElementById('toc-ar').style.display=isAr?'block':'none';
+    document.getElementById('post-title').textContent=isAr?'بناء موقع عربي احترافي بـ Next.js — دليل RTL الكامل':'Building a Professional Arabic Website with Next.js — Complete RTL Guide';
+    document.getElementById('back-label').textContent=isAr?'المدونة':'Blog';
+    document.getElementById('share-label').textContent=isAr?'مشاركة':'Share';
+    document.getElementById('related-title').textContent=isAr?'مقالات ذات صلة':'Related Articles';
+    document.getElementById('copy-label').textContent=isAr?'نسخ الرابط':'Copy Link';
+    document.getElementById('toc-title').textContent=isAr?'في هذه الصفحة':'On This Page';
+    document.querySelectorAll('.l-btn').forEach(b=>{
+      b.classList.remove('on');
+      if((lang==='en'&&b.textContent.trim()==='EN')||(lang==='ar'&&b.textContent.trim()==='عربي')) b.classList.add('on');
+    });
+    localStorage.setItem('lang',lang);
+  }
+  window.setLang=setLang;
+  const savedLang=localStorage.getItem('lang');
+  if(savedLang) setLang(savedLang);
+
+  function copyLink(btn){
+    navigator.clipboard.writeText(window.location.href).then(()=>{
+      btn.classList.add('copied');
+      document.getElementById('copy-label').textContent='Copied!';
+      setTimeout(()=>{
+        btn.classList.remove('copied');
+        document.getElementById('copy-label').textContent='Copy Link';
+      },2000);
+    });
+  }
+  window.copyLink=copyLink;
+
+  document.body.classList.add('loaded');
+})();
+</script>
+<script src="../../js/analytics.js" defer></script>
+<script src="../../js/pwa.js" defer></script>
+</body>
+</html>

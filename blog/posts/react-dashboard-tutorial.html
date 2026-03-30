@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building an Admin Dashboard with React — Practical Guide — Mahmoud Hamdy</title>
+<meta name="description" content="A practical guide to building a full-featured admin dashboard with React — layout, auth, data tables, charts, WebSocket real-time updates, dark mode, RTL Arabic, and REST API integration.">
+<meta name="author" content="Mahmoud Hamdy">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mahmoodhamdi.github.io/cv/blog/posts/react-dashboard-tutorial.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Building an Admin Dashboard with React — Practical Guide">
+<meta property="og:description" content="Build a production admin dashboard: sidebar layout, CRUD, Recharts, WebSocket, dark mode, RTL Arabic, and mobile-responsive design.">
+<meta property="og:url" content="https://mahmoodhamdi.github.io/cv/blog/posts/react-dashboard-tutorial.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Building an Admin Dashboard with React — Practical Guide">
+<meta name="twitter:description" content="React admin dashboard with Recharts, WebSocket, RTL Arabic, and REST API.">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="manifest" href="../../manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mahmoud CV">
+<link rel="apple-touch-icon" href="../../assets/icon-192.svg">
+<link rel="alternate" type="application/rss+xml" title="Mahmoud Hamdy — Blog" href="https://mahmoodhamdi.github.io/cv/blog/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="محمود حمدي — المدونة" href="https://mahmoodhamdi.github.io/cv/blog/feed-ar.xml" hreflang="ar">
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D0H1J8BSKJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-D0H1J8BSKJ');
+</script>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="../../css/themes.css">
+<link rel="stylesheet" href="../blog.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Building an Admin Dashboard with React — Practical Guide",
+  "description": "A practical guide to building a full-featured admin dashboard with React, covering layout, auth, data tables, Recharts, WebSocket, dark mode, and Arabic RTL support.",
+  "author": { "@type": "Person", "name": "Mahmoud Hamdy", "url": "https://mahmoodhamdi.github.io/cv/" },
+  "datePublished": "2026-03-05",
+  "dateModified": "2026-03-05",
+  "url": "https://mahmoodhamdi.github.io/cv/blog/posts/react-dashboard-tutorial.html",
+  "publisher": { "@type": "Person", "name": "Mahmoud Hamdy" }
+}
+</script>
+</head>
+<body>
+
+<div class="read-progress" id="rp" aria-hidden="true"></div>
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+
+<!-- Top Bar -->
+<header class="blog-topbar" role="banner">
+  <a href="../" class="back-link" aria-label="Back to blog">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    <span id="back-label">Blog</span>
+  </a>
+  <div class="topbar-right">
+    <button class="t-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg class="ic-light" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="ic-dark" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <div class="lang-tog" role="group" aria-label="Language selection">
+      <button class="l-btn on" onclick="setLang('en')">EN</button>
+      <button class="l-btn" onclick="setLang('ar')">عربي</button>
+    </div>
+  </div>
+</header>
+
+<div class="post-layout">
+
+  <!-- Article -->
+  <article class="article-main" id="main-article">
+
+    <header class="post-header">
+      <div class="post-header-meta">
+        <span class="post-cat">Tutorial</span>
+        <span class="post-readtime">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          14 min read
+        </span>
+      </div>
+      <h1 id="post-title">Building an Admin Dashboard with React — Practical Guide</h1>
+      <div class="author-card">
+        <div class="author-avatar" aria-hidden="true"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path d="M30 82L45 38L60 65L75 38L90 82" stroke="url(#blg)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><line x1="38" y1="68" x2="82" y2="68" stroke="rgba(56,189,248,0.5)" stroke-width="1.5"/><defs><linearGradient id="blg" x1="30" y1="38" x2="90" y2="82"><stop offset="0%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#818cf8"/></linearGradient></defs></svg></div>
+        <div class="author-info">
+          <div class="author-name">Mahmoud Hamdy</div>
+          <div class="post-publish-date">March 5, 2026</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- EN Content -->
+    <div id="en-content">
+      <div class="post-body">
+
+        <p>Admin dashboards are one of the most common things clients ask for — and one of the most underestimated in terms of complexity. A basic table is easy. A production dashboard with sortable/filterable tables, real-time WebSocket updates, role-based permissions, responsive mobile layout, and bilingual Arabic/English support is a different beast. This guide covers everything you need to build one that actually works in production.</p>
+
+        <h2 id="design-principles">Dashboard Design Principles</h2>
+        <p>Before writing a single line of code, think about information hierarchy. What does the user need to see first? For most admin dashboards, the answer is KPI summary cards at the top (total users, revenue, orders today), followed by a trend chart, then a data table of recent activity. Keep navigation in a persistent sidebar on desktop and a collapsible drawer on mobile. Every page should be reachable in at most two clicks from the sidebar.</p>
+        <p>Resist the temptation to put everything on the home screen. Data density kills usability. The best dashboards show about seven numbers at a glance — the brain can process no more than that before it starts ignoring data.</p>
+
+        <h2 id="setup">Project Setup — Next.js</h2>
+        <p>Use Next.js with the App Router for a dashboard. Server Components handle data-fetching without useEffect boilerplate, and the file-system routing maps naturally to dashboard sections:</p>
+
+        <pre><code>npx create-next-app@latest my-dashboard \
+  --typescript --tailwind --eslint --app --src-dir
+
+# Install dashboard-specific packages
+npm install recharts @tanstack/react-table \
+  @tanstack/react-query zustand \
+  react-hook-form zod @hookform/resolvers \
+  lucide-react class-variance-authority clsx</code></pre>
+
+        <p>The project structure groups by feature, with a shared <code>components/ui</code> directory for reusable primitives (Button, Card, Badge, Modal):</p>
+
+        <pre><code>src/
+├── app/
+│   ├── (auth)/login/page.tsx
+│   └── (dashboard)/
+│       ├── layout.tsx          # Sidebar + header wrapper
+│       ├── page.tsx            # Overview / home
+│       ├── users/page.tsx
+│       ├── orders/page.tsx
+│       └── analytics/page.tsx
+├── components/
+│   ├── ui/                     # Button, Card, Badge, etc.
+│   ├── layout/
+│   │   ├── Sidebar.tsx
+│   │   └── Header.tsx
+│   └── features/
+│       ├── DataTable.tsx
+│       └── StatsCard.tsx
+├── hooks/
+│   ├── useAuth.ts
+│   └── useWebSocket.ts
+└── stores/
+    └── authStore.ts</code></pre>
+
+        <h2 id="layout">Sidebar + Header Layout</h2>
+        <p>The dashboard layout is a CSS Grid or Flexbox split: sidebar at a fixed width (240px) on the left, main content filling the remainder. The sidebar collapses to an icon-only mode on smaller screens and to a full drawer on mobile:</p>
+
+        <pre><code>// src/app/(dashboard)/layout.tsx
+import { Sidebar } from '@/components/layout/Sidebar';
+import { Header } from '@/components/layout/Header';
+
+export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+  return (
+    &lt;div className="flex h-screen bg-background"&gt;
+      &lt;Sidebar /&gt;
+      &lt;div className="flex flex-1 flex-col overflow-hidden"&gt;
+        &lt;Header /&gt;
+        &lt;main className="flex-1 overflow-y-auto p-6"&gt;
+          {children}
+        &lt;/main&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+        <h2 id="auth-routes">Auth and Protected Routes</h2>
+        <p>In Next.js App Router, protect dashboard routes using a middleware file at the project root. It runs on the Edge and redirects unauthenticated users before the page renders:</p>
+
+        <pre><code>// middleware.ts
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+
+export function middleware(req: NextRequest) {
+  const token = req.cookies.get('access_token')?.value;
+  const isAuthPage = req.nextUrl.pathname.startsWith('/login');
+
+  if (!token && !isAuthPage) {
+    return NextResponse.redirect(new URL('/login', req.url));
+  }
+  if (token && isAuthPage) {
+    return NextResponse.redirect(new URL('/', req.url));
+  }
+  return NextResponse.next();
+}
+
+export const config = {
+  matcher: ['/((?!_next/static|_next/image|favicon.ico|api).*)'],
+};</code></pre>
+
+        <h2 id="data-tables">Data Tables with TanStack Table</h2>
+        <p>TanStack Table v8 (formerly React Table) is the gold standard for headless data tables. It handles sorting, filtering, pagination, and row selection entirely in memory, which is appropriate for datasets up to ~10,000 rows:</p>
+
+        <pre><code>// src/components/features/DataTable.tsx
+'use client';
+import { useReactTable, getCoreRowModel, getSortedRowModel,
+  getFilteredRowModel, getPaginationRowModel,
+  flexRender, type ColumnDef } from '@tanstack/react-table';
+import { useState } from 'react';
+
+interface DataTableProps&lt;T&gt; {
+  data: T[];
+  columns: ColumnDef&lt;T&gt;[];
+}
+
+export function DataTable&lt;T&gt;({ data, columns }: DataTableProps&lt;T&gt;) {
+  const [sorting, setSorting] = useState([]);
+  const [globalFilter, setGlobalFilter] = useState('');
+
+  const table = useReactTable({
+    data,
+    columns,
+    state: { sorting, globalFilter },
+    onSortingChange: setSorting,
+    onGlobalFilterChange: setGlobalFilter,
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+  });
+
+  return (
+    &lt;div&gt;
+      &lt;input value={globalFilter} onChange={e =&gt; setGlobalFilter(e.target.value)}
+        placeholder="Search..." className="mb-4 input" /&gt;
+      &lt;table className="w-full"&gt;
+        &lt;thead&gt;
+          {table.getHeaderGroups().map(hg =&gt; (
+            &lt;tr key={hg.id}&gt;
+              {hg.headers.map(h =&gt; (
+                &lt;th key={h.id} onClick={h.column.getToggleSortingHandler()}
+                  className="cursor-pointer text-left p-3"&gt;
+                  {flexRender(h.column.columnDef.header, h.getContext())}
+                  {{ asc: ' ↑', desc: ' ↓' }[h.column.getIsSorted() as string] ?? ''}
+                &lt;/th&gt;
+              ))}
+            &lt;/tr&gt;
+          ))}
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+          {table.getRowModel().rows.map(row =&gt; (
+            &lt;tr key={row.id} className="border-t hover:bg-muted/50"&gt;
+              {row.getVisibleCells().map(cell =&gt; (
+                &lt;td key={cell.id} className="p-3"&gt;
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                &lt;/td&gt;
+              ))}
+            &lt;/tr&gt;
+          ))}
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+      {/* Pagination controls */}
+      &lt;div className="flex items-center gap-2 mt-4"&gt;
+        &lt;button onClick={() =&gt; table.previousPage()} disabled={!table.getCanPreviousPage()}&gt;Previous&lt;/button&gt;
+        &lt;span&gt;Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}&lt;/span&gt;
+        &lt;button onClick={() =&gt; table.nextPage()} disabled={!table.getCanNextPage()}&gt;Next&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+        <h2 id="charts">Charts with Recharts</h2>
+        <p>Recharts is a React-native charting library built on D3. It composes well with React and is fully typed. For a dashboard you typically need: a <code>LineChart</code> for trends, a <code>BarChart</code> for comparisons, and a <code>PieChart</code> or <code>RadarChart</code> for distribution. Keep chart components in a <code>features/analytics/</code> folder and pass data as props:</p>
+
+        <pre><code>'use client';
+import { LineChart, Line, XAxis, YAxis, Tooltip,
+  CartesianGrid, ResponsiveContainer } from 'recharts';
+
+export function RevenueChart({ data }: { data: { date: string; revenue: number }[] }) {
+  return (
+    &lt;ResponsiveContainer width="100%" height={300}&gt;
+      &lt;LineChart data={data}&gt;
+        &lt;CartesianGrid strokeDasharray="3 3" stroke="var(--border)" /&gt;
+        &lt;XAxis dataKey="date" tick={{ fill: 'var(--muted-foreground)', fontSize: 12 }} /&gt;
+        &lt;YAxis tick={{ fill: 'var(--muted-foreground)', fontSize: 12 }} /&gt;
+        &lt;Tooltip contentStyle={{ background: 'var(--card)', border: '1px solid var(--border)' }} /&gt;
+        &lt;Line type="monotone" dataKey="revenue" stroke="var(--primary)"
+          strokeWidth={2} dot={false} /&gt;
+      &lt;/LineChart&gt;
+    &lt;/ResponsiveContainer&gt;
+  );
+}</code></pre>
+
+        <h2 id="crud">CRUD Operations</h2>
+        <p>Use TanStack Query for all server state. It handles caching, background refetching, optimistic updates, and loading/error states so you do not have to manage them manually. Pair mutations with query invalidation to keep tables in sync:</p>
+
+        <pre><code>// hooks/useUsers.ts
+export function useUsers() {
+  return useQuery({
+    queryKey: ['users'],
+    queryFn: () => api.get('/users').then(r =&gt; r.data),
+  });
+}
+
+export function useDeleteUser() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (id: string) =&gt; api.delete(`/users/${id}`),
+    onSuccess: () =&gt; queryClient.invalidateQueries({ queryKey: ['users'] }),
+  });
+}</code></pre>
+
+        <h2 id="websocket">Real-Time Updates with WebSocket</h2>
+        <p>For live dashboards — order notifications, user activity feeds — a WebSocket connection pushes data without polling. Create a custom hook that connects once and updates a Zustand store:</p>
+
+        <pre><code>// hooks/useWebSocket.ts
+'use client';
+import { useEffect } from 'react';
+import { useNotificationStore } from '@/stores/notificationStore';
+
+export function useWebSocket(url: string) {
+  const addNotification = useNotificationStore(s =&gt; s.add);
+
+  useEffect(() =&gt; {
+    const ws = new WebSocket(url);
+
+    ws.onmessage = (event) =&gt; {
+      const data = JSON.parse(event.data);
+      if (data.type === 'new_order') {
+        addNotification({ id: data.id, message: `New order #${data.orderId}`, read: false });
+      }
+    };
+
+    ws.onerror = (err) =&gt; console.error('WebSocket error', err);
+
+    return () =&gt; ws.close();
+  }, [url, addNotification]);
+}</code></pre>
+
+        <h2 id="dark-mode">Dark Mode</h2>
+        <p>Implement dark mode with CSS custom properties and a data attribute on <code>&lt;html&gt;</code>. Tailwind's <code>darkMode: 'class'</code> or <code>'selector'</code> strategy works well with this approach. Persist the user's preference in <code>localStorage</code> and read it before the first render to avoid a flash:</p>
+
+        <pre><code>// Add this to the &lt;head&gt; as an inline script to prevent FOUC
+(function() {
+  const theme = localStorage.getItem('theme') ||
+    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+})();</code></pre>
+
+        <h2 id="rtl-arabic">RTL Arabic Layout</h2>
+        <p>For bilingual dashboards, the sidebar flip and table alignment are the trickiest parts. Use logical CSS properties throughout (<code>margin-inline-start</code>, <code>padding-inline-end</code>) rather than <code>margin-left</code> / <code>padding-right</code>. In Tailwind, use <code>ms-</code> and <code>me-</code> utilities (margin-start / margin-end) which respect the document direction automatically. Toggle direction on the <code>&lt;html&gt;</code> element:</p>
+
+        <pre><code>function setLocale(locale: 'en' | 'ar') {
+  document.documentElement.setAttribute('lang', locale);
+  document.documentElement.setAttribute('dir', locale === 'ar' ? 'rtl' : 'ltr');
+  localStorage.setItem('locale', locale);
+}</code></pre>
+
+        <h2 id="responsive-mobile">Responsive Mobile Admin</h2>
+        <p>On mobile (below 768px), the sidebar becomes a bottom navigation bar or a hamburger-triggered drawer. Use a Zustand store to manage the sidebar open/close state so any component can toggle it. The main content area gets full width, tables become horizontally scrollable, and cards stack vertically. Test on an actual low-end Android device — many dashboards look fine on a MacBook but are unusable on a 5-inch screen.</p>
+
+        <h2 id="state-performance">State Management and Performance</h2>
+        <p>Zustand for client-side global state (auth user, theme, sidebar state), TanStack Query for server state. Avoid putting server data in Zustand — that leads to stale data bugs. For performance, wrap expensive pure components in <code>React.memo</code>, use <code>useMemo</code> for derived data in table columns, and implement virtualization with <code>@tanstack/react-virtual</code> for tables with thousands of rows. Lazy-load chart components — Recharts adds ~60KB to the bundle, and not every page needs it:</p>
+
+        <pre><code>const RevenueChart = dynamic(
+  () =&gt; import('@/components/features/RevenueChart'),
+  { ssr: false, loading: () =&gt; &lt;ChartSkeleton /&gt; }
+);</code></pre>
+
+        <h2 id="api-connection">Connecting to the REST API</h2>
+        <p>Create a typed API client using Axios with an interceptor that attaches the JWT token and handles 401 responses by refreshing the token. Export named functions (not classes) to keep imports clean. Configure the base URL via an environment variable so the same code works in development, staging, and production without changes.</p>
+        <p>For optimistic updates on mutations — deleting a row, updating a status — use TanStack Query's <code>onMutate</code> callback to update the cache immediately, then roll back on error. This makes the dashboard feel instant even on slow connections.</p>
+
+      </div>
+    </div>
+
+    <!-- AR Content -->
+    <div id="ar-content" style="display:none" dir="rtl">
+      <div class="post-body ar-content">
+
+        <p>لوحات التحكم الإدارية هي من أكثر الأشياء التي يطلبها العملاء — ومن أكثرها استهانةً من حيث التعقيد. جدول بسيط سهل. لوحة تحكم إنتاجية بجداول قابلة للترتيب والفلترة، وتحديثات WebSocket في الوقت الفعلي، وصلاحيات قائمة على الأدوار، وتخطيط متجاوب للموبايل، ودعم ثنائي اللغة عربي/إنجليزي — هذا شيء مختلف تمامًا. هذا الدليل يغطي كل ما تحتاجه لبناء لوحة تعمل فعلًا في الإنتاج.</p>
+
+        <h2 id="design-principles-ar">مبادئ تصميم لوحة التحكم</h2>
+        <p>قبل كتابة سطر واحد من الكود، فكّر في تسلسل المعلومات. ماذا يحتاج المستخدم أن يرى أولًا؟ بالنسبة لمعظم لوحات التحكم الإدارية، الجواب هو بطاقات KPI الملخصة في الأعلى (إجمالي المستخدمين، الإيراد، الطلبات اليوم)، تليها مخطط اتجاه، ثم جدول بيانات بالنشاط الأخير. ضع التنقل في شريط جانبي ثابت على سطح المكتب وفي درج قابل للطي على الموبايل.</p>
+        <p>قاوم إغراء وضع كل شيء على الشاشة الرئيسية. كثافة البيانات تقتل قابلية الاستخدام. أفضل لوحات التحكم تعرض نحو سبعة أرقام في لمحة — الدماغ لا يستطيع معالجة أكثر من ذلك قبل أن يبدأ بتجاهل البيانات.</p>
+
+        <h2 id="setup-ar">إعداد المشروع — Next.js</h2>
+        <p>استخدم Next.js مع App Router للوحة التحكم. Server Components تتعامل مع جلب البيانات دون متطلبات useEffect، والتوجيه عبر نظام الملفات يتناسب طبيعيًا مع أقسام لوحة التحكم.</p>
+
+        <pre><code>npx create-next-app@latest my-dashboard \
+  --typescript --tailwind --eslint --app --src-dir
+
+npm install recharts @tanstack/react-table \
+  @tanstack/react-query zustand \
+  react-hook-form zod @hookform/resolvers \
+  lucide-react</code></pre>
+
+        <h2 id="layout-ar">تخطيط الشريط الجانبي والرأس</h2>
+        <p>تخطيط لوحة التحكم هو تقسيم CSS Grid أو Flexbox: الشريط الجانبي بعرض ثابت (240px) على اليسار (أو اليمين في RTL)، ومحتوى رئيسي يملأ الباقي. الشريط الجانبي ينهار لوضع أيقونات فقط على الشاشات الأصغر وإلى درج كامل على الموبايل.</p>
+
+        <pre><code>// src/app/(dashboard)/layout.tsx
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    &lt;div className="flex h-screen bg-background"&gt;
+      &lt;Sidebar /&gt;
+      &lt;div className="flex flex-1 flex-col overflow-hidden"&gt;
+        &lt;Header /&gt;
+        &lt;main className="flex-1 overflow-y-auto p-6"&gt;
+          {children}
+        &lt;/main&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+
+        <h2 id="auth-routes-ar">المصادقة والمسارات المحمية</h2>
+        <p>في Next.js App Router، احمِ مسارات لوحة التحكم باستخدام ملف middleware في جذر المشروع. يعمل على Edge ويُعيد توجيه المستخدمين غير المصادق عليهم قبل تصيير الصفحة. هذا أسرع وأكثر أمانًا من التحقق في مكون العميل.</p>
+
+        <h2 id="data-tables-ar">جداول البيانات بـ TanStack Table</h2>
+        <p>TanStack Table v8 هو المعيار الذهبي للجداول بدون رأس. يتعامل مع الترتيب والفلترة والترقيم وتحديد الصفوف بالكامل في الذاكرة، وهو مناسب لمجموعات البيانات حتى ~10,000 صف. الجزء الجميل هو أنك تتحكم بالـ HTML والـ CSS بالكامل — لا أنماط مفروضة.</p>
+
+        <h2 id="charts-ar">المخططات بـ Recharts</h2>
+        <p>Recharts مكتبة مخططات React الأصلية مبنية على D3. تتكامل بشكل جيد مع React ومكتوبة بالكامل. للوحة تحكم تحتاج عادةً: <code>LineChart</code> للاتجاهات، و<code>BarChart</code> للمقارنات، و<code>PieChart</code> للتوزيعات. استخدم CSS variables للألوان حتى تتكيف المخططات تلقائيًا مع الوضع الداكن والفاتح.</p>
+
+        <pre><code>'use client';
+import { LineChart, Line, XAxis, YAxis,
+  Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
+
+export function RevenueChart({
+  data,
+}: {
+  data: { date: string; revenue: number }[];
+}) {
+  return (
+    &lt;ResponsiveContainer width="100%" height={300}&gt;
+      &lt;LineChart data={data}&gt;
+        &lt;CartesianGrid strokeDasharray="3 3" stroke="var(--border)" /&gt;
+        &lt;XAxis dataKey="date" /&gt;
+        &lt;YAxis /&gt;
+        &lt;Tooltip /&gt;
+        &lt;Line type="monotone" dataKey="revenue"
+          stroke="var(--primary)" strokeWidth={2} dot={false} /&gt;
+      &lt;/LineChart&gt;
+    &lt;/ResponsiveContainer&gt;
+  );
+}</code></pre>
+
+        <h2 id="crud-ar">عمليات CRUD</h2>
+        <p>استخدم TanStack Query لكل حالة الخادم. يتعامل مع التخزين المؤقت وإعادة الجلب في الخلفية والتحديثات المتفائلة وحالات التحميل/الخطأ حتى لا تضطر لإدارتها يدويًا. اقرن الطفرات مع إلغاء صلاحية الاستعلام للحفاظ على تزامن الجداول.</p>
+
+        <h2 id="websocket-ar">التحديثات في الوقت الفعلي بـ WebSocket</h2>
+        <p>لوحات التحكم المباشرة — إشعارات الطلبات، خلاصات نشاط المستخدم — اتصال WebSocket يدفع البيانات دون استطلاع. أنشئ hook مخصصًا يتصل مرة واحدة ويحدث مخزن Zustand. الأهم: أغلق WebSocket في دالة التنظيف لـ useEffect لمنع تسريبات الذاكرة.</p>
+
+        <h2 id="dark-mode-ar">الوضع الداكن</h2>
+        <p>نفّذ الوضع الداكن بخصائص CSS المخصصة وسمة بيانات على <code>&lt;html&gt;</code>. استراتيجية <code>darkMode: 'class'</code> في Tailwind تعمل بشكل جيد مع هذا النهج. خزّن تفضيل المستخدم في <code>localStorage</code> واقرأه قبل التصيير الأول لتجنب وميض المحتوى غير المصمَّم (FOUC).</p>
+
+        <h2 id="rtl-arabic-ar">تخطيط RTL العربي</h2>
+        <p>للوحات التحكم ثنائية اللغة، قلب الشريط الجانبي ومحاذاة الجدول هما الأجزاء الأصعب. استخدم خصائص CSS المنطقية في كل مكان (<code>margin-inline-start</code>، <code>padding-inline-end</code>) بدلًا من <code>margin-left</code> / <code>padding-right</code>. في Tailwind، استخدم أدوات <code>ms-</code> و<code>me-</code> (margin-start / margin-end) التي تحترم اتجاه المستند تلقائيًا.</p>
+
+        <h2 id="responsive-mobile-ar">لوحة التحكم المتجاوبة على الموبايل</h2>
+        <p>على الموبايل (أقل من 768px)، يصبح الشريط الجانبي شريط تنقل سفلي أو درجًا يُفتح بالهامبرغر. استخدم مخزن Zustand لإدارة حالة فتح/إغلاق الشريط الجانبي حتى يتمكن أي مكون من تبديله. منطقة المحتوى الرئيسي تحصل على العرض الكامل، والجداول تصبح قابلة للتمرير أفقيًا، والبطاقات تتكدس عموديًا.</p>
+
+        <h2 id="state-performance-ar">إدارة الحالة والأداء</h2>
+        <p>Zustand للحالة الكلية من جانب العميل (مستخدم المصادقة، السمة، حالة الشريط الجانبي)، TanStack Query لحالة الخادم. تجنب وضع بيانات الخادم في Zustand — هذا يؤدي لأخطاء بيانات قديمة. للأداء، استخدم <code>React.memo</code> للمكونات النقية المكلفة، و<code>useMemo</code> للبيانات المشتقة في أعمدة الجدول، ونفّذ المحاكاة الافتراضية لجداول تحتوي آلاف الصفوف. حمّل مكونات المخططات بشكل كسول — Recharts تضيف ~60KB للحزمة.</p>
+
+        <h2 id="api-connection-ar">الاتصال بـ REST API</h2>
+        <p>أنشئ عميل API مكتوبًا بـ Axios مع معترض يُرفق توكن JWT ويتعامل مع استجابات 401 عن طريق تجديد التوكن. صدّر دوال مسمّاة (ليس كلاسات) للحفاظ على نظافة الاستيراد. اضبط URL الأساسي عبر متغير بيئة حتى يعمل نفس الكود في التطوير والتجهيز والإنتاج دون تغييرات. للتحديثات المتفائلة على الطفرات — حذف صف، تحديث حالة — استخدم callback  <code>onMutate</code> في TanStack Query لتحديث الذاكرة المؤقتة فورًا، ثم تراجع عند الخطأ.</p>
+
+      </div>
+    </div>
+
+    <!-- Share -->
+    <div class="share-section">
+      <span class="share-label" id="share-label">Share</span>
+      <div class="share-btns">
+        <a class="share-btn" id="tw-btn" href="https://twitter.com/intent/tweet?text=Building%20an%20Admin%20Dashboard%20with%20React%20%E2%80%94%20Practical%20Guide&url=https%3A%2F%2Fmahmoodhamdi.github.io%2Fcv%2Fblog%2Fposts%2Freact-dashboard-tutorial.html" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Twitter
+        </a>
+        <a class="share-btn" id="li-btn" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fmahmoodhamdi.github.io%2Fcv%2Fblog%2Fposts%2Freact-dashboard-tutorial.html&title=Building%20an%20Admin%20Dashboard%20with%20React" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <button class="share-btn copy-btn" onclick="copyLink(this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          <span id="copy-label">Copy Link</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Related Posts -->
+    <div class="related-section">
+      <h3 id="related-title">Related Articles</h3>
+      <div class="related-grid">
+        <a href="nextjs-arabic-website.html" class="related-card">
+          <span class="post-cat">Tutorial</span>
+          <h4>Building an Arabic Website with Next.js</h4>
+          <span>10 min read &middot; Feb 25, 2026</span>
+        </a>
+        <a href="nodejs-rest-api-complete-guide.html" class="related-card">
+          <span class="post-cat">Tutorial</span>
+          <h4>Building a Complete REST API with Node.js &amp; TypeScript</h4>
+          <span>18 min read &middot; Mar 8, 2026</span>
+        </a>
+        <a href="website-speed-optimization.html" class="related-card">
+          <span class="post-cat">Guide</span>
+          <h4>Website Speed Optimization Guide</h4>
+          <span>12 min read &middot; Feb 18, 2026</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Post Nav -->
+    <nav class="post-nav" aria-label="Post navigation">
+      <a href="mongodb-vs-postgresql.html" class="post-nav-btn prev">
+        <span>Previous Post</span>
+        <strong>MongoDB vs PostgreSQL — Which Should You Choose?</strong>
+      </a>
+      <a href="flutter-app-from-scratch.html" class="post-nav-btn next">
+        <span>Next Post</span>
+        <strong>Building a Mobile App with Flutter</strong>
+      </a>
+    </nav>
+
+  </article>
+
+  <!-- TOC Sidebar -->
+  <aside class="toc-sidebar" aria-label="Table of contents">
+    <div class="toc-box">
+      <h4 id="toc-title">On This Page</h4>
+      <ul class="toc-list" id="toc-en">
+        <li><a href="#design-principles">Design Principles</a></li>
+        <li><a href="#setup">Project Setup</a></li>
+        <li><a href="#layout">Sidebar + Header Layout</a></li>
+        <li><a href="#auth-routes">Auth &amp; Protected Routes</a></li>
+        <li><a href="#data-tables">Data Tables</a></li>
+        <li><a href="#charts">Charts with Recharts</a></li>
+        <li><a href="#crud">CRUD Operations</a></li>
+        <li><a href="#websocket">WebSocket Real-Time</a></li>
+        <li><a href="#dark-mode">Dark Mode</a></li>
+        <li><a href="#rtl-arabic">RTL Arabic Layout</a></li>
+        <li><a href="#responsive-mobile">Responsive Mobile</a></li>
+        <li><a href="#state-performance">State &amp; Performance</a></li>
+        <li><a href="#api-connection">REST API Connection</a></li>
+      </ul>
+      <ul class="toc-list" id="toc-ar" style="display:none">
+        <li><a href="#design-principles-ar">مبادئ التصميم</a></li>
+        <li><a href="#setup-ar">إعداد المشروع</a></li>
+        <li><a href="#layout-ar">تخطيط الشريط والرأس</a></li>
+        <li><a href="#auth-routes-ar">المصادقة والمسارات</a></li>
+        <li><a href="#data-tables-ar">جداول البيانات</a></li>
+        <li><a href="#charts-ar">المخططات بـ Recharts</a></li>
+        <li><a href="#crud-ar">عمليات CRUD</a></li>
+        <li><a href="#websocket-ar">WebSocket الوقت الفعلي</a></li>
+        <li><a href="#dark-mode-ar">الوضع الداكن</a></li>
+        <li><a href="#rtl-arabic-ar">تخطيط RTL العربي</a></li>
+        <li><a href="#responsive-mobile-ar">المتجاوب على الموبايل</a></li>
+        <li><a href="#state-performance-ar">الحالة والأداء</a></li>
+        <li><a href="#api-connection-ar">الاتصال بـ REST API</a></li>
+      </ul>
+    </div>
+  </aside>
+
+</div>
+
+<footer class="blog-footer" role="contentinfo">
+  <p>&copy; 2026 <a href="../../">Mahmoud Hamdy</a> &middot; <a href="../">Blog</a></p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  function toggleTheme(){
+    const h=document.documentElement;
+    const next=h.getAttribute('data-theme')==='dark'?'light':'dark';
+    h.setAttribute('data-theme',next);
+    localStorage.setItem('theme',next);
+  }
+  window.toggleTheme=toggleTheme;
+  const saved=localStorage.getItem('theme');
+  if(saved) document.documentElement.setAttribute('data-theme',saved);
+
+  const rp=document.getElementById('rp');
+  const pctEl=document.createElement('div');
+  pctEl.className='read-pct';
+  document.body.appendChild(pctEl);
+  window.addEventListener('scroll',()=>{
+    const max=document.documentElement.scrollHeight-window.innerHeight;
+    const pct=Math.round(window.scrollY/max*100);
+    rp.style.width=pct+'%';
+    pctEl.textContent=pct+'% read';
+    pctEl.classList.toggle('vis',window.scrollY>200);
+  },{passive:true});
+
+  document.querySelectorAll('.post-body pre').forEach(pre=>{
+    pre.style.position='relative';
+    const btn=document.createElement('button');
+    btn.className='code-copy-btn';
+    btn.textContent='Copy';
+    btn.addEventListener('click',()=>{
+      const code=pre.querySelector('code');
+      navigator.clipboard.writeText(code?code.textContent:pre.textContent).then(()=>{
+        btn.textContent='Copied!';
+        btn.classList.add('copied');
+        setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},2000);
+      });
+    });
+    pre.appendChild(btn);
+  });
+
+  function setLang(lang){
+    const isAr=lang==='ar';
+    document.documentElement.setAttribute('lang',lang);
+    document.documentElement.setAttribute('dir',isAr?'rtl':'ltr');
+    document.getElementById('en-content').style.display=isAr?'none':'block';
+    document.getElementById('ar-content').style.display=isAr?'block':'none';
+    document.getElementById('toc-en').style.display=isAr?'none':'block';
+    document.getElementById('toc-ar').style.display=isAr?'block':'none';
+    document.getElementById('post-title').textContent=isAr?'بناء لوحة تحكم (Dashboard) بـ React — دليل عملي':'Building an Admin Dashboard with React — Practical Guide';
+    document.getElementById('back-label').textContent=isAr?'المدونة':'Blog';
+    document.getElementById('share-label').textContent=isAr?'مشاركة':'Share';
+    document.getElementById('related-title').textContent=isAr?'مقالات ذات صلة':'Related Articles';
+    document.getElementById('copy-label').textContent=isAr?'نسخ الرابط':'Copy Link';
+    document.getElementById('toc-title').textContent=isAr?'في هذه الصفحة':'On This Page';
+    document.querySelectorAll('.l-btn').forEach(b=>{
+      b.classList.remove('on');
+      if((lang==='en'&&b.textContent.trim()==='EN')||(lang==='ar'&&b.textContent.trim()==='عربي')) b.classList.add('on');
+    });
+    localStorage.setItem('lang',lang);
+  }
+  window.setLang=setLang;
+  const savedLang=localStorage.getItem('lang');
+  if(savedLang) setLang(savedLang);
+
+  function copyLink(btn){
+    navigator.clipboard.writeText(window.location.href).then(()=>{
+      btn.classList.add('copied');
+      document.getElementById('copy-label').textContent='Copied!';
+      setTimeout(()=>{
+        btn.classList.remove('copied');
+        document.getElementById('copy-label').textContent='Copy Link';
+      },2000);
+    });
+  }
+  window.copyLink=copyLink;
+
+  document.body.classList.add('loaded');
+})();
+</script>
+<script src="../../js/analytics.js" defer></script>
+<script src="../../js/pwa.js" defer></script>
+</body>
+</html>

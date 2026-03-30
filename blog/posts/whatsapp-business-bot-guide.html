@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building a WhatsApp Business Bot — Step by Step Guide — Mahmoud Hamdy</title>
+<meta name="description" content="Complete guide to building a WhatsApp Business bot with Node.js and the WhatsApp Cloud API. Covers approval, webhooks, message templates, interactive messages, e-commerce integration, and deployment.">
+<meta name="author" content="Mahmoud Hamdy">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mahmoodhamdi.github.io/cv/blog/posts/whatsapp-business-bot-guide.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Building a WhatsApp Business Bot — Step by Step Guide">
+<meta property="og:description" content="Learn to build a WhatsApp Business bot with Node.js — from API approval to handling messages, templates, and e-commerce integration.">
+<meta property="og:url" content="https://mahmoodhamdi.github.io/cv/blog/posts/whatsapp-business-bot-guide.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Building a WhatsApp Business Bot — Step by Step">
+<meta name="twitter:description" content="Build a production WhatsApp bot with Node.js and the Cloud API.">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="manifest" href="../../manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mahmoud CV">
+<link rel="apple-touch-icon" href="../../assets/icon-192.svg">
+<link rel="alternate" type="application/rss+xml" title="Mahmoud Hamdy — Blog" href="https://mahmoodhamdi.github.io/cv/blog/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="محمود حمدي — المدونة" href="https://mahmoodhamdi.github.io/cv/blog/feed-ar.xml" hreflang="ar">
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D0H1J8BSKJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-D0H1J8BSKJ');
+</script>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="../../css/themes.css">
+<link rel="stylesheet" href="../blog.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Building a WhatsApp Business Bot — Step by Step Guide",
+  "description": "Complete guide to building a production WhatsApp Business bot using Node.js and the WhatsApp Cloud API, covering webhooks, templates, interactive messages, and e-commerce integration.",
+  "author": { "@type": "Person", "name": "Mahmoud Hamdy", "url": "https://mahmoodhamdi.github.io/cv/" },
+  "datePublished": "2026-03-22",
+  "dateModified": "2026-03-22",
+  "url": "https://mahmoodhamdi.github.io/cv/blog/posts/whatsapp-business-bot-guide.html",
+  "publisher": { "@type": "Person", "name": "Mahmoud Hamdy" }
+}
+</script>
+</head>
+<body>
+
+<div class="read-progress" id="rp" aria-hidden="true"></div>
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+
+<!-- Top Bar -->
+<header class="blog-topbar" role="banner">
+  <a href="../" class="back-link" aria-label="Back to blog">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    <span id="back-label">Blog</span>
+  </a>
+  <div class="topbar-right">
+    <button class="t-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg class="ic-light" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="ic-dark" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <div class="lang-tog" role="group" aria-label="Language selection">
+      <button class="l-btn on" onclick="setLang('en')">EN</button>
+      <button class="l-btn" onclick="setLang('ar')">عربي</button>
+    </div>
+  </div>
+</header>
+
+<div class="post-layout">
+
+  <article class="article-main" id="main-article">
+
+    <header class="post-header">
+      <div class="post-header-meta">
+        <span class="post-cat">Tutorial</span>
+        <span class="post-readtime">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          14 min read
+        </span>
+      </div>
+      <h1 id="post-title">Building a WhatsApp Business Bot — Step by Step Guide</h1>
+      <div class="author-card">
+        <div class="author-avatar" aria-hidden="true"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path d="M30 82L45 38L60 65L75 38L90 82" stroke="url(#blg)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><line x1="38" y1="68" x2="82" y2="68" stroke="rgba(56,189,248,0.5)" stroke-width="1.5"/><defs><linearGradient id="blg" x1="30" y1="38" x2="90" y2="82"><stop offset="0%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#818cf8"/></linearGradient></defs></svg></div>
+        <div class="author-info">
+          <div class="author-name">Mahmoud Hamdy</div>
+          <div class="post-publish-date">March 22, 2026</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- EN Content -->
+    <div id="en-content">
+      <div class="post-body">
+
+        <p>WhatsApp is not just popular in the MENA region — it is the default communication layer. Over 90% of smartphone users in Saudi Arabia, Egypt, and the UAE have WhatsApp installed and check it multiple times daily. For businesses, this means your customers are already on the platform, waiting. Building a WhatsApp bot is not about getting them to adopt a new channel; it is about showing up where they already live. This guide walks through building a production-ready WhatsApp Business bot with Node.js and the official WhatsApp Cloud API.</p>
+
+        <h2 id="business-api-vs-app">Business API vs. WhatsApp Business App</h2>
+        <p>There are two ways to use WhatsApp for business. The WhatsApp Business App is a free mobile app that works great for one-person operations — you handle messages manually, set up a business profile, and use canned replies. It does not scale past one device and one human.</p>
+        <p>The WhatsApp Business Platform (formerly the Business API) is the developer-facing product. It supports webhooks, programmatic message sending, message templates, interactive buttons, product catalogs, and concurrent connections. This is what you use to build bots. Since 2022, Meta has offered the Cloud API — a hosted version that removes the need to run your own WhatsApp Business API server. The Cloud API is what I recommend for new projects.</p>
+
+        <h2 id="getting-approved">Getting API Access</h2>
+        <p>Access is through the Meta Business Manager. You need: a verified Facebook Business account, a dedicated phone number (cannot be registered to any WhatsApp account already), and a Meta Developer App. The verification process has become faster — in my experience, most businesses get approved within 2–5 business days. Here is the sequence:</p>
+        <ul>
+          <li>Create a Meta Developer account at <code>developers.facebook.com</code></li>
+          <li>Create a Business App and add the WhatsApp product</li>
+          <li>Add your phone number and verify it via SMS or voice call</li>
+          <li>Submit your business for Meta verification (requires business documents)</li>
+          <li>Generate a permanent access token and note your Phone Number ID and Business Account ID</li>
+        </ul>
+
+        <h2 id="architecture">Architecture Overview</h2>
+        <p>The Cloud API architecture is webhook-based. Meta pushes incoming messages to your server; you process them and call the API to send replies. Here is the minimal stack I use:</p>
+
+        <pre><code>whatsapp-bot/
+├── src/
+│   ├── webhook/
+│   │   ├── verify.ts        # GET /webhook — Meta verification challenge
+│   │   └── handler.ts       # POST /webhook — incoming messages
+│   ├── whatsapp/
+│   │   ├── client.ts        # API calls (send messages, templates)
+│   │   ├── session.ts       # User session state management
+│   │   └── types.ts         # WhatsApp message types
+│   ├── flows/
+│   │   ├── order-status.ts  # Order tracking conversation flow
+│   │   ├── catalog.ts       # Product catalog browsing
+│   │   └── support.ts       # Human escalation logic
+│   └── index.ts             # Express app
+├── .env
+└── package.json</code></pre>
+
+        <h2 id="webhook-setup">Setting Up the Webhook</h2>
+        <p>The webhook has two functions: Meta sends a GET request to verify your endpoint when you first configure it, and then sends POST requests for every incoming event. Both must be handled.</p>
+
+        <pre><code>// src/webhook/verify.ts
+import { Request, Response } from 'express';
+
+export function verifyWebhook(req: Request, res: Response) {
+  const mode = req.query['hub.mode'];
+  const token = req.query['hub.verify_token'];
+  const challenge = req.query['hub.challenge'];
+
+  if (mode === 'subscribe' && token === process.env.WEBHOOK_VERIFY_TOKEN) {
+    console.log('Webhook verified');
+    res.status(200).send(challenge);
+  } else {
+    res.status(403).send('Forbidden');
+  }
+}
+
+// src/webhook/handler.ts
+export async function handleWebhook(req: Request, res: Response) {
+  // Always respond 200 immediately
+  res.status(200).send('EVENT_RECEIVED');
+
+  const body = req.body;
+  if (body.object !== 'whatsapp_business_account') return;
+
+  for (const entry of body.entry ?? []) {
+    for (const change of entry.changes ?? []) {
+      const value = change.value;
+      if (value.messages) {
+        for (const message of value.messages) {
+          await processMessage(message, value.metadata.phone_number_id);
+        }
+      }
+    }
+  }
+}</code></pre>
+
+        <h2 id="sending-messages">Sending Messages</h2>
+        <p>All outbound messages go through the same Cloud API endpoint. The key is understanding the message types and when to use each: text for simple replies, template messages for initiating conversations (required outside 24h window), interactive messages for menus and confirmations.</p>
+
+        <pre><code>// src/whatsapp/client.ts
+import axios from 'axios';
+
+const BASE = `https://graph.facebook.com/v19.0`;
+
+export class WhatsAppClient {
+  private phoneNumberId: string;
+  private token: string;
+
+  constructor() {
+    this.phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID!;
+    this.token = process.env.WHATSAPP_ACCESS_TOKEN!;
+  }
+
+  async sendText(to: string, body: string): Promise<void> {
+    await axios.post(
+      `${BASE}/${this.phoneNumberId}/messages`,
+      {
+        messaging_product: 'whatsapp',
+        to,
+        type: 'text',
+        text: { body, preview_url: false },
+      },
+      { headers: { Authorization: `Bearer ${this.token}` } }
+    );
+  }
+
+  async sendInteractiveList(
+    to: string,
+    bodyText: string,
+    buttonText: string,
+    sections: WhatsAppListSection[]
+  ): Promise<void> {
+    await axios.post(
+      `${BASE}/${this.phoneNumberId}/messages`,
+      {
+        messaging_product: 'whatsapp',
+        to,
+        type: 'interactive',
+        interactive: {
+          type: 'list',
+          body: { text: bodyText },
+          action: { button: buttonText, sections },
+        },
+      },
+      { headers: { Authorization: `Bearer ${this.token}` } }
+    );
+  }
+
+  async sendTemplate(
+    to: string,
+    templateName: string,
+    languageCode: string,
+    components: object[]
+  ): Promise<void> {
+    await axios.post(
+      `${BASE}/${this.phoneNumberId}/messages`,
+      {
+        messaging_product: 'whatsapp',
+        to,
+        type: 'template',
+        template: {
+          name: templateName,
+          language: { code: languageCode },
+          components,
+        },
+      },
+      { headers: { Authorization: `Bearer ${this.token}` } }
+    );
+  }
+}</code></pre>
+
+        <h2 id="message-templates">Message Templates</h2>
+        <p>Templates are pre-approved message formats that you must use when messaging a user who has not contacted you in the last 24 hours. Think of them as transactional messages: order confirmations, shipping notifications, appointment reminders. You submit templates through the Meta Business Manager for review — approval typically takes a few hours to a day.</p>
+
+        <pre><code>// Example: sending an order confirmation template
+const client = new WhatsAppClient();
+
+await client.sendTemplate(
+  '+966501234567',
+  'order_confirmation',   // template name you registered
+  'ar',                   // language code
+  [
+    {
+      type: 'header',
+      parameters: [{ type: 'text', text: 'ORD-4521' }],
+    },
+    {
+      type: 'body',
+      parameters: [
+        { type: 'text', text: 'Ahmad Al-Rashidi' },
+        { type: 'text', text: 'SAR 349.00' },
+        { type: 'text', text: 'March 28, 2026' },
+      ],
+    },
+  ]
+);</code></pre>
+
+        <h2 id="session-management">Session Management</h2>
+        <p>WhatsApp does not maintain conversation state for you. Each incoming message is a standalone event. You need to track where each user is in a conversation flow yourself. I use an in-memory Map with a Redis fallback for production:</p>
+
+        <pre><code>// src/whatsapp/session.ts
+interface UserSession {
+  state: 'idle' | 'awaiting_order_id' | 'browsing_catalog' | 'support_escalated';
+  data: Record<string, unknown>;
+  lastActivity: number;
+}
+
+const sessions = new Map<string, UserSession>();
+
+export function getSession(phone: string): UserSession {
+  const existing = sessions.get(phone);
+  if (existing) return existing;
+  const fresh: UserSession = { state: 'idle', data: {}, lastActivity: Date.now() };
+  sessions.set(phone, fresh);
+  return fresh;
+}
+
+export function updateSession(phone: string, updates: Partial<UserSession>): void {
+  const session = getSession(phone);
+  sessions.set(phone, { ...session, ...updates, lastActivity: Date.now() });
+}
+
+// Clean up idle sessions every hour
+setInterval(() => {
+  const cutoff = Date.now() - 24 * 3_600_000;
+  for (const [phone, session] of sessions.entries()) {
+    if (session.lastActivity < cutoff) sessions.delete(phone);
+  }
+}, 3_600_000);</code></pre>
+
+        <h2 id="conversation-flow">Building the Order Tracking Flow</h2>
+        <p>Here is a full conversation flow that handles order tracking. The user sends any message, gets a menu, selects "Track Order", is prompted for their order number, and gets back the status. The session state machine drives the logic:</p>
+
+        <pre><code>// src/flows/order-status.ts
+import { getSession, updateSession } from '../whatsapp/session';
+import { WhatsAppClient } from '../whatsapp/client';
+import { SallaClient } from '../salla/client';
+
+const wa = new WhatsAppClient();
+
+export async function processMessage(message: WAMessage, phoneNumberId: string) {
+  const from = message.from;
+  const session = getSession(from);
+
+  if (session.state === 'awaiting_order_id') {
+    const orderId = message.text?.body?.trim();
+    if (!orderId) {
+      await wa.sendText(from, 'Please enter a valid order number.');
+      return;
+    }
+    try {
+      const salla = new SallaClient(process.env.SALLA_TOKEN!);
+      const order = await salla.getOrderByReference(orderId);
+      await wa.sendText(from,
+        `Order #${order.reference_id}\n` +
+        `Status: ${order.status.name}\n` +
+        `Total: ${order.amounts.total.amount} SAR`
+      );
+    } catch {
+      await wa.sendText(from, 'Order not found. Please check the number and try again.');
+    }
+    updateSession(from, { state: 'idle' });
+    return;
+  }
+
+  // Default: show main menu
+  await wa.sendInteractiveList(from, 'How can I help you?', 'Choose an option', [
+    {
+      title: 'Orders',
+      rows: [
+        { id: 'track_order', title: 'Track my order', description: 'Check your order status' },
+        { id: 'cancel_order', title: 'Cancel an order', description: 'Request order cancellation' },
+      ],
+    },
+    {
+      title: 'Support',
+      rows: [
+        { id: 'talk_to_human', title: 'Talk to a person', description: 'Connect with our team' },
+      ],
+    },
+  ]);
+}</code></pre>
+
+        <h2 id="product-catalog">Product Catalog Bot</h2>
+        <p>Meta's WhatsApp catalog feature lets you link your product catalog to your Business account and send product messages directly in chat. Customers can browse and add items without leaving WhatsApp. Setting this up requires uploading your catalog through the Commerce Manager, but once done, the API lets you send catalog messages programmatically.</p>
+
+        <h2 id="best-practices">Best Practices and Cost</h2>
+        <p>WhatsApp Cloud API pricing (as of 2026) is conversation-based: each 24-hour conversation window costs a flat rate regardless of message count. Business-initiated conversations (using templates) are more expensive than user-initiated ones. In Saudi Arabia and Egypt, business-initiated conversations cost roughly $0.025–0.040 USD each. For a store handling 500 conversations per month, the cost is around $15–20 — negligible compared to the value.</p>
+        <p>Key best practices: always respond within 24 hours to keep conversations in the cheaper user-initiated window, use templates sparingly and only for genuine transactional messages, implement rate limiting on your end to avoid API abuse, and always offer a "talk to a human" escape hatch — some customers will never trust a bot for important issues.</p>
+
+        <h2 id="deployment">Deploying to Production</h2>
+        <p>The webhook endpoint must be publicly accessible over HTTPS. I deploy to a DigitalOcean droplet behind Nginx, with a Let's Encrypt certificate. PM2 keeps the Node.js process alive and restarts it on crashes. The full deployment takes about 20 minutes on a fresh server. One important note: your WEBHOOK_VERIFY_TOKEN should be a long random string — this is what stops other parties from sending fake webhook events to your endpoint.</p>
+
+      </div>
+    </div>
+
+    <!-- AR Content -->
+    <div id="ar-content" style="display:none" dir="rtl">
+      <div class="post-body ar-content">
+
+        <p>واتساب ليس مجرد تطبيق شائع في منطقة الشرق الأوسط وشمال أفريقيا — إنه طبقة التواصل الافتراضية. أكثر من 90% من مستخدمي الهواتف الذكية في السعودية ومصر والإمارات لديهم واتساب مثبتًا ويفتحونه عدة مرات يوميًا. بالنسبة للشركات، هذا يعني أن عملاءك موجودون بالفعل على المنصة، ينتظرون. بناء بوت واتساب لا يتعلق بإقناعهم بتبني قناة جديدة؛ بل يتعلق بالتواجد حيث هم أصلًا. هذا الدليل يأخذك خطوة بخطوة لبناء بوت WhatsApp Business جاهز للإنتاج بـ Node.js وWhatsApp Cloud API الرسمي.</p>
+
+        <h2 id="business-api-ar">Business API مقابل تطبيق WhatsApp Business</h2>
+        <p>هناك طريقتان لاستخدام واتساب في الأعمال. تطبيق WhatsApp Business مجاني ومناسب للعمليات الفردية — تتعامل مع الرسائل يدويًا، وتضبط ملف الأعمال، وتستخدم الردود الجاهزة. لا يتحمّل أكثر من جهاز واحد وشخص واحد.</p>
+        <p>منصة WhatsApp Business (المعروفة سابقًا بـ Business API) هي المنتج الموجه للمطورين. تدعم الويب هوك، والإرسال البرمجي للرسائل، وقوالب الرسائل، والأزرار التفاعلية، وكتالوجات المنتجات، والاتصالات المتزامنة. منذ 2022، أتاحت Meta الـ Cloud API — نسخة مستضافة تزيل الحاجة لتشغيل خادم WhatsApp Business API الخاص بك. الـ Cloud API هو ما أنصح به للمشاريع الجديدة.</p>
+
+        <h2 id="getting-approved-ar">الحصول على وصول API</h2>
+        <p>الوصول يتم عبر Meta Business Manager. تحتاج إلى: حساب Facebook Business موثق، ورقم هاتف مخصص (لا يمكن تسجيله في واتساب بأي شكل)، وتطبيق Meta Developer. عملية التحقق أصبحت أسرع — من تجربتي، معظم الشركات تحصل على الموافقة في غضون يومين إلى خمسة أيام عمل. الخطوات:</p>
+        <ul>
+          <li>إنشاء حساب Meta Developer على <code>developers.facebook.com</code></li>
+          <li>إنشاء تطبيق Business وإضافة منتج WhatsApp</li>
+          <li>إضافة رقم هاتفك والتحقق منه عبر SMS أو مكالمة صوتية</li>
+          <li>تقديم نشاطك التجاري للتحقق من Meta (يتطلب مستندات تجارية)</li>
+          <li>إنشاء access token دائم وتسجيل Phone Number ID وBusiness Account ID</li>
+        </ul>
+
+        <h2 id="architecture-ar">نظرة عامة على المعمارية</h2>
+        <p>معمارية Cloud API تعتمد على الويب هوك. Meta تدفع الرسائل الواردة إلى خادمك؛ أنت تعالجها وتستدعي الـ API لإرسال الردود. هذا هو المكدس الأدنى الذي أستخدمه في بيئة الإنتاج:</p>
+
+        <pre><code>whatsapp-bot/
+├── src/
+│   ├── webhook/
+│   │   ├── verify.ts        # GET /webhook — التحقق من Meta
+│   │   └── handler.ts       # POST /webhook — الرسائل الواردة
+│   ├── whatsapp/
+│   │   ├── client.ts        # استدعاءات API
+│   │   ├── session.ts       # إدارة حالة جلسة المستخدم
+│   │   └── types.ts         # أنواع رسائل واتساب
+│   ├── flows/
+│   │   ├── order-status.ts  # تدفق تتبع الطلب
+│   │   ├── catalog.ts       # تصفح كتالوج المنتجات
+│   │   └── support.ts       # منطق الإحالة البشرية
+│   └── index.ts
+├── .env
+└── package.json</code></pre>
+
+        <h2 id="webhook-setup-ar">إعداد الويب هوك</h2>
+        <p>الويب هوك له وظيفتان: Meta ترسل طلب GET للتحقق من نقطة النهاية عند تهيئتها لأول مرة، ثم ترسل طلبات POST لكل حدث وارد. كلاهما يجب معالجته.</p>
+
+        <pre><code>// src/webhook/verify.ts
+export function verifyWebhook(req: Request, res: Response) {
+  const mode = req.query['hub.mode'];
+  const token = req.query['hub.verify_token'];
+  const challenge = req.query['hub.challenge'];
+
+  if (mode === 'subscribe' && token === process.env.WEBHOOK_VERIFY_TOKEN) {
+    res.status(200).send(challenge);
+  } else {
+    res.status(403).send('Forbidden');
+  }
+}
+
+// src/webhook/handler.ts
+export async function handleWebhook(req: Request, res: Response) {
+  // ردّ فوري بـ 200
+  res.status(200).send('EVENT_RECEIVED');
+
+  const body = req.body;
+  if (body.object !== 'whatsapp_business_account') return;
+
+  for (const entry of body.entry ?? []) {
+    for (const change of entry.changes ?? []) {
+      const value = change.value;
+      if (value.messages) {
+        for (const message of value.messages) {
+          await processMessage(message, value.metadata.phone_number_id);
+        }
+      }
+    }
+  }
+}</code></pre>
+
+        <h2 id="sending-messages-ar">إرسال الرسائل</h2>
+        <p>جميع الرسائل الصادرة تمر عبر نفس نقطة نهاية Cloud API. المفتاح هو فهم أنواع الرسائل ومتى تستخدم كل نوع: النص للردود البسيطة، وقوالب الرسائل لبدء المحادثات (مطلوبة خارج نافذة 24 ساعة)، والرسائل التفاعلية للقوائم والتأكيدات.</p>
+
+        <pre><code>// src/whatsapp/client.ts
+export class WhatsAppClient {
+  async sendText(to: string, body: string): Promise<void> {
+    await axios.post(
+      `https://graph.facebook.com/v19.0/${this.phoneNumberId}/messages`,
+      {
+        messaging_product: 'whatsapp',
+        to,
+        type: 'text',
+        text: { body, preview_url: false },
+      },
+      { headers: { Authorization: `Bearer ${this.token}` } }
+    );
+  }
+
+  async sendTemplate(
+    to: string,
+    templateName: string,
+    languageCode: string,
+    components: object[]
+  ): Promise<void> {
+    await axios.post(
+      `https://graph.facebook.com/v19.0/${this.phoneNumberId}/messages`,
+      {
+        messaging_product: 'whatsapp',
+        to,
+        type: 'template',
+        template: {
+          name: templateName,
+          language: { code: languageCode },
+          components,
+        },
+      },
+      { headers: { Authorization: `Bearer ${this.token}` } }
+    );
+  }
+}</code></pre>
+
+        <h2 id="session-management-ar">إدارة الجلسات</h2>
+        <p>واتساب لا يحتفظ بحالة المحادثة نيابةً عنك. كل رسالة واردة هي حدث مستقل. تحتاج إلى تتبع مكان كل مستخدم في تدفق المحادثة بنفسك. أستخدم Map في الذاكرة مع Redis كاحتياطي في بيئة الإنتاج:</p>
+
+        <pre><code>// src/whatsapp/session.ts
+interface UserSession {
+  state: 'idle' | 'awaiting_order_id' | 'browsing_catalog' | 'support_escalated';
+  data: Record<string, unknown>;
+  lastActivity: number;
+}
+
+const sessions = new Map<string, UserSession>();
+
+export function getSession(phone: string): UserSession {
+  const existing = sessions.get(phone);
+  if (existing) return existing;
+  const fresh: UserSession = { state: 'idle', data: {}, lastActivity: Date.now() };
+  sessions.set(phone, fresh);
+  return fresh;
+}
+
+export function updateSession(phone: string, updates: Partial<UserSession>): void {
+  const session = getSession(phone);
+  sessions.set(phone, { ...session, ...updates, lastActivity: Date.now() });
+}
+
+// تنظيف الجلسات الخاملة كل ساعة
+setInterval(() => {
+  const cutoff = Date.now() - 24 * 3_600_000;
+  for (const [phone, session] of sessions.entries()) {
+    if (session.lastActivity < cutoff) sessions.delete(phone);
+  }
+}, 3_600_000);</code></pre>
+
+        <h2 id="conversation-flow-ar">بناء تدفق تتبع الطلبات</h2>
+        <p>هذا تدفق محادثة كامل يتعامل مع تتبع الطلبات. يرسل المستخدم أي رسالة، يحصل على قائمة، يختار "تتبع طلب"، يُطلب منه رقم الطلب، ويحصل على الحالة. آلة الحالة في الجلسة هي المحرك الأساسي للمنطق.</p>
+
+        <pre><code>// src/flows/order-status.ts
+export async function processMessage(message: WAMessage, phoneNumberId: string) {
+  const from = message.from;
+  const session = getSession(from);
+
+  if (session.state === 'awaiting_order_id') {
+    const orderId = message.text?.body?.trim();
+    try {
+      const salla = new SallaClient(process.env.SALLA_TOKEN!);
+      const order = await salla.getOrderByReference(orderId);
+      await wa.sendText(from,
+        `طلبك رقم #${order.reference_id}\n` +
+        `الحالة: ${order.status.name}\n` +
+        `الإجمالي: ${order.amounts.total.amount} ريال`
+      );
+    } catch {
+      await wa.sendText(from, 'لم يُعثر على الطلب. تحقق من الرقم وأعد المحاولة.');
+    }
+    updateSession(from, { state: 'idle' });
+    return;
+  }
+
+  // الافتراضي: عرض القائمة الرئيسية
+  await wa.sendInteractiveList(from, 'كيف يمكنني مساعدتك؟', 'اختر خيارًا', [
+    {
+      title: 'الطلبات',
+      rows: [
+        { id: 'track_order', title: 'تتبع طلبي', description: 'اعرف حالة طلبك' },
+        { id: 'cancel_order', title: 'إلغاء طلب', description: 'طلب إلغاء' },
+      ],
+    },
+    {
+      title: 'الدعم',
+      rows: [
+        { id: 'talk_to_human', title: 'التحدث مع شخص', description: 'تواصل مع فريقنا' },
+      ],
+    },
+  ]);
+}</code></pre>
+
+        <h2 id="best-practices-ar">أفضل الممارسات والتكلفة</h2>
+        <p>تسعير WhatsApp Cloud API (حتى 2026) قائم على المحادثات: كل نافذة محادثة مدتها 24 ساعة تُكلّف سعرًا ثابتًا بغض النظر عن عدد الرسائل. المحادثات التي تبدؤها الشركة (باستخدام القوالب) أغلى من تلك التي يبدؤها المستخدم. في السعودية ومصر، تكلف المحادثات التي تبدأها الشركة حوالي 0.025-0.040 دولار لكل محادثة. لمتجر يتعامل مع 500 محادثة شهريًا، التكلفة حوالي 15-20 دولارًا — ضئيلة مقارنة بالقيمة المضافة.</p>
+        <p>أهم الممارسات: رد دائمًا خلال 24 ساعة للإبقاء على المحادثات في النافذة الأرخص، استخدم القوالب باعتدال وللرسائل المعاملاتية الحقيقية فقط، طبّق حد معدل على طرفك لتجنب إساءة استخدام الـ API، وقدّم دائمًا خيار "التحدث مع إنسان" — بعض العملاء لن يثقوا بالبوت في المسائل الجوهرية.</p>
+
+        <h2 id="deployment-ar">النشر في بيئة الإنتاج</h2>
+        <p>نقطة نهاية الويب هوك يجب أن تكون متاحة للعموم عبر HTTPS. أنشر على خادم DigitalOcean خلف Nginx، مع شهادة Let's Encrypt. PM2 يبقي عملية Node.js حية ويعيد تشغيلها عند الأعطال. النشر الكامل يستغرق نحو 20 دقيقة على خادم جديد. ملاحظة مهمة: يجب أن يكون WEBHOOK_VERIFY_TOKEN سلسلة عشوائية طويلة — هذا ما يمنع الأطراف الأخرى من إرسال أحداث ويب هوك مزيفة لنقطة النهاية الخاصة بك.</p>
+
+      </div>
+    </div>
+
+    <!-- Share -->
+    <div class="share-section">
+      <span class="share-label" id="share-label">Share</span>
+      <div class="share-btns">
+        <a class="share-btn" id="tw-btn" href="https://twitter.com/intent/tweet?text=Building%20a%20WhatsApp%20Business%20Bot&url=https%3A%2F%2Fmahmoodhamdi.github.io%2Fcv%2Fblog%2Fposts%2Fwhatsapp-business-bot-guide.html" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Twitter
+        </a>
+        <a class="share-btn" id="li-btn" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fmahmoodhamdi.github.io%2Fcv%2Fblog%2Fposts%2Fwhatsapp-business-bot-guide.html&title=Building%20a%20WhatsApp%20Business%20Bot" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <button class="share-btn copy-btn" onclick="copyLink(this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          <span id="copy-label">Copy Link</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Related Posts -->
+    <div class="related-section">
+      <h3 id="related-title">Related Articles</h3>
+      <div class="related-grid">
+        <a href="telegram-bot-nodejs-tutorial.html" class="related-card">
+          <span class="post-cat">Tutorial</span>
+          <h4>Building a Telegram Bot with Node.js</h4>
+          <span>11 min read &middot; Mar 18, 2026</span>
+        </a>
+        <a href="salla-store-automation.html" class="related-card">
+          <span class="post-cat">Tutorial</span>
+          <h4>Complete Guide to Salla Store Automation</h4>
+          <span>12 min read &middot; Mar 28, 2026</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Post Nav -->
+    <nav class="post-nav" aria-label="Post navigation">
+      <a href="telegram-bot-nodejs-tutorial.html" class="post-nav-btn prev">
+        <span>Previous Post</span>
+        <strong>Building a Telegram Bot with Node.js</strong>
+      </a>
+      <a href="zid-vs-salla-comparison.html" class="post-nav-btn next">
+        <span>Next Post</span>
+        <strong>Salla vs Zid: Complete Comparison</strong>
+      </a>
+    </nav>
+
+  </article>
+
+  <!-- TOC Sidebar -->
+  <aside class="toc-sidebar" aria-label="Table of contents">
+    <div class="toc-box">
+      <h4 id="toc-title">On This Page</h4>
+      <ul class="toc-list" id="toc-en">
+        <li><a href="#business-api-vs-app">API vs. Business App</a></li>
+        <li><a href="#getting-approved">Getting API Access</a></li>
+        <li><a href="#architecture">Architecture Overview</a></li>
+        <li><a href="#webhook-setup">Webhook Setup</a></li>
+        <li><a href="#sending-messages">Sending Messages</a></li>
+        <li><a href="#message-templates">Message Templates</a></li>
+        <li><a href="#session-management">Session Management</a></li>
+        <li><a href="#conversation-flow">Conversation Flow</a></li>
+        <li><a href="#product-catalog">Product Catalog Bot</a></li>
+        <li><a href="#best-practices">Best Practices &amp; Cost</a></li>
+        <li><a href="#deployment">Deployment</a></li>
+      </ul>
+      <ul class="toc-list" id="toc-ar" style="display:none">
+        <li><a href="#business-api-ar">API مقابل التطبيق</a></li>
+        <li><a href="#getting-approved-ar">الحصول على الوصول</a></li>
+        <li><a href="#architecture-ar">المعمارية</a></li>
+        <li><a href="#webhook-setup-ar">إعداد الويب هوك</a></li>
+        <li><a href="#sending-messages-ar">إرسال الرسائل</a></li>
+        <li><a href="#session-management-ar">إدارة الجلسات</a></li>
+        <li><a href="#conversation-flow-ar">تدفق المحادثة</a></li>
+        <li><a href="#best-practices-ar">أفضل الممارسات</a></li>
+        <li><a href="#deployment-ar">النشر</a></li>
+      </ul>
+    </div>
+  </aside>
+
+</div>
+
+<footer class="blog-footer" role="contentinfo">
+  <p>&copy; 2026 <a href="../../">Mahmoud Hamdy</a> &middot; <a href="../">Blog</a></p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  function toggleTheme(){
+    const h=document.documentElement;
+    const next=h.getAttribute('data-theme')==='dark'?'light':'dark';
+    h.setAttribute('data-theme',next);
+    localStorage.setItem('theme',next);
+  }
+  window.toggleTheme=toggleTheme;
+  const saved=localStorage.getItem('theme');
+  if(saved) document.documentElement.setAttribute('data-theme',saved);
+
+  const rp=document.getElementById('rp');
+  const pctEl=document.createElement('div');
+  pctEl.className='read-pct';
+  document.body.appendChild(pctEl);
+  window.addEventListener('scroll',()=>{
+    const max=document.documentElement.scrollHeight-window.innerHeight;
+    const pct=Math.round(window.scrollY/max*100);
+    rp.style.width=pct+'%';
+    pctEl.textContent=pct+'% read';
+    pctEl.classList.toggle('vis',window.scrollY>200);
+  },{passive:true});
+
+  document.querySelectorAll('.post-body pre').forEach(pre=>{
+    pre.style.position='relative';
+    const btn=document.createElement('button');
+    btn.className='code-copy-btn';
+    btn.textContent='Copy';
+    btn.addEventListener('click',()=>{
+      const code=pre.querySelector('code');
+      navigator.clipboard.writeText(code?code.textContent:pre.textContent).then(()=>{
+        btn.textContent='Copied!';
+        btn.classList.add('copied');
+        setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},2000);
+      });
+    });
+    pre.appendChild(btn);
+  });
+
+  function setLang(lang){
+    const isAr=lang==='ar';
+    document.documentElement.setAttribute('lang',lang);
+    document.documentElement.setAttribute('dir',isAr?'rtl':'ltr');
+    document.getElementById('en-content').style.display=isAr?'none':'block';
+    document.getElementById('ar-content').style.display=isAr?'block':'none';
+    document.getElementById('toc-en').style.display=isAr?'none':'block';
+    document.getElementById('toc-ar').style.display=isAr?'block':'none';
+    document.getElementById('post-title').textContent=isAr?'بناء بوت واتساب للأعمال — دليل خطوة بخطوة':'Building a WhatsApp Business Bot — Step by Step Guide';
+    document.getElementById('back-label').textContent=isAr?'المدونة':'Blog';
+    document.getElementById('share-label').textContent=isAr?'مشاركة':'Share';
+    document.getElementById('related-title').textContent=isAr?'مقالات ذات صلة':'Related Articles';
+    document.getElementById('copy-label').textContent=isAr?'نسخ الرابط':'Copy Link';
+    document.getElementById('toc-title').textContent=isAr?'في هذه الصفحة':'On This Page';
+    document.querySelectorAll('.l-btn').forEach(b=>{
+      b.classList.remove('on');
+      if((lang==='en'&&b.textContent.trim()==='EN')||(lang==='ar'&&b.textContent.trim()==='عربي')) b.classList.add('on');
+    });
+    localStorage.setItem('lang',lang);
+  }
+  window.setLang=setLang;
+  const savedLang=localStorage.getItem('lang');
+  if(savedLang) setLang(savedLang);
+
+  function copyLink(btn){
+    navigator.clipboard.writeText(window.location.href).then(()=>{
+      btn.classList.add('copied');
+      document.getElementById('copy-label').textContent='Copied!';
+      setTimeout(()=>{
+        btn.classList.remove('copied');
+        document.getElementById('copy-label').textContent='Copy Link';
+      },2000);
+    });
+  }
+  window.copyLink=copyLink;
+
+  document.body.classList.add('loaded');
+})();
+</script>
+<script src="../../js/analytics.js" defer></script>
+<script src="../../js/pwa.js" defer></script>
+</body>
+</html>

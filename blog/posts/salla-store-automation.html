@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complete Guide to Salla Store Automation — Mahmoud Hamdy</title>
+<meta name="description" content="A comprehensive guide to automating your Salla store: order management, customer support, inventory sync, abandoned cart recovery, and building a Telegram bot with Node.js.">
+<meta name="author" content="Mahmoud Hamdy">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mahmoodhamdi.github.io/cv/blog/posts/salla-store-automation.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Complete Guide to Salla Store Automation">
+<meta property="og:description" content="Learn how to automate every aspect of your Salla store: orders, inventory, customer support bots, abandoned cart recovery, and analytics dashboards.">
+<meta property="og:url" content="https://mahmoodhamdi.github.io/cv/blog/posts/salla-store-automation.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Complete Guide to Salla Store Automation">
+<meta name="twitter:description" content="Automate your Salla store with Node.js — orders, inventory, bots, and more.">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
+<link rel="manifest" href="../../manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mahmoud CV">
+<link rel="apple-touch-icon" href="../../assets/icon-192.svg">
+<link rel="alternate" type="application/rss+xml" title="Mahmoud Hamdy — Blog" href="https://mahmoodhamdi.github.io/cv/blog/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="محمود حمدي — المدونة" href="https://mahmoodhamdi.github.io/cv/blog/feed-ar.xml" hreflang="ar">
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D0H1J8BSKJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-D0H1J8BSKJ');
+</script>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="../../css/themes.css">
+<link rel="stylesheet" href="../blog.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Complete Guide to Salla Store Automation",
+  "description": "A comprehensive guide to automating your Salla store using Node.js, covering order management, inventory sync, customer support bots, and analytics.",
+  "author": { "@type": "Person", "name": "Mahmoud Hamdy", "url": "https://mahmoodhamdi.github.io/cv/" },
+  "datePublished": "2026-03-28",
+  "dateModified": "2026-03-28",
+  "url": "https://mahmoodhamdi.github.io/cv/blog/posts/salla-store-automation.html",
+  "publisher": { "@type": "Person", "name": "Mahmoud Hamdy" }
+}
+</script>
+</head>
+<body>
+
+<div class="read-progress" id="rp" aria-hidden="true"></div>
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+
+<!-- Top Bar -->
+<header class="blog-topbar" role="banner">
+  <a href="../" class="back-link" aria-label="Back to blog">
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    <span id="back-label">Blog</span>
+  </a>
+  <div class="topbar-right">
+    <button class="t-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg class="ic-light" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="ic-dark" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <div class="lang-tog" role="group" aria-label="Language selection">
+      <button class="l-btn on" onclick="setLang('en')">EN</button>
+      <button class="l-btn" onclick="setLang('ar')">عربي</button>
+    </div>
+  </div>
+</header>
+
+<div class="post-layout">
+
+  <!-- Article -->
+  <article class="article-main" id="main-article">
+
+    <header class="post-header">
+      <div class="post-header-meta">
+        <span class="post-cat">Tutorial</span>
+        <span class="post-readtime">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          12 min read
+        </span>
+      </div>
+      <h1 id="post-title">Complete Guide to Salla Store Automation</h1>
+      <div class="author-card">
+        <div class="author-avatar" aria-hidden="true"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path d="M30 82L45 38L60 65L75 38L90 82" stroke="url(#blg)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><line x1="38" y1="68" x2="82" y2="68" stroke="rgba(56,189,248,0.5)" stroke-width="1.5"/><defs><linearGradient id="blg" x1="30" y1="38" x2="90" y2="82"><stop offset="0%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#818cf8"/></linearGradient></defs></svg></div>
+        <div class="author-info">
+          <div class="author-name">Mahmoud Hamdy</div>
+          <div class="post-publish-date">March 28, 2026</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- EN Content -->
+    <div id="en-content">
+      <div class="post-body">
+
+        <p>When I built the <a href="../../projects/iai-salla-bot.html">IAI Salla Bot</a> for a Gulf-based merchant, I discovered that automation is not just a nice-to-have — it is the difference between a store that scales and one that drowns its owner in manual work. This guide covers every major automation opportunity inside the Salla platform: from processing orders automatically, to syncing inventory in real time, to recovering abandoned carts without lifting a finger. All code examples are in Node.js and match what I used in production.</p>
+
+        <h2 id="salla-api-overview">Understanding the Salla API</h2>
+        <p>Salla exposes a well-documented REST API at <code>https://api.salla.dev/admin/v2</code>. Authentication uses OAuth 2.0 — you register your app in the Salla Partner Portal, get your client credentials, and exchange them for access and refresh tokens. Tokens expire after one hour, so you need a refresh strategy baked in from day one.</p>
+        <p>The API covers six major resource groups: Orders, Products, Customers, Coupons, Shipments, and Webhooks. Each resource supports standard CRUD, filtering, sorting, and pagination. Rate limits sit at 60 requests per minute per token — generous for automation, but you will hit them during high-traffic periods if you poll naively.</p>
+
+        <pre><code>// lib/salla-auth.ts
+import axios from 'axios';
+
+interface TokenStore {
+  accessToken: string;
+  refreshToken: string;
+  expiresAt: number;
+}
+
+let tokenStore: TokenStore | null = null;
+
+export async function getAccessToken(): Promise<string> {
+  if (tokenStore && Date.now() < tokenStore.expiresAt - 60_000) {
+    return tokenStore.accessToken;
+  }
+  const response = await axios.post('https://accounts.salla.sa/oauth2/token', {
+    grant_type: 'refresh_token',
+    refresh_token: tokenStore?.refreshToken ?? process.env.SALLA_REFRESH_TOKEN,
+    client_id: process.env.SALLA_CLIENT_ID,
+    client_secret: process.env.SALLA_CLIENT_SECRET,
+  });
+  tokenStore = {
+    accessToken: response.data.access_token,
+    refreshToken: response.data.refresh_token,
+    expiresAt: Date.now() + response.data.expires_in * 1000,
+  };
+  return tokenStore.accessToken;
+}</code></pre>
+
+        <h2 id="order-management">Automating Order Management</h2>
+        <p>Order management is the highest-leverage automation. When a new order lands, you typically need to: validate stock, assign it to a fulfilment queue, generate a packing slip, notify the relevant team, and confirm to the customer. Doing this manually is error-prone and slow. With webhooks, you can do it in under a second.</p>
+        <p>Salla sends an <code>order.created</code> event the moment a customer completes checkout. Here is a production-grade handler that covers all the steps:</p>
+
+        <pre><code>// handlers/order-created.ts
+import { getAccessToken } from '../lib/salla-auth';
+import { notifyFulfillmentTeam, generatePackingSlip } from '../lib/fulfillment';
+import { sendOrderConfirmation } from '../lib/notifications';
+import axios from 'axios';
+
+export async function handleOrderCreated(order: SallaOrder) {
+  const token = await getAccessToken();
+  const client = axios.create({
+    baseURL: 'https://api.salla.dev/admin/v2',
+    headers: { Authorization: `Bearer ${token}` },
+  });
+
+  // 1. Verify stock is still available
+  for (const item of order.items) {
+    const { data } = await client.get(`/products/${item.product.id}`);
+    if (data.data.quantity < item.quantity) {
+      // Flag order for manual review
+      await client.put(`/orders/${order.id}`, { status: 'under_review' });
+      await notifyFulfillmentTeam({ type: 'stock_issue', order });
+      return;
+    }
+  }
+
+  // 2. Move to processing
+  await client.put(`/orders/${order.id}`, { status: 'in_progress' });
+
+  // 3. Generate packing slip PDF
+  const slipUrl = await generatePackingSlip(order);
+
+  // 4. Notify fulfilment team via Telegram
+  await notifyFulfillmentTeam({ type: 'new_order', order, slipUrl });
+
+  // 5. Send customer confirmation
+  await sendOrderConfirmation(order);
+}</code></pre>
+
+        <h2 id="customer-support-automation">Automating Customer Support</h2>
+        <p>In my experience building the IAI bot, customer support messages fall into four categories that can be fully automated: order status enquiries, product availability questions, return requests, and shipping address changes. Together these account for roughly 80% of incoming support tickets on a typical Salla store.</p>
+        <p>The support bot connects to the Salla API to answer in real time. A customer sends their order number, the bot fetches the current status, translates it into plain Arabic or English, and replies instantly — no human needed.</p>
+
+        <pre><code>// bot/support-handler.ts
+import { SallaClient } from '../lib/salla-client';
+
+const STATUS_MAP: Record<string, { en: string; ar: string }> = {
+  pending:     { en: 'Payment pending',   ar: 'في انتظار الدفع' },
+  in_progress: { en: 'Being processed',   ar: 'قيد المعالجة' },
+  shipped:     { en: 'Shipped',           ar: 'تم الشحن' },
+  delivered:   { en: 'Delivered',         ar: 'تم التسليم' },
+  cancelled:   { en: 'Cancelled',         ar: 'ملغي' },
+};
+
+export async function handleOrderStatusQuery(
+  orderId: string,
+  lang: 'en' | 'ar'
+): Promise<string> {
+  const client = new SallaClient(await getAccessToken());
+  const order = await client.getOrder(orderId);
+  const statusText = STATUS_MAP[order.status.slug]?.[lang] ?? order.status.name;
+  const total = `${order.amounts.total.amount} ${order.currency}`;
+
+  if (lang === 'ar') {
+    return `طلبك رقم #${order.reference_id}\nالحالة: ${statusText}\nالإجمالي: ${total}`;
+  }
+  return `Order #${order.reference_id}\nStatus: ${statusText}\nTotal: ${total}`;
+}</code></pre>
+
+        <h2 id="inventory-sync">Real-Time Inventory Sync</h2>
+        <p>If you sell the same products across Salla and another channel (your own website, Amazon, or a physical shop), inventory drift is a serious risk. The solution is bidirectional sync: when a Salla order reduces inventory, push the new quantity to the other channel; when the external channel updates, push back to Salla.</p>
+
+        <pre><code>// sync/inventory-sync.ts
+export async function syncInventoryToSalla(
+  productSku: string,
+  newQty: number
+): Promise<void> {
+  const token = await getAccessToken();
+  const client = axios.create({
+    baseURL: 'https://api.salla.dev/admin/v2',
+    headers: { Authorization: `Bearer ${token}` },
+  });
+
+  // Find product by SKU
+  const { data } = await client.get('/products', {
+    params: { sku: productSku, per_page: 1 },
+  });
+  const product = data.data?.[0];
+  if (!product) {
+    console.warn(`[InventorySync] SKU ${productSku} not found in Salla`);
+    return;
+  }
+
+  await client.put(`/products/${product.id}`, { quantity: newQty });
+  console.log(`[InventorySync] Updated ${productSku} → qty ${newQty}`);
+}
+
+// Called from Salla webhook: order.created
+export async function decrementInventory(order: SallaOrder): Promise<void> {
+  for (const item of order.items) {
+    await syncInventoryToSalla(item.product.sku, item.product.quantity - item.quantity);
+  }
+}</code></pre>
+
+        <h2 id="abandoned-cart">Abandoned Cart Recovery</h2>
+        <p>Cart abandonment rates on Gulf e-commerce stores average 68-72%. Even recovering 10% of those carts is significant revenue. Salla exposes abandoned cart data through the <code>GET /carts/abandoned</code> endpoint. The typical recovery sequence is: send a reminder at 1 hour, a discount code at 24 hours, and a final urgency message at 72 hours.</p>
+
+        <pre><code>// automations/cart-recovery.ts
+import cron from 'node-cron';
+
+// Runs every 30 minutes
+cron.schedule('*/30 * * * *', async () => {
+  const token = await getAccessToken();
+  const client = axios.create({
+    baseURL: 'https://api.salla.dev/admin/v2',
+    headers: { Authorization: `Bearer ${token}` },
+  });
+
+  const { data } = await client.get('/carts/abandoned', {
+    params: { per_page: 50, sort_by: 'created_at', sort_dir: 'desc' },
+  });
+
+  for (const cart of data.data) {
+    const hoursAgo = (Date.now() - new Date(cart.created_at).getTime()) / 3_600_000;
+
+    if (hoursAgo >= 1 && hoursAgo < 2 && !cart.recovery_sent_1h) {
+      await sendCartReminder(cart, 'reminder');
+      await markCartRecoverySent(cart.id, '1h');
+    } else if (hoursAgo >= 24 && hoursAgo < 25 && !cart.recovery_sent_24h) {
+      const coupon = await createDiscountCoupon(cart.customer.id, 10); // 10% off
+      await sendCartReminder(cart, 'discount', coupon.code);
+      await markCartRecoverySent(cart.id, '24h');
+    } else if (hoursAgo >= 72 && hoursAgo < 73 && !cart.recovery_sent_72h) {
+      await sendCartReminder(cart, 'urgency');
+      await markCartRecoverySent(cart.id, '72h');
+    }
+  }
+});</code></pre>
+
+        <h2 id="marketing-automation">Marketing Automation</h2>
+        <p>Salla's coupon API lets you generate unique discount codes programmatically. Combined with customer segments — new customers, high-value returning buyers, customers who haven't ordered in 90 days — you can run sophisticated retention campaigns without a separate marketing tool. The key is to trigger coupons based on behaviour events, not just calendar dates.</p>
+
+        <pre><code>// automations/marketing.ts
+export async function createPersonalizedCoupon(
+  customerId: string,
+  type: 'welcome' | 'winback' | 'loyalty',
+): Promise<string> {
+  const discounts = { welcome: 15, winback: 20, loyalty: 10 };
+  const prefixes = { welcome: 'WELCOME', winback: 'BACK', loyalty: 'VIP' };
+
+  const token = await getAccessToken();
+  const client = axios.create({
+    baseURL: 'https://api.salla.dev/admin/v2',
+    headers: { Authorization: `Bearer ${token}` },
+  });
+
+  const code = `${prefixes[type]}-${customerId.slice(-6).toUpperCase()}-${Date.now().toString(36).toUpperCase()}`;
+
+  await client.post('/coupons', {
+    code,
+    discount_type: 'percentage',
+    discount_value: discounts[type],
+    usage_limit: 1,
+    customer_id: customerId,
+    expires_at: new Date(Date.now() + 7 * 86400000).toISOString(),
+  });
+
+  return code;
+}</code></pre>
+
+        <h2 id="telegram-integration">Connecting Salla to a Telegram Bot</h2>
+        <p>The Telegram bot acts as the nerve center for all these automations. Store owners get real-time notifications, can query data on the go, and can approve flagged orders — all from their phone. Customers get proactive updates without needing to log in to the store. I used this architecture for the <a href="../../projects/iai-salla-bot.html">IAI project</a> and the owner went from spending 3 hours a day on manual tasks to under 20 minutes.</p>
+
+        <pre><code>// bot/index.ts
+import { Telegraf } from 'telegraf';
+
+const bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN!);
+
+// Owner notifications channel
+const OWNER_CHAT_ID = process.env.OWNER_TELEGRAM_ID!;
+
+export async function notifyOwner(message: string, options?: object) {
+  await bot.telegram.sendMessage(OWNER_CHAT_ID, message, {
+    parse_mode: 'HTML',
+    ...options,
+  });
+}
+
+// Called from order.created webhook
+export async function sendNewOrderAlert(order: SallaOrder) {
+  const items = order.items.map(i => `• ${i.name} × ${i.quantity}`).join('\n');
+  const message =
+    `<b>New Order #${order.reference_id}</b>\n` +
+    `Customer: ${order.customer.first_name} ${order.customer.last_name}\n` +
+    `Total: ${order.amounts.total.amount} ${order.currency}\n\n` +
+    `Items:\n${items}`;
+
+  await notifyOwner(message);
+}</code></pre>
+
+        <h2 id="analytics-dashboard">Building an Analytics Dashboard</h2>
+        <p>The Salla API exposes enough data to build a meaningful analytics layer yourself. I pull daily order totals, top products, and customer acquisition sources into a simple Node.js cron job that stores aggregated metrics in SQLite. Then I serve those metrics as a small Express + Chart.js dashboard. It is not Mixpanel, but for a solo-operator store it covers 90% of the decisions they need to make.</p>
+
+        <pre><code>// analytics/daily-snapshot.ts
+import Database from 'better-sqlite3';
+const db = new Database('analytics.db');
+
+export async function takeDailySnapshot(): Promise<void> {
+  const token = await getAccessToken();
+  const client = axios.create({
+    baseURL: 'https://api.salla.dev/admin/v2',
+    headers: { Authorization: `Bearer ${token}` },
+  });
+
+  const today = new Date().toISOString().slice(0, 10);
+
+  // Fetch today's orders
+  const { data } = await client.get('/orders', {
+    params: {
+      created_at_min: `${today}T00:00:00Z`,
+      created_at_max: `${today}T23:59:59Z`,
+      per_page: 200,
+    },
+  });
+
+  const orders: SallaOrder[] = data.data;
+  const totalRevenue = orders.reduce((s, o) => s + parseFloat(o.amounts.total.amount), 0);
+  const orderCount = orders.length;
+  const avgOrderValue = orderCount ? totalRevenue / orderCount : 0;
+
+  db.prepare(`
+    INSERT OR REPLACE INTO daily_metrics (date, revenue, orders, aov)
+    VALUES (?, ?, ?, ?)
+  `).run(today, totalRevenue, orderCount, avgOrderValue);
+
+  console.log(`[Analytics] ${today}: SAR ${totalRevenue.toFixed(2)} across ${orderCount} orders`);
+}</code></pre>
+
+        <h2 id="real-results">Real Results from the IAI Bot Project</h2>
+        <p>After deploying the full automation suite for the IAI project, here is what changed in the first 30 days:</p>
+        <ul>
+          <li>Order processing time dropped from an average of 4 hours to under 3 minutes.</li>
+          <li>Support ticket volume dropped by 61% because customers got instant status updates.</li>
+          <li>Abandoned cart recovery brought in an additional 14% revenue in month one.</li>
+          <li>The store owner saved approximately 25 hours per week of manual work.</li>
+          <li>Zero missed inventory conflicts because the sync ran on every order event.</li>
+        </ul>
+        <p>None of this required a large codebase. The entire automation layer is around 800 lines of TypeScript. The secret is not complexity — it is using Salla's webhooks as the real-time trigger for everything, rather than polling. If you want to discuss building something similar for your store, <a href="../../#contact-en">get in touch here</a>.</p>
+
+        <h2 id="cost-comparison">Cost Comparison: Manual vs. Automated</h2>
+        <p>A common objection is the upfront development cost. Let me break it down honestly. Hiring someone to handle orders and support 8 hours a day costs roughly SAR 3,000–5,000 per month in Saudi Arabia. A one-time automation build typically runs SAR 4,000–8,000 depending on complexity, plus SAR 50–150 per month for a VPS to run it. The automation pays for itself in the second month and keeps saving money indefinitely — while working 24/7 with no sick days.</p>
+
+        <h2 id="getting-started">Getting Started</h2>
+        <p>The fastest path to a working automation is: (1) register your app in the Salla Partner Portal, (2) set up a Node.js Express server to receive webhooks, (3) start with just the <code>order.created</code> event and a Telegram notification. Once that is working, layer in each automation one at a time. Do not try to build everything at once.</p>
+        <p>The Salla developer documentation is genuinely good. Their webhook event list is comprehensive and the API reference has live examples. The community on their developer Discord is also active if you get stuck.</p>
+
+      </div>
+    </div>
+
+    <!-- AR Content -->
+    <div id="ar-content" style="display:none" dir="rtl">
+      <div class="post-body ar-content">
+
+        <p>حين بنيت <a href="../../projects/iai-salla-bot.html">بوت IAI لسلة</a>، اكتشفت أن الأتمتة ليست رفاهية بل ضرورة حقيقية — إنها الفرق بين متجر ينمو ومتجر يغرق صاحبه في عمل يدوي لا ينتهي. هذا الدليل يغطي كل فرصة أتمتة رئيسية داخل منصة سلة: من معالجة الطلبات تلقائيًا، إلى مزامنة المخزون في الوقت الفعلي، إلى استرداد عربات التسوق المتروكة دون أي تدخل بشري. كل الأمثلة البرمجية بلغة Node.js وهي نفسها التي استخدمتها فعلًا في بيئة الإنتاج.</p>
+
+        <h2 id="salla-api-overview-ar">فهم Salla API</h2>
+        <p>تعرض سلة API راقيًا وموثقًا جيدًا على العنوان <code>https://api.salla.dev/admin/v2</code>. المصادقة تعتمد على بروتوكول OAuth 2.0 — تسجّل تطبيقك في بوابة شركاء سلة، وتحصل على بيانات الاعتماد، ثم تستبدلها بـ Access Token و Refresh Token. تنتهي صلاحية التوكن بعد ساعة واحدة، لذا لا بد أن تبني آلية التجديد من البداية.</p>
+        <p>يغطي الـ API ستة مجموعات رئيسية: الطلبات، المنتجات، العملاء، الكوبونات، الشحنات، والويب هوك. كل مورد يدعم العمليات الأساسية من إنشاء وقراءة وتحديث وحذف، مع خيارات الفلترة والترتيب والتقسيم على صفحات. حدود الاستخدام تبلغ 60 طلبًا في الدقيقة لكل توكن — كافية جدًا للأتمتة، لكنك ستصطدم بها في أوقات الذروة إن اعتمدت على الاستعلام الدوري بدل الويب هوك.</p>
+
+        <h2 id="order-management-ar">أتمتة إدارة الطلبات</h2>
+        <p>إدارة الطلبات هي أعلى نقطة تأثير في الأتمتة. حين يصل طلب جديد، تحتاج عادةً إلى: التحقق من المخزون، وإضافته لطابور التنفيذ، وإنشاء قسيمة التعبئة، وإشعار الفريق المعني، وتأكيد الاستلام للعميل. القيام بذلك يدويًا معرّض للأخطاء وبطيء. مع الويب هوك يمكن إنجاز كل شيء في أقل من ثانية.</p>
+        <p>ترسل سلة حدث <code>order.created</code> في اللحظة التي يكمل فيها العميل عملية الشراء. وهذا مثال عملي يغطي كل الخطوات:</p>
+
+        <pre><code>// handlers/order-created.ts
+export async function handleOrderCreated(order: SallaOrder) {
+  const token = await getAccessToken();
+  const client = axios.create({
+    baseURL: 'https://api.salla.dev/admin/v2',
+    headers: { Authorization: `Bearer ${token}` },
+  });
+
+  // 1. التحقق من توفر المخزون
+  for (const item of order.items) {
+    const { data } = await client.get(`/products/${item.product.id}`);
+    if (data.data.quantity < item.quantity) {
+      await client.put(`/orders/${order.id}`, { status: 'under_review' });
+      await notifyFulfillmentTeam({ type: 'stock_issue', order });
+      return;
+    }
+  }
+
+  // 2. تحريك الطلب لـ "قيد المعالجة"
+  await client.put(`/orders/${order.id}`, { status: 'in_progress' });
+
+  // 3. إنشاء قسيمة التعبئة PDF
+  const slipUrl = await generatePackingSlip(order);
+
+  // 4. إشعار فريق التنفيذ عبر تيليجرام
+  await notifyFulfillmentTeam({ type: 'new_order', order, slipUrl });
+
+  // 5. إرسال تأكيد للعميل
+  await sendOrderConfirmation(order);
+}</code></pre>
+
+        <h2 id="customer-support-ar">أتمتة دعم العملاء</h2>
+        <p>من تجربتي في بناء بوت IAI، تتوزع رسائل دعم العملاء على أربع فئات يمكن أتمتتها بالكامل: الاستفسار عن حالة الطلب، وأسئلة توفر المنتج، وطلبات الإرجاع، وتغيير عنوان الشحن. هذه الفئات الأربع مجتمعةً تمثل نحو 80% من تذاكر الدعم الواردة على المتاجر العادية في سلة.</p>
+        <p>يتصل بوت الدعم بـ Salla API ليرد في الوقت الفعلي. يرسل العميل رقم طلبه، يجلب البوت الحالة الراهنة، يترجمها إلى عربية واضحة أو إنجليزية، ويرد فورًا — دون تدخل بشري.</p>
+
+        <pre><code>// bot/support-handler.ts
+const STATUS_MAP = {
+  pending:     { en: 'Payment pending', ar: 'في انتظار الدفع' },
+  in_progress: { en: 'Being processed', ar: 'قيد المعالجة' },
+  shipped:     { en: 'Shipped',         ar: 'تم الشحن' },
+  delivered:   { en: 'Delivered',       ar: 'تم التسليم' },
+  cancelled:   { en: 'Cancelled',       ar: 'ملغي' },
+};
+
+export async function handleOrderStatusQuery(
+  orderId: string,
+  lang: 'en' | 'ar'
+): Promise<string> {
+  const client = new SallaClient(await getAccessToken());
+  const order = await client.getOrder(orderId);
+  const statusText = STATUS_MAP[order.status.slug]?.[lang] ?? order.status.name;
+
+  if (lang === 'ar') {
+    return `طلبك رقم #${order.reference_id}\nالحالة: ${statusText}\nالإجمالي: ${order.amounts.total.amount} ${order.currency}`;
+  }
+  return `Order #${order.reference_id}\nStatus: ${statusText}\nTotal: ${order.amounts.total.amount} ${order.currency}`;
+}</code></pre>
+
+        <h2 id="inventory-sync-ar">مزامنة المخزون في الوقت الفعلي</h2>
+        <p>إذا كنت تبيع نفس المنتجات عبر سلة وقناة أخرى — موقعك الخاص أو أمازون أو متجر فعلي — فإن الاختلاف في المخزون خطر حقيقي. الحل هو المزامنة ثنائية الاتجاه: حين يخفّض طلب سلة من المخزون، ادفع الكمية الجديدة للقناة الأخرى؛ وحين تحدّث القناة الخارجية، ادفع التحديث إلى سلة.</p>
+
+        <pre><code>// sync/inventory-sync.ts
+export async function syncInventoryToSalla(
+  productSku: string,
+  newQty: number
+): Promise<void> {
+  const token = await getAccessToken();
+  const client = axios.create({
+    baseURL: 'https://api.salla.dev/admin/v2',
+    headers: { Authorization: `Bearer ${token}` },
+  });
+
+  const { data } = await client.get('/products', {
+    params: { sku: productSku, per_page: 1 },
+  });
+  const product = data.data?.[0];
+  if (!product) {
+    console.warn(`[InventorySync] SKU ${productSku} غير موجود في سلة`);
+    return;
+  }
+
+  await client.put(`/products/${product.id}`, { quantity: newQty });
+  console.log(`[InventorySync] تم تحديث ${productSku} → الكمية ${newQty}`);
+}</code></pre>
+
+        <h2 id="abandoned-cart-ar">استرداد عربات التسوق المتروكة</h2>
+        <p>معدلات التخلي عن سلة التسوق في التجارة الإلكترونية الخليجية تتراوح بين 68 و72%. حتى استعادة 10% من هذه العربات يمثل دخلًا إضافيًا ملموسًا. سلة تعرض بيانات العربات المتروكة عبر نقطة النهاية <code>GET /carts/abandoned</code>. تسلسل الاسترداد المعتاد: إرسال تذكير بعد ساعة، وكود خصم بعد 24 ساعة، ورسالة إلحاح أخيرة بعد 72 ساعة.</p>
+
+        <pre><code>// automations/cart-recovery.ts
+import cron from 'node-cron';
+
+// يعمل كل 30 دقيقة
+cron.schedule('*/30 * * * *', async () => {
+  const token = await getAccessToken();
+  const client = axios.create({
+    baseURL: 'https://api.salla.dev/admin/v2',
+    headers: { Authorization: `Bearer ${token}` },
+  });
+
+  const { data } = await client.get('/carts/abandoned', {
+    params: { per_page: 50 },
+  });
+
+  for (const cart of data.data) {
+    const hoursAgo = (Date.now() - new Date(cart.created_at).getTime()) / 3_600_000;
+
+    if (hoursAgo >= 1 && hoursAgo < 2 && !cart.recovery_sent_1h) {
+      await sendCartReminder(cart, 'reminder');
+      await markCartRecoverySent(cart.id, '1h');
+    } else if (hoursAgo >= 24 && hoursAgo < 25 && !cart.recovery_sent_24h) {
+      const coupon = await createDiscountCoupon(cart.customer.id, 10);
+      await sendCartReminder(cart, 'discount', coupon.code);
+      await markCartRecoverySent(cart.id, '24h');
+    } else if (hoursAgo >= 72 && hoursAgo < 73 && !cart.recovery_sent_72h) {
+      await sendCartReminder(cart, 'urgency');
+      await markCartRecoverySent(cart.id, '72h');
+    }
+  }
+});</code></pre>
+
+        <h2 id="marketing-automation-ar">أتمتة التسويق</h2>
+        <p>تتيح لك واجهة Coupons API في سلة إنشاء أكواد خصم مخصصة برمجيًا. مقترنةً بشرائح العملاء — العملاء الجدد، والمشترين ذوي الإنفاق العالي، والعملاء الذين لم يطلبوا منذ 90 يومًا — يمكنك تشغيل حملات احتفاظ متطورة دون أداة تسويق منفصلة. المفتاح هو تفعيل الكوبونات بناءً على أحداث سلوكية، لا بناءً على تواريخ تقويمية فحسب.</p>
+
+        <h2 id="real-results-ar">نتائج حقيقية من مشروع IAI</h2>
+        <p>بعد نشر منظومة الأتمتة الكاملة لمشروع IAI، هذا ما تغير خلال الثلاثين يومًا الأولى:</p>
+        <ul>
+          <li>انخفض وقت معالجة الطلبات من متوسط 4 ساعات إلى أقل من 3 دقائق.</li>
+          <li>انخفض حجم تذاكر الدعم بنسبة 61% لأن العملاء باتوا يحصلون على تحديثات فورية.</li>
+          <li>أضاف استرداد العربات المتروكة 14% إيرادات إضافية في الشهر الأول.</li>
+          <li>وفّر صاحب المتجر ما يقارب 25 ساعة أسبوعيًا من العمل اليدوي.</li>
+          <li>لا حوادث تعارض في المخزون لأن المزامنة تعمل مع كل حدث طلب.</li>
+        </ul>
+        <p>لم يتطلب كل هذا قاعدة كود ضخمة. طبقة الأتمتة كاملة لا تتجاوز 800 سطر من TypeScript. السر ليس في التعقيد — بل في استخدام ويب هوك سلة كمحرك فوري لكل شيء بدلًا من الاستعلام الدوري. إن أردت مناقشة بناء شيء مشابه لمتجرك، <a href="../../#contact-en">تواصل معي من هنا</a>.</p>
+
+        <h2 id="cost-comparison-ar">مقارنة التكلفة: يدوي مقابل آلي</h2>
+        <p>الاعتراض الشائع هو تكلفة التطوير المبدئية. دعني أوضح الصورة بصدق. توظيف شخص للتعامل مع الطلبات والدعم 8 ساعات يوميًا يكلف في المملكة العربية السعودية تقريبًا من 3,000 إلى 5,000 ريال شهريًا. مشروع أتمتة لمرة واحدة يتراوح عادةً بين 4,000 و8,000 ريال حسب التعقيد، بالإضافة إلى 50-150 ريال شهريًا لخادم VPS. تعوّض الأتمتة تكلفتها في الشهر الثاني وتستمر في التوفير إلى أجل غير مسمى — مع العمل 24/7 دون إجازات مرضية.</p>
+
+        <h2 id="getting-started-ar">كيف تبدأ</h2>
+        <p>أسرع طريق لأتمتة تعمل فعلًا هي: (1) سجّل تطبيقك في بوابة شركاء سلة، (2) أنشئ خادم Node.js Express لاستقبال الويب هوك، (3) ابدأ بحدث <code>order.created</code> فقط وإشعار تيليجرام. بمجرد تشغيل هذا، أضف كل أتمتة واحدة في كل مرة. لا تحاول بناء كل شيء دفعة واحدة.</p>
+        <p>وثائق سلة للمطورين ممتازة فعلًا. قائمة أحداث الويب هوك شاملة ومرجع الـ API يحتوي على أمثلة حية. المجتمع على Discord الخاص بالمطورين نشيط أيضًا إن واجهت أي عقبة.</p>
+
+      </div>
+    </div>
+
+    <!-- Share -->
+    <div class="share-section">
+      <span class="share-label" id="share-label">Share</span>
+      <div class="share-btns">
+        <a class="share-btn" id="tw-btn" href="https://twitter.com/intent/tweet?text=Complete%20Guide%20to%20Salla%20Store%20Automation&url=https%3A%2F%2Fmahmoodhamdi.github.io%2Fcv%2Fblog%2Fposts%2Fsalla-store-automation.html" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Twitter
+        </a>
+        <a class="share-btn" id="li-btn" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fmahmoodhamdi.github.io%2Fcv%2Fblog%2Fposts%2Fsalla-store-automation.html&title=Complete%20Guide%20to%20Salla%20Store%20Automation" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <button class="share-btn copy-btn" onclick="copyLink(this)">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          <span id="copy-label">Copy Link</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Related Posts -->
+    <div class="related-section">
+      <h3 id="related-title">Related Articles</h3>
+      <div class="related-grid">
+        <a href="building-salla-bot.html" class="related-card">
+          <span class="post-cat">Tutorial</span>
+          <h4>Building an AI-Powered Salla Bot</h4>
+          <span>8 min read &middot; Jan 15, 2026</span>
+        </a>
+        <a href="zid-vs-salla-comparison.html" class="related-card">
+          <span class="post-cat" style="background:rgba(129,140,248,.1);color:var(--accent2);border-color:rgba(129,140,248,.2)">Guide</span>
+          <h4>Salla vs Zid: Complete Comparison</h4>
+          <span>15 min read &middot; Mar 25, 2026</span>
+        </a>
+        <a href="whatsapp-business-bot-guide.html" class="related-card">
+          <span class="post-cat">Tutorial</span>
+          <h4>Building a WhatsApp Business Bot</h4>
+          <span>14 min read &middot; Mar 22, 2026</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Post Nav -->
+    <nav class="post-nav" aria-label="Post navigation">
+      <a href="zid-vs-salla-comparison.html" class="post-nav-btn prev">
+        <span>Previous Post</span>
+        <strong>Salla vs Zid: Complete Comparison</strong>
+      </a>
+      <a href="building-salla-bot.html" class="post-nav-btn next">
+        <span>Next Post</span>
+        <strong>Building an AI-Powered Salla Bot</strong>
+      </a>
+    </nav>
+
+  </article>
+
+  <!-- TOC Sidebar -->
+  <aside class="toc-sidebar" aria-label="Table of contents">
+    <div class="toc-box">
+      <h4 id="toc-title">On This Page</h4>
+      <ul class="toc-list" id="toc-en">
+        <li><a href="#salla-api-overview">Understanding the Salla API</a></li>
+        <li><a href="#order-management">Order Management</a></li>
+        <li><a href="#customer-support-automation">Customer Support</a></li>
+        <li><a href="#inventory-sync">Inventory Sync</a></li>
+        <li><a href="#abandoned-cart">Abandoned Cart Recovery</a></li>
+        <li><a href="#marketing-automation">Marketing Automation</a></li>
+        <li><a href="#telegram-integration">Telegram Integration</a></li>
+        <li><a href="#analytics-dashboard">Analytics Dashboard</a></li>
+        <li><a href="#real-results">Real Results</a></li>
+        <li><a href="#cost-comparison">Cost Comparison</a></li>
+        <li><a href="#getting-started">Getting Started</a></li>
+      </ul>
+      <ul class="toc-list" id="toc-ar" style="display:none">
+        <li><a href="#salla-api-overview-ar">فهم Salla API</a></li>
+        <li><a href="#order-management-ar">أتمتة الطلبات</a></li>
+        <li><a href="#customer-support-ar">دعم العملاء</a></li>
+        <li><a href="#inventory-sync-ar">مزامنة المخزون</a></li>
+        <li><a href="#abandoned-cart-ar">العربات المتروكة</a></li>
+        <li><a href="#marketing-automation-ar">أتمتة التسويق</a></li>
+        <li><a href="#real-results-ar">نتائج حقيقية</a></li>
+        <li><a href="#cost-comparison-ar">مقارنة التكلفة</a></li>
+        <li><a href="#getting-started-ar">كيف تبدأ</a></li>
+      </ul>
+    </div>
+  </aside>
+
+</div>
+
+<footer class="blog-footer" role="contentinfo">
+  <p>&copy; 2026 <a href="../../">Mahmoud Hamdy</a> &middot; <a href="../">Blog</a></p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  function toggleTheme(){
+    const h=document.documentElement;
+    const next=h.getAttribute('data-theme')==='dark'?'light':'dark';
+    h.setAttribute('data-theme',next);
+    localStorage.setItem('theme',next);
+  }
+  window.toggleTheme=toggleTheme;
+  const saved=localStorage.getItem('theme');
+  if(saved) document.documentElement.setAttribute('data-theme',saved);
+
+  const rp=document.getElementById('rp');
+  const pctEl=document.createElement('div');
+  pctEl.className='read-pct';
+  document.body.appendChild(pctEl);
+  window.addEventListener('scroll',()=>{
+    const max=document.documentElement.scrollHeight-window.innerHeight;
+    const pct=Math.round(window.scrollY/max*100);
+    rp.style.width=pct+'%';
+    pctEl.textContent=pct+'% read';
+    pctEl.classList.toggle('vis',window.scrollY>200);
+  },{passive:true});
+
+  document.querySelectorAll('.post-body pre').forEach(pre=>{
+    pre.style.position='relative';
+    const btn=document.createElement('button');
+    btn.className='code-copy-btn';
+    btn.textContent='Copy';
+    btn.addEventListener('click',()=>{
+      const code=pre.querySelector('code');
+      navigator.clipboard.writeText(code?code.textContent:pre.textContent).then(()=>{
+        btn.textContent='Copied!';
+        btn.classList.add('copied');
+        setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},2000);
+      });
+    });
+    pre.appendChild(btn);
+  });
+
+  function setLang(lang){
+    const isAr=lang==='ar';
+    document.documentElement.setAttribute('lang',lang);
+    document.documentElement.setAttribute('dir',isAr?'rtl':'ltr');
+    document.getElementById('en-content').style.display=isAr?'none':'block';
+    document.getElementById('ar-content').style.display=isAr?'block':'none';
+    document.getElementById('toc-en').style.display=isAr?'none':'block';
+    document.getElementById('toc-ar').style.display=isAr?'block':'none';
+    document.getElementById('post-title').textContent=isAr?'أتمتة متجر سلة بالكامل — دليل شامل':'Complete Guide to Salla Store Automation';
+    document.getElementById('back-label').textContent=isAr?'المدونة':'Blog';
+    document.getElementById('share-label').textContent=isAr?'مشاركة':'Share';
+    document.getElementById('related-title').textContent=isAr?'مقالات ذات صلة':'Related Articles';
+    document.getElementById('copy-label').textContent=isAr?'نسخ الرابط':'Copy Link';
+    document.getElementById('toc-title').textContent=isAr?'في هذه الصفحة':'On This Page';
+    document.querySelectorAll('.l-btn').forEach(b=>{
+      b.classList.remove('on');
+      if((lang==='en'&&b.textContent.trim()==='EN')||(lang==='ar'&&b.textContent.trim()==='عربي')) b.classList.add('on');
+    });
+    localStorage.setItem('lang',lang);
+  }
+  window.setLang=setLang;
+  const savedLang=localStorage.getItem('lang');
+  if(savedLang) setLang(savedLang);
+
+  function copyLink(btn){
+    navigator.clipboard.writeText(window.location.href).then(()=>{
+      btn.classList.add('copied');
+      document.getElementById('copy-label').textContent='Copied!';
+      setTimeout(()=>{
+        btn.classList.remove('copied');
+        document.getElementById('copy-label').textContent='Copy Link';
+      },2000);
+    });
+  }
+  window.copyLink=copyLink;
+
+  document.body.classList.add('loaded');
+})();
+</script>
+<script src="../../js/analytics.js" defer></script>
+<script src="../../js/pwa.js" defer></script>
+</body>
+</html>
