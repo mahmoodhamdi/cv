@@ -31,15 +31,20 @@
   margin-top: 24px;
 }
 
-/* ── Scroll-reveal shared state ───────────────── */
+/* ── Sections visible by default, JS enhances with scroll-reveal ───────────────── */
 .proj-section {
+  opacity: 1;
+  transform: none;
+}
+
+.proj-section.sr-init {
   opacity: 0;
   transform: translateY(28px);
   transition: opacity .6s, transform .6s;
   will-change: opacity, transform;
 }
 
-.proj-section.rev {
+.proj-section.sr-init.rev {
   opacity: 1;
   transform: translateY(0);
 }
