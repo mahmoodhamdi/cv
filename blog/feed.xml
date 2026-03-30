@@ -5,8 +5,188 @@
     <link>https://mahmoodhamdi.github.io/cv/blog/</link>
     <description>Technical articles about Full-Stack Development, Flutter, Node.js, and freelancing in the MENA region.</description>
     <language>en</language>
-    <lastBuildDate>Mon, 30 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 28 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://mahmoodhamdi.github.io/cv/blog/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>Complete Guide to Salla Store Automation</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/salla-store-automation.html</link>
+      <description>Automate your Salla store with bots, order notifications, inventory sync, and abandoned cart recovery using Node.js and the Salla API.</description>
+      <pubDate>Sat, 28 Mar 2026 00:00:00 +0000</pubDate>
+      <category>Tutorial</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/salla-store-automation.html</guid>
+    </item>
+
+    <item>
+      <title>Salla vs Zid: Complete Comparison for Your Online Store</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/zid-vs-salla-comparison.html</link>
+      <description>Head-to-head comparison of Saudi Arabia's top e-commerce platforms — features, pricing, APIs, and which to choose for your business.</description>
+      <pubDate>Wed, 25 Mar 2026 00:00:00 +0000</pubDate>
+      <category>Guide</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/zid-vs-salla-comparison.html</guid>
+    </item>
+
+    <item>
+      <title>Building a WhatsApp Business Bot — Step by Step Guide</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/whatsapp-business-bot-guide.html</link>
+      <description>Build an automated WhatsApp bot with Node.js and the WhatsApp Cloud API — from webhook setup to interactive messages and e-commerce integration.</description>
+      <pubDate>Sun, 22 Mar 2026 00:00:00 +0000</pubDate>
+      <category>Tutorial</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/whatsapp-business-bot-guide.html</guid>
+    </item>
+
+    <item>
+      <title>Building a Telegram Bot with Node.js — Zero to Production</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/telegram-bot-nodejs-tutorial.html</link>
+      <description>Complete guide to building and deploying Telegram bots with Node.js — commands, keyboards, media, webhooks, and real-world deployment.</description>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0000</pubDate>
+      <category>Tutorial</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/telegram-bot-nodejs-tutorial.html</guid>
+    </item>
+
+    <item>
+      <title>Building a Professional Arabic Website with Next.js — Complete RTL Guide</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/nextjs-arabic-website.html</link>
+      <description>Set up Next.js with Arabic RTL support, i18n, Arabic typography, bidirectional text handling, and SEO for Arabic content.</description>
+      <pubDate>Sun, 15 Mar 2026 00:00:00 +0000</pubDate>
+      <category>Tutorial</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/nextjs-arabic-website.html</guid>
+    </item>
+
+    <item>
+      <title>Building a Mobile App with Flutter — From Idea to Play Store</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/flutter-app-from-scratch.html</link>
+      <description>Build and publish a Flutter app — clean architecture, Bloc state management, API integration, push notifications, and Google Play publishing.</description>
+      <pubDate>Thu, 12 Mar 2026 00:00:00 +0000</pubDate>
+      <category>Tutorial</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/flutter-app-from-scratch.html</guid>
+    </item>
+
+    <item>
+      <title>Building a Complete REST API with Node.js &amp; TypeScript</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/nodejs-rest-api-complete-guide.html</link>
+      <description>Production-grade REST API with Express, TypeScript, JWT auth, RBAC, validation, Docker, CI/CD, and deployment — code for every section.</description>
+      <pubDate>Sun, 08 Mar 2026 00:00:00 +0000</pubDate>
+      <category>Tutorial</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/nodejs-rest-api-complete-guide.html</guid>
+    </item>
+
+    <item>
+      <title>Building an Admin Dashboard with React — Practical Guide</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/react-dashboard-tutorial.html</link>
+      <description>Build an admin dashboard with React — layout, auth, data tables, charts, CRUD, real-time updates, dark mode, and RTL Arabic support.</description>
+      <pubDate>Thu, 05 Mar 2026 00:00:00 +0000</pubDate>
+      <category>Tutorial</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/react-dashboard-tutorial.html</guid>
+    </item>
+
+    <item>
+      <title>MongoDB vs PostgreSQL — Which Database Should You Choose?</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/mongodb-vs-postgresql.html</link>
+      <description>Compare MongoDB and PostgreSQL — performance, scalability, use cases, ORMs, hosting options, and a decision flowchart for your project.</description>
+      <pubDate>Mon, 02 Mar 2026 00:00:00 +0000</pubDate>
+      <category>Guide</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/mongodb-vs-postgresql.html</guid>
+    </item>
+
+    <item>
+      <title>Deploying Your App with Docker — Beginner's Guide</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/docker-deployment-guide.html</link>
+      <description>Docker basics for developers — Dockerfile, Compose, deploying Node.js and Next.js apps with Nginx, SSL, and monitoring.</description>
+      <pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
+      <category>Tutorial</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/docker-deployment-guide.html</guid>
+    </item>
+
+    <item>
+      <title>Pricing Your Services as a Freelance Developer — Practical Guide</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/freelancing-pricing-arabic.html</link>
+      <description>How to price web apps, mobile apps, bots, and SaaS projects in the Arab market — hourly rates, packages, negotiation, and red flags.</description>
+      <pubDate>Wed, 25 Feb 2026 00:00:00 +0000</pubDate>
+      <category>Guide</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/freelancing-pricing-arabic.html</guid>
+    </item>
+
+    <item>
+      <title>E-Commerce in the Arabic Market 2026 — Opportunities &amp; Challenges</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/ecommerce-arabic-market-2026.html</link>
+      <description>State of MENA e-commerce — platforms, payments, logistics, social commerce, trends, and opportunities for developers.</description>
+      <pubDate>Fri, 20 Feb 2026 00:00:00 +0000</pubDate>
+      <category>Guide</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/ecommerce-arabic-market-2026.html</guid>
+    </item>
+
+    <item>
+      <title>Building an AI Chatbot for Your Business — Complete Guide</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/ai-chatbot-business-guide.html</link>
+      <description>Build an AI chatbot — intent recognition, Arabic NLP, e-commerce features, customer support automation, cost analysis, and ROI.</description>
+      <pubDate>Sun, 15 Feb 2026 00:00:00 +0000</pubDate>
+      <category>Guide</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/ai-chatbot-business-guide.html</guid>
+    </item>
+
+    <item>
+      <title>Payment Gateway Integration in MENA — Developer's Guide</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/payment-integration-mena.html</link>
+      <description>Integrate Tamara, Tabby, Mada, PayMob, Tap, Moyasar, and more — Node.js code examples for every major MENA payment gateway.</description>
+      <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
+      <category>Tutorial</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/payment-integration-mena.html</guid>
+    </item>
+
+    <item>
+      <title>How Much Does It Cost to Build a Mobile App in 2026?</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/mobile-app-cost-guide.html</link>
+      <description>Mobile app pricing by complexity — simple to enterprise. Cost breakdown, hourly rates in Egypt vs Gulf vs global, and how to get accurate quotes.</description>
+      <pubDate>Thu, 05 Feb 2026 00:00:00 +0000</pubDate>
+      <category>Guide</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/mobile-app-cost-guide.html</guid>
+    </item>
+
+    <item>
+      <title>Speed Up Your Website to 100% PageSpeed Score — Practical Guide</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/website-speed-optimization.html</link>
+      <description>Core Web Vitals, critical CSS, font optimization, lazy loading, service workers — how I took my portfolio from 75 to 99 PageSpeed.</description>
+      <pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate>
+      <category>Tutorial</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/website-speed-optimization.html</guid>
+    </item>
+
+    <item>
+      <title>How to Build a Professional Developer Portfolio on GitHub</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/github-portfolio-developer.html</link>
+      <description>Build a standout developer portfolio — GitHub profile README, project showcasing, SEO, analytics, PWA features, and design tips.</description>
+      <pubDate>Wed, 28 Jan 2026 00:00:00 +0000</pubDate>
+      <category>Guide</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/github-portfolio-developer.html</guid>
+    </item>
+
+    <item>
+      <title>Building a SaaS MVP — From Idea to Launch</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/saas-mvp-build-guide.html</link>
+      <description>Build a SaaS MVP in 4-6 weeks — validation, tech stack, auth, billing, multi-tenancy, deployment, and scaling strategy.</description>
+      <pubDate>Thu, 22 Jan 2026 00:00:00 +0000</pubDate>
+      <category>Guide</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/saas-mvp-build-guide.html</guid>
+    </item>
+
+    <item>
+      <title>API Integration for Beginners — Everything You Need to Know</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/api-integration-beginners.html</link>
+      <description>What APIs are, REST vs GraphQL, HTTP methods, authentication, making your first API call, and building projects with external APIs.</description>
+      <pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate>
+      <category>Tutorial</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/api-integration-beginners.html</guid>
+    </item>
+
+    <item>
+      <title>Cybersecurity Basics for Developers — Protecting Your Apps</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/cybersecurity-basics-arabic.html</link>
+      <description>OWASP Top 10, SQL injection, XSS, CSRF, authentication security, Helmet.js, and incident response — security essentials for every developer.</description>
+      <pubDate>Thu, 08 Jan 2026 00:00:00 +0000</pubDate>
+      <category>Guide</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/cybersecurity-basics-arabic.html</guid>
+    </item>
 
     <item>
       <title>Freelancing in MENA: A Developer's Guide</title>
@@ -20,7 +200,7 @@
     <item>
       <title>My Open Source Journey</title>
       <link>https://mahmoodhamdi.github.io/cv/blog/posts/open-source-contributions-journey.html</link>
-      <description>How I went from reading open source code to merging PRs into express-validator and Helmet.js. A personal story with practical tips for Arab developers.</description>
+      <description>How I went from reading open source code to merging PRs into express-validator and Helmet.js.</description>
       <pubDate>Thu, 05 Mar 2026 00:00:00 +0000</pubDate>
       <category>Experience</category>
       <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/open-source-contributions-journey.html</guid>

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mahmoud-cv-v5';
+const CACHE_NAME = 'mahmoud-cv-v6';
 const ASSETS = [
   './',
   './index.html',
@@ -34,6 +34,26 @@ const ASSETS = [
   './blog/posts/nodejs-typescript-best-practices.html',
   './blog/posts/open-source-contributions-journey.html',
   './blog/posts/mena-freelance-guide.html',
+  './blog/posts/salla-store-automation.html',
+  './blog/posts/zid-vs-salla-comparison.html',
+  './blog/posts/whatsapp-business-bot-guide.html',
+  './blog/posts/telegram-bot-nodejs-tutorial.html',
+  './blog/posts/nextjs-arabic-website.html',
+  './blog/posts/flutter-app-from-scratch.html',
+  './blog/posts/nodejs-rest-api-complete-guide.html',
+  './blog/posts/react-dashboard-tutorial.html',
+  './blog/posts/mongodb-vs-postgresql.html',
+  './blog/posts/docker-deployment-guide.html',
+  './blog/posts/freelancing-pricing-arabic.html',
+  './blog/posts/ecommerce-arabic-market-2026.html',
+  './blog/posts/ai-chatbot-business-guide.html',
+  './blog/posts/payment-integration-mena.html',
+  './blog/posts/mobile-app-cost-guide.html',
+  './blog/posts/website-speed-optimization.html',
+  './blog/posts/github-portfolio-developer.html',
+  './blog/posts/saas-mvp-build-guide.html',
+  './blog/posts/api-integration-beginners.html',
+  './blog/posts/cybersecurity-basics-arabic.html',
   './404.html'
 ];
 
