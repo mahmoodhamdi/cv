@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mahmoud-cv-v3';
+const CACHE_NAME = 'mahmoud-cv-v4';
 const ASSETS = [
   './',
   './index.html',
@@ -13,7 +13,16 @@ const ASSETS = [
   './js/navigation.js',
   './js/animations.js',
   './js/analytics.js',
+  './js/contact.js',
   './assets/favicon.svg',
+  './projects/projects.css',
+  './projects/escore.html',
+  './projects/iai-salla-bot.html',
+  './projects/wasalni.html',
+  './projects/hadith-app.html',
+  './projects/clinic-booking.html',
+  './projects/whatsapp-bot.html',
+  './projects/bagour-delivery.html',
   './blog/index.html',
   './blog/blog.css',
   './404.html'

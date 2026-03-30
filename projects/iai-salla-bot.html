@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IAI — AI-Powered E-Commerce Assistant | Mahmoud Hamdy Fathy</title>
+<meta name="description" content="IAI is an end-to-end AI-powered assistant for Salla e-commerce stores — 24/7 automated customer support, order tracking, and product recommendations via Telegram bot.">
+<meta name="author" content="Mahmoud Hamdy Fathy">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0a0f1a">
+<link rel="canonical" href="https://mahmoodhamdi.github.io/cv/projects/iai-salla-bot.html">
+<link rel="alternate" hreflang="en" href="https://mahmoodhamdi.github.io/cv/projects/iai-salla-bot.html">
+<link rel="alternate" hreflang="ar" href="https://mahmoodhamdi.github.io/cv/projects/iai-salla-bot.html">
+<link rel="alternate" hreflang="x-default" href="https://mahmoodhamdi.github.io/cv/projects/iai-salla-bot.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IAI — AI-Powered E-Commerce Assistant | Mahmoud Hamdy Fathy">
+<meta property="og:description" content="IAI is an end-to-end AI-powered assistant for Salla e-commerce stores — 24/7 automated customer support, order tracking, and product recommendations via Telegram bot.">
+<meta property="og:url" content="https://mahmoodhamdi.github.io/cv/projects/iai-salla-bot.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ar_EG">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IAI — AI-Powered E-Commerce Assistant | Mahmoud Hamdy Fathy">
+<meta name="twitter:description" content="IAI is an end-to-end AI-powered assistant for Salla e-commerce stores — 24/7 automated customer support via Telegram bot.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="manifest" href="../manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mahmoud CV">
+<link rel="apple-touch-icon" href="../assets/icon-192.svg">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+:root{--bg:#0a0f1a;--bg-alt:#111827;--card:#1a2236;--card-h:#1f2a42;--accent:#38bdf8;--accent-g:rgba(56,189,248,.15);--accent2:#818cf8;--txt:#f1f5f9;--txt2:#94a3b8;--muted:#8e99ad;--bdr:rgba(148,163,184,.1);--grad:linear-gradient(135deg,#38bdf8,#818cf8);--green:#34d399;--fn:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;--fn-ar:'Tajawal',sans-serif;--nav-bg:rgba(10,15,26,.88);--prog-bg:rgba(148,163,184,.1);--chip-bg:rgba(129,140,248,.1);--chip-c:var(--accent2);--chip-bdr:rgba(129,140,248,.15);--cta-bg:linear-gradient(135deg,rgba(56,189,248,.08),rgba(129,140,248,.08))}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;opacity:0;transition:opacity .5s ease;padding-top:52px}body.loaded{opacity:1}
+.wrap{max-width:1100px;margin:0 auto;padding:40px 24px;position:relative;z-index:1}
+.navbar{position:fixed;top:0;left:0;right:0;z-index:90;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--bdr)}
+.nav-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:48px;gap:2px;overflow-x:auto;scrollbar-width:none}
+.nav-in::-webkit-scrollbar{display:none}
+.nav-a{padding:6px 12px;border-radius:8px;font-size:12px;font-weight:500;color:var(--muted);white-space:nowrap;cursor:pointer;border:none;background:none;font-family:var(--fn)}
+.top-ctrl{position:fixed;top:58px;right:20px;z-index:100;display:flex;gap:8px;align-items:center}
+.lang-tog{display:flex;gap:3px;background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:3px;backdrop-filter:blur(20px)}
+.skip-link{position:fixed;top:0;left:16px;z-index:10001;padding:12px 24px;background:var(--grad);color:#fff;border-radius:0 0 8px 8px;font-size:14px;font-weight:600;text-decoration:none;transform:translateY(-100%);transition:transform .3s}.skip-link:focus{transform:translateY(0)}
+#ar-proj[style*="none"],#en-proj[style*="none"]{content-visibility:auto;contain-intrinsic-size:auto 5000px}
+</style>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=JetBrains+Mono&family=Tajawal:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="../css/bundle.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="../css/sections.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="../css/utilities.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="projects.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=JetBrains+Mono&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/bundle.css">
+<link rel="stylesheet" href="../css/sections.css">
+<link rel="stylesheet" href="../css/utilities.css">
+<link rel="stylesheet" href="projects.css">
+</noscript>
+<link rel="stylesheet" href="../css/print.css" media="print">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "IAI — AI-Powered E-Commerce Assistant",
+  "description": "IAI is an end-to-end intelligent assistant system built for a Saudi e-commerce client on the Salla platform. 24/7 automated customer support via Telegram bot with NLP, order tracking, and product recommendations.",
+  "author": {
+    "@type": "Person",
+    "name": "Mahmoud Hamdy Fathy",
+    "email": "hmdy7486@gmail.com",
+    "url": "https://mahmoodhamdi.github.io/cv/"
+  },
+  "url": "https://mahmoodhamdi.github.io/cv/projects/iai-salla-bot.html",
+  "keywords": ["AI chatbot", "Salla", "Telegram bot", "e-commerce automation", "Node.js", "NLP", "Next.js"],
+  "inLanguage": ["en", "ar"]
+}
+</script>
+</head>
+<body id="top">
+<a class="skip-link" href="#en-proj">Skip to main content</a>
+<div class="scroll-progress" id="sp" aria-hidden="true"></div>
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+<div class="orb orb-3" aria-hidden="true"></div>
+
+<nav class="navbar" id="navbar" role="navigation" aria-label="Page navigation">
+  <div class="nav-in" id="nav-en">
+    <a class="nav-a" href="#overview-en">Overview</a>
+    <a class="nav-a" href="#features-en">Features</a>
+    <a class="nav-a" href="#tech-en">Tech Stack</a>
+    <a class="nav-a" href="mailto:hmdy7486@gmail.com">Contact</a>
+  </div>
+  <div class="nav-in" id="nav-ar" style="display:none">
+    <a class="nav-a" href="#overview-ar">نظرة عامة</a>
+    <a class="nav-a" href="#features-ar">المميزات</a>
+    <a class="nav-a" href="#tech-ar">التقنيات</a>
+    <a class="nav-a" href="mailto:hmdy7486@gmail.com">تواصل</a>
+  </div>
+</nav>
+
+<div class="top-ctrl">
+  <button class="t-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+    <svg class="ic-light" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    <svg class="ic-dark" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+  </button>
+  <div class="lang-tog">
+    <button class="l-btn on" onclick="setLang('en')">EN</button>
+    <button class="l-btn" onclick="setLang('ar')">عربي</button>
+  </div>
+</div>
+
+<button class="s-top" id="sTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
+  <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+<div class="toast" id="toast"></div>
+
+<script>window.CV={lang:'en'};function setLang(l){window.CV.lang=l;var h=document.documentElement,e=document.getElementById('en-proj'),a=document.getElementById('ar-proj'),b=document.querySelectorAll('.l-btn');if(l==='ar'){h.dir='rtl';h.lang='ar';if(e)e.style.display='none';if(a)a.style.display='block';b[0].classList.remove('on');b[1].classList.add('on')}else{h.dir='ltr';h.lang='en';if(e)e.style.display='block';if(a)a.style.display='none';b[0].classList.add('on');b[1].classList.remove('on')}}</script>
+
+<main>
+
+<!-- ===== EN ===== -->
+<div id="en-proj">
+<div class="proj-wrap">
+
+  <!-- Back link -->
+  <div class="proj-breadcrumb">
+    <a href="../">Portfolio</a>
+    <span class="proj-breadcrumb-sep">/</span>
+    <span>IAI — AI-Powered E-Commerce Assistant</span>
+  </div>
+
+  <!-- Hero -->
+  <section class="proj-hero proj-section" aria-labelledby="proj-title-en">
+    <div class="proj-hero-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    </div>
+    <div class="proj-badges">
+      <span class="proj-badge proj-badge-type">SaaS</span>
+      <span class="proj-badge proj-badge-status">Delivered ✓</span>
+    </div>
+    <h1 class="proj-title" id="proj-title-en">IAI — AI-Powered E-Commerce Assistant</h1>
+    <p class="proj-tagline">Intelligent automation for Salla stores — 24/7 customer support that drives sales</p>
+    <div class="proj-hero-links">
+      <a class="btn-p" href="mailto:hmdy7486@gmail.com">Hire Me for a Similar Project</a>
+      <a class="btn-o" href="../">← Back to Portfolio</a>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="proj-overview proj-section" id="overview-en" aria-labelledby="overview-title-en">
+    <div class="proj-overview-inner">
+      <h2 class="proj-sec-title" id="overview-title-en">Project Overview</h2>
+      <p>IAI is an end-to-end intelligent assistant system built for a Saudi e-commerce client operating on the Salla platform. The bot automates customer interactions around the clock — handling product inquiries, order tracking, FAQs, and personalized product recommendations — significantly reducing support workload while increasing sales conversions.</p>
+    </div>
+  </section>
+
+  <!-- Problem & Solution -->
+  <section class="proj-problem proj-section" aria-labelledby="problem-title-en">
+    <h2 class="proj-sec-title" id="problem-title-en">The Challenge &amp; Solution</h2>
+    <div class="proj-problem-grid">
+      <div class="proj-problem-card problem">
+        <div class="proj-problem-label">Problem</div>
+        <h3>Lost Sales &amp; Overwhelmed Support</h3>
+        <p>The client's Salla store was losing potential sales due to delayed customer support responses, especially outside business hours. Manual handling of repetitive inquiries consumed significant staff time and left customers waiting without answers.</p>
+      </div>
+      <div class="proj-problem-card solution">
+        <div class="proj-problem-label">Solution</div>
+        <h3>Always-On Intelligent Automation</h3>
+        <p>IAI provides instant, intelligent responses 24/7, freeing the team to focus on complex issues while ensuring no customer inquiry goes unanswered. The NLP pipeline classifies intent so every message gets a relevant, accurate reply — day or night.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="proj-features proj-section" id="features-en" aria-labelledby="features-title-en">
+    <h2 class="proj-sec-title" id="features-title-en">Key Features</h2>
+    <div class="proj-features-grid">
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">01</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">AI-Driven Auto-Responses with NLU</div>
+          <div class="proj-feature-desc">Natural language understanding pipeline classifies customer intent and generates accurate, context-aware replies automatically.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">02</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Direct Salla API Integration</div>
+          <div class="proj-feature-desc">Deep integration with the Salla REST API for real-time access to product catalog, inventory, pricing, and order data.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">03</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Telegram Bot Communication</div>
+          <div class="proj-feature-desc">Customers interact natively through Telegram — no app install required — with rich message formatting and inline keyboards.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">04</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Automated Order Tracking</div>
+          <div class="proj-feature-desc">Customers can check the status of any order in seconds without waiting for a human agent, reducing ticket volume significantly.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">05</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Personalized Product Recommendations</div>
+          <div class="proj-feature-desc">Based on browsing context and query keywords, the bot surfaces relevant products and upsell opportunities in real time.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">06</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Admin Dashboard with Analytics</div>
+          <div class="proj-feature-desc">Next.js dashboard gives the store owner full visibility — conversation logs, intent breakdowns, response accuracy, and sales impact metrics.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">07</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Configurable Templates &amp; Escalation</div>
+          <div class="proj-feature-desc">Business rules, reply templates, and escalation thresholds are fully configurable from the dashboard without touching code.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">08</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Multi-Language Support (AR + EN)</div>
+          <div class="proj-feature-desc">The bot detects and responds in both Arabic and English, serving the Saudi market's bilingual customer base seamlessly.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="proj-tech proj-section" id="tech-en" aria-labelledby="tech-title-en">
+    <h2 class="proj-sec-title" id="tech-title-en">Tech Stack</h2>
+    <div class="proj-tech-grid">
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Node.js + TypeScript</div>
+            <div class="proj-tech-category">Backend &amp; Bot Logic</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Core service layer powering the Telegram bot, Salla API polling, and the NLP intent pipeline with full type safety.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Next.js</div>
+            <div class="proj-tech-category">Admin Dashboard</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Server-rendered admin interface with real-time analytics, conversation management, and template configuration panels.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Salla REST API</div>
+            <div class="proj-tech-category">E-Commerce Data</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Real-time access to product catalog, inventory levels, order statuses, and customer data from the Salla storefront.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Telegram Bot API</div>
+            <div class="proj-tech-category">Communication Channel</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Customer-facing interface with rich message formatting, inline keyboards, and seamless conversation threading.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">AI / NLP</div>
+            <div class="proj-tech-category">Intent Detection</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Intent classification pipeline that maps incoming messages to predefined actions — orders, FAQs, products, and escalation flows.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Turborepo</div>
+            <div class="proj-tech-category">Monorepo Build System</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Unified monorepo manages all three packages — bot-service, dashboard, and shared — with optimized incremental builds and caching.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Architecture -->
+  <section class="proj-arch proj-section" aria-labelledby="arch-title-en">
+    <h2 class="proj-sec-title" id="arch-title-en">Architecture</h2>
+    <div class="proj-arch-card">
+      <p>The system is structured as a Turborepo monorepo containing three packages. The <span class="proj-code">bot-service</span> handles all Telegram interactions, polls the Salla API for real-time product and order data, and runs messages through the NLP pipeline for intent classification. The <span class="proj-code">dashboard</span> is a Next.js application providing the store owner with conversation analytics, response templates, and escalation rule management. The <span class="proj-code">shared</span> package contains common TypeScript types, Salla API client utilities, and validation schemas used across both services.</p>
+      <p>The NLP pipeline uses a multi-stage intent classifier: a keyword-based pre-filter narrows the input before a model scores it against known intents — order inquiry, product search, FAQ, shipping, return, and human escalation. Confidence thresholds determine whether the bot responds autonomously or routes the conversation to a human agent.</p>
+      <div class="proj-arch-diagram" role="img" aria-label="Architecture diagram">
+Telegram Customer
+       │
+       ▼
+  bot-service (Node.js + TypeScript)
+  ├── Telegram Bot API listener
+  ├── NLP Pipeline
+  │   ├── Keyword pre-filter
+  │   ├── Intent classifier
+  │   └── Confidence threshold router
+  ├── Salla API Client (polling + webhooks)
+  │   ├── Products &amp; inventory
+  │   └── Orders &amp; tracking
+  └── Response generator
+
+  dashboard (Next.js)
+  ├── Conversation logs &amp; analytics
+  ├── Template editor
+  └── Escalation rule config
+
+  shared
+  ├── TypeScript types
+  ├── Salla API utilities
+  └── Validation schemas
+      </div>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section class="proj-results proj-section" aria-labelledby="results-title-en">
+    <h2 class="proj-sec-title" id="results-title-en">Results &amp; Impact</h2>
+    <div class="proj-results-grid">
+      <div class="proj-metric">
+        <div class="proj-metric-value">24/7</div>
+        <div class="proj-metric-label">Automated support coverage — zero downtime</div>
+      </div>
+      <div class="proj-metric">
+        <div class="proj-metric-value">+Sales</div>
+        <div class="proj-metric-label">Noticeable increase in conversion from instant responses</div>
+      </div>
+      <div class="proj-metric">
+        <div class="proj-metric-value">-Tickets</div>
+        <div class="proj-metric-label">Significant reduction in manual support ticket volume</div>
+      </div>
+      <div class="proj-metric">
+        <div class="proj-metric-value">2x</div>
+        <div class="proj-metric-label">Repeat client — returned for a second bot project</div>
+      </div>
+    </div>
+    <div class="proj-outcomes">
+      <ul>
+        <li>Store operates full 24/7 customer support with zero additional staff hours</li>
+        <li>Product inquiries answered in under 2 seconds regardless of time or day</li>
+        <li>Noticeable sales increase attributed to instant product recommendations</li>
+        <li>Support ticket volume reduced as common queries are handled automatically</li>
+        <li>Admin team freed to focus exclusively on complex, high-value interactions</li>
+        <li>Client returned with a second automation project — a strong trust signal</li>
+        <li>Bilingual AR/EN support serves the full Saudi market customer base</li>
+        <li>Dashboard gives non-technical owner full visibility and control</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Screenshots -->
+  <section class="proj-screenshots proj-section" aria-labelledby="screenshots-title-en">
+    <h2 class="proj-sec-title" id="screenshots-title-en">Screenshots</h2>
+    <div class="proj-screenshots-grid">
+      <div class="proj-screenshot-placeholder">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>Telegram Bot — Customer Conversation</span>
+      </div>
+      <div class="proj-screenshot-placeholder">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>Admin Dashboard — Analytics Overview</span>
+      </div>
+      <div class="proj-screenshot-placeholder">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>Order Tracking — Live Status View</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="proj-cta proj-section" aria-labelledby="cta-title-en">
+    <h2 class="proj-cta-title" id="cta-title-en">Interested in a Similar Project?</h2>
+    <p class="proj-cta-desc">I build intelligent automation systems for e-commerce businesses — Salla, WooCommerce, Shopify, and custom platforms. Let's discuss what's possible for your store.</p>
+    <div class="proj-cta-actions">
+      <a class="btn-p" href="mailto:hmdy7486@gmail.com">Get In Touch</a>
+      <a class="btn-o" href="../">View Full Portfolio</a>
+    </div>
+  </section>
+
+  <!-- Related Projects -->
+  <section class="proj-related proj-section" aria-labelledby="related-title-en">
+    <h2 class="proj-sec-title" id="related-title-en">Related Projects</h2>
+    <div class="proj-related-grid">
+
+      <a class="proj-related-card" href="escore.html">
+        <div class="proj-related-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+        </div>
+        <div class="proj-related-name">Escore — E-Sports Platform</div>
+        <div class="proj-related-desc">Full-stack e-sports platform for the MENA region — tournament management, live match tracking, team rankings, and real-time leaderboards.</div>
+        <div class="proj-related-tags">
+          <span class="proj-badge">Node.js</span>
+          <span class="proj-badge">Next.js</span>
+          <span class="proj-badge">Flutter</span>
+        </div>
+        <div class="proj-related-arrow" aria-hidden="true">→</div>
+      </a>
+
+      <a class="proj-related-card" href="wasalni.html">
+        <div class="proj-related-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="proj-related-name">Wasalni — Delivery Platform</div>
+        <div class="proj-related-desc">End-to-end delivery solution with Node.js backend, Next.js dashboard, and two Flutter apps — rider and driver — with real-time tracking.</div>
+        <div class="proj-related-tags">
+          <span class="proj-badge">Node.js</span>
+          <span class="proj-badge">Flutter</span>
+          <span class="proj-badge">WebSocket</span>
+        </div>
+        <div class="proj-related-arrow" aria-hidden="true">→</div>
+      </a>
+
+      <a class="proj-related-card" href="whatsapp-bot.html">
+        <div class="proj-related-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div class="proj-related-name">WhatsApp Bot — SaaS Platform</div>
+        <div class="proj-related-desc">Multi-tenant WhatsApp automation SaaS — bulk messaging, chatbot flows, and CRM integration for business clients across the MENA region.</div>
+        <div class="proj-related-tags">
+          <span class="proj-badge">Node.js</span>
+          <span class="proj-badge">SaaS</span>
+          <span class="proj-badge">AI</span>
+        </div>
+        <div class="proj-related-arrow" aria-hidden="true">→</div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Back link -->
+  <div class="proj-back proj-section">
+    <a class="proj-back-link" href="../">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to Portfolio
+    </a>
+  </div>
+
+</div><!-- /.proj-wrap -->
+
+<div class="ftr-wave"></div>
+<footer class="ftr">
+  <div class="ftr-soc">
+    <a href="https://github.com/mahmoodhamdi" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>
+    <a href="mailto:hmdy7486@gmail.com" aria-label="Email"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+    <a href="https://upwork.com" target="_blank" rel="noopener noreferrer" aria-label="Upwork"><svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg></a>
+  </div>
+  <div class="ftr-avail">Available for Hire</div>
+  <div class="ftr-txt">© 2026 Mahmoud Hamdy Fathy — Built with passion</div>
+  <a class="ftr-top" href="#top" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'})">↑ Back to top</a>
+</footer>
+</div><!-- /#en-proj -->
+
+<!-- ===== AR ===== -->
+<div id="ar-proj" style="display:none">
+<div class="proj-wrap">
+
+  <!-- Back link -->
+  <div class="proj-breadcrumb">
+    <a href="../">البورتفوليو</a>
+    <span class="proj-breadcrumb-sep">/</span>
+    <span>IAI — مساعد ذكي للتجارة الإلكترونية</span>
+  </div>
+
+  <!-- Hero -->
+  <section class="proj-hero proj-section" aria-labelledby="proj-title-ar">
+    <div class="proj-hero-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    </div>
+    <div class="proj-badges">
+      <span class="proj-badge proj-badge-type">SaaS</span>
+      <span class="proj-badge proj-badge-status">تم التسليم ✓</span>
+    </div>
+    <h1 class="proj-title" id="proj-title-ar">IAI — مساعد ذكي للتجارة الإلكترونية</h1>
+    <p class="proj-tagline">أتمتة ذكية لمتاجر سلة — دعم عملاء ٢٤/٧ يزيد المبيعات</p>
+    <div class="proj-hero-links">
+      <a class="btn-p" href="mailto:hmdy7486@gmail.com">تواصل لمشروع مشابه</a>
+      <a class="btn-o" href="../">→ العودة للبورتفوليو</a>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="proj-overview proj-section" id="overview-ar" aria-labelledby="overview-title-ar">
+    <div class="proj-overview-inner">
+      <h2 class="proj-sec-title" id="overview-title-ar">نظرة عامة على المشروع</h2>
+      <p>IAI هو نظام مساعد ذكي متكامل مبني لعميل تجارة إلكترونية سعودي على منصة سلة. البوت بيأتمت تفاعلات العملاء على مدار الساعة — بيتعامل مع استفسارات المنتجات، تتبع الطلبات، الأسئلة الشائعة، وتوصيات منتجات مخصصة — مما يقلل عبء الدعم بشكل كبير ويزيد التحويلات.</p>
+    </div>
+  </section>
+
+  <!-- Problem & Solution -->
+  <section class="proj-problem proj-section" aria-labelledby="problem-title-ar">
+    <h2 class="proj-sec-title" id="problem-title-ar">التحدي والحل</h2>
+    <div class="proj-problem-grid">
+      <div class="proj-problem-card problem">
+        <div class="proj-problem-label">المشكلة</div>
+        <h3>مبيعات ضائعة وفريق دعم مرهق</h3>
+        <p>متجر العميل على سلة كان يخسر مبيعات محتملة بسبب تأخر ردود الدعم، خصوصاً خارج ساعات العمل. التعامل اليدوي مع الاستفسارات المتكررة كان بياخد وقت كبير من الفريق وبيخلي العملاء ينتظروا بدون إجابة.</p>
+      </div>
+      <div class="proj-problem-card solution">
+        <div class="proj-problem-label">الحل</div>
+        <h3>أتمتة ذكية لا تتوقف</h3>
+        <p>IAI بيوفر ردود فورية وذكية ٢٤/٧، بيحرر الفريق يركز على المشاكل المعقدة وبيضمن إن مفيش استفسار بيروح بدون رد. خط أنابيب معالجة اللغة الطبيعية بيصنف كل رسالة عشان كل سؤال ياخد إجابة دقيقة ومناسبة.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="proj-features proj-section" id="features-ar" aria-labelledby="features-title-ar">
+    <h2 class="proj-sec-title" id="features-title-ar">المميزات الأساسية</h2>
+    <div class="proj-features-grid">
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠١</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">ردود تلقائية ذكية بفهم اللغة الطبيعية</div>
+          <div class="proj-feature-desc">خط أنابيب فهم اللغة الطبيعية بيصنف نية العميل ويولد ردود دقيقة ومبنية على السياق تلقائياً.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠٢</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">تكامل مباشر مع Salla API</div>
+          <div class="proj-feature-desc">تكامل عميق مع Salla REST API للوصول اللحظي لكتالوج المنتجات والمخزون والأسعار وبيانات الطلبات.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠٣</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">التواصل عبر بوت تيليجرام</div>
+          <div class="proj-feature-desc">العملاء بيتفاعلوا بشكل طبيعي عبر تيليجرام — من غير ما يثبتوا أي تطبيق — مع تنسيق رسائل غني وأزرار تفاعلية.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠٤</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">تتبع الطلبات تلقائياً</div>
+          <div class="proj-feature-desc">العملاء يقدروا يتحققوا من حالة أي طلب في ثواني من غير ما ينتظروا موظف، مما يقلل حجم التذاكر بشكل كبير.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠٥</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">توصيات منتجات مخصصة</div>
+          <div class="proj-feature-desc">بناءً على سياق التصفح والكلمات المفتاحية في الاستفسار، البوت بيعرض منتجات مناسبة وفرص بيع إضافية في الوقت الفعلي.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠٦</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">لوحة تحكم إدارية مع تحليلات</div>
+          <div class="proj-feature-desc">لوحة تحكم Next.js بتدي صاحب المتجر رؤية كاملة — سجلات المحادثات، توزيع النوايا، دقة الردود، ومؤشرات تأثير المبيعات.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠٧</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">قوالب قابلة للتخصيص وتصعيد للإنسان</div>
+          <div class="proj-feature-desc">قواعد العمل وقوالب الردود وحدود التصعيد كلها قابلة للضبط من لوحة التحكم من غير الحاجة لتعديل الكود.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠٨</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">دعم متعدد اللغات (عربي + إنجليزي)</div>
+          <div class="proj-feature-desc">البوت بيكتشف ويرد بالعربي والإنجليزي، مما يخدم قاعدة عملاء السوق السعودي ثنائي اللغة بشكل سلس.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="proj-tech proj-section" id="tech-ar" aria-labelledby="tech-title-ar">
+    <h2 class="proj-sec-title" id="tech-title-ar">التقنيات المستخدمة</h2>
+    <div class="proj-tech-grid">
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Node.js + TypeScript</div>
+            <div class="proj-tech-category">الباك إند ومنطق البوت</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">طبقة الخدمة الأساسية المشغلة لبوت تيليجرام واستطلاع Salla API وخط أنابيب NLP مع أمان كامل في الأنواع.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Next.js</div>
+            <div class="proj-tech-category">لوحة التحكم الإدارية</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">واجهة إدارة مُرندرة من جهة السيرفر مع تحليلات لحظية وإدارة المحادثات ولوحات ضبط القوالب.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Salla REST API</div>
+            <div class="proj-tech-category">بيانات التجارة الإلكترونية</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">وصول لحظي لكتالوج المنتجات ومستويات المخزون وحالات الطلبات وبيانات العملاء من متجر سلة.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Telegram Bot API</div>
+            <div class="proj-tech-category">قناة التواصل</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">واجهة العميل مع تنسيق رسائل غني وأزرار تفاعلية وتسلسل محادثة سلس.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">AI / NLP</div>
+            <div class="proj-tech-category">تحديد النية</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">خط أنابيب تصنيف النية بيحول الرسائل الواردة لأفعال محددة — طلبات، أسئلة شائعة، منتجات، وتدفقات التصعيد.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Turborepo</div>
+            <div class="proj-tech-category">نظام بناء الـ Monorepo</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Monorepo موحد بيدير الحزم الثلاثة — bot-service وdashboard وshared — مع بنيات تدريجية محسّنة وتخزين مؤقت.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Architecture -->
+  <section class="proj-arch proj-section" aria-labelledby="arch-title-ar">
+    <h2 class="proj-sec-title" id="arch-title-ar">بنية النظام</h2>
+    <div class="proj-arch-card">
+      <p>النظام مبني كـ Turborepo monorepo بيحتوي على ثلاث حزم. <span class="proj-code">bot-service</span> بيتعامل مع كل تفاعلات تيليجرام، بيستطلع Salla API للبيانات اللحظية، وبيمرر الرسائل عبر خط أنابيب NLP لتصنيف النية. <span class="proj-code">dashboard</span> هو تطبيق Next.js بيوفر لصاحب المتجر تحليلات المحادثات وقوالب الردود وإدارة قواعد التصعيد. حزمة <span class="proj-code">shared</span> بتحتوي على أنواع TypeScript المشتركة وأدوات Salla API client ومخططات التحقق المستخدمة في الخدمتين.</p>
+      <p>خط أنابيب NLP بيستخدم مصنف نية متعدد المراحل: فلتر أولي قائم على الكلمات المفتاحية بيضيّق النطاق قبل ما نموذج يصنّف المدخل على النوايا المعروفة — استفسار طلب، بحث منتج، سؤال شائع، شحن، إرجاع، وتصعيد لإنسان. حدود الثقة بتحدد هل البوت يرد لوحده أو يحول المحادثة لموظف.</p>
+      <div class="proj-arch-diagram" role="img" aria-label="مخطط البنية">
+عميل تيليجرام
+       │
+       ▼
+  bot-service (Node.js + TypeScript)
+  ├── مستمع Telegram Bot API
+  ├── خط أنابيب NLP
+  │   ├── فلتر الكلمات المفتاحية
+  │   ├── مصنف النية
+  │   └── موجّه حد الثقة
+  ├── Salla API Client (استطلاع + webhooks)
+  │   ├── المنتجات والمخزون
+  │   └── الطلبات والتتبع
+  └── مولّد الردود
+
+  dashboard (Next.js)
+  ├── سجلات المحادثات والتحليلات
+  ├── محرر القوالب
+  └── ضبط قواعد التصعيد
+
+  shared
+  ├── أنواع TypeScript
+  ├── أدوات Salla API
+  └── مخططات التحقق
+      </div>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section class="proj-results proj-section" aria-labelledby="results-title-ar">
+    <h2 class="proj-sec-title" id="results-title-ar">النتائج والأثر</h2>
+    <div class="proj-results-grid">
+      <div class="proj-metric">
+        <div class="proj-metric-value">٢٤/٧</div>
+        <div class="proj-metric-label">تغطية دعم تلقائي — صفر توقف</div>
+      </div>
+      <div class="proj-metric">
+        <div class="proj-metric-value">+مبيعات</div>
+        <div class="proj-metric-label">زيادة ملحوظة في التحويل من الردود الفورية</div>
+      </div>
+      <div class="proj-metric">
+        <div class="proj-metric-value">-تذاكر</div>
+        <div class="proj-metric-label">انخفاض كبير في حجم تذاكر الدعم اليدوي</div>
+      </div>
+      <div class="proj-metric">
+        <div class="proj-metric-value">٢×</div>
+        <div class="proj-metric-label">عميل متكرر — رجع لمشروع بوت ثاني</div>
+      </div>
+    </div>
+    <div class="proj-outcomes">
+      <ul>
+        <li>المتجر بيشتغل بدعم عملاء كامل ٢٤/٧ من غير ساعات عمل إضافية للفريق</li>
+        <li>استفسارات المنتجات بتتجاوب في أقل من ثانيتين بغض النظر عن الوقت</li>
+        <li>زيادة ملحوظة في المبيعات تُنسب لتوصيات المنتجات الفورية</li>
+        <li>حجم تذاكر الدعم انخفض لأن الاستفسارات الشائعة بتتعامل معها تلقائياً</li>
+        <li>الفريق الإداري متحرر للتركيز فقط على التفاعلات المعقدة والعالية القيمة</li>
+        <li>العميل رجع بمشروع أتمتة ثاني — علامة ثقة قوية على جودة العمل</li>
+        <li>الدعم الثنائي عربي/إنجليزي بيخدم قاعدة العملاء الكاملة في السوق السعودي</li>
+        <li>لوحة التحكم بتدي الصاحب غير التقني رؤية كاملة وتحكم في النظام</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Screenshots -->
+  <section class="proj-screenshots proj-section" aria-labelledby="screenshots-title-ar">
+    <h2 class="proj-sec-title" id="screenshots-title-ar">لقطات الشاشة</h2>
+    <div class="proj-screenshots-grid">
+      <div class="proj-screenshot-placeholder">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>بوت تيليجرام — محادثة العميل</span>
+      </div>
+      <div class="proj-screenshot-placeholder">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>لوحة التحكم الإدارية — نظرة عامة على التحليلات</span>
+      </div>
+      <div class="proj-screenshot-placeholder">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>تتبع الطلبات — عرض الحالة اللحظية</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="proj-cta proj-section" aria-labelledby="cta-title-ar">
+    <h2 class="proj-cta-title" id="cta-title-ar">مهتم بمشروع مشابه؟</h2>
+    <p class="proj-cta-desc">بأبني أنظمة أتمتة ذكية لمتاجر التجارة الإلكترونية — سلة، WooCommerce، Shopify، ومنصات مخصصة. خلينا نتكلم عن إيش ممكن نعمله لمتجرك.</p>
+    <div class="proj-cta-actions">
+      <a class="btn-p" href="mailto:hmdy7486@gmail.com">تواصل معايا</a>
+      <a class="btn-o" href="../">عرض كل الأعمال</a>
+    </div>
+  </section>
+
+  <!-- Related Projects -->
+  <section class="proj-related proj-section" aria-labelledby="related-title-ar">
+    <h2 class="proj-sec-title" id="related-title-ar">مشاريع ذات صلة</h2>
+    <div class="proj-related-grid">
+
+      <a class="proj-related-card" href="escore.html">
+        <div class="proj-related-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+        </div>
+        <div class="proj-related-name">Escore — منصة الرياضات الإلكترونية</div>
+        <div class="proj-related-desc">منصة رياضات إلكترونية متكاملة لمنطقة الشرق الأوسط — إدارة بطولات، تتبع مباريات لحظي، وتصنيفات الفرق واللاعبين.</div>
+        <div class="proj-related-tags">
+          <span class="proj-badge">Node.js</span>
+          <span class="proj-badge">Next.js</span>
+          <span class="proj-badge">Flutter</span>
+        </div>
+        <div class="proj-related-arrow" aria-hidden="true">←</div>
+      </a>
+
+      <a class="proj-related-card" href="wasalni.html">
+        <div class="proj-related-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="proj-related-name">وصلني — منصة توصيل</div>
+        <div class="proj-related-desc">حل توصيل متكامل مع باك إند Node.js ولوحة تحكم Next.js وتطبيقين Flutter (راكب + سائق) مع تتبع لحظي.</div>
+        <div class="proj-related-tags">
+          <span class="proj-badge">Node.js</span>
+          <span class="proj-badge">Flutter</span>
+          <span class="proj-badge">WebSocket</span>
+        </div>
+        <div class="proj-related-arrow" aria-hidden="true">←</div>
+      </a>
+
+      <a class="proj-related-card" href="whatsapp-bot.html">
+        <div class="proj-related-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div class="proj-related-name">بوت واتساب — منصة SaaS</div>
+        <div class="proj-related-desc">SaaS أتمتة واتساب متعدد المستأجرين — إرسال جماعي وتدفقات بوت محادثة وتكامل CRM لعملاء الأعمال في المنطقة.</div>
+        <div class="proj-related-tags">
+          <span class="proj-badge">Node.js</span>
+          <span class="proj-badge">SaaS</span>
+          <span class="proj-badge">AI</span>
+        </div>
+        <div class="proj-related-arrow" aria-hidden="true">←</div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Back link -->
+  <div class="proj-back proj-section">
+    <a class="proj-back-link" href="../">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 19l7-7-7-7"/></svg>
+      العودة للبورتفوليو
+    </a>
+  </div>
+
+</div><!-- /.proj-wrap -->
+
+<div class="ftr-wave"></div>
+<footer class="ftr">
+  <div class="ftr-soc">
+    <a href="https://github.com/mahmoodhamdi" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>
+    <a href="mailto:hmdy7486@gmail.com" aria-label="البريد الإلكتروني"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+    <a href="https://upwork.com" target="_blank" rel="noopener noreferrer" aria-label="Upwork"><svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg></a>
+  </div>
+  <div class="ftr-avail">متاح للتوظيف</div>
+  <div class="ftr-txt">© ٢٠٢٦ محمود حمدي فتحي — صُنع بشغف</div>
+  <a class="ftr-top" href="#top" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'})">↑ العودة للأعلى</a>
+</footer>
+</div><!-- /#ar-proj -->
+
+</main>
+
+<script src="../js/utils.js" defer></script>
+<script src="../js/theme.js" defer></script>
+<script src="../js/language.js" defer></script>
+<script src="../js/navigation.js" defer></script>
+<script src="../js/animations.js" defer></script>
+<script src="../js/analytics.js" defer></script>
+<script src="../js/pwa.js" defer></script>
+<script src="../js/main.js" defer></script>
+<script>
+window.addEventListener('load',function(){setTimeout(function(){var s=document.createElement('script');s.src='https://www.googletagmanager.com/gtag/js?id=G-D0H1J8BSKJ';s.async=true;document.head.appendChild(s);s.onload=function(){window.dataLayer=window.dataLayer||[];function g(){dataLayer.push(arguments)}g('js',new Date());g('config','G-D0H1J8BSKJ');window.gtag=g}},2000)});
+</script>
+</body>
+</html>

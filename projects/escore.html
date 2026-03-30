@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Escore — Esports Platform | Mahmoud Hamdy Fathy</title>
+<meta name="description" content="Escore is a full-stack esports platform built for the MENA gaming community — featuring tournament management, live match tracking, team rankings, news, and a transfers module.">
+<meta name="author" content="Mahmoud Hamdy Fathy">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0a0f1a">
+<link rel="canonical" href="https://mahmoodhamdi.github.io/cv/projects/escore.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Escore — Esports Platform | Mahmoud Hamdy Fathy">
+<meta property="og:description" content="Full-stack esports platform for the MENA gaming community. Tournament management, live tracking, team rankings, news coverage, and transfers module.">
+<meta property="og:url" content="https://mahmoodhamdi.github.io/cv/projects/escore.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ar_EG">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Escore — Esports Platform | Mahmoud Hamdy Fathy">
+<meta name="twitter:description" content="Full-stack esports platform for the MENA gaming community built with Node.js, Next.js, Flutter, and WebSocket.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+:root{--bg:#0a0f1a;--bg-alt:#111827;--card:#1a2236;--card-h:#1f2a42;--accent:#38bdf8;--accent-g:rgba(56,189,248,.15);--accent2:#818cf8;--txt:#f1f5f9;--txt2:#94a3b8;--muted:#8e99ad;--bdr:rgba(148,163,184,.1);--grad:linear-gradient(135deg,#38bdf8,#818cf8);--green:#34d399;--fn:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;--fn-ar:'Tajawal',sans-serif;--nav-bg:rgba(10,15,26,.88);--prog-bg:rgba(148,163,184,.1);--chip-bg:rgba(129,140,248,.1);--chip-c:var(--accent2);--chip-bdr:rgba(129,140,248,.15);--cta-bg:linear-gradient(135deg,rgba(56,189,248,.08),rgba(129,140,248,.08))}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;opacity:0;transition:opacity .5s ease;padding-top:52px}body.loaded{opacity:1}
+.wrap{max-width:1100px;margin:0 auto;padding:40px 24px;position:relative;z-index:1}
+.navbar{position:fixed;top:0;left:0;right:0;z-index:90;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--bdr)}
+.nav-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:48px;gap:2px;overflow-x:auto;scrollbar-width:none}
+.nav-in::-webkit-scrollbar{display:none}
+.nav-a{padding:6px 12px;border-radius:8px;font-size:12px;font-weight:500;color:var(--muted);white-space:nowrap;cursor:pointer;border:none;background:none;font-family:var(--fn);text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:color .2s,background .2s}
+.nav-a:hover{color:var(--accent);background:var(--accent-g)}
+.top-ctrl{position:fixed;top:58px;right:20px;z-index:100;display:flex;gap:8px;align-items:center}
+.lang-tog{display:flex;gap:3px;background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:3px;backdrop-filter:blur(20px)}
+.skip-link{position:fixed;top:0;left:16px;z-index:10001;padding:12px 24px;background:var(--grad);color:#fff;border-radius:0 0 8px 8px;font-size:14px;font-weight:600;text-decoration:none;transform:translateY(-100%);transition:transform .3s}.skip-link:focus{transform:translateY(0)}
+</style>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=JetBrains+Mono&family=Tajawal:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="../css/bundle.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="../css/sections.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="../css/utilities.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="projects.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=JetBrains+Mono&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/bundle.css">
+<link rel="stylesheet" href="../css/sections.css">
+<link rel="stylesheet" href="../css/utilities.css">
+<link rel="stylesheet" href="projects.css">
+</noscript>
+<link rel="stylesheet" href="../css/print.css" media="print">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Escore — Esports Platform",
+  "description": "Full-stack esports platform for the MENA gaming community featuring tournament management, live match tracking, team rankings, news, and a transfers module.",
+  "author": {
+    "@type": "Person",
+    "name": "Mahmoud Hamdy Fathy",
+    "email": "hmdy7486@gmail.com",
+    "url": "https://mahmoodhamdi.github.io/cv/"
+  },
+  "url": "https://mahmoodhamdi.github.io/cv/projects/escore.html",
+  "inLanguage": ["en", "ar"],
+  "keywords": ["esports", "platform", "MENA", "Node.js", "Next.js", "Flutter", "MongoDB", "TypeScript", "WebSocket", "tournament management"],
+  "about": {
+    "@type": "SoftwareApplication",
+    "name": "Escore",
+    "applicationCategory": "Sports",
+    "operatingSystem": "Web, iOS, Android"
+  }
+}
+</script>
+<script>
+(function(){try{var t=localStorage.getItem('cv-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}})();
+</script>
+<script>
+window.CV={lang:'en'};
+function setLang(l){
+  window.CV.lang=l;
+  var h=document.documentElement;
+  var e=document.getElementById('en-proj');
+  var a=document.getElementById('ar-proj');
+  var ne=document.getElementById('nav-en');
+  var na=document.getElementById('nav-ar');
+  var b=document.querySelectorAll('.l-btn');
+  if(l==='ar'){
+    h.dir='rtl';h.lang='ar';
+    if(e)e.style.display='none';
+    if(a)a.style.display='block';
+    if(ne)ne.style.display='none';
+    if(na)na.style.display='flex';
+    b[0].classList.remove('on');b[1].classList.add('on');
+  } else {
+    h.dir='ltr';h.lang='en';
+    if(e)e.style.display='block';
+    if(a)a.style.display='none';
+    if(ne)ne.style.display='flex';
+    if(na)na.style.display='none';
+    b[0].classList.add('on');b[1].classList.remove('on');
+  }
+  try{localStorage.setItem('cv-lang',l)}catch(ex){}
+}
+(function(){try{var l=localStorage.getItem('cv-lang');if(l&&l==='ar')setLang('ar')}catch(e){}})();
+</script>
+</head>
+<body id="top">
+
+<a class="skip-link" href="#en-proj">Skip to content</a>
+<div class="scroll-progress" id="sp" aria-hidden="true"></div>
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+<div class="orb orb-3" aria-hidden="true"></div>
+
+<nav class="navbar" id="navbar" role="navigation" aria-label="Page navigation">
+  <div class="nav-in" id="nav-en" style="display:flex">
+    <a class="nav-a" href="../">
+      <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Portfolio
+    </a>
+    <span style="color:var(--bdr);padding:0 4px;line-height:48px" aria-hidden="true">/</span>
+    <button class="nav-a" data-t="en-proj">Overview</button>
+    <button class="nav-a" data-t="proj-features-en">Features</button>
+    <button class="nav-a" data-t="proj-tech-en">Tech Stack</button>
+    <button class="nav-a" data-t="proj-arch-en">Architecture</button>
+    <button class="nav-a" data-t="proj-cta-en">Contact</button>
+  </div>
+  <div class="nav-in" id="nav-ar" style="display:none">
+    <a class="nav-a" href="../">
+      <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      البورتفوليو
+    </a>
+    <span style="color:var(--bdr);padding:0 4px;line-height:48px" aria-hidden="true">/</span>
+    <button class="nav-a" data-t="ar-proj">نظرة عامة</button>
+    <button class="nav-a" data-t="proj-features-ar">المميزات</button>
+    <button class="nav-a" data-t="proj-tech-ar">التقنيات</button>
+    <button class="nav-a" data-t="proj-arch-ar">المعمارية</button>
+    <button class="nav-a" data-t="proj-cta-ar">تواصل</button>
+  </div>
+</nav>
+
+<div class="top-ctrl">
+  <button class="t-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+    <svg class="ic-light" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    <svg class="ic-dark" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+  </button>
+  <div class="lang-tog">
+    <button class="l-btn on" onclick="setLang('en')">EN</button>
+    <button class="l-btn" onclick="setLang('ar')">عربي</button>
+  </div>
+</div>
+
+<button class="s-top" id="sTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
+  <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+<div class="toast" id="toast"></div>
+
+<main class="wrap">
+
+<!-- ===== EN VERSION ===== -->
+<div id="en-proj">
+<div class="proj-wrap">
+
+  <!-- Breadcrumb -->
+  <nav class="proj-breadcrumb" aria-label="Breadcrumb">
+    <a href="../">Home</a>
+    <span class="proj-breadcrumb-sep" aria-hidden="true">›</span>
+    <a href="../#proj-en">Projects</a>
+    <span class="proj-breadcrumb-sep" aria-hidden="true">›</span>
+    <span>Escore</span>
+  </nav>
+
+  <!-- Back link -->
+  <div class="proj-back proj-section">
+    <a class="proj-back-link" href="../">
+      <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to Portfolio
+    </a>
+  </div>
+
+  <!-- Hero -->
+  <div class="proj-hero proj-section">
+    <div class="proj-hero-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12l3 6-9 12L3 9z"/><path d="M3 9h18M6 3l3 6M18 3l-3 6"/></svg>
+    </div>
+    <div class="proj-badges">
+      <span class="proj-badge proj-badge-type">Platform</span>
+      <span class="proj-badge proj-badge-status">Delivered ✓</span>
+    </div>
+    <h1 class="proj-title">Escore — Esports Platform</h1>
+    <p class="proj-tagline">A comprehensive esports platform bringing competitive gaming to the Middle East &amp; North Africa</p>
+    <div class="proj-hero-links">
+      <a class="btn-p" href="mailto:hmdy7486@gmail.com">Request a Demo</a>
+      <a class="btn-o" href="../#proj-en">View All Projects</a>
+    </div>
+  </div>
+
+  <!-- Overview -->
+  <section class="proj-overview proj-section" id="proj-overview-en" aria-labelledby="overview-title-en">
+    <div class="proj-overview-inner">
+      <h2 class="proj-sec-title" id="overview-title-en">Overview</h2>
+      <p>Escore is a full-stack esports platform designed specifically for the MENA gaming community. Built for <strong>ROV GROUP</strong>, the platform provides tournament management, live match tracking, team and player rankings, news coverage, and a transfers module — all tailored for the Arabic-speaking esports audience.</p>
+      <p style="margin-top:14px">The project spans a <span class="proj-code">Node.js + TypeScript</span> backend with 16 modular services, a <span class="proj-code">Next.js</span> web dashboard, a <span class="proj-code">Flutter</span> mobile application, and real-time <span class="proj-code">WebSocket</span> infrastructure — all integrated with professional esports data APIs including PandaScore, GRID, and Abios.</p>
+    </div>
+  </section>
+
+  <!-- Problem & Solution -->
+  <section class="proj-problem proj-section" aria-labelledby="problem-title-en">
+    <h2 class="proj-sec-title" id="problem-title-en">Problem &amp; Solution</h2>
+    <div class="proj-problem-grid">
+      <div class="proj-problem-card problem">
+        <div class="proj-problem-label">The Problem</div>
+        <h3>A Market Gap in MENA Esports</h3>
+        <p>The MENA esports scene lacked a dedicated, Arabic-first platform for organizing and following competitive gaming. Existing global solutions were English-only and didn't cater to regional tournament formats, cultural preferences, or local community dynamics. Teams, players, and fans had no single destination built for them.</p>
+      </div>
+      <div class="proj-problem-card solution">
+        <div class="proj-problem-label">The Solution</div>
+        <h3>Purpose-Built for the Region</h3>
+        <p>Escore fills this gap with a purpose-built platform featuring full RTL support, regional tournament structures, Arabic content-first design, and deep integration with major esports data providers. Every feature — from the transfer portal to live standings — is engineered around how MENA esports communities actually operate.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="proj-features proj-section" id="proj-features-en" aria-labelledby="features-title-en">
+    <h2 class="proj-sec-title" id="features-title-en">Key Features</h2>
+    <div class="proj-features-grid">
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Tournament Management</div>
+          <div class="proj-feature-desc">Full lifecycle management for esports tournaments — creation, bracket generation, scheduling, match reporting, and final standings — supporting group stages, single/double elimination, and round-robin formats.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Live Match Tracking</div>
+          <div class="proj-feature-desc">Real-time match scores, live statistics, and in-game events delivered via WebSocket connections. Integrated with PandaScore, GRID, and Abios APIs for professional-grade live data across multiple game titles.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Team &amp; Player Profiles</div>
+          <div class="proj-feature-desc">Comprehensive profiles for teams and individual players with career statistics, match history, social links, nationality flags, game roles, and performance graphs — all editable by verified team managers.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Rankings &amp; Leaderboards</div>
+          <div class="proj-feature-desc">Dynamic regional and global leaderboards for teams and players, updated after every match result. Rankings factor in tournament tier, win rates, and recency — powering healthy regional competition.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0a2 2 0 01-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">News &amp; Media Hub</div>
+          <div class="proj-feature-desc">A full CMS-backed news module supporting bilingual (Arabic/English) articles, video embeds, match previews and recaps, editorial tags, and SEO-optimized slugs — giving editors complete control over content.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Transfers Module</div>
+          <div class="proj-feature-desc">A dedicated portal for tracking player transfers between teams, including announced signings, free agents, and loan deals. Transfer history is logged per player and team, providing a transfer window tracker for the community.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Role-Based Access Control</div>
+          <div class="proj-feature-desc">A granular RBAC system with roles including Super Admin, Admin, Editor, Team Manager, and Viewer. JWT authentication with refresh token rotation ensures secure access to the dashboard and mobile app across all user types.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Flutter Mobile App</div>
+          <div class="proj-feature-desc">A cross-platform mobile application (iOS &amp; Android) built with Flutter, providing fans with tournament schedules, live scores, team news, and push notifications — all with native Arabic RTL layout support baked in.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="proj-tech proj-section" id="proj-tech-en" aria-labelledby="tech-title-en">
+    <h2 class="proj-sec-title" id="tech-title-en">Tech Stack</h2>
+    <div class="proj-tech-grid">
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Node.js + Express + TypeScript</div>
+            <div class="proj-tech-category">Backend Runtime &amp; Framework</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Chosen for its event-driven, non-blocking I/O — ideal for a platform handling real-time WebSocket connections alongside REST endpoints. TypeScript adds compile-time safety across 16 modular services.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">MongoDB + Mongoose</div>
+            <div class="proj-tech-category">Database</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Document model suits the varied, nested data shapes of esports entities — teams, tournaments, match events, and player stats. Mongoose provides strong schema validation and population across related documents.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Next.js</div>
+            <div class="proj-tech-category">Web Dashboard &amp; Frontend</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Server-side rendering and static generation provide fast load times for SEO-critical pages (tournament brackets, player profiles, news articles) while the App Router supports the complex, nested dashboard layout required by admins and editors.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Flutter</div>
+            <div class="proj-tech-category">Mobile Application</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Single codebase for iOS and Android with native performance. Flutter's widget system makes building RTL-first Arabic layouts straightforward, and it integrates cleanly with the existing REST API and WebSocket layer.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">WebSocket (Socket.IO)</div>
+            <div class="proj-tech-category">Real-Time Layer</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Persistent WebSocket connections push live match score updates, bracket changes, and notifications to web and mobile clients instantly — without polling. Socket.IO's room system scopes broadcasts efficiently per tournament and match.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 3h12l3 6-9 12L3 9z"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">PandaScore / GRID / Abios</div>
+            <div class="proj-tech-category">Esports Data APIs</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Professional esports data providers deliver live match data, game statistics, and tournament information across titles like VALORANT, League of Legends, Dota 2, and CS2 — bridging regional tournaments with global esports data.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">JWT + RBAC</div>
+            <div class="proj-tech-category">Authentication &amp; Authorization</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">JWT access tokens with short expiry paired with encrypted refresh tokens provide stateless, scalable authentication. The RBAC layer enforces role-specific route guards across the API, ensuring Super Admins, Editors, and Team Managers each see only what they're permitted to access.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Docker</div>
+            <div class="proj-tech-category">Containerization &amp; DevOps</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Docker Compose orchestrates the API server, MongoDB, and Redis (session/cache) containers for consistent dev and production environments. Containerization simplifies deployment to DigitalOcean Droplets and ensures environment parity across the team.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Architecture -->
+  <section class="proj-arch proj-section" id="proj-arch-en" aria-labelledby="arch-title-en">
+    <h2 class="proj-sec-title" id="arch-title-en">Architecture</h2>
+    <div class="proj-arch-card">
+      <p>Escore uses a <strong>modular monolith</strong> backend architecture — a single Node.js + Express process organized into 16 clearly separated service modules, each with its own routes, controllers, services, and data models. This approach avoids the operational overhead of microservices while still maintaining clean separation of concerns that allows individual modules to be extracted later if scale demands it.</p>
+      <p>The REST API is consumed by both the Next.js web dashboard and the Flutter mobile app. A WebSocket layer (Socket.IO) runs alongside the HTTP server and handles real-time broadcasting for live match events, score updates, and in-app notifications.</p>
+      <p>External esports data is ingested via scheduled jobs that poll PandaScore, GRID, and Abios at configurable intervals, normalize the responses, and persist the results into MongoDB — making live data available to clients through the platform's own API endpoints.</p>
+      <div class="proj-arch-diagram" role="img" aria-label="Architecture diagram in ASCII">
+┌─────────────────────────────────────────────────────────────┐
+│                     CLIENT LAYER                            │
+│  ┌─────────────────────┐     ┌──────────────────────────┐  │
+│  │  Next.js Dashboard  │     │    Flutter Mobile App    │  │
+│  │  (SSR + App Router) │     │    (iOS &amp; Android)       │  │
+│  └──────────┬──────────┘     └────────────┬─────────────┘  │
+└─────────────┼───────────────────────────────────────────────┘
+              │ REST + WebSocket
+┌─────────────▼───────────────────────────────────────────────┐
+│                 Node.js + Express API                        │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────────┐  │
+│  │Tournament│ │  Match   │ │  Teams   │ │     News     │  │
+│  │  Module  │ │  Module  │ │  Module  │ │    Module    │  │
+│  └──────────┘ └──────────┘ └──────────┘ └──────────────┘  │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────────┐  │
+│  │Rankings  │ │Transfers │ │  Auth /  │ │   +9 more    │  │
+│  │  Module  │ │  Module  │ │  RBAC    │ │   modules    │  │
+│  └──────────┘ └──────────┘ └──────────┘ └──────────────┘  │
+│                  Socket.IO (real-time)                       │
+└──────────────────┬──────────────────────────────────────────┘
+                   │
+    ┌──────────────┴──────────────┐
+    │                             │
+┌───▼───┐  ┌───────┐  ┌──────────▼──────────────────────────┐
+│MongoDB│  │ Redis │  │  External APIs (PandaScore/GRID/Abios)│
+└───────┘  └───────┘  └─────────────────────────────────────┘
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshots -->
+  <section class="proj-screenshots proj-section" aria-labelledby="screenshots-title-en">
+    <h2 class="proj-sec-title" id="screenshots-title-en">Screenshots</h2>
+    <div class="proj-screenshots-grid">
+      <div class="proj-screenshot-placeholder">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>Dashboard — coming soon</span>
+      </div>
+      <div class="proj-screenshot-placeholder">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>Tournament Bracket — coming soon</span>
+      </div>
+      <div class="proj-screenshot-placeholder">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>Mobile App (Flutter) — coming soon</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="proj-cta proj-section" id="proj-cta-en" aria-labelledby="cta-title-en">
+    <h2 class="proj-cta-title" id="cta-title-en">Interested in a Similar Project?</h2>
+    <p class="proj-cta-desc">Whether you need a sports platform, a real-time application, or a bilingual MENA-focused product — let's talk about what I can build for you.</p>
+    <div class="proj-cta-actions">
+      <a class="btn-p" href="mailto:hmdy7486@gmail.com">Get In Touch</a>
+      <a class="btn-o" href="../#proj-en">View All Projects</a>
+    </div>
+  </section>
+
+  <!-- Related Projects -->
+  <section class="proj-related proj-section" aria-labelledby="related-title-en">
+    <h2 class="proj-sec-title" id="related-title-en">Related Projects</h2>
+    <div class="proj-related-grid">
+
+      <a class="proj-related-card" href="iai-salla-bot.html">
+        <div class="proj-related-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div class="proj-related-name">IAI — Salla AI Bot</div>
+        <div class="proj-related-desc">An intelligent e-commerce assistant integrated with the Salla platform, automating customer support and boosting sales with NLP-powered Arabic conversations.</div>
+        <div class="proj-related-tags">
+          <span class="badge badge-type">Chatbot</span>
+          <span class="badge">Node.js</span>
+          <span class="badge">AI</span>
+        </div>
+        <span class="proj-related-arrow" aria-hidden="true">→</span>
+      </a>
+
+      <a class="proj-related-card" href="wasalni.html">
+        <div class="proj-related-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="proj-related-name">Wasalni</div>
+        <div class="proj-related-desc">A full-stack ride-hailing and delivery platform for the MENA market, featuring real-time driver tracking, booking management, and a Flutter passenger app.</div>
+        <div class="proj-related-tags">
+          <span class="badge badge-type">Platform</span>
+          <span class="badge">Flutter</span>
+          <span class="badge">WebSocket</span>
+        </div>
+        <span class="proj-related-arrow" aria-hidden="true">→</span>
+      </a>
+
+      <a class="proj-related-card" href="clinic-booking.html">
+        <div class="proj-related-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="proj-related-name">Clinic Booking System</div>
+        <div class="proj-related-desc">A medical appointment and clinic management system with doctor scheduling, patient records, billing, and an admin dashboard — built for Arabic-speaking clinics.</div>
+        <div class="proj-related-tags">
+          <span class="badge badge-type">SaaS</span>
+          <span class="badge">Next.js</span>
+          <span class="badge">MongoDB</span>
+        </div>
+        <span class="proj-related-arrow" aria-hidden="true">→</span>
+      </a>
+
+    </div>
+  </section>
+
+</div>
+</div>
+<!-- ===== END EN VERSION ===== -->
+
+
+<!-- ===== AR VERSION ===== -->
+<div id="ar-proj" style="display:none">
+<div class="proj-wrap">
+
+  <!-- Breadcrumb AR -->
+  <nav class="proj-breadcrumb" aria-label="مسار التنقل">
+    <a href="../">الرئيسية</a>
+    <span class="proj-breadcrumb-sep" aria-hidden="true">›</span>
+    <a href="../#proj-ar">المشاريع</a>
+    <span class="proj-breadcrumb-sep" aria-hidden="true">›</span>
+    <span>Escore</span>
+  </nav>
+
+  <!-- Back link AR -->
+  <div class="proj-back proj-section">
+    <a class="proj-back-link" href="../">
+      <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      العودة للبورتفوليو
+    </a>
+  </div>
+
+  <!-- Hero AR -->
+  <div class="proj-hero proj-section">
+    <div class="proj-hero-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12l3 6-9 12L3 9z"/><path d="M3 9h18M6 3l3 6M18 3l-3 6"/></svg>
+    </div>
+    <div class="proj-badges">
+      <span class="proj-badge proj-badge-type">منصة</span>
+      <span class="proj-badge proj-badge-status">مُسلَّم ✓</span>
+    </div>
+    <h1 class="proj-title">Escore — منصة الرياضات الإلكترونية</h1>
+    <p class="proj-tagline">منصة رياضات إلكترونية شاملة تقدم الألعاب التنافسية لمنطقة الشرق الأوسط وشمال إفريقيا</p>
+    <div class="proj-hero-links">
+      <a class="btn-p" href="mailto:hmdy7486@gmail.com">اطلب عرضاً تجريبياً</a>
+      <a class="btn-o" href="../#proj-ar">كل المشاريع</a>
+    </div>
+  </div>
+
+  <!-- Overview AR -->
+  <section class="proj-overview proj-section" id="proj-overview-ar" aria-labelledby="overview-title-ar">
+    <div class="proj-overview-inner">
+      <h2 class="proj-sec-title" id="overview-title-ar">نظرة عامة</h2>
+      <p>Escore هي منصة رياضات إلكترونية متكاملة مصممة خصيصاً لمجتمع الألعاب في منطقة الشرق الأوسط وشمال إفريقيا. تم بناؤها لصالح <strong>ROV GROUP</strong>، وتوفر إدارة البطولات، تتبع المباريات اللحظي، تصنيفات الفرق واللاعبين، تغطية إخبارية، ووحدة انتقالات — كلها مصممة خصيصاً للجمهور العربي المهتم بالرياضات الإلكترونية.</p>
+      <p style="margin-top:14px">يشمل المشروع باك إند <span class="proj-code">Node.js + TypeScript</span> بـ 16 خدمة معيارية مستقلة، لوحة تحكم ويب بـ <span class="proj-code">Next.js</span>، تطبيق موبايل بـ <span class="proj-code">Flutter</span>، وبنية تحتية للبث الفوري بـ <span class="proj-code">WebSocket</span> — كل ذلك متكامل مع واجهات بيانات رياضات إلكترونية احترافية من PandaScore وGRID وAbios.</p>
+    </div>
+  </section>
+
+  <!-- Problem & Solution AR -->
+  <section class="proj-problem proj-section" aria-labelledby="problem-title-ar">
+    <h2 class="proj-sec-title" id="problem-title-ar">المشكلة والحل</h2>
+    <div class="proj-problem-grid">
+      <div class="proj-problem-card problem">
+        <div class="proj-problem-label">المشكلة</div>
+        <h3>فجوة في سوق الرياضات الإلكترونية العربية</h3>
+        <p>كان سوق الرياضات الإلكترونية في المنطقة العربية يفتقر لمنصة عربية متخصصة لتنظيم ومتابعة الألعاب التنافسية. الحلول العالمية الموجودة كانت بالإنجليزي فقط ولم تكن مناسبة لتنسيقات البطولات الإقليمية أو الثقافة المحلية أو طريقة تفاعل المجتمعات العربية مع الألعاب التنافسية.</p>
+      </div>
+      <div class="proj-problem-card solution">
+        <div class="proj-problem-label">الحل</div>
+        <h3>منصة مبنية للمنطقة من الأساس</h3>
+        <p>Escore تسد هذه الفجوة بمنصة مبنية خصيصاً تتضمن دعماً كاملاً للغة العربية والكتابة من اليمين لليسار، هياكل بطولات إقليمية، تصميم يضع المحتوى العربي في المقدمة، وتكاملاً عميقاً مع أبرز مزودي بيانات الرياضات الإلكترونية الاحترافيين.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features AR -->
+  <section class="proj-features proj-section" id="proj-features-ar" aria-labelledby="features-title-ar">
+    <h2 class="proj-sec-title" id="features-title-ar">المميزات الرئيسية</h2>
+    <div class="proj-features-grid">
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">إدارة البطولات</div>
+          <div class="proj-feature-desc">إدارة متكاملة لدورة حياة البطولات من الإنشاء، توليد الأقواس، الجدولة، تسجيل نتائج المباريات، وحتى الترتيب النهائي — مع دعم أنظمة المجموعات والإقصاء المفرد والمزدوج والدوري.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">تتبع المباريات اللحظي</div>
+          <div class="proj-feature-desc">نتائج المباريات والإحصاءات الحية وأحداث اللعبة تُبث فورياً عبر اتصالات WebSocket، مع تكامل مع PandaScore وGRID وAbios للحصول على بيانات احترافية عبر عناوين ألعاب متعددة.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">ملفات الفرق واللاعبين</div>
+          <div class="proj-feature-desc">ملفات شاملة للفرق واللاعبين تتضمن إحصاءات المسيرة، سجل المباريات، روابط التواصل، أعلام الجنسية، أدوار اللعب، ورسوم الأداء — قابلة للتحرير من مديري الفرق الموثقين.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">التصنيفات ولوحات المتصدرين</div>
+          <div class="proj-feature-desc">لوحات متصدرين ديناميكية إقليمية وعالمية للفرق واللاعبين تُحدَّث بعد كل نتيجة مباراة. تأخذ التصنيفات في الاعتبار مستوى البطولة ونسب الفوز والحداثة — مما يُغذي المنافسة الإقليمية.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 002-2V4a2 2 0 00-2-2H8a2 2 0 00-2 2v16a2 2 0 01-2 2zm0 0a2 2 0 01-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8z"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">مركز الأخبار والمحتوى</div>
+          <div class="proj-feature-desc">وحدة أخبار مدعومة بنظام CMS كامل تدعم المقالات ثنائية اللغة (عربي/إنجليزي)، تضمين الفيديوهات، معاينات المباريات وملخصاتها، وعناوين URL محسّنة لمحركات البحث — مع تحكم كامل للمحررين.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">وحدة الانتقالات</div>
+          <div class="proj-feature-desc">بوابة مخصصة لتتبع انتقالات اللاعبين بين الفرق، تشمل الانضمامات المُعلنة، اللاعبين الأحرار، والإعارات — مع سجل انتقالات لكل لاعب وفريق يُشكّل متتبعاً لسوق الانتقالات.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">نظام صلاحيات متدرج</div>
+          <div class="proj-feature-desc">نظام RBAC دقيق بأدوار تشمل السوبر أدمن، الأدمن، المحرر، مدير الفريق، والمشاهد. مصادقة JWT مع تدوير رمز التحديث تضمن وصولاً آمناً للوحة التحكم والتطبيق عبر جميع أنواع المستخدمين.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">تطبيق Flutter للموبايل</div>
+          <div class="proj-feature-desc">تطبيق موبايل متعدد المنصات (iOS وAndroid) مبني بـ Flutter، يوفر للمشجعين جداول البطولات، النتائج اللحظية، أخبار الفرق، والإشعارات الفورية — مع دعم كامل للغة العربية من اليمين لليسار.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Tech Stack AR -->
+  <section class="proj-tech proj-section" id="proj-tech-ar" aria-labelledby="tech-title-ar">
+    <h2 class="proj-sec-title" id="tech-title-ar">التقنيات المستخدمة</h2>
+    <div class="proj-tech-grid">
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Node.js + Express + TypeScript</div>
+            <div class="proj-tech-category">بيئة التشغيل والإطار الخلفي</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">تم اختياره لأسلوب الإدخال/الإخراج غير المتزامن المثالي للمنصات التي تجمع بين اتصالات WebSocket الحية ونقاط نهاية REST. TypeScript يضيف أماناً في وقت الترجمة عبر 16 خدمة معيارية.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">MongoDB + Mongoose</div>
+            <div class="proj-tech-category">قاعدة البيانات</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">النموذج الوثائقي مناسب تماماً للبيانات المتنوعة والمتداخلة لكيانات الرياضات الإلكترونية — فرق، بطولات، أحداث المباريات، وإحصاءات اللاعبين. Mongoose يوفر التحقق من المخطط والربط بين الوثائق.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Next.js</div>
+            <div class="proj-tech-category">لوحة التحكم والواجهة الأمامية</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">التصيير على الخادم والتوليد الثابت يوفران تحميلاً سريعاً للصفحات الحساسة لمحركات البحث (أقواس البطولات، ملفات اللاعبين، المقالات) بينما يدعم App Router البنية المعقدة للوحة التحكم.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Flutter</div>
+            <div class="proj-tech-category">تطبيق الموبايل</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">كود موحد لـ iOS وAndroid بأداء أصيل. نظام الـ Widget في Flutter يجعل بناء تخطيطات عربية من اليمين لليسار أمراً سهلاً، وهو يتكامل بسلاسة مع واجهة REST والـ WebSocket الموجودة.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">WebSocket (Socket.IO)</div>
+            <div class="proj-tech-category">طبقة البث الفوري</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">اتصالات WebSocket دائمة تدفع تحديثات النتائج الحية وتغييرات الأقواس والإشعارات للعملاء فوراً دون polling. نظام الغرف في Socket.IO يُنظم البث بكفاءة لكل بطولة ومباراة.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6 3h12l3 6-9 12L3 9z"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">PandaScore / GRID / Abios</div>
+            <div class="proj-tech-category">واجهات بيانات الرياضات الإلكترونية</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">مزودو بيانات احترافيون يُوصلون بيانات المباريات الحية والإحصاءات ومعلومات البطولات عبر ألعاب مثل VALORANT وLeague of Legends وDota 2 وCS2 — تربط البطولات الإقليمية ببيانات الرياضات الإلكترونية العالمية.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">JWT + RBAC</div>
+            <div class="proj-tech-category">المصادقة والتفويض</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">رموز وصول JWT قصيرة الصلاحية مقترنة بـ refresh tokens مشفرة تُتيح مصادقة بلا حالة وقابلة للتوسع. طبقة RBAC تُطبق حواجز المسارات الخاصة بكل دور عبر الـ API.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Docker</div>
+            <div class="proj-tech-category">الحاويات والبنية التحتية</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Docker Compose ينسّق حاويات خادم الـ API وMongoDB وRedis لبيئات تطوير وإنتاج متسقة. يُبسّط النشر على DigitalOcean Droplets ويضمن تطابق البيئات بين أعضاء الفريق.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Architecture AR -->
+  <section class="proj-arch proj-section" id="proj-arch-ar" aria-labelledby="arch-title-ar">
+    <h2 class="proj-sec-title" id="arch-title-ar">المعمارية التقنية</h2>
+    <div class="proj-arch-card">
+      <p>يستخدم Escore بنية <strong>مونوليث معياري</strong> في الباك إند — عملية Node.js + Express واحدة منظّمة في 16 وحدة خدمة منفصلة بوضوح، كل منها لها مساراتها ومتحكماتها وخدماتها ونماذج بياناتها الخاصة. هذا المنهج يتجنب التعقيد التشغيلي للـ Microservices مع الحفاظ على فصل نظيف للمسؤوليات.</p>
+      <p>الـ REST API يُستهلك من لوحة التحكم المبنية بـ Next.js ومن تطبيق Flutter للموبايل. طبقة WebSocket عبر Socket.IO تعمل جنباً إلى جنب مع خادم HTTP وتتولى البث الفوري لأحداث المباريات الحية وتحديثات النتائج والإشعارات.</p>
+      <p>تُستوعب بيانات الرياضات الإلكترونية الخارجية عبر وظائف مجدولة تستطلع PandaScore وGRID وAbios بفترات قابلة للضبط، تُطبّع الاستجابات، وتحفظ النتائج في MongoDB — مما يُتيح البيانات الحية للعملاء عبر نقاط نهاية الـ API الخاصة بالمنصة.</p>
+      <div class="proj-arch-diagram" role="img" aria-label="مخطط المعمارية">
+┌─────────────────────────────────────────────────────────────┐
+│                     طبقة العملاء                            │
+│  ┌─────────────────────┐     ┌──────────────────────────┐  │
+│  │  لوحة تحكم Next.js  │     │    تطبيق Flutter         │  │
+│  │  (SSR + App Router) │     │    (iOS و Android)       │  │
+│  └──────────┬──────────┘     └────────────┬─────────────┘  │
+└─────────────┼───────────────────────────────────────────────┘
+              │ REST + WebSocket
+┌─────────────▼───────────────────────────────────────────────┐
+│                Node.js + Express API                         │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────────┐  │
+│  │ البطولات │ │المباريات │ │  الفرق  │ │   الأخبار   │  │
+│  └──────────┘ └──────────┘ └──────────┘ └──────────────┘  │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────────┐  │
+│  │التصنيفات│ │الانتقالات│ │ المصادقة │ │  +9 وحدات   │  │
+│  └──────────┘ └──────────┘ └──────────┘ └──────────────┘  │
+│                  Socket.IO (بث فوري)                        │
+└──────────────────┬──────────────────────────────────────────┘
+                   │
+    ┌──────────────┴──────────────┐
+    │                             │
+┌───▼───┐  ┌───────┐  ┌──────────▼──────────────────────────┐
+│MongoDB│  │ Redis │  │  واجهات خارجية (PandaScore/GRID/Abios)│
+└───────┘  └───────┘  └─────────────────────────────────────┘
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshots AR -->
+  <section class="proj-screenshots proj-section" aria-labelledby="screenshots-title-ar">
+    <h2 class="proj-sec-title" id="screenshots-title-ar">لقطات الشاشة</h2>
+    <div class="proj-screenshots-grid">
+      <div class="proj-screenshot-placeholder">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>لوحة التحكم — قريباً</span>
+      </div>
+      <div class="proj-screenshot-placeholder">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>قوس البطولة — قريباً</span>
+      </div>
+      <div class="proj-screenshot-placeholder">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>تطبيق الموبايل (Flutter) — قريباً</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA AR -->
+  <section class="proj-cta proj-section" id="proj-cta-ar" aria-labelledby="cta-title-ar">
+    <h2 class="proj-cta-title" id="cta-title-ar">مهتم بمشروع مشابه؟</h2>
+    <p class="proj-cta-desc">سواء كنت تحتاج منصة رياضية، تطبيقاً في الوقت الفعلي، أو منتجاً ثنائي اللغة للمنطقة العربية — تعال نتكلم عن اللي أقدر أبنيه ليك.</p>
+    <div class="proj-cta-actions">
+      <a class="btn-p" href="mailto:hmdy7486@gmail.com">تواصل معايا</a>
+      <a class="btn-o" href="../#proj-ar">كل المشاريع</a>
+    </div>
+  </section>
+
+  <!-- Related Projects AR -->
+  <section class="proj-related proj-section" aria-labelledby="related-title-ar">
+    <h2 class="proj-sec-title" id="related-title-ar">مشاريع ذات صلة</h2>
+    <div class="proj-related-grid">
+
+      <a class="proj-related-card" href="iai-salla-bot.html">
+        <div class="proj-related-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div class="proj-related-name">IAI — بوت سلة الذكي</div>
+        <div class="proj-related-desc">مساعد تجارة إلكترونية ذكي مربوط بمنصة سلة، يُؤتمت دعم العملاء ويعزز المبيعات بمحادثات عربية مدعومة بمعالجة اللغة الطبيعية.</div>
+        <div class="proj-related-tags">
+          <span class="badge badge-type">بوت</span>
+          <span class="badge">Node.js</span>
+          <span class="badge">AI</span>
+        </div>
+        <span class="proj-related-arrow" aria-hidden="true">←</span>
+      </a>
+
+      <a class="proj-related-card" href="wasalni.html">
+        <div class="proj-related-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="proj-related-name">وصّلني</div>
+        <div class="proj-related-desc">منصة نقل وتوصيل متكاملة للسوق العربي، مع تتبع السائقين اللحظي، إدارة الحجوزات، وتطبيق ركاب مبني بـ Flutter.</div>
+        <div class="proj-related-tags">
+          <span class="badge badge-type">منصة</span>
+          <span class="badge">Flutter</span>
+          <span class="badge">WebSocket</span>
+        </div>
+        <span class="proj-related-arrow" aria-hidden="true">←</span>
+      </a>
+
+      <a class="proj-related-card" href="clinic-booking.html">
+        <div class="proj-related-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="proj-related-name">نظام حجز العيادات</div>
+        <div class="proj-related-desc">نظام حجز مواعيد وإدارة عيادات مع جدولة الأطباء، سجلات المرضى، الفواتير، ولوحة تحكم إدارية — مبني للعيادات العربية.</div>
+        <div class="proj-related-tags">
+          <span class="badge badge-type">SaaS</span>
+          <span class="badge">Next.js</span>
+          <span class="badge">MongoDB</span>
+        </div>
+        <span class="proj-related-arrow" aria-hidden="true">←</span>
+      </a>
+
+    </div>
+  </section>
+
+</div>
+</div>
+<!-- ===== END AR VERSION ===== -->
+
+</main>
+
+<div class="ftr-wave"></div>
+<footer class="ftr">
+  <div class="ftr-soc">
+    <a href="https://github.com/mahmoodhamdi" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+    </a>
+    <a href="mailto:hmdy7486@gmail.com" aria-label="Email">
+      <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    </a>
+    <a href="https://wa.me/201019793768" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+  </div>
+  <div class="ftr-avail">Available for hire</div>
+  <div class="ftr-txt">© 2026 Mahmoud Hamdy Fathy — Built with passion</div>
+  <a class="ftr-top" href="#top" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'})">↑ Back to top</a>
+</footer>
+
+<script src="../js/utils.js" defer></script>
+<script src="../js/theme.js" defer></script>
+<script src="../js/animations.js" defer></script>
+<script src="../js/navigation.js" defer></script>
+<script src="../js/analytics.js" defer></script>
+<script src="../js/pwa.js" defer></script>
+<script src="../js/main.js" defer></script>
+<script>
+window.addEventListener('load',function(){setTimeout(function(){var s=document.createElement('script');s.src='https://www.googletagmanager.com/gtag/js?id=G-D0H1J8BSKJ';s.async=true;document.head.appendChild(s);s.onload=function(){window.dataLayer=window.dataLayer||[];function g(){dataLayer.push(arguments)}g('js',new Date());g('config','G-D0H1J8BSKJ');window.gtag=g}},2000)});
+</script>
+</body>
+</html>

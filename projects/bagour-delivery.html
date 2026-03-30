@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bagour Delivery | Mahmoud Hamdy Fathy</title>
+<meta name="description" content="Hyperlocal delivery application for the Bagour area. Customer Flutter app, store management panel, and driver app with real-time order tracking.">
+<meta name="author" content="Mahmoud Hamdy Fathy">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0a0f1a">
+<link rel="canonical" href="https://mahmoodhamdi.github.io/cv/projects/bagour-delivery.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bagour Delivery | Mahmoud Hamdy Fathy">
+<meta property="og:description" content="Hyperlocal delivery application for the Bagour area — customer app, store panel, and driver app with real-time tracking.">
+<meta property="og:url" content="https://mahmoodhamdi.github.io/cv/projects/bagour-delivery.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ar_EG">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bagour Delivery | Mahmoud Hamdy Fathy">
+<meta name="twitter:description" content="Local delivery app connecting customers with nearby stores — Flutter, Node.js, real-time tracking.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="manifest" href="../manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mahmoud CV">
+<link rel="apple-touch-icon" href="../assets/icon-192.svg">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+:root{--bg:#0a0f1a;--bg-alt:#111827;--card:#1a2236;--card-h:#1f2a42;--accent:#38bdf8;--accent-g:rgba(56,189,248,.15);--accent2:#818cf8;--txt:#f1f5f9;--txt2:#94a3b8;--muted:#8e99ad;--bdr:rgba(148,163,184,.1);--grad:linear-gradient(135deg,#38bdf8,#818cf8);--green:#34d399;--fn:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;--fn-ar:'Tajawal',sans-serif;--nav-bg:rgba(10,15,26,.88);--prog-bg:rgba(148,163,184,.1);--chip-bg:rgba(129,140,248,.1);--chip-c:var(--accent2);--chip-bdr:rgba(129,140,248,.15);--cta-bg:linear-gradient(135deg,rgba(56,189,248,.08),rgba(129,140,248,.08))}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;opacity:0;transition:opacity .5s ease;padding-top:52px}body.loaded{opacity:1}
+.navbar{position:fixed;top:0;left:0;right:0;z-index:90;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--bdr)}
+.nav-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:48px;gap:2px;overflow-x:auto;scrollbar-width:none}
+.nav-in::-webkit-scrollbar{display:none}
+.nav-a{padding:6px 12px;border-radius:8px;font-size:12px;font-weight:500;color:var(--muted);white-space:nowrap;cursor:pointer;border:none;background:none;font-family:var(--fn)}
+.nav-a.on,.nav-a:hover{color:var(--accent);background:var(--accent-g)}
+.top-ctrl{position:fixed;top:58px;right:20px;z-index:100;display:flex;gap:8px;align-items:center}
+.t-btn{width:34px;height:34px;border-radius:10px;background:var(--card);border:1px solid var(--bdr);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:color .2s,border-color .2s;backdrop-filter:blur(20px)}
+.t-btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
+.t-btn:hover{color:var(--accent);border-color:var(--accent)}
+html[data-theme="dark"] .ic-light{display:block}html[data-theme="dark"] .ic-dark{display:none}
+html[data-theme="light"] .ic-light{display:none}html[data-theme="light"] .ic-dark{display:block}
+.lang-tog{display:flex;gap:3px;background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:3px;backdrop-filter:blur(20px)}
+.l-btn{padding:4px 10px;border-radius:8px;font-size:11px;font-weight:600;color:var(--muted);cursor:pointer;border:none;background:none;font-family:var(--fn);transition:color .2s,background .2s}
+.l-btn.on{background:var(--accent-g);color:var(--accent)}
+.skip-link{position:fixed;top:0;left:16px;z-index:10001;padding:12px 24px;background:var(--grad);color:#fff;border-radius:0 0 8px 8px;font-size:14px;font-weight:600;text-decoration:none;transform:translateY(-100%);transition:transform .3s}.skip-link:focus{transform:translateY(0)}
+.s-top{position:fixed;bottom:24px;right:24px;z-index:80;width:42px;height:42px;border-radius:12px;background:var(--card);border:1px solid var(--bdr);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:color .2s,border-color .2s,opacity .3s,transform .3s;opacity:0;transform:translateY(8px);backdrop-filter:blur(20px)}
+.s-top.vis{opacity:1;transform:translateY(0)}
+.s-top:hover{color:var(--accent);border-color:var(--accent)}
+.s-top svg{width:18px;height:18px}
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:10px 20px;font-size:13px;color:var(--txt);opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;z-index:200}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;opacity:.18;filter:blur(80px)}
+.orb-1{width:500px;height:500px;background:radial-gradient(circle,#38bdf8,transparent);top:-100px;right:-150px}
+.orb-2{width:400px;height:400px;background:radial-gradient(circle,#818cf8,transparent);bottom:100px;left:-120px}
+.orb-3{width:300px;height:300px;background:radial-gradient(circle,#c084fc,transparent);top:50%;left:50%;transform:translate(-50%,-50%)}
+.scroll-progress{position:fixed;top:0;left:0;height:2px;background:var(--grad);z-index:1000;width:0%;transition:width .1s}
+html[data-theme="light"]{--bg:#f8fafc;--bg-alt:#f1f5f9;--card:#fff;--card-h:#f8fafc;--txt:#0f172a;--txt2:#334155;--muted:#64748b;--bdr:rgba(15,23,42,.1);--nav-bg:rgba(248,250,252,.88);--accent-g:rgba(56,189,248,.12);--prog-bg:rgba(15,23,42,.08);--cta-bg:linear-gradient(135deg,rgba(56,189,248,.06),rgba(129,140,248,.06))}
+.btn-p{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:10px;background:var(--grad);color:#fff;font-family:var(--fn);font-size:14px;font-weight:600;text-decoration:none;transition:opacity .2s,transform .2s;border:none;cursor:pointer}
+.btn-p:hover{opacity:.9;transform:translateY(-2px)}
+.btn-o{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:10px;background:transparent;color:var(--txt);font-family:var(--fn);font-size:14px;font-weight:500;text-decoration:none;border:1px solid var(--bdr);transition:border-color .2s,color .2s,transform .2s;cursor:pointer}
+.btn-o:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.chip{display:inline-block;padding:3px 10px;border-radius:6px;font-size:11px;font-weight:600;font-family:var(--mono);background:var(--chip-bg);color:var(--chip-c);border:1px solid var(--chip-bdr)}
+.ftr{padding:32px 24px 24px;text-align:center;border-top:1px solid var(--bdr);margin-top:0}
+.ftr-soc{display:flex;justify-content:center;gap:16px;margin-bottom:16px}
+.ftr-soc a{color:var(--muted);transition:color .2s;text-decoration:none}
+.ftr-soc a:hover{color:var(--accent)}
+.ftr-soc svg{width:20px;height:20px}
+.ftr-avail{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--green);background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.2);border-radius:20px;padding:4px 12px;margin-bottom:12px}
+.ftr-avail::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.ftr-txt{font-size:12px;color:var(--muted)}
+.ftr-top{display:inline-block;margin-top:12px;font-size:12px;color:var(--muted);text-decoration:none;transition:color .2s}
+.ftr-top:hover{color:var(--accent)}
+@keyframes ar{from{--aa:0deg}to{--aa:360deg}}
+@property --aa{syntax:'<angle>';inherits:true;initial-value:0deg}
+</style>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=JetBrains+Mono&family=Tajawal:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="../css/bundle.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="../css/sections.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="../css/utilities.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="projects.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=JetBrains+Mono&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/bundle.css">
+<link rel="stylesheet" href="../css/sections.css">
+<link rel="stylesheet" href="../css/utilities.css">
+<link rel="stylesheet" href="projects.css">
+</noscript>
+<link rel="stylesheet" href="../css/print.css" media="print">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Bagour Delivery",
+  "description": "Hyperlocal delivery application for the Bagour area with customer Flutter app, store management panel, and driver app with real-time tracking.",
+  "author": {
+    "@type": "Person",
+    "name": "Mahmoud Hamdy Fathy",
+    "url": "https://mahmoodhamdi.github.io/cv/"
+  },
+  "url": "https://mahmoodhamdi.github.io/cv/projects/bagour-delivery.html",
+  "datePublished": "2024-01-01",
+  "keywords": ["Flutter", "Node.js", "Next.js", "MongoDB", "WebSocket", "Delivery App", "Mobile App"]
+}
+</script>
+<script>
+window.CV = {lang:'en'};
+function setLang(l) {
+  window.CV.lang = l;
+  var h = document.documentElement;
+  var e = document.getElementById('en-proj');
+  var a = document.getElementById('ar-proj');
+  var b = document.querySelectorAll('.l-btn');
+  var ne = document.getElementById('nav-en');
+  var na = document.getElementById('nav-ar');
+  if (l === 'ar') {
+    h.dir = 'rtl'; h.lang = 'ar';
+    e.style.display = 'none'; a.style.display = 'block';
+    ne.style.display = 'none'; na.style.display = 'flex';
+    b[0].classList.remove('on'); b[1].classList.add('on');
+  } else {
+    h.dir = 'ltr'; h.lang = 'en';
+    e.style.display = 'block'; a.style.display = 'none';
+    ne.style.display = 'flex'; na.style.display = 'none';
+    b[0].classList.add('on'); b[1].classList.remove('on');
+  }
+  if (window.reobserveAll) window.reobserveAll();
+  if (window.updateNav) window.updateNav();
+}
+window.setLang = setLang;
+</script>
+</head>
+<body id="top">
+<a class="skip-link" href="#en-proj">Skip to main content</a>
+<div class="scroll-progress" id="sp" aria-hidden="true"></div>
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+<div class="orb orb-3" aria-hidden="true"></div>
+
+<nav class="navbar" id="navbar" role="navigation" aria-label="Project navigation">
+  <div class="nav-in" id="nav-en">
+    <button class="nav-a" data-t="overview-en">Overview</button>
+    <button class="nav-a" data-t="features-en">Features</button>
+    <button class="nav-a" data-t="tech-en">Tech Stack</button>
+    <button class="nav-a" data-t="contact-en">Contact</button>
+  </div>
+  <div class="nav-in" id="nav-ar" style="display:none">
+    <button class="nav-a" data-t="overview-ar">نظرة عامة</button>
+    <button class="nav-a" data-t="features-ar">المميزات</button>
+    <button class="nav-a" data-t="tech-ar">التقنيات</button>
+    <button class="nav-a" data-t="contact-ar">تواصل</button>
+  </div>
+</nav>
+
+<div class="top-ctrl">
+  <button class="t-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+    <svg class="ic-light" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    <svg class="ic-dark" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+  </button>
+  <div class="lang-tog">
+    <button class="l-btn on" onclick="setLang('en')">EN</button>
+    <button class="l-btn" onclick="setLang('ar')">AR</button>
+  </div>
+</div>
+
+<button class="s-top" id="sTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
+  <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+<div class="toast" id="toast"></div>
+
+<main>
+
+<!-- ===== EN ===== -->
+<div id="en-proj">
+<div class="proj-wrap">
+
+  <!-- Back to portfolio -->
+  <div class="proj-back">
+    <a class="proj-back-link" href="../index.html">
+      <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to Portfolio
+    </a>
+  </div>
+
+  <!-- Hero -->
+  <section class="proj-hero proj-section" aria-labelledby="proj-title-en">
+    <nav class="proj-breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Portfolio</a>
+      <span class="proj-breadcrumb-sep" aria-hidden="true">/</span>
+      <a href="../index.html#proj-en">Projects</a>
+      <span class="proj-breadcrumb-sep" aria-hidden="true">/</span>
+      <span>Bagour Delivery</span>
+    </nav>
+    <div class="proj-hero-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+    </div>
+    <div class="proj-badges">
+      <span class="proj-badge proj-badge-type">Mobile App</span>
+      <span class="proj-badge proj-badge-status">Delivered ✓</span>
+    </div>
+    <h1 class="proj-title" id="proj-title-en">Bagour Delivery</h1>
+    <p class="proj-tagline">Local delivery app connecting customers with nearby stores</p>
+    <div class="proj-hero-links">
+      <a class="btn-p" href="mailto:hmdy7486@gmail.com">Hire Me for Similar</a>
+      <a class="btn-o" href="../index.html#proj-en">All Projects</a>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="proj-overview proj-section" id="overview-en" aria-labelledby="overview-title-en">
+    <div class="proj-overview-inner">
+      <h2 class="proj-sec-title" id="overview-title-en">Project Overview</h2>
+      <p>A hyperlocal delivery application built specifically for the Bagour area. The project comprises three integrated products: a customer-facing Flutter app for browsing stores and placing orders, a Next.js store management panel for merchants to manage menus and incoming orders, and a driver Flutter app for accepting, navigating, and confirming deliveries — all tied together with real-time order tracking via WebSocket.</p>
+    </div>
+  </section>
+
+  <!-- Problem & Solution -->
+  <section class="proj-problem proj-section" aria-label="Problem and solution">
+    <div class="proj-problem-grid">
+      <div class="proj-problem-card problem">
+        <div class="proj-problem-label">The Problem</div>
+        <h3>No Local Delivery Solution</h3>
+        <p>The Bagour area lacked a dedicated digital delivery platform. Customers had to call individual shops, merchants had no online presence, and local delivery riders had no structured system to manage orders and routes — resulting in inefficiency, missed orders, and poor customer experience.</p>
+      </div>
+      <div class="proj-problem-card solution">
+        <div class="proj-problem-label">The Solution</div>
+        <h3>Three-Sided Delivery Marketplace</h3>
+        <p>Built a complete three-sided marketplace connecting customers, stores, and delivery drivers. Each side has a dedicated, purpose-built interface. Real-time WebSocket updates keep all three parties in sync throughout the order lifecycle — from placement to delivery confirmation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="proj-features proj-section" id="features-en" aria-labelledby="features-title-en">
+    <h2 class="proj-sec-title" id="features-title-en">Key Features</h2>
+    <div class="proj-features-grid">
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">01</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Customer App — Browse, Order &amp; Track</div>
+          <div class="proj-feature-desc">Flutter app for browsing nearby stores, adding items to cart, placing orders, and tracking delivery progress in real time.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">02</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Store Panel — Menu, Orders &amp; Availability</div>
+          <div class="proj-feature-desc">Next.js web panel for store owners to manage product listings, set availability, accept or reject incoming orders, and view earnings.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">03</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Driver App — Accept, Navigate &amp; Confirm</div>
+          <div class="proj-feature-desc">Dedicated Flutter app for delivery drivers to receive order notifications, navigate to pickup and drop-off points, and confirm deliveries.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">04</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Real-Time Order Tracking</div>
+          <div class="proj-feature-desc">WebSocket connection streams driver location and order status updates live to the customer app throughout the delivery journey.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">05</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Multiple Payment Options</div>
+          <div class="proj-feature-desc">Supports cash-on-delivery and online payment methods, giving customers flexibility at checkout.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">06</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Order History &amp; Reorder</div>
+          <div class="proj-feature-desc">Customers can view their full order history and reorder favourite items with a single tap for a seamless repeat experience.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">07</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Push Notifications</div>
+          <div class="proj-feature-desc">Real-time push alerts for order confirmations, driver assignment, pickup, and delivery arrival sent to customer and driver apps.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">08</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Rating System</div>
+          <div class="proj-feature-desc">Post-delivery rating for both the store and the driver, enabling quality control and surfacing top-performing merchants and riders.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="proj-tech proj-section" id="tech-en" aria-labelledby="tech-title-en">
+    <h2 class="proj-sec-title" id="tech-title-en">Tech Stack</h2>
+    <div class="proj-tech-grid">
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Node.js</div>
+            <div class="proj-tech-category">Backend API</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">REST API serving all three clients — customer app, driver app, and store panel — with shared business logic for orders and routing.</div>
+      </div>
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Flutter (2 apps)</div>
+            <div class="proj-tech-category">Mobile — iOS &amp; Android</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Cross-platform customer and driver apps with native performance, map integration, and real-time UI updates from a single Dart codebase each.</div>
+      </div>
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Next.js</div>
+            <div class="proj-tech-category">Store Management Panel</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Web-based store panel accessible from desktop and mobile browsers, with server-side rendering for fast initial load and SEO.</div>
+      </div>
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">MongoDB</div>
+            <div class="proj-tech-category">Database</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Flexible document model for storing orders, store catalogs, driver profiles, and delivery events without rigid schema constraints.</div>
+      </div>
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.64a16 16 0 006.29 6.29l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">WebSocket</div>
+            <div class="proj-tech-category">Real-Time Layer</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Persistent bidirectional connection between server and all three clients enables live order status updates and driver location streaming.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Architecture -->
+  <section class="proj-arch proj-section" aria-labelledby="arch-title-en">
+    <h2 class="proj-sec-title" id="arch-title-en">Architecture</h2>
+    <div class="proj-arch-card">
+      <p>A single Node.js REST API serves all three clients. Orders flow through the system in distinct states: placed by the customer app, confirmed by the store panel, assigned to a driver, picked up, and delivered. State transitions trigger WebSocket broadcasts to all relevant parties keeping the customer, store, and driver in real time sync.</p>
+      <p>MongoDB stores all application data — products, stores, users, orders, and delivery events — in a flexible document model suited to the varied shape of data across the three client types. Push notifications are dispatched server-side on key order lifecycle events. The Next.js store panel consumes the same REST API as the Flutter apps, ensuring a single source of truth for all business data.</p>
+      <div class="proj-arch-diagram" aria-label="Architecture diagram">
+[Customer Flutter App]  [Driver Flutter App]
+         \                     /
+          \    REST + WS      /
+      [Node.js API Backend]
+               |
+           [MongoDB]
+               |
+      [Next.js Store Panel]  ← REST API
+               |
+   WebSocket broadcast layer
+   ├── Customer: order status
+   ├── Driver: new order / route
+   └── Store: order confirmed / ready
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="proj-cta proj-section" id="contact-en" aria-labelledby="cta-title-en">
+    <h2 class="proj-cta-title" id="cta-title-en">Need a Delivery or Marketplace App?</h2>
+    <p class="proj-cta-desc">I build multi-sided marketplace platforms and delivery applications with real-time tracking for local businesses and startups. Let's discuss your idea.</p>
+    <div class="proj-cta-actions">
+      <a class="btn-p" href="mailto:hmdy7486@gmail.com">Get In Touch</a>
+      <a class="btn-o" href="https://github.com/mahmoodhamdi" target="_blank" rel="noopener noreferrer">View GitHub</a>
+    </div>
+  </section>
+
+  <!-- Related Projects -->
+  <section class="proj-related proj-section" aria-labelledby="related-title-en">
+    <h2 class="proj-sec-title" id="related-title-en">Related Projects</h2>
+    <div class="proj-related-grid">
+      <a class="proj-related-card" href="wasalni.html">
+        <div class="proj-related-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="proj-related-name">Wasalni</div>
+        <div class="proj-related-desc">Ride-sharing platform connecting drivers and passengers with real-time location tracking and booking.</div>
+        <div class="proj-related-tags"><span class="chip">Flutter</span><span class="chip">Node.js</span><span class="chip">WebSocket</span></div>
+        <div class="proj-related-arrow">→</div>
+      </a>
+      <a class="proj-related-card" href="iai-salla-bot.html">
+        <div class="proj-related-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div class="proj-related-name">IAI Salla Bot</div>
+        <div class="proj-related-desc">AI-powered e-commerce chatbot integrated with the Salla platform for automated customer support and sales.</div>
+        <div class="proj-related-tags"><span class="chip">Node.js</span><span class="chip">AI</span><span class="chip">Salla</span></div>
+        <div class="proj-related-arrow">→</div>
+      </a>
+      <a class="proj-related-card" href="whatsapp-bot.html">
+        <div class="proj-related-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div class="proj-related-name">WhatsApp Auto-Reply Bot</div>
+        <div class="proj-related-desc">SaaS platform enabling businesses to set up automated WhatsApp responses without technical knowledge.</div>
+        <div class="proj-related-tags"><span class="chip">Node.js</span><span class="chip">SaaS</span><span class="chip">WhatsApp API</span></div>
+        <div class="proj-related-arrow">→</div>
+      </a>
+    </div>
+  </section>
+
+</div><!-- /.proj-wrap -->
+
+<footer class="ftr">
+  <div class="ftr-soc">
+    <a href="https://github.com/mahmoodhamdi" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+    </a>
+    <a href="mailto:hmdy7486@gmail.com" aria-label="Email">
+      <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    </a>
+    <a href="https://upwork.com" target="_blank" rel="noopener noreferrer" aria-label="Upwork">
+      <svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
+    </a>
+  </div>
+  <div class="ftr-avail">Available for Hire</div>
+  <div class="ftr-txt">© 2026 Mahmoud Hamdy Fathy — Built with passion</div>
+  <a class="ftr-top" href="#top" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'})">↑ Back to top</a>
+</footer>
+</div><!-- /#en-proj -->
+
+<!-- ===== AR ===== -->
+<div id="ar-proj" style="display:none">
+<div class="proj-wrap">
+
+  <!-- Back to portfolio -->
+  <div class="proj-back">
+    <a class="proj-back-link" href="../index.html">
+      <svg viewBox="0 0 24 24"><path d="M5 12h14M12 19l7-7-7-7"/></svg>
+      العودة إلى ملف الأعمال
+    </a>
+  </div>
+
+  <!-- Hero -->
+  <section class="proj-hero proj-section" aria-labelledby="proj-title-ar">
+    <nav class="proj-breadcrumb" aria-label="مسار التنقل">
+      <a href="../index.html">ملف الأعمال</a>
+      <span class="proj-breadcrumb-sep" aria-hidden="true">/</span>
+      <a href="../index.html#proj-ar">المشاريع</a>
+      <span class="proj-breadcrumb-sep" aria-hidden="true">/</span>
+      <span>باجور ديليفري</span>
+    </nav>
+    <div class="proj-hero-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+    </div>
+    <div class="proj-badges">
+      <span class="proj-badge proj-badge-type">تطبيق موبايل</span>
+      <span class="proj-badge proj-badge-status">تم التسليم ✓</span>
+    </div>
+    <h1 class="proj-title" id="proj-title-ar">باجور ديليفري</h1>
+    <p class="proj-tagline">تطبيق توصيل محلي يربط العملاء بالمتاجر القريبة</p>
+    <div class="proj-hero-links">
+      <a class="btn-p" href="mailto:hmdy7486@gmail.com">تواصل معي لمشروع مشابه</a>
+      <a class="btn-o" href="../index.html#proj-ar">كل المشاريع</a>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="proj-overview proj-section" id="overview-ar" aria-labelledby="overview-title-ar">
+    <div class="proj-overview-inner">
+      <h2 class="proj-sec-title" id="overview-title-ar">نظرة عامة على المشروع</h2>
+      <p>تطبيق توصيل محلي مبني خصيصًا لمنطقة باجور. يتكون المشروع من ثلاثة منتجات متكاملة: تطبيق Flutter للعملاء لتصفح المتاجر وتقديم الطلبات، ولوحة إدارة Next.js لأصحاب المتاجر لإدارة القوائم والطلبات الواردة، وتطبيق Flutter لسائقي التوصيل لقبول الطلبات والتنقل وتأكيد التسليم — كل ذلك مرتبط معًا بتتبع فوري للطلبات عبر WebSocket.</p>
+    </div>
+  </section>
+
+  <!-- Problem & Solution -->
+  <section class="proj-problem proj-section" aria-label="المشكلة والحل">
+    <div class="proj-problem-grid">
+      <div class="proj-problem-card problem">
+        <div class="proj-problem-label">المشكلة</div>
+        <h3>غياب منصة توصيل محلية</h3>
+        <p>كانت منطقة باجور تفتقر إلى منصة توصيل رقمية مخصصة. كان العملاء يتصلون بالمحلات بشكل فردي، وكان التجار بلا حضور رقمي، وكان سائقو التوصيل بلا نظام منظم — مما أدى إلى فوضى وضياع طلبات وتجربة سيئة للعملاء.</p>
+      </div>
+      <div class="proj-problem-card solution">
+        <div class="proj-problem-label">الحل</div>
+        <h3>سوق توصيل ثلاثي الأطراف</h3>
+        <p>بُني سوق متكامل ثلاثي الأطراف يربط العملاء والمتاجر وسائقي التوصيل. لكل طرف واجهة مخصصة ومبنية لأغراضه. تحديثات WebSocket الفورية تُبقي الأطراف الثلاثة متزامنة طوال دورة حياة الطلب من التقديم حتى التسليم.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="proj-features proj-section" id="features-ar" aria-labelledby="features-title-ar">
+    <h2 class="proj-sec-title" id="features-title-ar">المميزات الرئيسية</h2>
+    <div class="proj-features-grid">
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠١</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">تطبيق العملاء — تصفح وطلب وتتبع</div>
+          <div class="proj-feature-desc">تطبيق Flutter لتصفح المتاجر القريبة وإضافة العناصر إلى السلة وتقديم الطلبات وتتبع التوصيل لحظيًا.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠٢</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">لوحة المتجر — القائمة والطلبات والتوفر</div>
+          <div class="proj-feature-desc">لوحة ويب Next.js لأصحاب المتاجر لإدارة المنتجات وتحديد التوفر وقبول أو رفض الطلبات الواردة وعرض الأرباح.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠٣</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">تطبيق السائق — قبول وتوجيه وتأكيد</div>
+          <div class="proj-feature-desc">تطبيق Flutter مخصص لسائقي التوصيل لتلقي إشعارات الطلبات والتنقل إلى نقاط الاستلام والتسليم وتأكيد الإيصال.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠٤</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">تتبع الطلبات الفوري</div>
+          <div class="proj-feature-desc">اتصال WebSocket يبث موقع السائق وتحديثات حالة الطلب مباشرة إلى تطبيق العميل طوال رحلة التوصيل.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠٥</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">خيارات دفع متعددة</div>
+          <div class="proj-feature-desc">يدعم الدفع عند الاستلام وطرق الدفع الإلكتروني مما يمنح العملاء مرونة عند الدفع.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠٦</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">تاريخ الطلبات وإعادة الطلب</div>
+          <div class="proj-feature-desc">يمكن للعملاء الاطلاع على تاريخ طلباتهم الكامل وإعادة طلب العناصر المفضلة بنقرة واحدة لتجربة متكررة سلسة.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠٧</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">إشعارات فورية</div>
+          <div class="proj-feature-desc">تنبيهات Push فورية لتأكيد الطلبات وتعيين السائق والاستلام والوصول، ترسل إلى تطبيقَي العميل والسائق.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠٨</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">نظام التقييم</div>
+          <div class="proj-feature-desc">تقييم ما بعد التسليم للمتجر والسائق معًا، مما يتيح ضبط الجودة وإبراز التجار والسائقين الأفضل أداءً.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="proj-tech proj-section" id="tech-ar" aria-labelledby="tech-title-ar">
+    <h2 class="proj-sec-title" id="tech-title-ar">التقنيات المستخدمة</h2>
+    <div class="proj-tech-grid">
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+          <div>
+            <div class="proj-tech-name">Node.js</div>
+            <div class="proj-tech-category">API الخلفية</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">REST API يخدم العملاء الثلاثة — تطبيق العميل وتطبيق السائق ولوحة المتجر — بمنطق أعمال مشترك للطلبات والتوجيه.</div>
+      </div>
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg></div>
+          <div>
+            <div class="proj-tech-name">Flutter (تطبيقان)</div>
+            <div class="proj-tech-category">موبايل — iOS وAndroid</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">تطبيقا العميل والسائق متعددا المنصات بأداء أصلي وتكامل خرائط وتحديثات واجهة فورية من كودبيس Dart واحد لكل منهما.</div>
+      </div>
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo"><svg viewBox="0 0 24 24"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/></svg></div>
+          <div>
+            <div class="proj-tech-name">Next.js</div>
+            <div class="proj-tech-category">لوحة إدارة المتجر</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">لوحة ويب متاحة من المتصفح على الحاسب والموبايل مع Server-Side Rendering للتحميل السريع وتحسين محركات البحث.</div>
+      </div>
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+          <div>
+            <div class="proj-tech-name">MongoDB</div>
+            <div class="proj-tech-category">قاعدة البيانات</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">نموذج وثيقة مرن لتخزين الطلبات وقوائم المتاجر وملفات السائقين وأحداث التوصيل دون قيود مخطط صارمة.</div>
+      </div>
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.64a16 16 0 006.29 6.29l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div>
+            <div class="proj-tech-name">WebSocket</div>
+            <div class="proj-tech-category">الطبقة الفورية</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">اتصال ثنائي الاتجاه دائم بين الخادم والعملاء الثلاثة يتيح تحديثات حالة الطلب الحية وبث موقع السائق.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Architecture -->
+  <section class="proj-arch proj-section" aria-labelledby="arch-title-ar">
+    <h2 class="proj-sec-title" id="arch-title-ar">البنية المعمارية</h2>
+    <div class="proj-arch-card">
+      <p>تخدم Node.js REST API واحدة العملاء الثلاثة. تتدفق الطلبات عبر النظام في حالات متمايزة: يُقدمها العميل، يُؤكدها المتجر، تُسند لسائق، تُستلم، وتُسلَّم. تُطلق كل انتقالة حالة بث WebSocket لجميع الأطراف المعنية مما يبقي العميل والمتجر والسائق في تزامن فوري.</p>
+      <p>يخزن MongoDB جميع بيانات التطبيق — المنتجات والمتاجر والمستخدمين والطلبات وأحداث التوصيل — في نموذج وثيقة مرن يناسب الشكل المتنوع للبيانات عبر أنواع العملاء الثلاثة. ترسل الإشعارات من جانب الخادم عند أحداث دورة حياة الطلب الرئيسية. تستهلك لوحة Next.js نفس REST API التي تستخدمها تطبيقات Flutter.</p>
+      <div class="proj-arch-diagram" aria-label="مخطط البنية المعمارية">
+[تطبيق Flutter للعميل]  [تطبيق Flutter للسائق]
+        \                      /
+         \    REST + WS       /
+      [Node.js API Backend]
+               |
+           [MongoDB]
+               |
+   [لوحة Next.js للمتجر]  ← REST API
+               |
+   طبقة بث WebSocket
+   ├── العميل: حالة الطلب
+   ├── السائق: طلب جديد / مسار
+   └── المتجر: الطلب مؤكد / جاهز
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="proj-cta proj-section" id="contact-ar" aria-labelledby="cta-title-ar">
+    <h2 class="proj-cta-title" id="cta-title-ar">تحتاج تطبيق توصيل أو سوق إلكتروني؟</h2>
+    <p class="proj-cta-desc">أبني منصات سوق متعددة الأطراف وتطبيقات توصيل مع تتبع فوري للأعمال المحلية والشركات الناشئة. دعنا نتحدث عن فكرتك.</p>
+    <div class="proj-cta-actions">
+      <a class="btn-p" href="mailto:hmdy7486@gmail.com">تواصل معي</a>
+      <a class="btn-o" href="https://github.com/mahmoodhamdi" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+  </section>
+
+  <!-- Related Projects -->
+  <section class="proj-related proj-section" aria-labelledby="related-title-ar">
+    <h2 class="proj-sec-title" id="related-title-ar">مشاريع ذات صلة</h2>
+    <div class="proj-related-grid">
+      <a class="proj-related-card" href="wasalni.html">
+        <div class="proj-related-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="proj-related-name">وصلني</div>
+        <div class="proj-related-desc">منصة مشاركة الرحلات تربط السائقين بالركاب مع تتبع الموقع الفوري والحجز الإلكتروني.</div>
+        <div class="proj-related-tags"><span class="chip">Flutter</span><span class="chip">Node.js</span><span class="chip">WebSocket</span></div>
+        <div class="proj-related-arrow">←</div>
+      </a>
+      <a class="proj-related-card" href="iai-salla-bot.html">
+        <div class="proj-related-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <div class="proj-related-name">بوت IAI سلة</div>
+        <div class="proj-related-desc">بوت ذكاء اصطناعي متكامل مع منصة سلة لدعم العملاء التلقائي والمبيعات في التجارة الإلكترونية.</div>
+        <div class="proj-related-tags"><span class="chip">Node.js</span><span class="chip">AI</span><span class="chip">سلة</span></div>
+        <div class="proj-related-arrow">←</div>
+      </a>
+      <a class="proj-related-card" href="whatsapp-bot.html">
+        <div class="proj-related-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <div class="proj-related-name">بوت واتساب للرد التلقائي</div>
+        <div class="proj-related-desc">منصة SaaS تتيح للأعمال إعداد ردود واتساب تلقائية بدون خبرة تقنية وفي دقائق.</div>
+        <div class="proj-related-tags"><span class="chip">Node.js</span><span class="chip">SaaS</span><span class="chip">WhatsApp API</span></div>
+        <div class="proj-related-arrow">←</div>
+      </a>
+    </div>
+  </section>
+
+</div><!-- /.proj-wrap -->
+
+<footer class="ftr">
+  <div class="ftr-soc">
+    <a href="https://github.com/mahmoodhamdi" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+    </a>
+    <a href="mailto:hmdy7486@gmail.com" aria-label="بريد إلكتروني">
+      <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    </a>
+    <a href="https://upwork.com" target="_blank" rel="noopener noreferrer" aria-label="Upwork">
+      <svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
+    </a>
+  </div>
+  <div class="ftr-avail">متاح للتوظيف</div>
+  <div class="ftr-txt">© ٢٠٢٦ محمود حمدي فتحي — صُنع بشغف</div>
+  <a class="ftr-top" href="#top" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'})">↑ العودة للأعلى</a>
+</footer>
+</div><!-- /#ar-proj -->
+
+</main>
+
+<script src="../js/utils.js" defer></script>
+<script src="../js/theme.js" defer></script>
+<script src="../js/language.js" defer></script>
+<script src="../js/navigation.js" defer></script>
+<script src="../js/animations.js" defer></script>
+<script src="../js/analytics.js" defer></script>
+<script src="../js/pwa.js" defer></script>
+<script src="../js/main.js" defer></script>
+<script>
+window.addEventListener('load',function(){setTimeout(function(){var s=document.createElement('script');s.src='https://www.googletagmanager.com/gtag/js?id=G-D0H1J8BSKJ';s.async=true;document.head.appendChild(s);s.onload=function(){window.dataLayer=window.dataLayer||[];function g(){dataLayer.push(arguments)}g('js',new Date());g('config','G-D0H1J8BSKJ');window.gtag=g}},2000)});
+</script>
+</body>
+</html>

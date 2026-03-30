@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clinic Booking System | Mahmoud Hamdy Fathy</title>
+<meta name="description" content="A complete clinic management and booking system built with Laravel backend and Next.js frontend. Smart appointment management for medical clinics.">
+<meta name="author" content="Mahmoud Hamdy Fathy">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0a0f1a">
+<link rel="canonical" href="https://mahmoodhamdi.github.io/cv/projects/clinic-booking.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Clinic Booking System | Mahmoud Hamdy Fathy">
+<meta property="og:description" content="A complete clinic management and booking system built with Laravel backend and Next.js frontend. Smart appointment management for medical clinics.">
+<meta property="og:url" content="https://mahmoodhamdi.github.io/cv/projects/clinic-booking.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ar_EG">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Clinic Booking System | Mahmoud Hamdy Fathy">
+<meta name="twitter:description" content="Smart appointment management for medical clinics — Laravel + Next.js.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="manifest" href="../manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mahmoud CV">
+<link rel="apple-touch-icon" href="../assets/icon-192.svg">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+:root{--bg:#0a0f1a;--bg-alt:#111827;--card:#1a2236;--card-h:#1f2a42;--accent:#38bdf8;--accent-g:rgba(56,189,248,.15);--accent2:#818cf8;--txt:#f1f5f9;--txt2:#94a3b8;--muted:#8e99ad;--bdr:rgba(148,163,184,.1);--grad:linear-gradient(135deg,#38bdf8,#818cf8);--green:#34d399;--fn:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;--fn-ar:'Tajawal',sans-serif;--nav-bg:rgba(10,15,26,.88);--prog-bg:rgba(148,163,184,.1);--chip-bg:rgba(129,140,248,.1);--chip-c:var(--accent2);--chip-bdr:rgba(129,140,248,.15);--cta-bg:linear-gradient(135deg,rgba(56,189,248,.08),rgba(129,140,248,.08))}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;opacity:0;transition:opacity .5s ease;padding-top:52px}body.loaded{opacity:1}
+.navbar{position:fixed;top:0;left:0;right:0;z-index:90;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--bdr)}
+.nav-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:48px;gap:2px;overflow-x:auto;scrollbar-width:none}
+.nav-in::-webkit-scrollbar{display:none}
+.nav-a{padding:6px 12px;border-radius:8px;font-size:12px;font-weight:500;color:var(--muted);white-space:nowrap;cursor:pointer;border:none;background:none;font-family:var(--fn)}
+.nav-a.on,.nav-a:hover{color:var(--accent);background:var(--accent-g)}
+.top-ctrl{position:fixed;top:58px;right:20px;z-index:100;display:flex;gap:8px;align-items:center}
+.t-btn{width:34px;height:34px;border-radius:10px;background:var(--card);border:1px solid var(--bdr);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:color .2s,border-color .2s;backdrop-filter:blur(20px)}
+.t-btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
+.t-btn:hover{color:var(--accent);border-color:var(--accent)}
+html[data-theme="dark"] .ic-light{display:block}html[data-theme="dark"] .ic-dark{display:none}
+html[data-theme="light"] .ic-light{display:none}html[data-theme="light"] .ic-dark{display:block}
+.lang-tog{display:flex;gap:3px;background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:3px;backdrop-filter:blur(20px)}
+.l-btn{padding:4px 10px;border-radius:8px;font-size:11px;font-weight:600;color:var(--muted);cursor:pointer;border:none;background:none;font-family:var(--fn);transition:color .2s,background .2s}
+.l-btn.on{background:var(--accent-g);color:var(--accent)}
+.skip-link{position:fixed;top:0;left:16px;z-index:10001;padding:12px 24px;background:var(--grad);color:#fff;border-radius:0 0 8px 8px;font-size:14px;font-weight:600;text-decoration:none;transform:translateY(-100%);transition:transform .3s}.skip-link:focus{transform:translateY(0)}
+.s-top{position:fixed;bottom:24px;right:24px;z-index:80;width:42px;height:42px;border-radius:12px;background:var(--card);border:1px solid var(--bdr);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:color .2s,border-color .2s,opacity .3s,transform .3s;opacity:0;transform:translateY(8px);backdrop-filter:blur(20px)}
+.s-top.vis{opacity:1;transform:translateY(0)}
+.s-top:hover{color:var(--accent);border-color:var(--accent)}
+.s-top svg{width:18px;height:18px}
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:10px 20px;font-size:13px;color:var(--txt);opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;z-index:200}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;opacity:.18;filter:blur(80px)}
+.orb-1{width:500px;height:500px;background:radial-gradient(circle,#38bdf8,transparent);top:-100px;right:-150px}
+.orb-2{width:400px;height:400px;background:radial-gradient(circle,#818cf8,transparent);bottom:100px;left:-120px}
+.orb-3{width:300px;height:300px;background:radial-gradient(circle,#c084fc,transparent);top:50%;left:50%;transform:translate(-50%,-50%)}
+.scroll-progress{position:fixed;top:0;left:0;height:2px;background:var(--grad);z-index:1000;width:0%;transition:width .1s}
+html[data-theme="light"]{--bg:#f8fafc;--bg-alt:#f1f5f9;--card:#fff;--card-h:#f8fafc;--txt:#0f172a;--txt2:#334155;--muted:#64748b;--bdr:rgba(15,23,42,.1);--nav-bg:rgba(248,250,252,.88);--accent-g:rgba(56,189,248,.12);--prog-bg:rgba(15,23,42,.08);--cta-bg:linear-gradient(135deg,rgba(56,189,248,.06),rgba(129,140,248,.06))}
+.btn-p{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:10px;background:var(--grad);color:#fff;font-family:var(--fn);font-size:14px;font-weight:600;text-decoration:none;transition:opacity .2s,transform .2s;border:none;cursor:pointer}
+.btn-p:hover{opacity:.9;transform:translateY(-2px)}
+.btn-o{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:10px;background:transparent;color:var(--txt);font-family:var(--fn);font-size:14px;font-weight:500;text-decoration:none;border:1px solid var(--bdr);transition:border-color .2s,color .2s,transform .2s;cursor:pointer}
+.btn-o:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.chip{display:inline-block;padding:3px 10px;border-radius:6px;font-size:11px;font-weight:600;font-family:var(--mono);background:var(--chip-bg);color:var(--chip-c);border:1px solid var(--chip-bdr)}
+.ftr{padding:32px 24px 24px;text-align:center;border-top:1px solid var(--bdr);margin-top:0}
+.ftr-soc{display:flex;justify-content:center;gap:16px;margin-bottom:16px}
+.ftr-soc a{color:var(--muted);transition:color .2s;text-decoration:none}
+.ftr-soc a:hover{color:var(--accent)}
+.ftr-soc svg{width:20px;height:20px}
+.ftr-avail{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--green);background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.2);border-radius:20px;padding:4px 12px;margin-bottom:12px}
+.ftr-avail::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.ftr-txt{font-size:12px;color:var(--muted)}
+.ftr-top{display:inline-block;margin-top:12px;font-size:12px;color:var(--muted);text-decoration:none;transition:color .2s}
+.ftr-top:hover{color:var(--accent)}
+@keyframes ar{from{--aa:0deg}to{--aa:360deg}}
+@property --aa{syntax:'<angle>';inherits:true;initial-value:0deg}
+</style>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=JetBrains+Mono&family=Tajawal:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="../css/bundle.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="../css/sections.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="../css/utilities.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="projects.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=JetBrains+Mono&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/bundle.css">
+<link rel="stylesheet" href="../css/sections.css">
+<link rel="stylesheet" href="../css/utilities.css">
+<link rel="stylesheet" href="projects.css">
+</noscript>
+<link rel="stylesheet" href="../css/print.css" media="print">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Clinic Booking System",
+  "description": "A complete clinic management and booking system built with Laravel backend and Next.js frontend.",
+  "author": {
+    "@type": "Person",
+    "name": "Mahmoud Hamdy Fathy",
+    "url": "https://mahmoodhamdi.github.io/cv/"
+  },
+  "url": "https://mahmoodhamdi.github.io/cv/projects/clinic-booking.html",
+  "datePublished": "2024-01-01",
+  "keywords": ["Laravel", "Next.js", "Clinic Booking", "Healthcare", "PostgreSQL", "Tailwind CSS"]
+}
+</script>
+<script>
+window.CV = {lang:'en'};
+function setLang(l) {
+  window.CV.lang = l;
+  var h = document.documentElement;
+  var e = document.getElementById('en-proj');
+  var a = document.getElementById('ar-proj');
+  var b = document.querySelectorAll('.l-btn');
+  var ne = document.getElementById('nav-en');
+  var na = document.getElementById('nav-ar');
+  if (l === 'ar') {
+    h.dir = 'rtl'; h.lang = 'ar';
+    e.style.display = 'none'; a.style.display = 'block';
+    ne.style.display = 'none'; na.style.display = 'flex';
+    b[0].classList.remove('on'); b[1].classList.add('on');
+  } else {
+    h.dir = 'ltr'; h.lang = 'en';
+    e.style.display = 'block'; a.style.display = 'none';
+    ne.style.display = 'flex'; na.style.display = 'none';
+    b[0].classList.add('on'); b[1].classList.remove('on');
+  }
+  if (window.reobserveAll) window.reobserveAll();
+  if (window.updateNav) window.updateNav();
+}
+window.setLang = setLang;
+</script>
+</head>
+<body id="top">
+<a class="skip-link" href="#en-proj">Skip to main content</a>
+<div class="scroll-progress" id="sp" aria-hidden="true"></div>
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+<div class="orb orb-3" aria-hidden="true"></div>
+
+<nav class="navbar" id="navbar" role="navigation" aria-label="Project navigation">
+  <div class="nav-in" id="nav-en">
+    <button class="nav-a" data-t="overview-en">Overview</button>
+    <button class="nav-a" data-t="features-en">Features</button>
+    <button class="nav-a" data-t="tech-en">Tech Stack</button>
+    <button class="nav-a" data-t="contact-en">Contact</button>
+  </div>
+  <div class="nav-in" id="nav-ar" style="display:none">
+    <button class="nav-a" data-t="overview-ar">نظرة عامة</button>
+    <button class="nav-a" data-t="features-ar">المميزات</button>
+    <button class="nav-a" data-t="tech-ar">التقنيات</button>
+    <button class="nav-a" data-t="contact-ar">تواصل</button>
+  </div>
+</nav>
+
+<div class="top-ctrl">
+  <button class="t-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+    <svg class="ic-light" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    <svg class="ic-dark" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+  </button>
+  <div class="lang-tog">
+    <button class="l-btn on" onclick="setLang('en')">EN</button>
+    <button class="l-btn" onclick="setLang('ar')">AR</button>
+  </div>
+</div>
+
+<button class="s-top" id="sTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
+  <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+<div class="toast" id="toast"></div>
+
+<main>
+
+<!-- ===== EN ===== -->
+<div id="en-proj">
+<div class="proj-wrap">
+
+  <!-- Back to portfolio -->
+  <div class="proj-back">
+    <a class="proj-back-link" href="../index.html">
+      <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to Portfolio
+    </a>
+  </div>
+
+  <!-- Hero -->
+  <section class="proj-hero proj-section" aria-labelledby="proj-title-en">
+    <nav class="proj-breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Portfolio</a>
+      <span class="proj-breadcrumb-sep" aria-hidden="true">/</span>
+      <a href="../index.html#proj-en">Projects</a>
+      <span class="proj-breadcrumb-sep" aria-hidden="true">/</span>
+      <span>Clinic Booking System</span>
+    </nav>
+    <div class="proj-hero-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    </div>
+    <div class="proj-badges">
+      <span class="proj-badge proj-badge-type">Web App</span>
+      <span class="proj-badge proj-badge-status">Delivered ✓</span>
+    </div>
+    <h1 class="proj-title" id="proj-title-en">Clinic Booking System</h1>
+    <p class="proj-tagline">Smart appointment management for medical clinics</p>
+    <div class="proj-hero-links">
+      <a class="btn-p" href="mailto:hmdy7486@gmail.com">Hire Me for Similar</a>
+      <a class="btn-o" href="../index.html#proj-en">All Projects</a>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="proj-overview proj-section" id="overview-en" aria-labelledby="overview-title-en">
+    <div class="proj-overview-inner">
+      <h2 class="proj-sec-title" id="overview-title-en">Project Overview</h2>
+      <p>A complete clinic management and booking system built with a Laravel backend and Next.js frontend. Patients can book appointments online, manage their medical history, and receive automated reminders. Clinical staff gain access to a comprehensive dashboard covering doctor profiles, schedules, appointments, and patient records — replacing slow phone-based workflows with a modern, reliable digital system.</p>
+    </div>
+  </section>
+
+  <!-- Problem & Solution -->
+  <section class="proj-problem proj-section" aria-label="Problem and solution">
+    <div class="proj-problem-grid">
+      <div class="proj-problem-card problem">
+        <div class="proj-problem-label">The Problem</div>
+        <h3>Outdated Booking Workflows</h3>
+        <p>Medical clinics relied on phone calls and paper records to manage appointments. This led to scheduling conflicts, high no-show rates, disorganised patient histories, and staff spending excessive time on manual coordination instead of patient care.</p>
+      </div>
+      <div class="proj-problem-card solution">
+        <div class="proj-problem-label">The Solution</div>
+        <h3>End-to-End Digital Clinic Platform</h3>
+        <p>Built a full-stack web application combining a patient self-service portal with a comprehensive admin dashboard. Patients book and manage appointments themselves; staff manage schedules, records, and analytics — all in one place, accessible from any device.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="proj-features proj-section" id="features-en" aria-labelledby="features-title-en">
+    <h2 class="proj-sec-title" id="features-title-en">Key Features</h2>
+    <div class="proj-features-grid">
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">01</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Online Booking with Slot Display</div>
+          <div class="proj-feature-desc">Patients browse available time slots in real time and book appointments without calling the clinic.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">02</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Doctor Schedule Management</div>
+          <div class="proj-feature-desc">Admins define working hours, break times, and vacation periods per doctor. Conflicts are automatically prevented.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">03</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Patient Records Tracking</div>
+          <div class="proj-feature-desc">Full medical history, past visits, diagnoses, and prescriptions stored per patient with secure access controls.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">04</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Automated Reminders (Email / SMS)</div>
+          <div class="proj-feature-desc">Scheduled Laravel jobs send confirmation and reminder messages before appointments to reduce no-shows.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">05</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Admin Dashboard (Daily / Weekly / Monthly)</div>
+          <div class="proj-feature-desc">Visual summary of appointments, patient flow, cancellations, and revenue across configurable time ranges.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">06</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Multi-Doctor & Multi-Clinic Support</div>
+          <div class="proj-feature-desc">A single installation can manage multiple doctors across multiple clinic branches under one admin panel.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">07</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Payment Integration</div>
+          <div class="proj-feature-desc">Online consultation fees can be collected at booking time via integrated payment gateway support.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">08</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Reports &amp; Analytics</div>
+          <div class="proj-feature-desc">Exportable reports covering appointment trends, doctor utilisation, patient demographics, and revenue over time.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="proj-tech proj-section" id="tech-en" aria-labelledby="tech-title-en">
+    <h2 class="proj-sec-title" id="tech-title-en">Tech Stack</h2>
+    <div class="proj-tech-grid">
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Laravel + PHP</div>
+            <div class="proj-tech-category">Backend Framework</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">RESTful API with Eloquent ORM, Sanctum authentication, and scheduled reminder jobs via Laravel Scheduler.</div>
+      </div>
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Next.js</div>
+            <div class="proj-tech-category">Frontend Framework</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Server-side rendered patient portal and admin dashboard with fast navigation and SEO-friendly pages.</div>
+      </div>
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">PostgreSQL</div>
+            <div class="proj-tech-category">Database</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Relational data integrity for appointments, schedules, patient records, and payment transactions.</div>
+      </div>
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Tailwind CSS</div>
+            <div class="proj-tech-category">Styling</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Utility-first styling for rapid UI development. Fully responsive across mobile, tablet, and desktop screens.</div>
+      </div>
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Laravel Sanctum</div>
+            <div class="proj-tech-category">Authentication</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Token-based API authentication for the Next.js SPA with support for multiple user roles (patient, doctor, admin).</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Architecture -->
+  <section class="proj-arch proj-section" aria-labelledby="arch-title-en">
+    <h2 class="proj-sec-title" id="arch-title-en">Architecture</h2>
+    <div class="proj-arch-card">
+      <p>The system follows a clean client-server architecture. Laravel serves as the API backend exposing RESTful endpoints consumed by the Next.js SPA frontend. PostgreSQL stores all relational data — users, doctors, appointments, schedules, and medical records — with foreign key constraints enforcing integrity.</p>
+      <p>Authentication is handled via Laravel Sanctum issuing API tokens for the three user roles: patient, doctor, and admin. Each role has distinct middleware-enforced access scopes. Automated appointment reminders are dispatched through Laravel's built-in task scheduler, triggering email and SMS notifications at configurable intervals before each appointment.</p>
+      <div class="proj-arch-diagram" aria-label="Architecture diagram">
+[Patient / Doctor / Admin Browser]
+        |
+   [Next.js SPA Frontend]
+        |   API requests (JSON / REST)
+   [Laravel API Backend]
+        |          |
+  [Sanctum Auth]  [Laravel Scheduler]
+        |          |   (reminders)
+  [PostgreSQL]   [Mail / SMS Provider]
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="proj-cta proj-section" id="contact-en" aria-labelledby="cta-title-en">
+    <h2 class="proj-cta-title" id="cta-title-en">Need a Similar System?</h2>
+    <p class="proj-cta-desc">I build complete booking and management platforms tailored to healthcare, education, and service businesses. Let's talk about your requirements.</p>
+    <div class="proj-cta-actions">
+      <a class="btn-p" href="mailto:hmdy7486@gmail.com">Get In Touch</a>
+      <a class="btn-o" href="https://github.com/mahmoodhamdi" target="_blank" rel="noopener noreferrer">View GitHub</a>
+    </div>
+  </section>
+
+  <!-- Related Projects -->
+  <section class="proj-related proj-section" aria-labelledby="related-title-en">
+    <h2 class="proj-sec-title" id="related-title-en">Related Projects</h2>
+    <div class="proj-related-grid">
+      <a class="proj-related-card" href="iai-salla-bot.html">
+        <div class="proj-related-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div class="proj-related-name">IAI Salla Bot</div>
+        <div class="proj-related-desc">AI-powered e-commerce chatbot integrated with the Salla platform for automated customer support.</div>
+        <div class="proj-related-tags"><span class="chip">Node.js</span><span class="chip">AI</span><span class="chip">Salla</span></div>
+        <div class="proj-related-arrow">→</div>
+      </a>
+      <a class="proj-related-card" href="wasalni.html">
+        <div class="proj-related-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="proj-related-name">Wasalni</div>
+        <div class="proj-related-desc">Ride-sharing platform connecting drivers and passengers with real-time location tracking.</div>
+        <div class="proj-related-tags"><span class="chip">Flutter</span><span class="chip">Node.js</span><span class="chip">WebSocket</span></div>
+        <div class="proj-related-arrow">→</div>
+      </a>
+      <a class="proj-related-card" href="whatsapp-bot.html">
+        <div class="proj-related-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div class="proj-related-name">WhatsApp Auto-Reply Bot</div>
+        <div class="proj-related-desc">SaaS platform enabling businesses to set up automated WhatsApp responses without technical knowledge.</div>
+        <div class="proj-related-tags"><span class="chip">Node.js</span><span class="chip">SaaS</span><span class="chip">WhatsApp API</span></div>
+        <div class="proj-related-arrow">→</div>
+      </a>
+    </div>
+  </section>
+
+</div><!-- /.proj-wrap -->
+
+<footer class="ftr">
+  <div class="ftr-soc">
+    <a href="https://github.com/mahmoodhamdi" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+    </a>
+    <a href="mailto:hmdy7486@gmail.com" aria-label="Email">
+      <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    </a>
+    <a href="https://upwork.com" target="_blank" rel="noopener noreferrer" aria-label="Upwork">
+      <svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
+    </a>
+  </div>
+  <div class="ftr-avail">Available for Hire</div>
+  <div class="ftr-txt">© 2026 Mahmoud Hamdy Fathy — Built with passion</div>
+  <a class="ftr-top" href="#top" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'})">↑ Back to top</a>
+</footer>
+</div><!-- /#en-proj -->
+
+<!-- ===== AR ===== -->
+<div id="ar-proj" style="display:none">
+<div class="proj-wrap">
+
+  <!-- Back to portfolio -->
+  <div class="proj-back">
+    <a class="proj-back-link" href="../index.html">
+      <svg viewBox="0 0 24 24"><path d="M5 12h14M12 19l7-7-7-7"/></svg>
+      العودة إلى ملف الأعمال
+    </a>
+  </div>
+
+  <!-- Hero -->
+  <section class="proj-hero proj-section" aria-labelledby="proj-title-ar">
+    <nav class="proj-breadcrumb" aria-label="مسار التنقل">
+      <a href="../index.html">ملف الأعمال</a>
+      <span class="proj-breadcrumb-sep" aria-hidden="true">/</span>
+      <a href="../index.html#proj-ar">المشاريع</a>
+      <span class="proj-breadcrumb-sep" aria-hidden="true">/</span>
+      <span>نظام حجز العيادات</span>
+    </nav>
+    <div class="proj-hero-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    </div>
+    <div class="proj-badges">
+      <span class="proj-badge proj-badge-type">تطبيق ويب</span>
+      <span class="proj-badge proj-badge-status">تم التسليم ✓</span>
+    </div>
+    <h1 class="proj-title" id="proj-title-ar">نظام حجز العيادات</h1>
+    <p class="proj-tagline">إدارة ذكية للمواعيد في العيادات الطبية</p>
+    <div class="proj-hero-links">
+      <a class="btn-p" href="mailto:hmdy7486@gmail.com">تواصل معي لمشروع مشابه</a>
+      <a class="btn-o" href="../index.html#proj-ar">كل المشاريع</a>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="proj-overview proj-section" id="overview-ar" aria-labelledby="overview-title-ar">
+    <div class="proj-overview-inner">
+      <h2 class="proj-sec-title" id="overview-title-ar">نظرة عامة على المشروع</h2>
+      <p>نظام متكامل لإدارة العيادات والحجز مبني بواجهة خلفية على Laravel وواجهة أمامية بـ Next.js. يستطيع المرضى حجز المواعيد إلكترونيًا وإدارة سجلاتهم الطبية وتلقي تذكيرات تلقائية. يحصل الموظفون على لوحة تحكم شاملة تضم ملفات الأطباء والجداول والمواعيد وسجلات المرضى، مما يُحوّل العمل اليدوي القائم على الهاتف إلى نظام رقمي حديث وموثوق.</p>
+    </div>
+  </section>
+
+  <!-- Problem & Solution -->
+  <section class="proj-problem proj-section" aria-label="المشكلة والحل">
+    <div class="proj-problem-grid">
+      <div class="proj-problem-card problem">
+        <div class="proj-problem-label">المشكلة</div>
+        <h3>أنظمة حجز قديمة وغير فعّالة</h3>
+        <p>كانت العيادات الطبية تعتمد على المكالمات الهاتفية والسجلات الورقية لإدارة المواعيد، مما أدى إلى تعارض في الجداول وارتفاع نسب الغياب وتشتت بيانات المرضى.</p>
+      </div>
+      <div class="proj-problem-card solution">
+        <div class="proj-problem-label">الحل</div>
+        <h3>منصة عيادة رقمية متكاملة</h3>
+        <p>تم بناء تطبيق ويب متكامل يجمع بين بوابة خدمة ذاتية للمرضى ولوحة تحكم شاملة للإدارة، بحيث يحجز المرضى مواعيدهم بأنفسهم بينما يُدير الموظفون الجداول والسجلات والتقارير من مكان واحد.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="proj-features proj-section" id="features-ar" aria-labelledby="features-title-ar">
+    <h2 class="proj-sec-title" id="features-title-ar">المميزات الرئيسية</h2>
+    <div class="proj-features-grid">
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠١</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">حجز إلكتروني مع عرض الأوقات المتاحة</div>
+          <div class="proj-feature-desc">يتصفح المرضى الأوقات المتاحة لحظيًا ويحجزون مواعيدهم دون الحاجة للاتصال بالعيادة.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠٢</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">إدارة جدول الأطباء</div>
+          <div class="proj-feature-desc">يُحدد المسؤولون ساعات العمل وأوقات الاستراحة والإجازات لكل طبيب مع منع التعارضات تلقائيًا.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠٣</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">تتبع السجلات الطبية للمرضى</div>
+          <div class="proj-feature-desc">التاريخ الطبي الكامل والزيارات السابقة والتشخيصات والوصفات مخزنة بأمان لكل مريض مع صلاحيات وصول محكمة.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠٤</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">تذكيرات تلقائية (بريد إلكتروني / رسائل نصية)</div>
+          <div class="proj-feature-desc">مهام Laravel المجدولة ترسل رسائل تأكيد وتذكير قبل كل موعد للحد من حالات الغياب.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠٥</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">لوحة تحكم (يومي / أسبوعي / شهري)</div>
+          <div class="proj-feature-desc">ملخص بصري للمواعيد وحركة المرضى والإلغاءات والإيرادات عبر نطاقات زمنية قابلة للضبط.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠٦</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">دعم متعدد الأطباء والعيادات</div>
+          <div class="proj-feature-desc">تثبيت واحد يدير أطباء متعددين عبر فروع عيادات مختلفة من لوحة إدارة موحدة.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠٧</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">تكامل الدفع الإلكتروني</div>
+          <div class="proj-feature-desc">يمكن تحصيل رسوم الاستشارة أونلاين عند الحجز عبر بوابة دفع إلكتروني متكاملة.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠٨</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">تقارير وتحليلات</div>
+          <div class="proj-feature-desc">تقارير قابلة للتصدير تغطي اتجاهات المواعيد ومعدل استخدام الأطباء وبيانات المرضى والإيرادات.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="proj-tech proj-section" id="tech-ar" aria-labelledby="tech-title-ar">
+    <h2 class="proj-sec-title" id="tech-title-ar">التقنيات المستخدمة</h2>
+    <div class="proj-tech-grid">
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+          <div>
+            <div class="proj-tech-name">Laravel + PHP</div>
+            <div class="proj-tech-category">إطار الخلفية</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">API بنمط RESTful مع Eloquent ORM ومصادقة Sanctum ومهام مجدولة لإرسال التذكيرات.</div>
+      </div>
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo"><svg viewBox="0 0 24 24"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/></svg></div>
+          <div>
+            <div class="proj-tech-name">Next.js</div>
+            <div class="proj-tech-category">إطار الواجهة الأمامية</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">بوابة المرضى ولوحة الإدارة مع Server-Side Rendering للسرعة وتحسين محركات البحث.</div>
+      </div>
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+          <div>
+            <div class="proj-tech-name">PostgreSQL</div>
+            <div class="proj-tech-category">قاعدة البيانات</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">سلامة البيانات العلائقية للمواعيد والجداول والسجلات الطبية ومعاملات الدفع.</div>
+      </div>
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div>
+            <div class="proj-tech-name">Tailwind CSS</div>
+            <div class="proj-tech-category">التصميم</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">تصميم عملي سريع متجاوب على جميع الشاشات مع دعم كامل للغة العربية وتوجيه RTL.</div>
+      </div>
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
+          <div>
+            <div class="proj-tech-name">Laravel Sanctum</div>
+            <div class="proj-tech-category">المصادقة</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">مصادقة API قائمة على الرموز مع دعم أدوار متعددة: مريض، طبيب، مسؤول.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Architecture -->
+  <section class="proj-arch proj-section" aria-labelledby="arch-title-ar">
+    <h2 class="proj-sec-title" id="arch-title-ar">البنية المعمارية</h2>
+    <div class="proj-arch-card">
+      <p>يتبع النظام بنية عميل-خادم نظيفة. يعمل Laravel كخلفية API تُتيح نقاط نهاية RESTful تستهلكها واجهة Next.js الأمامية. يخزن PostgreSQL كافة البيانات العلائقية — المستخدمين والأطباء والمواعيد والجداول والسجلات الطبية — مع قيود المفاتيح الأجنبية لضمان سلامة البيانات.</p>
+      <p>تُدار المصادقة عبر Laravel Sanctum الذي يُصدر رموز API لثلاثة أدوار مستخدمين: مريض وطبيب ومسؤول. يمتلك كل دور صلاحيات وصول محددة تُطبَّق عبر البرمجيات الوسيطة. تُرسل تذكيرات المواعيد التلقائية عبر مجدول مهام Laravel الداخلي الذي يُطلق إشعارات البريد الإلكتروني والرسائل النصية في أوقات مضبوطة قبل كل موعد.</p>
+      <div class="proj-arch-diagram" aria-label="مخطط البنية المعمارية">
+[متصفح المريض / الطبيب / المسؤول]
+          |
+   [واجهة Next.js الأمامية]
+          |   طلبات API (JSON / REST)
+   [خلفية Laravel API]
+          |             |
+  [مصادقة Sanctum]  [مجدول Laravel]
+          |             |   (تذكيرات)
+   [PostgreSQL]    [البريد / الرسائل النصية]
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="proj-cta proj-section" id="contact-ar" aria-labelledby="cta-title-ar">
+    <h2 class="proj-cta-title" id="cta-title-ar">تحتاج نظامًا مشابهًا؟</h2>
+    <p class="proj-cta-desc">أبني منصات حجز وإدارة متكاملة مخصصة للرعاية الصحية والتعليم وشركات الخدمات. تحدث معي عن متطلباتك.</p>
+    <div class="proj-cta-actions">
+      <a class="btn-p" href="mailto:hmdy7486@gmail.com">تواصل معي</a>
+      <a class="btn-o" href="https://github.com/mahmoodhamdi" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+  </section>
+
+  <!-- Related Projects -->
+  <section class="proj-related proj-section" aria-labelledby="related-title-ar">
+    <h2 class="proj-sec-title" id="related-title-ar">مشاريع ذات صلة</h2>
+    <div class="proj-related-grid">
+      <a class="proj-related-card" href="iai-salla-bot.html">
+        <div class="proj-related-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <div class="proj-related-name">بوت IAI سلة</div>
+        <div class="proj-related-desc">بوت ذكاء اصطناعي متكامل مع منصة سلة لدعم العملاء التلقائي في التجارة الإلكترونية.</div>
+        <div class="proj-related-tags"><span class="chip">Node.js</span><span class="chip">AI</span><span class="chip">سلة</span></div>
+        <div class="proj-related-arrow">←</div>
+      </a>
+      <a class="proj-related-card" href="wasalni.html">
+        <div class="proj-related-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="proj-related-name">وصلني</div>
+        <div class="proj-related-desc">منصة توصيل تربط السائقين بالركاب مع تتبع الموقع الفوري.</div>
+        <div class="proj-related-tags"><span class="chip">Flutter</span><span class="chip">Node.js</span><span class="chip">WebSocket</span></div>
+        <div class="proj-related-arrow">←</div>
+      </a>
+      <a class="proj-related-card" href="whatsapp-bot.html">
+        <div class="proj-related-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <div class="proj-related-name">بوت واتساب للرد التلقائي</div>
+        <div class="proj-related-desc">منصة SaaS تتيح للأعمال إعداد ردود واتساب تلقائية بدون خبرة تقنية.</div>
+        <div class="proj-related-tags"><span class="chip">Node.js</span><span class="chip">SaaS</span><span class="chip">WhatsApp API</span></div>
+        <div class="proj-related-arrow">←</div>
+      </a>
+    </div>
+  </section>
+
+</div><!-- /.proj-wrap -->
+
+<footer class="ftr">
+  <div class="ftr-soc">
+    <a href="https://github.com/mahmoodhamdi" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+    </a>
+    <a href="mailto:hmdy7486@gmail.com" aria-label="بريد إلكتروني">
+      <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    </a>
+    <a href="https://upwork.com" target="_blank" rel="noopener noreferrer" aria-label="Upwork">
+      <svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
+    </a>
+  </div>
+  <div class="ftr-avail">متاح للتوظيف</div>
+  <div class="ftr-txt">© ٢٠٢٦ محمود حمدي فتحي — صُنع بشغف</div>
+  <a class="ftr-top" href="#top" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'})">↑ العودة للأعلى</a>
+</footer>
+</div><!-- /#ar-proj -->
+
+</main>
+
+<script src="../js/utils.js" defer></script>
+<script src="../js/theme.js" defer></script>
+<script src="../js/language.js" defer></script>
+<script src="../js/navigation.js" defer></script>
+<script src="../js/animations.js" defer></script>
+<script src="../js/analytics.js" defer></script>
+<script src="../js/pwa.js" defer></script>
+<script src="../js/main.js" defer></script>
+<script>
+window.addEventListener('load',function(){setTimeout(function(){var s=document.createElement('script');s.src='https://www.googletagmanager.com/gtag/js?id=G-D0H1J8BSKJ';s.async=true;document.head.appendChild(s);s.onload=function(){window.dataLayer=window.dataLayer||[];function g(){dataLayer.push(arguments)}g('js',new Date());g('config','G-D0H1J8BSKJ');window.gtag=g}},2000)});
+</script>
+</body>
+</html>

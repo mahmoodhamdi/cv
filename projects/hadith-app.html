@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Al-Arba'oon An-Nawawiyyah — Hadith App | Mahmoud Hamdy Fathy</title>
+<meta name="description" content="Nawawi's 40 Hadith mobile app with professional audio narration by Sheikh An-Nafees — published on Google Play. Built with Flutter, clean architecture, and offline-first design.">
+<meta name="author" content="Mahmoud Hamdy Fathy">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0a0f1a">
+<link rel="canonical" href="https://mahmoodhamdi.github.io/cv/projects/hadith-app.html">
+<link rel="alternate" hreflang="en" href="https://mahmoodhamdi.github.io/cv/projects/hadith-app.html">
+<link rel="alternate" hreflang="ar" href="https://mahmoodhamdi.github.io/cv/projects/hadith-app.html">
+<link rel="alternate" hreflang="x-default" href="https://mahmoodhamdi.github.io/cv/projects/hadith-app.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Al-Arba'oon An-Nawawiyyah — Hadith App | Mahmoud Hamdy Fathy">
+<meta property="og:description" content="Nawawi's 40 Hadith mobile app with professional audio narration by Sheikh An-Nafees — published on Google Play.">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ar_EG">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Al-Arba'oon An-Nawawiyyah — Hadith App | Mahmoud Hamdy Fathy">
+<meta name="twitter:description" content="Nawawi's 40 Hadith with audio narration by Sheikh An-Nafees — published on Google Play.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="manifest" href="../manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mahmoud CV">
+<link rel="apple-touch-icon" href="../assets/icon-192.svg">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+:root{--bg:#0a0f1a;--bg-alt:#111827;--card:#1a2236;--card-h:#1f2a42;--accent:#38bdf8;--accent-g:rgba(56,189,248,.15);--accent2:#818cf8;--txt:#f1f5f9;--txt2:#94a3b8;--muted:#8e99ad;--bdr:rgba(148,163,184,.1);--grad:linear-gradient(135deg,#38bdf8,#818cf8);--green:#34d399;--fn:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;--fn-ar:'Tajawal',sans-serif;--nav-bg:rgba(10,15,26,.88);--prog-bg:rgba(148,163,184,.1);--chip-bg:rgba(129,140,248,.1);--chip-c:var(--accent2);--chip-bdr:rgba(129,140,248,.15);--cta-bg:linear-gradient(135deg,rgba(56,189,248,.08),rgba(129,140,248,.08))}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;opacity:0;transition:opacity .5s ease;padding-top:52px}body.loaded{opacity:1}
+.navbar{position:fixed;top:0;left:0;right:0;z-index:90;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--bdr)}
+.nav-in{max-width:960px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:48px;gap:2px;overflow-x:auto;scrollbar-width:none}
+.nav-in::-webkit-scrollbar{display:none}
+.nav-a{padding:6px 12px;border-radius:8px;font-size:12px;font-weight:500;color:var(--muted);white-space:nowrap;cursor:pointer;border:none;background:none;font-family:var(--fn)}
+.nav-a:hover{color:var(--accent)}
+.top-ctrl{position:fixed;top:58px;right:20px;z-index:100;display:flex;gap:8px;align-items:center}
+.t-btn{width:34px;height:34px;border-radius:10px;border:1px solid var(--bdr);background:var(--card);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted);transition:color .3s,border-color .3s}
+.t-btn:hover{color:var(--accent);border-color:var(--accent)}
+.t-btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
+.ic-dark{display:none}
+html[data-theme="light"] .ic-light{display:none}
+html[data-theme="light"] .ic-dark{display:block}
+.lang-tog{display:flex;gap:3px;background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:3px;backdrop-filter:blur(20px)}
+.l-btn{padding:4px 10px;border-radius:7px;font-size:11px;font-weight:600;border:none;background:none;color:var(--muted);cursor:pointer;font-family:var(--fn);transition:color .2s,background .2s}
+.l-btn.on{background:var(--grad);color:#fff}
+.s-top{position:fixed;bottom:24px;right:24px;z-index:80;width:40px;height:40px;border-radius:12px;background:var(--grad);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s}
+.s-top.show{opacity:1;pointer-events:auto}
+.s-top svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2.5}
+.skip-link{position:fixed;top:0;left:16px;z-index:10001;padding:12px 24px;background:var(--grad);color:#fff;border-radius:0 0 8px 8px;font-size:14px;font-weight:600;text-decoration:none;transform:translateY(-100%);transition:transform .3s}.skip-link:focus{transform:translateY(0)}
+.orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0}
+.orb-1{width:400px;height:400px;background:rgba(56,189,248,.06);top:-100px;right:-100px}
+.orb-2{width:350px;height:350px;background:rgba(129,140,248,.05);bottom:10%;left:-80px}
+.orb-3{width:280px;height:280px;background:rgba(192,132,252,.04);top:40%;left:50%;transform:translateX(-50%)}
+.btn-p{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;background:var(--grad);color:#fff;font-family:var(--fn);font-size:13px;font-weight:600;border-radius:10px;text-decoration:none;border:none;cursor:pointer;transition:opacity .3s,transform .3s}
+.btn-p:hover{opacity:.9;transform:translateY(-1px)}
+.btn-o{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;background:transparent;color:var(--accent);font-family:var(--fn);font-size:13px;font-weight:600;border-radius:10px;text-decoration:none;border:1px solid rgba(56,189,248,.3);cursor:pointer;transition:border-color .3s,background .3s,transform .3s}
+.btn-o:hover{border-color:var(--accent);background:var(--accent-g);transform:translateY(-1px)}
+.chip{display:inline-flex;align-items:center;font-size:10px;font-weight:600;font-family:var(--mono);padding:3px 8px;border-radius:5px;background:var(--chip-bg);color:var(--chip-c);border:1px solid var(--chip-bdr)}
+.ftr{text-align:center;padding:40px 24px 32px;border-top:1px solid var(--bdr);margin-top:0}
+.ftr-soc{display:flex;gap:16px;justify-content:center;margin-bottom:16px}
+.ftr-soc a{width:36px;height:36px;border-radius:10px;background:var(--card);border:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;transition:color .3s,border-color .3s}
+.ftr-soc a:hover{color:var(--accent);border-color:var(--accent)}
+.ftr-soc svg{width:16px;height:16px}
+.ftr-avail{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--green);background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.2);border-radius:20px;padding:4px 12px;margin-bottom:12px}
+.ftr-avail::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.ftr-txt{font-size:12px;color:var(--muted)}
+.ftr-top{display:inline-block;margin-top:12px;font-size:12px;color:var(--muted);text-decoration:none;transition:color .2s}
+.ftr-top:hover{color:var(--accent)}
+html[data-theme="light"]{--bg:#f8fafc;--bg-alt:#f1f5f9;--card:#fff;--card-h:#f8fafc;--txt:#1e293b;--txt2:#475569;--muted:#64748b;--bdr:rgba(15,23,42,.08);--nav-bg:rgba(248,250,252,.9);--prog-bg:rgba(15,23,42,.08);--chip-bg:rgba(99,102,241,.08);--chip-bdr:rgba(99,102,241,.15);--cta-bg:linear-gradient(135deg,rgba(56,189,248,.06),rgba(129,140,248,.06))}
+@keyframes ar{to{--aa:360deg}}
+</style>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=JetBrains+Mono&family=Tajawal:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="../css/bundle.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="../css/sections.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="../css/utilities.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="projects.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=JetBrains+Mono&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/bundle.css">
+<link rel="stylesheet" href="../css/sections.css">
+<link rel="stylesheet" href="../css/utilities.css">
+<link rel="stylesheet" href="projects.css">
+</noscript>
+<link rel="stylesheet" href="../css/print.css" media="print">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Al-Arba'oon An-Nawawiyyah",
+  "alternateName": "الأربعون النووية بصوت النفيس",
+  "description": "A mobile application featuring Imam An-Nawawi's 40 Hadith with professional audio narration by Sheikh An-Nafees. Published on Google Play.",
+  "applicationCategory": "LifestyleApplication",
+  "operatingSystem": "Android",
+  "downloadUrl": "https://play.google.com",
+  "author": {
+    "@type": "Person",
+    "name": "Mahmoud Hamdy Fathy",
+    "email": "hmdy7486@gmail.com",
+    "url": "https://mahmoodhamdi.github.io/cv/"
+  }
+}
+</script>
+<script>
+(function(){
+  var t=localStorage.getItem('theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+})();
+</script>
+</head>
+<body id="top">
+<a class="skip-link" href="#en-proj">Skip to main content</a>
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+<div class="orb orb-3" aria-hidden="true"></div>
+
+<nav class="navbar" id="navbar" role="navigation" aria-label="Project navigation">
+  <div class="nav-in" id="nav-en">
+    <button class="nav-a" onclick="document.getElementById('overview-en').scrollIntoView({behavior:'smooth'})">Overview</button>
+    <button class="nav-a" onclick="document.getElementById('features-en').scrollIntoView({behavior:'smooth'})">Features</button>
+    <button class="nav-a" onclick="document.getElementById('tech-en').scrollIntoView({behavior:'smooth'})">Tech Stack</button>
+    <button class="nav-a" onclick="document.getElementById('contact-en').scrollIntoView({behavior:'smooth'})">Contact</button>
+  </div>
+  <div class="nav-in" id="nav-ar" style="display:none">
+    <button class="nav-a" onclick="document.getElementById('overview-ar').scrollIntoView({behavior:'smooth'})">نظرة عامة</button>
+    <button class="nav-a" onclick="document.getElementById('features-ar').scrollIntoView({behavior:'smooth'})">المميزات</button>
+    <button class="nav-a" onclick="document.getElementById('tech-ar').scrollIntoView({behavior:'smooth'})">التقنيات</button>
+    <button class="nav-a" onclick="document.getElementById('contact-ar').scrollIntoView({behavior:'smooth'})">تواصل</button>
+  </div>
+</nav>
+
+<div class="top-ctrl">
+  <button class="t-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+    <svg class="ic-light" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    <svg class="ic-dark" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+  </button>
+  <div class="lang-tog">
+    <button class="l-btn on" onclick="setLang('en')">EN</button>
+    <button class="l-btn" onclick="setLang('ar')">AR</button>
+  </div>
+</div>
+
+<button class="s-top" id="sTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
+  <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<main>
+
+<!-- ===== EN ===== -->
+<div id="en-proj">
+<div class="proj-wrap">
+
+  <!-- Breadcrumb -->
+  <nav class="proj-breadcrumb" aria-label="Breadcrumb">
+    <a href="../index.html">Portfolio</a>
+    <span class="proj-breadcrumb-sep" aria-hidden="true">›</span>
+    <a href="../index.html#proj-en">Projects</a>
+    <span class="proj-breadcrumb-sep" aria-hidden="true">›</span>
+    <span>Al-Arba'oon An-Nawawiyyah</span>
+  </nav>
+
+  <!-- Hero -->
+  <section class="proj-hero proj-section" aria-labelledby="hero-title-en">
+    <div class="proj-hero-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+    </div>
+    <div class="proj-badges">
+      <span class="proj-badge proj-badge-type">Mobile App</span>
+      <span class="proj-badge proj-badge-status">Published ✓</span>
+    </div>
+    <h1 class="proj-title" id="hero-title-en">Al-Arba'oon An-Nawawiyyah — Islamic Hadith App</h1>
+    <p class="proj-tagline">Nawawi's 40 Hadith with audio narration — published on Google Play</p>
+    <div class="proj-hero-links">
+      <a class="btn-p" href="https://play.google.com" target="_blank" rel="noopener">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10z"/><path d="M10 8l6 4-6 4V8z"/></svg>
+        Google Play
+      </a>
+      <a class="btn-o" href="mailto:hmdy7486@gmail.com">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Hire Me
+      </a>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="proj-overview proj-section" id="overview-en" aria-labelledby="overview-title-en">
+    <div class="proj-overview-inner">
+      <h2 class="proj-sec-title" id="overview-title-en">Overview</h2>
+      <p>A mobile application published on Google Play featuring Imam An-Nawawi's famous collection of 40 Hadith. The app provides the full Arabic text of each hadith with professional audio narration by Sheikh An-Nafees, making it easy for users to read and listen to these foundational Islamic texts on the go. Designed with an Arabic-first RTL interface and built for full offline access — no internet connection required after installation.</p>
+    </div>
+  </section>
+
+  <!-- Problem & Solution -->
+  <section class="proj-problem proj-section" aria-labelledby="problem-title-en">
+    <h2 class="proj-sec-title" id="problem-title-en">Problem &amp; Solution</h2>
+    <div class="proj-problem-grid">
+      <div class="proj-problem-card problem">
+        <div class="proj-problem-label">Problem</div>
+        <h3>The Challenge</h3>
+        <p>Muslims needed an accessible, well-designed mobile app to read and listen to the foundational 40 Hadith of Imam An-Nawawi with professional audio narration — working anywhere, even without internet access.</p>
+      </div>
+      <div class="proj-problem-card solution">
+        <div class="proj-problem-label">Solution</div>
+        <h3>The Approach</h3>
+        <p>Built a clean, offline-first Flutter app with professional audio narration by Sheikh An-Nafees. All content and audio are bundled locally so users can access every hadith anywhere, anytime. Published on Google Play for wide distribution.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="proj-features proj-section" id="features-en" aria-labelledby="features-title-en">
+    <h2 class="proj-sec-title" id="features-title-en">Key Features</h2>
+    <div class="proj-features-grid">
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Complete 40 Hadith Collection</div>
+          <div class="proj-feature-desc">All 40 hadith of Imam An-Nawawi with full Arabic text, numbered and presented in a clean reading layout.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Professional Audio Narration</div>
+          <div class="proj-feature-desc">High-quality audio recitation of every hadith by Sheikh An-Nafees, playable directly in the app.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Clean Reading Interface</div>
+          <div class="proj-feature-desc">Distraction-free reading view with optimal Arabic typography, comfortable line spacing, and adjustable text size.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Audio Controls</div>
+          <div class="proj-feature-desc">Play, pause, seek, and navigate between hadith audio tracks with an intuitive media player interface.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Bookmarking &amp; Favorites</div>
+          <div class="proj-feature-desc">Save favorite hadith for quick access and track reading progress through the collection.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Arabic-First RTL UI</div>
+          <div class="proj-feature-desc">Designed natively for Arabic with proper right-to-left layout, appropriate fonts, and culturally fitting aesthetics.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Offline Access</div>
+          <div class="proj-feature-desc">All hadith text and audio are stored locally. No internet connection required — works anywhere, anytime.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Material Design</div>
+          <div class="proj-feature-desc">Follows Material Design guidelines for a familiar, accessible, and polished Android experience.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="proj-tech proj-section" id="tech-en" aria-labelledby="tech-title-en">
+    <h2 class="proj-sec-title" id="tech-title-en">Tech Stack</h2>
+    <div class="proj-tech-grid">
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Flutter + Dart</div>
+            <div class="proj-tech-category">Mobile Framework</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Cross-platform framework for building a high-performance, native-feeling Android app with a single codebase.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Clean Architecture</div>
+            <div class="proj-tech-category">Architecture</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Layered architecture separating data, domain, and presentation for maintainability and testability.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Bloc / Cubit</div>
+            <div class="proj-tech-category">State Management</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Predictable state management with Bloc pattern — audio playback state, favorites, and navigation all managed cleanly.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Local Storage</div>
+            <div class="proj-tech-category">Offline-First</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">All content and audio bundled with the app using Flutter assets — no backend, no network dependency.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M10 8l6 4-6 4V8z"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Google Play</div>
+            <div class="proj-tech-category">Distribution</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Published on Google Play Store for Android, reaching a global Muslim audience with easy discovery and updates.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Architecture -->
+  <section class="proj-arch proj-section" aria-labelledby="arch-title-en">
+    <h2 class="proj-sec-title" id="arch-title-en">Architecture</h2>
+    <div class="proj-arch-card">
+      <p>Clean Architecture with Bloc pattern. All hadith content and audio files are stored locally within the app bundle for offline access. Audio playback is handled via platform channels connecting Flutter to the native Android audio engine.</p>
+      <p>The presentation layer consists of Cubit-driven screens for the hadith list, individual hadith detail view, and audio player. The domain layer holds the hadith entities and use cases, while the data layer reads from local JSON and asset files — keeping the app entirely self-contained with no network dependency.</p>
+      <div class="proj-arch-diagram" aria-label="Architecture diagram" role="img">
+┌──────────────────────────────────────────────┐
+│          FLUTTER APP ARCHITECTURE            │
+│                                              │
+│  ┌──────────────────────────────────────┐    │
+│  │          Presentation Layer          │    │
+│  │  (Screens + Widgets + Cubit/Bloc)    │    │
+│  └─────────────────┬────────────────────┘    │
+│                    │                         │
+│  ┌─────────────────▼────────────────────┐    │
+│  │            Domain Layer              │    │
+│  │     (Entities + Use Cases)           │    │
+│  └─────────────────┬────────────────────┘    │
+│                    │                         │
+│  ┌─────────────────▼────────────────────┐    │
+│  │             Data Layer               │    │
+│  │   Local JSON Assets + Audio Files    │    │
+│  │   (SharedPreferences for bookmarks)  │    │
+│  └─────────────────┬────────────────────┘    │
+│                    │                         │
+│  ┌─────────────────▼────────────────────┐    │
+│  │         Platform Channels            │    │
+│  │    (Native Android Audio Engine)     │    │
+│  └──────────────────────────────────────┘    │
+│                                              │
+│  Published → Google Play Store               │
+└──────────────────────────────────────────────┘</div>
+    </div>
+  </section>
+
+  <!-- Screenshots -->
+  <section class="proj-screenshots proj-section" aria-labelledby="screenshots-title-en">
+    <h2 class="proj-sec-title" id="screenshots-title-en">Screenshots</h2>
+    <div class="proj-screenshots-grid">
+      <div class="proj-screenshot-placeholder" aria-label="Hadith list screen placeholder">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>Hadith List</span>
+      </div>
+      <div class="proj-screenshot-placeholder" aria-label="Hadith detail with audio player placeholder">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>Hadith Detail + Audio Player</span>
+      </div>
+      <div class="proj-screenshot-placeholder" aria-label="Bookmarks screen placeholder">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>Bookmarks</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="proj-cta proj-section" id="contact-en" aria-labelledby="cta-title-en">
+    <h2 class="proj-cta-title" id="cta-title-en">Need a Mobile App Built?</h2>
+    <p class="proj-cta-desc">I build polished Flutter apps for Android and iOS — from Islamic apps and utilities to full-stack platforms. Let's build something meaningful together.</p>
+    <div class="proj-cta-actions">
+      <a class="btn-p" href="mailto:hmdy7486@gmail.com">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Get In Touch
+      </a>
+      <a class="btn-o" href="https://upwork.com" target="_blank" rel="noopener">
+        Hire on Upwork
+      </a>
+    </div>
+  </section>
+
+  <!-- Related Projects -->
+  <section class="proj-related proj-section" aria-labelledby="related-title-en">
+    <h2 class="proj-sec-title" id="related-title-en">Related Projects</h2>
+    <div class="proj-related-grid">
+
+      <a class="proj-related-card" href="wasalni.html">
+        <div class="proj-related-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div class="proj-related-name">Wasalni</div>
+        <div class="proj-related-desc">Full-stack ride-sharing platform with two Flutter apps, Node.js backend, and real-time GPS tracking.</div>
+        <div class="proj-related-tags">
+          <span class="chip">Flutter</span>
+          <span class="chip">Node.js</span>
+          <span class="chip">WebSocket</span>
+        </div>
+        <span class="proj-related-arrow" aria-hidden="true">→</span>
+      </a>
+
+      <a class="proj-related-card" href="clinic-booking.html">
+        <div class="proj-related-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="proj-related-name">Clinic Booking</div>
+        <div class="proj-related-desc">Medical appointment booking app with doctor profiles, schedule management, and patient notifications.</div>
+        <div class="proj-related-tags">
+          <span class="chip">Flutter</span>
+          <span class="chip">Node.js</span>
+          <span class="chip">FCM</span>
+        </div>
+        <span class="proj-related-arrow" aria-hidden="true">→</span>
+      </a>
+
+      <a class="proj-related-card" href="bagour-delivery.html">
+        <div class="proj-related-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <div class="proj-related-name">Bagour Delivery</div>
+        <div class="proj-related-desc">Last-mile delivery platform with order tracking and driver dispatch management.</div>
+        <div class="proj-related-tags">
+          <span class="chip">Flutter</span>
+          <span class="chip">Node.js</span>
+          <span class="chip">Maps</span>
+        </div>
+        <span class="proj-related-arrow" aria-hidden="true">→</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Back to portfolio -->
+  <div class="proj-back">
+    <a class="proj-back-link" href="../index.html">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to Portfolio
+    </a>
+  </div>
+
+</div><!-- /.proj-wrap -->
+
+<div class="ftr-wave" aria-hidden="true"></div>
+<footer class="ftr">
+  <div class="ftr-soc">
+    <a href="https://github.com/mahmoodhamdi" target="_blank" rel="noopener" aria-label="GitHub">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+    </a>
+    <a href="mailto:hmdy7486@gmail.com" aria-label="Email">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    </a>
+    <a href="https://upwork.com" target="_blank" rel="noopener" aria-label="Upwork">
+      <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
+    </a>
+  </div>
+  <div class="ftr-avail">Available for Hire</div>
+  <div class="ftr-txt">© 2026 Mahmoud Hamdy Fathy — Built with passion</div>
+  <a class="ftr-top" href="#top" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'})">↑ Back to top</a>
+</footer>
+</div><!-- /#en-proj -->
+
+<!-- ===== AR ===== -->
+<div id="ar-proj" style="display:none">
+<div class="proj-wrap">
+
+  <!-- Breadcrumb -->
+  <nav class="proj-breadcrumb" aria-label="مسار التنقل">
+    <a href="../index.html">المحفظة</a>
+    <span class="proj-breadcrumb-sep" aria-hidden="true">›</span>
+    <a href="../index.html#proj-ar">المشاريع</a>
+    <span class="proj-breadcrumb-sep" aria-hidden="true">›</span>
+    <span>الأربعون النووية</span>
+  </nav>
+
+  <!-- Hero -->
+  <section class="proj-hero proj-section" aria-labelledby="hero-title-ar">
+    <div class="proj-hero-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+    </div>
+    <div class="proj-badges">
+      <span class="proj-badge proj-badge-type">تطبيق موبايل</span>
+      <span class="proj-badge proj-badge-status">منشور ✓</span>
+    </div>
+    <h1 class="proj-title" id="hero-title-ar">الأربعون النووية بصوت النفيس</h1>
+    <p class="proj-tagline">تطبيق الأربعين النووية بصوت الشيخ النفيس — منشور على جوجل بلاي</p>
+    <div class="proj-hero-links">
+      <a class="btn-p" href="https://play.google.com" target="_blank" rel="noopener">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10z"/><path d="M10 8l6 4-6 4V8z"/></svg>
+        جوجل بلاي
+      </a>
+      <a class="btn-o" href="mailto:hmdy7486@gmail.com">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        تواصل معي
+      </a>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="proj-overview proj-section" id="overview-ar" aria-labelledby="overview-title-ar">
+    <div class="proj-overview-inner">
+      <h2 class="proj-sec-title" id="overview-title-ar">نظرة عامة</h2>
+      <p>تطبيق موبايل منشور على جوجل بلاي يضم مجموعة الإمام النووي الشهيرة من 40 حديثاً. التطبيق يوفر النص العربي الكامل لكل حديث مع تلاوة صوتية احترافية بصوت الشيخ النفيس، مما يُيسّر على المستخدمين قراءة هذه الأحاديث الأساسية والاستماع إليها في أي وقت ومكان. صُمِّم بواجهة عربية RTL أصيلة ويعمل بالكامل بدون إنترنت بعد التثبيت.</p>
+    </div>
+  </section>
+
+  <!-- Problem & Solution -->
+  <section class="proj-problem proj-section" aria-labelledby="problem-title-ar">
+    <h2 class="proj-sec-title" id="problem-title-ar">المشكلة والحل</h2>
+    <div class="proj-problem-grid">
+      <div class="proj-problem-card problem">
+        <div class="proj-problem-label">المشكلة</div>
+        <h3>التحدي</h3>
+        <p>المسلمون محتاجون لتطبيق موبايل بتصميم جميل لقراءة والاستماع للأربعين النووية بصوت احترافي — يشتغل في أي مكان حتى بدون إنترنت.</p>
+      </div>
+      <div class="proj-problem-card solution">
+        <div class="proj-problem-label">الحل</div>
+        <h3>النهج</h3>
+        <p>بنيت تطبيق Flutter نظيف يعمل بدون إنترنت مع صوت الشيخ النفيس الاحترافي. كل المحتوى والصوتيات مخزّنة محلياً حتى يقدر المستخدم يوصل لكل حديث في أي وقت. منشور على جوجل بلاي للوصول الواسع.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="proj-features proj-section" id="features-ar" aria-labelledby="features-title-ar">
+    <h2 class="proj-sec-title" id="features-title-ar">المميزات الرئيسية</h2>
+    <div class="proj-features-grid">
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">مجموعة الأربعين حديثاً كاملة</div>
+          <div class="proj-feature-desc">جميع الأربعين حديثاً للإمام النووي بالنص العربي الكامل، مرقّمة ومعروضة في تخطيط قراءة نظيف.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">تلاوة صوتية احترافية</div>
+          <div class="proj-feature-desc">تلاوة صوتية عالية الجودة لكل حديث بصوت الشيخ النفيس قابلة للتشغيل مباشرة في التطبيق.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">واجهة قراءة نظيفة</div>
+          <div class="proj-feature-desc">عرض قراءة خالٍ من التشتيت مع طباعة عربية مثالية ومسافات سطور مريحة وحجم خط قابل للضبط.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">أدوات تحكم بالصوت</div>
+          <div class="proj-feature-desc">تشغيل وإيقاف ومتابعة والتنقل بين مقاطع الأحاديث الصوتية عبر واجهة مشغّل وسائط سهلة.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">الإشارات المرجعية والمفضلة</div>
+          <div class="proj-feature-desc">حفظ الأحاديث المفضلة للوصول السريع وتتبع تقدم القراءة عبر المجموعة.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">واجهة عربية RTL</div>
+          <div class="proj-feature-desc">مصمم أصلاً للعربية مع تخطيط صحيح من اليمين لليسار وخطوط مناسبة وجماليات ثقافية ملائمة.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">الوصول بدون إنترنت</div>
+          <div class="proj-feature-desc">كل نصوص وصوتيات الأحاديث مخزّنة محلياً. لا يلزم اتصال بالإنترنت — يعمل في أي مكان وزمان.</div>
+        </div>
+      </div>
+
+      <div class="proj-feature-item">
+        <div class="proj-feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+        </div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Material Design</div>
+          <div class="proj-feature-desc">يتبع إرشادات Material Design لتجربة Android مألوفة وسهلة الوصول ومصقولة.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="proj-tech proj-section" id="tech-ar" aria-labelledby="tech-title-ar">
+    <h2 class="proj-sec-title" id="tech-title-ar">التقنيات المستخدمة</h2>
+    <div class="proj-tech-grid">
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Flutter + Dart</div>
+            <div class="proj-tech-category">إطار العمل</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">إطار متعدد المنصات لبناء تطبيق Android عالي الأداء بأسلوب نيتف من قاعدة كود واحدة.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Clean Architecture</div>
+            <div class="proj-tech-category">البنية المعمارية</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">بنية طبقية تفصل البيانات والدومين والعرض لسهولة الصيانة والاختبار.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Bloc / Cubit</div>
+            <div class="proj-tech-category">إدارة الحالة</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">إدارة حالة يمكن التنبؤ بها مع نمط Bloc — حالة تشغيل الصوت والمفضلة والتنقل تُدار بنظافة.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">التخزين المحلي</div>
+            <div class="proj-tech-category">أولوية بدون إنترنت</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">كل المحتوى والصوتيات مدرجة مع التطبيق كـ assets — بدون باك إند أو اعتماد على الشبكة.</div>
+      </div>
+
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M10 8l6 4-6 4V8z"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">جوجل بلاي</div>
+            <div class="proj-tech-category">التوزيع</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">منشور على متجر جوجل بلاي للاندرويد للوصول لجمهور مسلم عالمي واسع.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Architecture -->
+  <section class="proj-arch proj-section" aria-labelledby="arch-title-ar">
+    <h2 class="proj-sec-title" id="arch-title-ar">البنية المعمارية</h2>
+    <div class="proj-arch-card">
+      <p>Clean Architecture مع نمط Bloc. جميع نصوص الأحاديث والملفات الصوتية مخزّنة محلياً داخل حزمة التطبيق للوصول بدون إنترنت. تشغيل الصوت يُعالَج عبر قنوات المنصة التي تربط Flutter بمحرك الصوت الأصلي لـ Android.</p>
+      <p>طبقة العرض تتكوّن من شاشات مدفوعة بـ Cubit لقائمة الأحاديث وعرض الحديث التفصيلي ومشغّل الصوت. طبقة الدومين تحتوي على كيانات الأحاديث وحالات الاستخدام، بينما طبقة البيانات تقرأ من ملفات JSON والـ assets المحلية — مما يجعل التطبيق مكتفياً بذاته تماماً.</p>
+      <div class="proj-arch-diagram" dir="ltr" aria-label="مخطط البنية المعمارية" role="img">
+┌──────────────────────────────────────────────┐
+│          FLUTTER APP ARCHITECTURE            │
+│                                              │
+│  ┌──────────────────────────────────────┐    │
+│  │          Presentation Layer          │    │
+│  │  (Screens + Widgets + Cubit/Bloc)    │    │
+│  └─────────────────┬────────────────────┘    │
+│                    │                         │
+│  ┌─────────────────▼────────────────────┐    │
+│  │            Domain Layer              │    │
+│  │     (Entities + Use Cases)           │    │
+│  └─────────────────┬────────────────────┘    │
+│                    │                         │
+│  ┌─────────────────▼────────────────────┐    │
+│  │             Data Layer               │    │
+│  │   Local JSON Assets + Audio Files    │    │
+│  │   (SharedPreferences for bookmarks)  │    │
+│  └─────────────────┬────────────────────┘    │
+│                    │                         │
+│  ┌─────────────────▼────────────────────┐    │
+│  │         Platform Channels            │    │
+│  │    (Native Android Audio Engine)     │    │
+│  └──────────────────────────────────────┘    │
+│                                              │
+│  Published → Google Play Store               │
+└──────────────────────────────────────────────┘</div>
+    </div>
+  </section>
+
+  <!-- Screenshots -->
+  <section class="proj-screenshots proj-section" aria-labelledby="screenshots-title-ar">
+    <h2 class="proj-sec-title" id="screenshots-title-ar">لقطات الشاشة</h2>
+    <div class="proj-screenshots-grid">
+      <div class="proj-screenshot-placeholder" aria-label="شاشة قائمة الأحاديث">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>قائمة الأحاديث</span>
+      </div>
+      <div class="proj-screenshot-placeholder" aria-label="شاشة تفاصيل الحديث ومشغل الصوت">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>تفاصيل الحديث + مشغّل الصوت</span>
+      </div>
+      <div class="proj-screenshot-placeholder" aria-label="شاشة المفضلة">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>المفضلة</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="proj-cta proj-section" id="contact-ar" aria-labelledby="cta-title-ar">
+    <h2 class="proj-cta-title" id="cta-title-ar">تحتاج تطبيق موبايل؟</h2>
+    <p class="proj-cta-desc">أبني تطبيقات Flutter مصقولة لـ Android وiOS — من التطبيقات الإسلامية والمساعدات لحد المنصات المتكاملة. دعنا نبني شيئاً ذا معنى معاً.</p>
+    <div class="proj-cta-actions">
+      <a class="btn-p" href="mailto:hmdy7486@gmail.com">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        تواصل معي
+      </a>
+      <a class="btn-o" href="https://upwork.com" target="_blank" rel="noopener">
+        توظيف عبر Upwork
+      </a>
+    </div>
+  </section>
+
+  <!-- Related Projects -->
+  <section class="proj-related proj-section" aria-labelledby="related-title-ar">
+    <h2 class="proj-sec-title" id="related-title-ar">مشاريع ذات صلة</h2>
+    <div class="proj-related-grid">
+
+      <a class="proj-related-card" href="wasalni.html">
+        <div class="proj-related-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div class="proj-related-name">وصلني</div>
+        <div class="proj-related-desc">منصة توصيل متكاملة بتطبيقين Flutter وباك إند Node.js وتتبع GPS لحظي.</div>
+        <div class="proj-related-tags">
+          <span class="chip">Flutter</span>
+          <span class="chip">Node.js</span>
+          <span class="chip">WebSocket</span>
+        </div>
+        <span class="proj-related-arrow" aria-hidden="true">←</span>
+      </a>
+
+      <a class="proj-related-card" href="clinic-booking.html">
+        <div class="proj-related-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="proj-related-name">حجز العيادة</div>
+        <div class="proj-related-desc">تطبيق حجز مواعيد طبية مع ملفات تعريف الأطباب وإدارة الجدول الزمني وإشعارات المرضى.</div>
+        <div class="proj-related-tags">
+          <span class="chip">Flutter</span>
+          <span class="chip">Node.js</span>
+          <span class="chip">FCM</span>
+        </div>
+        <span class="proj-related-arrow" aria-hidden="true">←</span>
+      </a>
+
+      <a class="proj-related-card" href="bagour-delivery.html">
+        <div class="proj-related-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <div class="proj-related-name">باقور للتوصيل</div>
+        <div class="proj-related-desc">منصة توصيل آخر ميل مع تتبع الطلبات وإدارة توزيع السائقين.</div>
+        <div class="proj-related-tags">
+          <span class="chip">Flutter</span>
+          <span class="chip">Node.js</span>
+          <span class="chip">Maps</span>
+        </div>
+        <span class="proj-related-arrow" aria-hidden="true">←</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Back to portfolio -->
+  <div class="proj-back">
+    <a class="proj-back-link" href="../index.html">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      العودة للمحفظة
+    </a>
+  </div>
+
+</div><!-- /.proj-wrap -->
+
+<div class="ftr-wave" aria-hidden="true"></div>
+<footer class="ftr">
+  <div class="ftr-soc">
+    <a href="https://github.com/mahmoodhamdi" target="_blank" rel="noopener" aria-label="GitHub">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+    </a>
+    <a href="mailto:hmdy7486@gmail.com" aria-label="البريد الإلكتروني">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    </a>
+    <a href="https://upwork.com" target="_blank" rel="noopener" aria-label="Upwork">
+      <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
+    </a>
+  </div>
+  <div class="ftr-avail">متاح للعمل الحر</div>
+  <div class="ftr-txt">© 2026 محمود حمدي فتحي — بُني بشغف</div>
+  <a class="ftr-top" href="#top" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'})">↑ للأعلى</a>
+</footer>
+</div><!-- /#ar-proj -->
+
+</main>
+
+<script>
+// Inline language toggle for project pages
+function setLang(l) {
+  var h = document.documentElement;
+  var e = document.getElementById('en-proj');
+  var a = document.getElementById('ar-proj');
+  var b = document.querySelectorAll('.l-btn');
+  var ne = document.getElementById('nav-en');
+  var na = document.getElementById('nav-ar');
+  if (l === 'ar') {
+    h.dir = 'rtl'; h.lang = 'ar';
+    e.style.display = 'none'; a.style.display = 'block';
+    ne.style.display = 'none'; na.style.display = 'flex';
+    b[0].classList.remove('on'); b[1].classList.add('on');
+  } else {
+    h.dir = 'ltr'; h.lang = 'en';
+    e.style.display = 'block'; a.style.display = 'none';
+    ne.style.display = 'flex'; na.style.display = 'none';
+    b[0].classList.add('on'); b[1].classList.remove('on');
+  }
+  localStorage.setItem('cv-lang', l);
+}
+// Restore saved lang
+(function(){ var l = localStorage.getItem('cv-lang'); if (l === 'ar') setLang('ar'); })();
+</script>
+
+<script src="../js/utils.js" defer></script>
+<script src="../js/theme.js" defer></script>
+<script src="../js/language.js" defer></script>
+<script src="../js/navigation.js" defer></script>
+<script src="../js/animations.js" defer></script>
+<script src="../js/analytics.js" defer></script>
+<script src="../js/pwa.js" defer></script>
+<script src="../js/main.js" defer></script>
+<script>
+// Scroll-to-top button visibility
+window.addEventListener('scroll', function() {
+  var btn = document.getElementById('sTop');
+  if (btn) { btn.classList.toggle('show', window.scrollY > 300); }
+});
+// Scroll-reveal for proj-section elements
+(function() {
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.proj-section').forEach(function(el) { el.classList.add('rev'); });
+    return;
+  }
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('rev'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.proj-section').forEach(function(el) { obs.observe(el); });
+})();
+// Body loaded
+document.body.classList.add('loaded');
+// GA loader
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    var s = document.createElement('script');
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-D0H1J8BSKJ';
+    s.async = true;
+    document.head.appendChild(s);
+    s.onload = function() {
+      window.dataLayer = window.dataLayer || [];
+      function g() { dataLayer.push(arguments); }
+      g('js', new Date()); g('config', 'G-D0H1J8BSKJ');
+      window.gtag = g;
+    };
+  }, 2000);
+});
+</script>
+</body>
+</html>

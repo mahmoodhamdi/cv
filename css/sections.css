@@ -87,6 +87,8 @@
 .tl-d li{padding:3px 0;position:relative;padding-left:16px}
 .tl-d li::before{content:'\25B8';position:absolute;left:0;color:var(--accent);font-size:12px}
 .tu{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px}
+.proj-link{display:inline-block;margin-top:12px;font-size:13px;font-weight:600;color:var(--accent);text-decoration:none;transition:opacity .2s}
+.proj-link:hover{text-decoration:underline}
 
 /* project color borders */
 .proj-blue{border-left:3px solid #3b82f6}
@@ -143,6 +145,38 @@
 .cta-t{font-family:var(--fn);font-size:28px;font-weight:600;margin-bottom:8px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .cta-sub{font-size:15px;color:var(--txt2);margin-bottom:24px}
 .cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* contact form */
+.contact-container{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.contact-info{padding:8px 0}
+.contact-subtitle{font-size:15px;color:var(--txt2);line-height:1.7;margin-bottom:24px}
+.contact-details{display:flex;flex-direction:column;gap:12px;margin-bottom:24px}
+.contact-detail-item{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:10px;background:var(--card);border:1px solid var(--bdr);text-decoration:none;color:var(--txt);font-size:13px;transition:transform .3s,opacity .3s}
+.contact-detail-item:hover{border-color:var(--accent);transform:translateY(-2px)}
+.contact-detail-item .contact-icon{width:36px;height:36px;border-radius:10px;background:var(--accent-g);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--accent)}
+.contact-detail-item strong{display:block;font-size:12px;color:var(--muted);font-weight:500;margin-bottom:2px}
+.contact-detail-item span{color:var(--txt2)}
+.availability-badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--green);font-weight:500}
+.avail-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:blink 2s infinite}
+.contact-form-wrap{position:relative}
+.form-card{background:var(--card);border:1px solid var(--bdr);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:16px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group label{font-size:12px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.form-group input,.form-group select,.form-group textarea{font-family:var(--fn);font-size:14px;padding:10px 14px;border-radius:8px;border:1px solid var(--bdr);background:var(--bg);color:var(--txt);transition:border-color .2s;outline:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--accent)}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--muted);opacity:.6}
+.form-group textarea{resize:vertical;min-height:80px}
+.form-group select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238e99ad' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;cursor:pointer}
+html[dir="rtl"] .form-group select{background-position:left 12px center;padding-right:14px;padding-left:32px}
+.form-group input:invalid:not(:placeholder-shown){border-color:#ef4444}
+.form-submit-btn{font-family:var(--fn);font-size:14px;font-weight:600;padding:12px 28px;border-radius:10px;background:var(--grad);color:#fff;border:none;cursor:pointer;transition:transform .3s,opacity .3s;align-self:flex-start}
+.form-submit-btn:hover{transform:translateY(-1px);box-shadow:0 4px 20px var(--accent-g)}
+.form-submit-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.form-submit-btn.success{background:#059669}
+html[dir="rtl"] .form-submit-btn{align-self:flex-end}
+@media(max-width:767px){
+  .contact-container{grid-template-columns:1fr}
+}
 
 /* footer */
 .ftr-wave{height:40px;background:linear-gradient(to right,var(--accent),var(--accent2));clip-path:polygon(0 100%,100% 100%,100% 0,75% 60%,50% 20%,25% 60%,0 0);opacity:.15;margin-top:60px}
