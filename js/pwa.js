@@ -73,6 +73,24 @@
     document.querySelectorAll('.pwa-install-btn').forEach(function(btn) {
       btn.style.display = 'none';
     });
+  } else {
+    // iOS Safari fallback — beforeinstallprompt never fires there.
+    var ua = window.navigator.userAgent;
+    var isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+    var isStandalone = window.navigator.standalone === true;
+    if (isIOS && !isStandalone) {
+      document.querySelectorAll('.pwa-install-btn').forEach(function(btn) {
+        btn.style.display = 'inline-flex';
+        btn.addEventListener('click', function() {
+          var isAr = document.documentElement.lang === 'ar';
+          var msg = isAr
+            ? 'لتثبيت التطبيق: اضغط زر المشاركة ⬆ ثم اختر "إضافة إلى الشاشة الرئيسية"'
+            : 'To install: tap Share ⬆ then "Add to Home Screen"';
+          if (window.showToast) window.showToast(msg);
+          else alert(msg);
+        });
+      });
+    }
   }
 
   // Offline banner

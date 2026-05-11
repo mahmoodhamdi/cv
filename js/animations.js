@@ -147,15 +147,28 @@ function observeTestimonials() {
   });
 }
 
-// heatmap
+// heatmap — deterministic per-day so the pattern is stable across refreshes
+// but rotates one cell every day, mimicking real contribution activity.
 function initHeatmap() {
+  var now = new Date();
+  var dayKey = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
+  function intensity(i) {
+    // Two-wave deterministic noise — looks like clustered commit activity
+    var s = Math.sin(i * 0.73 + dayKey * 0.21) + Math.sin(i * 1.91 + dayKey * 0.05) + Math.sin(i * 0.31);
+    var t = (s + 3) / 6; // normalize to ~0..1
+    if (t < 0) t = 0; if (t > 1) t = 1;
+    // Bias toward 1-3 intensity (active dev pattern, few zero-days)
+    var level = Math.round(t * 4 * 0.85 + 0.4);
+    if (level < 0) level = 0; if (level > 4) level = 4;
+    return level;
+  }
   ['hm-en', 'hm-ar'].forEach(function(id) {
     var el = document.getElementById(id);
     if (!el) return;
     el.innerHTML = '';
     for (var i = 0; i < 60; i++) {
       var sq = document.createElement('span');
-      sq.className = 'hm-sq hm-' + Math.floor(Math.random() * 5);
+      sq.className = 'hm-sq hm-' + intensity(i);
       el.appendChild(sq);
     }
   });
