@@ -61,8 +61,15 @@
 .t-btn:hover svg{transform:rotate(30deg)}
 .ic-dark,.ic-light{display:none}
 
-.pr-btn{position:fixed;top:58px;left:20px;z-index:100;padding:7px 16px;border:1px solid var(--bdr);border-radius:10px;background:var(--card);color:var(--txt2);font-family:var(--fn);font-size:12px;font-weight:500;cursor:pointer;backdrop-filter:blur(20px);display:flex;align-items:center;gap:6px;transition:transform .3s,opacity .3s}
+.dl-grp{position:fixed;top:58px;left:20px;z-index:100;display:flex;gap:6px;align-items:center}
+.pr-btn{padding:7px 16px;border:1px solid var(--bdr);border-radius:10px;background:var(--card);color:var(--txt2);font-family:var(--fn);font-size:12px;font-weight:500;cursor:pointer;backdrop-filter:blur(20px);display:flex;align-items:center;gap:6px;transition:transform .3s,opacity .3s,color .3s,border-color .3s,background .3s}
 .pr-btn:hover{color:var(--accent);border-color:var(--accent)}
+.pdf-btn{background:linear-gradient(135deg,rgba(56,189,248,.12),rgba(129,140,248,.12));color:var(--accent)}
+.pdf-btn:hover{background:var(--grad);color:#fff;border-color:transparent}
+.dl-lbl-ar{display:none}
+html[lang="ar"] .dl-lbl-en{display:none}
+html[lang="ar"] .dl-lbl-ar{display:inline}
+html[dir="rtl"] .dl-grp{left:auto;right:20px}
 
 /* toast */
 .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(16px);z-index:200;background:var(--card);color:var(--txt);padding:10px 22px;border-radius:10px;font-size:13px;font-weight:500;opacity:0;transition:transform .3s,opacity .3s;pointer-events:none;box-shadow:0 8px 32px rgba(0,0,0,.3);border:1px solid var(--bdr)}

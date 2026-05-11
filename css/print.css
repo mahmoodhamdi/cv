@@ -4,12 +4,13 @@
 
 @media print{
   body{background:#fff;color:#1a1a1a;padding-top:0}
-  body::before,.orb,.top-ctrl,.pr-btn,.navbar,.s-top,.toast,.scroll-progress,.cta,.ftr-wave,.heatmap{display:none}
+  body::before,.orb,.top-ctrl,.pr-btn,.pdf-btn,.dl-grp,.navbar,.s-top,.toast,.scroll-progress,.cta,.ftr-wave,.heatmap,.now-card,.pwa-install-btn,.blog-search,.blog-empty{display:none}
   .wrap{max-width:100%;padding:0}
   .nm{-webkit-text-fill-color:#1a1a1a;color:#1a1a1a}
   .sec{opacity:1;transform:none;margin-top:24px}
   .sum-w{background:none;padding:0;box-shadow:none;animation:none}
-  .sum,.sk-cat,.tl-it,.plat-c,.oss-st,.svc-c,.val-c,.test-c,.edu-c,.tool-c,.stat-item{background:#f8fafc;border:1px solid #e2e8f0;color:#334155;box-shadow:none;transform:none;opacity:1}
+  .sum,.sk-cat,.tl-it,.plat-c,.oss-st,.svc-c,.val-c,.test-c,.edu-c,.tool-c,.stat-item,.cert-c{background:#f8fafc;border:1px solid #e2e8f0;color:#334155;box-shadow:none;transform:none;opacity:1}
+  .cert-i{background:#eff6ff}
   .oss-v,.st-n{-webkit-text-fill-color:#1e40af}
   .tl::before{background:#cbd5e1}
   .tl-it::before{background:#2563eb;box-shadow:none}
