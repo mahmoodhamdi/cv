@@ -86,6 +86,16 @@
     </a>
   </div>
 
+  <!-- Search Bar -->
+  <div class="blog-search">
+    <span class="blog-search-icon" aria-hidden="true">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+    </span>
+    <input type="search" id="blog-search-input" class="blog-search-input" autocomplete="off" placeholder="Search posts by title or topic..." aria-label="Search blog posts">
+    <button class="blog-search-clear" id="blog-search-clear" aria-label="Clear search" type="button">×</button>
+    <span class="blog-search-count" id="blog-search-count" aria-live="polite"></span>
+  </div>
+
   <!-- Category Filters -->
   <div class="cat-filters" role="group" aria-label="Filter posts by category">
     <button class="cat-btn active" onclick="filterPosts('all')" data-cat="all">
@@ -100,6 +110,13 @@
     <button class="cat-btn" onclick="filterPosts('experience')" data-cat="experience">
       <span class="en-txt">Experience</span><span class="ar-txt" style="display:none">تجربة</span>
     </button>
+  </div>
+
+  <!-- Empty state -->
+  <div class="blog-empty" id="blog-empty" style="display:none">
+    <div class="blog-empty-i">🔍</div>
+    <div class="blog-empty-tt"><span class="en-txt">No posts match your search</span><span class="ar-txt" style="display:none">لا توجد مقالات مطابقة</span></div>
+    <div class="blog-empty-d"><span class="en-txt">Try a different keyword or category.</span><span class="ar-txt" style="display:none">جرب كلمة مفتاحية أو فئة مختلفة.</span></div>
   </div>
 
   <!-- Posts Grid -->
@@ -883,6 +900,13 @@
     document.querySelectorAll('.en-txt').forEach(el=>el.style.display=isAr?'none':'inline');
     document.querySelectorAll('.ar-txt').forEach(el=>el.style.display=isAr?'inline':'none');
 
+    // search input placeholder
+    var si=document.getElementById('blog-search-input');
+    if(si) si.placeholder=isAr?'ابحث في المقالات بالعنوان أو الموضوع...':'Search posts by title or topic...';
+
+    // refresh result count text in new language
+    if(typeof applyFilters==='function') applyFilters();
+
     localStorage.setItem('lang',lang);
   }
   window.setLang=setLang;
@@ -890,19 +914,65 @@
   const savedLang=localStorage.getItem('lang');
   if(savedLang) setLang(savedLang);
 
-  // Category filter
+  // Combined search + category filter
+  var currentCat = 'all';
+  var currentQuery = '';
+  function applyFilters(){
+    var q = currentQuery.trim().toLowerCase();
+    var matched = 0;
+    document.querySelectorAll('.post-card').forEach(function(card){
+      var catOk = currentCat === 'all' || card.getAttribute('data-category') === currentCat;
+      var text = (card.textContent || '').toLowerCase();
+      var searchOk = !q || text.indexOf(q) !== -1;
+      if (catOk && searchOk) { card.style.display = 'flex'; matched++; }
+      else { card.style.display = 'none'; }
+    });
+    var empty = document.getElementById('blog-empty');
+    var grid = document.getElementById('posts-grid');
+    if (empty) empty.style.display = matched === 0 ? 'block' : 'none';
+    if (grid) grid.style.display = matched === 0 ? 'none' : 'grid';
+    var countEl = document.getElementById('blog-search-count');
+    if (countEl) {
+      var isAr = document.documentElement.lang === 'ar';
+      countEl.textContent = (q || currentCat !== 'all')
+        ? (isAr ? matched + ' من النتائج' : matched + ' result' + (matched === 1 ? '' : 's'))
+        : '';
+    }
+  }
   function filterPosts(cat){
-    document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
-    document.querySelector('[data-cat="'+cat+'"]').classList.add('active');
-    document.querySelectorAll('.post-card').forEach(card=>{
-      if(cat==='all'||card.getAttribute('data-category')===cat){
-        card.style.display='flex';
-      } else {
-        card.style.display='none';
-      }
+    currentCat = cat;
+    document.querySelectorAll('.cat-btn').forEach(function(b){ b.classList.remove('active'); });
+    var activeBtn = document.querySelector('[data-cat="' + cat + '"]');
+    if (activeBtn) activeBtn.classList.add('active');
+    applyFilters();
+  }
+  window.filterPosts = filterPosts;
+
+  var searchInput = document.getElementById('blog-search-input');
+  var searchClear = document.getElementById('blog-search-clear');
+  if (searchInput) {
+    var debounce;
+    searchInput.addEventListener('input', function(e){
+      clearTimeout(debounce);
+      debounce = setTimeout(function(){
+        currentQuery = e.target.value || '';
+        if (searchClear) searchClear.style.display = currentQuery ? 'flex' : 'none';
+        applyFilters();
+        if (typeof gtag === 'function' && currentQuery.length >= 3) {
+          gtag('event', 'blog_search', { event_category: 'Blog', event_label: currentQuery });
+        }
+      }, 120);
     });
   }
-  window.filterPosts=filterPosts;
+  if (searchClear) {
+    searchClear.style.display = 'none';
+    searchClear.addEventListener('click', function(){
+      if (searchInput) { searchInput.value = ''; searchInput.focus(); }
+      currentQuery = '';
+      searchClear.style.display = 'none';
+      applyFilters();
+    });
+  }
 
   document.body.classList.add('loaded');
 })();
