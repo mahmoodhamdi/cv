@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sana3y — Handyman Marketplace | Mahmoud Hamdy</title>
+<meta name="description" content="Sana3y is a full-stack handyman marketplace connecting customers with local service providers — plumbers, electricians, carpenters, and more. Flutter customer & worker apps with Node.js backend.">
+<meta name="author" content="Mahmoud Hamdy">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0a0f1a">
+<link rel="canonical" href="https://mahmoodhamdi.github.io/cv/projects/sana3y.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sana3y — Handyman Marketplace | Mahmoud Hamdy">
+<meta property="og:description" content="Full-stack handyman marketplace connecting customers with verified local craftsmen — Flutter, Node.js, real-time bookings.">
+<meta property="og:url" content="https://mahmoodhamdi.github.io/cv/projects/sana3y.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ar_EG">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sana3y — Handyman Marketplace | Mahmoud Hamdy">
+<meta name="twitter:description" content="Marketplace connecting customers with local craftsmen — Flutter customer & worker apps with Node.js backend.">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="manifest" href="../manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mahmoud CV">
+<link rel="apple-touch-icon" href="../assets/icon-192.svg">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+:root{--bg:#0a0f1a;--bg-alt:#111827;--card:#1a2236;--card-h:#1f2a42;--accent:#38bdf8;--accent-g:rgba(56,189,248,.15);--accent2:#818cf8;--txt:#f1f5f9;--txt2:#94a3b8;--muted:#8e99ad;--bdr:rgba(148,163,184,.1);--grad:linear-gradient(135deg,#38bdf8,#818cf8);--green:#34d399;--fn:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;--fn-ar:'Tajawal',sans-serif;--nav-bg:rgba(10,15,26,.88);--prog-bg:rgba(148,163,184,.1);--chip-bg:rgba(129,140,248,.1);--chip-c:var(--accent2);--chip-bdr:rgba(129,140,248,.15);--cta-bg:linear-gradient(135deg,rgba(56,189,248,.08),rgba(129,140,248,.08))}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;opacity:0;transition:opacity .5s ease;padding-top:52px}body.loaded{opacity:1}
+.navbar{position:fixed;top:0;left:0;right:0;z-index:90;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--bdr)}
+.nav-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:48px;gap:2px;overflow-x:auto;scrollbar-width:none}
+.nav-in::-webkit-scrollbar{display:none}
+.nav-a{padding:6px 12px;border-radius:8px;font-size:12px;font-weight:500;color:var(--muted);white-space:nowrap;cursor:pointer;border:none;background:none;font-family:var(--fn)}
+.nav-a.on,.nav-a:hover{color:var(--accent);background:var(--accent-g)}
+.top-ctrl{position:fixed;top:58px;right:20px;z-index:100;display:flex;gap:8px;align-items:center}
+.t-btn{width:34px;height:34px;border-radius:10px;background:var(--card);border:1px solid var(--bdr);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:color .2s,border-color .2s;backdrop-filter:blur(20px)}
+.t-btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
+.t-btn:hover{color:var(--accent);border-color:var(--accent)}
+html[data-theme="dark"] .ic-light{display:block}html[data-theme="dark"] .ic-dark{display:none}
+html[data-theme="light"] .ic-light{display:none}html[data-theme="light"] .ic-dark{display:block}
+.lang-tog{display:flex;gap:3px;background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:3px;backdrop-filter:blur(20px)}
+.l-btn{padding:4px 10px;border-radius:8px;font-size:11px;font-weight:600;color:var(--muted);cursor:pointer;border:none;background:none;font-family:var(--fn);transition:color .2s,background .2s}
+.l-btn.on{background:var(--accent-g);color:var(--accent)}
+.skip-link{position:fixed;top:0;left:16px;z-index:10001;padding:12px 24px;background:var(--grad);color:#fff;border-radius:0 0 8px 8px;font-size:14px;font-weight:600;text-decoration:none;transform:translateY(-100%);transition:transform .3s}.skip-link:focus{transform:translateY(0)}
+.s-top{position:fixed;bottom:24px;right:24px;z-index:80;width:42px;height:42px;border-radius:12px;background:var(--card);border:1px solid var(--bdr);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:color .2s,border-color .2s,opacity .3s,transform .3s;opacity:0;transform:translateY(8px);backdrop-filter:blur(20px)}
+.s-top.vis{opacity:1;transform:translateY(0)}
+.s-top:hover{color:var(--accent);border-color:var(--accent)}
+.s-top svg{width:18px;height:18px}
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:10px 20px;font-size:13px;color:var(--txt);opacity:0;transition:opacity .3s,transform .3s;pointer-events:none;z-index:200}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;opacity:.18;filter:blur(80px)}
+.orb-1{width:500px;height:500px;background:radial-gradient(circle,#38bdf8,transparent);top:-100px;right:-150px}
+.orb-2{width:400px;height:400px;background:radial-gradient(circle,#818cf8,transparent);bottom:100px;left:-120px}
+.orb-3{width:300px;height:300px;background:radial-gradient(circle,#c084fc,transparent);top:50%;left:50%;transform:translate(-50%,-50%)}
+.scroll-progress{position:fixed;top:0;left:0;height:2px;background:var(--grad);z-index:1000;width:0%;transition:width .1s}
+html[data-theme="light"]{--bg:#f8fafc;--bg-alt:#f1f5f9;--card:#fff;--card-h:#f8fafc;--txt:#0f172a;--txt2:#334155;--muted:#64748b;--bdr:rgba(15,23,42,.1);--nav-bg:rgba(248,250,252,.88);--accent-g:rgba(56,189,248,.12);--prog-bg:rgba(15,23,42,.08);--cta-bg:linear-gradient(135deg,rgba(56,189,248,.06),rgba(129,140,248,.06))}
+.btn-p{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:10px;background:var(--grad);color:#fff;font-family:var(--fn);font-size:14px;font-weight:600;text-decoration:none;transition:opacity .2s,transform .2s;border:none;cursor:pointer}
+.btn-p:hover{opacity:.9;transform:translateY(-2px)}
+.btn-o{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:10px;background:transparent;color:var(--txt);font-family:var(--fn);font-size:14px;font-weight:500;text-decoration:none;border:1px solid var(--bdr);transition:border-color .2s,color .2s,transform .2s;cursor:pointer}
+.btn-o:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.chip{display:inline-block;padding:3px 10px;border-radius:6px;font-size:11px;font-weight:600;font-family:var(--mono);background:var(--chip-bg);color:var(--chip-c);border:1px solid var(--chip-bdr)}
+.ftr{padding:32px 24px 24px;text-align:center;border-top:1px solid var(--bdr);margin-top:0}
+.ftr-soc{display:flex;justify-content:center;gap:16px;margin-bottom:16px}
+.ftr-soc a{color:var(--muted);transition:color .2s;text-decoration:none}
+.ftr-soc a:hover{color:var(--accent)}
+.ftr-soc svg{width:20px;height:20px}
+.ftr-avail{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--green);background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.2);border-radius:20px;padding:4px 12px;margin-bottom:12px}
+.ftr-avail::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.ftr-txt{font-size:12px;color:var(--muted)}
+.ftr-top{display:inline-block;margin-top:12px;font-size:12px;color:var(--muted);text-decoration:none;transition:color .2s}
+.ftr-top:hover{color:var(--accent)}
+@keyframes ar{from{--aa:0deg}to{--aa:360deg}}
+@property --aa{syntax:'<angle>';inherits:true;initial-value:0deg}
+</style>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=JetBrains+Mono&family=Tajawal:wght@400;500;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="../css/bundle.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="../css/sections.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="../css/utilities.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="projects.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&family=JetBrains+Mono&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/bundle.css">
+<link rel="stylesheet" href="../css/sections.css">
+<link rel="stylesheet" href="../css/utilities.css">
+<link rel="stylesheet" href="projects.css">
+</noscript>
+<link rel="stylesheet" href="../css/print.css" media="print">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Sana3y — Handyman Marketplace",
+  "description": "Full-stack handyman marketplace connecting customers with verified local craftsmen — Flutter customer & worker apps with Node.js backend and real-time bookings.",
+  "author": {
+    "@type": "Person",
+    "name": "Mahmoud Hamdy",
+    "url": "https://mahmoodhamdi.github.io/cv/"
+  },
+  "url": "https://mahmoodhamdi.github.io/cv/projects/sana3y.html",
+  "datePublished": "2024-06-01",
+  "keywords": ["Flutter", "Node.js", "Next.js", "MongoDB", "Marketplace", "Mobile App", "Handyman", "Service Booking"]
+}
+</script>
+<script>
+window.CV = {lang:'en'};
+function setLang(l) {
+  window.CV.lang = l;
+  var h = document.documentElement;
+  var e = document.getElementById('en-proj');
+  var a = document.getElementById('ar-proj');
+  var b = document.querySelectorAll('.l-btn');
+  var ne = document.getElementById('nav-en');
+  var na = document.getElementById('nav-ar');
+  if (l === 'ar') {
+    h.dir = 'rtl'; h.lang = 'ar';
+    e.style.display = 'none'; a.style.display = 'block';
+    ne.style.display = 'none'; na.style.display = 'flex';
+    b[0].classList.remove('on'); b[1].classList.add('on');
+  } else {
+    h.dir = 'ltr'; h.lang = 'en';
+    e.style.display = 'block'; a.style.display = 'none';
+    ne.style.display = 'flex'; na.style.display = 'none';
+    b[0].classList.add('on'); b[1].classList.remove('on');
+  }
+  if (window.reobserveAll) window.reobserveAll();
+  if (window.updateNav) window.updateNav();
+}
+window.setLang = setLang;
+</script>
+</head>
+<body id="top">
+<a class="skip-link" href="#en-proj">Skip to main content</a>
+<div class="scroll-progress" id="sp" aria-hidden="true"></div>
+<div class="orb orb-1" aria-hidden="true"></div>
+<div class="orb orb-2" aria-hidden="true"></div>
+<div class="orb orb-3" aria-hidden="true"></div>
+
+<nav class="navbar" id="navbar" role="navigation" aria-label="Project navigation">
+  <div class="nav-in" id="nav-en">
+    <button class="nav-a" data-t="overview-en">Overview</button>
+    <button class="nav-a" data-t="features-en">Features</button>
+    <button class="nav-a" data-t="tech-en">Tech Stack</button>
+    <button class="nav-a" data-t="contact-en">Contact</button>
+  </div>
+  <div class="nav-in" id="nav-ar" style="display:none">
+    <button class="nav-a" data-t="overview-ar">نظرة عامة</button>
+    <button class="nav-a" data-t="features-ar">المميزات</button>
+    <button class="nav-a" data-t="tech-ar">التقنيات</button>
+    <button class="nav-a" data-t="contact-ar">تواصل</button>
+  </div>
+</nav>
+
+<div class="top-ctrl">
+  <button class="t-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+    <svg class="ic-light" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    <svg class="ic-dark" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+  </button>
+  <div class="lang-tog">
+    <button class="l-btn on" onclick="setLang('en')">EN</button>
+    <button class="l-btn" onclick="setLang('ar')">AR</button>
+  </div>
+</div>
+
+<button class="s-top" id="sTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
+  <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+<div class="toast" id="toast"></div>
+
+<main>
+
+<!-- ===== EN ===== -->
+<div id="en-proj">
+<div class="proj-wrap">
+
+  <div class="proj-back">
+    <a class="proj-back-link" href="../index.html">
+      <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to Portfolio
+    </a>
+  </div>
+
+  <section class="proj-hero proj-section" aria-labelledby="proj-title-en">
+    <nav class="proj-breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Portfolio</a>
+      <span class="proj-breadcrumb-sep" aria-hidden="true">/</span>
+      <a href="../index.html#proj-en">Projects</a>
+      <span class="proj-breadcrumb-sep" aria-hidden="true">/</span>
+      <span>Sana3y</span>
+    </nav>
+    <div class="proj-hero-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+    </div>
+    <div class="proj-badges">
+      <span class="proj-badge proj-badge-type">Mobile App</span>
+      <span class="proj-badge proj-badge-status">Delivered ✓</span>
+    </div>
+    <h1 class="proj-title" id="proj-title-en">Sana3y</h1>
+    <p class="proj-tagline">On-demand marketplace connecting customers with verified local craftsmen</p>
+    <div class="proj-hero-links">
+      <a class="btn-p" href="mailto:hmdy7486@gmail.com">Hire Me for Similar</a>
+      <a class="btn-o" href="../index.html#proj-en">All Projects</a>
+    </div>
+  </section>
+
+  <section class="proj-overview proj-section" id="overview-en" aria-labelledby="overview-title-en">
+    <div class="proj-overview-inner">
+      <h2 class="proj-sec-title" id="overview-title-en">Project Overview</h2>
+      <p>Sana3y (Arabic for "my craftsman") is a full-stack on-demand services marketplace that connects customers with local handymen — plumbers, electricians, carpenters, painters, AC technicians, and more. The platform comprises three integrated products: a customer-facing Flutter app for browsing service categories and booking appointments, a worker-facing Flutter app for verified craftsmen to receive and manage jobs, and a Next.js admin dashboard for moderating providers, monitoring transactions, and resolving disputes — all powered by a Node.js backend with real-time job dispatch.</p>
+    </div>
+  </section>
+
+  <section class="proj-problem proj-section" aria-label="Problem and solution">
+    <div class="proj-problem-grid">
+      <div class="proj-problem-card problem">
+        <div class="proj-problem-label">The Problem</div>
+        <h3>Trust Gap in Local Services</h3>
+        <p>Finding reliable handymen traditionally meant relying on word of mouth, walking around looking for shops, or risking unknown phone numbers from Facebook groups. Customers had no way to verify skills, see prices upfront, or compare workers. Skilled craftsmen, in turn, struggled to reach customers beyond their immediate neighborhood and lost gigs to middlemen who took unfair cuts.</p>
+      </div>
+      <div class="proj-problem-card solution">
+        <div class="proj-problem-label">The Solution</div>
+        <h3>Verified, Rated, On-Demand</h3>
+        <p>Sana3y verifies every worker on the platform — ID check, skills test, and an in-person interview. Customers see real profiles with portfolios, transparent hourly rates, and verified reviews from past jobs. Workers get a steady stream of bookings, fair pricing, and built-in cashless payments — keeping all earnings instead of paying a fixer's cut.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="proj-features proj-section" id="features-en" aria-labelledby="features-title-en">
+    <h2 class="proj-sec-title" id="features-title-en">Key Features</h2>
+    <div class="proj-features-grid">
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">01</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Service Category Browser</div>
+          <div class="proj-feature-desc">Customers browse 20+ service categories (plumbing, electrical, carpentry, AC repair, painting, etc.) with sub-services, average prices, and estimated job durations.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">02</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Smart Worker Matching</div>
+          <div class="proj-feature-desc">When a customer books, the backend matches the request to the nearest verified workers ranked by rating, specialty, and availability — pushing the job to the top candidates first.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">03</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Verified Worker Profiles</div>
+          <div class="proj-feature-desc">Every craftsman goes through ID verification, skills assessment, and a phone interview. Profiles include portfolio photos, years of experience, verified specialties, and aggregated ratings.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">04</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Real-Time Job Dispatch</div>
+          <div class="proj-feature-desc">WebSocket-based job offers: workers receive a 30-second offer window with full job details and one-tap accept. Unaccepted offers automatically cascade to the next-best worker.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">05</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">In-App Chat &amp; Voice Calls</div>
+          <div class="proj-feature-desc">Customer and worker can chat or call directly inside the app — no exchanging personal numbers. Phone numbers stay private through anonymous voice routing.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">06</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Transparent Pricing &amp; Quotes</div>
+          <div class="proj-feature-desc">For predictable jobs (e.g., faucet replacement), prices are fixed and shown upfront. For custom jobs, workers send written quotes after a site visit — no surprise bills.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">07</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Cashless Payments &amp; Earnings</div>
+          <div class="proj-feature-desc">Integrated wallet system with cash-on-completion or in-app card payments. Workers get instant earnings, daily payouts, and clear transaction history with downloadable receipts.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">08</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">Rating &amp; Dispute Resolution</div>
+          <div class="proj-feature-desc">Two-way rating after every job. Admin dashboard surfaces dispute cases, low-rated workers, and customer complaints — moderators can refund, mediate, or remove violators.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="proj-tech proj-section" id="tech-en" aria-labelledby="tech-title-en">
+    <h2 class="proj-sec-title" id="tech-title-en">Tech Stack</h2>
+    <div class="proj-tech-grid">
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Node.js</div>
+            <div class="proj-tech-category">Backend API &amp; Dispatch Engine</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Single REST + WebSocket backend serving both Flutter apps and the admin panel. Handles job routing, worker ranking, and cascading offer logic in real time.</div>
+      </div>
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Flutter (2 apps)</div>
+            <div class="proj-tech-category">Mobile — iOS &amp; Android</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Separate customer and worker apps built from clean-architecture Dart codebases with Bloc state management, shared design system, and offline-aware job queue.</div>
+      </div>
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Next.js</div>
+            <div class="proj-tech-category">Admin Dashboard</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Server-rendered admin panel for moderators to verify worker applications, monitor live jobs, handle disputes, and view platform analytics.</div>
+      </div>
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">MongoDB</div>
+            <div class="proj-tech-category">Primary Database</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Stores workers, customers, job records, service catalogs, ratings, and chat history. Geo-indexed queries for nearest-worker lookups.</div>
+      </div>
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.64a16 16 0 006.29 6.29l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">WebSocket</div>
+            <div class="proj-tech-category">Real-Time Layer</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Bidirectional channel for live job offers, chat, job-status updates, and dispatch cascades — keeping customer, worker, and admin in sync.</div>
+      </div>
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24"><path d="M12 1l3 6 6 .5-4.5 4 1.5 6L12 14l-6 3.5 1.5-6L3 7.5 9 7z"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Firebase Cloud Messaging</div>
+            <div class="proj-tech-category">Push Notifications</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">Reliable cross-platform push delivery for job offers, customer updates, and admin alerts — even when the app is backgrounded or closed.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="proj-arch proj-section" aria-labelledby="arch-title-en">
+    <h2 class="proj-sec-title" id="arch-title-en">Architecture</h2>
+    <div class="proj-arch-card">
+      <p>The Node.js backend exposes a single REST API consumed by all three clients, plus a WebSocket gateway for real-time events. When a customer books a service, the dispatch engine queries MongoDB for the nearest verified workers in the right specialty, scores them by rating and availability, and pushes the offer to the top candidate. If the offer expires without acceptance, the system cascades automatically to the next-best worker.</p>
+      <p>Worker verification is admin-gated: applications enter a moderation queue surfaced in the Next.js dashboard. MongoDB's geospatial indexes power nearest-worker lookups; Firebase Cloud Messaging dispatches push notifications across platforms. Anonymous voice routing protects worker and customer phone numbers throughout the engagement.</p>
+      <div class="proj-arch-diagram" aria-label="Architecture diagram">
+[Customer Flutter App]   [Worker Flutter App]
+         \                       /
+          \    REST + WebSocket /
+       [Node.js API Backend]
+                |
+        ┌───────┼───────┐
+        │       │       │
+    [MongoDB] [Dispatch] [FCM Push]
+                │
+       [Next.js Admin Dashboard]
+                │
+   Real-time event flow
+   ├── Customer: status, chat, ETA
+   ├── Worker: new offer, job updates
+   └── Admin: dispute, verification, metrics
+      </div>
+    </div>
+  </section>
+
+  <section class="proj-cta proj-section" id="contact-en" aria-labelledby="cta-title-en">
+    <h2 class="proj-cta-title" id="cta-title-en">Building a Service Marketplace?</h2>
+    <p class="proj-cta-desc">I build multi-sided marketplace platforms with verified profiles, real-time matching, and integrated payments. If you're planning something similar, let's talk.</p>
+    <div class="proj-cta-actions">
+      <a class="btn-p" href="../#contact-en">Get In Touch</a>
+      <a class="btn-o" href="https://github.com/mahmoodhamdi" target="_blank" rel="noopener noreferrer">View GitHub</a>
+    </div>
+  </section>
+
+  <section class="proj-related proj-section" aria-labelledby="related-title-en">
+    <h2 class="proj-sec-title" id="related-title-en">Related Projects</h2>
+    <div class="proj-related-grid">
+      <a class="proj-related-card" href="bagour-delivery.html">
+        <div class="proj-related-icon">
+          <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+        </div>
+        <div class="proj-related-name">Bagour Delivery</div>
+        <div class="proj-related-desc">Hyperlocal delivery app connecting customers with nearby stores and real-time order tracking.</div>
+        <div class="proj-related-tags"><span class="chip">Flutter</span><span class="chip">Node.js</span><span class="chip">WebSocket</span></div>
+        <div class="proj-related-arrow">→</div>
+      </a>
+      <a class="proj-related-card" href="wasalni.html">
+        <div class="proj-related-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="proj-related-name">Wasalni</div>
+        <div class="proj-related-desc">Ride-sharing platform connecting drivers and passengers with real-time location tracking and bookings.</div>
+        <div class="proj-related-tags"><span class="chip">Flutter</span><span class="chip">Node.js</span><span class="chip">WebSocket</span></div>
+        <div class="proj-related-arrow">→</div>
+      </a>
+      <a class="proj-related-card" href="clinic-booking.html">
+        <div class="proj-related-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        </div>
+        <div class="proj-related-name">Clinic Booking System</div>
+        <div class="proj-related-desc">Online appointments, doctor schedules, and patient records with automated reminders.</div>
+        <div class="proj-related-tags"><span class="chip">Laravel</span><span class="chip">Next.js</span><span class="chip">PostgreSQL</span></div>
+        <div class="proj-related-arrow">→</div>
+      </a>
+    </div>
+  </section>
+
+</div><!-- /.proj-wrap -->
+
+<footer class="ftr">
+  <div class="ftr-soc">
+    <a href="https://github.com/mahmoodhamdi" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+    </a>
+    <a href="mailto:hmdy7486@gmail.com" aria-label="Email">
+      <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    </a>
+    <a href="https://upwork.com" target="_blank" rel="noopener noreferrer" aria-label="Upwork">
+      <svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
+    </a>
+  </div>
+  <div class="ftr-avail">Available for Hire</div>
+  <div class="ftr-txt">© 2026 Mahmoud Hamdy — Built with passion</div>
+  <a class="ftr-top" href="#top" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'})">↑ Back to top</a>
+</footer>
+</div><!-- /#en-proj -->
+
+<!-- ===== AR ===== -->
+<div id="ar-proj" style="display:none">
+<div class="proj-wrap">
+
+  <div class="proj-back">
+    <a class="proj-back-link" href="../index.html">
+      <svg viewBox="0 0 24 24"><path d="M5 12h14M12 19l7-7-7-7"/></svg>
+      العودة إلى ملف الأعمال
+    </a>
+  </div>
+
+  <section class="proj-hero proj-section" aria-labelledby="proj-title-ar">
+    <nav class="proj-breadcrumb" aria-label="مسار التنقل">
+      <a href="../index.html">ملف الأعمال</a>
+      <span class="proj-breadcrumb-sep" aria-hidden="true">/</span>
+      <a href="../index.html#proj-ar">المشاريع</a>
+      <span class="proj-breadcrumb-sep" aria-hidden="true">/</span>
+      <span>صنايعي</span>
+    </nav>
+    <div class="proj-hero-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+    </div>
+    <div class="proj-badges">
+      <span class="proj-badge proj-badge-type">تطبيق موبايل</span>
+      <span class="proj-badge proj-badge-status">تم التسليم ✓</span>
+    </div>
+    <h1 class="proj-title" id="proj-title-ar">صنايعي</h1>
+    <p class="proj-tagline">منصة لطلب خدمات الصيانة فوريًا — تجمع العملاء بأمهر الفنيين المعتمدين</p>
+    <div class="proj-hero-links">
+      <a class="btn-p" href="../#contact-ar">تواصل معي لمشروع مشابه</a>
+      <a class="btn-o" href="../index.html#proj-ar">كل المشاريع</a>
+    </div>
+  </section>
+
+  <section class="proj-overview proj-section" id="overview-ar" aria-labelledby="overview-title-ar">
+    <div class="proj-overview-inner">
+      <h2 class="proj-sec-title" id="overview-title-ar">نظرة عامة على المشروع</h2>
+      <p>"صنايعي" منصة متكاملة لطلب خدمات الصيانة المنزلية بنظام On-Demand — تربط العملاء بفنيين معتمدين في جميع التخصصات: سباكين، كهربائيين، نجارين، نقاشين، فنيي تكييف، وغيرهم. المشروع مكوّن من ثلاثة منتجات متكاملة: تطبيق Flutter للعملاء لتصفح الخدمات وحجز المواعيد، وتطبيق Flutter للصنايعية لاستقبال طلبات العمل وإدارتها، ولوحة Next.js للإدارة للموافقة على الصنايعية وحل النزاعات ومتابعة المعاملات — كل ذلك مدعوم ببنية Node.js مع توزيع طلبات لحظي.</p>
+    </div>
+  </section>
+
+  <section class="proj-problem proj-section" aria-label="المشكلة والحل">
+    <div class="proj-problem-grid">
+      <div class="proj-problem-card problem">
+        <div class="proj-problem-label">المشكلة</div>
+        <h3>غياب الثقة في خدمات الصيانة</h3>
+        <p>للحصول على فني صيانة موثوق، كان العميل يعتمد على السمعة والتوصيات الشفهية، أو يتجول بحثًا عن محلات، أو يجازف بأرقام تليفونات من جروبات فيسبوك. ما كانش في طريقة للتحقق من المهارة أو الأسعار أو المراجعات. والصنايعية الشطار كانوا بيخسروا فرص شغل ويدفعوا عمولات كبيرة للوسطاء.</p>
+      </div>
+      <div class="proj-problem-card solution">
+        <div class="proj-problem-label">الحل</div>
+        <h3>فنيون معتمدون · تقييم حقيقي · طلب فوري</h3>
+        <p>صنايعي بيوثّق كل فني على المنصة — تحقق من الهوية، اختبار مهارة، ومقابلة شخصية. العميل بيشوف بروفايل حقيقي مع أعمال سابقة، سعر ساعة عمل واضح، وتقييمات موثوقة. والفني بيستلم طلبات شغل مستمرة وأسعار عادلة ومدفوعات إلكترونية — يحتفظ بكامل المبلغ بدون عمولة وسيط.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="proj-features proj-section" id="features-ar" aria-labelledby="features-title-ar">
+    <h2 class="proj-sec-title" id="features-title-ar">المميزات الرئيسية</h2>
+    <div class="proj-features-grid">
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠١</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">تصفّح فئات الخدمات</div>
+          <div class="proj-feature-desc">العميل يتصفح أكتر من ٢٠ فئة خدمة (سباكة، كهرباء، نجارة، تصليح تكييفات، نقاشة، وغيرها) مع تفاصيل الخدمات الفرعية ومتوسط الأسعار ومدة الشغل المتوقعة.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠٢</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">توزيع ذكي للطلبات</div>
+          <div class="proj-feature-desc">لما العميل يحجز، النظام بيختار أقرب الصنايعية المعتمدين بناءً على التخصص والتقييم والتوفر — ويرسل العرض لأفضل المرشحين أولاً.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠٣</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">بروفايل فنّي معتمد</div>
+          <div class="proj-feature-desc">كل صنايعي بيمر بتحقق هوية واختبار مهارة ومقابلة. البروفايل بيعرض صور أعمال سابقة وسنين الخبرة والتخصصات الموثّقة والتقييم العام.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠٤</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">عروض طلبات لحظية</div>
+          <div class="proj-feature-desc">عبر WebSocket: الصنايعي بيستلم عرض طلب بنافذة ٣٠ ثانية مع تفاصيل الشغل وزرار قبول واحد. لو ما ردّش، العرض بيتحوّل تلقائيًا للفني التالي.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠٥</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">شات ومكالمات داخل التطبيق</div>
+          <div class="proj-feature-desc">العميل والصنايعي يتكلموا داخل التطبيق بدون تبادل أرقام شخصية. أرقام التليفون تفضل خاصة عبر توجيه صوتي مجهول.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠٦</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">أسعار شفافة وعروض أسعار</div>
+          <div class="proj-feature-desc">للشغل المتكرر (مثلاً تغيير حنفية)، السعر ثابت وظاهر مقدماً. للشغل المخصص، الصنايعي يبعت عرض سعر مكتوب بعد المعاينة — مفيش مفاجآت في الفاتورة.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠٧</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">دفع إلكتروني ومحفظة الصنايعي</div>
+          <div class="proj-feature-desc">نظام محفظة متكامل مع دفع كاش بعد الانتهاء أو دفع إلكتروني. الفنيين بيستلموا الفلوس فوراً مع سحوبات يومية وكشوف معاملات وفواتير قابلة للتحميل.</div>
+        </div>
+      </div>
+      <div class="proj-feature-item">
+        <div class="proj-feature-num">٠٨</div>
+        <div class="proj-feature-body">
+          <div class="proj-feature-title">تقييم وإدارة الشكاوى</div>
+          <div class="proj-feature-desc">تقييم متبادل بعد كل طلب. لوحة الإدارة بتعرض حالات النزاع والفنيين منخفضي التقييم والشكاوى — الإدارة تقدر ترد فلوس أو توسّط أو تشطب المخالفين.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="proj-tech proj-section" id="tech-ar" aria-labelledby="tech-title-ar">
+    <h2 class="proj-sec-title" id="tech-title-ar">التقنيات المستخدمة</h2>
+    <div class="proj-tech-grid">
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Node.js</div>
+            <div class="proj-tech-category">باك إند ومحرك توزيع الطلبات</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">باك إند REST + WebSocket واحد يخدم تطبيقي Flutter ولوحة الإدارة. يدير توزيع الطلبات وترتيب الفنيين وتسلسل العروض في الوقت الفعلي.</div>
+      </div>
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Flutter (تطبيقان)</div>
+            <div class="proj-tech-category">موبايل — iOS و Android</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">تطبيقا العميل والصنايعي مبنيان بـ Clean Architecture و Bloc state management وWidget design system مشترك، مع طابور طلبات يعمل أوفلاين.</div>
+      </div>
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Next.js</div>
+            <div class="proj-tech-category">لوحة الإدارة</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">لوحة إدارة مبنية بـ SSR للمشرفين للموافقة على طلبات الصنايعية ومتابعة الطلبات الجارية وحل النزاعات وعرض تحليلات المنصة.</div>
+      </div>
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">MongoDB</div>
+            <div class="proj-tech-category">قاعدة البيانات</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">تخزن الصنايعية والعملاء وسجلات الطلبات وكتالوج الخدمات والتقييمات والمحادثات. فهرسة جغرافية للبحث عن أقرب فني.</div>
+      </div>
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.64a16 16 0 006.29 6.29l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">WebSocket</div>
+            <div class="proj-tech-category">طبقة لحظية</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">قناة ثنائية الاتجاه لعروض الطلبات اللحظية والشات وتحديثات حالة الطلب وتسلسل التوزيع — تبقي العميل والصنايعي والإدارة متزامنين.</div>
+      </div>
+      <div class="proj-tech-card">
+        <div class="proj-tech-header">
+          <div class="proj-tech-logo">
+            <svg viewBox="0 0 24 24"><path d="M12 1l3 6 6 .5-4.5 4 1.5 6L12 14l-6 3.5 1.5-6L3 7.5 9 7z"/></svg>
+          </div>
+          <div>
+            <div class="proj-tech-name">Firebase Cloud Messaging</div>
+            <div class="proj-tech-category">إشعارات Push</div>
+          </div>
+        </div>
+        <div class="proj-tech-why">توصيل إشعارات موثوق عبر iOS و Android لعروض الطلبات والتحديثات والتنبيهات الإدارية — حتى لو التطبيق مغلق.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="proj-arch proj-section" aria-labelledby="arch-title-ar">
+    <h2 class="proj-sec-title" id="arch-title-ar">البنية المعمارية</h2>
+    <div class="proj-arch-card">
+      <p>الباك إند Node.js يقدّم REST API واحد لكل العملاء، مع بوابة WebSocket للأحداث اللحظية. لما العميل يحجز خدمة، محرك التوزيع بيستعلم من MongoDB عن أقرب الفنيين المعتمدين في التخصص المطلوب، يرتبهم بالتقييم والتوفر، ويبعت العرض للمرشح الأول. لو العرض ما اتقبلش، النظام بيوزّعه تلقائيًا للفني التالي.</p>
+      <p>التحقق من الصنايعية بيكون من الإدارة: الطلبات بتدخل طابور انتظار يظهر في لوحة Next.js. الفهرسة الجغرافية في MongoDB بتستخدم لإيجاد أقرب فني، و Firebase Cloud Messaging بيبعث Push Notifications. توجيه المكالمات المجهول يحفظ خصوصية أرقام التليفون طول مدة الطلب.</p>
+      <div class="proj-arch-diagram" aria-label="مخطط البنية">
+[تطبيق العميل Flutter]   [تطبيق الصنايعي Flutter]
+         \                       /
+          \    REST + WebSocket /
+       [خادم Node.js API]
+                |
+        ┌───────┼───────┐
+        │       │       │
+    [MongoDB] [محرّك التوزيع] [FCM]
+                │
+        [لوحة Next.js للإدارة]
+                │
+   تدفّق الأحداث اللحظية
+   ├── العميل: الحالة، الشات، الوصول المتوقع
+   ├── الصنايعي: عرض جديد، تحديث الطلب
+   └── الإدارة: نزاعات، توثيق، مؤشرات
+      </div>
+    </div>
+  </section>
+
+  <section class="proj-cta proj-section" id="contact-ar" aria-labelledby="cta-title-ar">
+    <h2 class="proj-cta-title" id="cta-title-ar">عاوز تبني منصة خدمات زي دي؟</h2>
+    <p class="proj-cta-desc">بنيت منصات Marketplace متعددة الأطراف مع بروفايلات موثوقة وتوزيع طلبات لحظي ومدفوعات متكاملة. لو بتخطط لمشروع مشابه، خلينا نتكلم.</p>
+    <div class="proj-cta-actions">
+      <a class="btn-p" href="../#contact-ar">تواصل معي</a>
+      <a class="btn-o" href="https://github.com/mahmoodhamdi" target="_blank" rel="noopener noreferrer">شوف GitHub</a>
+    </div>
+  </section>
+
+  <section class="proj-related proj-section" aria-labelledby="related-title-ar">
+    <h2 class="proj-sec-title" id="related-title-ar">مشاريع ذات صلة</h2>
+    <div class="proj-related-grid">
+      <a class="proj-related-card" href="bagour-delivery.html">
+        <div class="proj-related-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg></div>
+        <div class="proj-related-name">باجور ديليفري</div>
+        <div class="proj-related-desc">تطبيق توصيل محلي يربط العملاء بالمتاجر القريبة مع تتبع طلبات لحظي.</div>
+        <div class="proj-related-tags"><span class="chip">Flutter</span><span class="chip">Node.js</span><span class="chip">WebSocket</span></div>
+        <div class="proj-related-arrow">←</div>
+      </a>
+      <a class="proj-related-card" href="wasalni.html">
+        <div class="proj-related-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="proj-related-name">وصلني</div>
+        <div class="proj-related-desc">منصة توصيل ركاب تربط السائقين بالركاب مع تتبع الموقع اللحظي والحجوزات.</div>
+        <div class="proj-related-tags"><span class="chip">Flutter</span><span class="chip">Node.js</span><span class="chip">WebSocket</span></div>
+        <div class="proj-related-arrow">←</div>
+      </a>
+      <a class="proj-related-card" href="clinic-booking.html">
+        <div class="proj-related-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        <div class="proj-related-name">نظام حجز العيادات</div>
+        <div class="proj-related-desc">حجز مواعيد أونلاين وجداول أطباء وسجلات مرضى وتذكيرات تلقائية.</div>
+        <div class="proj-related-tags"><span class="chip">Laravel</span><span class="chip">Next.js</span><span class="chip">PostgreSQL</span></div>
+        <div class="proj-related-arrow">←</div>
+      </a>
+    </div>
+  </section>
+
+</div><!-- /.proj-wrap -->
+
+<footer class="ftr">
+  <div class="ftr-soc">
+    <a href="https://github.com/mahmoodhamdi" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+    </a>
+    <a href="mailto:hmdy7486@gmail.com" aria-label="بريد إلكتروني">
+      <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    </a>
+    <a href="https://upwork.com" target="_blank" rel="noopener noreferrer" aria-label="Upwork">
+      <svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
+    </a>
+  </div>
+  <div class="ftr-avail">متاح للتوظيف</div>
+  <div class="ftr-txt">© ٢٠٢٦ محمود حمدي — صُنع بشغف</div>
+  <a class="ftr-top" href="#top" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'})">↑ العودة للأعلى</a>
+</footer>
+</div><!-- /#ar-proj -->
+
+</main>
+
+<script src="../js/utils.js" defer></script>
+<script src="../js/theme.js" defer></script>
+<script src="../js/language.js" defer></script>
+<script src="../js/navigation.js" defer></script>
+<script src="../js/animations.js" defer></script>
+<script src="../js/analytics.js" defer></script>
+<script src="../js/pwa.js" defer></script>
+<script src="../js/main.js" defer></script>
+<script>
+window.addEventListener('load',function(){setTimeout(function(){var s=document.createElement('script');s.src='https://www.googletagmanager.com/gtag/js?id=G-D0H1J8BSKJ';s.async=true;document.head.appendChild(s);s.onload=function(){window.dataLayer=window.dataLayer||[];function g(){dataLayer.push(arguments)}g('js',new Date());g('config','G-D0H1J8BSKJ');window.gtag=g}},2000)});
+</script>
+<script>!function(){if(window.matchMedia&&window.matchMedia("(prefers-reduced-motion:reduce)").matches)return;var s=document.querySelectorAll(".proj-section"),o=new IntersectionObserver(function(e){e.forEach(function(i){if(i.isIntersecting){i.target.classList.add("rev");o.unobserve(i.target)}})},{threshold:.06,rootMargin:"0px 0px -30px 0px"});s.forEach(function(el){el.classList.add("sr-init");o.observe(el)})}();</script>
+</body>
+</html>

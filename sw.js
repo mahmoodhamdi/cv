@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mahmoud-cv-v6';
+const CACHE_NAME = 'mahmoud-cv-v7';
 const ASSETS = [
   './',
   './index.html',
@@ -27,6 +27,7 @@ const ASSETS = [
   './projects/clinic-booking.html',
   './projects/whatsapp-bot.html',
   './projects/bagour-delivery.html',
+  './projects/sana3y.html',
   './blog/index.html',
   './blog/blog.css',
   './blog/posts/building-salla-bot.html',

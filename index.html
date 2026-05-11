@@ -51,6 +51,9 @@ body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6
 .nav-in::-webkit-scrollbar{display:none}
 .nav-a{padding:6px 12px;border-radius:8px;font-size:12px;font-weight:500;color:var(--muted);white-space:nowrap;cursor:pointer;border:none;background:none;font-family:var(--fn)}
 .top-ctrl{position:fixed;top:58px;right:20px;z-index:100;display:flex;gap:8px;align-items:center}
+.dl-grp{position:fixed;top:58px;left:20px;z-index:100;display:flex;gap:6px;align-items:center}
+html[dir="rtl"] .dl-grp{left:auto;right:20px}
+html[dir="rtl"] .top-ctrl{right:auto;left:20px}
 .lang-tog{display:flex;gap:3px;background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:3px;backdrop-filter:blur(20px)}
 .skip-link{position:fixed;top:0;left:16px;z-index:10001;padding:12px 24px;background:var(--grad);color:#fff;border-radius:0 0 8px 8px;font-size:14px;font-weight:600;text-decoration:none;transform:translateY(-100%);transition:transform .3s}.skip-link:focus{transform:translateY(0)}
 #ar-cv[style*="none"],#en-cv[style*="none"]{content-visibility:auto;contain-intrinsic-size:auto 5000px}
@@ -104,6 +107,7 @@ body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6
     <button class="nav-a" data-t="tools-en">Tools</button>
     <button class="nav-a" data-t="exp-en">Experience</button>
     <button class="nav-a" data-t="edu-en">Education</button>
+    <button class="nav-a" data-t="cert-en">Achievements</button>
     <button class="nav-a" data-t="oss-en">Open Source</button>
     <button class="nav-a" data-t="proj-en">Projects</button>
     <button class="nav-a" data-t="test-en">Reviews</button>
@@ -120,6 +124,7 @@ body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6
     <button class="nav-a" data-t="tools-ar">أدوات</button>
     <button class="nav-a" data-t="exp-ar">خبرة</button>
     <button class="nav-a" data-t="edu-ar">تعليم</button>
+    <button class="nav-a" data-t="cert-ar">إنجازات</button>
     <button class="nav-a" data-t="oss-ar">مصادر مفتوحة</button>
     <button class="nav-a" data-t="proj-ar">مشاريع</button>
     <button class="nav-a" data-t="test-ar">آراء</button>
@@ -140,10 +145,16 @@ body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6
   </div>
 </div>
 
-<button class="pr-btn" onclick="window.print()" aria-label="Print CV">
-  <svg width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-  <span>Print</span>
-</button>
+<div class="dl-grp">
+  <button class="pr-btn pdf-btn" onclick="downloadCV()" aria-label="Download CV as PDF" title="Save as PDF">
+    <svg width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+    <span class="dl-lbl-en">Save PDF</span><span class="dl-lbl-ar">حفظ PDF</span>
+  </button>
+  <button class="pr-btn" onclick="window.print()" aria-label="Print CV" title="Print">
+    <svg width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    <span class="dl-lbl-en">Print</span><span class="dl-lbl-ar">طباعة</span>
+  </button>
+</div>
 
 <button class="s-top" id="sTop" onclick="window.scrollTo({top:0})" aria-label="Scroll to top">
   <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
@@ -165,6 +176,11 @@ body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6
   </div>
 </header>
 
+<div class="now-card" role="status" aria-label="Currently working on">
+  <div class="now-tag"><span class="now-dot"></span><span>NOW</span></div>
+  <div class="now-txt">Building <strong>Escore</strong> esports platform at ROV GROUP · Open to freelance projects in <strong>Salla automation</strong> & <strong>AI chatbots</strong></div>
+</div>
+
 <section class="sec" id="about-en"><h2 class="sec-t">About</h2>
   <div class="sum-w"><div class="sum">Full-Stack Developer with hands-on experience building production-ready web and mobile applications across the MENA region. Specialized in Node.js/TypeScript backends, Flutter/Dart mobile apps, and Next.js frontends. Active open source contributor to major projects including express-validator, Helmet.js, and others across the Node.js ecosystem. Delivering end-to-end freelance solutions — from SaaS platforms, AI-powered chatbots, and e-commerce automation to admin dashboards and real-time systems. Experienced in building intelligent bots integrated with platforms like Salla and Telegram to automate customer support and boost sales for e-commerce businesses.</div></div>
 </section>
@@ -174,7 +190,7 @@ body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6
     <div class="st-it"><div class="st-n"><span data-count="50">0</span>+</div><div class="st-l">Projects Delivered</div></div>
     <div class="st-it"><div class="st-n"><span data-count="25">0</span>+</div><div class="st-l">Open Source Contributions</div></div>
     <div class="st-it"><div class="st-n"><span data-count="15">0</span>+</div><div class="st-l">Merged PRs</div></div>
-    <div class="st-it"><div class="st-n"><span data-count="3">0</span>+</div><div class="st-l">Years Experience</div></div>
+    <div class="st-it"><div class="st-n"><span data-count="4">0</span>+</div><div class="st-l">Years Experience</div></div>
     <div class="st-it"><div class="st-n"><span data-count="10">0</span>+</div><div class="st-l">Happy Clients</div></div>
   </div>
 </section>
@@ -262,12 +278,23 @@ body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6
 </section>
 
 <section class="sec" id="edu-en"><h2 class="sec-t">Education & Languages</h2>
-  <div class="edu-c"><div class="edu-i"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg></div><div><div class="edu-t">Bachelor's Degree in Computer Science</div><div class="edu-inst">University — Faculty of Computers & Information</div><div class="edu-yr">2021 — 2025</div></div></div>
+  <div class="edu-c"><div class="edu-i"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg></div><div><div class="edu-t">Bachelor's Degree in Computer Science</div><div class="edu-inst">University — Faculty of Computers & Information</div><div class="edu-yr">2021 — 2026 · Graduated</div></div></div>
   <div class="edu-c"><div class="edu-i"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div><div><div class="edu-t">Continuous Learning & Professional Development</div><div class="tl-d"><ul><li>Advanced Node.js & TypeScript</li><li>Flutter & Dart Mobile Development</li><li>System Design & Architecture</li><li>Cloud Infrastructure & DevOps</li><li>Open Source Best Practices</li></ul></div></div></div>
   <div style="margin-top:20px">
     <div class="lang-it"><div class="lang-hd"><span class="lang-nm">Arabic</span><span class="lang-lv">Native</span></div><div class="lang-bar"><div class="lang-fill" style="--w:100%"></div></div></div>
     <div class="lang-it"><div class="lang-hd"><span class="lang-nm">English</span><span class="lang-lv">Professional Working</span></div><div class="lang-bar"><div class="lang-fill" style="--w:80%"></div></div></div>
     <div class="lang-it"><div class="lang-hd"><span class="lang-nm">Technical English</span><span class="lang-lv">Fluent (Documentation & Code)</span></div><div class="lang-bar"><div class="lang-fill" style="--w:95%"></div></div></div>
+  </div>
+</section>
+
+<section class="sec" id="cert-en"><h2 class="sec-t">Achievements & Recognition</h2>
+  <div class="cert-g">
+    <div class="cert-c"><div class="cert-i">📚</div><div class="cert-bd"><div class="cert-tt">25+ Technical Articles Published</div><div class="cert-d">Bilingual tutorials on Node.js, Flutter, e-commerce automation, and DevOps — averaging 12 min read.</div><div class="cert-yr">2025 — 2026</div></div></div>
+    <div class="cert-c"><div class="cert-i">⭐</div><div class="cert-bd"><div class="cert-tt">Open Source Contributor — Node.js Ecosystem</div><div class="cert-d">Multiple merged PRs to Helmet.js, express-validator, and 20+ active projects across the Node.js ecosystem.</div><div class="cert-yr">Ongoing</div></div></div>
+    <div class="cert-c"><div class="cert-i">📱</div><div class="cert-bd"><div class="cert-tt">Published Mobile App on Google Play</div><div class="cert-d">"Al-Arba'oon Al-Nawawiyya" — Flutter app for Nawawi's 40 Hadith with audio narration and full Arabic RTL.</div><div class="cert-yr">2024</div></div></div>
+    <div class="cert-c"><div class="cert-i">🛒</div><div class="cert-bd"><div class="cert-tt">Salla Platform Integration Expert</div><div class="cert-d">Built multiple production integrations including the IAI AI-powered e-commerce assistant for Saudi merchants.</div><div class="cert-yr">2025 — 2026</div></div></div>
+    <div class="cert-c"><div class="cert-i">🎯</div><div class="cert-bd"><div class="cert-tt">50+ Production Projects Delivered</div><div class="cert-d">Full-stack web, mobile, and SaaS solutions for clients across Egypt, KSA, and the wider MENA region.</div><div class="cert-yr">2022 — 2026</div></div></div>
+    <div class="cert-c"><div class="cert-i">🤝</div><div class="cert-bd"><div class="cert-tt">Top-Rated Freelancer</div><div class="cert-d">Consistent 5-star reviews on Mostaql, Khamsat, and Upwork — known for on-time delivery and post-launch support.</div><div class="cert-yr">Active</div></div></div>
   </div>
 </section>
 
@@ -290,6 +317,7 @@ body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6
     <div class="tl-it proj-green"><div class="tl-hd"><div class="tl-r">Clinic Booking System <span class="badge badge-ok">Delivered ✓</span><span class="badge badge-type">Web App</span></div></div><div class="tl-d">Complete clinic management and booking system with online appointments, doctor schedules, patient records, and automated reminders.<div class="tu"><span class="tc">Laravel</span><span class="tc">Next.js</span><span class="tc">PostgreSQL</span><span class="tc">Tailwind CSS</span></div><a href="projects/clinic-booking.html" class="proj-link">View Details →</a></div></div>
     <div class="tl-it proj-purple"><div class="tl-hd"><div class="tl-r">WhatsApp Auto-Reply Bot <span class="badge badge-ok">Delivered ✓</span><span class="badge badge-type">SaaS</span></div></div><div class="tl-d">SaaS platform for automated WhatsApp business responses. No-code rule builder, multi-number management, conversation analytics.<div class="tu"><span class="tc">Node.js</span><span class="tc">Next.js</span><span class="tc">WhatsApp API</span><span class="tc">MongoDB</span></div><a href="projects/whatsapp-bot.html" class="proj-link">View Details →</a></div></div>
     <div class="tl-it proj-blue"><div class="tl-hd"><div class="tl-r">Bagour Delivery <span class="badge badge-ok">Delivered ✓</span><span class="badge badge-type">Mobile App</span></div></div><div class="tl-d">Hyperlocal delivery app connecting customers with nearby stores. Customer app, store panel, driver app with real-time order tracking.<div class="tu"><span class="tc">Node.js</span><span class="tc">Flutter</span><span class="tc">Next.js</span><span class="tc">MongoDB</span><span class="tc">WebSocket</span></div><a href="projects/bagour-delivery.html" class="proj-link">View Details →</a></div></div>
+    <div class="tl-it proj-amber"><div class="tl-hd"><div class="tl-r">Sana3y — Handyman Marketplace <span class="badge badge-ok">Delivered ✓</span><span class="badge badge-type">Marketplace</span></div></div><div class="tl-d">On-demand marketplace connecting customers with verified local craftsmen (plumbers, electricians, carpenters). Customer app, worker app, admin dashboard with real-time job dispatch.<div class="tu"><span class="tc">Node.js</span><span class="tc">Flutter</span><span class="tc">Next.js</span><span class="tc">MongoDB</span><span class="tc">WebSocket</span><span class="tc">FCM</span></div><a href="projects/sana3y.html" class="proj-link">View Details →</a></div></div>
   </div>
 </section>
 
@@ -388,6 +416,11 @@ body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6
   </div>
 </header>
 
+<div class="now-card" role="status" aria-label="ما أعمل عليه حالياً">
+  <div class="now-tag"><span class="now-dot"></span><span>الآن</span></div>
+  <div class="now-txt">أعمل على منصة <strong>Escore</strong> للرياضات الإلكترونية في ROV GROUP · متاح لمشاريع فريلانس في <strong>أتمتة سلة</strong> و<strong>بوتات الذكاء الاصطناعي</strong></div>
+</div>
+
 <section class="sec" id="about-ar"><h2 class="sec-t">نبذة عني</h2>
   <div class="sum-w"><div class="sum">مطور تطبيقات متكامل (Full-Stack) متخصص في بناء تطبيقات الويب والموبايل الجاهزة للإنتاج في منطقة الشرق الأوسط وشمال إفريقيا. أتقن تقنيات Node.js/TypeScript في الباك إند، Flutter/Dart لتطبيقات الموبايل، وNext.js للفرونت إند. مساهم نشط في مشاريع مفتوحة المصدر كبيرة مثل express-validator وHelmet.js. أقدم حلولاً متكاملة للعملاء — من منصات SaaS وبوتات ذكية وأتمتة التجارة الإلكترونية إلى لوحات تحكم وأنظمة لحظية. خبرة في بناء بوتات ذكية مربوطة بمنصات مثل سلة وتيليجرام لأتمتة خدمة العملاء وزيادة المبيعات لمتاجر التجارة الإلكترونية.</div></div>
 </section>
@@ -397,7 +430,7 @@ body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6
     <div class="st-it"><div class="st-n">+<span data-count="50">0</span></div><div class="st-l">مشروع تم تسليمه</div></div>
     <div class="st-it"><div class="st-n">+<span data-count="25">0</span></div><div class="st-l">مساهمة مفتوحة المصدر</div></div>
     <div class="st-it"><div class="st-n">+<span data-count="15">0</span></div><div class="st-l">طلب دمج مقبول</div></div>
-    <div class="st-it"><div class="st-n">+<span data-count="3">0</span></div><div class="st-l">سنوات خبرة</div></div>
+    <div class="st-it"><div class="st-n">+<span data-count="4">0</span></div><div class="st-l">سنوات خبرة</div></div>
     <div class="st-it"><div class="st-n">+<span data-count="10">0</span></div><div class="st-l">عملاء سعداء</div></div>
   </div>
 </section>
@@ -485,12 +518,23 @@ body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6
 </section>
 
 <section class="sec" id="edu-ar"><h2 class="sec-t">التعليم واللغات</h2>
-  <div class="edu-c"><div class="edu-i"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg></div><div><div class="edu-t">بكالوريوس علوم الحاسب</div><div class="edu-inst">الجامعة — كلية الحاسبات والمعلومات</div><div class="edu-yr">2021 — 2025</div></div></div>
+  <div class="edu-c"><div class="edu-i"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg></div><div><div class="edu-t">بكالوريوس علوم الحاسب</div><div class="edu-inst">الجامعة — كلية الحاسبات والمعلومات</div><div class="edu-yr">2021 — 2026 · متخرّج</div></div></div>
   <div class="edu-c"><div class="edu-i"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div><div><div class="edu-t">تعلم مستمر وتطوير مهني</div><div class="tl-d"><ul><li>Node.js & TypeScript متقدم</li><li>تطوير موبايل Flutter & Dart</li><li>تصميم الأنظمة والبنية</li><li>البنية السحابية و DevOps</li><li>أفضل ممارسات المصادر المفتوحة</li></ul></div></div></div>
   <div style="margin-top:20px">
     <div class="lang-it"><div class="lang-hd"><span class="lang-nm">العربية</span><span class="lang-lv">اللغة الأم</span></div><div class="lang-bar"><div class="lang-fill" style="--w:100%"></div></div></div>
     <div class="lang-it"><div class="lang-hd"><span class="lang-nm">الإنجليزية</span><span class="lang-lv">مستوى مهني</span></div><div class="lang-bar"><div class="lang-fill" style="--w:80%"></div></div></div>
     <div class="lang-it"><div class="lang-hd"><span class="lang-nm">الإنجليزية التقنية</span><span class="lang-lv">طلق (توثيق وأكواد)</span></div><div class="lang-bar"><div class="lang-fill" style="--w:95%"></div></div></div>
+  </div>
+</section>
+
+<section class="sec" id="cert-ar"><h2 class="sec-t">الإنجازات والاعتراف</h2>
+  <div class="cert-g">
+    <div class="cert-c"><div class="cert-i">📚</div><div class="cert-bd"><div class="cert-tt">+25 مقال تقني منشور</div><div class="cert-d">شروحات ثنائية اللغة عن Node.js و Flutter وأتمتة التجارة الإلكترونية وDevOps — بمتوسط ١٢ دقيقة قراءة.</div><div class="cert-yr">2025 — 2026</div></div></div>
+    <div class="cert-c"><div class="cert-i">⭐</div><div class="cert-bd"><div class="cert-tt">مساهم في المصادر المفتوحة — نظام Node.js</div><div class="cert-d">عدة PRs مدموجة في Helmet.js و express-validator وأكثر من ٢٠ مشروع نشط في نظام Node.js.</div><div class="cert-yr">مستمر</div></div></div>
+    <div class="cert-c"><div class="cert-i">📱</div><div class="cert-bd"><div class="cert-tt">تطبيق موبايل منشور على Google Play</div><div class="cert-d">"الأربعون النووية" — تطبيق Flutter مع سرد صوتي ودعم كامل للعربية واتجاه RTL.</div><div class="cert-yr">2024</div></div></div>
+    <div class="cert-c"><div class="cert-i">🛒</div><div class="cert-bd"><div class="cert-tt">خبير تكامل مع منصة سلة</div><div class="cert-d">بنيت عدة تكاملات إنتاج بما فيها IAI — مساعد تجارة إلكترونية بالذكاء الاصطناعي لتجار سعوديين.</div><div class="cert-yr">2025 — 2026</div></div></div>
+    <div class="cert-c"><div class="cert-i">🎯</div><div class="cert-bd"><div class="cert-tt">+50 مشروع إنتاج تم تسليمه</div><div class="cert-d">حلول ويب وموبايل و SaaS متكاملة لعملاء في مصر والسعودية ومنطقة الشرق الأوسط.</div><div class="cert-yr">2022 — 2026</div></div></div>
+    <div class="cert-c"><div class="cert-i">🤝</div><div class="cert-bd"><div class="cert-tt">مطور بتقييم ممتاز</div><div class="cert-d">تقييمات ٥ نجوم ثابتة على مستقل وخمسات و Upwork — التزام بالمواعيد ودعم ما بعد التسليم.</div><div class="cert-yr">نشط</div></div></div>
   </div>
 </section>
 
@@ -513,6 +557,7 @@ body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6
     <div class="tl-it proj-green"><div class="tl-hd"><div class="tl-r">نظام حجز العيادات <span class="badge badge-ok">تم التسليم ✓</span><span class="badge badge-type">تطبيق ويب</span></div></div><div class="tl-d">نظام إدارة وحجز عيادات متكامل مع مواعيد أونلاين وجداول أطباء وسجلات مرضى وتذكيرات تلقائية.<div class="tu"><span class="tc">Laravel</span><span class="tc">Next.js</span><span class="tc">PostgreSQL</span><span class="tc">Tailwind CSS</span></div><a href="projects/clinic-booking.html" class="proj-link">عرض التفاصيل ←</a></div></div>
     <div class="tl-it proj-purple"><div class="tl-hd"><div class="tl-r">بوت واتساب للرد التلقائي <span class="badge badge-ok">تم التسليم ✓</span><span class="badge badge-type">SaaS</span></div></div><div class="tl-d">منصة SaaS للردود التلقائية على واتساب. بناء قواعد بدون كود، إدارة أرقام متعددة، تحليلات محادثات.<div class="tu"><span class="tc">Node.js</span><span class="tc">Next.js</span><span class="tc">WhatsApp API</span><span class="tc">MongoDB</span></div><a href="projects/whatsapp-bot.html" class="proj-link">عرض التفاصيل ←</a></div></div>
     <div class="tl-it proj-blue"><div class="tl-hd"><div class="tl-r">باجور ديليفري <span class="badge badge-ok">تم التسليم ✓</span><span class="badge badge-type">موبايل</span></div></div><div class="tl-d">تطبيق توصيل محلي يربط العملاء بالمتاجر القريبة. تطبيق عملاء، لوحة متاجر، تطبيق سائقين مع تتبع لحظي.<div class="tu"><span class="tc">Node.js</span><span class="tc">Flutter</span><span class="tc">Next.js</span><span class="tc">MongoDB</span><span class="tc">WebSocket</span></div><a href="projects/bagour-delivery.html" class="proj-link">عرض التفاصيل ←</a></div></div>
+    <div class="tl-it proj-amber"><div class="tl-hd"><div class="tl-r">صنايعي — منصة الفنيين <span class="badge badge-ok">تم التسليم ✓</span><span class="badge badge-type">Marketplace</span></div></div><div class="tl-d">منصة On-Demand تربط العملاء بفنيين معتمدين (سباكين، كهربائيين، نجارين). تطبيق عملاء، تطبيق صنايعية، لوحة إدارة مع توزيع طلبات لحظي.<div class="tu"><span class="tc">Node.js</span><span class="tc">Flutter</span><span class="tc">Next.js</span><span class="tc">MongoDB</span><span class="tc">WebSocket</span><span class="tc">FCM</span></div><a href="projects/sana3y.html" class="proj-link">عرض التفاصيل ←</a></div></div>
   </div>
 </section>
 
