@@ -26,11 +26,17 @@ if [[ $REFRESH_STATS -eq 1 ]]; then
   bash scripts/fetch-github-stats.sh
 fi
 
+echo "━━━ generate-changelog ━━━"
+python3 scripts/generate-changelog.py
+
 echo "━━━ generate-feeds ━━━"
 python3 scripts/generate-feeds.py
 
 echo "━━━ generate-search-index ━━━"
 python3 scripts/generate-search-index.py
+
+echo "━━━ generate-tag-pages ━━━"
+python3 scripts/generate-tag-pages.py
 
 echo "━━━ generate-sitemap ━━━"
 python3 scripts/generate-sitemap.py

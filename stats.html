@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stats — Live GitHub Activity | Mahmoud Hamdy</title>
+<meta name="description" content="Live GitHub statistics for Mahmoud Hamdy — merged PRs, top open-source contributions, contribution heatmap, and latest activity. Refreshed daily.">
+<meta name="author" content="Mahmoud Hamdy">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0a0f1a">
+<link rel="canonical" href="https://mahmoodhamdi.github.io/cv/stats.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Stats — Live GitHub Activity | Mahmoud Hamdy">
+<meta property="og:description" content="Live GitHub statistics — 500+ merged PRs across 24 external open-source projects.">
+<meta property="og:url" content="https://mahmoodhamdi.github.io/cv/stats.html">
+<meta property="og:image" content="https://mahmoodhamdi.github.io/cv/assets/og/og-stats.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mahmoodhamdi.github.io/cv/assets/og/og-stats.png">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mahmoodhamdi.github.io/cv/"},{"@type":"ListItem","position":2,"name":"Stats","item":"https://mahmoodhamdi.github.io/cv/stats.html"}]}
+</script>
+<style>
+:root{--bg:#0a0f1a;--bg-alt:#111827;--card:#1a2236;--card-h:#1f2a42;--accent:#38bdf8;--accent-g:rgba(56,189,248,.15);--accent2:#818cf8;--txt:#f1f5f9;--txt2:#94a3b8;--muted:#8e99ad;--bdr:rgba(148,163,184,.1);--grad:linear-gradient(135deg,#38bdf8,#818cf8);--green:#34d399;--fn:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;--fn-ar:'Tajawal',sans-serif;--nav-bg:rgba(10,15,26,.88);--prog-bg:rgba(148,163,184,.1)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;padding-top:52px}
+.wrap{max-width:1000px;margin:0 auto;padding:36px 24px}
+.navbar{position:fixed;top:0;left:0;right:0;z-index:90;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--bdr)}
+.nav-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:48px}
+.nav-back{font-size:13px;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.nav-back:hover{color:var(--accent)}
+.nav-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+.top-ctrl{position:fixed;top:58px;right:20px;z-index:100;display:flex;gap:8px;align-items:center}
+.lang-tog{display:flex;gap:3px;background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:3px}
+.l-btn{padding:4px 10px;border-radius:8px;font-size:11px;font-weight:600;color:var(--muted);cursor:pointer;border:none;background:none;font-family:var(--fn)}
+.l-btn.on{background:var(--accent-g);color:var(--accent)}
+
+.s-hero{text-align:center;padding:22px 0 30px}
+.s-hero h1{font-size:38px;font-weight:600;letter-spacing:-.02em;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+.s-hero p{font-size:14px;color:var(--txt2);max-width:560px;margin:0 auto}
+.s-updated{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);font-family:var(--mono);margin-top:8px;padding:4px 10px;border-radius:20px;background:var(--card);border:1px solid var(--bdr)}
+.s-updated::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+
+.s-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:32px}
+.s-card{background:var(--card);border:1px solid var(--bdr);border-radius:14px;padding:20px;text-align:center;transition:transform .25s,border-color .25s,box-shadow .25s}
+.s-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:0 8px 24px var(--accent-g)}
+.s-card-v{font-size:32px;font-weight:700;font-family:var(--mono);background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1}
+.s-card-l{font-size:12px;color:var(--muted);margin-top:6px;text-transform:uppercase;letter-spacing:.06em}
+.s-card-sub{font-size:11px;color:var(--txt2);margin-top:2px}
+
+.s-sec{margin-bottom:36px}
+.s-sec h2{font-size:18px;font-weight:600;color:var(--txt);margin-bottom:16px;display:flex;align-items:baseline;gap:10px}
+.s-sec h2 .badge{font-size:11px;color:var(--muted);font-family:var(--mono);font-weight:500;background:var(--prog-bg);padding:2px 8px;border-radius:5px}
+
+.s-repos{display:flex;flex-direction:column;gap:10px}
+.s-repo{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:12px 16px;text-decoration:none;color:inherit;transition:transform .25s,border-color .25s}
+.s-repo:hover{transform:translateX(2px);border-color:var(--accent)}
+html[dir="rtl"] .s-repo:hover{transform:translateX(-2px)}
+.s-repo-name{font-family:var(--mono);font-size:13px;color:var(--txt);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.s-repo-name .org{color:var(--muted);font-weight:400}
+.s-repo-bar{width:100%;max-width:120px;height:8px;background:var(--prog-bg);border-radius:4px;overflow:hidden;justify-self:stretch}
+.s-repo-bar > div{height:100%;background:var(--grad);border-radius:4px;transition:width 1.2s cubic-bezier(.16,1,.3,1)}
+.s-repo-prs{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--accent);min-width:36px;text-align:end}
+
+.s-heat{background:var(--card);border:1px solid var(--bdr);border-radius:14px;padding:20px}
+.s-heat-grid{display:grid;grid-template-columns:repeat(60,1fr);gap:3px;direction:ltr}
+.s-heat-grid > span{aspect-ratio:1;border-radius:2px;background:var(--prog-bg);transition:transform .15s}
+.s-heat-grid > span:hover{transform:scale(1.35)}
+.s-heat-grid .l-0{background:rgba(148,163,184,.12)}
+.s-heat-grid .l-1{background:rgba(52,211,153,.22)}
+.s-heat-grid .l-2{background:rgba(52,211,153,.42)}
+.s-heat-grid .l-3{background:rgba(52,211,153,.66)}
+.s-heat-grid .l-4{background:rgba(52,211,153,.9)}
+.s-heat-legend{display:flex;justify-content:flex-end;gap:6px;align-items:center;font-size:11px;color:var(--muted);margin-top:10px;font-family:var(--mono)}
+.s-heat-legend > div{display:flex;gap:3px}
+.s-heat-legend > div > span{width:10px;height:10px;border-radius:2px}
+
+.s-prs{display:flex;flex-direction:column;gap:8px}
+.s-pr{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:10px 14px;background:var(--card);border:1px solid var(--bdr);border-radius:10px;text-decoration:none;color:inherit;transition:transform .2s,border-color .2s}
+.s-pr:hover{transform:translateX(2px);border-color:var(--accent)}
+html[dir="rtl"] .s-pr:hover{transform:translateX(-2px)}
+.s-pr-repo{font-family:var(--mono);font-size:11px;color:var(--accent);font-weight:600;background:var(--accent-g);padding:2px 8px;border-radius:5px;white-space:nowrap;max-width:160px;overflow:hidden;text-overflow:ellipsis}
+.s-pr-title{font-size:13px;color:var(--txt2);overflow:hidden;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;line-height:1.4}
+.s-pr-date{font-family:var(--mono);font-size:11px;color:var(--muted);white-space:nowrap}
+
+.s-skeleton{color:var(--muted);font-size:13px;text-align:center;padding:30px;font-style:italic}
+
+.s-cta{margin-top:36px;padding:26px;border-radius:14px;background:linear-gradient(135deg,rgba(56,189,248,.06),rgba(129,140,248,.06));border:1px solid var(--bdr);text-align:center}
+.s-cta p{font-size:14px;color:var(--txt2);margin-bottom:14px}
+.btn-p{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border-radius:10px;background:var(--grad);color:#fff;font-size:13px;font-weight:600;text-decoration:none;transition:transform .2s}
+.btn-p:hover{transform:translateY(-2px)}
+
+html[data-theme="light"]{--bg:#f8fafc;--bg-alt:#f1f5f9;--card:#fff;--card-h:#f8fafc;--txt:#0f172a;--txt2:#334155;--muted:#64748b;--bdr:rgba(15,23,42,.1);--nav-bg:rgba(248,250,252,.88);--accent-g:rgba(56,189,248,.12);--prog-bg:rgba(15,23,42,.08)}
+html[dir="rtl"] body{font-family:var(--fn-ar)}
+@media(max-width:600px){
+  .s-hero h1{font-size:30px}
+  .top-ctrl{top:54px;right:12px}
+  html[dir="rtl"] .top-ctrl{right:auto;left:12px}
+  .s-heat-grid{grid-template-columns:repeat(30,1fr)}
+  .s-repo{grid-template-columns:1fr auto;gap:8px}
+  .s-repo-bar{display:none}
+  .s-pr{grid-template-columns:1fr;gap:4px}
+  .s-pr-date{display:none}
+}
+</style>
+<link rel="stylesheet" href="css/bundle.css">
+</head>
+<body class="loaded">
+
+<nav class="navbar"><div class="nav-in">
+  <a href="./" class="nav-back"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    <span class="en-only">Back to portfolio</span><span class="ar-only" style="display:none">العودة للبورتفوليو</span>
+  </a>
+</div></nav>
+
+<div class="top-ctrl">
+  <div class="lang-tog">
+    <button class="l-btn on" onclick="setLang('en')">EN</button>
+    <button class="l-btn" onclick="setLang('ar')">عربي</button>
+  </div>
+</div>
+
+<main class="wrap">
+
+<section class="s-hero">
+  <h1 id="hero-en">Live stats</h1>
+  <h1 id="hero-ar" style="display:none">إحصاءات لحظية</h1>
+  <p id="sub-en">Open-source contributions, top repos, and contribution activity — refreshed daily from the GitHub public API.</p>
+  <p id="sub-ar" style="display:none">مساهمات المصادر المفتوحة وأكثر المستودعات نشاطاً ومخطط النشاط — بيتحدّث كل يوم من GitHub API.</p>
+  <div class="s-updated" id="updated"><span id="updated-text">Live</span></div>
+</section>
+
+<section class="s-grid" id="summary-cards" aria-label="Summary statistics">
+  <div class="s-card"><div class="s-card-v" data-key="mergedPRs">—</div><div class="s-card-l"><span class="en-only">Merged PRs</span><span class="ar-only" style="display:none">PR مدموج</span></div><div class="s-card-sub"><span class="en-only">total across all repos</span><span class="ar-only" style="display:none">عبر كل المشاريع</span></div></div>
+  <div class="s-card"><div class="s-card-v" data-key="externalProjects">—</div><div class="s-card-l"><span class="en-only">External Projects</span><span class="ar-only" style="display:none">مشروع خارجي</span></div><div class="s-card-sub"><span class="en-only">open-source repos contributed</span><span class="ar-only" style="display:none">مساهمات مفتوحة المصدر</span></div></div>
+  <div class="s-card"><div class="s-card-v" data-key="publicRepos">—</div><div class="s-card-l"><span class="en-only">Public Repos</span><span class="ar-only" style="display:none">مستودع عام</span></div><div class="s-card-sub"><span class="en-only">on github.com/mahmoodhamdi</span><span class="ar-only" style="display:none">على github.com/mahmoodhamdi</span></div></div>
+  <div class="s-card"><div class="s-card-v" data-key="followers">—</div><div class="s-card-l"><span class="en-only">Followers</span><span class="ar-only" style="display:none">متابع</span></div><div class="s-card-sub"><span class="en-only">on GitHub</span><span class="ar-only" style="display:none">على GitHub</span></div></div>
+</section>
+
+<section class="s-sec">
+  <h2><span class="en-only">Top external repos by merged PRs</span><span class="ar-only" style="display:none">أعلى المستودعات الخارجية بـ PRs مدموجة</span></h2>
+  <div class="s-repos" id="top-repos">
+    <div class="s-skeleton">Loading top repos…</div>
+  </div>
+</section>
+
+<section class="s-sec">
+  <h2><span class="en-only">Contribution activity</span><span class="ar-only" style="display:none">نشاط المساهمات</span><span class="badge"><span class="en-only">last 60 days</span><span class="ar-only" style="display:none">آخر ٦٠ يوم</span></span></h2>
+  <div class="s-heat">
+    <div class="s-heat-grid" id="heat-grid"></div>
+    <div class="s-heat-legend">
+      <span class="en-only">Less</span><span class="ar-only" style="display:none">أقل</span>
+      <div><span class="l-0"></span><span class="l-1"></span><span class="l-2"></span><span class="l-3"></span><span class="l-4"></span></div>
+      <span class="en-only">More</span><span class="ar-only" style="display:none">أكثر</span>
+    </div>
+  </div>
+</section>
+
+<section class="s-sec">
+  <h2><span class="en-only">Latest merged PRs</span><span class="ar-only" style="display:none">آخر الـ PRs المدموجة</span></h2>
+  <div class="s-prs" id="latest-prs">
+    <div class="s-skeleton">Loading…</div>
+  </div>
+</section>
+
+<section class="s-cta">
+  <p><span class="en-only">All data sourced from the public GitHub API and refreshed daily at 03:00 UTC by a GitHub Action.</span><span class="ar-only" style="display:none">كل البيانات من GitHub API العامة وبتتحدّث يومياً الساعة ٣ صباحاً UTC عبر GitHub Action.</span></p>
+  <a class="btn-p" href="https://github.com/mahmoodhamdi" target="_blank" rel="noopener">
+    <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+    <span class="en-only">View full profile on GitHub</span><span class="ar-only" style="display:none">شوف البروفايل الكامل على GitHub</span>
+  </a>
+</section>
+
+</main>
+
+<script>
+try{var t=localStorage.getItem('cv-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}
+
+function setLang(l){
+  var h=document.documentElement;
+  var btns=document.querySelectorAll('.l-btn');
+  var isAr=l==='ar';
+  h.dir=isAr?'rtl':'ltr';h.lang=l;
+  btns[0].classList.toggle('on',!isAr);btns[1].classList.toggle('on',isAr);
+  document.querySelectorAll('.en-only').forEach(function(el){el.style.display=isAr?'none':''});
+  document.querySelectorAll('.ar-only').forEach(function(el){el.style.display=isAr?'inline':'none'});
+  document.getElementById('hero-en').style.display=isAr?'none':'';
+  document.getElementById('hero-ar').style.display=isAr?'':'none';
+  document.getElementById('sub-en').style.display=isAr?'none':'';
+  document.getElementById('sub-ar').style.display=isAr?'':'none';
+  if (window.__renderAll) window.__renderAll();
+}
+
+function toAr(s){var m={'0':'٠','1':'١','2':'٢','3':'٣','4':'٤','5':'٥','6':'٦','7':'٧','8':'٨','9':'٩',',':'٬'};return String(s).replace(/[0-9,]/g,function(c){return m[c]||c})}
+function fmt(n){var isAr=document.documentElement.lang==='ar';var s=Number(n).toLocaleString('en-US');return isAr?toAr(s):s}
+
+var statsData = null;
+
+function animateNum(el, to, duration) {
+  duration = duration || 1400;
+  var start = performance.now();
+  var from = 0;
+  function step(ts) {
+    var p = Math.min((ts - start) / duration, 1);
+    var ease = 1 - Math.pow(1 - p, 3);
+    var v = Math.round(from + (to - from) * ease);
+    el.textContent = fmt(v);
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+function renderSummary() {
+  if (!statsData) return;
+  var s = statsData.summary;
+  document.querySelectorAll('[data-key]').forEach(function(el) {
+    var v = s[el.getAttribute('data-key')];
+    if (typeof v === 'number') animateNum(el, v);
+  });
+}
+
+function renderTopRepos() {
+  var container = document.getElementById('top-repos');
+  if (!statsData || !container) return;
+  var repos = statsData.topRepos || [];
+  if (!repos.length) { container.innerHTML = '<div class="s-skeleton">No data yet.</div>'; return; }
+  var max = repos[0].prs || 1;
+  container.innerHTML = repos.map(function(r) {
+    var parts = (r.slug || '').split('/');
+    var org = parts.length > 1 ? parts[0] + '/' : '';
+    var name = parts[parts.length - 1];
+    var pct = Math.round((r.prs / max) * 100);
+    return '<a class="s-repo" href="' + r.url + '" target="_blank" rel="noopener">'
+         + '<div class="s-repo-name"><span class="org">' + org + '</span>' + name + '</div>'
+         + '<div class="s-repo-bar"><div style="width:' + pct + '%"></div></div>'
+         + '<div class="s-repo-prs">' + fmt(r.prs) + '</div>'
+         + '</a>';
+  }).join('');
+}
+
+function renderHeatmap() {
+  var container = document.getElementById('heat-grid');
+  if (!statsData || !container) return;
+  var heat = statsData.heatmap || [];
+  if (!heat.length) { container.innerHTML = '<div class="s-skeleton">No data.</div>'; return; }
+  var max = heat.reduce(function(m, c) { return c.count > m ? c.count : m; }, 0) || 1;
+  function level(c) {
+    if (c === 0) return 0;
+    var r = c / max;
+    if (r > .75) return 4;
+    if (r > .45) return 3;
+    if (r > .20) return 2;
+    return 1;
+  }
+  container.innerHTML = heat.map(function(d) {
+    return '<span class="l-' + level(d.count) + '" title="' + d.date + ' · ' + d.count + ' contribution' + (d.count===1?'':'s') + '"></span>';
+  }).join('');
+}
+
+function renderLatest() {
+  var container = document.getElementById('latest-prs');
+  if (!statsData || !container) return;
+  var prs = statsData.latestPRs || [];
+  if (!prs.length) { container.innerHTML = '<div class="s-skeleton">No data yet.</div>'; return; }
+  var isAr = document.documentElement.lang === 'ar';
+  container.innerHTML = prs.map(function(p) {
+    var when = p.mergedAt ? new Date(p.mergedAt) : null;
+    var dt = when ? when.toLocaleDateString(isAr ? 'ar-EG' : 'en-US', {month:'short', day:'numeric', year:'numeric'}) : '';
+    var title = (p.title || '').replace(/[<>&"]/g, function(c){return ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'})[c]});
+    return '<a class="s-pr" href="' + p.url + '" target="_blank" rel="noopener">'
+         + '<span class="s-pr-repo">' + (p.repo || '') + '</span>'
+         + '<span class="s-pr-title">' + title + '</span>'
+         + '<span class="s-pr-date">' + dt + '</span></a>';
+  }).join('');
+}
+
+function renderUpdatedTime() {
+  if (!statsData || !statsData.lastUpdated) return;
+  var d = new Date(statsData.lastUpdated);
+  var isAr = document.documentElement.lang === 'ar';
+  var diff = Date.now() - d.getTime();
+  var hours = Math.floor(diff / 3600000);
+  var days = Math.floor(diff / 86400000);
+  var rel;
+  if (hours < 1) rel = isAr ? 'حالاً' : 'just now';
+  else if (hours < 24) rel = isAr ? 'منذ ' + toAr(hours) + ' ساعة' : hours + 'h ago';
+  else rel = isAr ? 'منذ ' + toAr(days) + ' يوم' : days + 'd ago';
+  document.getElementById('updated-text').textContent = (isAr ? 'محدّث ' : 'updated ') + rel;
+}
+
+window.__renderAll = function() {
+  renderSummary();
+  renderTopRepos();
+  renderHeatmap();
+  renderLatest();
+  renderUpdatedTime();
+};
+
+fetch('data/stats.json', { cache: 'default' })
+  .then(function(r) { return r.ok ? r.json() : null; })
+  .then(function(d) {
+    if (!d) return;
+    statsData = d;
+    window.__renderAll();
+  })
+  .catch(function() {
+    document.getElementById('top-repos').innerHTML = '<div class="s-skeleton">Could not load stats.</div>';
+    document.getElementById('latest-prs').innerHTML = '<div class="s-skeleton">Could not load.</div>';
+  });
+</script>
+<script src="js/search.js" defer></script>
+</body>
+</html>

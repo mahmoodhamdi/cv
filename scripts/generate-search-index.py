@@ -105,6 +105,31 @@ def extract(path: Path, kind: str) -> dict | None:
     }
 
 
+def parse_blog_index_categories() -> dict[str, str]:
+    """Map blog post slug → category by scanning blog/index.html cards.
+    Each card looks like:
+        <article class="post-card" data-category="tutorial">
+          ...
+          <a href="posts/foo.html" class="read-more">...
+    """
+    f = ROOT / "blog" / "index.html"
+    if not f.is_file():
+        return {}
+    txt = f.read_text(encoding="utf-8", errors="ignore")
+    out: dict[str, str] = {}
+    # Each card has data-category="X" then later href="posts/SLUG.html"
+    for card in re.finditer(
+        r'<article[^>]*data-category=["\']([^"\']+)["\'][^>]*>(.*?)</article>',
+        txt, flags=re.S,
+    ):
+        cat = card.group(1).strip().lower()
+        body = card.group(2)
+        m = re.search(r'href=["\']posts/([^"\']+)\.html["\']', body)
+        if m:
+            out[m.group(1)] = cat
+    return out
+
+
 def collect() -> list[dict]:
     entries: list[dict] = []
     for rel, kind in SOURCES:
@@ -119,10 +144,17 @@ def collect() -> list[dict]:
         e = extract(p, "project")
         if e:
             entries.append(e)
+    # Build slug→category map first, then enrich post entries
+    post_cats = parse_blog_index_categories()
     for p in sorted((ROOT / "blog" / "posts").glob("*.html")):
         e = extract(p, "post")
-        if e:
-            entries.append(e)
+        if not e:
+            continue
+        # Inject category from the blog index card
+        cat = post_cats.get(p.stem)
+        if cat and cat not in e["tags"]:
+            e["tags"].insert(0, cat)
+        entries.append(e)
     return entries
 
 

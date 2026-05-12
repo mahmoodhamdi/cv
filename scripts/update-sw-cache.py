@@ -47,9 +47,17 @@ PATTERNS = [
     "services.html",
     "privacy.html",
     "uses.html",
+    "stats.html",
+    "changelog.html",
+    "resume.json",
     "assets/favicon.svg",
+    "assets/favicon-16.png",
+    "assets/favicon-32.png",
+    "assets/apple-touch-icon.png",
     "assets/icon-192.svg",
+    "assets/icon-192.png",
     "assets/icon-512.svg",
+    "assets/icon-512.png",
     "projects/projects.css",
 ]
 
@@ -58,6 +66,7 @@ GLOB_PATTERNS = [
     "blog/*.html",
     "blog/*.css",
     "blog/posts/*.html",
+    "blog/tag/*/index.html",
 ]
 
 
