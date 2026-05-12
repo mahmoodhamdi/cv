@@ -1,0 +1,85 @@
+name: Lighthouse
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Build artifacts (sitemap, sw, bundles)
+        run: bash scripts/build.sh
+
+      - name: Serve the site locally
+        run: |
+          python3 -m http.server 8080 &
+          # Wait for server to be ready
+          for i in 1 2 3 4 5; do
+            curl -sf http://localhost:8080/ > /dev/null && break
+            sleep 1
+          done
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: |
+            http://localhost:8080/
+            http://localhost:8080/about.html
+            http://localhost:8080/services.html
+            http://localhost:8080/projects/
+            http://localhost:8080/blog/
+            http://localhost:8080/blog/posts/building-salla-bot.html
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+          configPath: ./.github/workflows/lighthouse-config.json
+
+      - name: Comment on PR with results
+        if: github.event_name == 'pull_request' && always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = '.lighthouseci';
+            let summary = '## Lighthouse results\n\n';
+            try {
+              if (fs.existsSync(path)) {
+                const files = fs.readdirSync(path).filter(f => f.startsWith('lhr-') && f.endsWith('.json'));
+                files.slice(0, 6).forEach(f => {
+                  const data = JSON.parse(fs.readFileSync(`${path}/${f}`, 'utf8'));
+                  const url = data.finalDisplayedUrl || data.requestedUrl;
+                  const cats = data.categories;
+                  const perf = Math.round((cats.performance?.score || 0) * 100);
+                  const a11y = Math.round((cats.accessibility?.score || 0) * 100);
+                  const bp   = Math.round((cats['best-practices']?.score || 0) * 100);
+                  const seo  = Math.round((cats.seo?.score || 0) * 100);
+                  summary += `**${url}**\n`;
+                  summary += `Perf ${perf} · A11y ${a11y} · BP ${bp} · SEO ${seo}\n\n`;
+                });
+              } else {
+                summary += 'No reports found.';
+              }
+            } catch (e) { summary += `Could not parse: ${e.message}`; }
+            github.rest.issues.createComment({
+              owner: context.repo.owner, repo: context.repo.repo,
+              issue_number: context.issue.number, body: summary
+            });

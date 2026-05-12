@@ -3,59 +3,235 @@
   <channel>
     <title>محمود حمدي — المدونة</title>
     <link>https://mahmoodhamdi.github.io/cv/blog/</link>
-    <description>مقالات تقنية عن تطوير البرمجيات، Flutter، Node.js، والعمل الحر في المنطقة العربية.</description>
+    <description>مقالات تقنية في Node.js و Flutter و TypeScript والمصادر المفتوحة والعمل الحر في منطقة الشرق الأوسط.</description>
     <language>ar</language>
-    <lastBuildDate>Sat, 28 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 12 May 2026 09:44:10 +0000</lastBuildDate>
     <atom:link href="https://mahmoodhamdi.github.io/cv/blog/feed-ar.xml" rel="self" type="application/rss+xml"/>
 
-    <item><title>أتمتة متجر سلة بالكامل — دليل شامل</title><link>https://mahmoodhamdi.github.io/cv/blog/posts/salla-store-automation.html</link><description>أتمتة متجرك على سلة مع بوتات وإشعارات طلبات ومزامنة المخزون واسترداد السلات المتروكة.</description><pubDate>Sat, 28 Mar 2026 00:00:00 +0000</pubDate><category>Tutorial</category><guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/salla-store-automation.html</guid></item>
+    <item>
+      <title>Complete Guide to Salla Store Automation</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/salla-store-automation.html</link>
+      <description>حين بنيت بوت IAI لسلة ، اكتشفت أن الأتمتة ليست رفاهية بل ضرورة حقيقية — إنها الفرق بين متجر ينمو ومتجر يغرق صاحبه في عمل يدوي لا ينتهي. هذا الدليل يغطي كل فرصة أتمتة رئيسية داخل منصة سلة: من معالجة ال</description>
+      <pubDate>Sat, 28 Mar 2026 00:00:00 +0000</pubDate>
+      <category>Article</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/salla-store-automation.html</guid>
+    </item>
 
-    <item><title>مقارنة شاملة: سلة vs زد — أيهما أفضل لمتجرك؟</title><link>https://mahmoodhamdi.github.io/cv/blog/posts/zid-vs-salla-comparison.html</link><description>مقارنة تفصيلية بين أكبر منصتين للتجارة الإلكترونية في السعودية — الميزات والأسعار والـ APIs.</description><pubDate>Wed, 25 Mar 2026 00:00:00 +0000</pubDate><category>Guide</category><guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/zid-vs-salla-comparison.html</guid></item>
+    <item>
+      <title>Salla vs Zid: Complete Comparison for Your Online Store</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/zid-vs-salla-comparison.html</link>
+      <description>نما سوق التجارة الإلكترونية السعودي بوتيرة أسرع من معظم أسواق المنطقة. في عام 2026، يُتوقع أن يتجاوز حجم تجارة التجزئة الإلكترونية في المملكة 50 مليار ريال سنويًا، ومنصتان محليتان تتنافسان على قيادة ه</description>
+      <pubDate>Wed, 25 Mar 2026 00:00:00 +0000</pubDate>
+      <category>Article</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/zid-vs-salla-comparison.html</guid>
+    </item>
 
-    <item><title>بناء بوت واتساب للأعمال — دليل خطوة بخطوة</title><link>https://mahmoodhamdi.github.io/cv/blog/posts/whatsapp-business-bot-guide.html</link><description>بناء بوت واتساب تلقائي بـ Node.js و WhatsApp Cloud API — من الويب هوك للرسائل التفاعلية.</description><pubDate>Sun, 22 Mar 2026 00:00:00 +0000</pubDate><category>Tutorial</category><guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/whatsapp-business-bot-guide.html</guid></item>
+    <item>
+      <title>Building a WhatsApp Business Bot — Step by Step Guide</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/whatsapp-business-bot-guide.html</link>
+      <description>واتساب ليس مجرد تطبيق شائع في منطقة الشرق الأوسط وشمال أفريقيا — إنه طبقة التواصل الافتراضية. أكثر من 90% من مستخدمي الهواتف الذكية في السعودية ومصر والإمارات لديهم واتساب مثبتًا ويفتحونه عدة مرات يوم</description>
+      <pubDate>Sun, 22 Mar 2026 00:00:00 +0000</pubDate>
+      <category>Article</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/whatsapp-business-bot-guide.html</guid>
+    </item>
 
-    <item><title>بناء بوت تيليجرام بـ Node.js — من الصفر للاحتراف</title><link>https://mahmoodhamdi.github.io/cv/blog/posts/telegram-bot-nodejs-tutorial.html</link><description>دليل كامل لبناء ونشر بوتات تيليجرام بـ Node.js — الأوامر والأزرار والويب هوك والنشر.</description><pubDate>Wed, 18 Mar 2026 00:00:00 +0000</pubDate><category>Tutorial</category><guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/telegram-bot-nodejs-tutorial.html</guid></item>
+    <item>
+      <title>Freelancing in MENA: A Developer's Guide</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/mena-freelance-guide.html</link>
+      <description>سوق الفريلانس للمطورين في المنطقة العربية كبير وغير مُخدوم بشكل كافٍ ويتطور بسرعة. عملت كمطور فريلانس في هذا السوق لأكثر من ثلاث سنوات — مع عملاء من مصر والسعودية والإمارات والكويت والأردن، عبر منصات </description>
+      <pubDate>Fri, 20 Mar 2026 00:00:00 +0000</pubDate>
+      <category>Article</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/mena-freelance-guide.html</guid>
+    </item>
 
-    <item><title>بناء موقع عربي احترافي بـ Next.js — دليل RTL الكامل</title><link>https://mahmoodhamdi.github.io/cv/blog/posts/nextjs-arabic-website.html</link><description>إعداد Next.js مع دعم RTL العربي والتدويل والخطوط والسيو للمحتوى العربي.</description><pubDate>Sun, 15 Mar 2026 00:00:00 +0000</pubDate><category>Tutorial</category><guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/nextjs-arabic-website.html</guid></item>
+    <item>
+      <title>Building a Telegram Bot with Node.js — Zero to Production</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/telegram-bot-nodejs-tutorial.html</link>
+      <description>بوتات تيليجرام هي من أكثر أدوات الأتمتة سهولةً للمطورين اليوم. لا يوجد عملية موافقة، ولا مراجعة قوالب، ولا رسوم لكل محادثة. تنشئ بوتًا في ثوانٍ عبر @BotFather، وتكتب كود Node.js، وتكون جاهزًا. لقد بني</description>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 +0000</pubDate>
+      <category>Article</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/telegram-bot-nodejs-tutorial.html</guid>
+    </item>
 
-    <item><title>بناء تطبيق موبايل بـ Flutter — من الفكرة للنشر</title><link>https://mahmoodhamdi.github.io/cv/blog/posts/flutter-app-from-scratch.html</link><description>بناء ونشر تطبيق Flutter — Clean Architecture و Bloc ودمج APIs وإشعارات ونشر على Google Play.</description><pubDate>Thu, 12 Mar 2026 00:00:00 +0000</pubDate><category>Tutorial</category><guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/flutter-app-from-scratch.html</guid></item>
+    <item>
+      <title>Building a Professional Arabic Website with Next.js — Complete RTL Guide</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/nextjs-arabic-website.html</link>
+      <description>بناء موقع عربي يبدو احترافيًا حقًا أصعب مما يبدو في الظاهر. الأمر لا يتوقف على وضع dir="rtl" على عنصر HTML والانتهاء. الطباعة العربية لها قواعدها الخاصة، والنص ثنائي الاتجاه تحدٍّ هندسي حقيقي، وتحسين </description>
+      <pubDate>Sun, 15 Mar 2026 00:00:00 +0000</pubDate>
+      <category>Article</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/nextjs-arabic-website.html</guid>
+    </item>
 
-    <item><title>بناء REST API كامل بـ Node.js و TypeScript — الدليل الشامل</title><link>https://mahmoodhamdi.github.io/cv/blog/posts/nodejs-rest-api-complete-guide.html</link><description>API جاهز للإنتاج مع Express و TypeScript و JWT و RBAC و Docker و CI/CD — كود لكل قسم.</description><pubDate>Sun, 08 Mar 2026 00:00:00 +0000</pubDate><category>Tutorial</category><guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/nodejs-rest-api-complete-guide.html</guid></item>
+    <item>
+      <title>Building a Mobile App with Flutter — From Idea to Play Store</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/flutter-app-from-scratch.html</link>
+      <description>رسّخ Flutter مكانته كأفضل إطار عمل للتطوير متعدد المنصات مع دخولنا عام 2026. بقاعدة كود واحدة يمكنك استهداف أندرويد وiOS والويب وسطح المكتب — وقد نضجت لغة Dart لتصبح أداة إنتاجية حقيقية. لقد أطلقت ثلا</description>
+      <pubDate>Thu, 12 Mar 2026 00:00:00 +0000</pubDate>
+      <category>Article</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/flutter-app-from-scratch.html</guid>
+    </item>
 
-    <item><title>بناء لوحة تحكم بـ React — دليل عملي</title><link>https://mahmoodhamdi.github.io/cv/blog/posts/react-dashboard-tutorial.html</link><description>بناء داشبورد إداري بـ React — التصميم والتوثيق وجداول البيانات والرسوم البيانية والوضع المظلم.</description><pubDate>Thu, 05 Mar 2026 00:00:00 +0000</pubDate><category>Tutorial</category><guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/react-dashboard-tutorial.html</guid></item>
+    <item>
+      <title>Building a Complete REST API with Node.js &amp;amp; TypeScript</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/nodejs-rest-api-complete-guide.html</link>
+      <description>أصبح Node.js مع TypeScript الخيار البكند المسيطر للـ APIs الحديثة. تجربة المطور ممتازة: تطوير سريع، نظام npm ضخم، JavaScript للفرونت والباك، وأمان الأنواع في TypeScript الذي يكتشف فئات كاملة من الأخطا</description>
+      <pubDate>Sun, 08 Mar 2026 00:00:00 +0000</pubDate>
+      <category>Article</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/nodejs-rest-api-complete-guide.html</guid>
+    </item>
 
-    <item><title>MongoDB vs PostgreSQL — أيهما تختار لمشروعك؟</title><link>https://mahmoodhamdi.github.io/cv/blog/posts/mongodb-vs-postgresql.html</link><description>مقارنة MongoDB و PostgreSQL — الأداء والتوسع وحالات الاستخدام والـ ORMs وخيارات الاستضافة.</description><pubDate>Mon, 02 Mar 2026 00:00:00 +0000</pubDate><category>Guide</category><guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/mongodb-vs-postgresql.html</guid></item>
+    <item>
+      <title>My Open Source Journey</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/open-source-contributions-journey.html</link>
+      <description>قبل سنتين، كانت فكرة المساهمة في المصادر المفتوحة تبدو كشيء محجوز للمهندسين الكبار في الشركات الضخمة. الكود مكتوب بالفعل. الأذكياء موجودون هناك بالفعل. ماذا يمكنني أنا أن أضيف؟ اتضح أن الإجابة: الكثير</description>
+      <pubDate>Thu, 05 Mar 2026 00:00:00 +0000</pubDate>
+      <category>Article</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/open-source-contributions-journey.html</guid>
+    </item>
 
-    <item><title>نشر تطبيقك بـ Docker — دليل المبتدئين</title><link>https://mahmoodhamdi.github.io/cv/blog/posts/docker-deployment-guide.html</link><description>أساسيات Docker للمطورين — Dockerfile و Compose ونشر تطبيقات Node.js و Next.js مع Nginx و SSL.</description><pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate><category>Tutorial</category><guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/docker-deployment-guide.html</guid></item>
+    <item>
+      <title>Building an Admin Dashboard with React — Practical Guide</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/react-dashboard-tutorial.html</link>
+      <description>لوحات التحكم الإدارية هي من أكثر الأشياء التي يطلبها العملاء — ومن أكثرها استهانةً من حيث التعقيد. جدول بسيط سهل. لوحة تحكم إنتاجية بجداول قابلة للترتيب والفلترة، وتحديثات WebSocket في الوقت الفعلي، و</description>
+      <pubDate>Thu, 05 Mar 2026 00:00:00 +0000</pubDate>
+      <category>Article</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/react-dashboard-tutorial.html</guid>
+    </item>
 
-    <item><title>تسعير خدماتك كمطور مستقل — الدليل العملي</title><link>https://mahmoodhamdi.github.io/cv/blog/posts/freelancing-pricing-arabic.html</link><description>تسعير تطبيقات الويب والموبايل والبوتات في السوق العربي — أسعار الساعة والباقات والتفاوض.</description><pubDate>Wed, 25 Feb 2026 00:00:00 +0000</pubDate><category>Guide</category><guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/freelancing-pricing-arabic.html</guid></item>
+    <item>
+      <title>MongoDB vs PostgreSQL — Which Database Should You Choose?</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/mongodb-vs-postgresql.html</link>
+      <description>سؤال قاعدة البيانات هو من أولى القرارات المعمارية في أي مشروع جديد، وهو مثير للجدل بشكل مفاجئ. لقد أطلقت أنظمة إنتاجية على MongoDB وPostgreSQL على حد سواء. كما اضطررت لترحيل قاعدة كود MongoDB ضخمة إلى</description>
+      <pubDate>Mon, 02 Mar 2026 00:00:00 +0000</pubDate>
+      <category>Article</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/mongodb-vs-postgresql.html</guid>
+    </item>
 
-    <item><title>التجارة الإلكترونية في السوق العربي 2026</title><link>https://mahmoodhamdi.github.io/cv/blog/posts/ecommerce-arabic-market-2026.html</link><description>حالة التجارة الإلكترونية في المنطقة — المنصات والمدفوعات واللوجستيات والفرص للمطورين.</description><pubDate>Fri, 20 Feb 2026 00:00:00 +0000</pubDate><category>Guide</category><guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/ecommerce-arabic-market-2026.html</guid></item>
+    <item>
+      <title>Deploying Your App with Docker — Beginner's Guide</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/docker-deployment-guide.html</link>
+      <description>قبل Docker، كان نشر تطبيق ويب يعني الصراع مع إعداد الخادم — تثبيت إصدار Node الصحيح، وإعداد متغيرات البيئة، وإدارة إعادة تشغيل العمليات، وأمل بأن يطابق خادم الإنتاج إعدادك المحلي. Docker يحل كل هذا بت</description>
+      <pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
+      <category>Article</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/docker-deployment-guide.html</guid>
+    </item>
 
-    <item><title>بناء بوت ذكي بالذكاء الاصطناعي لعملك</title><link>https://mahmoodhamdi.github.io/cv/blog/posts/ai-chatbot-business-guide.html</link><description>بناء شات بوت ذكي — التعرف على النوايا ومعالجة اللغة العربية وأتمتة خدمة العملاء والتكلفة والعائد.</description><pubDate>Sun, 15 Feb 2026 00:00:00 +0000</pubDate><category>Guide</category><guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/ai-chatbot-business-guide.html</guid></item>
+    <item>
+      <title>Pricing Your Services as a Freelance Developer</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/freelancing-pricing-arabic.html</link>
+      <description>التسعير هو الموضوع الوحيد الذي يسبب للمطورين المستقلين قلقًا أكثر من أي مشكلة تقنية. قد تكون مهندسًا بارعًا — قادرًا على تصميم نظام موزع وكتابة كود TypeScript نظيف والتسليم في الوقت المحدد — لكن في ال</description>
+      <pubDate>Wed, 25 Feb 2026 00:00:00 +0000</pubDate>
+      <category>Article</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/freelancing-pricing-arabic.html</guid>
+    </item>
 
-    <item><title>تكامل بوابات الدفع في المنطقة العربية</title><link>https://mahmoodhamdi.github.io/cv/blog/posts/payment-integration-mena.html</link><description>تكامل تمارا وتابي ومدى وPayMob وTap وغيرها — كود Node.js لكل بوابة دفع.</description><pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate><category>Tutorial</category><guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/payment-integration-mena.html</guid></item>
+    <item>
+      <title>E-Commerce in the Arabic Market 2026</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/ecommerce-arabic-market-2026.html</link>
+      <description>تجاوز سوق التجارة الإلكترونية في منطقة الشرق الأوسط وشمال أفريقيا قيمة بضائع إجمالية بلغت 57 مليار دولار في 2025، وهو في طريقه للوصول إلى 80 مليار دولار بحلول 2027 وفقًا لتقارير الصناعة المتعددة. خلف </description>
+      <pubDate>Fri, 20 Feb 2026 00:00:00 +0000</pubDate>
+      <category>Article</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/ecommerce-arabic-market-2026.html</guid>
+    </item>
 
-    <item><title>كم تكلفة بناء تطبيق موبايل في 2026؟</title><link>https://mahmoodhamdi.github.io/cv/blog/posts/mobile-app-cost-guide.html</link><description>أسعار تطبيقات الموبايل حسب التعقيد — من البسيط للمؤسسات. تفصيل التكلفة وأسعار الساعة.</description><pubDate>Thu, 05 Feb 2026 00:00:00 +0000</pubDate><category>Guide</category><guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/mobile-app-cost-guide.html</guid></item>
+    <item>
+      <title>Node.js &amp;amp; TypeScript: Production Best Practices</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/nodejs-typescript-best-practices.html</link>
+      <description>تشغيل Node.js + TypeScript في الإنتاج أكثر بكثير من مجرد tsc &amp;amp;&amp;amp; node dist/index.js . على مدار ثلاث سنوات من إطلاق خدمات الباك إند، استقررت على مجموعة من الممارسات التي تنتج باستمرار خدمات مستق</description>
+      <pubDate>Fri, 20 Feb 2026 00:00:00 +0000</pubDate>
+      <category>Article</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/nodejs-typescript-best-practices.html</guid>
+    </item>
 
-    <item><title>تسريع موقعك لـ 100% سكور PageSpeed</title><link>https://mahmoodhamdi.github.io/cv/blog/posts/website-speed-optimization.html</link><description>Core Web Vitals والـ CSS الحرج وتحسين الخطوط والتحميل الكسول — رحلتي من 75 لـ 99.</description><pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate><category>Tutorial</category><guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/website-speed-optimization.html</guid></item>
+    <item>
+      <title>Building an AI Chatbot for Your Business</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/ai-chatbot-business-guide.html</link>
+      <description>في عام 2026، الشركة التي تتعامل مع استفسارات العملاء يدويًا هي الاستثناء وليست القاعدة. انتقلت روبوتات الدردشة بالذكاء الاصطناعي من كونها موضة إلى بنية تحتية أساسية — فهي نقطة الاتصال الأولى لخدمة الع</description>
+      <pubDate>Sun, 15 Feb 2026 00:00:00 +0000</pubDate>
+      <category>Article</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/ai-chatbot-business-guide.html</guid>
+    </item>
 
-    <item><title>كيف تبني بورتفوليو مطور محترف على GitHub</title><link>https://mahmoodhamdi.github.io/cv/blog/posts/github-portfolio-developer.html</link><description>بناء بورتفوليو مميز — GitHub README وعرض المشاريع والسيو والتحليلات ونصائح التصميم.</description><pubDate>Wed, 28 Jan 2026 00:00:00 +0000</pubDate><category>Guide</category><guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/github-portfolio-developer.html</guid></item>
+    <item>
+      <title>Payment Gateway Integration in MENA</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/payment-integration-mena.html</link>
+      <description>تكامل الدفع هو المكان الذي تُقدَّر فيه مشاريع التجارة الإلكترونية في منطقة الشرق الأوسط وشمال أفريقيا بشكل متكرر أدنى من قيمتها الحقيقية. المطورون القادمون من خلفية غربية كثيرًا ما يفترضون أنهم يستطيع</description>
+      <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
+      <category>Article</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/payment-integration-mena.html</guid>
+    </item>
 
-    <item><title>بناء MVP لمشروع SaaS — من الفكرة للإطلاق</title><link>https://mahmoodhamdi.github.io/cv/blog/posts/saas-mvp-build-guide.html</link><description>بناء MVP في 4-6 أسابيع — التحقق من الفكرة والتقنيات والمصادقة والفوترة والنشر.</description><pubDate>Thu, 22 Jan 2026 00:00:00 +0000</pubDate><category>Guide</category><guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/saas-mvp-build-guide.html</guid></item>
+    <item>
+      <title>How Much Does It Cost to Build a Mobile App in 2026?</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/mobile-app-cost-guide.html</link>
+      <description>"كم تكلفة بناء تطبيق موبايل؟" هو إحصائيًا السؤال الأكثر شيوعًا الذي أتلقاه من العملاء ورواد الأعمال ومؤسسي الشركات الناشئة. وهو أيضًا من أصعب الأسئلة للإجابة عليها بصدق دون سياق — لأن الإجابة الحقيقية</description>
+      <pubDate>Thu, 05 Feb 2026 00:00:00 +0000</pubDate>
+      <category>Article</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/mobile-app-cost-guide.html</guid>
+    </item>
 
-    <item><title>تكامل APIs للمبتدئين — كل ما تحتاج معرفته</title><link>https://mahmoodhamdi.github.io/cv/blog/posts/api-integration-beginners.html</link><description>ما هي الـ APIs و REST vs GraphQL والـ HTTP methods والمصادقة وأول استدعاء API.</description><pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate><category>Tutorial</category><guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/api-integration-beginners.html</guid></item>
+    <item>
+      <title>Flutter Clean Architecture: A Practical Guide</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/flutter-clean-architecture.html</link>
+      <description>Flutter إطار عمل رائع لإطلاق تطبيقات جميلة وسريعة على جميع المنصات. لكن مع نمو تطبيقك بعيدًا عن بضعة شاشات، ينهار التنظيم العشوائي للكود بسرعة. البنية النظيفة — التي وصفها أصلاً روبرت سي مارتن — تمنحك</description>
+      <pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate>
+      <category>Article</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/flutter-clean-architecture.html</guid>
+    </item>
 
-    <item><title>أساسيات الأمن السيبراني للمطورين</title><link>https://mahmoodhamdi.github.io/cv/blog/posts/cybersecurity-basics-arabic.html</link><description>OWASP Top 10 وSQL injection وXSS وCSRF وأمان المصادقة وHelmet.js — أساسيات الأمان لكل مطور.</description><pubDate>Thu, 08 Jan 2026 00:00:00 +0000</pubDate><category>Guide</category><guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/cybersecurity-basics-arabic.html</guid></item>
+    <item>
+      <title>Speed Up Your Website to 100% PageSpeed Score</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/website-speed-optimization.html</link>
+      <description>سرعة الموقع ليست مجرد رقم جميل — إنها تؤثر مباشرة على ترتيبك في محركات البحث، ومعدل الاحتفاظ بالزوار، ونسبة التحويل. أبحاث جوجل نفسها تثبت أن تأخيرًا بثانية واحدة في تحميل الصفحة على الجوال قد يخفض ال</description>
+      <pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate>
+      <category>Article</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/website-speed-optimization.html</guid>
+    </item>
 
-    <item><title>دليل العمل الحر للمطورين في المنطقة العربية</title><link>https://mahmoodhamdi.github.io/cv/blog/posts/mena-freelance-guide.html</link><description>مقارنة مستقل وخمسات وUpwork للمطورين في المنطقة العربية.</description><pubDate>Fri, 20 Mar 2026 00:00:00 +0000</pubDate><category>Guide</category><guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/mena-freelance-guide.html</guid></item>
+    <item>
+      <title>How to Build a Professional Developer Portfolio on GitHub</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/github-portfolio-developer.html</link>
+      <description>ملفك الشخصي على GitHub هو سيرتك الذاتية كمطوّر — وعلى عكس ملف PDF يُرسَل إلى المجهول، فهو حي ويمكن البحث فيه والتحقق منه. المجنّدون والمتعاونون والعملاء ينظرون إلى GitHub قبل أي شيء آخر. المحفظة المبن</description>
+      <pubDate>Wed, 28 Jan 2026 00:00:00 +0000</pubDate>
+      <category>Article</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/github-portfolio-developer.html</guid>
+    </item>
 
-    <item><title>رحلتي في المصادر المفتوحة</title><link>https://mahmoodhamdi.github.io/cv/blog/posts/open-source-contributions-journey.html</link><description>من قراءة الأكواد المفتوحة لدمج PRs في express-validator و Helmet.js.</description><pubDate>Thu, 05 Mar 2026 00:00:00 +0000</pubDate><category>Experience</category><guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/open-source-contributions-journey.html</guid></item>
+    <item>
+      <title>Building a SaaS MVP — From Idea to Launch</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/saas-mvp-build-guide.html</link>
+      <description>معظم منتجات SaaS تفشل ليس بسبب كود سيئ بل بسبب ترتيب خاطئ للأولويات. يقضي المؤسسون أشهرًا في بناء ميزات لم يطلبها أحد، أو يصقلون لوحة التحكم قبل أن يكون لديهم عميل واحد يدفع، أو يصمّمون بنية قابلة للت</description>
+      <pubDate>Thu, 22 Jan 2026 00:00:00 +0000</pubDate>
+      <category>Article</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/saas-mvp-build-guide.html</guid>
+    </item>
 
-    <item><title>أفضل ممارسات Node.js و TypeScript للإنتاج</title><link>https://mahmoodhamdi.github.io/cv/blog/posts/nodejs-typescript-best-practices.html</link><description>كل ما تحتاجه لإطلاق باك إند Node.js جاهز للإنتاج مع TypeScript و Docker.</description><pubDate>Fri, 20 Feb 2026 00:00:00 +0000</pubDate><category>Tutorial</category><guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/nodejs-typescript-best-practices.html</guid></item>
+    <item>
+      <title>API Integration for Beginners — Everything You Need to Know</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/api-integration-beginners.html</link>
+      <description>إذا كنت تكتب الكود منذ فترة وتقرأ كلمة "API" في كل مكان لكنك لا تزال غير متأكد مما تعنيه عمليًا — هذا المقال موجّه لك. الـ APIs هي العمود الفقري للبرمجيات الحديثة. كل تطبيق تستخدمه — تطبيقات الطقس، ال</description>
+      <pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate>
+      <category>Article</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/api-integration-beginners.html</guid>
+    </item>
 
-    <item><title>بنية Flutter النظيفة: دليل عملي</title><link>https://mahmoodhamdi.github.io/cv/blog/posts/flutter-clean-architecture.html</link><description>تطبيق Clean Architecture في Flutter مع Bloc و Repository Pattern.</description><pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate><category>Tutorial</category><guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/flutter-clean-architecture.html</guid></item>
+    <item>
+      <title>Building an AI-Powered Salla Bot</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/building-salla-bot.html</link>
+      <description>سلة هي منصة التجارة الإلكترونية الأكثر انتشارًا في المملكة العربية السعودية ومنطقة الخليج بشكل عام. حين طلب مني أحد العملاء بناء بوت تيليجرام ذكي يستطيع الرد على استفسارات العملاء وتتبع الطلبات في الو</description>
+      <pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate>
+      <category>Article</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/building-salla-bot.html</guid>
+    </item>
 
-    <item><title>بناء بوت ذكي لمنصة سلة</title><link>https://mahmoodhamdi.github.io/cv/blog/posts/building-salla-bot.html</link><description>دمج منصة سلة مع بوت تيليجرام لأتمتة خدمة العملاء وإدارة الطلبات.</description><pubDate>Thu, 15 Jan 2026 00:00:00 +0000</pubDate><category>Tutorial</category><guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/building-salla-bot.html</guid></item>
+    <item>
+      <title>Cybersecurity Basics for Developers — Protecting Your Apps</title>
+      <link>https://mahmoodhamdi.github.io/cv/blog/posts/cybersecurity-basics-arabic.html</link>
+      <description>الأمن ليس ميزة تضيفها في نهاية المشروع — إنه انضباط يُنسج في كل سطر كود تكتبه. الحقيقة المزعجة: معظم ثغرات تطبيقات الويب ليست استغلالات خفية متطورة — بل أخطاء مبتدئة يرتكبها المطورون منذ الأيام الأولى</description>
+      <pubDate>Thu, 08 Jan 2026 00:00:00 +0000</pubDate>
+      <category>Article</category>
+      <guid isPermaLink="true">https://mahmoodhamdi.github.io/cv/blog/posts/cybersecurity-basics-arabic.html</guid>
+    </item>
+
   </channel>
 </rss>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uses — Hardware, Software &amp; Tools | Mahmoud Hamdy</title>
+<meta name="description" content="What I use day-to-day to ship code — the editor, terminal, hardware, deployment stack, design tools, and reading habits.">
+<meta name="author" content="Mahmoud Hamdy">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0a0f1a">
+<link rel="canonical" href="https://mahmoodhamdi.github.io/cv/uses.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Uses — Mahmoud Hamdy">
+<meta property="og:description" content="Hardware, software, and tools I actually use to ship code every day.">
+<meta property="og:url" content="https://mahmoodhamdi.github.io/cv/uses.html">
+<meta property="og:image" content="https://mahmoodhamdi.github.io/cv/assets/og/og-uses.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mahmoodhamdi.github.io/cv/assets/og/og-uses.png">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="manifest" href="./manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+:root{--bg:#0a0f1a;--bg-alt:#111827;--card:#1a2236;--accent:#38bdf8;--accent-g:rgba(56,189,248,.15);--accent2:#818cf8;--txt:#f1f5f9;--txt2:#94a3b8;--muted:#8e99ad;--bdr:rgba(148,163,184,.1);--grad:linear-gradient(135deg,#38bdf8,#818cf8);--green:#34d399;--fn:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;--fn-ar:'Tajawal',sans-serif;--nav-bg:rgba(10,15,26,.88)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.7;overflow-x:hidden;padding-top:52px}
+.wrap{max-width:760px;margin:0 auto;padding:40px 24px}
+.navbar{position:fixed;top:0;left:0;right:0;z-index:90;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--bdr)}
+.nav-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:48px}
+.nav-back{font-size:13px;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.nav-back:hover{color:var(--accent)}
+.nav-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+.top-ctrl{position:fixed;top:58px;right:20px;z-index:100;display:flex;gap:8px;align-items:center}
+.lang-tog{display:flex;gap:3px;background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:3px}
+.l-btn{padding:4px 10px;border-radius:8px;font-size:11px;font-weight:600;color:var(--muted);cursor:pointer;border:none;background:none;font-family:var(--fn)}
+.l-btn.on{background:var(--accent-g);color:var(--accent)}
+.u-hero{padding:30px 0 14px}
+.u-hero h1{font-size:38px;font-weight:600;letter-spacing:-.02em;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px}
+.u-hero p{font-size:15px;color:var(--txt2);max-width:560px}
+.u-sec{margin-top:36px}
+.u-sec h2{font-size:20px;color:var(--txt);margin-bottom:14px;font-weight:600;position:relative;padding-bottom:8px}
+.u-sec h2::after{content:'';position:absolute;bottom:0;left:0;width:36px;height:2px;background:var(--grad);border-radius:2px}
+html[dir="rtl"] .u-sec h2::after{left:auto;right:0}
+.u-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px}
+.u-list li{background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:12px 16px;font-size:13.5px;display:flex;flex-direction:column;gap:3px;transition:border-color .2s,transform .2s}
+.u-list li:hover{border-color:var(--accent);transform:translateY(-2px)}
+.u-list strong{color:var(--txt);font-weight:600;font-size:14px}
+.u-list .why{color:var(--txt2);line-height:1.55}
+.u-quote{margin-top:36px;padding:22px 26px;border-radius:14px;background:linear-gradient(135deg,rgba(56,189,248,.06),rgba(129,140,248,.06));border:1px solid var(--bdr);font-size:14.5px;color:var(--txt2);line-height:1.7;font-style:italic}
+.u-quote strong{color:var(--txt);font-style:normal}
+html[data-theme="light"]{--bg:#f8fafc;--bg-alt:#f1f5f9;--card:#fff;--txt:#0f172a;--txt2:#334155;--muted:#64748b;--bdr:rgba(15,23,42,.1);--nav-bg:rgba(248,250,252,.88);--accent-g:rgba(56,189,248,.12)}
+html[dir="rtl"] body{font-family:var(--fn-ar)}
+@media(max-width:600px){
+  .u-hero h1{font-size:30px}
+  .top-ctrl{top:54px;right:12px}
+  html[dir="rtl"] .top-ctrl{right:auto;left:12px}
+}
+</style>
+<link rel="stylesheet" href="css/bundle.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://mahmoodhamdi.github.io/cv/"},{"@type":"ListItem","position":2,"name":"Uses","item":"https://mahmoodhamdi.github.io/cv/uses.html"}]}
+</script>
+</head>
+<body class="loaded">
+
+<nav class="navbar"><div class="nav-in">
+  <a href="./" class="nav-back"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    <span class="en-only">Back to portfolio</span><span class="ar-only" style="display:none">العودة للبورتفوليو</span>
+  </a>
+</div></nav>
+
+<div class="top-ctrl">
+  <div class="lang-tog">
+    <button class="l-btn on" onclick="setLang('en')">EN</button>
+    <button class="l-btn" onclick="setLang('ar')">عربي</button>
+  </div>
+</div>
+
+<main class="wrap">
+
+<div id="en-page">
+<section class="u-hero">
+  <h1>What I use</h1>
+  <p>A snapshot of the hardware, software, and small habits I actually use day-to-day. Updated occasionally — last touched May 2026.</p>
+</section>
+
+<section class="u-sec">
+  <h2>Editor &amp; terminal</h2>
+  <ul class="u-list">
+    <li><strong>VS Code</strong><span class="why">Primary editor. Workspace per project, minimal extensions: ESLint, Prettier, GitLens, Tailwind IntelliSense, Flutter, Error Lens.</span></li>
+    <li><strong>JetBrains Mono</strong><span class="why">Monospace font with ligatures. JetBrains Nerd Font variant for terminal glyphs.</span></li>
+    <li><strong>Zsh + Oh My Zsh</strong><span class="why">With <code>git</code>, <code>z</code>, <code>fast-syntax-highlighting</code>, and a custom prompt that shows git branch + Node version.</span></li>
+    <li><strong>tmux</strong><span class="why">One session per project. Three panes: editor / dev server / logs.</span></li>
+    <li><strong>fzf + ripgrep</strong><span class="why">Fuzzy file search and grep — wired into Ctrl-T / Ctrl-R bindings.</span></li>
+    <li><strong>zoxide</strong><span class="why">Smarter <code>cd</code>. <code>z proj</code> instead of long paths.</span></li>
+  </ul>
+</section>
+
+<section class="u-sec">
+  <h2>Hardware</h2>
+  <ul class="u-list">
+    <li><strong>Lenovo Legion 5</strong><span class="why">Daily driver. 16GB RAM, NVMe SSD, dual-boot but mostly stays on Ubuntu.</span></li>
+    <li><strong>Ubuntu 24.04 LTS</strong><span class="why">Primary OS. Faster for Docker workflows and node-gyp builds than my Windows partition.</span></li>
+    <li><strong>External 27" 1440p monitor</strong><span class="why">Vertical for code review, horizontal for designs and dashboards.</span></li>
+    <li><strong>Mechanical keyboard, 75% layout</strong><span class="why">Tactile switches. Function row matters for IDE shortcuts.</span></li>
+    <li><strong>Logitech MX Master</strong><span class="why">Horizontal scroll for wide log panels &amp; spreadsheets is non-negotiable.</span></li>
+    <li><strong>Wired Ethernet when possible</strong><span class="why">Cuts a noticeable amount of "wait, what?" out of WhatsApp calls with clients.</span></li>
+  </ul>
+</section>
+
+<section class="u-sec">
+  <h2>Backend dev</h2>
+  <ul class="u-list">
+    <li><strong>Node.js + TypeScript</strong><span class="why">Default for most APIs. Strict <code>tsconfig</code>, no <code>any</code>, no implicit return.</span></li>
+    <li><strong>Express / NestJS</strong><span class="why">Express for small services, NestJS when DI &amp; modules pay off.</span></li>
+    <li><strong>MongoDB + Mongoose</strong><span class="why">Default for flexible schemas. PostgreSQL when relations dominate.</span></li>
+    <li><strong>Redis</strong><span class="why">Sessions, rate limits, pubsub fan-out for WebSockets.</span></li>
+    <li><strong>Pino</strong><span class="why">Structured JSON logging. <code>pino-pretty</code> for local, raw JSON for prod.</span></li>
+    <li><strong>Zod</strong><span class="why">Runtime validation that also gives me TypeScript types. Worth every byte.</span></li>
+  </ul>
+</section>
+
+<section class="u-sec">
+  <h2>Frontend &amp; mobile</h2>
+  <ul class="u-list">
+    <li><strong>Next.js + Tailwind</strong><span class="why">App Router. Tailwind for components, occasional CSS modules for one-off layouts.</span></li>
+    <li><strong>Flutter + Dart</strong><span class="why">Clean Architecture, Bloc for state. Riverpod only when the project starts with it.</span></li>
+    <li><strong>Figma</strong><span class="why">For reading client mockups. I don't design from scratch — that's not my job.</span></li>
+  </ul>
+</section>
+
+<section class="u-sec">
+  <h2>DevOps &amp; deployment</h2>
+  <ul class="u-list">
+    <li><strong>Docker + Docker Compose</strong><span class="why">Every project ships with a <code>docker-compose.yml</code> that brings up the whole stack.</span></li>
+    <li><strong>DigitalOcean Droplets</strong><span class="why">Cheap, predictable, Linux. SSH + Caddy + Docker = production.</span></li>
+    <li><strong>Vercel</strong><span class="why">For static + Next.js frontends with no backend logic.</span></li>
+    <li><strong>Caddy</strong><span class="why">Reverse proxy with automatic HTTPS. Simpler config than Nginx for small fleets.</span></li>
+    <li><strong>GitHub Actions</strong><span class="why">Build, lint, test on PR. Deploy to DO via SSH on push to main.</span></li>
+    <li><strong>Cloudflare</strong><span class="why">DNS + CDN + DDoS shield. Free tier covers most of what clients need.</span></li>
+  </ul>
+</section>
+
+<section class="u-sec">
+  <h2>Daily tools</h2>
+  <ul class="u-list">
+    <li><strong>Postman / Bruno</strong><span class="why">Postman for collections shared with clients. Bruno for solo work — local files, git-friendly.</span></li>
+    <li><strong>TablePlus</strong><span class="why">GUI for Mongo + Postgres. Saved queries beat the CLI for one-off investigations.</span></li>
+    <li><strong>Notion</strong><span class="why">Project notes, client docs, post-mortems.</span></li>
+    <li><strong>Obsidian</strong><span class="why">Personal knowledge base + draft blog posts in Markdown.</span></li>
+    <li><strong>Linear / GitHub Issues</strong><span class="why">Linear for paid project clients. GitHub Issues for OSS contributions.</span></li>
+    <li><strong>WhatsApp Web</strong><span class="why">Like it or not, the primary client comms channel in the MENA region.</span></li>
+  </ul>
+</section>
+
+<section class="u-sec">
+  <h2>Open source I depend on</h2>
+  <ul class="u-list">
+    <li><strong>nanoid</strong><span class="why">Every ID I generate. Top contributor and grateful daily user.</span></li>
+    <li><strong>Helmet.js</strong><span class="why">First middleware I import into every Express app. Contributing back keeps me sharp on security defaults.</span></li>
+    <li><strong>express-validator</strong><span class="why">Input validation that won't surprise you in production.</span></li>
+    <li><strong>Mongoose / Pino / Zod</strong><span class="why">The Node trio. Honestly couldn't do my job without them.</span></li>
+    <li><strong>adhan_dart</strong><span class="why">Prayer-times for Islamic apps. I'm the top contributor — it's the one I maintain most actively.</span></li>
+  </ul>
+</section>
+
+<p class="u-quote">If you want to copy my setup verbatim, don't. <strong>Pick the parts that solve a problem you actually have today</strong>; replace everything else with what you already know. Tooling is the wrong place to spend your novelty budget.</p>
+</div>
+
+<div id="ar-page" style="display:none" dir="rtl">
+<section class="u-hero">
+  <h1>الأدوات اللي بستخدمها</h1>
+  <p>لقطة سريعة من الهاردوير والسوفتوير والعادات الصغيرة اللي بستخدمها يومياً. بحدّثها من وقت للتاني — آخر تحديث مايو ٢٠٢٦.</p>
+</section>
+
+<section class="u-sec">
+  <h2>Editor والـ terminal</h2>
+  <ul class="u-list">
+    <li><strong>VS Code</strong><span class="why">المحرر الأساسي. Workspace لكل مشروع، extensions بحدّ أدنى: ESLint, Prettier, GitLens, Tailwind IntelliSense, Flutter, Error Lens.</span></li>
+    <li><strong>JetBrains Mono</strong><span class="why">خط mono مع ligatures. الـ Nerd Font variant للـ terminal.</span></li>
+    <li><strong>Zsh + Oh My Zsh</strong><span class="why">مع <code>git</code>، <code>z</code>، <code>fast-syntax-highlighting</code>، و prompt مخصص يعرض branch ونسخة Node.</span></li>
+    <li><strong>tmux</strong><span class="why">Session واحد لكل مشروع. ٣ panes: محرر / dev server / logs.</span></li>
+    <li><strong>fzf + ripgrep</strong><span class="why">بحث ملفات وgrep — مربوطين بـ Ctrl-T / Ctrl-R.</span></li>
+    <li><strong>zoxide</strong><span class="why">بديل ذكي لـ <code>cd</code>. <code>z proj</code> بدل المسارات الطويلة.</span></li>
+  </ul>
+</section>
+
+<section class="u-sec">
+  <h2>الهاردوير</h2>
+  <ul class="u-list">
+    <li><strong>Lenovo Legion 5</strong><span class="why">الجهاز اليومي. 16GB RAM، NVMe SSD، dual-boot بس الوقت كله على Ubuntu.</span></li>
+    <li><strong>Ubuntu 24.04 LTS</strong><span class="why">الـ OS الأساسي. أسرع لـ Docker و node-gyp من الـ Windows partition.</span></li>
+    <li><strong>شاشة خارجية ٢٧" 1440p</strong><span class="why">عمودي لمراجعة الكود، أفقي للتصميمات واللوحات.</span></li>
+    <li><strong>كيبورد ميكانيكي 75%</strong><span class="why">مفاتيح tactile. صف الـ Function ضروري للـ IDE shortcuts.</span></li>
+    <li><strong>Logitech MX Master</strong><span class="why">الـ horizontal scroll للـ logs الواسعة والـ spreadsheets مش قابل للتفاوض.</span></li>
+    <li><strong>Ethernet لما متاح</strong><span class="why">بيوفّر دقيقة "بتقول إيه؟" في مكالمات الواتساب مع العملاء.</span></li>
+  </ul>
+</section>
+
+<section class="u-sec">
+  <h2>الباك إند</h2>
+  <ul class="u-list">
+    <li><strong>Node.js + TypeScript</strong><span class="why">الـ default لمعظم الـ APIs. <code>tsconfig</code> صارم، مفيش <code>any</code>، مفيش implicit return.</span></li>
+    <li><strong>Express / NestJS</strong><span class="why">Express للخدمات الصغيرة، NestJS لما الـ DI و modules تستاهل.</span></li>
+    <li><strong>MongoDB + Mongoose</strong><span class="why">للـ schemas المرنة. PostgreSQL لما العلاقات هي الأساس.</span></li>
+    <li><strong>Redis</strong><span class="why">Sessions و rate limits و pubsub لـ WebSockets.</span></li>
+    <li><strong>Pino</strong><span class="why">Logging مهيكل بـ JSON. <code>pino-pretty</code> محلياً، raw JSON في الإنتاج.</span></li>
+    <li><strong>Zod</strong><span class="why">Validation وقت الـ runtime تدّيني TypeScript types كمان. بيستاهل كل بايت.</span></li>
+  </ul>
+</section>
+
+<section class="u-sec">
+  <h2>الفرونت والموبايل</h2>
+  <ul class="u-list">
+    <li><strong>Next.js + Tailwind</strong><span class="why">App Router. Tailwind للـ components، CSS modules أحياناً للـ layouts المخصصة.</span></li>
+    <li><strong>Flutter + Dart</strong><span class="why">Clean Architecture، Bloc للـ state. Riverpod بس لو المشروع بدأ بيها.</span></li>
+    <li><strong>Figma</strong><span class="why">لقراءة تصاميم العملاء. مش بصمم من الصفر — ده مش شغلي.</span></li>
+  </ul>
+</section>
+
+<section class="u-sec">
+  <h2>DevOps والنشر</h2>
+  <ul class="u-list">
+    <li><strong>Docker + Docker Compose</strong><span class="why">كل مشروع بيتشحن معاه <code>docker-compose.yml</code> بيشغّل كل الـ stack.</span></li>
+    <li><strong>DigitalOcean Droplets</strong><span class="why">رخيص ومتوقع وLinux. SSH + Caddy + Docker = إنتاج.</span></li>
+    <li><strong>Vercel</strong><span class="why">للفرونت الستاتيك أو Next.js اللي مفيهوش backend logic.</span></li>
+    <li><strong>Caddy</strong><span class="why">Reverse proxy مع HTTPS تلقائي. Config أبسط من Nginx للمشاريع الصغيرة.</span></li>
+    <li><strong>GitHub Actions</strong><span class="why">Build و lint و test على الـ PR. Deploy على DO عبر SSH على push للـ main.</span></li>
+    <li><strong>Cloudflare</strong><span class="why">DNS + CDN + درع DDoS. الـ free tier بيغطي معظم احتياجات العملاء.</span></li>
+  </ul>
+</section>
+
+<section class="u-sec">
+  <h2>الأدوات اليومية</h2>
+  <ul class="u-list">
+    <li><strong>Postman / Bruno</strong><span class="why">Postman للـ collections اللي بشاركها مع العملاء. Bruno لشغلي لوحدي — ملفات محلية وgit-friendly.</span></li>
+    <li><strong>TablePlus</strong><span class="why">GUI لـ Mongo و Postgres. الـ saved queries أحسن من الـ CLI للفحص السريع.</span></li>
+    <li><strong>Notion</strong><span class="why">ملاحظات المشاريع، توثيق العملاء، post-mortems.</span></li>
+    <li><strong>Obsidian</strong><span class="why">قاعدة معرفة شخصية + مسودات المقالات بـ Markdown.</span></li>
+    <li><strong>Linear / GitHub Issues</strong><span class="why">Linear لعملاء المشاريع المدفوعة. GitHub Issues لمساهمات الـ OSS.</span></li>
+    <li><strong>WhatsApp Web</strong><span class="why">شئت أم أبيت، هي القناة الأساسية للتواصل مع العملاء في المنطقة العربية.</span></li>
+  </ul>
+</section>
+
+<section class="u-sec">
+  <h2>المصادر المفتوحة اللي بعتمد عليها</h2>
+  <ul class="u-list">
+    <li><strong>nanoid</strong><span class="why">كل ID بولّده. مساهم رئيسي ومستخدم يومي ممتن.</span></li>
+    <li><strong>Helmet.js</strong><span class="why">أول middleware بستوردها في كل Express app. المساهمة بترجّعني لإعدادات الأمان الصح.</span></li>
+    <li><strong>express-validator</strong><span class="why">Validation للـ input مش هتفاجئك في الإنتاج.</span></li>
+    <li><strong>Mongoose / Pino / Zod</strong><span class="why">الـ Node trio. بصراحة مش هقدر أعمل شغلي من غيرهم.</span></li>
+    <li><strong>adhan_dart</strong><span class="why">أوقات الصلاة للتطبيقات الإسلامية. أكبر مساهم — هي اللي بصيانتها بشكل أكبر.</span></li>
+  </ul>
+</section>
+
+<p class="u-quote">لو عاوز تنسخ الـ setup بتاعي بالحرف، ما تعملش. <strong>اختار الأجزاء اللي بتحل مشكلة فعلية عندك دلوقتي</strong>، واستبدل الباقي بأي حاجة فاهمها أصلاً. الـ tooling مش المكان اللي تستثمر فيه الـ novelty budget.</p>
+</div>
+
+</main>
+
+<script>
+try{var t=localStorage.getItem('cv-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}
+function setLang(l){
+  var h=document.documentElement;var e=document.getElementById('en-page');var a=document.getElementById('ar-page');
+  var btns=document.querySelectorAll('.l-btn');
+  if(l==='ar'){h.dir='rtl';h.lang='ar';e.style.display='none';a.style.display='block';btns[0].classList.remove('on');btns[1].classList.add('on');document.querySelectorAll('.en-only').forEach(function(el){el.style.display='none'});document.querySelectorAll('.ar-only').forEach(function(el){el.style.display='inline'})}
+  else{h.dir='ltr';h.lang='en';e.style.display='block';a.style.display='none';btns[0].classList.add('on');btns[1].classList.remove('on');document.querySelectorAll('.en-only').forEach(function(el){el.style.display='inline'});document.querySelectorAll('.ar-only').forEach(function(el){el.style.display='none'})}
+}
+</script>
+<script src="js/search.js" defer></script>
+</body>
+</html>

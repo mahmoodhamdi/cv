@@ -1,6 +1,6 @@
 {
-  "generated": "2026-05-12T09:13:43Z",
-  "count": 39,
+  "generated": "2026-05-12T09:44:10Z",
+  "count": 40,
   "items": [
     {
       "id": "index",
@@ -41,6 +41,16 @@
       "tags": [],
       "lang": "en",
       "keywords": "What this site collects What it doesn't collect Cookies you might see Your rights Changes to this policy Contact اللي الموقع بيجمعه اللي الموقع مش بيجمعه الكوكيز اللي ممكن تشوفها حقوقك"
+    },
+    {
+      "id": "uses",
+      "title": "Uses — Hardware, Software &amp; Tools",
+      "desc": "What I use day-to-day to ship code — the editor, terminal, hardware, deployment stack, design tools, and reading habits.",
+      "url": "uses.html",
+      "kind": "page",
+      "tags": [],
+      "lang": "en",
+      "keywords": "Editor &amp; terminal Hardware Backend dev Frontend &amp; mobile DevOps &amp; deployment Daily tools Open source I depend on Editor والـ terminal الهاردوير الباك إند"
     },
     {
       "id": "blog-index",
