@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mahmoud-cv-1339bdfa';
+const CACHE_NAME = 'mahmoud-cv-d3bead4a';
 const ASSETS = [
   './',
   './404.html',
