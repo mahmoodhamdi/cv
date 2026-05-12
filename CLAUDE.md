@@ -8,13 +8,29 @@ Static, dependency-free bilingual (English ↔ Arabic) portfolio site for Mahmou
 
 ## Working with the site
 
-There is no build step. To preview locally, serve the directory with any static server, e.g.:
+There is no compile step, but there are **idempotent build scripts** that you should re-run when you touch certain files:
 
 ```bash
-python3 -m http.server 8000   # then open http://localhost:8000/
+python3 -m http.server 8000          # local preview at http://localhost:8000/
+
+./scripts/build.sh                   # regenerate bundles + sitemap + SW cache
+./scripts/build.sh --stats           # also refresh data/stats.json from GitHub
+./scripts/fetch-github-stats.sh      # standalone — pulls live PR counts, top repos,
+                                     #   latest PRs, and 60-day heatmap data
+./scripts/build-css.sh               # concatenate main+themes+components → bundle.css
+                                     #   and animations+arabic+responsive → utilities.css
+python3 scripts/generate-sitemap.py  # rewrite sitemap.xml from filesystem + git mtime
+python3 scripts/update-sw-cache.py   # rewrite sw.js ASSETS array; cache name is a
+                                     #   content hash so any asset change invalidates it
 ```
 
-The service worker (`sw.js`) only activates on http(s) origins, so `file://` previews skip PWA behavior — open via `http://localhost` to test PWA / offline.
+`./scripts/build.sh` is the safe one to run on every meaningful change — each step is a no-op if there's no drift.
+
+**GitHub Actions** (`.github/workflows/`):
+- `refresh-stats.yml` — cron job runs daily at 03:00 UTC, calls `fetch-github-stats.sh`, regenerates sitemap + SW cache, commits if anything changed (with `[skip ci]` to avoid loops).
+- `check-build.yml` — on every push to main and every PR. On main it auto-commits any drift in bundles/sitemap/sw.js. On PRs it fails the check if drift exists, telling the contributor to run `./scripts/build.sh` locally.
+
+The service worker only activates on http(s) origins, so `file://` previews skip PWA behavior — open via `http://localhost` to test PWA / offline.
 
 Deployment is one-shot via `./deploy.sh` — it configures git, creates the GitHub repo via `gh`, pushes, and enables Pages via the GitHub API. After initial deploy, `git push` to `main` is enough; Pages serves from `/` on `main`.
 
@@ -30,14 +46,14 @@ Every page that has Arabic content contains **two parallel DOM subtrees**, not a
 
 **Implication:** any content edit must be made in *both* subtrees, and any new section needs both an `-en` and `-ar` ID plus matching nav buttons in `#nav-en` and `#nav-ar`.
 
-### CSS bundles (manually concatenated)
+### CSS bundles
 
 `index.html` and per-project pages link **two bundle files** that are physically concatenated from smaller sources:
 
-- `css/bundle.css` = `main.css` + `themes.css` + `components.css` (banner comments mark each segment).
-- `css/utilities.css` = `animations.css` + `arabic.css` + `responsive.css`.
+- `css/bundle.css` = `main.css` + `themes.css` + `components.css`
+- `css/utilities.css` = `animations.css` + `arabic.css` + `responsive.css`
 
-Sub-pages like `blog/index.html` instead link the **individual** files (`../css/main.css`, `../css/themes.css`, `blog.css`). So when editing a source CSS file you must also regenerate the corresponding bundle, or the change will be invisible on whichever pages link the bundle. There is no script that does this — concatenate manually and preserve the `/* === filename === */` markers.
+Sub-pages like `blog/index.html` instead link the **individual** files (`../css/main.css`, `../css/themes.css`, `blog.css`). Run `./scripts/build-css.sh` after editing any of the source CSS files — it regenerates both bundles with the `/* === filename === */` markers automatically. The `check-build.yml` workflow will also do it on push if you forget.
 
 `css/sections.css` is its own file (not bundled). There is no print stylesheet — print was intentionally removed.
 
@@ -59,23 +75,19 @@ Load order in `index.html` matters (utils → theme → language → navigation 
 
 ### Service worker cache
 
-`sw.js` uses a **manually maintained** asset list and a versioned cache name (currently `mahmoud-cv-v6`). Strategy is cache-first with network-update; on fetch failure it falls back to `./404.html`.
+`sw.js` is **auto-generated** by `scripts/update-sw-cache.py`. The cache name is `mahmoud-cv-<8-char-hash>` where the hash is sha256 of (sorted asset paths + their content hashes), so any asset change invalidates the cache automatically.
 
-**Two things break together if you forget them:**
+Strategy is cache-first with network-update; on fetch failure it falls back to `./404.html`.
 
-1. When you add a new HTML, CSS, or JS file that should work offline, add it to the `ASSETS` array in `sw.js`.
-2. When you change *any* cached asset, **bump `CACHE_NAME`** (e.g. `mahmoud-cv-v6` → `-v7`). Otherwise returning visitors keep getting the stale cached version forever — the activate handler only deletes caches whose name doesn't match `CACHE_NAME`.
+You normally don't edit `sw.js` by hand. If you add new file *types* that should be cached, add them to `PATTERNS` or `GLOB_PATTERNS` in `scripts/update-sw-cache.py`.
 
-### SEO / discovery surfaces (also manually maintained)
+### SEO / discovery surfaces
 
-When you add a blog post or project page, update **all** of:
+When you add a blog post or project page:
 
-- `sw.js` `ASSETS` array (+ bump `CACHE_NAME`)
-- `sitemap.xml` (a `<url>` entry with `<lastmod>`)
-- `blog/feed.xml` (English RSS) and `blog/feed-ar.xml` (Arabic RSS)
-- `blog/index.html` post list (in both EN and AR subtrees)
-
-The same applies to project pages, with `projects/<slug>.html` instead of `blog/posts/...`.
+- **`sw.js`** and **`sitemap.xml`** are auto-regenerated by `./scripts/build.sh` — they'll pick up any new HTML in `projects/`, `blog/`, or `blog/posts/` from the filesystem and update lastmod from git.
+- **`blog/feed.xml`** (English RSS) and **`blog/feed-ar.xml`** (Arabic RSS) — still hand-maintained. Open them and add a new `<item>` entry at the top.
+- **`blog/index.html`** post list — also hand-maintained. Add a new `<article class="post-card">` in both EN and AR subtrees so the post shows up in the listing.
 
 ### Per-page integrations baked into HTML
 

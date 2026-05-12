@@ -1,0 +1,47 @@
+name: Refresh GitHub stats
+
+on:
+  schedule:
+    # Run once a day at 03:00 UTC (06:00 Cairo)
+    - cron: '0 3 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-stats
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Refresh data/stats.json
+        run: bash scripts/fetch-github-stats.sh
+
+      - name: Rebuild sitemap and SW cache
+        run: |
+          python3 scripts/generate-sitemap.py
+          python3 scripts/update-sw-cache.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -z "$(git status --porcelain data/stats.json sitemap.xml sw.js)" ]; then
+            echo "no changes — skipping commit"
+            exit 0
+          fi
+          git add data/stats.json sitemap.xml sw.js
+          git commit -m "chore: refresh GitHub stats + sitemap [skip ci]"
+          git push

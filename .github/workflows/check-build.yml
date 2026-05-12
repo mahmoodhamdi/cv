@@ -1,0 +1,68 @@
+name: Check build is in sync
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'css/main.css'
+      - 'css/themes.css'
+      - 'css/components.css'
+      - 'css/animations.css'
+      - 'css/arabic.css'
+      - 'css/responsive.css'
+      - 'css/sections.css'
+      - 'js/**'
+      - 'index.html'
+      - 'about.html'
+      - 'services.html'
+      - 'projects/*.html'
+      - 'blog/*.html'
+      - 'blog/posts/*.html'
+      - 'manifest.json'
+      - 'assets/**'
+  pull_request:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run build (CSS bundles + sitemap + SW cache)
+        run: bash scripts/build.sh
+
+      - name: Auto-commit drift on main
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "✓ build was in sync"
+            exit 0
+          fi
+          git add -A
+          git commit -m "chore: regenerate bundles/sitemap/sw cache [skip ci]"
+          git push
+
+      - name: Fail PR if out of sync
+        if: github.event_name == 'pull_request'
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "::error::Build artifacts out of date. Run \`./scripts/build.sh\` locally and commit."
+            git diff --stat
+            exit 1
+          fi
+          echo "✓ build is in sync"
