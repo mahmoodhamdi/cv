@@ -1,0 +1,336 @@
+{
+  "lastUpdated": "2026-05-12T03:00:27.728105Z",
+  "user": "mahmoodhamdi",
+  "summary": {
+    "mergedPRs": 571,
+    "publicRepos": 178,
+    "followers": 51,
+    "externalProjects": 24
+  },
+  "topRepos": [
+    {
+      "slug": "prayer-timetable/adhan_dart",
+      "prs": 38,
+      "url": "https://github.com/prayer-timetable/adhan_dart/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
+    },
+    {
+      "slug": "Itqan-community/cms-frontend",
+      "prs": 18,
+      "url": "https://github.com/Itqan-community/cms-frontend/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
+    },
+    {
+      "slug": "ai/nanoid",
+      "prs": 13,
+      "url": "https://github.com/ai/nanoid/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
+    },
+    {
+      "slug": "helmetjs/helmetjs.github.io",
+      "prs": 6,
+      "url": "https://github.com/helmetjs/helmetjs.github.io/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
+    },
+    {
+      "slug": "helmetjs/helmet",
+      "prs": 6,
+      "url": "https://github.com/helmetjs/helmet/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
+    },
+    {
+      "slug": "Automattic/mongoose",
+      "prs": 4,
+      "url": "https://github.com/Automattic/mongoose/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
+    },
+    {
+      "slug": "express-validator/express-validator",
+      "prs": 4,
+      "url": "https://github.com/express-validator/express-validator/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
+    },
+    {
+      "slug": "langgenius/dify",
+      "prs": 3,
+      "url": "https://github.com/langgenius/dify/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
+    },
+    {
+      "slug": "colinhacks/zod",
+      "prs": 2,
+      "url": "https://github.com/colinhacks/zod/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
+    },
+    {
+      "slug": "payloadcms/payload",
+      "prs": 2,
+      "url": "https://github.com/payloadcms/payload/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
+    }
+  ],
+  "latestPRs": [
+    {
+      "repo": "prayer-timetable/adhan_dart",
+      "title": "refactor: expose Makkah coordinates and improve Qibla documentation",
+      "url": "https://github.com/prayer-timetable/adhan_dart/pull/46",
+      "mergedAt": "2026-05-10T13:23:22Z"
+    },
+    {
+      "repo": "prayer-timetable/adhan_dart",
+      "title": "docs: add missing Morocco method to README",
+      "url": "https://github.com/prayer-timetable/adhan_dart/pull/20",
+      "mergedAt": "2026-05-10T13:23:22Z"
+    },
+    {
+      "repo": "prayer-timetable/adhan_dart",
+      "title": "feat: add Rounding configuration for prayer times",
+      "url": "https://github.com/prayer-timetable/adhan_dart/pull/17",
+      "mergedAt": "2026-05-10T13:23:22Z"
+    },
+    {
+      "repo": "prayer-timetable/adhan_dart",
+      "title": "feat: add toString override to SunnahTimes",
+      "url": "https://github.com/prayer-timetable/adhan_dart/pull/45",
+      "mergedAt": "2026-05-10T13:23:22Z"
+    },
+    {
+      "repo": "prayer-timetable/adhan_dart",
+      "title": "refactor: remove dead code and stale comments",
+      "url": "https://github.com/prayer-timetable/adhan_dart/pull/33",
+      "mergedAt": "2026-05-10T13:23:22Z"
+    }
+  ],
+  "heatmap": [
+    {
+      "date": "2026-03-14",
+      "count": 0
+    },
+    {
+      "date": "2026-03-15",
+      "count": 0
+    },
+    {
+      "date": "2026-03-16",
+      "count": 0
+    },
+    {
+      "date": "2026-03-17",
+      "count": 0
+    },
+    {
+      "date": "2026-03-18",
+      "count": 0
+    },
+    {
+      "date": "2026-03-19",
+      "count": 0
+    },
+    {
+      "date": "2026-03-20",
+      "count": 0
+    },
+    {
+      "date": "2026-03-21",
+      "count": 0
+    },
+    {
+      "date": "2026-03-22",
+      "count": 0
+    },
+    {
+      "date": "2026-03-23",
+      "count": 0
+    },
+    {
+      "date": "2026-03-24",
+      "count": 0
+    },
+    {
+      "date": "2026-03-25",
+      "count": 0
+    },
+    {
+      "date": "2026-03-26",
+      "count": 0
+    },
+    {
+      "date": "2026-03-27",
+      "count": 0
+    },
+    {
+      "date": "2026-03-28",
+      "count": 0
+    },
+    {
+      "date": "2026-03-29",
+      "count": 0
+    },
+    {
+      "date": "2026-03-30",
+      "count": 0
+    },
+    {
+      "date": "2026-03-31",
+      "count": 0
+    },
+    {
+      "date": "2026-04-01",
+      "count": 0
+    },
+    {
+      "date": "2026-04-02",
+      "count": 0
+    },
+    {
+      "date": "2026-04-03",
+      "count": 0
+    },
+    {
+      "date": "2026-04-04",
+      "count": 0
+    },
+    {
+      "date": "2026-04-05",
+      "count": 0
+    },
+    {
+      "date": "2026-04-06",
+      "count": 0
+    },
+    {
+      "date": "2026-04-07",
+      "count": 0
+    },
+    {
+      "date": "2026-04-08",
+      "count": 0
+    },
+    {
+      "date": "2026-04-09",
+      "count": 0
+    },
+    {
+      "date": "2026-04-10",
+      "count": 0
+    },
+    {
+      "date": "2026-04-11",
+      "count": 0
+    },
+    {
+      "date": "2026-04-12",
+      "count": 0
+    },
+    {
+      "date": "2026-04-13",
+      "count": 1
+    },
+    {
+      "date": "2026-04-14",
+      "count": 0
+    },
+    {
+      "date": "2026-04-15",
+      "count": 0
+    },
+    {
+      "date": "2026-04-16",
+      "count": 0
+    },
+    {
+      "date": "2026-04-17",
+      "count": 0
+    },
+    {
+      "date": "2026-04-18",
+      "count": 0
+    },
+    {
+      "date": "2026-04-19",
+      "count": 0
+    },
+    {
+      "date": "2026-04-20",
+      "count": 0
+    },
+    {
+      "date": "2026-04-21",
+      "count": 0
+    },
+    {
+      "date": "2026-04-22",
+      "count": 0
+    },
+    {
+      "date": "2026-04-23",
+      "count": 0
+    },
+    {
+      "date": "2026-04-24",
+      "count": 0
+    },
+    {
+      "date": "2026-04-25",
+      "count": 0
+    },
+    {
+      "date": "2026-04-26",
+      "count": 0
+    },
+    {
+      "date": "2026-04-27",
+      "count": 1
+    },
+    {
+      "date": "2026-04-28",
+      "count": 2
+    },
+    {
+      "date": "2026-04-29",
+      "count": 0
+    },
+    {
+      "date": "2026-04-30",
+      "count": 0
+    },
+    {
+      "date": "2026-05-01",
+      "count": 0
+    },
+    {
+      "date": "2026-05-02",
+      "count": 0
+    },
+    {
+      "date": "2026-05-03",
+      "count": 0
+    },
+    {
+      "date": "2026-05-04",
+      "count": 0
+    },
+    {
+      "date": "2026-05-05",
+      "count": 0
+    },
+    {
+      "date": "2026-05-06",
+      "count": 0
+    },
+    {
+      "date": "2026-05-07",
+      "count": 57
+    },
+    {
+      "date": "2026-05-08",
+      "count": 0
+    },
+    {
+      "date": "2026-05-09",
+      "count": 0
+    },
+    {
+      "date": "2026-05-10",
+      "count": 0
+    },
+    {
+      "date": "2026-05-11",
+      "count": 3
+    },
+    {
+      "date": "2026-05-12",
+      "count": 10
+    }
+  ]
+}

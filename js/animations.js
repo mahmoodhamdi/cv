@@ -147,28 +147,53 @@ function observeTestimonials() {
   });
 }
 
-// heatmap — deterministic per-day so the pattern is stable across refreshes
-// but rotates one cell every day, mimicking real contribution activity.
+// heatmap — uses real GitHub contribution data from window.CV.heatmapData
+// when available (loaded by github-stats.js). Falls back to a deterministic
+// per-day seed if stats.json hasn't loaded yet.
 function initHeatmap() {
-  var now = new Date();
-  var dayKey = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
-  function intensity(i) {
-    // Two-wave deterministic noise — looks like clustered commit activity
-    var s = Math.sin(i * 0.73 + dayKey * 0.21) + Math.sin(i * 1.91 + dayKey * 0.05) + Math.sin(i * 0.31);
-    var t = (s + 3) / 6; // normalize to ~0..1
-    if (t < 0) t = 0; if (t > 1) t = 1;
-    // Bias toward 1-3 intensity (active dev pattern, few zero-days)
-    var level = Math.round(t * 4 * 0.85 + 0.4);
-    if (level < 0) level = 0; if (level > 4) level = 4;
-    return level;
+  var real = window.CV && Array.isArray(window.CV.heatmapData) ? window.CV.heatmapData : null;
+  var counts = [];
+  if (real && real.length >= 30) {
+    // Take last 60 days, bucket count → intensity 0-4.
+    // Max activity for any single day in the window scales to level 4.
+    var slice = real.slice(-60);
+    var maxCount = slice.reduce(function(m, c) { return c.count > m ? c.count : m; }, 0) || 1;
+    counts = slice.map(function(c) {
+      if (c.count === 0) return 0;
+      var ratio = c.count / maxCount;
+      if (ratio > 0.75) return 4;
+      if (ratio > 0.45) return 3;
+      if (ratio > 0.20) return 2;
+      return 1;
+    });
+    // Pad to 60 if needed
+    while (counts.length < 60) counts.unshift(0);
+  } else {
+    // Synthetic fallback — deterministic per-day so the pattern is stable
+    var now = new Date();
+    var dayKey = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
+    for (var i = 0; i < 60; i++) {
+      var s = Math.sin(i * 0.73 + dayKey * 0.21) + Math.sin(i * 1.91 + dayKey * 0.05) + Math.sin(i * 0.31);
+      var t = (s + 3) / 6;
+      if (t < 0) t = 0; if (t > 1) t = 1;
+      var level = Math.round(t * 4 * 0.85 + 0.4);
+      if (level < 0) level = 0; if (level > 4) level = 4;
+      counts.push(level);
+    }
   }
+
   ['hm-en', 'hm-ar'].forEach(function(id) {
     var el = document.getElementById(id);
     if (!el) return;
     el.innerHTML = '';
     for (var i = 0; i < 60; i++) {
       var sq = document.createElement('span');
-      sq.className = 'hm-sq hm-' + intensity(i);
+      sq.className = 'hm-sq hm-' + counts[i];
+      // Tooltip with real date + count if we have real data
+      if (real && real.length) {
+        var datum = real[real.length - 60 + i] || real[i];
+        if (datum) sq.title = datum.date + ' · ' + datum.count + (datum.count === 1 ? ' contribution' : ' contributions');
+      }
       el.appendChild(sq);
     }
   });
