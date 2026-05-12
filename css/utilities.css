@@ -138,7 +138,6 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outlin
 html[dir="rtl"] body{font-family:var(--fn-ar);line-height:2;letter-spacing:.01em}
 html[dir="rtl"] .nav-a{font-family:var(--fn-ar)}
 html[dir="rtl"] .top-ctrl{right:auto;left:20px}
-html[dir="rtl"] .pr-btn{left:auto;right:20px}
 html[dir="rtl"] .s-top{right:auto;left:28px}
 html[dir="rtl"] .nm{font-family:var(--fn-ar);font-size:38px;font-weight:700}
 html[dir="rtl"] .ttl{letter-spacing:0;text-transform:none;font-size:17px}
@@ -184,9 +183,7 @@ html[dir="rtl"] .proj-amber{border-right:3px solid #f59e0b}
   .st-n{font-size:28px}
   .test-g{grid-template-columns:1fr}
   .top-ctrl{top:54px;right:12px}
-  .pr-btn{top:54px;left:12px}
   html[dir="rtl"] .top-ctrl{left:12px;right:auto}
-  html[dir="rtl"] .pr-btn{left:auto;right:12px}
   .s-top{bottom:16px;right:16px}
   html[dir="rtl"] .s-top{right:auto;left:16px}
   .cta{padding:32px 20px}
@@ -201,7 +198,6 @@ html[dir="rtl"] .proj-amber{border-right:3px solid #f59e0b}
   .tool-g{grid-template-columns:repeat(2,1fr)}
   .l-btn{padding:6px 12px;font-size:11px}
   .t-btn{width:34px;height:34px}
-  .pr-btn span{display:none}
   .sec{margin-top:32px}
   .ftr-soc svg{width:18px;height:18px}
 }

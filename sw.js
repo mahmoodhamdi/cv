@@ -1,11 +1,10 @@
-const CACHE_NAME = 'mahmoud-cv-v7';
+const CACHE_NAME = 'mahmoud-cv-v8';
 const ASSETS = [
   './',
   './index.html',
   './css/bundle.css',
   './css/sections.css',
   './css/utilities.css',
-  './css/print.css',
   './js/main.js',
   './js/utils.js',
   './js/theme.js',

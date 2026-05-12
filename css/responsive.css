@@ -27,9 +27,7 @@
   .st-n{font-size:28px}
   .test-g{grid-template-columns:1fr}
   .top-ctrl{top:54px;right:12px}
-  .pr-btn{top:54px;left:12px}
   html[dir="rtl"] .top-ctrl{left:12px;right:auto}
-  html[dir="rtl"] .pr-btn{left:auto;right:12px}
   .s-top{bottom:16px;right:16px}
   html[dir="rtl"] .s-top{right:auto;left:16px}
   .cta{padding:32px 20px}
@@ -44,7 +42,6 @@
   .tool-g{grid-template-columns:repeat(2,1fr)}
   .l-btn{padding:6px 12px;font-size:11px}
   .t-btn{width:34px;height:34px}
-  .pr-btn span{display:none}
   .sec{margin-top:32px}
   .ftr-soc svg{width:18px;height:18px}
 }
