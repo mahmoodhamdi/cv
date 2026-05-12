@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Mahmoud Hamdy — The Story</title>
+<meta name="description" content="The story of how Mahmoud Hamdy went from a CS student in Egypt to a freelance full-stack developer with 500+ merged open-source PRs and clients across the MENA region.">
+<meta name="author" content="Mahmoud Hamdy">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0a0f1a">
+<link rel="canonical" href="https://mahmoodhamdi.github.io/cv/about.html">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="About Mahmoud Hamdy — The Story">
+<meta property="og:description" content="From CS student to full-stack freelancer with 500+ merged open-source PRs.">
+<meta property="og:url" content="https://mahmoodhamdi.github.io/cv/about.html">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="manifest" href="./manifest.json">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+:root{--bg:#0a0f1a;--bg-alt:#111827;--card:#1a2236;--accent:#38bdf8;--accent-g:rgba(56,189,248,.15);--accent2:#818cf8;--txt:#f1f5f9;--txt2:#94a3b8;--muted:#8e99ad;--bdr:rgba(148,163,184,.1);--grad:linear-gradient(135deg,#38bdf8,#818cf8);--green:#34d399;--fn:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;--fn-ar:'Tajawal',sans-serif;--nav-bg:rgba(10,15,26,.88)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.7;overflow-x:hidden;opacity:0;transition:opacity .5s ease;padding-top:52px}body.loaded{opacity:1}
+.wrap{max-width:760px;margin:0 auto;padding:40px 24px}
+.navbar{position:fixed;top:0;left:0;right:0;z-index:90;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--bdr)}
+.nav-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:48px;gap:12px}
+.nav-back{font-size:13px;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:color .2s}
+.nav-back:hover{color:var(--accent)}
+.nav-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+.top-ctrl{position:fixed;top:58px;right:20px;z-index:100;display:flex;gap:8px;align-items:center}
+.t-btn{width:34px;height:34px;border-radius:10px;background:var(--card);border:1px solid var(--bdr);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.t-btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
+html[data-theme="dark"] .ic-light{display:block}html[data-theme="dark"] .ic-dark{display:none}
+html[data-theme="light"] .ic-light{display:none}html[data-theme="light"] .ic-dark{display:block}
+.lang-tog{display:flex;gap:3px;background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:3px}
+.l-btn{padding:4px 10px;border-radius:8px;font-size:11px;font-weight:600;color:var(--muted);cursor:pointer;border:none;background:none;font-family:var(--fn)}
+.l-btn.on{background:var(--accent-g);color:var(--accent)}
+.a-hero{text-align:center;padding:30px 0 36px}
+.a-avatar{width:120px;height:120px;border-radius:30px;background:var(--grad);margin:0 auto 20px;display:flex;align-items:center;justify-content:center;box-shadow:0 16px 48px rgba(56,189,248,.3)}
+.a-avatar svg{width:80px;height:80px}
+.a-hero h1{font-size:38px;font-weight:600;letter-spacing:-.02em;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+.a-hero .sub{font-size:15px;color:var(--txt2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:18px}
+.a-meta{display:flex;justify-content:center;gap:18px;font-size:13px;color:var(--muted);flex-wrap:wrap}
+.a-meta span{display:inline-flex;align-items:center;gap:6px}
+.a-meta svg{width:14px;height:14px}
+
+.a-body{margin-top:20px;font-size:16px;color:var(--txt2)}
+.a-body h2{font-size:22px;color:var(--txt);margin:36px 0 14px;font-weight:600;position:relative;padding-bottom:8px}
+.a-body h2::after{content:'';position:absolute;bottom:0;left:0;width:40px;height:2px;background:var(--grad);border-radius:2px}
+html[dir="rtl"] .a-body h2::after{left:auto;right:0}
+.a-body p{margin-bottom:16px}
+.a-body p strong{color:var(--txt);font-weight:600}
+.a-body a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
+.a-body a:hover{border-bottom-color:var(--accent)}
+.a-body ul{margin-bottom:16px;padding-left:24px}
+html[dir="rtl"] .a-body ul{padding-left:0;padding-right:24px}
+.a-body ul li{margin-bottom:6px}
+
+.a-stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:20px 0 30px}
+.a-stack-item{background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:12px 14px}
+.a-stack-item .lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.a-stack-item .val{font-size:13px;color:var(--txt);font-weight:500;line-height:1.4}
+
+.a-cta{margin-top:40px;padding:30px;border-radius:18px;background:linear-gradient(135deg,rgba(56,189,248,.08),rgba(129,140,248,.08));border:1px solid rgba(56,189,248,.18);text-align:center}
+.a-cta h2{font-size:22px;margin-bottom:8px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;border:none}
+.a-cta h2::after{display:none}
+.a-cta p{margin-bottom:18px;font-size:14px}
+.a-cta-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn-p{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:10px;background:var(--grad);color:#fff;font-size:14px;font-weight:600;text-decoration:none;transition:opacity .2s,transform .2s}
+.btn-p:hover{opacity:.9;transform:translateY(-2px)}
+.btn-o{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:10px;background:transparent;color:var(--txt);border:1px solid var(--bdr);font-size:14px;font-weight:500;text-decoration:none}
+.btn-o:hover{border-color:var(--accent);color:var(--accent)}
+
+html[data-theme="light"]{--bg:#f8fafc;--bg-alt:#f1f5f9;--card:#fff;--txt:#0f172a;--txt2:#334155;--muted:#64748b;--bdr:rgba(15,23,42,.1);--nav-bg:rgba(248,250,252,.88);--accent-g:rgba(56,189,248,.12)}
+html[dir="rtl"] body{font-family:var(--fn-ar);line-height:1.9}
+@media(max-width:600px){
+  .a-hero h1{font-size:30px}
+  .top-ctrl{top:54px;right:12px}
+  html[dir="rtl"] .top-ctrl{right:auto;left:12px}
+}
+</style>
+<link rel="stylesheet" href="css/bundle.css">
+</head>
+<body id="top">
+
+<nav class="navbar" role="navigation" aria-label="Page navigation">
+  <div class="nav-in">
+    <a href="./" class="nav-back"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg><span class="en-only">Back to portfolio</span><span class="ar-only" style="display:none">العودة للبورتفوليو</span></a>
+  </div>
+</nav>
+
+<div class="top-ctrl">
+  <button class="t-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+    <svg class="ic-light" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    <svg class="ic-dark" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+  </button>
+  <div class="lang-tog">
+    <button class="l-btn on" onclick="setLang('en')">EN</button>
+    <button class="l-btn" onclick="setLang('ar')">عربي</button>
+  </div>
+</div>
+
+<main class="wrap">
+
+<!-- ===== EN ===== -->
+<div id="en-page">
+<section class="a-hero">
+  <div class="a-avatar"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="120" rx="26" fill="#0f172a"/><path d="M30 82L45 38L60 65L75 38L90 82" stroke="url(#g1)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><line x1="38" y1="68" x2="82" y2="68" stroke="rgba(56,189,248,0.5)" stroke-width="1.5"/><defs><linearGradient id="g1" x1="30" y1="38" x2="90" y2="82"><stop offset="0%" stop-color="#fff" stop-opacity=".9"/><stop offset="100%" stop-color="#fff" stop-opacity=".7"/></linearGradient></defs></svg></div>
+  <h1>Mahmoud Hamdy</h1>
+  <p class="sub">Full-Stack Developer · From Menoufia, Egypt</p>
+  <div class="a-meta">
+    <span><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Egypt</span>
+    <span><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Available for hire</span>
+    <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>@mahmoodhamdi</span>
+  </div>
+</section>
+
+<section class="a-body">
+
+<h2>The short version</h2>
+<p>I'm a full-stack developer building production-ready web and mobile apps for clients across the MENA region. Day-to-day I work in <strong>Node.js</strong>, <strong>TypeScript</strong>, <strong>Flutter</strong>, and <strong>Next.js</strong>. On the side, I'm a top contributor to several open-source libraries that millions of developers depend on — <a href="https://github.com/ai/nanoid/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged" target="_blank" rel="noopener">nanoid</a>, <a href="https://github.com/helmetjs/helmet/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged" target="_blank" rel="noopener">Helmet.js</a>, <a href="https://github.com/express-validator/express-validator/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged" target="_blank" rel="noopener">express-validator</a>, and the <a href="https://github.com/prayer-timetable/adhan_dart/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged" target="_blank" rel="noopener">adhan_dart</a> prayer-times library that powers Islamic apps.</p>
+
+<h2>How it started</h2>
+<p>I picked up programming in 2021 during my first year studying Computer Science. The thing that hooked me wasn't the syntax — it was watching a small chunk of code do something useful. My first real project was a Flutter app called <em>الأربعون النووية</em> (Nawawi's 40 Hadith) — an audio-first Arabic app I published on Google Play. That project taught me everything that university wouldn't: state management, audio playback, RTL layouts, app-store review, real users emailing me about bugs.</p>
+<p>By the time I started my second year, I was taking small freelance gigs on Mostaql and Khamsat — mostly Flutter screens and Node.js endpoints. Each project was a forced curriculum: every client request was a new thing I had to learn, ship, and support.</p>
+
+<h2>Why open source</h2>
+<p>I'd been using libraries like Helmet, express-validator, and Mongoose every day in client work. One afternoon I hit a bug in express-validator, opened the source on a whim to understand it, and ended up sending the fix as a PR. <strong>It got merged.</strong> That single moment changed how I thought about the tools I used — they were all just code that someone wrote, and the door was always open.</p>
+<p>I've kept that door open. Today I have <strong>500+ merged PRs</strong> across 50+ projects, including the <a href="https://github.com/prayer-timetable/adhan_dart" target="_blank" rel="noopener">adhan_dart</a> prayer-times library (I'm the top contributor — most updates pass through me) and the <a href="https://github.com/Itqan-community/cms-frontend" target="_blank" rel="noopener">Itqan Community CMS</a> for Quranic content. The contributions split roughly into three buckets: <strong>bug fixes</strong> I hit in client work, <strong>documentation</strong> for libraries I wish had been clearer when I learned them, and <strong>features</strong> for projects I personally use.</p>
+
+<h2>What I work on now</h2>
+<p>I'm currently a full-stack developer at <strong>ROV GROUP</strong>, building the <a href="projects/escore.html">Escore esports platform</a> for the MENA region — a 16-module Node.js/TypeScript backend with a Next.js admin and Flutter mobile apps. Alongside that, I take on a handful of freelance projects each month, mostly in three categories:</p>
+<ul>
+  <li><strong>E-commerce automation</strong> — Salla &amp; Zid integrations, AI customer-support bots, order automation</li>
+  <li><strong>Mobile apps</strong> — Flutter apps with clean architecture and Arabic-first UX</li>
+  <li><strong>SaaS platforms</strong> — multi-tenant Node.js backends with admin dashboards</li>
+</ul>
+
+<h2>The stack I lean on</h2>
+<div class="a-stack">
+  <div class="a-stack-item"><div class="lbl">Backend</div><div class="val">Node.js, TypeScript, Express, NestJS, Python</div></div>
+  <div class="a-stack-item"><div class="lbl">Frontend</div><div class="val">Next.js, React, Tailwind CSS</div></div>
+  <div class="a-stack-item"><div class="lbl">Mobile</div><div class="val">Flutter, Dart, Bloc/Cubit</div></div>
+  <div class="a-stack-item"><div class="lbl">Databases</div><div class="val">MongoDB, PostgreSQL, Redis</div></div>
+  <div class="a-stack-item"><div class="lbl">DevOps</div><div class="val">Docker, DigitalOcean, AWS, Nginx, CI/CD</div></div>
+  <div class="a-stack-item"><div class="lbl">Tools</div><div class="val">VS Code, Linux, Git, Postman, Figma</div></div>
+</div>
+
+<h2>How I work</h2>
+<p>I try to keep three things consistent on every project, freelance or full-time:</p>
+<ul>
+  <li><strong>Weekly written updates.</strong> Every Friday I send a 5-line status: what shipped, what's next, what I'm blocked on. No surprises at the end of a milestone.</li>
+  <li><strong>Test in production-shaped environments.</strong> Staging databases that mirror prod, real third-party sandboxes (Salla, Stripe, Twilio), not mocks. The last 10% of work is where most bugs hide.</li>
+  <li><strong>Post-launch support is part of the deal.</strong> Every project I deliver includes 30-60 days of bug fixes and small adjustments — I don't disappear after the invoice clears.</li>
+</ul>
+
+<h2>What I'm reading and learning</h2>
+<p>Lately I've been deep on three threads: <strong>LLM-backed automation</strong> (building Salla AI assistants that actually close sales, not just chat), <strong>real-time systems</strong> (the Escore platform pushed me deep into WebSocket scaling and Redis pubsub), and <strong>better Arabic UX</strong> (RTL is solved at the CSS level but nobody talks about how Arabic typography breaks at certain font weights, or how date pickers should handle Hijri).</p>
+
+<h2>Outside of code</h2>
+<p>I live in Menoufia, Egypt. I read a lot — mostly engineering blogs and the occasional book on systems thinking. I write technical articles on <a href="blog/">the blog</a> (25+ bilingual tutorials so far) because writing is the easiest way to find the holes in my own understanding.</p>
+
+</section>
+
+<section class="a-cta">
+  <h2>Want to work together?</h2>
+  <p>I'm currently taking on a few new projects for 2026. The fastest way to start is a short discovery call.</p>
+  <div class="a-cta-actions">
+    <a class="btn-p" href="services.html">See services &amp; pricing</a>
+    <a class="btn-o" href="mailto:hmdy7486@gmail.com">Email me</a>
+  </div>
+</section>
+</div>
+
+<!-- ===== AR ===== -->
+<div id="ar-page" style="display:none" dir="rtl">
+<section class="a-hero">
+  <div class="a-avatar"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="120" rx="26" fill="#0f172a"/><path d="M30 82L45 38L60 65L75 38L90 82" stroke="url(#g2)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><line x1="38" y1="68" x2="82" y2="68" stroke="rgba(56,189,248,0.5)" stroke-width="1.5"/><defs><linearGradient id="g2" x1="30" y1="38" x2="90" y2="82"><stop offset="0%" stop-color="#fff" stop-opacity=".9"/><stop offset="100%" stop-color="#fff" stop-opacity=".7"/></linearGradient></defs></svg></div>
+  <h1>محمود حمدي</h1>
+  <p class="sub">Full-Stack Developer · المنوفية، مصر</p>
+  <div class="a-meta">
+    <span><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>مصر</span>
+    <span><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>متاح للتوظيف</span>
+    <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.11.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>@mahmoodhamdi</span>
+  </div>
+</section>
+
+<section class="a-body">
+
+<h2>باختصار</h2>
+<p>أنا مطور Full-Stack بابني تطبيقات ويب وموبايل جاهزة للإنتاج لعملاء في منطقة الشرق الأوسط. شغلي اليومي بـ <strong>Node.js</strong> و<strong>TypeScript</strong> و<strong>Flutter</strong> و<strong>Next.js</strong>. وعلى الجانب، أنا من أكبر المساهمين في مكتبات مفتوحة المصدر بيعتمد عليها ملايين المطورين — <a href="https://github.com/ai/nanoid/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged" target="_blank" rel="noopener">nanoid</a>، <a href="https://github.com/helmetjs/helmet/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged" target="_blank" rel="noopener">Helmet.js</a>، <a href="https://github.com/express-validator/express-validator/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged" target="_blank" rel="noopener">express-validator</a>، ومكتبة <a href="https://github.com/prayer-timetable/adhan_dart/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged" target="_blank" rel="noopener">adhan_dart</a> لأوقات الصلاة اللي بتشغّل تطبيقات إسلامية كتيرة.</p>
+
+<h2>إزاي بدأت</h2>
+<p>دخلت البرمجة سنة ٢٠٢١ في أول سنة في علوم الحاسب. اللي شدّني مكنش الـ syntax — كان مشاهدة شوية أسطر كود بتعمل حاجة مفيدة. أول مشروع حقيقي كان تطبيق Flutter اسمه <em>الأربعون النووية</em> — تطبيق صوتي عربي نشرته على Google Play. التطبيق ده علّمني كل اللي الجامعة مكنتش هتعلّمهولي: إدارة الـ state، تشغيل الصوت، تخطيطات RTL، مراجعة الـ App Store، مستخدمين حقيقيين بيبعتولي إيميلات عن الـ bugs.</p>
+<p>لما بدأت السنة التانية، بقيت آخد شغل فريلانس صغير على مستقل وخمسات — معظمه شاشات Flutter و endpoints بـ Node.js. كل مشروع كان منهج إجباري: كل طلب عميل حاجة جديدة لازم أتعلمها وأشحنها وأدعمها.</p>
+
+<h2>ليه المصادر المفتوحة</h2>
+<p>كنت بستخدم مكتبات زي Helmet و express-validator و Mongoose كل يوم في شغل العملاء. مرة لقيت bug في express-validator، فتحت السورس كود علشان أفهمه، وفي الآخر بعتّه كـ PR. <strong>اتدمج.</strong> اللحظة دي غيّرت طريقة تفكيري في الأدوات اللي بستخدمها — كلها مجرد كود كتبه حد ما، والباب دايماً مفتوح.</p>
+<p>الباب فضل مفتوح من ساعتها. النهاردة عندي <strong>+500 PR مدموج</strong> عبر +50 مشروع، منهم مكتبة <a href="https://github.com/prayer-timetable/adhan_dart" target="_blank" rel="noopener">adhan_dart</a> لأوقات الصلاة (أنا أكبر مساهم — معظم التحديثات بتعدي مني) ونظام <a href="https://github.com/Itqan-community/cms-frontend" target="_blank" rel="noopener">Itqan CMS</a> لإدارة المحتوى القرآني. المساهمات بتتقسم لـ ٣ أنواع: <strong>إصلاح bugs</strong> اللي قابلتها في شغل العملاء، <strong>توثيق</strong> لمكتبات أتمنى لو كانت أوضح لما تعلّمتها، و<strong>features</strong> لمشاريع بستخدمها شخصياً.</p>
+
+<h2>اللي شغّال عليه دلوقتي</h2>
+<p>دلوقتي مطور Full-Stack في <strong>ROV GROUP</strong>، بابني <a href="projects/escore.html">منصة Escore للرياضات الإلكترونية</a> للشرق الأوسط — باك إند Node.js/TypeScript من ١٦ وحدة مع لوحة Next.js للإدارة وتطبيقات Flutter للموبايل. جنب ده، باخد عدد قليل من مشاريع الفريلانس كل شهر، معظمها في ٣ مجالات:</p>
+<ul>
+  <li><strong>أتمتة التجارة الإلكترونية</strong> — تكاملات سلة وزد، بوتات دعم عملاء بالذكاء الاصطناعي، أتمتة الطلبات</li>
+  <li><strong>تطبيقات الموبايل</strong> — تطبيقات Flutter بـ Clean Architecture وتجربة عربية أولاً</li>
+  <li><strong>منصات SaaS</strong> — باك إند Node.js متعدد الـ tenants مع لوحات إدارة</li>
+</ul>
+
+<h2>الـ Stack اللي بشتغل بيها</h2>
+<div class="a-stack">
+  <div class="a-stack-item"><div class="lbl">Backend</div><div class="val">Node.js, TypeScript, Express, NestJS, Python</div></div>
+  <div class="a-stack-item"><div class="lbl">Frontend</div><div class="val">Next.js, React, Tailwind CSS</div></div>
+  <div class="a-stack-item"><div class="lbl">Mobile</div><div class="val">Flutter, Dart, Bloc/Cubit</div></div>
+  <div class="a-stack-item"><div class="lbl">Databases</div><div class="val">MongoDB, PostgreSQL, Redis</div></div>
+  <div class="a-stack-item"><div class="lbl">DevOps</div><div class="val">Docker, DigitalOcean, AWS, Nginx, CI/CD</div></div>
+  <div class="a-stack-item"><div class="lbl">Tools</div><div class="val">VS Code, Linux, Git, Postman, Figma</div></div>
+</div>
+
+<h2>إزاي بشتغل</h2>
+<p>بحاول أحافظ على ٣ حاجات ثابتة في كل مشروع، فريلانس أو دوام كامل:</p>
+<ul>
+  <li><strong>تحديثات مكتوبة أسبوعية.</strong> كل جمعة بابعت ٥ سطور: اللي اتشحن، اللي بعده، اللي محبوس عليه. مفيش مفاجآت في نهاية milestone.</li>
+  <li><strong>الاختبار في بيئات شبيهة بالإنتاج.</strong> قواعد بيانات staging مطابقة للإنتاج، sandboxes حقيقية (سلة، Stripe، Twilio)، مش mocks. آخر ١٠٪ من الشغل هي اللي بتختبئ فيها معظم الـ bugs.</li>
+  <li><strong>الدعم بعد الإطلاق جزء من الصفقة.</strong> كل مشروع بسلّمه بيتضمن ٣٠-٦٠ يوم إصلاح bugs وتعديلات صغيرة — مفيش اختفاء بعد ما الفاتورة تخلّص.</li>
+</ul>
+
+<h2>اللي بقرأه وبتعلّمه</h2>
+<p>الفترة الأخيرة بشتغل بعمق على ٣ خطوط: <strong>أتمتة بـ LLM</strong> (بناء مساعدات سلة AI بتقفل مبيعات فعلاً مش بس بتكلم)، <strong>الأنظمة اللحظية</strong> (منصة Escore خلتني أغوص في WebSocket scaling و Redis pubsub)، و<strong>UX عربي أفضل</strong> (الـ RTL متحلول على مستوى CSS لكن محدش بيتكلم عن إزاي الـ Typography العربية بتتكسر في بعض أوزان الخطوط، أو إزاي pickers التواريخ لازم تتعامل مع الهجري).</p>
+
+<h2>بعيداً عن الكود</h2>
+<p>أنا عايش في المنوفية، مصر. بقرأ كتير — معظمه مدونات هندسية والكتاب من حين لآخر عن Systems Thinking. بكتب مقالات تقنية على <a href="blog/">المدونة</a> (+٢٥ شرح ثنائي اللغة لحد دلوقتي) لأن الكتابة أسهل طريقة عرفتها لاكتشاف الثقوب في فهمي.</p>
+
+</section>
+
+<section class="a-cta">
+  <h2>عاوز نشتغل سوا؟</h2>
+  <p>دلوقتي باخد عدد محدود من المشاريع لـ ٢٠٢٦. أسرع طريقة نبدأ بيها هي مكالمة استكشاف قصيرة.</p>
+  <div class="a-cta-actions">
+    <a class="btn-p" href="services.html">شوف الخدمات والأسعار</a>
+    <a class="btn-o" href="mailto:hmdy7486@gmail.com">إيميل</a>
+  </div>
+</section>
+</div>
+
+</main>
+
+<script>
+function toggleTheme(){var h=document.documentElement;var c=h.getAttribute('data-theme')||'dark';var n=c==='dark'?'light':'dark';h.setAttribute('data-theme',n);try{localStorage.setItem('cv-theme',n)}catch(e){}}
+try{var sv=localStorage.getItem('cv-theme');if(sv) document.documentElement.setAttribute('data-theme',sv)}catch(e){}
+
+function setLang(l){
+  var h=document.documentElement;var e=document.getElementById('en-page');var a=document.getElementById('ar-page');
+  var btns=document.querySelectorAll('.l-btn');
+  if(l==='ar'){h.dir='rtl';h.lang='ar';e.style.display='none';a.style.display='block';btns[0].classList.remove('on');btns[1].classList.add('on');document.querySelectorAll('.en-only').forEach(function(el){el.style.display='none'});document.querySelectorAll('.ar-only').forEach(function(el){el.style.display='inline'})}
+  else{h.dir='ltr';h.lang='en';e.style.display='block';a.style.display='none';btns[0].classList.add('on');btns[1].classList.remove('on');document.querySelectorAll('.en-only').forEach(function(el){el.style.display='inline'});document.querySelectorAll('.ar-only').forEach(function(el){el.style.display='none'})}
+}
+document.body.classList.add('loaded');
+</script>
+</body>
+</html>
