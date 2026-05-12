@@ -185,6 +185,30 @@ html[dir="rtl"] .featured-pr:hover{transform:translateX(-2px)}
 .contact-detail-item span{color:var(--txt2)}
 .availability-badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--green);font-weight:500}
 .avail-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:blink 2s infinite}
+/* WhatsApp floating action button */
+.wa-fab{position:fixed;bottom:28px;left:28px;z-index:90;width:52px;height:52px;border-radius:50%;background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(37,211,102,.4);text-decoration:none;transition:transform .25s,box-shadow .25s}
+.wa-fab:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 10px 32px rgba(37,211,102,.55)}
+.wa-fab svg{width:26px;height:26px;position:relative;z-index:2}
+.wa-fab-pulse{position:absolute;inset:0;border-radius:50%;background:#25d366;opacity:.4;animation:waPulse 2.2s ease-out infinite;z-index:1}
+html[dir="rtl"] .wa-fab{left:auto;right:28px}
+@keyframes waPulse{0%{transform:scale(1);opacity:.5}100%{transform:scale(1.7);opacity:0}}
+@media print{.wa-fab{display:none}}
+
+/* newsletter signup */
+.newsletter-sec{display:flex;justify-content:center}
+.newsletter-card{max-width:640px;width:100%;text-align:center;padding:36px 28px;border-radius:18px;background:linear-gradient(135deg,rgba(56,189,248,.06),rgba(129,140,248,.06));border:1px solid var(--bdr);backdrop-filter:blur(20px)}
+.newsletter-icon{font-size:34px;margin-bottom:10px;filter:drop-shadow(0 4px 12px rgba(56,189,248,.25))}
+.newsletter-title{font-size:22px;font-weight:600;color:var(--txt);margin-bottom:8px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.newsletter-sub{font-size:14px;color:var(--txt2);line-height:1.6;max-width:480px;margin:0 auto 22px}
+.newsletter-form{display:flex;gap:8px;max-width:440px;margin:0 auto 14px;flex-wrap:wrap}
+.newsletter-form input[type="email"]{flex:1;min-width:200px;padding:12px 16px;border-radius:10px;border:1px solid var(--bdr);background:var(--card);color:var(--txt);font-family:var(--fn);font-size:14px;outline:none;transition:border-color .2s,box-shadow .2s}
+.newsletter-form input[type="email"]:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-g)}
+.newsletter-form button{padding:12px 22px;border-radius:10px;border:none;background:var(--grad);color:#fff;font-family:var(--fn);font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;transition:transform .2s,box-shadow .2s}
+.newsletter-form button:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(56,189,248,.3)}
+.newsletter-form button:disabled{opacity:.7;cursor:wait}
+.newsletter-meta{font-size:12px;color:var(--muted);margin-top:4px}
+.newsletter-meta a{text-decoration:none}
+
 .now-card{max-width:880px;margin:8px auto 36px;display:flex;align-items:center;gap:18px;padding:14px 22px;background:linear-gradient(135deg,rgba(56,189,248,.08),rgba(129,140,248,.08));border:1px solid rgba(56,189,248,.18);border-radius:14px;flex-wrap:wrap;backdrop-filter:blur(20px)}
 .now-tag{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
 .now-dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(52,211,153,.6);animation:pulseNow 2s infinite}
@@ -220,6 +244,10 @@ html[dir="rtl"] .form-submit-btn{align-self:flex-end}
 .ftr-soc svg{width:20px;height:20px}
 .ftr-avail{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--green);margin-bottom:12px;font-weight:500}
 .ftr-avail::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--green);animation:blink 2s infinite}
+.ftr-links{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:12px;font-size:13px}
+.ftr-links a{color:var(--txt2);text-decoration:none;transition:color .2s}
+.ftr-links a:hover{color:var(--accent)}
+.ftr-sep{color:var(--muted)}
 .ftr-txt{font-size:12px;color:var(--muted)}
 .ftr-top{display:inline-block;margin-top:12px;font-size:12px;color:var(--muted);cursor:pointer;text-decoration:none;transition:opacity .2s}
 .ftr-top:hover{color:var(--accent)}

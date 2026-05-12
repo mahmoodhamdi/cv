@@ -6,6 +6,58 @@
   css.textContent = '.ct-spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:ct-spin .6s linear infinite;vertical-align:middle;margin-inline-end:6px}@keyframes ct-spin{to{transform:rotate(360deg)}}.form-result{margin-top:16px;border-radius:10px;font-size:14px;animation:ct-fade .3s ease}.form-success{display:flex;align-items:center;gap:10px;color:#10b981;background:rgba(16,185,129,.1);padding:14px 18px;border-radius:10px;border:1px solid rgba(16,185,129,.2)}.form-error{display:flex;align-items:center;gap:10px;color:#ef4444;background:rgba(239,68,68,.1);padding:14px 18px;border-radius:10px;border:1px solid rgba(239,68,68,.2)}.result-icon{font-size:20px;font-weight:bold}@keyframes ct-fade{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}';
   document.head.appendChild(css);
 
+  function initNewsletterForms() {
+    document.querySelectorAll('.newsletter-form').forEach(function(form) {
+      var btn = form.querySelector('[type="submit"]');
+      if (!btn) return;
+      var isAr = form.dataset.lang === 'ar';
+      var btnText = btn.querySelector('.btn-text');
+      var btnLoading = btn.querySelector('.btn-loading');
+      var btnSuccess = btn.querySelector('.btn-success');
+      var emailInput = form.querySelector('input[type="email"]');
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        btn.disabled = true;
+        if (btnText) btnText.style.display = 'none';
+        if (btnLoading) btnLoading.style.display = 'inline';
+
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: new FormData(form)
+        })
+          .then(function(r) { return r.json(); })
+          .then(function(d) {
+            if (!d.success) throw new Error(d.message || 'Failed');
+            if (btnLoading) btnLoading.style.display = 'none';
+            if (btnSuccess) btnSuccess.style.display = 'inline';
+            btn.style.background = '#10b981';
+            if (emailInput) emailInput.value = '';
+            if (typeof gtag === 'function') {
+              gtag('event', 'newsletter_signup', { event_category: 'Newsletter', event_label: isAr ? 'ar' : 'en' });
+            }
+            setTimeout(function() {
+              btn.disabled = false;
+              btn.style.background = '';
+              if (btnText) btnText.style.display = 'inline';
+              if (btnSuccess) btnSuccess.style.display = 'none';
+            }, 4000);
+          })
+          .catch(function() {
+            if (btnLoading) btnLoading.style.display = 'none';
+            if (btnText) btnText.style.display = 'inline';
+            btn.style.background = '#ef4444';
+            btn.textContent = isAr ? '✗ خطأ — جرب تاني' : '✗ Error — Try Again';
+            setTimeout(function() {
+              btn.disabled = false;
+              btn.style.background = '';
+              btn.innerHTML = '<span class="btn-text">' + (isAr ? 'اشترك' : 'Subscribe') + '</span><span class="btn-loading" style="display:none">' + (isAr ? 'جاري الاشتراك...' : 'Subscribing...') + '</span><span class="btn-success" style="display:none">' + (isAr ? 'تم الاشتراك!' : 'Subscribed!') + '</span>';
+            }, 3000);
+          });
+      });
+    });
+  }
+
   function initContactForms() {
     var forms = document.querySelectorAll('.form-card');
     if (!forms.length) return;
@@ -90,9 +142,14 @@
     });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initContactForms);
-  } else {
+  function initAll() {
     initContactForms();
+    initNewsletterForms();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAll);
+  } else {
+    initAll();
   }
 })();
