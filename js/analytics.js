@@ -22,47 +22,85 @@
     return String(str).replace(/[0-9,]/g, function(c) { return map[c] || c; });
   }
 
-  function initVisitorCounter() {
-    var els = document.querySelectorAll('.visitor-count');
-    if (!els.length) return;
+  // Visitor counter — real count fetched once per page load from counterapi.dev
+  // (anonymous, no signup, free). Increments by 1 per unique pageview from this
+  // session — sessionStorage flag prevents double-counting on lang switches.
+  // Falls back to a synthetic count if the counter API is unreachable.
 
+  var COUNTER_NS = 'mahmoodhamdi-cv';
+  var COUNTER_KEY = 'views';
+  var SESSION_FLAG = 'cv-view-counted-v1';
+
+  function formatNum(n, isAr) {
+    var s = Number(n).toLocaleString('en-US');
+    if (isAr) s = toArabicNumerals(s);
+    return s;
+  }
+
+  function animateCount(el, from, to, isAr, duration) {
+    var start = performance.now();
+    function step(ts) {
+      var p = Math.min((ts - start) / duration, 1);
+      var ease = 1 - Math.pow(1 - p, 3);
+      var current = Math.round(from + (to - from) * ease);
+      el.textContent = formatNum(current, isAr);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function syntheticFallback() {
+    // If the counter API is down, show a plausible synthetic number derived
+    // from days since launch so the UI never shows "0" or breaks.
     var launch = new Date('2026-03-30T00:00:00');
-    var now = new Date();
-    var days = Math.max(0, Math.floor((now - launch) / 86400000));
-    var hour = now.getHours();
-    var target = 1000 + (days * 7) + (hour * 3) + Math.floor(Math.random() * 5);
+    var days = Math.max(0, Math.floor((new Date() - launch) / 86400000));
+    return 1000 + days * 7;
+  }
 
-    function formatNum(n, isAr) {
-      var s = n.toLocaleString('en-US');
-      if (isAr) s = toArabicNumerals(s);
-      return s;
-    }
+  function renderCount(target) {
+    document.querySelectorAll('.visitor-count').forEach(function(el) {
+      if (el.dataset.counted) return;
+      var isAr = el.closest('[id*="ar"]') !== null || document.documentElement.lang === 'ar';
+      var vcObs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting && !entry.target.dataset.counted) {
+            entry.target.dataset.counted = '1';
+            animateCount(entry.target, Math.max(0, target - 15), target, isAr, 1500);
+            vcObs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      vcObs.observe(el);
+    });
+  }
 
-    function animateCount(el, from, to, isAr, duration) {
-      var start = performance.now();
-      function step(ts) {
-        var p = Math.min((ts - start) / duration, 1);
-        var ease = 1 - Math.pow(1 - p, 3);
-        var current = Math.round(from + (to - from) * ease);
-        el.textContent = formatNum(current, isAr);
-        if (p < 1) requestAnimationFrame(step);
-      }
-      requestAnimationFrame(step);
-    }
+  function initVisitorCounter() {
+    if (!document.querySelectorAll('.visitor-count').length) return;
 
-    var vcObs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting && !entry.target.dataset.counted) {
-          entry.target.dataset.counted = '1';
-          var el = entry.target;
-          var isAr = el.closest('[id*="ar"]') !== null || document.documentElement.lang === 'ar';
-          animateCount(el, target - 15, target, isAr, 1500);
-          vcObs.unobserve(el);
+    var counted = false;
+    try { counted = sessionStorage.getItem(SESSION_FLAG) === '1'; } catch (e) {}
+    // Use /up to increment once per session, /set/?value=... is not used.
+    // The "get" endpoint reads without incrementing.
+    var endpoint = isLocal || counted
+      ? 'https://api.counterapi.dev/v1/' + COUNTER_NS + '/' + COUNTER_KEY + '/'
+      : 'https://api.counterapi.dev/v1/' + COUNTER_NS + '/' + COUNTER_KEY + '/up';
+
+    var ctrl = (typeof AbortController === 'function') ? new AbortController() : null;
+    var timeout = setTimeout(function() { if (ctrl) ctrl.abort(); }, 4000);
+
+    fetch(endpoint, ctrl ? { signal: ctrl.signal } : {})
+      .then(function(r) { clearTimeout(timeout); return r.ok ? r.json() : null; })
+      .then(function(d) {
+        if (!d || typeof d.count !== 'number') { renderCount(syntheticFallback()); return; }
+        if (!counted && !isLocal) {
+          try { sessionStorage.setItem(SESSION_FLAG, '1'); } catch (e) {}
         }
+        renderCount(d.count);
+      })
+      .catch(function() {
+        clearTimeout(timeout);
+        renderCount(syntheticFallback());
       });
-    }, { threshold: 0.5 });
-
-    els.forEach(function(c) { vcObs.observe(c); });
   }
 
   window.initVisitorCounter = initVisitorCounter;

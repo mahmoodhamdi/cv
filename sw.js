@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mahmoud-cv-v8';
+const CACHE_NAME = 'mahmoud-cv-v9';
 const ASSETS = [
   './',
   './index.html',
@@ -14,6 +14,8 @@ const ASSETS = [
   './js/analytics.js',
   './js/contact.js',
   './js/pwa.js',
+  './js/github-stats.js',
+  './data/stats.json',
   './assets/favicon.svg',
   './assets/icon-192.svg',
   './assets/icon-512.svg',
