@@ -93,4 +93,74 @@
     var map = {'0':'٠','1':'١','2':'٢','3':'٣','4':'٤','5':'٥','6':'٦','7':'٧','8':'٨','9':'٩'};
     return String(n).replace(/[0-9]/g, function(c) { return map[c] || c; });
   }
+
+  // ─── Smart related posts ──────────────────────────────────────────────────
+  // Picks posts that share the current post's category, excluding the current
+  // post. Falls back to recent posts if fewer than 3 matches.
+
+  function smartRelated() {
+    var grid = document.querySelector('.related-grid');
+    if (!grid || !slug) return;
+
+    // Compute URL prefix to data/search-index.json — posts live at
+    // /cv/blog/posts/X.html so it's two levels up.
+    var canon = document.querySelector('link[rel="canonical"]');
+    var base = '';
+    if (canon && canon.href) {
+      try {
+        var u = new URL(canon.href);
+        var idx = u.pathname.indexOf('/cv/');
+        base = u.origin + (idx >= 0 ? u.pathname.substring(0, idx + 4) : '/');
+      } catch (e) {}
+    }
+    var indexUrl = base ? base + 'data/search-index.json' : '../../data/search-index.json';
+
+    fetch(indexUrl, { cache: 'default' })
+      .then(function(r) { return r.ok ? r.json() : null; })
+      .then(function(d) {
+        if (!d || !d.items) return;
+        var posts = d.items.filter(function(p) { return p.kind === 'post'; });
+        var current = posts.find(function(p) { return p.url.indexOf(slug + '.html') !== -1; });
+        if (!current) return;
+        var curTags = (current.tags || []).join(' ');
+        var scored = posts
+          .filter(function(p) { return p.url !== current.url; })
+          .map(function(p) {
+            var s = 0;
+            (p.tags || []).forEach(function(t) {
+              if (curTags.indexOf(t) !== -1) s += 10;
+            });
+            return { p: p, s: s };
+          })
+          .sort(function(a, b) { return b.s - a.s; });
+        // Top 3, prefer matching tags, then recent (= earlier in array)
+        var picked = scored.slice(0, 3).map(function(r) { return r.p; });
+        if (picked.length < 2) return;
+        renderRelated(grid, picked, base);
+      })
+      .catch(function() { /* keep static fallback */ });
+  }
+
+  function renderRelated(grid, posts, base) {
+    var isAr = document.documentElement.lang === 'ar' || document.documentElement.dir === 'rtl';
+    var html = posts.map(function(p) {
+      var url = base ? base + p.url : '../' + p.url.replace(/^blog\//, '');
+      var cat = (p.tags && p.tags[0]) || 'Article';
+      var catLabel = cat.charAt(0).toUpperCase() + cat.slice(1);
+      return '<a href="' + url + '" class="related-card">'
+           + '<span class="post-cat">' + escapeHtml(catLabel) + '</span>'
+           + '<h4>' + escapeHtml(p.title) + '</h4>'
+           + (p.desc ? '<span>' + escapeHtml(p.desc.substring(0, 90)) + (p.desc.length > 90 ? '…' : '') + '</span>' : '')
+           + '</a>';
+    }).join('');
+    grid.innerHTML = html;
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function(c) {
+      return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];
+    });
+  }
+
+  smartRelated();
 })();
