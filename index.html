@@ -51,8 +51,6 @@ body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6
 .nav-in::-webkit-scrollbar{display:none}
 .nav-a{padding:6px 12px;border-radius:8px;font-size:12px;font-weight:500;color:var(--muted);white-space:nowrap;cursor:pointer;border:none;background:none;font-family:var(--fn)}
 .top-ctrl{position:fixed;top:58px;right:20px;z-index:100;display:flex;gap:8px;align-items:center}
-.dl-grp{position:fixed;top:58px;left:20px;z-index:100;display:flex;gap:6px;align-items:center}
-html[dir="rtl"] .dl-grp{left:auto;right:20px}
 html[dir="rtl"] .top-ctrl{right:auto;left:20px}
 .lang-tog{display:flex;gap:3px;background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:3px;backdrop-filter:blur(20px)}
 .skip-link{position:fixed;top:0;left:16px;z-index:10001;padding:12px 24px;background:var(--grad);color:#fff;border-radius:0 0 8px 8px;font-size:14px;font-weight:600;text-decoration:none;transform:translateY(-100%);transition:transform .3s}.skip-link:focus{transform:translateY(0)}
@@ -68,7 +66,6 @@ html[dir="rtl"] .top-ctrl{right:auto;left:20px}
 <link rel="stylesheet" href="css/sections.css">
 <link rel="stylesheet" href="css/utilities.css">
 </noscript>
-<link rel="stylesheet" href="css/print.css" media="print">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -143,17 +140,6 @@ html[dir="rtl"] .top-ctrl{right:auto;left:20px}
     <button class="l-btn on" onclick="setLang('en')">EN</button>
     <button class="l-btn" onclick="setLang('ar')">عربي</button>
   </div>
-</div>
-
-<div class="dl-grp">
-  <button class="pr-btn pdf-btn" onclick="downloadCV()" aria-label="Download CV as PDF" title="Save as PDF">
-    <svg width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-    <span class="dl-lbl-en">Save PDF</span><span class="dl-lbl-ar">حفظ PDF</span>
-  </button>
-  <button class="pr-btn" onclick="window.print()" aria-label="Print CV" title="Print">
-    <svg width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-    <span class="dl-lbl-en">Print</span><span class="dl-lbl-ar">طباعة</span>
-  </button>
 </div>
 
 <button class="s-top" id="sTop" onclick="window.scrollTo({top:0})" aria-label="Scroll to top">

@@ -222,16 +222,6 @@
     secs.forEach(function(sec) { secObs.observe(sec); });
   }
 
-  // ─── 11. Print button ─────────────────────────────────────────────────────
-
-  function initPrintTracking() {
-    document.querySelectorAll('.pr-btn').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        trackEvent('print_cv');
-      });
-    });
-  }
-
   // ─── 12. Scroll depth ─────────────────────────────────────────────────────
 
   function initScrollDepthTracking() {
@@ -283,7 +273,6 @@
     initCatFilterTracking();
     initShareTracking();
     initSectionViewTracking();
-    initPrintTracking();
     initScrollDepthTracking();
     initTimeTracking();
     initVisitorCounter();

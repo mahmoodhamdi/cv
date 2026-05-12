@@ -20,7 +20,6 @@ html[data-theme="light"] body::before{opacity:.3}
 html[data-theme="light"] .orb{opacity:.06}
 html[data-theme="light"] .lang-tog{box-shadow:0 1px 4px rgba(0,0,0,.06)}
 html[data-theme="light"] .t-btn{box-shadow:0 1px 4px rgba(0,0,0,.06)}
-html[data-theme="light"] .pr-btn{box-shadow:0 1px 4px rgba(0,0,0,.06)}
 html[data-theme="light"] .tl::before{background:linear-gradient(to bottom,#3b82f6,#7c3aed,transparent)}
 html[data-theme="light"] .sum-w{box-shadow:0 2px 8px rgba(0,0,0,.06)}
 html[data-theme="light"] .svc-c{box-shadow:0 1px 4px rgba(0,0,0,.06)}

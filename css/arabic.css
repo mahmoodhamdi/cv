@@ -5,7 +5,6 @@
 html[dir="rtl"] body{font-family:var(--fn-ar-b);line-height:2;letter-spacing:.01em}
 html[dir="rtl"] .nav-a{font-family:var(--fn-ar-b)}
 html[dir="rtl"] .top-ctrl{right:auto;left:20px}
-html[dir="rtl"] .pr-btn{left:auto;right:20px}
 html[dir="rtl"] .s-top{right:auto;left:28px}
 html[dir="rtl"] .nm{font-family:var(--fn-ar);font-size:40px;font-weight:700}
 html[dir="rtl"] .ttl{letter-spacing:0;text-transform:none;font-size:17px}

@@ -39,7 +39,7 @@ Every page that has Arabic content contains **two parallel DOM subtrees**, not a
 
 Sub-pages like `blog/index.html` instead link the **individual** files (`../css/main.css`, `../css/themes.css`, `blog.css`). So when editing a source CSS file you must also regenerate the corresponding bundle, or the change will be invisible on whichever pages link the bundle. There is no script that does this — concatenate manually and preserve the `/* === filename === */` markers.
 
-`css/print.css` is loaded with `media="print"` and only affects the print layout. `css/sections.css` is its own file (not bundled).
+`css/sections.css` is its own file (not bundled). There is no print stylesheet — print was intentionally removed.
 
 ### JS module layout
 
@@ -96,4 +96,3 @@ Two themes via `html[data-theme="dark"|"light"]`. Dark is the default and is als
 - **Section reveal** depends on the `.sec` class + `IntersectionObserver`. Sections without `.sec` won't animate in.
 - **Counters** use `data-count="N"`; `animations.js` animates from 0 to N once per section (guarded by `window.CV.cFlag`).
 - **Click-to-copy** uses `data-copy="text"` on any element (`utils.js`).
-- **Print layout** is real and exercised — there's a Print button in the header. Test print preview when restructuring sections; `css/print.css` is the override.
