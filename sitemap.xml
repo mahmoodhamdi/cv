@@ -13,56 +13,188 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://mahmoodhamdi.github.io/cv/services.html</loc>
-    <lastmod>2026-05-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
     <loc>https://mahmoodhamdi.github.io/cv/blog/</loc>
     <lastmod>2026-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mahmoodhamdi.github.io/cv/projects/escore.html</loc>
-    <lastmod>2026-03-30</lastmod>
+    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/ai-chatbot-business-guide.html</loc>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mahmoodhamdi.github.io/cv/projects/iai-salla-bot.html</loc>
-    <lastmod>2026-03-30</lastmod>
+    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/api-integration-beginners.html</loc>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mahmoodhamdi.github.io/cv/projects/wasalni.html</loc>
-    <lastmod>2026-03-30</lastmod>
+    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/building-salla-bot.html</loc>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mahmoodhamdi.github.io/cv/projects/hadith-app.html</loc>
-    <lastmod>2026-03-30</lastmod>
+    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/cybersecurity-basics-arabic.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/docker-deployment-guide.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/ecommerce-arabic-market-2026.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/flutter-app-from-scratch.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/flutter-clean-architecture.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/freelancing-pricing-arabic.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/github-portfolio-developer.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/mena-freelance-guide.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/mobile-app-cost-guide.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/mongodb-vs-postgresql.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/nextjs-arabic-website.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/nodejs-rest-api-complete-guide.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/nodejs-typescript-best-practices.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/open-source-contributions-journey.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/payment-integration-mena.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/react-dashboard-tutorial.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/saas-mvp-build-guide.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/salla-store-automation.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/telegram-bot-nodejs-tutorial.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/website-speed-optimization.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/whatsapp-business-bot-guide.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/zid-vs-salla-comparison.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mahmoodhamdi.github.io/cv/projects/bagour-delivery.html</loc>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mahmoodhamdi.github.io/cv/projects/clinic-booking.html</loc>
-    <lastmod>2026-03-30</lastmod>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mahmoodhamdi.github.io/cv/projects/whatsapp-bot.html</loc>
-    <lastmod>2026-03-30</lastmod>
+    <loc>https://mahmoodhamdi.github.io/cv/projects/escore.html</loc>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mahmoodhamdi.github.io/cv/projects/bagour-delivery.html</loc>
-    <lastmod>2026-03-30</lastmod>
+    <loc>https://mahmoodhamdi.github.io/cv/projects/hadith-app.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mahmoodhamdi.github.io/cv/projects/iai-salla-bot.html</loc>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -73,153 +205,21 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/salla-store-automation.html</loc>
-    <lastmod>2026-03-28</lastmod>
+    <loc>https://mahmoodhamdi.github.io/cv/projects/wasalni.html</loc>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/zid-vs-salla-comparison.html</loc>
-    <lastmod>2026-03-25</lastmod>
+    <loc>https://mahmoodhamdi.github.io/cv/projects/whatsapp-bot.html</loc>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/whatsapp-business-bot-guide.html</loc>
-    <lastmod>2026-03-22</lastmod>
+    <loc>https://mahmoodhamdi.github.io/cv/services.html</loc>
+    <lastmod>2026-05-12</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/mena-freelance-guide.html</loc>
-    <lastmod>2026-03-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/telegram-bot-nodejs-tutorial.html</loc>
-    <lastmod>2026-03-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/nextjs-arabic-website.html</loc>
-    <lastmod>2026-03-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/flutter-app-from-scratch.html</loc>
-    <lastmod>2026-03-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/nodejs-rest-api-complete-guide.html</loc>
-    <lastmod>2026-03-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/react-dashboard-tutorial.html</loc>
-    <lastmod>2026-03-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/open-source-contributions-journey.html</loc>
-    <lastmod>2026-03-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/mongodb-vs-postgresql.html</loc>
-    <lastmod>2026-03-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/docker-deployment-guide.html</loc>
-    <lastmod>2026-02-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/freelancing-pricing-arabic.html</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/ecommerce-arabic-market-2026.html</loc>
-    <lastmod>2026-02-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/nodejs-typescript-best-practices.html</loc>
-    <lastmod>2026-02-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/ai-chatbot-business-guide.html</loc>
-    <lastmod>2026-02-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/payment-integration-mena.html</loc>
-    <lastmod>2026-02-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/mobile-app-cost-guide.html</loc>
-    <lastmod>2026-02-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/flutter-clean-architecture.html</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/website-speed-optimization.html</loc>
-    <lastmod>2026-02-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/github-portfolio-developer.html</loc>
-    <lastmod>2026-01-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/saas-mvp-build-guide.html</loc>
-    <lastmod>2026-01-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/api-integration-beginners.html</loc>
-    <lastmod>2026-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/building-salla-bot.html</loc>
-    <lastmod>2026-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mahmoodhamdi.github.io/cv/blog/posts/cybersecurity-basics-arabic.html</loc>
-    <lastmod>2026-01-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
 </urlset>
