@@ -135,6 +135,37 @@ html[data-theme="light"] .ic-dark { display: block; }
   margin: 0 auto;
 }
 
+/* ---- Reading progress bar (blog posts only) ---- */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: linear-gradient(90deg, var(--accent), var(--accent2, #818cf8));
+  z-index: 9999;
+  transition: width .08s linear;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+  pointer-events: none;
+}
+
+/* ---- Per-post view counter badge ---- */
+.post-views {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted);
+  font-family: var(--mono, monospace);
+}
+.post-views svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+}
+
 /* ---- Search Bar ---- */
 .blog-search {
   position: relative;
