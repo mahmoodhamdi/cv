@@ -254,6 +254,42 @@
     </image:image>
   </url>
   <url>
+    <loc>https://mahmoodhamdi.github.io/cv/blog/tag/experience/index.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://mahmoodhamdi.github.io/cv/assets/og/og-blog.png</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mahmoodhamdi.github.io/cv/blog/tag/guide/index.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://mahmoodhamdi.github.io/cv/assets/og/og-blog.png</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mahmoodhamdi.github.io/cv/blog/tag/tutorial/index.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://mahmoodhamdi.github.io/cv/assets/og/og-blog.png</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mahmoodhamdi.github.io/cv/changelog.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+    <image:image>
+      <image:loc>https://mahmoodhamdi.github.io/cv/assets/og/og-changelog.png</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://mahmoodhamdi.github.io/cv/privacy.html</loc>
     <lastmod>2026-05-12</lastmod>
     <changefreq>yearly</changefreq>
@@ -350,6 +386,15 @@
     <priority>0.9</priority>
     <image:image>
       <image:loc>https://mahmoodhamdi.github.io/cv/assets/og/og-services.png</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mahmoodhamdi.github.io/cv/stats.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://mahmoodhamdi.github.io/cv/assets/og/og-stats.png</image:loc>
     </image:image>
   </url>
   <url>

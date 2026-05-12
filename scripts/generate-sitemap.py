@@ -32,9 +32,12 @@ PATTERNS = [
     ("services.html",         "monthly", "0.9"),
     ("privacy.html",          "yearly",  "0.4"),
     ("uses.html",             "monthly", "0.6"),
+    ("stats.html",            "daily",   "0.7"),
+    ("changelog.html",        "weekly",  "0.5"),
     ("blog/index.html",       "weekly",  "0.8"),
     ("projects/*.html",       "monthly", "0.8"),
     ("blog/posts/*.html",     "monthly", "0.7"),
+    ("blog/tag/*/index.html", "weekly",  "0.6"),
 ]
 
 
@@ -48,7 +51,10 @@ def og_image_for(path: Path) -> str | None:
     elif rel == "services.html":     candidates = ["og-services.png"]
     elif rel == "privacy.html":      candidates = ["og-privacy.png"]
     elif rel == "uses.html":         candidates = ["og-uses.png"]
+    elif rel == "stats.html":        candidates = ["og-stats.png"]
+    elif rel == "changelog.html":    candidates = ["og-changelog.png"]
     elif rel == "blog/index.html":   candidates = ["og-blog.png"]
+    elif rel.startswith("blog/tag/"): candidates = ["og-blog.png"]
     elif rel == "projects/index.html": candidates = ["og-projects.png"]
     elif rel.startswith("projects/"):
         candidates = [f"og-project-{path.stem}.png"]

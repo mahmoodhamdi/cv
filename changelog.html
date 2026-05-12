@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Changelog — Mahmoud Hamdy</title>
+<meta name="description" content="Every change shipped to mahmoodhamdi.github.io/cv — grouped by month, auto-generated from git history.">
+<meta name="author" content="Mahmoud Hamdy">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0a0f1a">
+<link rel="canonical" href="https://mahmoodhamdi.github.io/cv/changelog.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Changelog — Mahmoud Hamdy">
+<meta property="og:description" content="Every change shipped to this portfolio, grouped by month.">
+<meta property="og:url" content="https://mahmoodhamdi.github.io/cv/changelog.html">
+<meta property="og:image" content="https://mahmoodhamdi.github.io/cv/assets/og/og-changelog.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mahmoodhamdi.github.io/cv/assets/og/og-changelog.png">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="manifest" href="./manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://mahmoodhamdi.github.io/cv/"}, {"@type": "ListItem", "position": 2, "name": "Changelog", "item": "https://mahmoodhamdi.github.io/cv/changelog.html"}]}
+</script>
+<style>
+:root{--bg:#0a0f1a;--bg-alt:#111827;--card:#1a2236;--accent:#38bdf8;--accent-g:rgba(56,189,248,.15);--accent2:#818cf8;--txt:#f1f5f9;--txt2:#94a3b8;--muted:#8e99ad;--bdr:rgba(148,163,184,.1);--grad:linear-gradient(135deg,#38bdf8,#818cf8);--fn:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;--fn-ar:'Tajawal',sans-serif;--nav-bg:rgba(10,15,26,.88)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;padding-top:52px}
+.wrap{max-width:900px;margin:0 auto;padding:30px 24px}
+.navbar{position:fixed;top:0;left:0;right:0;z-index:90;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--bdr)}
+.nav-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:48px}
+.nav-back{font-size:13px;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.nav-back:hover{color:var(--accent)}
+.nav-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+.top-ctrl{position:fixed;top:58px;right:20px;z-index:100;display:flex;gap:8px;align-items:center}
+.lang-tog{display:flex;gap:3px;background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:3px}
+.l-btn{padding:4px 10px;border-radius:8px;font-size:11px;font-weight:600;color:var(--muted);cursor:pointer;border:none;background:none;font-family:var(--fn)}
+.l-btn.on{background:var(--accent-g);color:var(--accent)}
+.cl-hero{margin-bottom:20px}
+.cl-hero h1{font-size:36px;font-weight:600;letter-spacing:-.02em;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+.cl-hero p{font-size:14px;color:var(--txt2)}
+.cl-pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px}
+.cl-pill{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:20px;border:1px solid var(--bdr);background:transparent;color:var(--txt2);font-family:var(--fn);font-size:12px;font-weight:500;cursor:pointer;transition:all .2s}
+.cl-pill[data-type]:not([data-type="all"]) {color:var(--c,var(--accent))}
+.cl-pill:hover{border-color:var(--c,var(--accent));background:var(--bg,transparent)}
+.cl-pill.on{border-color:var(--c,var(--accent));background:var(--bg,var(--accent-g));color:var(--c,var(--accent))}
+.cl-pill[data-type="all"].on{background:var(--grad);color:#fff;border-color:transparent}
+.cl-count{font-family:var(--mono);font-size:10px;opacity:.7}
+.cl-group{margin-bottom:30px}
+.cl-month{font-size:18px;font-weight:600;color:var(--txt);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--bdr);display:flex;align-items:baseline;gap:10px}
+.cl-month-count{font-family:var(--mono);font-size:11px;color:var(--muted);font-weight:500}
+.cl-list{list-style:none;display:flex;flex-direction:column;gap:6px}
+.cl-item{display:grid;grid-template-columns:60px auto 1fr auto;gap:12px;align-items:center;padding:10px 14px;background:var(--card);border:1px solid var(--bdr);border-radius:10px;transition:border-color .2s,transform .2s}
+.cl-item:hover{border-color:var(--accent);transform:translateX(2px)}
+html[dir="rtl"] .cl-item:hover{transform:translateX(-2px)}
+.cl-date{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.cl-type{font-family:var(--mono);font-size:10px;font-weight:600;padding:2px 8px;border-radius:5px;background:var(--bg,var(--accent-g));color:var(--c,var(--accent));text-transform:uppercase;letter-spacing:.04em;text-align:center}
+.cl-msg{font-size:13.5px;color:var(--txt2);line-height:1.5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cl-sha{font-family:var(--mono);font-size:11px;color:var(--muted);text-decoration:none;padding:2px 6px;border-radius:4px;transition:color .2s,background .2s}
+.cl-sha:hover{color:var(--accent);background:var(--accent-g)}
+.cl-empty{padding:30px;text-align:center;color:var(--muted);font-size:13px}
+html[data-theme="light"]{--bg:#f8fafc;--bg-alt:#f1f5f9;--card:#fff;--txt:#0f172a;--txt2:#334155;--muted:#64748b;--bdr:rgba(15,23,42,.1);--nav-bg:rgba(248,250,252,.88);--accent-g:rgba(56,189,248,.12)}
+html[dir="rtl"] body{font-family:var(--fn-ar)}
+@media(max-width:600px){
+  .cl-hero h1{font-size:28px}
+  .top-ctrl{top:54px;right:12px}
+  html[dir="rtl"] .top-ctrl{right:auto;left:12px}
+  .cl-item{grid-template-columns:auto 1fr;row-gap:4px}
+  .cl-date{order:1}
+  .cl-type{order:2;justify-self:end}
+  .cl-msg{grid-column:1 / -1;order:3;white-space:normal}
+  .cl-sha{grid-column:1 / -1;order:4;justify-self:start;margin-top:4px}
+}
+</style>
+<link rel="stylesheet" href="css/bundle.css">
+</head>
+<body class="loaded">
+
+<nav class="navbar"><div class="nav-in">
+  <a href="./" class="nav-back"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    <span class="en-only">Back to portfolio</span><span class="ar-only" style="display:none">العودة للبورتفوليو</span>
+  </a>
+</div></nav>
+
+<div class="top-ctrl">
+  <div class="lang-tog">
+    <button class="l-btn on" onclick="setLang('en')">EN</button>
+    <button class="l-btn" onclick="setLang('ar')">عربي</button>
+  </div>
+</div>
+
+<main class="wrap">
+
+<section class="cl-hero">
+  <h1 id="hero-en">Changelog</h1>
+  <h1 id="hero-ar" style="display:none">سجل التغييرات</h1>
+  <p id="sub-en">Every change shipped to this portfolio, grouped by month. Auto-generated from git history — last refreshed 2026-05-12.</p>
+  <p id="sub-ar" style="display:none">كل تغيير اتشحن على البورتفوليو ده، مجمّع بالشهر. مولّد تلقائياً من تاريخ git — آخر تحديث 2026-05-12.</p>
+</section>
+
+<div class="cl-pills" id="filters" role="group" aria-label="Filter by commit type">
+  <button class="cl-pill on" data-type="all"><span class="en-only">All</span><span class="ar-only" style="display:none">الكل</span> <span class="cl-count">41</span></button><button class="cl-pill" data-type="feat" style="--c:#34d399;--bg:rgba(52,211,153,.12)">feat <span class="cl-count">25</span></button><button class="cl-pill" data-type="fix" style="--c:#fb7185;--bg:rgba(251,113,133,.12)">fix <span class="cl-count">7</span></button><button class="cl-pill" data-type="chore" style="--c:#94a3b8;--bg:rgba(148,163,184,.12)">chore <span class="cl-count">4</span></button><button class="cl-pill" data-type="perf" style="--c:#22d3ee;--bg:rgba(34,211,238,.12)">perf <span class="cl-count">3</span></button><button class="cl-pill" data-type="docs" style="--c:#a78bfa;--bg:rgba(167,139,250,.12)">docs <span class="cl-count">1</span></button><button class="cl-pill" data-type="refactor" style="--c:#38bdf8;--bg:rgba(56,189,248,.12)">refactor <span class="cl-count">1</span></button>
+</div>
+
+<div id="cl-content">
+  <section class="cl-group" id="2026-05"><h2 class="cl-month"><span class="en-only">May 2026</span><span class="ar-only" style="display:none">مايو 2026</span> <span class="cl-month-count">11</span></h2><ul class="cl-list"><li class="cl-item" data-type="feat"><span class="cl-date">May 12</span><span class="cl-type" style="--c:#34d399;--bg:rgba(52,211,153,.12)">feat</span><span class="cl-msg">round 3 — auto feeds, TOC, copy buttons, /uses, structured data, Lighthouse CI</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/e8d34d1" target="_blank" rel="noopener">e8d34d1</a></li><li class="cl-item" data-type="feat"><span class="cl-date">May 12</span><span class="cl-type" style="--c:#34d399;--bg:rgba(52,211,153,.12)">feat</span><span class="cl-msg">round 2 — OG images, site search, 404, projects index, privacy</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/04fa6dc" target="_blank" rel="noopener">04fa6dc</a></li><li class="cl-item" data-type="feat"><span class="cl-date">May 12</span><span class="cl-type" style="--c:#34d399;--bg:rgba(52,211,153,.12)">feat</span><span class="cl-msg">Phase 5 — build automation scripts + GitHub Actions</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/23ada69" target="_blank" rel="noopener">23ada69</a></li><li class="cl-item" data-type="feat"><span class="cl-date">May 12</span><span class="cl-type" style="--c:#34d399;--bg:rgba(52,211,153,.12)">feat</span><span class="cl-msg">Phase 3 — reading progress bar + per-post view counter on blog</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/83af7d7" target="_blank" rel="noopener">83af7d7</a></li><li class="cl-item" data-type="feat"><span class="cl-date">May 12</span><span class="cl-type" style="--c:#34d399;--bg:rgba(52,211,153,.12)">feat</span><span class="cl-msg">Phase 2 — about page, services &amp; pricing, newsletter, WhatsApp FAB</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/ae7f353" target="_blank" rel="noopener">ae7f353</a></li><li class="cl-item" data-type="feat"><span class="cl-date">May 12</span><span class="cl-type" style="--c:#34d399;--bg:rgba(52,211,153,.12)">feat</span><span class="cl-msg">Phase 1 — wire site to real GitHub data + real visitor counter</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/3d80e9b" target="_blank" rel="noopener">3d80e9b</a></li><li class="cl-item" data-type="feat"><span class="cl-date">May 12</span><span class="cl-type" style="--c:#34d399;--bg:rgba(52,211,153,.12)">feat</span><span class="cl-msg">update OSS section with real GitHub contribution numbers</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/be3f351" target="_blank" rel="noopener">be3f351</a></li><li class="cl-item" data-type="feat"><span class="cl-date">May 12</span><span class="cl-type" style="--c:#34d399;--bg:rgba(52,211,153,.12)">feat</span><span class="cl-msg">remove print/PDF buttons and all print-related logic</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/78393e8" target="_blank" rel="noopener">78393e8</a></li><li class="cl-item" data-type="feat"><span class="cl-date">May 12</span><span class="cl-type" style="--c:#34d399;--bg:rgba(52,211,153,.12)">feat</span><span class="cl-msg">add blog search, deterministic OSS heatmap, iOS PWA install fallback</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/1805dd1" target="_blank" rel="noopener">1805dd1</a></li><li class="cl-item" data-type="feat"><span class="cl-date">May 12</span><span class="cl-type" style="--c:#34d399;--bg:rgba(52,211,153,.12)">feat</span><span class="cl-msg">add Sana3y project page, Achievements section, Now callout, CV PDF download</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/7b333ea" target="_blank" rel="noopener">7b333ea</a></li><li class="cl-item" data-type="docs"><span class="cl-date">May 12</span><span class="cl-type" style="--c:#a78bfa;--bg:rgba(167,139,250,.12)">docs</span><span class="cl-msg">add CLAUDE.md with architecture and conventions guide</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/d20e83c" target="_blank" rel="noopener">d20e83c</a></li></ul></section>
+<section class="cl-group" id="2026-03"><h2 class="cl-month"><span class="en-only">March 2026</span><span class="ar-only" style="display:none">مارس 2026</span> <span class="cl-month-count">30</span></h2><ul class="cl-list"><li class="cl-item" data-type="fix"><span class="cl-date">Mar 30</span><span class="cl-type" style="--c:#fb7185;--bg:rgba(251,113,133,.12)">fix</span><span class="cl-msg">regenerate valid sitemap.xml without BOM</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/425b6c4" target="_blank" rel="noopener">425b6c4</a></li><li class="cl-item" data-type="chore"><span class="cl-date">Mar 30</span><span class="cl-type" style="--c:#94a3b8;--bg:rgba(148,163,184,.12)">chore</span><span class="cl-msg">add Google Search Console verification</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/def03cd" target="_blank" rel="noopener">def03cd</a></li><li class="cl-item" data-type="chore"><span class="cl-date">Mar 30</span><span class="cl-type" style="--c:#94a3b8;--bg:rgba(148,163,184,.12)">chore</span><span class="cl-msg">update blog listing, RSS feeds, sitemap, SW v6, fix project pages</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/20297a0" target="_blank" rel="noopener">20297a0</a></li><li class="cl-item" data-type="feat"><span class="cl-date">Mar 30</span><span class="cl-type" style="--c:#34d399;--bg:rgba(52,211,153,.12)">feat</span><span class="cl-msg">add 10 more blog posts (freelancing, e-commerce, AI, payments, mobile cost, speed, GitHub, SaaS, API, security)</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/7012cfb" target="_blank" rel="noopener">7012cfb</a></li><li class="cl-item" data-type="feat"><span class="cl-date">Mar 30</span><span class="cl-type" style="--c:#34d399;--bg:rgba(52,211,153,.12)">feat</span><span class="cl-msg">add 10 new blog posts (Salla, Zid, WhatsApp, Telegram, Next.js, Flutter, Node.js, React, MongoDB, Docker)</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/81b332f" target="_blank" rel="noopener">81b332f</a></li><li class="cl-item" data-type="fix"><span class="cl-date">Mar 30</span><span class="cl-type" style="--c:#fb7185;--bg:rgba(251,113,133,.12)">fix</span><span class="cl-msg">project pages visible by default, contact form visual feedback</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/3c1a22a" target="_blank" rel="noopener">3c1a22a</a></li><li class="cl-item" data-type="fix"><span class="cl-date">Mar 30</span><span class="cl-type" style="--c:#fb7185;--bg:rgba(251,113,133,.12)">fix</span><span class="cl-msg">update experience dates to 2025 — Present</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/34170bf" target="_blank" rel="noopener">34170bf</a></li><li class="cl-item" data-type="fix"><span class="cl-date">Mar 30</span><span class="cl-type" style="--c:#fb7185;--bg:rgba(251,113,133,.12)">fix</span><span class="cl-msg">update education dates to 2021-2025</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/89d7486" target="_blank" rel="noopener">89d7486</a></li><li class="cl-item" data-type="fix"><span class="cl-date">Mar 30</span><span class="cl-type" style="--c:#fb7185;--bg:rgba(251,113,133,.12)">fix</span><span class="cl-msg">final polish — new logo, name update, footer cleanup, SW v5</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/2092aa4" target="_blank" rel="noopener">2092aa4</a></li><li class="cl-item" data-type="chore"><span class="cl-date">Mar 30</span><span class="cl-type" style="--c:#94a3b8;--bg:rgba(148,163,184,.12)">chore</span><span class="cl-msg">add real Web3Forms access key</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/7baba85" target="_blank" rel="noopener">7baba85</a></li><li class="cl-item" data-type="feat"><span class="cl-date">Mar 30</span><span class="cl-type" style="--c:#34d399;--bg:rgba(52,211,153,.12)">feat</span><span class="cl-msg">add 7 project detail pages and contact form with Web3Forms</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/f9eeb48" target="_blank" rel="noopener">f9eeb48</a></li><li class="cl-item" data-type="perf"><span class="cl-date">Mar 30</span><span class="cl-type" style="--c:#22d3ee;--bg:rgba(34,211,238,.12)">perf</span><span class="cl-msg">optimize font loading and defer analytics for mobile 90+</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/035e972" target="_blank" rel="noopener">035e972</a></li><li class="cl-item" data-type="perf"><span class="cl-date">Mar 30</span><span class="cl-type" style="--c:#22d3ee;--bg:rgba(34,211,238,.12)">perf</span><span class="cl-msg">fix contrast, render-blocking, and always-visible navbar</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/fbe66f9" target="_blank" rel="noopener">fbe66f9</a></li><li class="cl-item" data-type="perf"><span class="cl-date">Mar 30</span><span class="cl-type" style="--c:#22d3ee;--bg:rgba(34,211,238,.12)">perf</span><span class="cl-msg">optimize for 100/100 PageSpeed — fix SEO, accessibility, and performance</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/e48ecc4" target="_blank" rel="noopener">e48ecc4</a></li><li class="cl-item" data-type="chore"><span class="cl-date">Mar 30</span><span class="cl-type" style="--c:#94a3b8;--bg:rgba(148,163,184,.12)">chore</span><span class="cl-msg">add real GA4 measurement ID</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/630ea47" target="_blank" rel="noopener">630ea47</a></li><li class="cl-item" data-type="feat"><span class="cl-date">Mar 30</span><span class="cl-type" style="--c:#34d399;--bg:rgba(52,211,153,.12)">feat</span><span class="cl-msg">add PWA with service worker, manifest, offline support, and install prompt</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/6fa6185" target="_blank" rel="noopener">6fa6185</a></li><li class="cl-item" data-type="feat"><span class="cl-date">Mar 30</span><span class="cl-type" style="--c:#34d399;--bg:rgba(52,211,153,.12)">feat</span><span class="cl-msg">add RSS feeds, blog enhancements, and sitemap update</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/4c11418" target="_blank" rel="noopener">4c11418</a></li><li class="cl-item" data-type="feat"><span class="cl-date">Mar 30</span><span class="cl-type" style="--c:#34d399;--bg:rgba(52,211,153,.12)">feat</span><span class="cl-msg">add advanced animations, visual polish, and accessibility improvements</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/9363391" target="_blank" rel="noopener">9363391</a></li><li class="cl-item" data-type="feat"><span class="cl-date">Mar 30</span><span class="cl-type" style="--c:#34d399;--bg:rgba(52,211,153,.12)">feat</span><span class="cl-msg">add Google Analytics 4 with custom event tracking</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/57a1f8a" target="_blank" rel="noopener">57a1f8a</a></li><li class="cl-item" data-type="fix"><span class="cl-date">Mar 29</span><span class="cl-type" style="--c:#fb7185;--bg:rgba(251,113,133,.12)">fix</span><span class="cl-msg">repair stats counter, harden observer initialization, verify file paths</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/f0a39d8" target="_blank" rel="noopener">f0a39d8</a></li><li class="cl-item" data-type="feat"><span class="cl-date">Mar 29</span><span class="cl-type" style="--c:#34d399;--bg:rgba(52,211,153,.12)">feat</span><span class="cl-msg">add latest blog section to portfolio and blog nav links</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/d590135" target="_blank" rel="noopener">d590135</a></li><li class="cl-item" data-type="feat"><span class="cl-date">Mar 29</span><span class="cl-type" style="--c:#34d399;--bg:rgba(52,211,153,.12)">feat</span><span class="cl-msg">add SEO optimization, sitemap, and custom 404 page</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/45340f8" target="_blank" rel="noopener">45340f8</a></li><li class="cl-item" data-type="feat"><span class="cl-date">Mar 29</span><span class="cl-type" style="--c:#34d399;--bg:rgba(52,211,153,.12)">feat</span><span class="cl-msg">add blog system with 5 bilingual articles</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/c014443" target="_blank" rel="noopener">c014443</a></li><li class="cl-item" data-type="fix"><span class="cl-date">Mar 29</span><span class="cl-type" style="--c:#fb7185;--bg:rgba(251,113,133,.12)">fix</span><span class="cl-msg">repair stats counter and animation observers after language switch</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/4da4a78" target="_blank" rel="noopener">4da4a78</a></li><li class="cl-item" data-type="refactor"><span class="cl-date">Mar 29</span><span class="cl-type" style="--c:#38bdf8;--bg:rgba(56,189,248,.12)">refactor</span><span class="cl-msg">split index.html into modular CSS and JS files</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/10450c1" target="_blank" rel="noopener">10450c1</a></li><li class="cl-item" data-type="feat"><span class="cl-date">Mar 29</span><span class="cl-type" style="--c:#34d399;--bg:rgba(52,211,153,.12)">feat</span><span class="cl-msg">add WhatsApp contact link to header</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/bd19a13" target="_blank" rel="noopener">bd19a13</a></li><li class="cl-item" data-type="feat"><span class="cl-date">Mar 29</span><span class="cl-type" style="--c:#34d399;--bg:rgba(52,211,153,.12)">feat</span><span class="cl-msg">complete portfolio redesign with new sections and visual overhaul</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/bf8923e" target="_blank" rel="noopener">bf8923e</a></li><li class="cl-item" data-type="feat"><span class="cl-date">Mar 29</span><span class="cl-type" style="--c:#34d399;--bg:rgba(52,211,153,.12)">feat</span><span class="cl-msg">add testimonials, education, value props, tech stack, and stats sections</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/46dcb0e" target="_blank" rel="noopener">46dcb0e</a></li><li class="cl-item" data-type="feat"><span class="cl-date">Mar 29</span><span class="cl-type" style="--c:#34d399;--bg:rgba(52,211,153,.12)">feat</span><span class="cl-msg">enhance portfolio with animations, services section, and UX improvements</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/1f13808" target="_blank" rel="noopener">1f13808</a></li><li class="cl-item" data-type="feat"><span class="cl-date">Mar 29</span><span class="cl-type" style="--c:#34d399;--bg:rgba(52,211,153,.12)">feat</span><span class="cl-msg">add professional bilingual portfolio CV</span><a class="cl-sha" href="https://github.com/mahmoodhamdi/cv/commit/6631462" target="_blank" rel="noopener">6631462</a></li></ul></section>
+</div>
+
+<div class="cl-empty" id="cl-empty" style="display:none">
+  <span class="en-only">No commits of this type.</span>
+  <span class="ar-only" style="display:none">مفيش commits بالنوع ده.</span>
+</div>
+
+</main>
+
+<script>
+try{var t=localStorage.getItem('cv-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}
+function setLang(l){
+  var h=document.documentElement;
+  var btns=document.querySelectorAll('.l-btn');
+  var isAr=l==='ar';
+  h.dir=isAr?'rtl':'ltr';h.lang=l;
+  btns[0].classList.toggle('on',!isAr);btns[1].classList.toggle('on',isAr);
+  document.querySelectorAll('.en-only').forEach(function(el){el.style.display=isAr?'none':''});
+  document.querySelectorAll('.ar-only').forEach(function(el){el.style.display=isAr?'inline':'none'});
+  document.getElementById('hero-en').style.display=isAr?'none':'';
+  document.getElementById('hero-ar').style.display=isAr?'':'none';
+  document.getElementById('sub-en').style.display=isAr?'none':'';
+  document.getElementById('sub-ar').style.display=isAr?'':'none';
+}
+
+document.getElementById('filters').addEventListener('click', function(e) {
+  var btn = e.target.closest('.cl-pill');
+  if (!btn) return;
+  document.querySelectorAll('.cl-pill').forEach(function(b) { b.classList.remove('on'); });
+  btn.classList.add('on');
+  var t = btn.dataset.type;
+  var anyVisible = false;
+  document.querySelectorAll('.cl-item').forEach(function(item) {
+    var show = t === 'all' || item.dataset.type === t;
+    item.style.display = show ? '' : 'none';
+    if (show) anyVisible = true;
+  });
+  // Hide groups with no visible items
+  document.querySelectorAll('.cl-group').forEach(function(g) {
+    var visible = g.querySelectorAll('.cl-item:not([style*="none"])').length;
+    g.style.display = visible ? '' : 'none';
+  });
+  document.getElementById('cl-empty').style.display = anyVisible ? 'none' : 'block';
+});
+</script>
+<script src="js/search.js" defer></script>
+</body>
+</html>

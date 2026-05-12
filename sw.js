@@ -1,10 +1,15 @@
-const CACHE_NAME = 'mahmoud-cv-ee44db8b';
+const CACHE_NAME = 'mahmoud-cv-1339bdfa';
 const ASSETS = [
   './',
   './404.html',
   './about.html',
+  './assets/apple-touch-icon.png',
+  './assets/favicon-16.png',
+  './assets/favicon-32.png',
   './assets/favicon.svg',
+  './assets/icon-192.png',
   './assets/icon-192.svg',
+  './assets/icon-512.png',
   './assets/icon-512.svg',
   './blog/blog.css',
   './blog/index.html',
@@ -33,6 +38,10 @@ const ASSETS = [
   './blog/posts/website-speed-optimization.html',
   './blog/posts/whatsapp-business-bot-guide.html',
   './blog/posts/zid-vs-salla-comparison.html',
+  './blog/tag/experience/index.html',
+  './blog/tag/guide/index.html',
+  './blog/tag/tutorial/index.html',
+  './changelog.html',
   './css/bundle.css',
   './css/sections.css',
   './css/utilities.css',
@@ -63,7 +72,9 @@ const ASSETS = [
   './projects/sana3y.html',
   './projects/wasalni.html',
   './projects/whatsapp-bot.html',
+  './resume.json',
   './services.html',
+  './stats.html',
   './uses.html'
 ];
 

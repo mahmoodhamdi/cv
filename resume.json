@@ -1,0 +1,204 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Mahmoud Hamdy",
+    "label": "Full-Stack Developer · Node.js, Flutter, Next.js",
+    "image": "https://mahmoodhamdi.github.io/cv/assets/icon-512.svg",
+    "email": "hmdy7486@gmail.com",
+    "phone": "+20 101 979 3768",
+    "url": "https://mahmoodhamdi.github.io/cv/",
+    "summary": "Full-stack developer building production-ready web and mobile apps for clients across the MENA region. Day-to-day: Node.js, TypeScript, Flutter, and Next.js. Active open-source contributor with 500+ merged PRs across 20+ external projects including nanoid, Helmet.js, express-validator, Mongoose, Dify, zod, Payload CMS, and adhan_dart (top contributor).",
+    "location": {
+      "city": "Menoufia",
+      "countryCode": "EG",
+      "region": "Egypt"
+    },
+    "profiles": [
+      { "network": "GitHub",   "username": "mahmoodhamdi", "url": "https://github.com/mahmoodhamdi" },
+      { "network": "WhatsApp", "username": "+201019793768","url": "https://wa.me/201019793768" }
+    ]
+  },
+  "work": [
+    {
+      "name": "ROV GROUP",
+      "position": "Full-Stack Developer",
+      "startDate": "2025-01",
+      "endDate": "",
+      "summary": "Building production-ready web and mobile platforms for the Gulf and MENA markets, primarily in TypeScript/Node.js and Flutter.",
+      "highlights": [
+        "Built the Escore esports platform — a 16-module Node.js/Express/TypeScript backend with tournament brackets, match management, rankings, real-time features, and RBAC",
+        "Developed the Next.js admin dashboard and Flutter mobile app targeting the MENA esports market",
+        "Researched and integrated esports data APIs (PandaScore, GRID, Abios)",
+        "Worked on Daleel (tour guide marketplace) and Saudi Host (tourism platform) for Gulf markets"
+      ]
+    },
+    {
+      "name": "Freelance",
+      "position": "Full-Stack Developer",
+      "startDate": "2022-06",
+      "endDate": "",
+      "summary": "End-to-end freelance delivery on Mostaql, Khamsat, and Upwork — production SaaS platforms, mobile apps, AI chatbots, and e-commerce automation.",
+      "highlights": [
+        "Delivered WhatsApp Auto-Reply Bot SaaS (Node.js + Next.js + WhatsApp Cloud API)",
+        "Built the Clinic Booking System (Laravel + Next.js + PostgreSQL) with online appointments, doctor schedules, patient records, and automated reminders",
+        "Built Wasalni, a ride-sharing platform with Node.js backend, Next.js dispatcher, and two Flutter apps (rider + driver) with real-time WebSocket tracking",
+        "Built IAI — an AI-powered e-commerce assistant integrated with Salla for automated Telegram customer support",
+        "Built Bagour Delivery and Sana3y — three-sided marketplaces with Flutter customer and driver/worker apps backed by Node.js + MongoDB",
+        "Maintained 50+ delivered projects with consistent 5-star reviews across platforms"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Faculty of Computers & Information",
+      "url": "",
+      "area": "Computer Science",
+      "studyType": "Bachelor's Degree",
+      "startDate": "2021-09",
+      "endDate": "2026-06"
+    }
+  ],
+  "certificates": [
+    {
+      "name": "Open Source Contributor — JavaScript & Dart Ecosystems",
+      "issuer": "GitHub",
+      "url": "https://github.com/search?q=author%3Amahmoodhamdi+is%3Apr+is%3Amerged&type=pullrequests",
+      "summary": "500+ merged PRs across 20+ external open-source projects including nanoid, Helmet.js, express-validator, Mongoose, Dify, zod, Payload CMS, adhan_dart (top contributor)"
+    },
+    {
+      "name": "Published Mobile App on Google Play",
+      "issuer": "Google Play",
+      "summary": "Al-Arba'oon Al-Nawawiyya — Flutter app for Nawawi's 40 Hadith with audio narration and full Arabic RTL support"
+    },
+    {
+      "name": "Top-Rated Freelancer",
+      "issuer": "Mostaql · Khamsat · Upwork",
+      "summary": "Consistent 5-star reviews — known for on-time delivery and post-launch support"
+    }
+  ],
+  "publications": [
+    {
+      "name": "Technical Blog",
+      "publisher": "mahmoodhamdi.github.io/cv/blog",
+      "url": "https://mahmoodhamdi.github.io/cv/blog/",
+      "summary": "25+ bilingual (EN/AR) tutorials and guides on Node.js, Flutter, e-commerce automation, payment integration, freelancing, and open source — averaging 12 min read each."
+    }
+  ],
+  "skills": [
+    {
+      "name": "Backend",
+      "level": "Expert",
+      "keywords": ["Node.js", "TypeScript", "Express", "NestJS", "Python"]
+    },
+    {
+      "name": "Frontend",
+      "level": "Advanced",
+      "keywords": ["Next.js", "React", "Tailwind CSS", "HTML/CSS"]
+    },
+    {
+      "name": "Mobile",
+      "level": "Expert",
+      "keywords": ["Flutter", "Dart", "Bloc/Cubit", "Clean Architecture"]
+    },
+    {
+      "name": "Databases",
+      "level": "Advanced",
+      "keywords": ["MongoDB", "PostgreSQL", "Redis", "Mongoose"]
+    },
+    {
+      "name": "DevOps & Cloud",
+      "level": "Intermediate",
+      "keywords": ["Docker", "DigitalOcean", "AWS", "Nginx", "Caddy", "CI/CD", "GitHub Actions"]
+    },
+    {
+      "name": "E-commerce & Bots",
+      "level": "Expert",
+      "keywords": ["Salla API", "Zid API", "WhatsApp Cloud API", "Telegram Bot API", "AI chatbots"]
+    },
+    {
+      "name": "Other",
+      "level": "Intermediate",
+      "keywords": ["Laravel", "Supabase", "Firebase", "WebSocket", "OpenAI / Claude APIs"]
+    }
+  ],
+  "languages": [
+    { "language": "Arabic",  "fluency": "Native" },
+    { "language": "English", "fluency": "Professional Working — Fluent in technical contexts" }
+  ],
+  "projects": [
+    {
+      "name": "Escore — Esports Platform",
+      "description": "Full-stack esports platform for the MENA gaming community — tournament management, live match tracking, team rankings, news, and transfers.",
+      "highlights": ["16-module Node.js/Express/TypeScript backend", "Next.js admin dashboard", "Flutter mobile app", "PandaScore/GRID/Abios integration"],
+      "keywords": ["Node.js", "TypeScript", "Next.js", "Flutter", "MongoDB", "WebSocket"],
+      "url": "https://mahmoodhamdi.github.io/cv/projects/escore.html",
+      "roles": ["Full-Stack Developer"]
+    },
+    {
+      "name": "IAI — AI E-Commerce Assistant",
+      "description": "End-to-end intelligent assistant for Saudi e-commerce clients. Integrates with Salla for automated customer support via Telegram, real-time order tracking, product recommendations, and an admin dashboard.",
+      "keywords": ["Node.js", "Next.js", "Salla API", "Telegram Bot", "AI/NLP"],
+      "url": "https://mahmoodhamdi.github.io/cv/projects/iai-salla-bot.html",
+      "roles": ["Architect", "Developer"]
+    },
+    {
+      "name": "Wasalni — Ride-Sharing Platform",
+      "description": "Ride-sharing solution with Node.js backend, Next.js dispatcher dashboard, and two Flutter apps (rider + driver) with real-time WebSocket tracking and integrated payments.",
+      "keywords": ["Node.js", "Next.js", "Flutter", "PostgreSQL", "WebSocket"],
+      "url": "https://mahmoodhamdi.github.io/cv/projects/wasalni.html",
+      "roles": ["Full-Stack Developer"]
+    },
+    {
+      "name": "Al-Arba'oon Al-Nawawiyya — Hadith App",
+      "description": "Flutter app published on Google Play featuring Nawawi's 40 Hadith with audio narration, full Arabic RTL UI, search, and offline support.",
+      "keywords": ["Flutter", "Dart", "Google Play"],
+      "url": "https://mahmoodhamdi.github.io/cv/projects/hadith-app.html",
+      "roles": ["Sole Developer"]
+    },
+    {
+      "name": "Clinic Booking System",
+      "description": "Clinic management and booking system with online appointments, doctor schedules, patient records, automated reminders, and SMS notifications for a multi-clinic group.",
+      "keywords": ["Laravel", "Next.js", "PostgreSQL", "Tailwind CSS"],
+      "url": "https://mahmoodhamdi.github.io/cv/projects/clinic-booking.html",
+      "roles": ["Full-Stack Developer"]
+    },
+    {
+      "name": "WhatsApp Auto-Reply Bot",
+      "description": "SaaS platform for automated WhatsApp business responses. No-code rule builder, multi-number management, conversation analytics.",
+      "keywords": ["Node.js", "Next.js", "WhatsApp Cloud API", "MongoDB"],
+      "url": "https://mahmoodhamdi.github.io/cv/projects/whatsapp-bot.html",
+      "roles": ["Architect", "Developer"]
+    },
+    {
+      "name": "Bagour Delivery",
+      "description": "Hyperlocal delivery — three-sided marketplace connecting customers, stores, and drivers with real-time WebSocket order tracking.",
+      "keywords": ["Node.js", "Flutter", "Next.js", "MongoDB", "WebSocket"],
+      "url": "https://mahmoodhamdi.github.io/cv/projects/bagour-delivery.html",
+      "roles": ["Full-Stack Developer"]
+    },
+    {
+      "name": "Sana3y — Handyman Marketplace",
+      "description": "On-demand marketplace for verified local craftsmen. Customer + worker Flutter apps with real-time job dispatch, in-app chat, integrated payments.",
+      "keywords": ["Node.js", "Flutter", "Next.js", "MongoDB", "WebSocket", "FCM"],
+      "url": "https://mahmoodhamdi.github.io/cv/projects/sana3y.html",
+      "roles": ["Full-Stack Developer"]
+    },
+    {
+      "name": "adhan_dart (Open Source)",
+      "description": "Top contributor to a Dart prayer-times library powering Islamic apps across the App Store and Play Store.",
+      "keywords": ["Dart", "Open Source"],
+      "url": "https://github.com/prayer-timetable/adhan_dart"
+    },
+    {
+      "name": "Helmet.js (Open Source)",
+      "description": "Contributor to Helmet.js — the canonical Express security middleware. PRs across helmet, helmetjs.github.io, and feature-policy.",
+      "keywords": ["JavaScript", "Node.js", "Security"],
+      "url": "https://github.com/helmetjs/helmet"
+    }
+  ],
+  "meta": {
+    "version": "v1.0.0",
+    "canonical": "https://mahmoodhamdi.github.io/cv/resume.json",
+    "lastModified": "2026-05-12"
+  }
+}
