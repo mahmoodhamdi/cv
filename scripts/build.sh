@@ -26,6 +26,9 @@ if [[ $REFRESH_STATS -eq 1 ]]; then
   bash scripts/fetch-github-stats.sh
 fi
 
+echo "━━━ generate-search-index ━━━"
+python3 scripts/generate-search-index.py
+
 echo "━━━ generate-sitemap ━━━"
 python3 scripts/generate-sitemap.py
 

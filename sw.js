@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mahmoud-cv-58b7a828';
+const CACHE_NAME = 'mahmoud-cv-7b9e26ef';
 const ASSETS = [
   './',
   './404.html',
@@ -36,6 +36,7 @@ const ASSETS = [
   './css/bundle.css',
   './css/sections.css',
   './css/utilities.css',
+  './data/search-index.json',
   './data/stats.json',
   './index.html',
   './js/analytics.js',
@@ -47,14 +48,17 @@ const ASSETS = [
   './js/main.js',
   './js/navigation.js',
   './js/pwa.js',
+  './js/search.js',
   './js/theme.js',
   './js/utils.js',
   './manifest.json',
+  './privacy.html',
   './projects/bagour-delivery.html',
   './projects/clinic-booking.html',
   './projects/escore.html',
   './projects/hadith-app.html',
   './projects/iai-salla-bot.html',
+  './projects/index.html',
   './projects/projects.css',
   './projects/sana3y.html',
   './projects/wasalni.html',

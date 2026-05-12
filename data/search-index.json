@@ -1,0 +1,405 @@
+{
+  "generated": "2026-05-12T09:12:09Z",
+  "count": 39,
+  "items": [
+    {
+      "id": "index",
+      "title": "Mahmoud Hamdy — Full-Stack Developer",
+      "desc": "Full-Stack Developer specializing in Node.js, Flutter, Next.js. Building production-ready web and mobile applications across the MENA region.",
+      "url": "",
+      "kind": "page",
+      "tags": [],
+      "lang": "en",
+      "keywords": "About By the Numbers Services What Makes Me Different Technical Skills Tools & Workflow Experience Education & Languages Achievements & Recognition Open Source Contributions"
+    },
+    {
+      "id": "about",
+      "title": "About Mahmoud Hamdy — The Story",
+      "desc": "The story of how Mahmoud Hamdy went from a CS student in Egypt to a freelance full-stack developer with 500+ merged open-source PRs and clients across the MENA region.",
+      "url": "about.html",
+      "kind": "page",
+      "tags": [],
+      "lang": "en",
+      "keywords": "The short version How it started Why open source What I work on now The stack I lean on How I work What I'm reading and learning Outside of code Want to work together? باختصار"
+    },
+    {
+      "id": "services",
+      "title": "Services &amp; Pricing",
+      "desc": "Full-stack development services with transparent starting prices. Web apps, mobile apps, e-commerce automation, AI chatbots, and API integrations.",
+      "url": "services.html",
+      "kind": "page",
+      "tags": [],
+      "lang": "en",
+      "keywords": "Frequently Asked Have a different need? أسئلة شائعة عندك طلب مختلف؟"
+    },
+    {
+      "id": "privacy",
+      "title": "Privacy Policy",
+      "desc": "What this site collects, how it",
+      "url": "privacy.html",
+      "kind": "page",
+      "tags": [],
+      "lang": "en",
+      "keywords": "What this site collects What it doesn't collect Cookies you might see Your rights Changes to this policy Contact اللي الموقع بيجمعه اللي الموقع مش بيجمعه الكوكيز اللي ممكن تشوفها حقوقك"
+    },
+    {
+      "id": "blog-index",
+      "title": "Blog",
+      "desc": "Technical articles on Node.js, Flutter, TypeScript, open source, and freelancing in MENA by Mahmoud Hamdy.",
+      "url": "blog/",
+      "kind": "page",
+      "tags": [
+        "tutorial"
+      ],
+      "lang": "en",
+      "keywords": ""
+    },
+    {
+      "id": "projects-index",
+      "title": "Projects",
+      "desc": "Selected production projects from Mahmoud Hamdy — SaaS platforms, mobile apps, e-commerce automation, and ride-sharing apps across the MENA region.",
+      "url": "projects/",
+      "kind": "page",
+      "tags": [
+        "flutter",
+        "mongodb",
+        "nextjs",
+        "nodejs",
+        "typescript",
+        "websocket"
+      ],
+      "lang": "en",
+      "keywords": ""
+    },
+    {
+      "id": "projects-bagour-delivery",
+      "title": "Bagour Delivery",
+      "desc": "Hyperlocal delivery application for the Bagour area. Customer Flutter app, store management panel, and driver app with real-time order tracking.",
+      "url": "projects/bagour-delivery.html",
+      "kind": "project",
+      "tags": [],
+      "lang": "en",
+      "keywords": "Project Overview Key Features Tech Stack Architecture Need a Delivery or Marketplace App? Related Projects نظرة عامة على المشروع المميزات الرئيسية التقنيات المستخدمة البنية المعمارية"
+    },
+    {
+      "id": "projects-clinic-booking",
+      "title": "Clinic Booking System",
+      "desc": "A complete clinic management and booking system built with Laravel backend and Next.js frontend. Smart appointment management for medical clinics.",
+      "url": "projects/clinic-booking.html",
+      "kind": "project",
+      "tags": [],
+      "lang": "en",
+      "keywords": "Project Overview Key Features Tech Stack Architecture Need a Similar System? Related Projects نظرة عامة على المشروع المميزات الرئيسية التقنيات المستخدمة البنية المعمارية"
+    },
+    {
+      "id": "projects-escore",
+      "title": "Escore — Esports Platform",
+      "desc": "Escore is a full-stack esports platform built for the MENA gaming community — featuring tournament management, live match tracking, team rankings, news, and a transfers module.",
+      "url": "projects/escore.html",
+      "kind": "project",
+      "tags": [],
+      "lang": "en",
+      "keywords": "Overview Problem &amp; Solution Key Features Tech Stack Architecture Interested in a Similar Project? Related Projects نظرة عامة المشكلة والحل المميزات الرئيسية"
+    },
+    {
+      "id": "projects-hadith-app",
+      "title": "Al-Arba'oon An-Nawawiyyah — Hadith App",
+      "desc": "Nawawi",
+      "url": "projects/hadith-app.html",
+      "kind": "project",
+      "tags": [],
+      "lang": "en",
+      "keywords": "Overview Problem &amp; Solution Key Features Tech Stack Architecture Need a Mobile App Built? Related Projects نظرة عامة المشكلة والحل المميزات الرئيسية"
+    },
+    {
+      "id": "projects-iai-salla-bot",
+      "title": "IAI — AI-Powered E-Commerce Assistant",
+      "desc": "IAI is an end-to-end AI-powered assistant for Salla e-commerce stores — 24/7 automated customer support, order tracking, and product recommendations via Telegram bot.",
+      "url": "projects/iai-salla-bot.html",
+      "kind": "project",
+      "tags": [],
+      "lang": "en",
+      "keywords": "Project Overview The Challenge &amp; Solution Key Features Tech Stack Architecture Results &amp; Impact Interested in a Similar Project? Related Projects نظرة عامة على المشروع التحدي والحل"
+    },
+    {
+      "id": "projects-sana3y",
+      "title": "Sana3y — Handyman Marketplace",
+      "desc": "Sana3y is a full-stack handyman marketplace connecting customers with local service providers — plumbers, electricians, carpenters, and more. Flutter customer & worker apps with Node.js backend.",
+      "url": "projects/sana3y.html",
+      "kind": "project",
+      "tags": [],
+      "lang": "en",
+      "keywords": "Project Overview Key Features Tech Stack Architecture Building a Service Marketplace? Related Projects نظرة عامة على المشروع المميزات الرئيسية التقنيات المستخدمة البنية المعمارية"
+    },
+    {
+      "id": "projects-wasalni",
+      "title": "Wasalni — Ride-Sharing Platform",
+      "desc": "Complete ride-sharing solution with real-time tracking for riders and drivers. Built with Node.js, Next.js admin dashboard, and two Flutter mobile apps.",
+      "url": "projects/wasalni.html",
+      "kind": "project",
+      "tags": [],
+      "lang": "en",
+      "keywords": "Overview Problem &amp; Solution Key Features Tech Stack Architecture Need a Similar Project? Related Projects نظرة عامة المشكلة والحل المميزات الرئيسية"
+    },
+    {
+      "id": "projects-whatsapp-bot",
+      "title": "WhatsApp Auto-Reply Bot SaaS",
+      "desc": "SaaS platform enabling businesses to set up automated WhatsApp responses without technical knowledge. No-code rule builder, multi-number management, and conversation analytics.",
+      "url": "projects/whatsapp-bot.html",
+      "kind": "project",
+      "tags": [],
+      "lang": "en",
+      "keywords": "Project Overview Key Features Tech Stack Architecture Need a WhatsApp Bot or SaaS Platform? Related Projects نظرة عامة على المشروع المميزات الرئيسية التقنيات المستخدمة البنية المعمارية"
+    },
+    {
+      "id": "blog-posts-ai-chatbot-business-guide",
+      "title": "Building an AI Chatbot for Your Business",
+      "desc": "A complete guide to building AI chatbots for businesses in 2026 — types, platforms, Node.js architecture, Arabic NLP challenges, e-commerce features, ROI, and real case studies.",
+      "url": "blog/posts/ai-chatbot-business-guide.html",
+      "kind": "post",
+      "tags": [],
+      "lang": "en",
+      "keywords": "Why Businesses Need Chatbots in 2026 Types of Chatbots Deployment Platforms Node.js + AI API Architecture Intent Recognition Without a Full NLU Pipeline Arabic NLP Challenges E-Commerce Chatbot Features Analytics and Continuous Improvement Cost Breakdown ROI and the Case Study"
+    },
+    {
+      "id": "blog-posts-api-integration-beginners",
+      "title": "API Integration for Beginners — Everything You Need to Know",
+      "desc": "A complete beginner",
+      "url": "blog/posts/api-integration-beginners.html",
+      "kind": "post",
+      "tags": [],
+      "lang": "en",
+      "keywords": "What Is an API? REST vs GraphQL vs WebSocket HTTP Methods Reading API Documentation API Authentication Making Your First API Call Handling Responses and Errors Rate Limiting APIs to Practice With Building a Project with External APIs"
+    },
+    {
+      "id": "blog-posts-building-salla-bot",
+      "title": "Building an AI-Powered Salla Bot",
+      "desc": "A deep dive into integrating with Salla e-commerce platform using Node.js, building a Telegram bot for customer support, handling webhooks, and automating order tracking.",
+      "url": "blog/posts/building-salla-bot.html",
+      "kind": "post",
+      "tags": [],
+      "lang": "en",
+      "keywords": "Why Salla? Project Setup Building the Salla API Client Handling Webhooks Building the Telegram Bot Real-Time Order Tracking Product Recommendation Engine Deployment Notes Lessons Learned لماذا سلة؟"
+    },
+    {
+      "id": "blog-posts-cybersecurity-basics-arabic",
+      "title": "Cybersecurity Basics for Developers — Protecting Your Apps",
+      "desc": "A practical cybersecurity guide for developers — OWASP Top 10, SQL injection, XSS, CSRF, secure auth, HTTPS, security headers, input validation, secrets management, and security testing.",
+      "url": "blog/posts/cybersecurity-basics-arabic.html",
+      "kind": "post",
+      "tags": [],
+      "lang": "en",
+      "keywords": "Security Is Every Developer's Responsibility OWASP Top 10 Explained Simply SQL Injection Prevention XSS Prevention CSRF Protection Authentication Security HTTPS and TLS Security Headers Input Validation and Sanitization Environment Variables and Secrets"
+    },
+    {
+      "id": "blog-posts-docker-deployment-guide",
+      "title": "Deploying Your App with Docker — Beginner's Guide",
+      "desc": "A beginner",
+      "url": "blog/posts/docker-deployment-guide.html",
+      "kind": "post",
+      "tags": [],
+      "lang": "en",
+      "keywords": "What Is Docker? Installation Dockerfile Basics Building Images Efficiently Docker Compose — Multi-Service Setup Dockerizing a Node.js API Dockerizing a Next.js App Environment Variables and Secrets Deploying to DigitalOcean Nginx Reverse Proxy"
+    },
+    {
+      "id": "blog-posts-ecommerce-arabic-market-2026",
+      "title": "E-Commerce in the Arabic Market 2026",
+      "desc": "A comprehensive look at MENA e-commerce in 2026 — platforms, payment solutions, shipping providers, social commerce, AI trends, and developer opportunities across Saudi Arabia, UAE, Egypt, and Kuwait.",
+      "url": "blog/posts/ecommerce-arabic-market-2026.html",
+      "kind": "post",
+      "tags": [],
+      "lang": "en",
+      "keywords": "MENA Market Overview by Country E-Commerce Platforms Payment Solutions in MENA Logistics and Shipping Social Commerce Trends — AI, Personalization, and Voice Mobile-First Reality Real Challenges Opportunities for Developers Saudi Vision 2030 and Its Effect"
+    },
+    {
+      "id": "blog-posts-flutter-app-from-scratch",
+      "title": "Building a Mobile App with Flutter — From Idea to Play Store",
+      "desc": "A complete step-by-step guide to building and publishing a Flutter mobile app in 2026 — Clean Architecture, Bloc state management, FCM push notifications, Arabic RTL support, and Google Play publishing.",
+      "url": "blog/posts/flutter-app-from-scratch.html",
+      "kind": "post",
+      "tags": [],
+      "lang": "en",
+      "keywords": "Why Flutter in 2026? Environment Setup Clean Architecture in Flutter Widgets, Layouts, and Navigation Bloc and Cubit State Management API Integration with Dio Local Storage and Offline Support Push Notifications with FCM Arabic RTL Support Testing"
+    },
+    {
+      "id": "blog-posts-flutter-clean-architecture",
+      "title": "Flutter Clean Architecture: A Practical Guide",
+      "desc": "Implement clean architecture in Flutter with domain, data, and presentation layers. Covers use cases, repository patterns, Bloc/Cubit, and dependency injection for scalable mobile apps.",
+      "url": "blog/posts/flutter-clean-architecture.html",
+      "kind": "post",
+      "tags": [],
+      "lang": "en",
+      "keywords": "The Three Layers Folder Structure Domain Layer Data Layer Presentation Layer with Bloc Dependency Injection with GetIt Testing per Layer Common Mistakes to Avoid Final Thoughts الطبقات الثلاث"
+    },
+    {
+      "id": "blog-posts-freelancing-pricing-arabic",
+      "title": "Pricing Your Services as a Freelance Developer",
+      "desc": "A practical guide to pricing your freelance development services — hourly vs fixed vs value-based, market rates in the Arab world, project type pricing, negotiation tactics, and when to raise your prices.",
+      "url": "blog/posts/freelancing-pricing-arabic.html",
+      "kind": "post",
+      "tags": [],
+      "lang": "en",
+      "keywords": "Why Pricing Is Hard The Three Pricing Models Calculating Your Minimum Hourly Rate Pricing by Project Type — Arab Market Gulf vs Egypt vs International Pricing Writing Proposals and Packages Negotiation Tactics That Work When to Raise Your Prices Client Red Flags My Personal Pricing Journey"
+    },
+    {
+      "id": "blog-posts-github-portfolio-developer",
+      "title": "How to Build a Professional Developer Portfolio on GitHub",
+      "desc": "A complete guide to building a professional developer portfolio on GitHub — profile README, GitHub Pages, project showcasing, open source, SEO, PWA features, and design tips.",
+      "url": "blog/posts/github-portfolio-developer.html",
+      "kind": "post",
+      "tags": [],
+      "lang": "en",
+      "keywords": "Why Every Developer Needs a Portfolio The GitHub Profile README GitHub Pages for Portfolio Hosting What Projects to Showcase Writing Good READMEs Open Source as Portfolio Your Blog as Portfolio SEO for Your Portfolio Design Tips Analytics"
+    },
+    {
+      "id": "blog-posts-mena-freelance-guide",
+      "title": "Freelancing in MENA: A Developer's Guide",
+      "desc": "Compare Mostaql, Khamsat, and Upwork for MENA developers. Pricing strategies, Arabic business communication, payment methods, and scaling from freelancer to agency.",
+      "url": "blog/posts/mena-freelance-guide.html",
+      "kind": "post",
+      "tags": [],
+      "lang": "en",
+      "keywords": "Platform Comparison: Mostaql vs Khamsat vs Upwork Pricing Strategy for MENA Portfolio Building for MENA Clients Arabic Business Communication Payment Methods in the Region Building Long-Term Client Relationships Scaling from Freelancer to Agency Final Advice مقارنة المنصات: مستقل مقابل خمسات مقابل U"
+    },
+    {
+      "id": "blog-posts-mobile-app-cost-guide",
+      "title": "How Much Does It Cost to Build a Mobile App in 2026?",
+      "desc": "A comprehensive cost guide for mobile app development in 2026 — complexity levels, native vs cross-platform, cost breakdown, hourly rates by region, hidden costs, and how to reduce costs without sacrificing quality.",
+      "url": "blog/posts/mobile-app-cost-guide.html",
+      "kind": "post",
+      "tags": [],
+      "lang": "en",
+      "keywords": "The Factors That Determine Cost Cost by Complexity Level Native vs Cross-Platform Cost Difference Where the Money Goes Hourly Rates by Region Freelancer vs Agency vs In-House How to Reduce Costs Without Sacrificing Quality Hidden Costs That Surprise Clients Getting Accurate Quotes My Flutter Pricing"
+    },
+    {
+      "id": "blog-posts-mongodb-vs-postgresql",
+      "title": "MongoDB vs PostgreSQL — Which Database Should You Choose?",
+      "desc": "A practical comparison of MongoDB and PostgreSQL — document vs relational model, performance, scalability, when to use each, ORMs, hosting options, and real-world decision advice.",
+      "url": "blog/posts/mongodb-vs-postgresql.html",
+      "kind": "post",
+      "tags": [],
+      "lang": "en",
+      "keywords": "Why the Choice Matters MongoDB — The Document Model PostgreSQL — The Relational Model Head-to-Head Comparison When to Choose MongoDB When to Choose PostgreSQL Polyglot Persistence ORMs — Mongoose, Prisma, TypeORM Hosting — Atlas, Supabase, Self-Hosted My Personal Decision Framework"
+    },
+    {
+      "id": "blog-posts-nextjs-arabic-website",
+      "title": "Building a Professional Arabic Website with Next.js — Complete RTL Guide",
+      "desc": "Complete guide to building a professional Arabic website with Next.js. Covers RTL setup, i18n configuration, CSS logical properties, Arabic typography, bidirectional text, SEO, and performance for MENA.",
+      "url": "blog/posts/nextjs-arabic-website.html",
+      "kind": "post",
+      "tags": [],
+      "lang": "en",
+      "keywords": "Why Next.js for Arabic Sites? RTL Setup: The Right Way i18n Configuration CSS Logical Properties — The Foundation Arabic Typography Handling Bidirectional Text Arabic Form Validation SEO for Arabic Websites Performance for MENA Audiences Common Mistakes to Avoid"
+    },
+    {
+      "id": "blog-posts-nodejs-rest-api-complete-guide",
+      "title": "Building a Complete REST API with Node.js &amp; TypeScript",
+      "desc": "A comprehensive guide to building a production-ready REST API with Node.js and TypeScript — JWT auth, RBAC, error handling, Swagger, Jest, Docker, and CI/CD with GitHub Actions.",
+      "url": "blog/posts/nodejs-rest-api-complete-guide.html",
+      "kind": "post",
+      "tags": [],
+      "lang": "en",
+      "keywords": "Why Node.js + TypeScript? Express + TypeScript Setup Scalable Folder Structure Environment Configuration Database Setup — MongoDB with Mongoose JWT Auth with Refresh Tokens Role-Based Access Control (RBAC) Input Validation with express-validator Centralized Error Handling Rate Limiting and Helmet.js"
+    },
+    {
+      "id": "blog-posts-nodejs-typescript-best-practices",
+      "title": "Node.js &amp; TypeScript: Production Best Practices",
+      "desc": "Everything you need to ship a production Node.js + TypeScript service — tsconfig, project structure, JWT auth, error handling, structured logging, Docker, and CI/CD pipelines.",
+      "url": "blog/posts/nodejs-typescript-best-practices.html",
+      "kind": "post",
+      "tags": [],
+      "lang": "en",
+      "keywords": "tsconfig.json — Get it Right First Project Structure Environment Variable Validation Global Error Handling JWT Authentication Pattern Request Validation with express-validator Structured JSON Logging with Pino Docker for Production CI/CD with GitHub Actions Prisma vs Mongoose — When to Use Which"
+    },
+    {
+      "id": "blog-posts-open-source-contributions-journey",
+      "title": "My Open Source Journey",
+      "desc": "How I went from reading open source code to merging PRs into express-validator and Helmet.js. A personal story with practical tips for Arab developers who want to contribute.",
+      "url": "blog/posts/open-source-contributions-journey.html",
+      "kind": "post",
+      "tags": [],
+      "lang": "en",
+      "keywords": "The Starting Point: Reading Code The First Pull Request Contributing to express-validator The Helmet.js Chapter: 8 PRs How to Find Projects to Contribute To The Language Barrier Is Smaller Than You Think The Practical Impact on Your Career Practical Tips for Arab Developers What's Next نقطة البداية:"
+    },
+    {
+      "id": "blog-posts-payment-integration-mena",
+      "title": "Payment Gateway Integration in MENA",
+      "desc": "A developer",
+      "url": "blog/posts/payment-integration-mena.html",
+      "kind": "post",
+      "tags": [],
+      "lang": "en",
+      "keywords": "The MENA Payment Landscape Preferred Payment Methods by Country Tamara and Tabby — BNPL Integration Mada Integration (via Tap Payments) PayMob — Egypt's Developer Gateway Moyasar — Saudi-First Gateway Webhooks and Idempotency PCI DSS Basics for MENA Developers Multi-Currency and Refunds Testing Sand"
+    },
+    {
+      "id": "blog-posts-react-dashboard-tutorial",
+      "title": "Building an Admin Dashboard with React — Practical Guide",
+      "desc": "A practical guide to building a full-featured admin dashboard with React — layout, auth, data tables, charts, WebSocket real-time updates, dark mode, RTL Arabic, and REST API integration.",
+      "url": "blog/posts/react-dashboard-tutorial.html",
+      "kind": "post",
+      "tags": [],
+      "lang": "en",
+      "keywords": "Dashboard Design Principles Project Setup — Next.js Sidebar + Header Layout Auth and Protected Routes Data Tables with TanStack Table Charts with Recharts CRUD Operations Real-Time Updates with WebSocket Dark Mode RTL Arabic Layout"
+    },
+    {
+      "id": "blog-posts-saas-mvp-build-guide",
+      "title": "Building a SaaS MVP — From Idea to Launch",
+      "desc": "A complete guide to building a SaaS MVP from idea validation to launch — covering tech stack, auth, Stripe billing, multi-tenancy, deployment, timeline, and common mistakes.",
+      "url": "blog/posts/saas-mvp-build-guide.html",
+      "kind": "post",
+      "tags": [],
+      "lang": "en",
+      "keywords": "What Is an MVP? Validating the Idea Before Writing Code The Tech Stack Authentication Stripe Billing Multi-Tenancy The Landing Page Email System Product Analytics Deployment Strategy"
+    },
+    {
+      "id": "blog-posts-salla-store-automation",
+      "title": "Complete Guide to Salla Store Automation",
+      "desc": "A comprehensive guide to automating your Salla store: order management, customer support, inventory sync, abandoned cart recovery, and building a Telegram bot with Node.js.",
+      "url": "blog/posts/salla-store-automation.html",
+      "kind": "post",
+      "tags": [],
+      "lang": "en",
+      "keywords": "Understanding the Salla API Automating Order Management Automating Customer Support Real-Time Inventory Sync Abandoned Cart Recovery Marketing Automation Connecting Salla to a Telegram Bot Building an Analytics Dashboard Real Results from the IAI Bot Project Cost Comparison: Manual vs. Automated"
+    },
+    {
+      "id": "blog-posts-telegram-bot-nodejs-tutorial",
+      "title": "Building a Telegram Bot with Node.js — Zero to Production",
+      "desc": "A complete tutorial on building a Telegram bot with Node.js from scratch: BotFather setup, commands, inline keyboards, menus, webhooks, and deploying a store notification bot to production.",
+      "url": "blog/posts/telegram-bot-nodejs-tutorial.html",
+      "kind": "post",
+      "tags": [],
+      "lang": "en",
+      "keywords": "Why Telegram for Bots? BotFather Setup Project Setup with Telegraf Registering Commands Inline Keyboards and Callbacks Session State with Telegraf Scenes Integrating External APIs Webhook vs. Long Polling Building a Store Notification Bot Error Handling and Reliability"
+    },
+    {
+      "id": "blog-posts-website-speed-optimization",
+      "title": "Speed Up Your Website to 100% PageSpeed Score",
+      "desc": "A practical guide to achieving a 100% PageSpeed score — covering Core Web Vitals, image optimization, critical CSS, JS deferral, server caching, CDN, and more.",
+      "url": "blog/posts/website-speed-optimization.html",
+      "kind": "post",
+      "tags": [],
+      "lang": "en",
+      "keywords": "Why Speed Matters Understanding PageSpeed Insights Core Web Vitals Explained Image Optimization CSS Optimization JavaScript Optimization Font Optimization Server-Side Optimizations Lazy Loading and Intersection Observer Compositor-Only Animations"
+    },
+    {
+      "id": "blog-posts-whatsapp-business-bot-guide",
+      "title": "Building a WhatsApp Business Bot — Step by Step Guide",
+      "desc": "Complete guide to building a WhatsApp Business bot with Node.js and the WhatsApp Cloud API. Covers approval, webhooks, message templates, interactive messages, e-commerce integration, and deployment.",
+      "url": "blog/posts/whatsapp-business-bot-guide.html",
+      "kind": "post",
+      "tags": [],
+      "lang": "en",
+      "keywords": "Business API vs. WhatsApp Business App Getting API Access Architecture Overview Setting Up the Webhook Sending Messages Message Templates Session Management Building the Order Tracking Flow Product Catalog Bot Best Practices and Cost"
+    },
+    {
+      "id": "blog-posts-zid-vs-salla-comparison",
+      "title": "Salla vs Zid: Complete Comparison for Your Online Store",
+      "desc": "An in-depth comparison of Salla and Zid — the two leading Saudi e-commerce platforms. Covers pricing, templates, payments, APIs, Arabic support, and which to choose for your business.",
+      "url": "blog/posts/zid-vs-salla-comparison.html",
+      "kind": "post",
+      "tags": [],
+      "lang": "en",
+      "keywords": "The Saudi E-Commerce Boom Salla: The Market Leader Zid: The Developer-Friendly Challenger Ease of Use Templates and Design Payment Gateways Shipping Integration API and Developer Experience Arabic Language Support Pricing Comparison"
+    }
+  ]
+}

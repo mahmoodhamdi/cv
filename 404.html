@@ -3,8 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>404 — Page Not Found</title>
+<title>404 — Page Not Found · Mahmoud Hamdy</title>
 <meta name="robots" content="noindex">
+<meta name="description" content="The page you're looking for doesn't exist. Head back to the portfolio, services, or blog.">
+<link rel="canonical" href="https://mahmoodhamdi.github.io/cv/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Page Not Found — Mahmoud Hamdy">
+<meta property="og:description" content="404 — but here are some pages you might want instead.">
+<meta property="og:url" content="https://mahmoodhamdi.github.io/cv/">
+<meta property="og:image" content="https://mahmoodhamdi.github.io/cv/assets/og/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mahmoodhamdi.github.io/cv/assets/og/og-default.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -68,24 +79,28 @@ html[dir="rtl"] .err-link{font-family:var(--fn-ar-b)}
       <a class="err-link err-link-p" href="./">العودة للبورتفوليو</a>
       <a class="err-link err-link-o" href="./blog/">زيارة المدونة</a>
     </div>
+    <div class="err-popular" id="p-en" style="margin-top:40px;font-size:13px;color:var(--muted)">
+      Popular pages: <a href="./about.html" style="color:var(--accent);text-decoration:none;margin:0 6px">About</a>·<a href="./services.html" style="color:var(--accent);text-decoration:none;margin:0 6px">Services</a>·<a href="./blog/" style="color:var(--accent);text-decoration:none;margin:0 6px">Blog</a>·<a href="https://github.com/mahmoodhamdi" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;margin:0 6px">GitHub</a>
+    </div>
+    <div class="err-popular" id="p-ar" style="display:none;margin-top:40px;font-size:13px;color:var(--muted)">
+      الصفحات الأكثر زيارة: <a href="./about.html" style="color:var(--accent);text-decoration:none;margin:0 6px">عني</a>·<a href="./services.html" style="color:var(--accent);text-decoration:none;margin:0 6px">الخدمات</a>·<a href="./blog/" style="color:var(--accent);text-decoration:none;margin:0 6px">المدونة</a>·<a href="https://github.com/mahmoodhamdi" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;margin:0 6px">GitHub</a>
+    </div>
   </div>
 </div>
 <script>
 function setL(l){
   var h=document.documentElement,b=document.querySelectorAll('.lang-sw button');
+  function show(id, on){var el=document.getElementById(id); if(el) el.style.display = on ? (id.startsWith('l-')?'flex':'') : 'none';}
   if(l==='ar'){h.dir='rtl';h.lang='ar';b[0].classList.remove('on');b[1].classList.add('on');
-    document.getElementById('t-en').style.display='none';document.getElementById('t-ar').style.display='';
-    document.getElementById('d-en').style.display='none';document.getElementById('d-ar').style.display='';
-    document.getElementById('l-en').style.display='none';document.getElementById('l-ar').style.display='flex';
+    show('t-en',0);show('t-ar',1);show('d-en',0);show('d-ar',1);show('l-en',0);show('l-ar',1);show('p-en',0);show('p-ar',1);
   }else{h.dir='ltr';h.lang='en';b[0].classList.add('on');b[1].classList.remove('on');
-    document.getElementById('t-en').style.display='';document.getElementById('t-ar').style.display='none';
-    document.getElementById('d-en').style.display='';document.getElementById('d-ar').style.display='none';
-    document.getElementById('l-en').style.display='flex';document.getElementById('l-ar').style.display='none';
+    show('t-en',1);show('t-ar',0);show('d-en',1);show('d-ar',0);show('l-en',1);show('l-ar',0);show('p-en',1);show('p-ar',0);
   }
 }
 try{var t=localStorage.getItem('cv-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}
 </script>
 <script src="js/analytics.js" defer></script>
 <script src="js/pwa.js" defer></script>
+<script src="js/search.js" defer></script>
 </body>
 </html>

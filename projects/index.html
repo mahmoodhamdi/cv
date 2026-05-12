@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Mahmoud Hamdy</title>
+<meta name="description" content="Selected production projects from Mahmoud Hamdy — SaaS platforms, mobile apps, e-commerce automation, and ride-sharing apps across the MENA region.">
+<meta name="author" content="Mahmoud Hamdy">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0a0f1a">
+<link rel="canonical" href="https://mahmoodhamdi.github.io/cv/projects/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Projects — Mahmoud Hamdy">
+<meta property="og:description" content="Selected production projects — SaaS, mobile apps, marketplaces, e-commerce automation.">
+<meta property="og:url" content="https://mahmoodhamdi.github.io/cv/projects/">
+<meta property="og:image" content="https://mahmoodhamdi.github.io/cv/assets/og/og-projects.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mahmoodhamdi.github.io/cv/assets/og/og-projects.png">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="manifest" href="../manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+:root{--bg:#0a0f1a;--bg-alt:#111827;--card:#1a2236;--card-h:#1f2a42;--accent:#38bdf8;--accent-g:rgba(56,189,248,.15);--accent2:#818cf8;--txt:#f1f5f9;--txt2:#94a3b8;--muted:#8e99ad;--bdr:rgba(148,163,184,.1);--grad:linear-gradient(135deg,#38bdf8,#818cf8);--green:#34d399;--fn:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;--fn-ar:'Tajawal',sans-serif;--nav-bg:rgba(10,15,26,.88);--chip-bg:rgba(129,140,248,.1);--chip-c:var(--accent2);--chip-bdr:rgba(129,140,248,.15)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:var(--fn);background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;padding-top:52px}
+.wrap{max-width:1100px;margin:0 auto;padding:40px 24px}
+.navbar{position:fixed;top:0;left:0;right:0;z-index:90;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--bdr)}
+.nav-in{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;height:48px}
+.nav-back{font-size:13px;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.nav-back:hover{color:var(--accent)}
+.nav-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+.top-ctrl{position:fixed;top:58px;right:20px;z-index:100;display:flex;gap:8px;align-items:center}
+.lang-tog{display:flex;gap:3px;background:var(--card);border:1px solid var(--bdr);border-radius:10px;padding:3px}
+.l-btn{padding:4px 10px;border-radius:8px;font-size:11px;font-weight:600;color:var(--muted);cursor:pointer;border:none;background:none;font-family:var(--fn)}
+.l-btn.on{background:var(--accent-g);color:var(--accent)}
+
+.p-hero{text-align:center;padding:40px 0 32px}
+.p-hero h1{font-size:42px;font-weight:600;letter-spacing:-.02em;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px}
+.p-hero p{font-size:15px;color:var(--txt2);max-width:560px;margin:0 auto}
+
+.p-filters{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.p-filter{padding:7px 16px;border-radius:30px;border:1px solid var(--bdr);background:transparent;color:var(--txt2);font-family:var(--fn);font-size:12.5px;font-weight:500;cursor:pointer;transition:all .25s}
+.p-filter:hover{color:var(--accent);border-color:var(--accent)}
+.p-filter.on{background:var(--grad);color:#fff;border-color:transparent;box-shadow:0 2px 12px var(--accent-g)}
+
+.p-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:20px}
+.p-card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--bdr);border-radius:16px;padding:22px;text-decoration:none;color:var(--txt);transition:transform .3s,border-color .3s,box-shadow .3s;position:relative;overflow:hidden}
+.p-card:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 14px 36px var(--accent-g)}
+.p-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--col,var(--accent));opacity:.8}
+.p-card[data-color="blue"]   {--col:#38bdf8}
+.p-card[data-color="purple"] {--col:#a78bfa}
+.p-card[data-color="green"]  {--col:#34d399}
+.p-card[data-color="amber"]  {--col:#f59e0b}
+.p-card[data-color="rose"]   {--col:#fb7185}
+.p-card-head{display:flex;align-items:center;gap:10px;margin-bottom:12px;margin-top:4px}
+.p-card-type{font-size:11px;font-family:var(--mono);color:var(--accent);background:var(--accent-g);padding:3px 10px;border-radius:6px;border:1px solid rgba(56,189,248,.2)}
+.p-card-status{font-size:11px;color:var(--green);background:rgba(52,211,153,.1);padding:3px 10px;border-radius:6px;border:1px solid rgba(52,211,153,.25)}
+.p-card h2{font-size:19px;font-weight:600;margin-bottom:8px;line-height:1.35}
+.p-card-desc{font-size:13.5px;color:var(--txt2);line-height:1.6;margin-bottom:14px;flex:1}
+.p-card-stack{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
+.p-card-stack span{font-size:11px;font-family:var(--mono);padding:2px 8px;border-radius:5px;background:var(--chip-bg);color:var(--chip-c);border:1px solid var(--chip-bdr)}
+.p-card-link{font-size:13px;color:var(--accent);font-weight:500;display:inline-flex;align-items:center;gap:4px;margin-top:auto}
+.p-card:hover .p-card-link{gap:8px}
+
+.p-empty{text-align:center;padding:60px 20px;color:var(--muted);font-size:14px}
+
+.p-cta{margin-top:48px;padding:30px;border-radius:18px;background:linear-gradient(135deg,rgba(56,189,248,.08),rgba(129,140,248,.08));border:1px solid rgba(56,189,248,.18);text-align:center}
+.p-cta h2{font-size:22px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px}
+.p-cta p{font-size:14px;color:var(--txt2);margin-bottom:18px}
+.btn-p{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:10px;background:var(--grad);color:#fff;font-size:14px;font-weight:600;text-decoration:none;transition:transform .2s}
+.btn-p:hover{transform:translateY(-2px)}
+.btn-o{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:10px;background:transparent;color:var(--txt);border:1px solid var(--bdr);font-size:14px;font-weight:500;text-decoration:none;margin-left:8px}
+html[dir="rtl"] .btn-o{margin-left:0;margin-right:8px}
+.btn-o:hover{border-color:var(--accent);color:var(--accent)}
+
+html[data-theme="light"]{--bg:#f8fafc;--bg-alt:#f1f5f9;--card:#fff;--card-h:#f8fafc;--txt:#0f172a;--txt2:#334155;--muted:#64748b;--bdr:rgba(15,23,42,.1);--nav-bg:rgba(248,250,252,.88);--accent-g:rgba(56,189,248,.12)}
+html[dir="rtl"] body{font-family:var(--fn-ar)}
+@media(max-width:600px){
+  .p-hero h1{font-size:32px}
+  .top-ctrl{top:54px;right:12px}
+  html[dir="rtl"] .top-ctrl{right:auto;left:12px}
+}
+</style>
+<link rel="stylesheet" href="../css/bundle.css">
+</head>
+<body class="loaded">
+
+<nav class="navbar"><div class="nav-in">
+  <a href="../" class="nav-back"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    <span class="en-only">Back to portfolio</span><span class="ar-only" style="display:none">العودة للبورتفوليو</span>
+  </a>
+</div></nav>
+
+<div class="top-ctrl">
+  <div class="lang-tog">
+    <button class="l-btn on" onclick="setLang('en')">EN</button>
+    <button class="l-btn" onclick="setLang('ar')">عربي</button>
+  </div>
+</div>
+
+<main class="wrap">
+
+<section class="p-hero">
+  <h1 id="hero-title-en">Projects</h1>
+  <h1 id="hero-title-ar" style="display:none">المشاريع</h1>
+  <p id="hero-sub-en">Production work delivered for clients across the MENA region. Filter by stack to find similar to what you need built.</p>
+  <p id="hero-sub-ar" style="display:none">أعمال إنتاج تم تسليمها لعملاء في منطقة الشرق الأوسط. فلتر بالتقنية اللي بتدوّر عليها.</p>
+</section>
+
+<div class="p-filters" id="filters" role="group" aria-label="Filter by tech">
+  <button class="p-filter on" data-tag="all"><span class="en-only">All</span><span class="ar-only" style="display:none">الكل</span></button>
+  <button class="p-filter" data-tag="nodejs">Node.js</button>
+  <button class="p-filter" data-tag="flutter">Flutter</button>
+  <button class="p-filter" data-tag="nextjs">Next.js</button>
+  <button class="p-filter" data-tag="laravel">Laravel</button>
+  <button class="p-filter" data-tag="mongodb">MongoDB</button>
+  <button class="p-filter" data-tag="postgresql">PostgreSQL</button>
+  <button class="p-filter" data-tag="websocket">WebSocket</button>
+  <button class="p-filter" data-tag="ai">AI / NLP</button>
+  <button class="p-filter" data-tag="salla">Salla</button>
+</div>
+
+<div class="p-grid" id="grid">
+
+  <a class="p-card" href="escore.html" data-color="blue" data-tags="nodejs typescript nextjs flutter mongodb websocket">
+    <div class="p-card-head"><span class="p-card-type">Platform</span><span class="p-card-status">Delivered ✓</span></div>
+    <h2><span class="en-only">Escore — Esports Platform</span><span class="ar-only" style="display:none">Escore — منصة الرياضات الإلكترونية</span></h2>
+    <p class="p-card-desc"><span class="en-only">16-module backend with tournament brackets, live match tracking, team rankings, and a Flutter mobile app for the MENA esports market.</span><span class="ar-only" style="display:none">باك إند من ١٦ وحدة مع إدارة بطولات وتتبع مباريات وتطبيق Flutter لسوق الرياضات الإلكترونية في الشرق الأوسط.</span></p>
+    <div class="p-card-stack"><span>Node.js</span><span>TypeScript</span><span>Next.js</span><span>Flutter</span><span>MongoDB</span><span>WebSocket</span></div>
+    <span class="p-card-link"><span class="en-only">View details</span><span class="ar-only" style="display:none">التفاصيل</span> →</span>
+  </a>
+
+  <a class="p-card" href="iai-salla-bot.html" data-color="purple" data-tags="nodejs nextjs ai salla telegram">
+    <div class="p-card-head"><span class="p-card-type">SaaS</span><span class="p-card-status">Delivered ✓</span></div>
+    <h2><span class="en-only">IAI — AI E-Commerce Assistant</span><span class="ar-only" style="display:none">IAI — مساعد ذكي للتجارة الإلكترونية</span></h2>
+    <p class="p-card-desc"><span class="en-only">End-to-end AI assistant for Saudi e-commerce. Integrates Salla, automates Telegram customer support, tracks orders, recommends products.</span><span class="ar-only" style="display:none">مساعد ذكي شامل لمتاجر التجارة الإلكترونية السعودية. متكامل مع سلة وبوت تيليجرام للدعم الآلي وتتبع الطلبات.</span></p>
+    <div class="p-card-stack"><span>Node.js</span><span>Next.js</span><span>Salla API</span><span>Telegram</span><span>AI/NLP</span></div>
+    <span class="p-card-link"><span class="en-only">View details</span><span class="ar-only" style="display:none">التفاصيل</span> →</span>
+  </a>
+
+  <a class="p-card" href="wasalni.html" data-color="green" data-tags="nodejs nextjs flutter postgresql websocket">
+    <div class="p-card-head"><span class="p-card-type">Mobile</span><span class="p-card-status">Delivered ✓</span></div>
+    <h2><span class="en-only">Wasalni — Ride-Sharing Platform</span><span class="ar-only" style="display:none">وصلني — منصة توصيل ركاب</span></h2>
+    <p class="p-card-desc"><span class="en-only">Complete ride-sharing solution with Node.js backend, Next.js dispatcher dashboard, and two Flutter apps for rider + driver with real-time tracking.</span><span class="ar-only" style="display:none">حل توصيل ركاب متكامل مع باك إند Node.js ولوحة Next.js وتطبيقي Flutter (راكب وسائق) مع تتبع لحظي.</span></p>
+    <div class="p-card-stack"><span>Node.js</span><span>Next.js</span><span>Flutter</span><span>PostgreSQL</span><span>WebSocket</span></div>
+    <span class="p-card-link"><span class="en-only">View details</span><span class="ar-only" style="display:none">التفاصيل</span> →</span>
+  </a>
+
+  <a class="p-card" href="hadith-app.html" data-color="amber" data-tags="flutter dart">
+    <div class="p-card-head"><span class="p-card-type">Mobile</span><span class="p-card-status">Published ✓</span></div>
+    <h2><span class="en-only">Al-Arba'oon — Hadith App</span><span class="ar-only" style="display:none">الأربعون النووية — تطبيق أحاديث</span></h2>
+    <p class="p-card-desc"><span class="en-only">Published on Google Play. Nawawi's 40 Hadith with audio narration, Arabic UI, RTL throughout, and offline support.</span><span class="ar-only" style="display:none">منشور على Google Play. الأربعون النووية بسرد صوتي وواجهة عربية كاملة مع دعم RTL ودعم العمل بدون إنترنت.</span></p>
+    <div class="p-card-stack"><span>Flutter</span><span>Dart</span><span>Google Play</span></div>
+    <span class="p-card-link"><span class="en-only">View details</span><span class="ar-only" style="display:none">التفاصيل</span> →</span>
+  </a>
+
+  <a class="p-card" href="clinic-booking.html" data-color="green" data-tags="laravel nextjs postgresql">
+    <div class="p-card-head"><span class="p-card-type">Web App</span><span class="p-card-status">Delivered ✓</span></div>
+    <h2><span class="en-only">Clinic Booking System</span><span class="ar-only" style="display:none">نظام حجز العيادات</span></h2>
+    <p class="p-card-desc"><span class="en-only">Online appointments, doctor schedules, patient records, automated reminders, and SMS notifications for a multi-clinic group.</span><span class="ar-only" style="display:none">حجز مواعيد أونلاين وجداول أطباء وسجلات مرضى وتذكيرات تلقائية ورسائل SMS لمجموعة عيادات.</span></p>
+    <div class="p-card-stack"><span>Laravel</span><span>Next.js</span><span>PostgreSQL</span><span>Tailwind</span></div>
+    <span class="p-card-link"><span class="en-only">View details</span><span class="ar-only" style="display:none">التفاصيل</span> →</span>
+  </a>
+
+  <a class="p-card" href="whatsapp-bot.html" data-color="purple" data-tags="nodejs nextjs ai mongodb">
+    <div class="p-card-head"><span class="p-card-type">SaaS</span><span class="p-card-status">Delivered ✓</span></div>
+    <h2><span class="en-only">WhatsApp Auto-Reply Bot</span><span class="ar-only" style="display:none">بوت واتساب للرد التلقائي</span></h2>
+    <p class="p-card-desc"><span class="en-only">No-code SaaS for automated WhatsApp business responses. Multi-number management, rule builder, conversation analytics.</span><span class="ar-only" style="display:none">منصة SaaS للردود التلقائية على واتساب. إدارة أرقام متعددة وبناء قواعد بدون كود وتحليلات محادثات.</span></p>
+    <div class="p-card-stack"><span>Node.js</span><span>Next.js</span><span>WhatsApp API</span><span>MongoDB</span></div>
+    <span class="p-card-link"><span class="en-only">View details</span><span class="ar-only" style="display:none">التفاصيل</span> →</span>
+  </a>
+
+  <a class="p-card" href="bagour-delivery.html" data-color="blue" data-tags="nodejs flutter nextjs mongodb websocket">
+    <div class="p-card-head"><span class="p-card-type">Mobile</span><span class="p-card-status">Delivered ✓</span></div>
+    <h2><span class="en-only">Bagour Delivery</span><span class="ar-only" style="display:none">باجور ديليفري</span></h2>
+    <p class="p-card-desc"><span class="en-only">Hyperlocal delivery — three-sided marketplace connecting customers, stores, and drivers, with live order tracking via WebSocket.</span><span class="ar-only" style="display:none">تطبيق توصيل محلي — سوق ثلاثي يربط العملاء بالمتاجر بالسائقين مع تتبع طلبات لحظي.</span></p>
+    <div class="p-card-stack"><span>Node.js</span><span>Flutter</span><span>Next.js</span><span>MongoDB</span><span>WebSocket</span></div>
+    <span class="p-card-link"><span class="en-only">View details</span><span class="ar-only" style="display:none">التفاصيل</span> →</span>
+  </a>
+
+  <a class="p-card" href="sana3y.html" data-color="amber" data-tags="nodejs flutter nextjs mongodb websocket">
+    <div class="p-card-head"><span class="p-card-type">Marketplace</span><span class="p-card-status">Delivered ✓</span></div>
+    <h2><span class="en-only">Sana3y — Handyman Marketplace</span><span class="ar-only" style="display:none">صنايعي — منصة الفنيين</span></h2>
+    <p class="p-card-desc"><span class="en-only">On-demand verified craftsmen — customer + worker Flutter apps with real-time job dispatch, in-app chat, and integrated payments.</span><span class="ar-only" style="display:none">فنيون معتمدون على الطلب — تطبيقي Flutter للعميل والصنايعي مع توزيع طلبات لحظي وشات مدمج ومدفوعات.</span></p>
+    <div class="p-card-stack"><span>Node.js</span><span>Flutter</span><span>Next.js</span><span>MongoDB</span><span>WebSocket</span><span>FCM</span></div>
+    <span class="p-card-link"><span class="en-only">View details</span><span class="ar-only" style="display:none">التفاصيل</span> →</span>
+  </a>
+
+</div>
+
+<div class="p-empty" id="empty" style="display:none">
+  <span class="en-only">No projects in this stack yet. Let me know if you're looking for something similar.</span>
+  <span class="ar-only" style="display:none">مفيش مشاريع بالتقنية دي لسه. خبّرني لو محتاج حاجة مشابهة.</span>
+</div>
+
+<section class="p-cta">
+  <h2><span class="en-only">Want something similar?</span><span class="ar-only" style="display:none">عاوز حاجة مشابهة؟</span></h2>
+  <p><span class="en-only">Each project here started as a 30-minute discovery call. Mine's free.</span><span class="ar-only" style="display:none">كل مشروع هنا بدأ بمكالمة استكشاف ٣٠ دقيقة. مكالمتي مجانية.</span></p>
+  <a class="btn-p" href="../services.html"><span class="en-only">See services</span><span class="ar-only" style="display:none">شوف الخدمات</span></a>
+  <a class="btn-o" href="mailto:hmdy7486@gmail.com"><span class="en-only">Email me</span><span class="ar-only" style="display:none">إيميل</span></a>
+</section>
+
+</main>
+
+<script>
+try{var t=localStorage.getItem('cv-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}
+
+function setLang(l){
+  var h=document.documentElement;
+  var btns=document.querySelectorAll('.l-btn');
+  var isAr = l === 'ar';
+  h.dir = isAr ? 'rtl' : 'ltr'; h.lang = l;
+  btns[0].classList.toggle('on', !isAr); btns[1].classList.toggle('on', isAr);
+  document.querySelectorAll('.en-only').forEach(function(el){el.style.display = isAr ? 'none' : ''});
+  document.querySelectorAll('.ar-only').forEach(function(el){el.style.display = isAr ? '' : 'none'});
+  document.getElementById('hero-title-en').style.display = isAr ? 'none' : '';
+  document.getElementById('hero-title-ar').style.display = isAr ? '' : 'none';
+  document.getElementById('hero-sub-en').style.display = isAr ? 'none' : '';
+  document.getElementById('hero-sub-ar').style.display = isAr ? '' : 'none';
+}
+
+document.getElementById('filters').addEventListener('click', function(e){
+  var btn = e.target.closest('.p-filter');
+  if (!btn) return;
+  document.querySelectorAll('.p-filter').forEach(function(b){ b.classList.remove('on'); });
+  btn.classList.add('on');
+  var tag = btn.dataset.tag;
+  var matched = 0;
+  document.querySelectorAll('.p-card').forEach(function(card){
+    var tags = (card.dataset.tags || '').split(/\s+/);
+    var show = tag === 'all' || tags.indexOf(tag) !== -1;
+    card.style.display = show ? '' : 'none';
+    if (show) matched++;
+  });
+  document.getElementById('empty').style.display = matched === 0 ? 'block' : 'none';
+  if (typeof gtag === 'function') {
+    gtag('event', 'projects_filter', { event_category: 'Projects', event_label: tag });
+  }
+});
+</script>
+<script src="../js/search.js" defer></script>
+</body>
+</html>
