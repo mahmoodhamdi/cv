@@ -35,6 +35,7 @@ SOURCES = [
     ("about.html",         "page"),
     ("services.html",      "page"),
     ("privacy.html",       "page"),
+    ("uses.html",          "page"),
     ("blog/index.html",    "page"),
     ("projects/index.html","page"),
 ]

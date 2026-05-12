@@ -216,6 +216,8 @@ PAGES: list[dict] = [
      "subtitle": "Transparent starting prices for full-stack work", "tag": "Services"},
     {"slug": "privacy",  "title": "Privacy Policy",
      "subtitle": "What this site collects and why", "tag": "Privacy"},
+    {"slug": "uses",     "title": "What I use",
+     "subtitle": "Hardware, software, and tools I actually use to ship code", "tag": "Uses"},
     {"slug": "blog",     "title": "Engineering notes from the MENA",
      "subtitle": "Tutorials on Node.js, Flutter, e-commerce automation", "tag": "Blog"},
     {"slug": "projects", "title": "Selected work — production projects",

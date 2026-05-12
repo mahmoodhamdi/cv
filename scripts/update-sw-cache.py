@@ -46,6 +46,7 @@ PATTERNS = [
     "about.html",
     "services.html",
     "privacy.html",
+    "uses.html",
     "assets/favicon.svg",
     "assets/icon-192.svg",
     "assets/icon-512.svg",

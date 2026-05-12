@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mahmoud-cv-462f2188';
+const CACHE_NAME = 'mahmoud-cv-f6948c04';
 const ASSETS = [
   './',
   './404.html',
@@ -63,7 +63,8 @@ const ASSETS = [
   './projects/sana3y.html',
   './projects/wasalni.html',
   './projects/whatsapp-bot.html',
-  './services.html'
+  './services.html',
+  './uses.html'
 ];
 
 self.addEventListener('install', function(event) {

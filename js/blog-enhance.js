@@ -163,4 +163,147 @@
   }
 
   smartRelated();
+
+  // ─── Auto TOC + heading anchors ───────────────────────────────────────────
+  // Builds a sticky table of contents from h2 headings inside .post-body.
+  // Also adds an id= and a "#" anchor link to every h2.
+
+  function slugify(s) {
+    return String(s)
+      .toLowerCase()
+      .replace(/[^a-z0-9؀-ۿ\s-]/g, '')   // keep Arabic letters
+      .trim()
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .substring(0, 60) || ('h2-' + Math.random().toString(36).slice(2, 6));
+  }
+
+  function buildTOC() {
+    var bodies = document.querySelectorAll('.post-body');
+    if (!bodies.length) return;
+    // Pick the currently-visible language body if there are two
+    var body = null;
+    bodies.forEach(function(b) {
+      var hidden = b.closest('[id$="-content"]');
+      if (!hidden || hidden.offsetParent !== null) body = body || b;
+    });
+    if (!body) body = bodies[0];
+
+    var headings = body.querySelectorAll('h2');
+    if (headings.length < 3) return;
+
+    // Assign IDs + insert anchor symbols
+    var idSeen = {};
+    var entries = [];
+    headings.forEach(function(h) {
+      if (!h.id) {
+        var s = slugify(h.textContent);
+        if (idSeen[s]) s = s + '-' + (++idSeen[s]);
+        idSeen[s] = 1;
+        h.id = s;
+      }
+      // Visible anchor link on hover
+      if (!h.querySelector('.h-anchor')) {
+        var a = document.createElement('a');
+        a.className = 'h-anchor';
+        a.href = '#' + h.id;
+        a.setAttribute('aria-label', 'Link to this section');
+        a.innerHTML = '#';
+        h.appendChild(a);
+      }
+      entries.push({ id: h.id, text: h.textContent.replace(/#\s*$/, '').trim() });
+    });
+
+    // Render TOC container
+    var isAr = document.documentElement.lang === 'ar' || document.documentElement.dir === 'rtl';
+    var toc = document.createElement('aside');
+    toc.className = 'post-toc';
+    toc.setAttribute('aria-label', isAr ? 'فهرس المقال' : 'Table of contents');
+    var listHtml = entries.map(function(e) {
+      return '<li><a href="#' + e.id + '">' + escapeHtml(e.text) + '</a></li>';
+    }).join('');
+    toc.innerHTML =
+      '<div class="post-toc-h">' + (isAr ? 'فهرس المقال' : 'In this article') + '</div>' +
+      '<ul class="post-toc-list">' + listHtml + '</ul>';
+    body.parentElement.insertBefore(toc, body);
+
+    // Scroll-spy: highlight the entry whose section is currently in view
+    var links = toc.querySelectorAll('.post-toc-list a');
+    if ('IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function(items) {
+        items.forEach(function(it) {
+          var id = it.target.id;
+          var link = toc.querySelector('a[href="#' + id + '"]');
+          if (!link) return;
+          if (it.isIntersecting) {
+            links.forEach(function(l) { l.classList.remove('on'); });
+            link.classList.add('on');
+          }
+        });
+      }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
+      headings.forEach(function(h) { obs.observe(h); });
+    }
+  }
+
+  // Run after a tick so other DOM mutations (like language switch) settle first
+  setTimeout(buildTOC, 50);
+
+  // ─── Code copy buttons ────────────────────────────────────────────────────
+  // Adds a small "Copy" button to the top-right of each <pre> block.
+
+  function addCopyButtons() {
+    var pres = document.querySelectorAll('.post-body pre');
+    pres.forEach(function(pre) {
+      if (pre.dataset.copyWired) return;
+      pre.dataset.copyWired = '1';
+      pre.style.position = pre.style.position || 'relative';
+
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'code-copy';
+      var isAr = document.documentElement.lang === 'ar' || document.documentElement.dir === 'rtl';
+      btn.innerHTML =
+        '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">' +
+        '<rect x="9" y="9" width="13" height="13" rx="2"/>' +
+        '<path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>' +
+        '<span class="code-copy-lbl">' + (isAr ? 'نسخ' : 'Copy') + '</span>';
+      btn.setAttribute('aria-label', isAr ? 'نسخ الكود' : 'Copy code');
+
+      btn.addEventListener('click', function() {
+        var code = pre.querySelector('code') || pre;
+        var text = code.innerText;
+        var done = function(ok) {
+          btn.classList.toggle('done', ok);
+          var lbl = btn.querySelector('.code-copy-lbl');
+          if (lbl) lbl.textContent = ok ? (isAr ? 'تم النسخ ✓' : 'Copied ✓') : (isAr ? 'فشل' : 'Failed');
+          setTimeout(function() {
+            btn.classList.remove('done');
+            if (lbl) lbl.textContent = isAr ? 'نسخ' : 'Copy';
+          }, 1800);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function() { done(true); }, function() { done(false); });
+        } else {
+          // Fallback: textarea + execCommand
+          try {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            done(true);
+          } catch (e) { done(false); }
+        }
+        if (typeof gtag === 'function') {
+          gtag('event', 'code_copy', { event_category: 'Blog', event_label: slug });
+        }
+      });
+      pre.appendChild(btn);
+    });
+  }
+
+  setTimeout(addCopyButtons, 60);
 })();
