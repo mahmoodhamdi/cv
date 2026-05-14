@@ -1,11 +1,11 @@
 {
-  "lastUpdated": "2026-05-12T03:00:27.728105Z",
+  "lastUpdated": "2026-05-14T06:14:46.361693Z",
   "user": "mahmoodhamdi",
   "summary": {
-    "mergedPRs": 571,
-    "publicRepos": 178,
-    "followers": 51,
-    "externalProjects": 24
+    "mergedPRs": 625,
+    "publicRepos": 184,
+    "followers": 52,
+    "externalProjects": 17
   },
   "topRepos": [
     {
@@ -61,6 +61,12 @@
   ],
   "latestPRs": [
     {
+      "repo": "TarteelAI/quranic-universal-library",
+      "title": "chore: bump rubocop TargetRailsVersion to 8.0",
+      "url": "https://github.com/TarteelAI/quranic-universal-library/pull/607",
+      "mergedAt": "2026-05-12T10:04:47Z"
+    },
+    {
       "repo": "prayer-timetable/adhan_dart",
       "title": "refactor: expose Makkah coordinates and improve Qibla documentation",
       "url": "https://github.com/prayer-timetable/adhan_dart/pull/46",
@@ -74,32 +80,18 @@
     },
     {
       "repo": "prayer-timetable/adhan_dart",
-      "title": "feat: add Rounding configuration for prayer times",
-      "url": "https://github.com/prayer-timetable/adhan_dart/pull/17",
+      "title": "feat: add displayName property to Prayer enum",
+      "url": "https://github.com/prayer-timetable/adhan_dart/pull/42",
       "mergedAt": "2026-05-10T13:23:22Z"
     },
     {
       "repo": "prayer-timetable/adhan_dart",
-      "title": "feat: add toString override to SunnahTimes",
-      "url": "https://github.com/prayer-timetable/adhan_dart/pull/45",
-      "mergedAt": "2026-05-10T13:23:22Z"
-    },
-    {
-      "repo": "prayer-timetable/adhan_dart",
-      "title": "refactor: remove dead code and stale comments",
-      "url": "https://github.com/prayer-timetable/adhan_dart/pull/33",
+      "title": "fix: replace dynamic with Coordinates type in correctedHourAngle",
+      "url": "https://github.com/prayer-timetable/adhan_dart/pull/24",
       "mergedAt": "2026-05-10T13:23:22Z"
     }
   ],
   "heatmap": [
-    {
-      "date": "2026-03-14",
-      "count": 0
-    },
-    {
-      "date": "2026-03-15",
-      "count": 0
-    },
     {
       "date": "2026-03-16",
       "count": 0
@@ -214,7 +206,7 @@
     },
     {
       "date": "2026-04-13",
-      "count": 1
+      "count": 0
     },
     {
       "date": "2026-04-14",
@@ -270,11 +262,11 @@
     },
     {
       "date": "2026-04-27",
-      "count": 1
+      "count": 0
     },
     {
       "date": "2026-04-28",
-      "count": 2
+      "count": 0
     },
     {
       "date": "2026-04-29",
@@ -310,7 +302,7 @@
     },
     {
       "date": "2026-05-07",
-      "count": 57
+      "count": 0
     },
     {
       "date": "2026-05-08",
@@ -326,11 +318,19 @@
     },
     {
       "date": "2026-05-11",
-      "count": 3
+      "count": 0
     },
     {
       "date": "2026-05-12",
-      "count": 10
+      "count": 0
+    },
+    {
+      "date": "2026-05-13",
+      "count": 4
+    },
+    {
+      "date": "2026-05-14",
+      "count": 96
     }
   ]
 }
