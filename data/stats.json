@@ -1,10 +1,10 @@
 {
-  "lastUpdated": "2026-05-14T06:14:46.361693Z",
+  "lastUpdated": "2026-06-17T08:20:44.525904Z",
   "user": "mahmoodhamdi",
   "summary": {
-    "mergedPRs": 625,
+    "mergedPRs": 634,
     "publicRepos": 184,
-    "followers": 52,
+    "followers": 56,
     "externalProjects": 17
   },
   "topRepos": [
@@ -34,6 +34,11 @@
       "url": "https://github.com/helmetjs/helmet/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
     },
     {
+      "slug": "Itqan-community/cms-backend",
+      "prs": 4,
+      "url": "https://github.com/Itqan-community/cms-backend/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
+    },
+    {
       "slug": "Automattic/mongoose",
       "prs": 4,
       "url": "https://github.com/Automattic/mongoose/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
@@ -44,190 +49,49 @@
       "url": "https://github.com/express-validator/express-validator/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
     },
     {
+      "slug": "TarteelAI/quranic-universal-library",
+      "prs": 3,
+      "url": "https://github.com/TarteelAI/quranic-universal-library/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
+    },
+    {
       "slug": "langgenius/dify",
       "prs": 3,
       "url": "https://github.com/langgenius/dify/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
-    },
-    {
-      "slug": "colinhacks/zod",
-      "prs": 2,
-      "url": "https://github.com/colinhacks/zod/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
-    },
-    {
-      "slug": "payloadcms/payload",
-      "prs": 2,
-      "url": "https://github.com/payloadcms/payload/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
     }
   ],
   "latestPRs": [
     {
-      "repo": "TarteelAI/quranic-universal-library",
-      "title": "chore: bump rubocop TargetRailsVersion to 8.0",
-      "url": "https://github.com/TarteelAI/quranic-universal-library/pull/607",
-      "mergedAt": "2026-05-12T10:04:47Z"
+      "repo": "Itqan-community/cms-frontend",
+      "title": "fix(auth): use correct field name is_profile_completed in updateProfile",
+      "url": "https://github.com/Itqan-community/cms-frontend/pull/101",
+      "mergedAt": "2026-03-25T00:01:57Z"
     },
     {
-      "repo": "prayer-timetable/adhan_dart",
-      "title": "refactor: expose Makkah coordinates and improve Qibla documentation",
-      "url": "https://github.com/prayer-timetable/adhan_dart/pull/46",
-      "mergedAt": "2026-05-10T13:23:22Z"
+      "repo": "Itqan-community/cms-frontend",
+      "title": "fix(a11y): associate label with search input in search-panel",
+      "url": "https://github.com/Itqan-community/cms-frontend/pull/103",
+      "mergedAt": "2026-03-25T00:03:29Z"
     },
     {
-      "repo": "prayer-timetable/adhan_dart",
-      "title": "docs: add missing Morocco method to README",
-      "url": "https://github.com/prayer-timetable/adhan_dart/pull/20",
-      "mergedAt": "2026-05-10T13:23:22Z"
+      "repo": "Itqan-community/cms-frontend",
+      "title": "fix(publishers): resolve ESLint errors in publisher-card component",
+      "url": "https://github.com/Itqan-community/cms-frontend/pull/105",
+      "mergedAt": "2026-03-25T00:08:10Z"
     },
     {
-      "repo": "prayer-timetable/adhan_dart",
-      "title": "feat: add displayName property to Prayer enum",
-      "url": "https://github.com/prayer-timetable/adhan_dart/pull/42",
-      "mergedAt": "2026-05-10T13:23:22Z"
+      "repo": "Itqan-community/cms-frontend",
+      "title": "fix(publishers): improve type safety and migrate to built-in control flow",
+      "url": "https://github.com/Itqan-community/cms-frontend/pull/107",
+      "mergedAt": "2026-03-25T00:09:37Z"
     },
     {
-      "repo": "prayer-timetable/adhan_dart",
-      "title": "fix: replace dynamic with Coordinates type in correctedHourAngle",
-      "url": "https://github.com/prayer-timetable/adhan_dart/pull/24",
-      "mergedAt": "2026-05-10T13:23:22Z"
+      "repo": "Itqan-community/cms-frontend",
+      "title": "refactor(publishers): migrate remaining *ngIf/*ngFor to built-in control flow",
+      "url": "https://github.com/Itqan-community/cms-frontend/pull/109",
+      "mergedAt": "2026-03-25T00:13:40Z"
     }
   ],
   "heatmap": [
-    {
-      "date": "2026-03-16",
-      "count": 0
-    },
-    {
-      "date": "2026-03-17",
-      "count": 0
-    },
-    {
-      "date": "2026-03-18",
-      "count": 0
-    },
-    {
-      "date": "2026-03-19",
-      "count": 0
-    },
-    {
-      "date": "2026-03-20",
-      "count": 0
-    },
-    {
-      "date": "2026-03-21",
-      "count": 0
-    },
-    {
-      "date": "2026-03-22",
-      "count": 0
-    },
-    {
-      "date": "2026-03-23",
-      "count": 0
-    },
-    {
-      "date": "2026-03-24",
-      "count": 0
-    },
-    {
-      "date": "2026-03-25",
-      "count": 0
-    },
-    {
-      "date": "2026-03-26",
-      "count": 0
-    },
-    {
-      "date": "2026-03-27",
-      "count": 0
-    },
-    {
-      "date": "2026-03-28",
-      "count": 0
-    },
-    {
-      "date": "2026-03-29",
-      "count": 0
-    },
-    {
-      "date": "2026-03-30",
-      "count": 0
-    },
-    {
-      "date": "2026-03-31",
-      "count": 0
-    },
-    {
-      "date": "2026-04-01",
-      "count": 0
-    },
-    {
-      "date": "2026-04-02",
-      "count": 0
-    },
-    {
-      "date": "2026-04-03",
-      "count": 0
-    },
-    {
-      "date": "2026-04-04",
-      "count": 0
-    },
-    {
-      "date": "2026-04-05",
-      "count": 0
-    },
-    {
-      "date": "2026-04-06",
-      "count": 0
-    },
-    {
-      "date": "2026-04-07",
-      "count": 0
-    },
-    {
-      "date": "2026-04-08",
-      "count": 0
-    },
-    {
-      "date": "2026-04-09",
-      "count": 0
-    },
-    {
-      "date": "2026-04-10",
-      "count": 0
-    },
-    {
-      "date": "2026-04-11",
-      "count": 0
-    },
-    {
-      "date": "2026-04-12",
-      "count": 0
-    },
-    {
-      "date": "2026-04-13",
-      "count": 0
-    },
-    {
-      "date": "2026-04-14",
-      "count": 0
-    },
-    {
-      "date": "2026-04-15",
-      "count": 0
-    },
-    {
-      "date": "2026-04-16",
-      "count": 0
-    },
-    {
-      "date": "2026-04-17",
-      "count": 0
-    },
-    {
-      "date": "2026-04-18",
-      "count": 0
-    },
     {
       "date": "2026-04-19",
       "count": 0
@@ -326,11 +190,147 @@
     },
     {
       "date": "2026-05-13",
-      "count": 4
+      "count": 0
     },
     {
       "date": "2026-05-14",
-      "count": 96
+      "count": 0
+    },
+    {
+      "date": "2026-05-15",
+      "count": 0
+    },
+    {
+      "date": "2026-05-16",
+      "count": 0
+    },
+    {
+      "date": "2026-05-17",
+      "count": 0
+    },
+    {
+      "date": "2026-05-18",
+      "count": 0
+    },
+    {
+      "date": "2026-05-19",
+      "count": 2
+    },
+    {
+      "date": "2026-05-20",
+      "count": 0
+    },
+    {
+      "date": "2026-05-21",
+      "count": 0
+    },
+    {
+      "date": "2026-05-22",
+      "count": 0
+    },
+    {
+      "date": "2026-05-23",
+      "count": 0
+    },
+    {
+      "date": "2026-05-24",
+      "count": 0
+    },
+    {
+      "date": "2026-05-25",
+      "count": 0
+    },
+    {
+      "date": "2026-05-26",
+      "count": 0
+    },
+    {
+      "date": "2026-05-27",
+      "count": 0
+    },
+    {
+      "date": "2026-05-28",
+      "count": 0
+    },
+    {
+      "date": "2026-05-29",
+      "count": 0
+    },
+    {
+      "date": "2026-05-30",
+      "count": 0
+    },
+    {
+      "date": "2026-05-31",
+      "count": 0
+    },
+    {
+      "date": "2026-06-01",
+      "count": 2
+    },
+    {
+      "date": "2026-06-02",
+      "count": 0
+    },
+    {
+      "date": "2026-06-03",
+      "count": 0
+    },
+    {
+      "date": "2026-06-04",
+      "count": 0
+    },
+    {
+      "date": "2026-06-05",
+      "count": 0
+    },
+    {
+      "date": "2026-06-06",
+      "count": 0
+    },
+    {
+      "date": "2026-06-07",
+      "count": 0
+    },
+    {
+      "date": "2026-06-08",
+      "count": 0
+    },
+    {
+      "date": "2026-06-09",
+      "count": 0
+    },
+    {
+      "date": "2026-06-10",
+      "count": 0
+    },
+    {
+      "date": "2026-06-11",
+      "count": 0
+    },
+    {
+      "date": "2026-06-12",
+      "count": 0
+    },
+    {
+      "date": "2026-06-13",
+      "count": 0
+    },
+    {
+      "date": "2026-06-14",
+      "count": 0
+    },
+    {
+      "date": "2026-06-15",
+      "count": 0
+    },
+    {
+      "date": "2026-06-16",
+      "count": 0
+    },
+    {
+      "date": "2026-06-17",
+      "count": 0
     }
   ]
 }
