@@ -1,11 +1,11 @@
 {
-  "lastUpdated": "2026-08-11T04:10:39.571441Z",
+  "lastUpdated": "2026-08-12T04:40:11.084718Z",
   "user": "mahmoodhamdi",
   "summary": {
-    "mergedPRs": 634,
+    "mergedPRs": 635,
     "publicRepos": 186,
     "followers": 59,
-    "externalProjects": 20
+    "externalProjects": 24
   },
   "topRepos": [
     {
@@ -34,6 +34,11 @@
       "url": "https://github.com/helmetjs/helmet/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
     },
     {
+      "slug": "TarteelAI/quranic-universal-library",
+      "prs": 4,
+      "url": "https://github.com/TarteelAI/quranic-universal-library/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
+    },
+    {
       "slug": "Itqan-community/cms-backend",
       "prs": 4,
       "url": "https://github.com/Itqan-community/cms-backend/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
@@ -49,17 +54,18 @@
       "url": "https://github.com/express-validator/express-validator/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
     },
     {
-      "slug": "TarteelAI/quranic-universal-library",
-      "prs": 3,
-      "url": "https://github.com/TarteelAI/quranic-universal-library/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
-    },
-    {
       "slug": "langgenius/dify",
       "prs": 3,
       "url": "https://github.com/langgenius/dify/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
     }
   ],
   "latestPRs": [
+    {
+      "repo": "TarteelAI/quranic-universal-library",
+      "title": "docs: sync copilot-instructions versions with current Rails/Node",
+      "url": "https://github.com/TarteelAI/quranic-universal-library/pull/605",
+      "mergedAt": "2026-08-11T13:31:46Z"
+    },
     {
       "repo": "Itqan-community/cms-frontend",
       "title": "fix(auth): use correct field name is_profile_completed in updateProfile",
@@ -83,19 +89,9 @@
       "title": "fix(publishers): improve type safety and migrate to built-in control flow",
       "url": "https://github.com/Itqan-community/cms-frontend/pull/107",
       "mergedAt": "2026-03-25T00:09:37Z"
-    },
-    {
-      "repo": "Itqan-community/cms-frontend",
-      "title": "refactor(publishers): migrate remaining *ngIf/*ngFor to built-in control flow",
-      "url": "https://github.com/Itqan-community/cms-frontend/pull/109",
-      "mergedAt": "2026-03-25T00:13:40Z"
     }
   ],
   "heatmap": [
-    {
-      "date": "2026-06-13",
-      "count": 0
-    },
     {
       "date": "2026-06-14",
       "count": 0
@@ -210,7 +206,7 @@
     },
     {
       "date": "2026-07-12",
-      "count": 1
+      "count": 0
     },
     {
       "date": "2026-07-13",
@@ -330,6 +326,10 @@
     },
     {
       "date": "2026-08-11",
+      "count": 1
+    },
+    {
+      "date": "2026-08-12",
       "count": 0
     }
   ]
