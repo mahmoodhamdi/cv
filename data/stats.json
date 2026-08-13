@@ -1,11 +1,11 @@
 {
-  "lastUpdated": "2026-08-12T04:40:11.084718Z",
+  "lastUpdated": "2026-08-13T04:43:51.276952Z",
   "user": "mahmoodhamdi",
   "summary": {
     "mergedPRs": 635,
     "publicRepos": 186,
     "followers": 59,
-    "externalProjects": 24
+    "externalProjects": 17
   },
   "topRepos": [
     {
@@ -92,10 +92,6 @@
     }
   ],
   "heatmap": [
-    {
-      "date": "2026-06-14",
-      "count": 0
-    },
     {
       "date": "2026-06-15",
       "count": 0
@@ -330,6 +326,10 @@
     },
     {
       "date": "2026-08-12",
+      "count": 0
+    },
+    {
+      "date": "2026-08-13",
       "count": 0
     }
   ]
