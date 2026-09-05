@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-09-04T07:29:47.589149Z",
+  "lastUpdated": "2026-09-05T07:10:53.620776Z",
   "user": "mahmoodhamdi",
   "summary": {
     "mergedPRs": 635,
@@ -61,6 +61,12 @@
   ],
   "latestPRs": [
     {
+      "repo": "langgenius/dify",
+      "title": "refactor(web): convert 7 enums to as-const objects (batch 5)",
+      "url": "https://github.com/langgenius/dify/pull/33960",
+      "mergedAt": "2026-03-26T07:50:55Z"
+    },
+    {
       "repo": "TarteelAI/quranic-universal-library",
       "title": "docs: sync copilot-instructions versions with current Rails/Node",
       "url": "https://github.com/TarteelAI/quranic-universal-library/pull/605",
@@ -83,19 +89,9 @@
       "title": "fix(publishers): resolve ESLint errors in publisher-card component",
       "url": "https://github.com/Itqan-community/cms-frontend/pull/105",
       "mergedAt": "2026-03-25T00:08:10Z"
-    },
-    {
-      "repo": "Itqan-community/cms-frontend",
-      "title": "fix(publishers): improve type safety and migrate to built-in control flow",
-      "url": "https://github.com/Itqan-community/cms-frontend/pull/107",
-      "mergedAt": "2026-03-25T00:09:37Z"
     }
   ],
   "heatmap": [
-    {
-      "date": "2026-07-07",
-      "count": 0
-    },
     {
       "date": "2026-07-08",
       "count": 0
@@ -330,6 +326,10 @@
     },
     {
       "date": "2026-09-04",
+      "count": 0
+    },
+    {
+      "date": "2026-09-05",
       "count": 0
     }
   ]
