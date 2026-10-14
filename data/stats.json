@@ -1,16 +1,16 @@
 {
-  "lastUpdated": "2026-10-13T09:50:36.933100Z",
+  "lastUpdated": "2026-10-14T08:07:15.941410Z",
   "user": "mahmoodhamdi",
   "summary": {
     "mergedPRs": 623,
     "publicRepos": 182,
     "followers": 62,
-    "externalProjects": 5
+    "externalProjects": 20
   },
   "topRepos": [
     {
       "slug": "prayer-timetable/adhan_dart",
-      "prs": 21,
+      "prs": 38,
       "url": "https://github.com/prayer-timetable/adhan_dart/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
     },
     {
@@ -19,18 +19,43 @@
       "url": "https://github.com/Itqan-community/cms-frontend/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
     },
     {
+      "slug": "ai/nanoid",
+      "prs": 13,
+      "url": "https://github.com/ai/nanoid/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
+    },
+    {
+      "slug": "helmetjs/helmetjs.github.io",
+      "prs": 6,
+      "url": "https://github.com/helmetjs/helmetjs.github.io/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
+    },
+    {
+      "slug": "helmetjs/helmet",
+      "prs": 6,
+      "url": "https://github.com/helmetjs/helmet/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
+    },
+    {
       "slug": "TarteelAI/quranic-universal-library",
       "prs": 4,
       "url": "https://github.com/TarteelAI/quranic-universal-library/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
     },
     {
       "slug": "Itqan-community/cms-backend",
-      "prs": 2,
+      "prs": 4,
       "url": "https://github.com/Itqan-community/cms-backend/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
     },
     {
+      "slug": "Automattic/mongoose",
+      "prs": 4,
+      "url": "https://github.com/Automattic/mongoose/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
+    },
+    {
+      "slug": "express-validator/express-validator",
+      "prs": 4,
+      "url": "https://github.com/express-validator/express-validator/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
+    },
+    {
       "slug": "langgenius/dify",
-      "prs": 1,
+      "prs": 3,
       "url": "https://github.com/langgenius/dify/pulls?q=is%3Apr+author%3Amahmoodhamdi+is%3Amerged"
     }
   ],
@@ -67,10 +92,6 @@
     }
   ],
   "heatmap": [
-    {
-      "date": "2026-08-15",
-      "count": 0
-    },
     {
       "date": "2026-08-16",
       "count": 0
@@ -305,6 +326,10 @@
     },
     {
       "date": "2026-10-13",
+      "count": 0
+    },
+    {
+      "date": "2026-10-14",
       "count": 0
     }
   ]
